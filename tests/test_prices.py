@@ -226,3 +226,23 @@ def test_filings_link_to_issuers_by_dated_symbol(db):
                            JOIN issuers i USING (issuer_id) ORDER BY 1""").fetchall()
     assert names == [("bse_announcements", "XYZ LTD"), ("nse_announcements", "ABC LIMITED")]
     assert prices.unlinked_symbols(db) == [dict(source="nse_announcements", symbol="NOPE", name="ABC Ltd", filings=1)]
+
+
+def test_bse_history_without_isin_joins_the_scrip_codes_company(db):
+    db.execute("""INSERT INTO bhavcopy_rows (exchange, trade_date, code, series, ticker, isin, close, source_formats)
+        VALUES ('BSE', '2024-01-08', '543210', 'B', NULL, NULL, 10, '{MAKROGRAPH_BSE}'),
+               ('BSE', '2026-10-08', '543210', 'B', 'XYZ', 'INE222B01022', 11, '{BSE_UDIFF}'),
+               ('BSE', '2023-01-02', '500100', 'A', NULL, 'INE555E01055', 20, '{BSE_LEGACY}'),
+               ('BSE', '2023-06-01', '500100', 'A', NULL, NULL, 21, '{MAKROGRAPH_BSE}'),
+               ('BSE', '2026-10-08', '500100', 'A', 'NEW', 'INE666F01066', 22, '{BSE_UDIFF}')""")
+    out = prices.build_company_list(db)
+    assert out["counts"]["bse_spans_extended"] == 2 and not out["conflicts"]
+    spans = db.execute("""SELECT s.isin, h.kind, h.value, h.valid_from, h.valid_to FROM identifier_history h
+                            JOIN securities s USING (security_id) ORDER BY 1, 2""").fetchall()
+    assert spans == [("INE222B01022", "SCRIP_CODE", "543210", date(2024, 1, 8), None),
+                     ("INE222B01022", "SYMBOL", "XYZ", date(2024, 1, 8), None),
+                     ("INE555E01055", "SCRIP_CODE", "500100", date(2023, 1, 2), date(2023, 1, 2)),
+                     ("INE666F01066", "SCRIP_CODE", "500100", date(2023, 6, 1), None),   # after the old ISIN's last day
+                     ("INE666F01066", "SYMBOL", "NEW", date(2023, 6, 1), None)]
+    assert "bse_spans_extended" not in prices.build_company_list(db)["counts"]
+    assert [r["rows_written"] for r in prices.fill_prices(db, exchanges=("BSE",))] == [2, 1, 0, 2]
