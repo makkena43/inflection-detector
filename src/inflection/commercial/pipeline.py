@@ -440,7 +440,8 @@ def report(conn, start: Optional[date] = None, end: Optional[date] = None, top: 
 
 
 def timeline(conn, symbol: str) -> dict:
-    """One company's commercial timeline: each event with its dated versions and the quotes behind them."""
+    """One company's commercial timeline: each event with its dated versions and the quotes behind them,
+    and the candidate evaluations of both routes."""
     row = conn.execute(
         """SELECT s.issuer_id, i.legal_name FROM identifier_history h JOIN securities s USING (security_id)
              JOIN issuers i USING (issuer_id)
@@ -471,8 +472,8 @@ def timeline(conn, symbol: str) -> dict:
                            counterparty=r[12], facility=r[13], relationship=r[14], quote=(r[15] or "")[:240],
                            repeated=r[16]) for r in items]))
     evals = conn.execute(
-        """SELECT as_of, priority_class, outcome, materiality, reasons FROM candidate_evaluations
-            WHERE issuer_id = %s AND route = 'COMMERCIAL' ORDER BY as_of""", (issuer_id,)).fetchall()
+        """SELECT as_of, route, priority_class, outcome, materiality, reasons FROM candidate_evaluations
+            WHERE issuer_id = %s ORDER BY as_of""", (issuer_id,)).fetchall()
     return dict(symbol=symbol.upper(), issuer=name, events=events,
-                evaluations=[dict(as_of=a.isoformat(), priority=c, outcome=o, materiality=m, reasons=r)
-                             for a, c, o, m, r in evals])
+                evaluations=[dict(as_of=a.isoformat(), route=rt, priority=c, outcome=o, materiality=m, reasons=r)
+                             for a, rt, c, o, m, r in evals])
