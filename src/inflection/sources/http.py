@@ -17,8 +17,8 @@ import urllib.request
 from dataclasses import dataclass
 from typing import Callable, Optional
 
-USER_AGENT = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
-              "(KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36")
+USER_AGENT = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36")
 BLOCKING_STATUSES = frozenset({401, 403, 429})
 
 Transport = Callable[[str, dict, float], tuple[int, bytes]]
@@ -53,6 +53,27 @@ def _urllib_transport() -> Transport:
     return send
 
 
+def curl_cffi_transport(impersonate: str = "chrome") -> Transport:
+    """Transport backed by curl_cffi with a browser TLS/HTTP2 fingerprint.
+
+    Defense-in-depth for BSE's Akamai edge (header checks already handled by callers);
+    keeps one ``Session`` so cookies persist across calls.
+    Raises ``ImportError`` when curl_cffi is not installed.
+    """
+    from curl_cffi import requests as cffi_requests
+
+    session = cffi_requests.Session(impersonate=impersonate)
+
+    def send(url: str, headers: dict, timeout: float) -> tuple[int, bytes]:
+        try:
+            r = session.get(url, headers=headers, timeout=timeout)
+        except Exception as exc:  # curl_cffi errors are not OSError subclasses
+            raise OSError(f"{type(exc).__name__}: {exc}") from exc
+        return r.status_code, r.content
+
+    return send
+
+
 class HttpClient:
     def __init__(self, min_interval: float = 1.0, retries: int = 3, backoff: float = 2.0, timeout: float = 40.0,
                  transport: Optional[Transport] = None, sleep: Callable[[float], None] = time.sleep,
@@ -71,12 +92,14 @@ class HttpClient:
         self._last = self._clock()
 
     def get(self, url: str, referer: str = "", accept: str = "application/json, text/plain, */*",
-            origin: str = "") -> Response:
+            origin: str = "", extra_headers: Optional[dict] = None) -> Response:
         headers = {"User-Agent": self.user_agent, "Accept": accept}
         if referer:
             headers["Referer"] = referer
         if origin:
             headers["Origin"] = origin
+        if extra_headers:
+            headers.update(extra_headers)
         last = Response(url, None, error="not attempted")
         for attempt in range(self.retries + 1):
             if attempt:

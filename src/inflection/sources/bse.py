@@ -5,7 +5,9 @@ endpoint and parameters, the per-category sweep, weekly windows, attachment URL 
 (AttachLive / AttachHis) and field mapping.  Changes in the port:
 
 * plain HTTP with the same Origin/Referer as BSE's own announcements page (as MakroGraph sent);
-  curl_cffi, Playwright/Selenium cookie harvesting and the cookie cache are not ported;
+  the CLI routes through ``curl_cffi_transport`` (browser TLS fingerprint) when curl_cffi is
+  installed, since api.bseindia.com's Akamai edge rejects plain urllib; Playwright/Selenium
+  cookie harvesting and the cookie cache are not ported;
 * the all-category query (``strCat=-1``) is tried first; when it returns nothing the sweep over
   ``CATEGORIES`` runs and the window is PARTIAL (a category subset), never COMPLETE;
 * pages are followed until the reported row count is reached; a page cap makes the window
@@ -28,7 +30,9 @@ API_URL = "https://api.bseindia.com/BseIndiaAPI/api/AnnSubCategoryGetData/w"
 ATTACH_LIVE = "https://www.bseindia.com/xml-data/corpfiling/AttachLive"
 ATTACH_HIS = "https://www.bseindia.com/xml-data/corpfiling/AttachHis"
 ORIGIN = "https://www.bseindia.com"
-REFERER = f"{ORIGIN}/corporates/ann.html"
+REFERER = f"{ORIGIN}/"
+# Akamai rejects API calls lacking browser navigation headers (403 before any rate limit).
+EXTRA_HEADERS = {"Accept-Language": "en-US,en;q=0.5", "Sec-Fetch-Site": "same-site"}
 PAGE_SIZE = 50
 
 # MakroGraph's sweep list (``_COOKIE_FREE_CATEGORIES``); filings outside these are not listed
@@ -113,7 +117,8 @@ class BSEAnnouncements:
             q = urlencode({"pageno": page, "strCat": category, "strPrevDate": from_date.strftime("%Y%m%d"),
                            "strScrip": scrip, "strSearch": "P", "strToDate": to_date.strftime("%Y%m%d"),
                            "strType": "C", "subcategory": "-1"})
-            status, data, note = decode_json(self.client.get(f"{API_URL}?{q}", referer=REFERER, origin=ORIGIN))
+            status, data, note = decode_json(self.client.get(f"{API_URL}?{q}", referer=REFERER, origin=ORIGIN,
+                                                           extra_headers=EXTRA_HEADERS))
             if status != WindowStatus.COMPLETE:
                 if page == 1:
                     return status, [], [f"{category}: {note}"]

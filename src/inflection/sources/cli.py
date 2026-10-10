@@ -13,8 +13,17 @@ from pathlib import Path
 
 from .bse import REFERER as BSE_REFERER, BSEAnnouncements
 from .download import Archive, download
-from .http import HttpClient
+from .http import HttpClient, Transport, curl_cffi_transport
 from .nse import REFERER as NSE_REFERER, NSEAnnouncements
+
+
+def _bse_transport() -> Transport | None:
+    """BSE's Akamai edge rejects urllib; use a browser fingerprint when curl_cffi is installed."""
+    try:
+        return curl_cffi_transport()
+    except ImportError:
+        print("note: curl_cffi not installed; BSE usually blocks plain urllib (HTTP 403)")
+        return None
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -28,7 +37,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--interval", type=float, default=1.5, help="seconds between requests")
     a = ap.parse_args(argv)
 
-    client = HttpClient(min_interval=a.interval)
+    client = HttpClient(min_interval=a.interval,
+                        transport=_bse_transport() if a.exchange == "bse" else None)
     end = a.to or a.start
     if a.exchange == "nse":
         windows, referer = NSEAnnouncements(client).list_range(a.start, end, a.segment), NSE_REFERER
