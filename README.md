@@ -22,13 +22,14 @@ The design spec (v1.0, sections 1 to 23) is in [`docs/spec.md`](docs/spec.md). K
 | Page-preserving PDF extraction | `src/inflection/text_extraction.py` | §8 |
 | NSE/BSE announcement listing with coverage status, attachment download into a SHA-256 archive | `src/inflection/sources/` | §6.1, §15 test 11 |
 | Ingestion into the database: listing windows, publications, archived versions (NSE/BSE copies share one lineage), page text, coverage report | `src/inflection/ingest.py` | §14 Phase 1 |
+| Results figures from NSE XBRL filings (every line of the P&L, EPS and segments, exact rupees, point-in-time) | `src/inflection/sources/xbrl.py`, `src/inflection/financials.py` | §6, §12, §17 |
 | Daily NSE/BSE bhavcopy, the MakroGraph price-history import, the company list built from ISIN-bearing price rows, and filings linked to issuers | `src/inflection/sources/bhavcopy.py`, `src/inflection/prices.py` | §8, §12 |
 
 Code ported from MakroGraph is listed, with its reasons and changes, in [`docs/reuse_inventory.md`](docs/reuse_inventory.md). This project does not import MakroGraph code at run time; its price history can be copied in once (below).
 
 ## Not built yet
 
-Corporate actions and adjusted prices in the `prices` table, results XBRL, candidate evaluation rules, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
+Corporate actions and adjusted prices in the `prices` table, BSE-only companies' results, candidate evaluation rules, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
 
 ## Checking the exchange adapters live
 
@@ -78,6 +79,19 @@ list.  The UDiFF files (from July 2024) and the older NSE `cm…bhav` and BSE `E
 carry ISIN; MakroGraph's tables and NSE's `sec_bhavdata_full` do not, so imported history is stored
 but links only where a fetched file covers the same code.  Fetch at least one recent day before
 running `companies`.
+
+## Results figures (XBRL)
+
+```bash
+python -m inflection.financials list --from 2021-01-01 --to 2024-11-30   # every current NSE symbol; resumable
+python -m inflection.financials load --archive ~/inflection-archive       # download, parse, store figures
+python -m inflection.financials report
+```
+
+Run `python -m inflection.prices companies` first: the listing goes symbol by symbol through the
+company list.  `--from` keeps periods ending on or after that date; `--to` keeps filings made
+public by that date.  `list` skips symbols already listed for the same window, so it can be
+stopped and rerun.  Apply migrations up to `0005` first.
 
 ## Running tests
 
