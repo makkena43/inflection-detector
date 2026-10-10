@@ -22,12 +22,13 @@ The design spec (v1.0, sections 1 to 23) is in [`docs/spec.md`](docs/spec.md). K
 | Page-preserving PDF extraction | `src/inflection/text_extraction.py` | §8 |
 | NSE/BSE announcement listing with coverage status, attachment download into a SHA-256 archive | `src/inflection/sources/` | §6.1, §15 test 11 |
 | Ingestion into the database: listing windows, publications, archived versions (NSE/BSE copies share one lineage), page text, coverage report | `src/inflection/ingest.py` | §14 Phase 1 |
+| Daily NSE/BSE bhavcopy, the MakroGraph price-history import, the company list built from ISIN-bearing price rows, and filings linked to issuers | `src/inflection/sources/bhavcopy.py`, `src/inflection/prices.py` | §8, §12 |
 
-Code ported from MakroGraph is listed, with its reasons and changes, in [`docs/reuse_inventory.md`](docs/reuse_inventory.md). This project does not import MakroGraph.
+Code ported from MakroGraph is listed, with its reasons and changes, in [`docs/reuse_inventory.md`](docs/reuse_inventory.md). This project does not import MakroGraph code at run time; its price history can be copied in once (below).
 
 ## Not built yet
 
-Issuer identity resolution for ingested publications, results XBRL and bhavcopy adapters, candidate evaluation rules, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
+Corporate actions and adjusted prices in the `prices` table, results XBRL, candidate evaluation rules, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
 
 ## Checking the exchange adapters live
 
@@ -48,6 +49,22 @@ python -m inflection.ingest report 2026-10-01 --to 2026-10-08
 ```
 
 Reruns add only new announcements. Apply `db/migrations/0003_ingestion_coverage.sql` first.
+
+## Prices and the company list
+
+```bash
+export INFLECTION_DSN=postgresql:///inflection
+python -m inflection.prices import-makrograph --from-dsn postgresql:///makrograph   # once: MakroGraph history
+python -m inflection.prices fetch 2026-10-08 --archive ~/inflection-archive          # NSE and BSE bhavcopy
+python -m inflection.prices companies     # company list from ISIN rows, then link filings to issuers
+python -m inflection.prices report 2026-10-01 --to 2026-10-08
+```
+
+Apply `db/migrations/0004_bhavcopy.sql` first.  Only rows with an equity ISIN build the company
+list.  The UDiFF files (from July 2024) and the older NSE `cm…bhav` and BSE `EQ_ISINCODE` files
+carry ISIN; MakroGraph's tables and NSE's `sec_bhavdata_full` do not, so imported history is stored
+but links only where a fetched file covers the same code.  Fetch at least one recent day before
+running `companies`.
 
 ## Running tests
 
