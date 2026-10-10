@@ -101,8 +101,10 @@ class RunMode(str, Enum):
 class CoverageStatus(str, Enum):
     """Ingestion coverage.  An empty response is not proof of complete coverage."""
     COMPLETE = "COMPLETE"
-    PARTIAL = "PARTIAL"
+    PARTIAL = "PARTIAL"                     # some sub-requests failed, or only a category subset
+    TRUNCATED = "TRUNCATED"                 # the source has more rows than were fetched
     EMPTY_UNVERIFIED = "EMPTY_UNVERIFIED"
+    BLOCKED = "BLOCKED"                     # 401/403/429 or a bot-protection page
     FAILED = "FAILED"
     NOT_ATTEMPTED = "NOT_ATTEMPTED"
 
