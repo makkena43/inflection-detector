@@ -2,8 +2,9 @@
 
 The model proposes inputs and evidence; this module computes the bridge.  It
 never fills gaps: a missing or dimensionally wrong input is a validation
-error, not a default.  Money is INR crore throughout; shares are crore shares,
-so EPS comes out in INR per share.
+error, not a default.  Every money input carries its currency and magnitude
+scale (spec section 17); arithmetic runs in base units, all money must share
+one currency (no FX conversion), and results are presented in a chosen scale.
 
 Per period and scenario:
   1. baseline attributable profit (normalised for one-offs)
@@ -23,19 +24,23 @@ import hashlib
 import json
 from dataclasses import asdict, dataclass, field
 from decimal import ROUND_HALF_EVEN, Decimal
+from enum import Enum
 from typing import Optional
 
 from .states import InputStatus, Scenario
+from .units import Scale
 
-ENGINE_VERSION = "bridge-1"
+ENGINE_VERSION = "bridge-2"
 
-INR_CRORE = "INR_crore"
-SHARES_CRORE = "shares_crore"
-PERCENT = "percent"
-MULTIPLE = "x"
-INR_PER_SHARE = "INR_per_share"
-# Physical units a volume stream may use; realisation must be INR_crore_per_<unit>.
-VOLUME_UNITS = {"units", "tonnes", "MW", "MWh", "kL", "sq_ft"}
+
+class Kind(str, Enum):
+    MONEY = "MONEY"                         # currency + scale
+    SHARES = "SHARES"                       # scale
+    PERCENT = "PERCENT"
+    MULTIPLE = "MULTIPLE"
+    PER_SHARE = "PER_SHARE"                 # currency per share, scale UNITS
+    PHYSICAL = "PHYSICAL"                   # physical_unit
+    MONEY_PER_PHYSICAL = "MONEY_PER_PHYSICAL"   # currency + scale per physical_unit
 
 
 class BridgeValidationError(ValueError):
@@ -47,13 +52,48 @@ class BridgeValidationError(ValueError):
 @dataclass(frozen=True)
 class Quantity:
     value: Decimal
-    unit: str
+    kind: Kind
     status: InputStatus
     evidence_ids: tuple[str, ...] = ()
+    currency: Optional[str] = None
+    scale: Scale = Scale.UNITS
+    physical_unit: Optional[str] = None
+
+    def base(self) -> Decimal:
+        return self.value * self.scale.factor
 
     @staticmethod
-    def of(value, unit: str, status: InputStatus, evidence_ids=()) -> "Quantity":
-        return Quantity(Decimal(str(value)), unit, InputStatus(status), tuple(evidence_ids))
+    def _make(value, kind, status, evidence_ids=(), **kw) -> "Quantity":
+        return Quantity(Decimal(str(value)), kind, InputStatus(status), tuple(evidence_ids), **kw)
+
+    @classmethod
+    def money(cls, value, currency: str, scale: Scale, status, evidence_ids=()):
+        return cls._make(value, Kind.MONEY, status, evidence_ids, currency=currency, scale=Scale(scale))
+
+    @classmethod
+    def shares(cls, value, scale: Scale, status, evidence_ids=()):
+        return cls._make(value, Kind.SHARES, status, evidence_ids, scale=Scale(scale))
+
+    @classmethod
+    def percent(cls, value, status, evidence_ids=()):
+        return cls._make(value, Kind.PERCENT, status, evidence_ids)
+
+    @classmethod
+    def multiple(cls, value, status, evidence_ids=()):
+        return cls._make(value, Kind.MULTIPLE, status, evidence_ids)
+
+    @classmethod
+    def per_share(cls, value, currency: str, status, evidence_ids=()):
+        return cls._make(value, Kind.PER_SHARE, status, evidence_ids, currency=currency)
+
+    @classmethod
+    def physical(cls, value, unit: str, status, evidence_ids=()):
+        return cls._make(value, Kind.PHYSICAL, status, evidence_ids, physical_unit=unit)
+
+    @classmethod
+    def realisation(cls, value, currency: str, scale: Scale, per_unit: str, status, evidence_ids=()):
+        return cls._make(value, Kind.MONEY_PER_PHYSICAL, status, evidence_ids, currency=currency,
+                         scale=Scale(scale), physical_unit=per_unit)
 
 
 @dataclass(frozen=True)
@@ -63,7 +103,7 @@ class Stream:
     kind: str                                   # "VOLUME" | "CONTRACT" | "MARGIN_RECOVERY"
     ebitda_margin: Optional[Quantity] = None    # percent; VOLUME and CONTRACT
     volume: Optional[Quantity] = None           # VOLUME: physical units in the period
-    realisation: Optional[Quantity] = None      # VOLUME: INR_crore_per_<volume unit>
+    realisation: Optional[Quantity] = None      # VOLUME: money per volume unit
     contract_revenue: Optional[Quantity] = None # CONTRACT: revenue executed in this period
     comparable_revenue: Optional[Quantity] = None   # MARGIN_RECOVERY
     incremental_margin: Optional[Quantity] = None   # MARGIN_RECOVERY: percent points
@@ -75,32 +115,33 @@ class Stream:
 @dataclass(frozen=True)
 class Dilution:
     name: str                                   # e.g. "warrants 2027", "QIP scenario financing"
-    shares: Quantity                            # shares_crore, weighted for the period
-    cash_in: Optional[Quantity] = None          # INR_crore raised
+    shares: Quantity                            # weighted for the period
+    cash_in: Optional[Quantity] = None
 
 
 @dataclass(frozen=True)
 class BridgeInputs:
     period: str
     scenario: Scenario
-    baseline_attributable_profit: Quantity      # normalised, INR_crore
+    baseline_attributable_profit: Quantity      # normalised
     streams: tuple[Stream, ...]
-    depreciation: Quantity                      # incremental, INR_crore
-    interest: Quantity                          # incremental, INR_crore
-    corporate_costs: Quantity                   # incremental, INR_crore
+    depreciation: Quantity                      # incremental
+    interest: Quantity                          # incremental
+    corporate_costs: Quantity                   # incremental
     tax_rate: Quantity                          # percent
     minority_share: Quantity                    # percent of incremental profit
-    basic_shares: Quantity                      # shares_crore, weighted average
+    basic_shares: Quantity                      # weighted average
     dilution: tuple[Dilution, ...]
     working_capital: Quantity
     capex: Quantity
     debt_service: Quantity
-    available_funding: Quantity                 # cash + committed facilities, INR_crore
-    pe_low: Quantity                            # MULTIPLE
+    available_funding: Quantity                 # cash + committed facilities
+    pe_low: Quantity
     pe_high: Quantity
     downside_compression: Quantity              # percent cut to pe_low for the downside value
-    current_price: Quantity                     # INR_per_share
+    current_price: Quantity                     # per share; its currency is the case currency
     current_pe: Optional[Quantity] = None       # sourced trailing multiple for the no-rerating check
+    presentation_scale: Scale = Scale.CRORE
 
 
 @dataclass
@@ -109,13 +150,18 @@ class BridgeResult:
     inputs_hash: str
     period: str
     scenario: str
+    currency: str
+    presentation_scale: str
     incremental_revenue: dict[str, str]
     incremental_ebitda: str
     incremental_pbt: str
     incremental_pat: str
     incremental_attributable: str
+    baseline_attributable: str
     attributable_profit: str
+    basic_shares: str
     diluted_shares: str
+    baseline_eps: str
     eps: str
     value_low: str
     value_high: str
@@ -136,20 +182,27 @@ def _hash(inputs: BridgeInputs) -> str:
     def default(o):
         if isinstance(o, Decimal):
             return str(o)
-        if hasattr(o, "value"):
+        if isinstance(o, Enum):
             return o.value
         raise TypeError(type(o))
     blob = json.dumps(asdict(inputs), default=default, sort_keys=True)
     return hashlib.sha256(blob.encode()).hexdigest()
 
 
-def _check_unit(errors: list[str], label: str, q: Optional[Quantity], unit: str, required: bool = True) -> bool:
+def _check(errors: list[str], label: str, q: Optional[Quantity], kind: Kind, currency: Optional[str],
+           required: bool = True) -> bool:
     if q is None:
         if required:
             errors.append(f"{label}: missing")
         return False
-    if q.unit != unit:
-        errors.append(f"{label}: unit {q.unit!r}, expected {unit!r}")
+    if q.kind != kind:
+        errors.append(f"{label}: is {q.kind.value}, expected {kind.value}")
+        return False
+    if q.kind in (Kind.MONEY, Kind.PER_SHARE, Kind.MONEY_PER_PHYSICAL) and q.currency != currency:
+        errors.append(f"{label}: currency {q.currency}, case currency is {currency}; no conversion is performed")
+        return False
+    if q.kind in (Kind.PHYSICAL, Kind.MONEY_PER_PHYSICAL) and not q.physical_unit:
+        errors.append(f"{label}: physical unit missing")
         return False
     if q.status == InputStatus.OBSERVED and not q.evidence_ids:
         errors.append(f"{label}: OBSERVED input has no evidence reference")
@@ -158,14 +211,17 @@ def _check_unit(errors: list[str], label: str, q: Optional[Quantity], unit: str,
 
 def validate(inputs: BridgeInputs) -> list[str]:
     e: list[str] = []
-    for label, unit in (("baseline_attributable_profit", INR_CRORE), ("depreciation", INR_CRORE),
-                        ("interest", INR_CRORE), ("corporate_costs", INR_CRORE), ("tax_rate", PERCENT),
-                        ("minority_share", PERCENT), ("basic_shares", SHARES_CRORE),
-                        ("working_capital", INR_CRORE), ("capex", INR_CRORE), ("debt_service", INR_CRORE),
-                        ("available_funding", INR_CRORE), ("pe_low", MULTIPLE), ("pe_high", MULTIPLE),
-                        ("downside_compression", PERCENT), ("current_price", INR_PER_SHARE)):
-        _check_unit(e, label, getattr(inputs, label), unit)
-    _check_unit(e, "current_pe", inputs.current_pe, MULTIPLE, required=False)
+    cur = inputs.current_price.currency if inputs.current_price else None
+    if not cur:
+        e.append("current_price: currency missing")
+    for label, kind in (("baseline_attributable_profit", Kind.MONEY), ("depreciation", Kind.MONEY),
+                        ("interest", Kind.MONEY), ("corporate_costs", Kind.MONEY), ("tax_rate", Kind.PERCENT),
+                        ("minority_share", Kind.PERCENT), ("basic_shares", Kind.SHARES),
+                        ("working_capital", Kind.MONEY), ("capex", Kind.MONEY), ("debt_service", Kind.MONEY),
+                        ("available_funding", Kind.MONEY), ("pe_low", Kind.MULTIPLE), ("pe_high", Kind.MULTIPLE),
+                        ("downside_compression", Kind.PERCENT), ("current_price", Kind.PER_SHARE)):
+        _check(e, label, getattr(inputs, label), kind, cur)
+    _check(e, "current_pe", inputs.current_pe, Kind.MULTIPLE, cur, required=False)
 
     if not inputs.streams:
         e.append("streams: at least one incremental stream is required")
@@ -180,26 +236,27 @@ def validate(inputs: BridgeInputs) -> list[str]:
             if other in names:
                 e.append(f"{p}: overlaps with stream {other!r}; merge them or remove the overlap")
         if s.kind == "VOLUME":
-            if _check_unit(e, f"{p}.volume", s.volume, s.volume.unit if s.volume else ""):
-                if s.volume.unit not in VOLUME_UNITS:
-                    e.append(f"{p}.volume: unit {s.volume.unit!r} is not a recognised volume unit")
-                _check_unit(e, f"{p}.realisation", s.realisation, f"{INR_CRORE}_per_{s.volume.unit}")
-            _check_unit(e, f"{p}.ebitda_margin", s.ebitda_margin, PERCENT)
+            ok_v = _check(e, f"{p}.volume", s.volume, Kind.PHYSICAL, cur)
+            ok_r = _check(e, f"{p}.realisation", s.realisation, Kind.MONEY_PER_PHYSICAL, cur)
+            if ok_v and ok_r and s.volume.physical_unit != s.realisation.physical_unit:
+                e.append(f"{p}: realisation is per {s.realisation.physical_unit}, volume is in "
+                         f"{s.volume.physical_unit}")
+            _check(e, f"{p}.ebitda_margin", s.ebitda_margin, Kind.PERCENT, cur)
         elif s.kind == "CONTRACT":
-            _check_unit(e, f"{p}.contract_revenue", s.contract_revenue, INR_CRORE)
-            _check_unit(e, f"{p}.ebitda_margin", s.ebitda_margin, PERCENT)
+            _check(e, f"{p}.contract_revenue", s.contract_revenue, Kind.MONEY, cur)
+            _check(e, f"{p}.ebitda_margin", s.ebitda_margin, Kind.PERCENT, cur)
         elif s.kind == "MARGIN_RECOVERY":
-            _check_unit(e, f"{p}.comparable_revenue", s.comparable_revenue, INR_CRORE)
-            _check_unit(e, f"{p}.incremental_margin", s.incremental_margin, PERCENT)
+            _check(e, f"{p}.comparable_revenue", s.comparable_revenue, Kind.MONEY, cur)
+            _check(e, f"{p}.incremental_margin", s.incremental_margin, Kind.PERCENT, cur)
             if s.ebitda_margin is not None:
                 e.append(f"{p}: margin recovery uses incremental_margin, not ebitda_margin")
         else:
             e.append(f"{p}: unknown kind {s.kind!r}")
-        _check_unit(e, f"{p}.ramp_costs", s.ramp_costs, INR_CRORE, required=False)
-        _check_unit(e, f"{p}.cannibalisation", s.cannibalisation, INR_CRORE, required=False)
+        _check(e, f"{p}.ramp_costs", s.ramp_costs, Kind.MONEY, cur, required=False)
+        _check(e, f"{p}.cannibalisation", s.cannibalisation, Kind.MONEY, cur, required=False)
     for d in inputs.dilution:
-        _check_unit(e, f"dilution {d.name!r}.shares", d.shares, SHARES_CRORE)
-        _check_unit(e, f"dilution {d.name!r}.cash_in", d.cash_in, INR_CRORE, required=False)
+        _check(e, f"dilution {d.name!r}.shares", d.shares, Kind.SHARES, cur)
+        _check(e, f"dilution {d.name!r}.cash_in", d.cash_in, Kind.MONEY, cur, required=False)
 
     if not e:
         if not (Decimal(0) <= inputs.tax_rate.value < 100):
@@ -212,6 +269,8 @@ def validate(inputs: BridgeInputs) -> list[str]:
             e.append("downside_compression: must be in [0, 100)")
         if inputs.basic_shares.value <= 0:
             e.append("basic_shares: must be positive")
+        if inputs.current_price.value <= 0:
+            e.append("current_price: must be positive")
     return e
 
 
@@ -220,49 +279,61 @@ def compute(inputs: BridgeInputs) -> BridgeResult:
     if errors:
         raise BridgeValidationError(errors)
     hundred = Decimal(100)
+    zero = Decimal(0)
     flags: list[str] = []
+    out = inputs.presentation_scale.factor
+
+    def opt(q: Optional[Quantity]) -> Decimal:
+        return q.base() if q is not None else zero
 
     revenue: dict[str, Decimal] = {}
-    ebitda = Decimal(0)
+    ebitda = zero
     for s in inputs.streams:
         if s.kind == "VOLUME":
-            rev = s.volume.value * s.realisation.value
+            rev = s.volume.value * s.realisation.base()
             contrib = rev * s.ebitda_margin.value / hundred
         elif s.kind == "CONTRACT":
-            rev = s.contract_revenue.value
+            rev = s.contract_revenue.base()
             contrib = rev * s.ebitda_margin.value / hundred
         else:
-            rev = Decimal(0)        # margin recovery adds margin on existing revenue, not new revenue
-            contrib = s.comparable_revenue.value * s.incremental_margin.value / hundred
-        contrib -= (s.ramp_costs.value if s.ramp_costs else 0)
-        contrib -= (s.cannibalisation.value if s.cannibalisation else 0)
+            rev = zero              # margin recovery adds margin on existing revenue, not new revenue
+            contrib = s.comparable_revenue.base() * s.incremental_margin.value / hundred
+        contrib -= opt(s.ramp_costs) + opt(s.cannibalisation)
         revenue[s.name] = rev
         ebitda += contrib
-        if any(q is not None and q.status == InputStatus.ANALYST_ASSUMPTION
-               for q in (s.volume, s.realisation, s.contract_revenue, s.comparable_revenue,
-                         s.incremental_margin, s.ebitda_margin)):
+        if s.kind == "VOLUME" and s.realisation.status == InputStatus.ANALYST_ASSUMPTION:
+            flags.append(f"stream {s.name!r}: selling price is an analyst assumption, not evidenced; "
+                         "capacity x assumed price is not an earnings fact")
+        elif any(q is not None and q.status == InputStatus.ANALYST_ASSUMPTION
+                 for q in (s.volume, s.contract_revenue, s.comparable_revenue, s.incremental_margin,
+                           s.ebitda_margin)):
             flags.append(f"stream {s.name!r} rests on analyst assumptions")
 
-    ebitda -= inputs.corporate_costs.value
-    pbt = ebitda - inputs.depreciation.value - inputs.interest.value
-    tax = max(pbt, Decimal(0)) * inputs.tax_rate.value / hundred
+    ebitda -= inputs.corporate_costs.base()
+    pbt = ebitda - inputs.depreciation.base() - inputs.interest.base()
+    tax = max(pbt, zero) * inputs.tax_rate.value / hundred
     pat = pbt - tax
     attributable_incr = pat * (hundred - inputs.minority_share.value) / hundred
-    attributable = inputs.baseline_attributable_profit.value + attributable_incr
+    baseline = inputs.baseline_attributable_profit.base()
+    attributable = baseline + attributable_incr
 
-    shares = inputs.basic_shares.value + sum((d.shares.value for d in inputs.dilution), Decimal(0))
+    basic = inputs.basic_shares.base()
+    shares = basic + sum((d.shares.base() for d in inputs.dilution), zero)
+    baseline_eps = baseline / basic
     eps = attributable / shares
+    if attributable > baseline and eps <= baseline_eps:
+        flags.append("attributable profit rises but dilution leaves EPS flat or lower")
 
-    cash_in = sum((d.cash_in.value for d in inputs.dilution if d.cash_in), Decimal(0))
-    cash_required = inputs.working_capital.value + inputs.capex.value + inputs.debt_service.value
-    gap = cash_required - inputs.available_funding.value - cash_in
+    cash_in = sum((d.cash_in.base() for d in inputs.dilution if d.cash_in), zero)
+    cash_required = inputs.working_capital.base() + inputs.capex.base() + inputs.debt_service.base()
+    gap = cash_required - inputs.available_funding.base() - cash_in
     if gap > 0:
         flags.append("profitable is not fundable: cash requirements exceed available funding")
 
     v_low = eps * inputs.pe_low.value
     v_high = eps * inputs.pe_high.value
     v_comp = eps * inputs.pe_low.value * (hundred - inputs.downside_compression.value) / hundred
-    price = inputs.current_price.value
+    price = inputs.current_price.base()
     ret_low = (v_low / price - 1) * hundred
     v_flat = ret_flat = None
     if inputs.current_pe is not None:
@@ -277,14 +348,17 @@ def compute(inputs: BridgeInputs) -> BridgeResult:
 
     return BridgeResult(
         engine_version=ENGINE_VERSION, inputs_hash=_hash(inputs), period=inputs.period,
-        scenario=inputs.scenario.value,
-        incremental_revenue={k: _q(v) for k, v in revenue.items()},
-        incremental_ebitda=_q(ebitda), incremental_pbt=_q(pbt), incremental_pat=_q(pat),
-        incremental_attributable=_q(attributable_incr), attributable_profit=_q(attributable),
-        diluted_shares=_q(shares, "0.0001"), eps=_q(eps),
+        scenario=inputs.scenario.value, currency=inputs.current_price.currency,
+        presentation_scale=inputs.presentation_scale.value,
+        incremental_revenue={k: _q(v / out) for k, v in revenue.items()},
+        incremental_ebitda=_q(ebitda / out), incremental_pbt=_q(pbt / out), incremental_pat=_q(pat / out),
+        incremental_attributable=_q(attributable_incr / out), baseline_attributable=_q(baseline / out),
+        attributable_profit=_q(attributable / out),
+        basic_shares=_q(basic / out, "0.0001"), diluted_shares=_q(shares / out, "0.0001"),
+        baseline_eps=_q(baseline_eps), eps=_q(eps),
         value_low=_q(v_low), value_high=_q(v_high), value_compressed=_q(v_comp),
         value_no_rerating=_q(v_flat) if v_flat is not None else None,
         return_at_low_pct=_q(ret_low, "0.1"),
         return_no_rerating_pct=_q(ret_flat, "0.1") if ret_flat is not None else None,
-        cash_required=_q(cash_required), funding_gap=_q(gap), flags=flags,
+        cash_required=_q(cash_required / out), funding_gap=_q(gap / out), flags=flags,
     )

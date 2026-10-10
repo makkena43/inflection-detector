@@ -8,6 +8,10 @@ budget row, so two workers cannot both spend the last of the budget.
 Fails closed: no budget row, paid calls disabled, or no price for the model
 all refuse the reservation.  Exhaustion raises ``BudgetExhausted``; callers
 move the case to DEFERRED_BUDGET and keep their work.
+
+A call that was dispatched but whose usage is unknown (timeout, crash) is
+marked UNRESOLVED, not released: its worst-case reservation keeps counting
+until reconciled (spec section 19).
 """
 
 from __future__ import annotations
@@ -33,6 +37,7 @@ class Reservation:
     entry_id: str
     amount: Decimal
     currency: str
+    pricing_version: date
 
 
 def _month(d: date) -> date:
@@ -40,7 +45,7 @@ def _month(d: date) -> date:
 
 
 def reserve(conn, *, on: date, provider: str, model: str, max_input_tokens: int, max_output_tokens: int,
-            case_id: Optional[str] = None) -> Reservation:
+            case_id: Optional[str] = None, task_id: Optional[str] = None) -> Reservation:
     """Reserve the worst-case cost of one bounded call.  ``conn`` is a psycopg connection."""
     month = _month(on)
     with conn.transaction():
@@ -54,7 +59,7 @@ def reserve(conn, *, on: date, provider: str, model: str, max_input_tokens: int,
         if not enabled:
             raise BudgetRefused("paid calls are disabled for this month")
         price = conn.execute(
-            "SELECT input_per_mtok, output_per_mtok FROM model_prices "
+            "SELECT input_per_mtok, output_per_mtok, effective_from FROM model_prices "
             "WHERE provider = %s AND model = %s AND currency = %s AND effective_from <= %s "
             "ORDER BY effective_from DESC LIMIT 1",
             (provider, model, currency, on)).fetchone()
@@ -62,17 +67,17 @@ def reserve(conn, *, on: date, provider: str, model: str, max_input_tokens: int,
             raise BudgetRefused(f"no {currency} price recorded for {provider}/{model}; refusing to guess")
         amount = (Decimal(max_input_tokens) * price[0] + Decimal(max_output_tokens) * price[1]) / MTOK
         committed = conn.execute(
-            "SELECT coalesce(sum(CASE status WHEN 'RESERVED' THEN reserved_amount "
-            "                                WHEN 'SETTLED' THEN actual_amount END), 0) "
+            "SELECT coalesce(sum(CASE WHEN status IN ('RESERVED', 'UNRESOLVED') THEN reserved_amount "
+            "                         WHEN status = 'SETTLED' THEN actual_amount END), 0) "
             "FROM budget_ledger WHERE budget_month = %s", (month,)).fetchone()[0]
         if committed + amount > limit_amount:
             raise BudgetExhausted(f"reserving {amount} {currency} would exceed the {limit_amount} limit "
                                   f"({committed} already committed)")
         entry_id = conn.execute(
-            "INSERT INTO budget_ledger (budget_month, case_id, provider, model, status, reserved_amount) "
-            "VALUES (%s, %s, %s, %s, 'RESERVED', %s) RETURNING entry_id",
-            (month, case_id, provider, model, amount)).fetchone()[0]
-    return Reservation(str(entry_id), amount, currency)
+            "INSERT INTO budget_ledger (budget_month, case_id, task_id, provider, model, status, reserved_amount, "
+            "currency, pricing_version) VALUES (%s, %s, %s, %s, %s, 'RESERVED', %s, %s, %s) RETURNING entry_id",
+            (month, case_id, task_id, provider, model, amount, currency, price[2])).fetchone()[0]
+    return Reservation(str(entry_id), amount, currency, price[2])
 
 
 def settle(conn, reservation: Reservation, *, actual_amount: Decimal, input_tokens: int, output_tokens: int,
@@ -83,14 +88,23 @@ def settle(conn, reservation: Reservation, *, actual_amount: Decimal, input_toke
         n = conn.execute(
             "UPDATE budget_ledger SET status = 'SETTLED', actual_amount = %s, input_tokens = %s, "
             "output_tokens = %s, fee_breakdown = %s, settled_at = now() "
-            "WHERE entry_id = %s AND status = 'RESERVED'",
+            "WHERE entry_id = %s AND status IN ('RESERVED', 'UNRESOLVED')",
             (actual_amount, input_tokens, output_tokens, Jsonb(fee_breakdown or {}), reservation.entry_id)).rowcount
         if n != 1:
             raise BudgetRefused(f"reservation {reservation.entry_id} is not open")
 
 
+def mark_unresolved(conn, reservation: Reservation) -> None:
+    """The call was dispatched but its usage is unknown: keep the worst-case amount reserved."""
+    with conn.transaction():
+        n = conn.execute("UPDATE budget_ledger SET status = 'UNRESOLVED' WHERE entry_id = %s AND status = 'RESERVED'",
+                         (reservation.entry_id,)).rowcount
+        if n != 1:
+            raise BudgetRefused(f"reservation {reservation.entry_id} is not open")
+
+
 def release(conn, reservation: Reservation) -> None:
-    """Cancel a reservation whose call was never made."""
+    """Cancel a reservation whose call was never dispatched.  Never use this after a dispatch."""
     with conn.transaction():
         conn.execute("UPDATE budget_ledger SET status = 'RELEASED' WHERE entry_id = %s AND status = 'RESERVED'",
                      (reservation.entry_id,))
