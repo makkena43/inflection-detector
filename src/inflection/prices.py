@@ -210,7 +210,8 @@ def _board(exchange: str, series: str) -> str:
     return "SME" if series in BSE_SME_GROUPS else "MAINBOARD"
 
 
-def _security(conn, isin: str, name: str, board: str, counts: Counter):
+def _security(conn, isin: str, name: str, board: str, counts: Counter, source: str = IDENTITY_SOURCE,
+              created_by: str = CREATED_BY):
     row = conn.execute("SELECT security_id, exchange_segment FROM securities WHERE isin = %s", (isin,)).fetchone()
     if row:
         if board == "SME" and row[1] != "SME":
@@ -218,12 +219,12 @@ def _security(conn, isin: str, name: str, board: str, counts: Counter):
         return row[0]
     issuer_id = conn.execute(
         """INSERT INTO issuers (legal_name, classification_source, identity_status, created_by)
-           VALUES (%s, %s, 'PROVISIONAL', %s) RETURNING issuer_id""", (name, IDENTITY_SOURCE, CREATED_BY)).fetchone()[0]
+           VALUES (%s, %s, 'PROVISIONAL', %s) RETURNING issuer_id""", (name, source, created_by)).fetchone()[0]
     counts["issuers_created"] += 1
     counts["securities_created"] += 1
     return conn.execute(
         """INSERT INTO securities (issuer_id, isin, exchange_segment, created_by) VALUES (%s, %s, %s, %s)
-           RETURNING security_id""", (issuer_id, isin, board, CREATED_BY)).fetchone()[0]
+           RETURNING security_id""", (issuer_id, isin, board, created_by)).fetchone()[0]
 
 
 def build_company_list(conn) -> dict:
@@ -270,6 +271,63 @@ def build_company_list(conn) -> dict:
                 conflicts.append(dict(exchange=exchange, kind=kind, value=value, isin=isin,
                                       first=first.isoformat(), last=last.isoformat()))
     return {"counts": dict(counts), "conflicts": conflicts}
+
+
+# ---------------------------------------------------------------- prices table
+
+PROVIDERS = {"NSE": "nse_bhavcopy", "BSE": "bse_bhavcopy"}
+_NSE_RANK = "array_position(ARRAY['EQ','BE','BZ','SM','ST','SZ',''], b.series)"
+_FILL = f"""
+INSERT INTO prices AS p (security_id, trade_date, provider, provider_version, open, high, low, close, volume,
+                         adjustment)
+SELECT DISTINCT ON (sec, trade_date) sec, trade_date, %(provider)s, %(version)s, open, high, low, close, volume,
+       'UNADJUSTED'
+  FROM (SELECT coalesce(s.security_id, h.security_id) AS sec, b.trade_date, b.open, b.high, b.low, b.close,
+               b.volume, CASE WHEN b.exchange = 'NSE' THEN {_NSE_RANK} ELSE 1 END AS rank
+          FROM bhavcopy_rows b
+          LEFT JOIN securities s ON s.isin = b.isin
+          LEFT JOIN identifier_history h
+            ON b.isin IS NULL AND h.exchange = b.exchange AND h.kind = %(kind)s AND h.value = b.code
+           AND b.trade_date BETWEEN h.valid_from AND coalesce(h.valid_to, 'infinity'::date)
+         WHERE b.exchange = %(exchange)s AND b.close IS NOT NULL AND b.trade_date BETWEEN %(start)s AND %(end)s
+           AND (b.exchange <> 'NSE' OR {_NSE_RANK} IS NOT NULL)) x
+ WHERE sec IS NOT NULL
+ ORDER BY sec, trade_date, rank
+ON CONFLICT (security_id, trade_date, provider, provider_version, adjustment) DO UPDATE SET
+    open = EXCLUDED.open, high = EXCLUDED.high, low = EXCLUDED.low, close = EXCLUDED.close,
+    volume = EXCLUDED.volume, recorded_at = now()
+ WHERE (p.open, p.high, p.low, p.close, p.volume) IS DISTINCT FROM
+       (EXCLUDED.open, EXCLUDED.high, EXCLUDED.low, EXCLUDED.close, EXCLUDED.volume)"""
+
+
+def fill_prices(conn, start: Optional[date] = None, end: Optional[date] = None,
+                exchanges=("NSE", "BSE")) -> list[dict]:
+    """Copy bhavcopy rows of known securities into ``prices`` (UNADJUSTED), one transaction per year.
+
+    A row is tied to its security by ISIN, else by the code valid on that day.  NSE keeps equity
+    series only (EQ, then BE, BZ, the SME series, and MakroGraph rows with no series)."""
+    lo, hi = conn.execute("SELECT min(trade_date), max(trade_date) FROM bhavcopy_rows").fetchone()
+    if lo is None:
+        return []
+    start, end = max(start or lo, lo), min(end or hi, hi)
+    out = []
+    for ex in exchanges:
+        for year in range(start.year, end.year + 1):
+            a, b = max(start, date(year, 1, 1)), min(end, date(year, 12, 31))
+            with conn.transaction():
+                n = conn.execute(_FILL, {"provider": PROVIDERS[ex], "version": ADAPTER_VERSION, "exchange": ex,
+                                         "kind": "SYMBOL" if ex == "NSE" else "SCRIP_CODE", "start": a,
+                                         "end": b}).rowcount
+            out.append({"exchange": ex, "year": year, "rows_written": n})
+    return out
+
+
+def prices_report(conn) -> list[dict]:
+    rows = conn.execute(
+        """SELECT provider, adjustment, count(DISTINCT security_id), count(*), min(trade_date), max(trade_date)
+             FROM prices GROUP BY 1, 2 ORDER BY 1, 2""").fetchall()
+    return [dict(provider=a, adjustment=b, securities=c, rows=n, first=f.isoformat(), last=t.isoformat())
+            for a, b, c, n, f, t in rows]
 
 
 # ---------------------------------------------------------------- linking filings
@@ -329,6 +387,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     """python -m inflection.prices fetch START [--to END] [--exchange nse|bse|both] [--archive DIR]
     python -m inflection.prices import-makrograph [--from-dsn DSN]   (or MAKROGRAPH_DSN)
     python -m inflection.prices companies        build the company list, then link filings
+    python -m inflection.prices fill [START] [--to END]   bhavcopy rows -> prices (UNADJUSTED)
     python -m inflection.prices report START [--to END]
 
     Connects with INFLECTION_DSN.  Uses the default HttpClient transport."""
@@ -341,7 +400,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     from .sources.http import HttpClient
 
     ap = argparse.ArgumentParser(prog="python -m inflection.prices")
-    ap.add_argument("command", choices=("fetch", "import-makrograph", "companies", "report"))
+    ap.add_argument("command", choices=("fetch", "import-makrograph", "companies", "fill", "report"))
     ap.add_argument("start", type=date.fromisoformat, nargs="?")
     ap.add_argument("--to", type=date.fromisoformat)
     ap.add_argument("--exchange", default="both", choices=("nse", "bse", "both"))
@@ -370,6 +429,10 @@ def main(argv: Optional[list[str]] = None) -> int:
         elif a.command == "import-makrograph":
             with psycopg.connect(a.from_dsn) as src:
                 print(json.dumps(import_makrograph(conn, src), indent=2))
+        elif a.command == "fill":
+            for r in fill_prices(conn, a.start, a.to):
+                print(json.dumps(r))
+            print(json.dumps(prices_report(conn), indent=2))
         elif a.command == "companies":
             print(json.dumps(build_company_list(conn), indent=2))
             print(json.dumps({"filings": link_publications(conn), "top_unlinked": unlinked_symbols(conn)}, indent=2))
