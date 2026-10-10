@@ -15,3 +15,5 @@ ALTER TABLE document_publications
 
 CREATE INDEX document_publications_pending ON document_publications (pipeline_state, published_at)
     WHERE attachment_url IS NOT NULL;
+
+INSERT INTO schema_migrations (version) VALUES ('0003_ingestion_coverage');

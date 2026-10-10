@@ -216,3 +216,9 @@ def test_page_full_text_search(db):
     hits = db.execute("SELECT page_no FROM text_pages WHERE tsv @@ plainto_tsquery('english', 'turbine orders')"
                       ).fetchall()
     assert hits == [(2,)]
+
+
+def test_every_migration_records_its_version(db):
+    from conftest import MIGRATIONS
+    recorded = {r[0] for r in db.execute("SELECT version FROM schema_migrations").fetchall()}
+    assert recorded == {m.stem for m in MIGRATIONS}
