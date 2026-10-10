@@ -270,8 +270,50 @@ def build_company_list(conn) -> dict:
                 counts["conflicts"] += 1
                 conflicts.append(dict(exchange=exchange, kind=kind, value=value, isin=isin,
                                       first=first.isoformat(), last=last.isoformat()))
+    counts.update(extend_bse_history(conn))
     return {"counts": dict(counts), "conflicts": conflicts}
 
+
+# BSE scrip codes are not reused, so a code's ISIN-less history (MakroGraph rows, the older files)
+# belongs to the security its ISIN rows name.  Each span is extended back over those rows, stopping
+# after the last earlier day the code carried a different ISIN.
+_BSE_BACKFILL = """
+WITH spans AS (
+    SELECT h.identifier_id, h.value, h.valid_from, s.isin
+      FROM identifier_history h JOIN securities s USING (security_id)
+     WHERE h.exchange = 'BSE' AND h.source = %(source)s
+       AND h.kind = 'SCRIP_CODE'
+), other AS (
+    SELECT sp.identifier_id, max(b.trade_date) AS last_other
+      FROM spans sp JOIN bhavcopy_rows b
+        ON b.exchange = 'BSE' AND b.code = sp.value AND b.isin IS NOT NULL AND b.isin <> sp.isin
+       AND b.trade_date < sp.valid_from
+     GROUP BY 1
+)
+SELECT sp.identifier_id, min(b.trade_date)
+  FROM spans sp LEFT JOIN other o USING (identifier_id)
+  JOIN bhavcopy_rows b
+    ON b.exchange = 'BSE' AND b.code = sp.value AND b.isin IS NULL AND b.trade_date < sp.valid_from
+   AND b.trade_date > coalesce(o.last_other, '-infinity'::date)
+ GROUP BY 1"""
+
+
+def extend_bse_history(conn) -> dict:
+    """Start each BSE scrip-code span (and that code's ticker span) on the code's first ISIN-less day."""
+    counts: Counter = Counter()
+    for identifier_id, first in conn.execute(_BSE_BACKFILL, {"source": IDENTITY_SOURCE}).fetchall():
+        try:
+            with conn.transaction():
+                conn.execute(
+                    """UPDATE identifier_history t SET valid_from = %s
+                         FROM identifier_history h
+                        WHERE h.identifier_id = %s AND t.security_id = h.security_id AND t.exchange = 'BSE'
+                          AND t.source = h.source AND t.valid_from = h.valid_from
+                          AND (t.identifier_id = h.identifier_id OR t.kind = 'SYMBOL')""", (first, identifier_id))
+            counts["bse_spans_extended"] += 1
+        except ExclusionViolation:
+            counts["bse_spans_not_extended"] += 1
+    return dict(counts)
 
 # ---------------------------------------------------------------- prices table
 

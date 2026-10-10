@@ -79,8 +79,10 @@ python -m inflection.prices report 2026-10-01 --to 2026-10-08
 Apply `db/migrations/0004_bhavcopy.sql` first.  Only rows with an equity ISIN build the company
 list.  The UDiFF files (from July 2024) and the older NSE `cm…bhav` and BSE `EQ_ISINCODE` files
 carry ISIN; MakroGraph's tables and NSE's `sec_bhavdata_full` do not, so imported history is stored
-but links only where a fetched file covers the same code.  Fetch at least one recent day before
-running `companies`.
+but links only where a fetched file covers the same code.  BSE scrip codes are not reused, so a
+code's ISIN-less history is tied to the company its ISIN rows name (back to the last day the code
+carried a different ISIN).  NSE symbols are reused; their history is dated by the company master
+(`inflection.companies`).  Fetch at least one recent day before running `companies`.
 
 ## Company master
 
