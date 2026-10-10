@@ -24,12 +24,14 @@ The design spec (v1.0, sections 1 to 23) is in [`docs/spec.md`](docs/spec.md). K
 | Ingestion into the database: listing windows, publications, archived versions (NSE/BSE copies share one lineage), page text, coverage report | `src/inflection/ingest.py` | §14 Phase 1 |
 | Results figures from NSE XBRL filings (every line of the P&L, EPS and segments, exact rupees, point-in-time) | `src/inflection/sources/xbrl.py`, `src/inflection/financials.py` | §6, §12, §17 |
 | Daily NSE/BSE bhavcopy, the MakroGraph price-history import, the company list built from ISIN-bearing price rows, and filings linked to issuers | `src/inflection/sources/bhavcopy.py`, `src/inflection/prices.py` | §8, §12 |
+| Company master from the exchanges' listing files (NSE main and SME lists, NSE symbol changes, BSE scrip list by status, including suspended and delisted), filings linked by ISIN | `src/inflection/sources/listings.py`, `src/inflection/companies.py` | §8, §17 |
+| Daily prices per security (UNADJUSTED), NSE splits and bonuses reconciled against the exchange's own price adjustment, split/bonus-adjusted prices view | `src/inflection/prices.py`, `src/inflection/sources/corpactions.py`, `src/inflection/corporate_actions.py` | §8, §12, §17 |
 
 Code ported from MakroGraph is listed, with its reasons and changes, in [`docs/reuse_inventory.md`](docs/reuse_inventory.md). This project does not import MakroGraph code at run time; its price history can be copied in once (below).
 
 ## Not built yet
 
-Corporate actions and adjusted prices in the `prices` table, BSE-only companies' results, candidate evaluation rules, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
+Dividend-adjusted (total return) prices, BSE-only companies' results, candidate evaluation rules, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
 
 ## Checking the exchange adapters live
 
@@ -79,6 +81,38 @@ list.  The UDiFF files (from July 2024) and the older NSE `cm…bhav` and BSE `E
 carry ISIN; MakroGraph's tables and NSE's `sec_bhavdata_full` do not, so imported history is stored
 but links only where a fetched file covers the same code.  Fetch at least one recent day before
 running `companies`.
+
+## Company master
+
+```bash
+python -m inflection.companies fetch --archive ~/inflection-archive   # NSE lists + symbol changes, BSE list by status
+python -m inflection.companies import ~/Downloads/Equity.csv --exchange bse   # BSE list saved from bseindia.com
+python -m inflection.companies build      # issuers, securities, dated codes; then link filings by ISIN
+python -m inflection.companies report
+```
+
+Apply `db/migrations/0006_listing_master.sql` first.  Each file is kept as read on that day in
+`listing_master`.  NSE symbols are dated from NSE's symbol change file and listing dates, so
+MakroGraph's NSE history (no ISIN) ties to the right company.  BSE's scrip API answers plain
+requests with a block; the run says `BLOCKED` and the Equity.csv download can be imported instead.
+NSE filings carry the company's ISIN, so `build` links them by ISIN, including suspended names that
+no longer trade; a company seen only in filings gets a PROVISIONAL issuer.
+
+## Prices, splits and bonuses
+
+```bash
+python -m inflection.prices fill                                   # bhavcopy rows -> prices (UNADJUSTED)
+python -m inflection.corporate_actions fetch 2019-01-01            # NSE actions by month, then reconcile
+python -m inflection.corporate_actions report 2019-01-01           # counts, and price adjustments with no action
+```
+
+Run `companies build` before `prices fill`: a row is tied to its security by ISIN, else by the
+code valid that day.  A split or bonus counts as reconciled when the exchange's previous close on
+the ex-date, divided by the actual close the day before, matches the stated ratio within 2%
+(otherwise the overnight move must be within 25% of it).  `prices_split_bonus_adjusted` scales
+earlier prices by every later split and bonus and marks a row `unverified` while any of those is
+not reconciled.  The report lists days where NSE scaled a stock's reference price by more than 15%
+with no usable split or bonus stored.
 
 ## Results figures (XBRL)
 
