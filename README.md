@@ -21,12 +21,13 @@ The design spec (v1.0, sections 1 to 23) is in [`docs/spec.md`](docs/spec.md). K
 | Counterparty relationship rules | `src/inflection/counterparty.py` | §6 step 3 |
 | Page-preserving PDF extraction | `src/inflection/text_extraction.py` | §8 |
 | NSE/BSE announcement listing with coverage status, attachment download into a SHA-256 archive | `src/inflection/sources/` | §6.1, §15 test 11 |
+| Ingestion into the database: listing windows, publications, archived versions (NSE/BSE copies share one lineage), page text, coverage report | `src/inflection/ingest.py` | §14 Phase 1 |
 
 Code ported from MakroGraph is listed, with its reasons and changes, in [`docs/reuse_inventory.md`](docs/reuse_inventory.md). This project does not import MakroGraph.
 
 ## Not built yet
 
-Writing listed announcements and downloads into the database, results XBRL and bhavcopy adapters, candidate evaluation rules, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
+Issuer identity resolution for ingested publications, results XBRL and bhavcopy adapters, candidate evaluation rules, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
 
 ## Checking the exchange adapters live
 
@@ -36,6 +37,17 @@ python -m inflection.sources.cli bse 2026-10-08 --download /tmp/inflection-archi
 ```
 
 It prints each window's coverage status (`COMPLETE`, `PARTIAL`, `EMPTY_UNVERIFIED`, `BLOCKED`...) and writes nothing to the database.
+
+## Ingesting into the database
+
+```bash
+export INFLECTION_DSN=postgresql:///inflection
+python -m inflection.ingest nse 2026-10-08 --archive ~/inflection-archive --download 700 --extract 700
+python -m inflection.ingest nse 2026-10-08 --segment sme --archive ~/inflection-archive --download 100 --extract 100
+python -m inflection.ingest report 2026-10-01 --to 2026-10-08
+```
+
+Reruns add only new announcements. Apply `db/migrations/0003_ingestion_coverage.sql` first.
 
 ## Running tests
 
