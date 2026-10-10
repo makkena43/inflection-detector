@@ -20,12 +20,22 @@ The design spec (v1.0, sections 1 to 23) is in [`docs/spec.md`](docs/spec.md). K
 | Dated issuer identity | `src/inflection/identity.py` | §8 |
 | Counterparty relationship rules | `src/inflection/counterparty.py` | §6 step 3 |
 | Page-preserving PDF extraction | `src/inflection/text_extraction.py` | §8 |
+| NSE/BSE announcement listing with coverage status, attachment download into a SHA-256 archive | `src/inflection/sources/` | §6.1, §15 test 11 |
 
 Code ported from MakroGraph is listed, with its reasons and changes, in [`docs/reuse_inventory.md`](docs/reuse_inventory.md). This project does not import MakroGraph.
 
 ## Not built yet
 
-Source adapters (blocked on Phase 0 access and licensing review), candidate evaluation rules, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
+Writing listed announcements and downloads into the database, results XBRL and bhavcopy adapters, candidate evaluation rules, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
+
+## Checking the exchange adapters live
+
+```bash
+python -m inflection.sources.cli nse 2026-10-08 --segment sme --download /tmp/inflection-archive --limit 3
+python -m inflection.sources.cli bse 2026-10-08 --download /tmp/inflection-archive
+```
+
+It prints each window's coverage status (`COMPLETE`, `PARTIAL`, `EMPTY_UNVERIFIED`, `BLOCKED`...) and writes nothing to the database.
 
 ## Running tests
 
