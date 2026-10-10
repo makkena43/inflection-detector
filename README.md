@@ -28,12 +28,13 @@ The design spec (v1.0, sections 1 to 23) is in [`docs/spec.md`](docs/spec.md). K
 | Daily prices per security (UNADJUSTED), NSE splits and bonuses reconciled against the exchange's own price adjustment, split/bonus-adjusted prices view | `src/inflection/prices.py`, `src/inflection/sources/corpactions.py`, `src/inflection/corporate_actions.py` | §8, §12, §17 |
 | Commercial route: filing text -> cited passages (orders, qualifications, commercial starts, capacity, debt, loss-drag removal, pricing, launches, financing) -> per-company event timeline with dated versions -> materiality against point-in-time revenue -> priority class and one candidate evaluation per filing | `src/inflection/commercial/` | §5.1, §5.2, §15 tests 1, 3-5, §18 |
 | Financial route: each results XBRL filing against the same period a year earlier (point in time, same scope and length) -> spec 18.1 checks (margins, operating profit, segment losses, finance cost; working capital reported as not covered) -> mechanism from commercial events public by then -> the same priority classes; one line per company across both routes | `src/inflection/financial/`, `src/inflection/queue.py` | §18.1, §18.2 |
+| Weekly shortlist for AI triage: the combined queue at the week's cutoff, each company with its waiting time -> slots (updates, ranked P1/P2, oldest-first exploration, rotating watch audit) with an optional cap that defers visibly, a 30-day cooldown after a triage, stale marking; triage results recorded per company | `src/inflection/triage/`, `src/inflection/queue.py` | §5.2, §5.3, §15 test 13, §18.2, §18.3 |
 
 Code ported from MakroGraph is listed, with its reasons and changes, in [`docs/reuse_inventory.md`](docs/reuse_inventory.md). This project does not import MakroGraph code at run time; its price history can be copied in once (below).
 
 ## Not built yet
 
-Dividend-adjusted (total return) prices, BSE-only companies' results, balance-sheet figures (working-capital days), opening research cases from the queue, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
+Dividend-adjusted (total return) prices, BSE-only companies' results, balance-sheet figures (working-capital days), opening research cases from triage results, the triage packet itself, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
 
 ## Checking the exchange adapters live
 
@@ -179,6 +180,30 @@ only for companies that never file consolidated figures.  `queue` gives one line
 across both routes, raising an unexplained financial P3 to P2 when the same company has a
 commercial event in the window.  Run the commercial route first over the same window.  Apply
 migration `0008` first.
+
+## Triage shortlist
+
+```bash
+python -m inflection.triage build                    # shortlist this week's queue (or --week 2026-10-05)
+python -m inflection.triage build --dry-run --ranked-cap 20
+python -m inflection.triage show --all               # every company in the queue, with its slot
+python -m inflection.triage record KPIGREEN WATCH_MILESTONE --note "wait for the Q3 shipment"
+```
+
+`build` reads the combined queue at the end of the week (Sunday midnight IST, or now for the
+current week): every company with a candidate evaluation public by then, counting only the
+evaluations after its last triage.  Each company keeps its oldest such evaluation as its waiting
+time, so a company passed over, or deferred for budget, does not start again at the back.  Slots,
+in shortlist order: `UPDATE` (U0, never capped), `RANKED` (P1 then P2 by milestone soon, stage,
+materiality band, waiting time, then a deterministic hash), `EXPLORATION` (the oldest waiting among
+ranked companies over the cap and P3 companies marked for exploration, 4 by default) and `AUDIT`
+(a rotating sample of 2 watch companies).  There is no fixed number of companies: every U0, P1 and
+P2 company is shortlisted unless `--ranked-cap` is set; over a cap the rest is `DEFERRED`, stored
+and counted with the expected delay.  `WATCH`, `COOLDOWN` (triaged within 30 days with no new
+commercial stage, better class or U0) and `DATA_REPAIR` are stored too, so `show --all` lists the
+whole queue.  A company waiting over 90 days is marked `STALE_UNRESEARCHED` and stays queued.  One
+shortlist per week; `record` stores the triage action on a shortlisted company once
+(`DEFER_BUDGET` does not start a cooldown).  Apply migration `0009` first.
 
 ## Running tests
 
