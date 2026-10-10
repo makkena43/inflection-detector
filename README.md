@@ -50,6 +50,19 @@ python -m inflection.ingest report 2026-10-01 --to 2026-10-08
 
 Reruns add only new announcements. Apply `db/migrations/0003_ingestion_coverage.sql` first.
 
+### Keeping the archive under a size cap
+
+```bash
+python -m inflection.purge --archive ~/inflection-archive --max-gb 100 --dry-run   # what would go
+python -m inflection.purge --archive ~/inflection-archive --max-gb 100             # purge down to 90 GB
+python -m inflection.ingest nse 2024-11-01 --to 2024-11-30 --archive ~/inflection-archive \
+    --download 50000 --extract 50000 --max-archive-gb 100                          # purge after each run
+```
+
+Nothing is purged unless asked.  Only PDFs whose filings are fully read (`TEXT_READY`) are deleted,
+oldest first; their hash, URL and page text stay, and each deletion is logged in `archive_purges`.
+Apply `db/migrations/0005_archive_purges.sql` first.
+
 ## Prices and the company list
 
 ```bash

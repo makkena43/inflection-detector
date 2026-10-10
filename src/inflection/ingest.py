@@ -274,7 +274,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     """python -m inflection.ingest {nse,bse} START [--to END] [--segment sme] --archive DIR [--download N] [--extract]
     python -m inflection.ingest report START [--to END]
 
-    Connects with INFLECTION_DSN.  BSE uses the default HttpClient transport here."""
+    --max-archive-gb N (opt-in) purges fully read PDFs after extraction once the archive exceeds
+    N GB (see inflection.purge).  Connects with INFLECTION_DSN.  BSE uses the default HttpClient transport here."""
     import argparse
     import json
     import os
@@ -291,6 +292,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--retry-failed", action="store_true", help="also retry BLOCKED/FAILED downloads")
     ap.add_argument("--extract", type=int, default=0, help="downloaded publications to extract text from")
     ap.add_argument("--interval", type=float, default=1.5, help="seconds between requests")
+    ap.add_argument("--max-archive-gb", type=float,
+                    help="opt-in: after extraction, delete fully read PDFs (oldest first) while the archive "
+                         "is above this size (see inflection.purge)")
     a = ap.parse_args(argv)
     end = a.to or a.start
     if (a.download or a.extract) and not a.archive:
@@ -312,6 +316,10 @@ def main(argv: Optional[list[str]] = None) -> int:
                                                           a.download, a.retry_failed)))
             if a.extract:
                 print("text:", dict(extract_pending(conn, Archive(a.archive), a.extract)))
+            if a.archive and a.max_archive_gb:
+                from .purge import GB, purge_archive
+                r = purge_archive(conn, Archive(a.archive), int(a.max_archive_gb * GB))
+                print("archive:", json.dumps(r.as_dict()))
         print(json.dumps(coverage_report(conn, a.start, end), indent=2))
     return 0
 
