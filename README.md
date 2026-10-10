@@ -26,12 +26,13 @@ The design spec (v1.0, sections 1 to 23) is in [`docs/spec.md`](docs/spec.md). K
 | Daily NSE/BSE bhavcopy, the MakroGraph price-history import, the company list built from ISIN-bearing price rows, and filings linked to issuers | `src/inflection/sources/bhavcopy.py`, `src/inflection/prices.py` | §8, §12 |
 | Company master from the exchanges' listing files (NSE main and SME lists, NSE symbol changes, BSE scrip list by status, including suspended and delisted), filings linked by ISIN | `src/inflection/sources/listings.py`, `src/inflection/companies.py` | §8, §17 |
 | Daily prices per security (UNADJUSTED), NSE splits and bonuses reconciled against the exchange's own price adjustment, split/bonus-adjusted prices view | `src/inflection/prices.py`, `src/inflection/sources/corpactions.py`, `src/inflection/corporate_actions.py` | §8, §12, §17 |
+| Commercial route: filing text -> cited passages (orders, qualifications, commercial starts, capacity, debt, loss-drag removal, pricing, launches, financing) -> per-company event timeline with dated versions -> materiality against point-in-time revenue -> priority class and one candidate evaluation per filing | `src/inflection/commercial/` | §5.1, §5.2, §15 tests 1, 3-5, §18 |
 
 Code ported from MakroGraph is listed, with its reasons and changes, in [`docs/reuse_inventory.md`](docs/reuse_inventory.md). This project does not import MakroGraph code at run time; its price history can be copied in once (below).
 
 ## Not built yet
 
-Dividend-adjusted (total return) prices, BSE-only companies' results, candidate evaluation rules, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
+Dividend-adjusted (total return) prices, BSE-only companies' results, the financial route, research cases and the queue, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
 
 ## Checking the exchange adapters live
 
@@ -128,6 +129,27 @@ Run `python -m inflection.prices companies` first: the listing goes symbol by sy
 company list.  `--from` keeps periods ending on or after that date; `--to` keeps filings made
 public by that date.  `list` skips symbols already listed for the same window, so it can be
 stopped and rerun.  Apply migrations up to `0005` first.
+
+## Commercial route
+
+```bash
+python -m inflection.commercial scan                 # read every filing with page text not yet read
+python -m inflection.commercial resolve              # company events, versions, candidate evaluations
+python -m inflection.commercial report --from 2026-10-01
+python -m inflection.commercial show KPIGREEN        # one company's timeline, quotes and evaluations
+```
+
+`scan` reads filings that are `TEXT_READY` (or partly readable) and stores every commercial passage
+with its page, character span, amount (currency and scale apart), stage wording, modality and
+order terms.  A filing with no issuer or no publication time is counted as data repair and read
+again once linked.  `resolve` places passages onto each company's events, oldest first: a new
+event, a new version (stage advance, cancellation, amendment, amount or customer disclosed), or a
+repetition (kept as context, not counted again).  Each filing that changes a company's events gets
+one `candidate_evaluations` row (route `COMMERCIAL`) with its priority class (U0, P1, P2, P3),
+materiality against the revenue known at that moment, reasons and ranking.  Patterns and
+thresholds live in `inflection/commercial/vocabulary.py` under `RULES_VERSION`.  Scanning a backfill
+before resolving keeps first disclosures in order; an older filing read later is recorded as an
+earlier disclosure of the same event.  Apply migration `0007` first.
 
 ## Running tests
 
