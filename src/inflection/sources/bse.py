@@ -4,7 +4,8 @@ Ported from MakroGraph ``fetcher/bse_fetcher.py`` at b31bdd0: the ``AnnSubCatego
 endpoint and parameters, the per-category sweep, weekly windows, attachment URL resolution
 (AttachLive / AttachHis) and field mapping.  Changes in the port:
 
-* plain HTTP; curl_cffi, Playwright/Selenium cookie harvesting and the cookie cache are not ported;
+* plain HTTP with the same Origin/Referer as BSE's own announcements page (as MakroGraph sent);
+  curl_cffi, Playwright/Selenium cookie harvesting and the cookie cache are not ported;
 * the all-category query (``strCat=-1``) is tried first; when it returns nothing the sweep over
   ``CATEGORIES`` runs and the window is PARTIAL (a category subset), never COMPLETE;
 * pages are followed until the reported row count is reached; a page cap makes the window
@@ -26,7 +27,8 @@ from .http import HttpClient
 API_URL = "https://api.bseindia.com/BseIndiaAPI/api/AnnSubCategoryGetData/w"
 ATTACH_LIVE = "https://www.bseindia.com/xml-data/corpfiling/AttachLive"
 ATTACH_HIS = "https://www.bseindia.com/xml-data/corpfiling/AttachHis"
-REFERER = "https://www.bseindia.com/corporates/ann.html"
+ORIGIN = "https://www.bseindia.com"
+REFERER = f"{ORIGIN}/corporates/ann.html"
 PAGE_SIZE = 50
 
 # MakroGraph's sweep list (``_COOKIE_FREE_CATEGORIES``); filings outside these are not listed
@@ -111,7 +113,7 @@ class BSEAnnouncements:
             q = urlencode({"pageno": page, "strCat": category, "strPrevDate": from_date.strftime("%Y%m%d"),
                            "strScrip": scrip, "strSearch": "P", "strToDate": to_date.strftime("%Y%m%d"),
                            "strType": "C", "subcategory": "-1"})
-            status, data, note = decode_json(self.client.get(f"{API_URL}?{q}", referer=REFERER))
+            status, data, note = decode_json(self.client.get(f"{API_URL}?{q}", referer=REFERER, origin=ORIGIN))
             if status != WindowStatus.COMPLETE:
                 if page == 1:
                     return status, [], [f"{category}: {note}"]

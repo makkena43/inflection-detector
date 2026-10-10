@@ -70,10 +70,13 @@ class HttpClient:
                 self._sleep(wait)
         self._last = self._clock()
 
-    def get(self, url: str, referer: str = "", accept: str = "application/json, text/plain, */*") -> Response:
+    def get(self, url: str, referer: str = "", accept: str = "application/json, text/plain, */*",
+            origin: str = "") -> Response:
         headers = {"User-Agent": self.user_agent, "Accept": accept}
         if referer:
             headers["Referer"] = referer
+        if origin:
+            headers["Origin"] = origin
         last = Response(url, None, error="not attempted")
         for attempt in range(self.retries + 1):
             if attempt:

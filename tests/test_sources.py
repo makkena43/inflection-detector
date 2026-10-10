@@ -24,9 +24,11 @@ class FakeTransport:
     def __init__(self, routes):
         self.routes = {k: list(v) for k, v in routes.items()}
         self.calls = []
+        self.headers = []
 
     def __call__(self, url, headers, timeout):
         self.calls.append(url)
+        self.headers.append(headers)
         for key, replies in self.routes.items():
             if key in url:
                 reply = replies.pop(0) if len(replies) > 1 else replies[0]
@@ -160,6 +162,13 @@ def test_bse_category_sweep_is_partial():
     assert w.status == WindowStatus.PARTIAL and len(w.announcements) == 1
     assert any("category subset" in n for n in w.notes)
     assert len(t.calls) == 1 + len(bse.CATEGORIES)
+
+
+def test_bse_api_calls_send_bse_origin():
+    c, t = client({"AnnSubCategoryGetData": [(200, {"Table": [bse_row(1)]})]})
+    bse.BSEAnnouncements(c).list_window(date(2026, 10, 8), date(2026, 10, 8))
+    assert t.headers[0]["Origin"] == "https://www.bseindia.com"
+    assert t.headers[0]["Referer"] == bse.REFERER
 
 
 def test_bse_everything_blocked():
