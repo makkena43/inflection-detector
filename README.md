@@ -27,12 +27,13 @@ The design spec (v1.0, sections 1 to 23) is in [`docs/spec.md`](docs/spec.md). K
 | Company master from the exchanges' listing files (NSE main and SME lists, NSE symbol changes, BSE scrip list by status, including suspended and delisted), filings linked by ISIN | `src/inflection/sources/listings.py`, `src/inflection/companies.py` | §8, §17 |
 | Daily prices per security (UNADJUSTED), NSE splits and bonuses reconciled against the exchange's own price adjustment, split/bonus-adjusted prices view | `src/inflection/prices.py`, `src/inflection/sources/corpactions.py`, `src/inflection/corporate_actions.py` | §8, §12, §17 |
 | Commercial route: filing text -> cited passages (orders, qualifications, commercial starts, capacity, debt, loss-drag removal, pricing, launches, financing) -> per-company event timeline with dated versions -> materiality against point-in-time revenue -> priority class and one candidate evaluation per filing | `src/inflection/commercial/` | §5.1, §5.2, §15 tests 1, 3-5, §18 |
+| Financial route: each results XBRL filing against the same period a year earlier (point in time, same scope and length) -> spec 18.1 checks (margins, operating profit, segment losses, finance cost; working capital reported as not covered) -> mechanism from commercial events public by then -> the same priority classes; one line per company across both routes | `src/inflection/financial/`, `src/inflection/queue.py` | §18.1, §18.2 |
 
 Code ported from MakroGraph is listed, with its reasons and changes, in [`docs/reuse_inventory.md`](docs/reuse_inventory.md). This project does not import MakroGraph code at run time; its price history can be copied in once (below).
 
 ## Not built yet
 
-Dividend-adjusted (total return) prices, BSE-only companies' results, the financial route, research cases and the queue, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
+Dividend-adjusted (total return) prices, BSE-only companies' results, balance-sheet figures (working-capital days), opening research cases from the queue, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
 
 ## Checking the exchange adapters live
 
@@ -150,6 +151,34 @@ materiality against the revenue known at that moment, reasons and ranking.  Patt
 thresholds live in `inflection/commercial/vocabulary.py` under `RULES_VERSION`.  Scanning a backfill
 before resolving keeps first disclosures in order; an older filing read later is recorded as an
 earlier disclosure of the same event.  Apply migration `0007` first.
+
+## Financial route
+
+```bash
+python -m inflection.financial scan                  # compare results filings not yet read with the year before
+python -m inflection.financial report --from 2021-01-01
+python -m inflection.financial show KPIGREEN         # one company's filings as the route read them
+python -m inflection.financial queue --top 50        # companies by best priority across both routes
+```
+
+`scan` reads `nse_results_xbrl` filings that reached `TEXT_READY`, oldest first.  It takes the
+filing's company-level quarter (or half-year or year for companies that file only those) and the
+same period one year earlier, same scope, from the latest filing public by the filing's own time.
+It runs the spec 18.1 checks: gross or operating margin up 200 bps; operating profit (revenue less
+expenses before depreciation and finance cost) up 25% on a positive base of at least 2% of revenue;
+a segment loss of at least 1% of revenue shrinking 30%; finance cost of at least 0.5% of revenue
+down 20%.  Working-capital days need a balance sheet that results XBRL does not carry, so that check
+is reported as not covered.  Figures that failed the statement arithmetic are never compared; the
+filing becomes data repair (D).  A filing where a check fires gets one `candidate_evaluations` row
+(route `FINANCIAL`): P2 when a commercial event public by then can explain it (an order at
+qualified stage or later, a commercial start, a qualification, loss-drag removal, commissioned
+capacity, pricing or a launch; for finance cost, debt repaid without shareholder money), P3 when
+none can (EXPLORATION when two or more checks fire), U0 for a company with an open case.
+Nominations with no mechanism are counted separately in `report`.  Standalone filings are read
+only for companies that never file consolidated figures.  `queue` gives one line per company
+across both routes, raising an unexplained financial P3 to P2 when the same company has a
+commercial event in the window.  Run the commercial route first over the same window.  Apply
+migration `0008` first.
 
 ## Running tests
 
