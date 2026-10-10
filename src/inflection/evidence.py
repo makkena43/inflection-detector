@@ -12,10 +12,11 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import date, datetime
 from typing import Optional, Protocol
 
-from .states import AssertionType
+from .asof import eligible
+from .states import AssertionType, EvidenceRelation, PublicationBasis, RunMode
 
 
 @dataclass(frozen=True)
@@ -29,6 +30,7 @@ class EvidenceRef:
     source_url: str
     published_at: datetime
     assertion_type: AssertionType
+    relation: EvidenceRelation = EvidenceRelation.SUPPORTS
     section: str = ""
 
 
@@ -47,8 +49,11 @@ class ArtifactRecord:
     text_artifact_id: str
     document_version_id: str
     issuer_id: Optional[str]
-    published_at: Optional[datetime]            # proven publication time; None = unknown
+    publication_basis: PublicationBasis
+    published_at: Optional[datetime]            # set when basis is EXCHANGE_TIMESTAMP
     pages: tuple[str, ...]                      # page-preserving text, page 1 at index 0
+    published_date: Optional[date] = None       # set when basis is DATE_ONLY
+    ingested_at: Optional[datetime] = None      # needed for ACTUAL_SYSTEM_REPLAY
 
 
 class EvidenceStore(Protocol):
@@ -59,7 +64,8 @@ def _norm(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip()
 
 
-def validate_ref(ref: EvidenceRef, store: EvidenceStore, issuer_id: str, cutoff: datetime) -> list[str]:
+def validate_ref(ref: EvidenceRef, store: EvidenceStore, issuer_id: str, cutoff: datetime,
+                 mode: RunMode = RunMode.LIVE) -> list[str]:
     p = f"evidence {ref.text_artifact_id} p.{ref.page_no}"
     art = store.artifact(ref.text_artifact_id)
     if art is None:
@@ -72,13 +78,11 @@ def validate_ref(ref: EvidenceRef, store: EvidenceStore, issuer_id: str, cutoff:
         errors.append(f"{p}: document is not mapped to an issuer")
     elif art.issuer_id != issuer_id:
         errors.append(f"{p}: document belongs to another issuer")
-    if art.published_at is None:
-        errors.append(f"{p}: publication time unknown; not usable as point-in-time evidence")
-    else:
-        if art.published_at > cutoff:
-            errors.append(f"{p}: published {art.published_at.isoformat()} after cutoff {cutoff.isoformat()}")
-        if ref.published_at != art.published_at:
-            errors.append(f"{p}: cited published_at does not match the stored publication time")
+    e = eligible(cutoff, mode, art.publication_basis, art.published_at, art.published_date, art.ingested_at)
+    if not e.eligible:
+        errors.append(f"{p}: {e.reason}")
+    if e.available_at is not None and ref.published_at != e.available_at:
+        errors.append(f"{p}: cited published_at does not match the stored publication time")
     if not 1 <= ref.page_no <= len(art.pages):
         errors.append(f"{p}: page out of range (document has {len(art.pages)} pages)")
         return errors
@@ -86,18 +90,20 @@ def validate_ref(ref: EvidenceRef, store: EvidenceStore, issuer_id: str, cutoff:
     if not 0 <= ref.span_start < ref.span_end <= len(page):
         errors.append(f"{p}: span {ref.span_start}-{ref.span_end} outside page length {len(page)}")
     elif _norm(page[ref.span_start:ref.span_end]) != _norm(ref.quote):
-        errors.append(f"{p}: quote does not match the text at span {ref.span_start}-{ref.span_end}")
+        errors.append(f"{p}: EVIDENCE_SPAN_MISMATCH: quote does not match the text at span "
+                      f"{ref.span_start}-{ref.span_end}")
     return errors
 
 
 def validate_claim(claim: Claim, store: EvidenceStore, issuer_id: str, cutoff: datetime,
                    known_input_ids: frozenset[str] = frozenset(),
-                   known_calculation_ids: frozenset[str] = frozenset()) -> list[str]:
+                   known_calculation_ids: frozenset[str] = frozenset(),
+                   mode: RunMode = RunMode.LIVE) -> list[str]:
     p = f"claim {claim.claim_id}"
     if claim.kind == "FACT":
         if not claim.evidence:
             return [f"{p}: factual claim has no evidence reference"]
-        return [f"{p}: {err}" for ref in claim.evidence for err in validate_ref(ref, store, issuer_id, cutoff)]
+        return [f"{p}: {err}" for ref in claim.evidence for err in validate_ref(ref, store, issuer_id, cutoff, mode)]
     if claim.kind == "CALCULATED":
         errors = []
         if not claim.calculation_id:

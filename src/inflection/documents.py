@@ -21,9 +21,9 @@ from dataclasses import dataclass
 from datetime import date, datetime, time, timedelta
 from enum import Enum
 from typing import Optional
-from zoneinfo import ZoneInfo
 
-IST = ZoneInfo("Asia/Kolkata")
+from .asof import IST, available_at
+from .states import PublicationBasis
 
 
 class DocumentKind(str, Enum):
@@ -125,9 +125,10 @@ def availability(published_at: Optional[datetime], published_date_only: Optional
         local = published_at.astimezone(IST)
         # Information disseminated during or after the session cannot be traded at that close.
         trade = local.date() + timedelta(days=1) if local.time() >= time(9, 15) else local.date()
-        return Availability(published_at, "EXCHANGE_TIMESTAMP", trade)
+        return Availability(available_at(PublicationBasis.EXCHANGE_TIMESTAMP, published_at, None),
+                            "EXCHANGE_TIMESTAMP", trade)
     if published_date_only is not None:
-        end = datetime.combine(published_date_only, time(23, 59, 59), tzinfo=IST)
+        end = available_at(PublicationBasis.DATE_ONLY, None, published_date_only)
         return Availability(end, "DATE_ONLY", published_date_only + timedelta(days=1))
     return Availability(None, "UNKNOWN", None)
 
