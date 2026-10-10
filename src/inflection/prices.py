@@ -210,7 +210,8 @@ def _board(exchange: str, series: str) -> str:
     return "SME" if series in BSE_SME_GROUPS else "MAINBOARD"
 
 
-def _security(conn, isin: str, name: str, board: str, counts: Counter):
+def _security(conn, isin: str, name: str, board: str, counts: Counter, source: str = IDENTITY_SOURCE,
+              created_by: str = CREATED_BY):
     row = conn.execute("SELECT security_id, exchange_segment FROM securities WHERE isin = %s", (isin,)).fetchone()
     if row:
         if board == "SME" and row[1] != "SME":
@@ -218,12 +219,12 @@ def _security(conn, isin: str, name: str, board: str, counts: Counter):
         return row[0]
     issuer_id = conn.execute(
         """INSERT INTO issuers (legal_name, classification_source, identity_status, created_by)
-           VALUES (%s, %s, 'PROVISIONAL', %s) RETURNING issuer_id""", (name, IDENTITY_SOURCE, CREATED_BY)).fetchone()[0]
+           VALUES (%s, %s, 'PROVISIONAL', %s) RETURNING issuer_id""", (name, source, created_by)).fetchone()[0]
     counts["issuers_created"] += 1
     counts["securities_created"] += 1
     return conn.execute(
         """INSERT INTO securities (issuer_id, isin, exchange_segment, created_by) VALUES (%s, %s, %s, %s)
-           RETURNING security_id""", (issuer_id, isin, board, CREATED_BY)).fetchone()[0]
+           RETURNING security_id""", (issuer_id, isin, board, created_by)).fetchone()[0]
 
 
 def build_company_list(conn) -> dict:
