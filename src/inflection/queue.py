@@ -23,6 +23,11 @@ from .financial import rules as FR
 from .financial.pipeline import _SYMBOL, _day_bounds
 
 
+# The company's exchange symbol, or its ISIN when no symbol is on record (an issuer known only from
+# a filing or an ISIN-bearing price row, or a suspended or delisted name), so it can still be named.
+LABEL = "coalesce(" + _SYMBOL + ", (SELECT s.isin FROM securities s WHERE s.issuer_id = {col} ORDER BY s.isin LIMIT 1))"
+
+
 def _operating(evt: dict) -> bool:
     m = FR.Mechanism("", "", evt.get("event_type") or "", evt.get("stage") or "UNKNOWN",
                      _rank(evt.get("stage")), evt.get("observation") or "OBSERVED", None, {})
@@ -48,9 +53,10 @@ def lines(conn, start: Optional[datetime] = None, end: Optional[datetime] = None
     time: only that company's evaluations after it count, and a company with none is left out."""
     since = since or {}
     rows = conn.execute(
-        f"""SELECT c.issuer_id, {_SYMBOL.format(col='c.issuer_id')}, i.legal_name, c.route, c.as_of,
+        f"""SELECT c.issuer_id, {LABEL.format(col='c.issuer_id')}, i.legal_name, c.route, c.as_of,
                    c.priority_class, c.outcome, c.reasons, c.components, c.ranking_tuple,
-                   c.evaluation_id, c.queue_allocation, c.trigger_event_version_ids
+                   c.evaluation_id, c.queue_allocation, c.trigger_event_version_ids,
+                   {_SYMBOL.format(col='c.issuer_id')} IS NOT NULL
               FROM candidate_evaluations c JOIN issuers i USING (issuer_id)
              WHERE (%(lo)s::timestamptz IS NULL OR c.as_of >= %(lo)s)
                AND (%(hi)s::timestamptz IS NULL OR c.as_of < %(hi)s)
@@ -74,7 +80,8 @@ def lines(conn, start: Optional[datetime] = None, end: Optional[datetime] = None
             why = f"{fin[-1][7][0]}; commercial event in the same window: {com[-1][7][0]}"
         routes = sorted({r[3] for r in evs})
         out.append(dict(
-            issuer_id=issuer_id, symbol=best[1], name=best[2], priority=cls, routes=routes,
+            issuer_id=issuer_id, symbol=best[1], has_symbol=best[13], name=best[2], priority=cls,
+            routes=routes,
             corroborated=corroborated, waiting_since=evs[0][4], latest=max(r[4] for r in evs), reason=why,
             within_class=_within_class(best),
             allocations=sorted({r[11] for r in evs}),
@@ -93,7 +100,7 @@ def companies(conn, start: Optional[date] = None, end: Optional[date] = None, to
     out.sort(key=lambda d: (FR.CLASS_ORDER[d["priority"]], not d["corroborated"]))
     for d in out:
         d["waiting_since"], d["latest"] = d["waiting_since"].isoformat(), d["latest"].isoformat()
-        for k in ("issuer_id", "within_class", "allocations", "evaluation_ids", "trigger_event_version_ids",
+        for k in ("issuer_id", "has_symbol", "within_class", "allocations", "evaluation_ids", "trigger_event_version_ids",
                   "commercial_triggers"):
             d.pop(k)
     return out[:top]
