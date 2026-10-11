@@ -30,12 +30,13 @@ The design spec (v1.0, sections 1 to 23) is in [`docs/spec.md`](docs/spec.md). K
 | Financial route: each results XBRL filing against the same period a year earlier (point in time, same scope and length) -> spec 18.1 checks (margins, operating profit, segment losses, finance cost; working capital reported as not covered) -> mechanism from commercial events public by then -> the same priority classes; one line per company across both routes | `src/inflection/financial/`, `src/inflection/queue.py` | §18.1, §18.2 |
 | Weekly shortlist for AI triage: the combined queue at the week's cutoff, each company with its waiting time -> slots (updates, ranked P1/P2, oldest-first exploration, rotating watch audit) with an optional cap that defers visibly, a 30-day cooldown after a triage, stale marking; triage results recorded per company | `src/inflection/triage/`, `src/inflection/queue.py` | §5.2, §5.3, §15 test 13, §18.2, §18.3 |
 | Triage packets: per shortlisted company, a frozen point-in-time cut at the shortlist's cutoff (why now, risk flags, trigger and earlier comparable passages, all contradicting evidence, eight-quarter financial snapshot in one scope, price and liquidity adjusted for splits and bonuses, documents on demand) inside a 12,000-token budget with every cut listed; versioned by content hash, exported for a chat with the triage return schema | `src/inflection/packets/` | §5.3, §6, §9 Mode A, §15 tests 6, 7, 12, §17 |
+| Shadow replay: the weekly shortlist rebuilt week by week over a past interval at each week's cutoff, with no live actions; later split/bonus-adjusted price returns at 3, 6, 12 and 24 months against the exchange's universe median, drawdown, big moves, missed winners with the coverage reason, source coverage per week, a holdout period whose returns stay hidden until revealed | `src/inflection/replay/` | §12, §14 Phase 2, §18.3 |
 
 Code ported from MakroGraph is listed, with its reasons and changes, in [`docs/reuse_inventory.md`](docs/reuse_inventory.md). This project does not import MakroGraph code at run time; its price history can be copied in once (below).
 
 ## Not built yet
 
-Dividend-adjusted (total return) prices, BSE-only companies' results, balance-sheet figures (working-capital days), opening research cases from triage results, importing a model's triage JSON with evidence-ID checks, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
+Dividend-adjusted (total return) prices, BSE-only companies' results, balance-sheet figures (working-capital days), opening research cases from triage results, importing a model's triage JSON with evidence-ID checks, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest, and the labelled-cohort recall and queue-precision tests of section 12.
 
 ## Checking the exchange adapters live
 
@@ -229,6 +230,40 @@ oldest first, then trigger passages beyond two per event; contradicting evidence
 every cut is listed in the packet.  Packets are append-only: a rerun with the same content keeps
 the packet, new content (a filing or figure recorded late) adds one that supersedes it.  `triage
 record` stores which packet the result was given.  Apply migration `0010` first.
+
+## Shadow replay
+
+```bash
+python -m inflection.replay run --from 2021-01-04 --to 2024-12-30 --holdout-from 2024-01-01
+python -m inflection.replay report                   # latest replay; holdout returns stay hidden
+python -m inflection.replay weeks                    # queue, shortlist and source coverage week by week
+python -m inflection.replay winners --status FIGURES_NO_NOMINATION --top 30
+python -m inflection.replay report --reveal-holdout  # only once the rules are frozen; logged
+```
+
+`run` walks every week in the interval.  At each week's cutoff (Sunday midnight IST) it reads the
+candidate evaluations public by then, builds the combined queue and allocates the shortlist with
+the live triage rules.  A shortlisted company counts as triaged that week, so the cooldown and
+waiting times play out as they would have.  It writes nothing to the live shortlist, packets,
+cases or decisions.  Evaluations were computed after the fact from filings with proven publication
+times, so the mode is `PUBLIC_INFORMATION_RECONSTRUCTION`; `ACTUAL_SYSTEM_REPLAY` also requires the
+evaluation to have been stored by the cutoff.
+
+For every shortlisted company, and every company with new evidence that week that was not
+shortlisted (the comparison group), it measures the price return from the first close on or after
+cutoff + 7 days (the week triage takes) over 3, 6, 12 and 24 months.  Returns are adjusted for
+splits and bonuses, exclude dividends, and are compared with the median return of the same
+exchange's securities over the same dates.  A split or bonus with no multiplier leaves the return
+blank; an unreconciled one, or a rights issue, merger or delisting in the window, marks it
+`UNVERIFIED`; a stock that stopped trading counts at its last close as `STOPPED_TRADING`; a horizon
+past the last price is `INCOMPLETE`.  The summary groups outcomes by shortlisted or not, slot,
+class, routes and year.  `winners` lists rises of 50% or more over 12 months from each quarter
+start (liquid stocks only) and whether the replay shortlisted the company from six months before
+to three months after: `SHORTLISTED`, `QUEUED_NOT_SHORTLISTED`, `FIGURES_NO_NOMINATION` (results
+or filings existed, no rule fired) or `NO_COVERAGE`.  `weeks` shows announcements, results filings,
+evaluations by route and price days per week; weeks without announcements are flagged, since the
+commercial route could not see them.  Outcomes are stored in the `outcomes` schema, which nothing
+analyst-facing reads.  Each run is a new replay.  Apply migration `0011` first.
 
 ## Running tests
 

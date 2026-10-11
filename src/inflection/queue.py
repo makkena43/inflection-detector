@@ -51,16 +51,25 @@ def lines(conn, start: Optional[datetime] = None, end: Optional[datetime] = None
           since: Optional[dict] = None) -> list[dict]:
     """Every company with an evaluation in [start, end), unsorted.  ``since`` maps issuer_id to a
     time: only that company's evaluations after it count, and a company with none is left out."""
-    since = since or {}
-    rows = conn.execute(
+    return from_rows(evaluation_rows(conn, start, end), since)
+
+
+def evaluation_rows(conn, start: Optional[datetime] = None, end: Optional[datetime] = None) -> list[tuple]:
+    """The evaluations with ``as_of`` in [start, end), as ``from_rows`` reads them, by company and time."""
+    return conn.execute(
         f"""SELECT c.issuer_id, {LABEL.format(col='c.issuer_id')}, i.legal_name, c.route, c.as_of,
                    c.priority_class, c.outcome, c.reasons, c.components, c.ranking_tuple,
                    c.evaluation_id, c.queue_allocation, c.trigger_event_version_ids,
-                   {_SYMBOL.format(col='c.issuer_id')} IS NOT NULL
+                   {_SYMBOL.format(col='c.issuer_id')} IS NOT NULL, c.created_at
               FROM candidate_evaluations c JOIN issuers i USING (issuer_id)
              WHERE (%(lo)s::timestamptz IS NULL OR c.as_of >= %(lo)s)
                AND (%(hi)s::timestamptz IS NULL OR c.as_of < %(hi)s)
              ORDER BY c.issuer_id, c.as_of""", dict(lo=start, hi=end)).fetchall()
+
+
+def from_rows(rows: list[tuple], since: Optional[dict] = None) -> list[dict]:
+    """Queue lines from ``evaluation_rows`` (already cut to the window); ``since`` as in ``lines``."""
+    since = since or {}
     by: dict = defaultdict(list)
     for r in rows:
         if r[0] in since and r[4] <= since[r[0]]:
