@@ -35,6 +35,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--top", type=int, default=20)
     ap.add_argument("--verify", action="store_true", help="run: check passages with the model before resolving")
     ap.add_argument("--workers", type=int, default=4, help="verify: parallel model calls")
+    ap.add_argument("--model", help="verify: model to check with (default: INFLECTION_VERIFY_MODEL or "
+                                    "claude-opus-5-5); resolve always reads the configured model's verdicts")
     a = ap.parse_args(argv)
     if a.command == "show" and not a.symbol:
         ap.error("show needs a SYMBOL")
@@ -47,7 +49,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             from . import verify
             lo, hi = pipeline._day_bounds(a.start, a.end)
             print("verify:", json.dumps(dict(verify.verify_pending(
-                conn, anthropic.Anthropic(), lo, hi, a.limit, a.workers,
+                conn, anthropic.Anthropic(), lo, hi, a.limit, a.workers, model=a.model or verify.MODEL,
                 progress=lambda i, n, c: print(f"  verify {i}/{n} {json.dumps(c)}", flush=True)))))
         if a.command in ("resolve", "run"):
             print("resolve:", json.dumps(dict(pipeline.resolve(conn, a.limit))))

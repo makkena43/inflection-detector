@@ -14,6 +14,7 @@ refusal or an unreadable answer is stored as UNCERTAIN and the passage is kept.
 from __future__ import annotations
 
 import json
+import os
 import re
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
@@ -23,8 +24,18 @@ from typing import Optional
 
 from . import vocabulary as V
 
-VERIFIER_VERSION = "verify-1"
-MODEL = "claude-opus-5-5"
+PROMPT_VERSION = "verify-1"
+# The model that checks passages; INFLECTION_VERIFY_MODEL overrides it (e.g. claude-haiku-5-5 for a
+# cheap backtest).  Verdicts are kept per prompt version and model, so models can be compared on the
+# same passages, and resolve reads the verdicts of the configured one.
+MODEL = os.environ.get("INFLECTION_VERIFY_MODEL", "claude-opus-5-5")
+
+
+def verifier_version(model: str = MODEL) -> str:
+    return f"{PROMPT_VERSION}/{model}"
+
+
+VERIFIER_VERSION = verifier_version()
 SKIP_FAMILIES = ("FINANCING",)
 CONTEXT_CHARS = 700
 FAMILIES = [name for name, _, _ in V.FAMILIES] + ["NONE"]
@@ -151,8 +162,8 @@ SELECT m.mention_id, coalesce(i.legal_name, ''), (m.published_at AT TIME ZONE 'A
  LIMIT %(limit)s"""
 
 
-def pending(conn, lo=None, hi=None, limit: Optional[int] = None) -> list[Passage]:
-    rows = conn.execute(_PENDING, dict(rv=V.RULES_VERSION, skip=list(SKIP_FAMILIES), vv=VERIFIER_VERSION,
+def pending(conn, lo=None, hi=None, limit: Optional[int] = None, model: str = MODEL) -> list[Passage]:
+    rows = conn.execute(_PENDING, dict(rv=V.RULES_VERSION, skip=list(SKIP_FAMILIES), vv=verifier_version(model),
                                        lo=lo, hi=hi, limit=limit)).fetchall()
     return [Passage(str(mid), company, day, title, family, quote, context_window(body, quote))
             for mid, company, day, title, family, quote, body in rows]
@@ -163,14 +174,14 @@ def store(conn, p: Passage, v: Verdict, model: str = MODEL) -> None:
         """INSERT INTO commercial_verifications (mention_id, verifier_version, verdict, family, reason, model,
                                                   input_tokens, output_tokens)
            VALUES (%s, %s, %s, %s, %s, %s, %s, %s) ON CONFLICT (mention_id, verifier_version) DO NOTHING""",
-        (p.mention_id, VERIFIER_VERSION, v.verdict, v.family, v.reason, model, v.input_tokens, v.output_tokens))
+        (p.mention_id, verifier_version(model), v.verdict, v.family, v.reason, model, v.input_tokens, v.output_tokens))
 
 
 def verify_pending(conn, client, lo=None, hi=None, limit: Optional[int] = None, workers: int = 4,
                    model: str = MODEL, progress=None) -> Counter:
     """Verify unverified passages of the current rules version; the model calls run in parallel, the
     database writes stay on this connection."""
-    passages = pending(conn, lo, hi, limit)
+    passages = pending(conn, lo, hi, limit, model)
     out: Counter = Counter()
 
     def one(p: Passage) -> tuple[Passage, Verdict]:

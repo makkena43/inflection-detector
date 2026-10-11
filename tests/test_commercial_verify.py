@@ -83,3 +83,14 @@ def test_api_errors_are_not_stored_so_they_are_retried(db):
             raise ConnectionError("down")
     assert verify.verify_pending(db, Broken({}))["ERROR"] >= 1
     assert db.execute("SELECT count(*) FROM commercial_verifications").fetchone()[0] == 0
+
+
+def test_verdicts_are_kept_per_model_and_resolve_reads_the_configured_one(db):
+    iss, src = _seed(db)
+    _filing(db, iss, src, 1, datetime(2026, 1, 20, 18, 5, tzinfo=IST), ["Cover letter", SEBI_ANNEX])
+    pipeline.scan(db)
+    other = "claude-haiku-5-5" if verify.MODEL != "claude-haiku-5-5" else "claude-opus-5-5"
+    verify.verify_pending(db, FakeClient({"verdict": "REJECTED", "family": "NONE", "reason": "x"}), model=other)
+    assert verify.pending(db, model=other) == [] and verify.pending(db)          # the configured model still to do
+    res = pipeline.resolve(db)
+    assert res["NEW"] >= 1 and not res["REJECTED_BY_CHECK"]                     # other model's verdicts ignored
