@@ -17,7 +17,7 @@ from __future__ import annotations
 import hashlib
 import re
 
-RULES_VERSION = "commercial-9"
+RULES_VERSION = "commercial-10"
 
 I = re.I
 
@@ -81,6 +81,11 @@ ANNEX_FIELD = re.compile(r"^\W*(?:\(?(?:\d{1,2}|[a-zA-Z]|[ivx]{1,4})[.)]\s*)?(?:
                          r"consideration|size of|significant terms|time period|details of|brief details|quantity|"
                          r"date of)\b", I)
 ORDER_BOOK = re.compile(r"\border\s*(?:book|backlog|inflows?|intake|pipeline|position)\b|\bunexecuted orders?\b", I)
+# A period's order inflow ("Infrastructure Segment secured orders of 45,574 crore during the quarter") is a total
+# across many orders, not one order: its value must not be sized as a single award
+PERIOD_INFLOW = re.compile(r"\b(?:secured|received|booked|bagged|won)\s+(?:new\s+)?orders\b[^.]{0,80}\b(?:during|in|for)\s+"
+                           r"the\s+(?:quarter|year|period|nine months|half[- ]year|first half)\b|"
+                           r"\bsegment\b[^.]{0,40}\b(?:secured|received|booked)\s+orders\b", I)
 
 # ---------------------------------------------------------------- order family (ported from MakroGraph)
 

@@ -123,3 +123,17 @@ def test_commercial_7_noise(text):
 ])
 def test_commercial_8_noise(text):
     assert families(text) == []
+
+
+@pytest.mark.parametrize("text", [
+    "Infrastructure Segment secured orders of 45,574 crore, during the quarter ended December 31, 2020, higher by "
+    "80% on y-o-y basis, with receipt of two marquee orders of High Speed Rail.",
+    "The Hydrocarbon Segment secured orders valued at 12,820 crore during the quarter ended December 31, 2020.",
+])
+def test_period_order_inflow_is_not_one_order(text):
+    assert families(text) == []
+
+
+def test_a_single_award_with_a_period_word_is_kept():
+    assert families("The Company has received an order worth Rs. 678.50 crore from Larsen & Toubro Limited "
+                    "for supply of optical fibre cable.") == ["ORDER"]
