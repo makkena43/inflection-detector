@@ -143,3 +143,12 @@ def test_an_order_book_table_is_not_an_order():
     assert families("Order Book Status TOTAL ORDER + NEW ORDERS - ORDERS EXECUTED = ORDER BOOK Order Book as on 1st "
                     "October 2020 New Order bagged in Q3FY21 Orders executed in Q3FY21 AMC: 128.10 Cr AMC: 1.74 Cr "
                     "AMC: 4.08 Cr") == []
+
+
+@pytest.mark.parametrize("text", [
+    "Over 95% orders were delivered to customers from stores in less than 6 hours.",
+    "Orders executed",
+    "75% of all orders placed through mobile app in 5 mins.",
+])
+def test_retail_and_broking_orders_are_not_customer_orders(text):
+    assert families(text) == []

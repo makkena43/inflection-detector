@@ -17,7 +17,7 @@ from __future__ import annotations
 import hashlib
 import re
 
-RULES_VERSION = "commercial-11"
+RULES_VERSION = "commercial-12"
 
 I = re.I
 
@@ -72,7 +72,9 @@ ORDER_NOISE = re.compile(r"\bin order (?:to|for|that)\b|\bin the order of\b|\b(?
                          r"chronological|descending|ascending) order\b|\border of (?:the )?(?:board|court|tribunal)\b|"
                          r"\b(?:meeting|called) to order\b",
                          I)
-MARKET_ORDER = re.compile(r"\b(?:buy-?back|tender offer|open offer|eligible shareholders?|bids? from|stock ?brokers?|"
+MARKET_ORDER = re.compile(r"\borders? (?:were |are )?(?:delivered to customers|placed (?:through|via|on|online))\b|"
+                          r"^\W*orders executed\W*$|\b(?:app|online|e-?commerce|retail|broking|client) orders?\b|"
+                          r"\b(?:buy-?back|tender offer|open offer|eligible shareholders?|bids? from|stock ?brokers?|"
                           r"trading members?|demat|order book of the exchange|bidding period|custodian|participant)\b", I)
 FIRST_ORDER = re.compile(r"\bfirst (?:\w+ ){0,2}(?:order|purchase order|contract)\b|\bnew (?:customer|client)\b", I)
 # SEBI order-annexure field lines ("h) Whether the promoter ... awarded the order: No") feed the
