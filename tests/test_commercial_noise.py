@@ -84,3 +84,18 @@ def test_commercial_3_keeps(text, family):
 ])
 def test_commercial_4_noise(text):
     assert families(text) == []
+
+
+@pytest.mark.parametrize("text", [
+    "The Company had received an order dated 1.1.2021 issued by the Member Secretary, Himachal Pradesh State "
+    "Pollution Control Board directing to stop that part of the dyeing process.",
+    "Trading in derivatives (Specify type of contract, Futures or Options etc.) Exchange on which the trade was executed",
+    "Mr. Mayank Goyal is a Commerce Graduate from HR College and Chartered Accountant by Qualification and has "
+    "successfully cleared all three levels of the CFA Program.",
+    "Revenue related to fixed price contracts are recognized based on our right to invoice for services performed.",
+    "4. To guarantee the payment of money secured by or payable under bonds, debentures, contracts and obligations.",
+    "The concession period is 50 years from the commercial operation date.",
+    "He is responsible commissioned a huge expansion of vitrified tiles at Gailpur in 2011.",
+])
+def test_commercial_6_noise(text):
+    assert families(text) == []

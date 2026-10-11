@@ -17,7 +17,7 @@ from __future__ import annotations
 import hashlib
 import re
 
-RULES_VERSION = "commercial-5"
+RULES_VERSION = "commercial-6"
 
 I = re.I
 
@@ -263,7 +263,8 @@ ORDER_LEGAL_NOISE = re.compile(
     r"\b(?:certified copy of|said|impugned|interim|final) (?:the )?order\b|\bpetition(?:er)?s?\b|\brespondents?\b|"
     r"\bclaimants?\b|\bIB Code\b|\binsolvency\b|\bcontracts?,\s*(?:[\w-]+\s+){0,3}agreements?\b|"
     r"\bSecurities Contracts\b|\bContracts \(Regulation\)|\bdamages\b|\btrial court\b|\bbid guarantees?\b|"
-    r"\bbid is unsuccessful\b|\bparticipated in\b[^.]{0,40}\b(?:RFPs?|bids?|tenders?)\b", I)
+    r"\bbid is unsuccessful\b|\bparticipated in\b[^.]{0,40}\b(?:RFPs?|bids?|tenders?)\b|"
+    r"\bissued by\b[^.]{0,80}\b(?:Board|Commission|Authority|Secretary)\b|\bRegulatory Commission\b", I)
 # An MoU about property, payment instalments or its own cancellation is not a customer order
 MOU_NOISE = re.compile(r"\bpropert(?:y|ies)\b|\bland\b|\brescind\w*|\b(?:on|upon) (?:the )?execution of the MoU\b|"
                        r"\btermination of the MoU\b|\bcancel\w* the MoU\b|\bsecurity deposit\b|\blenders?\b|\bleasehold\b", I)
@@ -271,9 +272,17 @@ MOU_NOISE = re.compile(r"\bpropert(?:y|ies)\b|\bland\b|\brescind\w*|\b(?:on|upon
 ACCOUNTING_NOISE = re.compile(r"\bInd AS\b|\bexpected credit loss\w*|(?-i:\bECL\b)|\beffective interest\b|"
                               r"\bamorti[sz]ed cost\b|\bfair value through\b|\blessor\b|\blessee\b|\bderecogni\w*|"
                               r"\brevenue (?:is )?recogni[sz]ed\b|\brecogni[sz]ed as (?:and when )?(?:revenue|services)\b|"
-                              r"\binvoicing in excess\b|\bbilled in subsequent\b", I)
+                              r"\binvoicing in excess\b|\bbilled in subsequent\b|\b(?:are|is) recogni[sz]ed\b|"
+                              r"\bright to invoice\b|\bvesting\b|\bgrant price\b|\bstock options?\b|"
+                              r"\btrading in derivatives\b|\btype of contract\b|\bto guarantee the payment\b|"
+                              r"\bmemorandum of association\b|\bobjects? clause\b", I)
+# Director and KMP biographies: past roles, not company events
+BIO_NOISE = re.compile(r"\b(?:he|she) (?:is|was|has been) (?:responsible|associated|instrumental|heading)\b|"
+                       r"\bby qualification\b|\bchartered accountant\b|\bgraduate (?:from|in)\b|\bCFA\b|"
+                       r"\b\d+\+? years (?:of )?(?:rich |vast |extensive )?experience\b|\bhis career\b|\bher career\b", I)
 # A start that is delayed has not happened (glued PDF text included: "hasbeendelayed")
-START_NOISE = re.compile(r"delay(?:ed|s)?|postpon\w*|deferr?\w*", I)
+START_NOISE = re.compile(r"delay(?:ed|s)?|postpon\w*|deferr?\w*|\bconcession period\b|"
+                         r"\b(?:from|after) (?:the )?(?:commercial operation date|COD)\b", I)
 JV_FORMATION = re.compile(r"\b(?:JVC?|joint venture(?: company)?)\b[^.]{0,80}\b(?:formed|incorporat\w*|shareholding)\b", I)
 # Defaults, cash-flow lines, objects of an issue, scheduled servicing and related-party tables are not
 # debt reduction
