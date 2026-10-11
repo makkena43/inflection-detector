@@ -115,6 +115,9 @@ def allocate(lines: list[dict], week_start: date, cutoff: datetime, p: dict,
         else:
             it["slot"] = "WATCH"
     for it in items:
+        if not it.get("has_symbol", True):
+            it["note"] = "; ".join(filter(None, [it["note"], "no exchange symbol on record (named by ISIN); "
+                                                              "check it still trades before research"]))
         if it["stale"]:
             days = (cutoff - it["waiting_since"]).days
             it["note"] = "; ".join(filter(None, [it["note"], f"STALE_UNRESEARCHED: waiting {days} days, "

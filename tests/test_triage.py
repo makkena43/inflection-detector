@@ -158,3 +158,13 @@ def test_queue_companies_reports_waiting_since(db):
     _evaluation(db, iss, datetime(2026, 10, 1, 18, tzinfo=IST), "P2")
     q = queue.companies(db)[0]
     assert q["priority"] == "P2" and q["waiting_since"].startswith("2026-09-01")
+
+
+def test_a_company_without_a_symbol_is_named_by_isin_and_can_be_recorded(db):
+    iss = db.execute("INSERT INTO issuers (legal_name) VALUES ('KSS Limited') RETURNING issuer_id").fetchone()[0]
+    db.execute("INSERT INTO securities (issuer_id, isin) VALUES (%s, 'INE216B01012')", (iss,))
+    _evaluation(db, iss, datetime(2026, 10, 8, 18, tzinfo=IST), "P2")
+    out = pipeline.build(db, WEEK, now=datetime(2026, 10, 11, 9, tzinfo=IST))
+    item = out["shortlist"][0]
+    assert item["symbol"] == "INE216B01012" and "no exchange symbol on record" in item["note"]
+    assert pipeline.record(db, WEEK, "ine216b01012", "DATA_REPAIR")["triage_action"] == "DATA_REPAIR"

@@ -21,7 +21,7 @@ from psycopg.types.json import Jsonb
 
 from .. import queue
 from ..asof import IST
-from ..financial.pipeline import _SYMBOL
+from ..queue import LABEL
 from . import rules as R
 
 CREATED_BY = "inflection.triage"
@@ -98,7 +98,7 @@ def show(conn, day: date, everything: bool = False) -> dict:
         return dict(week_start=week_start.isoformat(), error="no shortlist for this week; run build")
     sid, cutoff, pv, p, summary = head
     rows = conn.execute(
-        f"""SELECT i.position, i.slot, {_SYMBOL.format(col='i.issuer_id')}, s.legal_name, i.priority_class,
+        f"""SELECT i.position, i.slot, {LABEL.format(col='i.issuer_id')}, s.legal_name, i.priority_class,
                    i.corroborated, i.waiting_since, i.stale, i.reason, i.note, i.triage_action
               FROM triage_shortlist_items i JOIN issuers s USING (issuer_id)
              WHERE i.shortlist_id = %s AND (%s OR i.position IS NOT NULL)
@@ -120,7 +120,7 @@ def record(conn, day: date, symbol: str, action: str, note: Optional[str] = None
         f"""SELECT i.shortlist_id, i.issuer_id, i.slot, i.triage_action, i.revision
               FROM triage_shortlist_items i JOIN triage_shortlists s USING (shortlist_id)
              WHERE s.week_start = %s
-               AND upper({_SYMBOL.format(col='i.issuer_id')}) = upper(%s)""", (week_start, symbol)).fetchone()
+               AND upper({LABEL.format(col='i.issuer_id')}) = upper(%s)""", (week_start, symbol)).fetchone()
     if row is None:
         return dict(symbol=symbol, error=f"not in the shortlist for the week of {week_start}")
     sid, issuer_id, slot, done, rev = row
