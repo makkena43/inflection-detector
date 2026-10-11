@@ -169,8 +169,8 @@ def load_events(conn, issuer_id) -> list[EventState]:
                   (SELECT array_agg(DISTINCT l.text_artifact_id::text) FROM evidence_links l
                      JOIN event_versions x ON x.event_version_id = l.event_version_id WHERE x.event_id = e.event_id)
              FROM events e JOIN event_versions v USING (event_id)
-            WHERE e.issuer_id = %s AND e.event_type IS NOT NULL
-            ORDER BY e.event_id, v.version_no DESC""", (issuer_id,)).fetchall()
+            WHERE e.issuer_id = %s AND e.event_type IS NOT NULL AND e.rules_version = %s
+            ORDER BY e.event_id, v.version_no DESC""", (issuer_id, V.RULES_VERSION)).fetchall()
     out = []
     for (eid, etype, first, vid, vno, stage, obs, mag, cur, scale, basis, cp, fac, stream, scope, deadline, details,
          published_at, arts) in rows:
@@ -459,8 +459,8 @@ def timeline(conn, symbol: str) -> dict:
                   (SELECT count(*) FROM evidence_links l WHERE l.event_version_id = v.event_version_id
                     AND l.relation = 'CONTEXT')
              FROM events e JOIN event_versions v USING (event_id)
-            WHERE e.issuer_id = %s AND e.event_type IS NOT NULL
-            ORDER BY e.first_public_at, e.event_id, v.version_no""", (issuer_id,)).fetchall()
+            WHERE e.issuer_id = %s AND e.event_type IS NOT NULL AND e.rules_version = %s
+            ORDER BY e.first_public_at, e.event_id, v.version_no""", (issuer_id, V.RULES_VERSION)).fetchall()
     events = []
     for eid, items in groupby(versions, key=lambda r: r[0]):
         items = list(items)
