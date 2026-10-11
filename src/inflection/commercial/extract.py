@@ -112,7 +112,21 @@ def is_garbled(text: str) -> bool:
         return False
     singles = sum(1 for t in toks if len(t.strip(".,;:!?()")) <= 1)
     wordlike = sum(1 for t in toks if _WORDLIKE.match(t))
-    return singles / len(toks) > 0.35 or wordlike / len(toks) < 0.5
+    if singles / len(toks) > 0.35 or wordlike / len(toks) < 0.5:
+        return True
+    # OCR or glued-text noise ("kEm. tar cftd ... ofUnderstanding ... Powerfrom145MW"): almost no function
+    # words and many tokens with case flips, letter-digit joins, stray symbols or no vowel
+    if len(toks) >= 10:
+        words = [t.strip(".,;:!?()\"'").lower() for t in toks]
+        function = sum(w in _FUNCTION_WORDS for w in words) / len(toks)
+        junk = sum(1 for t in toks if _JUNK_TOKEN.search(t) or not re.search(r"[aeiouy]", t, re.I)) / len(toks)
+        return function < 0.08 and junk > 0.25
+    return False
+
+
+_FUNCTION_WORDS = frozenset("the of and to in a an for is are was were has have had be been by on with from at as "
+                            "that this its our we it which will or not".split())
+_JUNK_TOKEN = re.compile(r"[a-z][A-Z]|[A-Za-z][0-9]|[0-9][A-Za-z]|[^\w\s.,;:()'\"&/%-]")
 
 
 def table_row(s: str) -> bool:
@@ -420,7 +434,7 @@ def _family(s: str) -> Optional[tuple[str, str, re.Match]]:
                 continue                         # order-book or inflow totals, not one order
             if V.MOU.search(s) and not V.ORDER_NOUN.search(s) and V.MOU_INVESTMENT.search(s):
                 return "CAPACITY", "CAPACITY", m  # an investment MoU is a capacity ambition
-        if V.ACCOUNTING_NOISE.search(s) or V.BIO_NOISE.search(s):
+        if V.ACCOUNTING_NOISE.search(s) or V.BIO_NOISE.search(s) or (name != "FINANCING" and V.HISTORY_NOISE.search(s)):
             return None                          # accounting-policy, ESOP, form or biography text
         if name == "ORDER" and (V.ORDER_LEGAL_NOISE.search(s) or (V.MOU.search(s) and V.JV_FORMATION.search(s))):
             continue                             # litigation, asset lists, JV formation

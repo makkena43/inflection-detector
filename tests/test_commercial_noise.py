@@ -110,3 +110,16 @@ def test_commercial_6_noise(text):
 ])
 def test_commercial_7_noise(text):
     assert families(text) == []
+
+
+@pytest.mark.parametrize("text", [
+    "(1) (0) 0 (i) kEm. tar cftd on .bove (1) 0 (0) 6 2 (2t ldd dlaa cooteralranati hcolltdlbaal, od ol tat t (r) "
+    "0t tt 5t t! s Toa.l coipr$.r.lv. lncorlr for 0|. y. L1 order",
+    "Memorandum ofUnderstanding Gujarat Saleof ElectriCity (MoU)datedMay3,1989forSaleof Alkalies& ShrlPKGera,lAS. "
+    "& 2 Powerfrom145MWGasbased Chemical Promo",
+    "In last 5 years, we have executed work orders amounting to Rs. 500 crore in Maharashtra and Odisha.",
+    "Zydus has 21 biosimilars in portfolio and biosimilars launched since 2014 in India.",
+    "10 OTC ANDA products approved till date.",
+])
+def test_commercial_8_noise(text):
+    assert families(text) == []

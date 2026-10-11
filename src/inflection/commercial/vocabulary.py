@@ -17,7 +17,7 @@ from __future__ import annotations
 import hashlib
 import re
 
-RULES_VERSION = "commercial-7"
+RULES_VERSION = "commercial-8"
 
 I = re.I
 
@@ -278,6 +278,9 @@ ACCOUNTING_NOISE = re.compile(r"\bInd AS\b|\bexpected credit loss\w*|(?-i:\bECL\
                               r"\bright to invoice\b|\bvesting\b|\bgrant price\b|\bstock options?\b|"
                               r"\btrading in derivatives\b|\btype of contract\b|\bto guarantee the payment\b|"
                               r"\bmemorandum of association\b|\bobjects? clause\b", I)
+# Cumulative or past track record ("executed in the last 5 years", "launched since 2014", "approved till date")
+HISTORY_NOISE = re.compile(r"\b(?:in|over|during) (?:the )?(?:last|past) \d+ years\b|\bsince (?:19|20)\d\d\b|"
+                           r"\btill date\b|(?<!year )\bto date\b|\bso far\b", I)
 # Director and KMP biographies: past roles, not company events
 BIO_NOISE = re.compile(r"\b(?:he|she) (?:is|was|has been) (?:responsible|associated|instrumental|heading)\b|"
                        r"\bby qualification\b|\bchartered accountant\b|\bgraduate (?:from|in)\b|\bCFA\b|"
