@@ -172,7 +172,12 @@ def scan(conn, start: Optional[date] = None, end: Optional[date] = None, limit: 
         """SELECT p.publication_id, p.issuer_id FROM document_publications p JOIN sources s USING (source_id)
             WHERE s.name = %(src)s AND p.pipeline_state = 'TEXT_READY'
               AND NOT EXISTS (SELECT 1 FROM financial_scans f WHERE f.publication_id = p.publication_id
-                                 AND f.rules_version = %(rv)s AND f.status <> 'NO_ISSUER')
+                                 AND f.rules_version = %(rv)s AND f.status <> 'NO_ISSUER'
+                                 -- read again once the company's figures grew after a "no comparable"
+                                 -- read (a backfill that loads the earlier year later)
+                                 AND NOT (f.status = 'NO_COMPARABLE' AND EXISTS (
+                                     SELECT 1 FROM financial_facts ff WHERE ff.issuer_id = p.issuer_id
+                                        AND ff.recorded_at > f.scanned_at)))
               AND (%(lo)s::timestamptz IS NULL OR p.published_at >= %(lo)s)
               AND (%(hi)s::timestamptz IS NULL OR p.published_at < %(hi)s)
             ORDER BY p.published_at NULLS LAST, p.publication_id LIMIT %(limit)s""",

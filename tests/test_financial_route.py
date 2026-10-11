@@ -280,3 +280,15 @@ def test_real_xbrl_filing_against_the_year_before(db, tmp_path):
     assert cls == "P3" and reasons[0].startswith("operating profit up 33.3% year on year (₹366.34 cr to ₹488.46 cr)")
     assert comp["filing"]["comparable_period_end"] == "2020-12-31"
     assert datetime.fromisoformat(comp["filing"]["available_at"]) == datetime(2022, 2, 25, 20, 56, 4, tzinfo=IST)
+
+
+def test_a_filing_read_before_its_year_earlier_figures_is_read_again_when_they_arrive(db):
+    iss, src = _seed(db)
+    t = lambda d: datetime.fromisoformat(d + "T18:30:00+05:30")             # noqa: E731
+    _results(db, iss, src, 3, date(2025, 6, 30), t("2025-08-09"), **{**BASE, "total_expenses": 850})
+    assert pipeline.scan(db, now=t("2026-02-11"))["NO_COMPARABLE"] == 1
+    assert pipeline.scan(db) == {}                                           # nothing new: not read again
+    _results(db, iss, src, 1, date(2024, 6, 30), t("2024-08-10"), **BASE)   # backfilled later
+    out = pipeline.scan(db, now=t("2026-02-11"))
+    assert out["EVALUATED"] == 1 and out["NO_COMPARABLE"] == 1               # Q1 FY26 now compared; FY25 has none
+    assert pipeline.scan(db) == {}
