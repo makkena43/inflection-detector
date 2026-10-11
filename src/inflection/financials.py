@@ -25,7 +25,7 @@ from psycopg.types.json import Jsonb
 from .sources.common import IST
 from .sources.download import Archive
 from .sources.http import HttpClient
-from .sources.xbrl import REFERER, ListingResult, NSEResultsListing, ResultEntry, parse_results_xbrl
+from .sources.xbrl import REFERER, ListingResult, NSEResultsListing, ResultEntry, listed_period, parse_results_xbrl
 from .states import CoverageStatus
 
 SOURCE = "nse_results_xbrl"
@@ -184,7 +184,9 @@ def load_pending(conn, archive: Archive, client: HttpClient, limit: int = 500, r
             _, vid = _store_xml(conn, stored)
             conn.execute("""UPDATE document_publications SET document_version_id = %s, ingested_at = now(),
                                    response_sha256 = %s WHERE publication_id = %s""", (vid, stored.sha256, pid))
-            parsed = parse_results_xbrl(resp.body)
+            raw = conn.execute("SELECT raw_metadata FROM document_publications WHERE publication_id = %s",
+                               (pid,)).fetchone()[0]
+            parsed = parse_results_xbrl(resp.body, listed_period(raw))
             if not parsed.figures:
                 _fail(conn, pid, rev, "XBRL: " + ("; ".join(parsed.issues[:3]) or "no figures"))
                 out["NO_FIGURES"] += 1

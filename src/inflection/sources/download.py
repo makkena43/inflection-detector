@@ -16,6 +16,8 @@ from __future__ import annotations
 
 import hashlib
 import io
+import os
+import threading
 import zipfile
 from dataclasses import dataclass, field
 from enum import Enum
@@ -74,7 +76,7 @@ class Archive:
         path = self.root / h[:2] / h
         if not path.exists():
             path.parent.mkdir(parents=True, exist_ok=True)
-            tmp = path.with_suffix(".tmp")
+            tmp = path.with_suffix(f".{os.getpid()}.{threading.get_ident()}.tmp")   # unique per writer
             tmp.write_bytes(data)
             tmp.replace(path)
         return StoredFile(h, path, len(data), name)

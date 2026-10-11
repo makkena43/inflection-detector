@@ -235,8 +235,12 @@ def _months(start: date, end: date) -> int:
     return (end.year - start.year) * 12 + end.month - start.month + 1
 
 
-def parse_results_xbrl(body: bytes) -> ParsedFiling:
-    """Figures from one results XBRL filing.  Fails closed: anything unreadable is an issue, not a figure."""
+def parse_results_xbrl(body: bytes, listed: Optional[tuple[Optional[date], Optional[date]]] = None) -> ParsedFiling:
+    """Figures from one results XBRL filing.  Fails closed: anything unreadable is an issue, not a figure.
+
+    ``listed`` is the (from, to) period the exchange's results listing shows for the filing; it is used
+    only to date the current-period group when the file itself leaves it undated."""
+    issues_pre: list[str] = []
     if not body or len(body) > MAX_BYTES or b"<!ENTITY" in body[:5000]:
         return ParsedFiling([], ["not a results XBRL file (empty, oversized or declares entities)"])
     try:
@@ -281,7 +285,7 @@ def parse_results_xbrl(body: bytes) -> ParsedFiling:
     nature = (first("NatureOfReportStandaloneConsolidated") or "").lower()
     scope = "CONSOLIDATED" if nature.startswith("consolidated") else (
         "STANDALONE" if nature.startswith("standalone") else "UNKNOWN")
-    issues: list[str] = []
+    issues: list[str] = issues_pre
 
     seg_names: dict[tuple, str] = {}
     for n, cref, _, v in facts:
@@ -292,6 +296,17 @@ def parse_results_xbrl(body: bytes) -> ParsedFiling:
     for n, cref, _, v in facts:
         if n in ("DateOfStartOfReportingPeriod", "DateOfEndOfReportingPeriod"):
             declared.setdefault(_group(cref), {})["start" if "Start" in n else "end"] = _iso(v)
+
+    # Some filings leave the current period ("One" group) without a usable date: only its end date is
+    # declared, or nothing is declared and "OneD" is not defined.  The detail contexts can't be trusted
+    # for it (they often repeat the quarter's dates on a half-year or annual filing), so take the period
+    # the exchange listed the filing under, and only when it agrees with any declared end.  Other groups
+    # stay fail-closed.
+    one = declared.get("One", {})
+    if listed and not (one.get("start") and one.get("end")) and (declared or "OneD" not in contexts):
+        if listed[0] and listed[1] and listed[0] < listed[1] and one.get("end") in (None, listed[1]):
+            declared["One"] = {"start": listed[0], "end": listed[1]}
+            issues_pre.append(f"current period {listed[0]}..{listed[1]} taken from the exchange listing")
 
     def period(cref: str) -> tuple[Optional[date], Optional[date]]:
         d = declared.get(_group(cref))
@@ -404,3 +419,16 @@ def _check_arithmetic(figures: list[Figure], issues: list[str]) -> None:
     for f in figures:
         if id(f) in failed:
             f.value, f.unverified = None, True
+
+
+def listed_period(raw: Optional[dict]) -> Optional[tuple[Optional[date], Optional[date]]]:
+    """(fromDate, toDate) from a results-listing row, e.g. '01-OCT-2023' / '31-Mar-2022'; None if absent."""
+    def d(s):
+        try:
+            return datetime.strptime((s or "").strip()[:11], "%d-%b-%Y").date()
+        except ValueError:
+            return None
+    if not raw:
+        return None
+    start, end = d(raw.get("fromDate")), d(raw.get("toDate"))
+    return (start, end) if start and end else None

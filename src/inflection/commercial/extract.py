@@ -285,6 +285,7 @@ class Mention:
 
 
 def clean_counterparty(raw: str) -> str:
+    raw = re.split(r"\.\s+(?!(?:Ltd|Limited|Inc|Corp|Corporation|Pvt|Private|Co|Company|LLP|LLC|PLC)\b)(?=[A-Z][a-z]*(?:\s+[a-z]|$))", raw.strip(), maxsplit=1)[0]   # "L&T. A number" -> "L&T"
     words = raw.strip().split()
     while words and words[0].lower() in {"the", "m/s", "m/s."}:
         words.pop(0)
@@ -419,8 +420,18 @@ def _family(s: str) -> Optional[tuple[str, str, re.Match]]:
                 continue                         # order-book or inflow totals, not one order
             if V.MOU.search(s) and not V.ORDER_NOUN.search(s) and V.MOU_INVESTMENT.search(s):
                 return "CAPACITY", "CAPACITY", m  # an investment MoU is a capacity ambition
+        if name == "ORDER" and (V.ORDER_LEGAL_NOISE.search(s) or (V.MOU.search(s) and V.JV_FORMATION.search(s))):
+            continue                             # litigation, asset lists, JV formation
         if name == "QUALIFICATION" and V.CORPORATE_APPROVAL.search(s) and not re.search(r"vendor|supplier", s, re.I):
             continue                             # approved by the board / members: not a customer approval
+        if name == "QUALIFICATION" and V.QUALIFICATION_NOISE.search(s):
+            continue                             # accounting text ("EIR method")
+        if name == "DEBT_REDUCTION" and V.DEBT_NOISE.search(s):
+            continue                             # defaults, cash-flow lines, objects of an issue, servicing
+        if name == "PRICING" and V.PRICING_NOISE.search(s):
+            continue                             # share price, exchange clarifications, shortages
+        if name == "FINANCING" and V.FINANCING_NOISE.search(s):
+            continue                             # issue procedure and fund-use statements
         if name == "PRICING" and V.INPUT_COST.search(s) and not V.PASS_THROUGH.search(s):
             continue                             # input prices rising is not the issuer pricing up
         if name == "CAPACITY" and not (amounts(s) or V.CAPACITY_QTY.search(s) or V.FACILITY.search(s)

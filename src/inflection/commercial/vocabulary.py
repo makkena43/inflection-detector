@@ -17,7 +17,7 @@ from __future__ import annotations
 import hashlib
 import re
 
-RULES_VERSION = "commercial-1"
+RULES_VERSION = "commercial-2"
 
 I = re.I
 
@@ -25,7 +25,7 @@ I = re.I
 
 NEGATION = re.compile(
     r"\b(?:not|no(?!\.|\s*[:#\d])|never|neither|nor|unlikely|did not|didn't|do not|don't|does not|doesn't|won't|"
-    r"will not|cannot|can't|without|yet to|failed to|none)\b", I)
+    r"will not|cannot|can't|without|yet to|failed to|unable to|difficult to|none)\b", I)
 FORWARD = re.compile(
     r"\b(?:expect(?:s|ed|ing)?|target(?:s|ing)?|guid(?:e|ance|ing)|will|shall|aim(?:s|ing)?|plan(?:s|ned|ning)?|"
     r"anticipat\w*|outlook|envisag\w*|going forward|by FY\s*'?\d{2}|next (?:year|quarter|fiscal)|"
@@ -87,7 +87,7 @@ ORDER_CUE = re.compile(
     r"\b(?:received|receives|receipt of|bagged|bags|bagging(?: of)?|secured|secures|won|wins|awarded|has been awarded)"
     r"\b.{0,80}\b(?:orders?|contracts?|letter of (?:award|intent)|LoA|LoI|purchase orders?|work orders?)\b|"
     r"\b(?:orders?|contracts?)\b.{0,40}\b(?:worth|valued at|aggregating|amounting to|of value)\b|"
-    r"\bletter of (?:award|intent)\b|(?-i:\bL-?1\b)(?: bidder| position)?|\blowest bidder\b|\bMoU\b|"
+    r"\bletter of (?:award|intent)\b|(?-i:\bL-?1\b)(?: bidder| position)?|\blowest bidder\b|(?-i:\bMo[Uu]s?\b|\bMOUs?\b)|"
     r"\bmemorandum of understanding\b|\bframework agreement\b|\brate contract\b|"
     r"\bmaster (?:supply|service) agreement\b|\brelease orders?\b|"
     r"\b(?:orders?|contracts?|LoA|purchase orders?|work orders?)\b.{0,80}\b(?:cancell?ed|terminated|"
@@ -99,7 +99,7 @@ BINDING = re.compile(r"\b(?:purchase order|work order|contract (?:signed|execute
                      r"contracts?)|bagged|secured|awarded|firm orders?|confirmed (?:\w+ ){0,2}orders?|"
                      r"(?:receipt|bagging) of (?:an? )?(?:orders?|contracts?))\b", I)
 PROVISIONAL = re.compile(r"(?-i:\bL-?1\b)|\blowest bidder\b|\bletter of intent\b|\bLoI\b|\bselected as\b|\bshortlisted\b", I)
-MOU = re.compile(r"\bMoU\b|\bmemorandum of understanding\b", I)
+MOU = re.compile(r"(?-i:\bMo[Uu]s?\b|\bMOUs?\b)|\bmemorandum of understanding\b", I)
 FRAMEWORK = re.compile(r"\bframework agreement\b|\brate contract\b|\bmaster (?:supply|service) agreement\b", I)
 INQUIRY = re.compile(r"\bin (?:advanced )?discussions?\b|\bpipeline\b|\benquir(?:y|ies)\b|\bbids? submitted\b|"
                      r"\bnegotiations?\b", I)
@@ -152,6 +152,8 @@ COUNTERPARTY_UNNAMED = re.compile(
     r"fortune \d+|european|us[- ]based|government)\b[^.,;]{0,40}?\b(?:customer|client|oem|player|company|utility|"
     r"psu|entity)\b", I)
 CAPITALISED_STOPWORDS = {"The", "This", "We", "Our", "It", "In", "For", "During", "Company", "Board", "Management",
+                         "Share", "Shares", "Preferential", "Terms", "Investor", "Rights", "Issue", "Debentures",
+                         "Annexure", "Schedule", "Section", "Scheme", "Proceeds",
                          "Its", "Their", "These", "Such", "Exchange", "Exchanges", "Regulation", "Regulations",
                          "SEBI", "Listing", "Rs", "INR", "Ministry", "Crore", "Lakh"}
 RELATED = re.compile(r"\b(?:its|our|the company'?s|the company’s)\s+(?:wholly[- ]owned\s+|step[- ]down\s+|material\s+)?"
@@ -239,7 +241,7 @@ LOSS_DRAG_CUE = re.compile(
     r"\bloss[- ]making\b[^.]{0,80}\b(?:divest\w*|sold|exit\w*|closed|shut|discontinu\w*|hived off|wound up)\b", I)
 PRICING_CUE = re.compile(
     r"\bprice (?:hike|increase|revision)s?\b|\bincreased (?:the |its |our )?(?:selling )?prices?\b|"
-    r"\b(?:hike|increase)d? in (?:the )?(?:selling )?prices?\b|\btariff (?:hike|increase|order|revision)\b|"
+    r"\b(?:hike|increase)d? in (?:the )?(?:selling )?prices?\b|\btariff (?:hike|increase|revision)\b|"
     r"\bpassed on (?:the )?(?:cost|price|input)\b|\b(?:better|higher|improved) realisations?\b", I)
 LAUNCH_CUE = re.compile(
     r"\b(?:launch(?:ed|es)?|introduc(?:ed|es)|unveil(?:ed|s))\b[^.]{0,60}\b(?:products?|brands?|models?|variants?|"
@@ -249,6 +251,36 @@ FINANCING_CUE = re.compile(
     r"\b(?:qualified institutions? placement|QIP|rights issue|preferential (?:issue|allotment)|"
     r"issue of (?:convertible )?warrants|allotment of (?:equity shares|warrants|convertible)|"
     r"fund ?rais(?:e|ing)|raising of funds)\b", I)
+
+# ---------------------------------------------------------------- per-family noise (commercial-2)
+
+# Accounting text: "EIR" is the effective interest rate there, not an FDA establishment inspection report
+QUALIFICATION_NOISE = re.compile(r"\bEIR\b[^.]{0,25}\b(?:method|amortis\w*|amortiz\w*|basis|rate)\b|"
+                                 r"\beffective interest\b|\bamortised cost\b|\bamortized cost\b", I)
+# Litigation, scheme-of-arrangement asset lists and JV formation are not customer orders
+ORDER_LEGAL_NOISE = re.compile(
+    r"\b(?:certified copy of|said|impugned|interim|final) (?:the )?order\b|\bpetition(?:er)?s?\b|\brespondents?\b|"
+    r"\bclaimants?\b|\bIB Code\b|\binsolvency\b|\bcontracts?,\s*(?:[\w-]+\s+){0,3}agreements?\b", I)
+JV_FORMATION = re.compile(r"\b(?:JVC?|joint venture(?: company)?)\b[^.]{0,80}\b(?:formed|incorporat\w*|shareholding)\b", I)
+# Defaults, cash-flow lines, objects of an issue, scheduled servicing and related-party tables are not
+# debt reduction
+DEBT_NOISE = re.compile(
+    r"\bdefaults?\b|\bnon[- ]payment\b|\boverdue\b|\bdelay(?:ed|s)? in (?:the )?(?:payment|repayment|servicing)\b|"
+    r"\bproceeds from\b|\bobjects? of\b|\btowards (?:debt )?repayments?\b|"
+    r"\b(?:date|dates) of (?:the )?payment of interest\b|\bfollow[- ]up for redemption\b|"
+    r"\bterms and conditions of (?:the )?debentures\b|\binterest paid on loan\b", I)
+# The company's share price, exchange clarifications and industry-wide shortages are not issuer pricing
+PRICING_NOISE = re.compile(
+    r"\bprice (?:of|in) the (?:company'?s |company’s )?(?:security|securities|shares?|scrip|stock)\b|"
+    r"\b(?:share|stock|market) price\b|\bprice (?:movement|fluctuation)s?\b|\bspurt in\b|"
+    r"\bNew Tariff Order\b|\bshortages?\b", I)
+# Issue procedure and fund-use statements (ICDR / SAST forms, monitoring reports) are not a financing event
+FINANCING_NOISE = re.compile(
+    r"\bICDR\b|\bSAST\b|\bstatement of (?:deviation|funds)\b|\bfunds? utili[sz]ed\b|"
+    r"\butili[sz]ation of (?:the )?(?:issue |net )?proceeds\b|\bproceeds\b[^.]{0,40}\bshall be utili[sz]ed\b|"
+    r"\bin the manner\b|\btime frame within which\b|\bultimate beneficial\b|\bcurrent and post\b|"
+    r"\btrigger events?\b|\bpublic issue\s*/\s*rights issue\b|\bpreferential issue,? etc\b|"
+    r"\bclarifications?\b", I)
 
 # ---------------------------------------------------------------- families
 

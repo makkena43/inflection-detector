@@ -10,6 +10,7 @@
 
 from __future__ import annotations
 
+import http.client
 import http.cookiejar
 import time
 import urllib.error
@@ -108,7 +109,7 @@ class HttpClient:
             self.requests += 1
             try:
                 status, body = self._send(url, headers, self.timeout)
-            except OSError as exc:
+            except (OSError, http.client.HTTPException) as exc:   # e.g. IncompleteRead on a cut-off body
                 last = Response(url, None, error=f"{type(exc).__name__}: {exc}")
                 continue
             last = Response(url, status, body)

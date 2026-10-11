@@ -386,10 +386,25 @@ UPDATE document_publications p
    AND {_PUB_DAY} BETWEEN h.valid_from AND coalesce(h.valid_to, 'infinity'::date)"""
 
 
+# BSE scrip codes are never reused, so a filing dated before the first day a code is known (the
+# first bhavcopy or listing that carried it) belongs to the company of that code's earliest span.
+_LINK_BSE_BEFORE_FIRST_SPAN = f"""
+UPDATE document_publications p
+   SET issuer_id = s.issuer_id, revision = p.revision + 1
+  FROM sources src,
+       (SELECT DISTINCT ON (value) value, security_id, valid_from FROM identifier_history
+         WHERE exchange = 'BSE' AND kind = 'SCRIP_CODE' ORDER BY value, valid_from) h
+  JOIN securities s USING (security_id)
+ WHERE p.source_id = src.source_id AND src.name = 'bse_announcements' AND p.issuer_id IS NULL
+   AND h.value = p.raw_metadata->>'_symbol'
+   AND {_PUB_DAY} < h.valid_from"""
+
+
 def link_publications(conn) -> list[dict]:
     """Link unlinked filings to issuers; return linked / unlinked counts per announcement source."""
     with conn.transaction():
         conn.execute(_LINK)
+        conn.execute(_LINK_BSE_BEFORE_FIRST_SPAN)
     return issuer_link_report(conn)
 
 
