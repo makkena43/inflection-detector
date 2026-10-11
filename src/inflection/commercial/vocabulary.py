@@ -17,7 +17,7 @@ from __future__ import annotations
 import hashlib
 import re
 
-RULES_VERSION = "commercial-10"
+RULES_VERSION = "commercial-11"
 
 I = re.I
 

@@ -430,8 +430,9 @@ def _family(s: str) -> Optional[tuple[str, str, re.Match]]:
         if name == "ORDER":
             if V.LEGAL_ORDER.search(s) or V.MARKET_ORDER.search(s):
                 continue                         # a court / tax / regulator order
-            if (V.ORDER_BOOK.search(s) and not V.AWARD_VERB.search(s)) or V.PERIOD_INFLOW.search(s):
-                continue                         # order-book or inflow totals, not one order
+            if (V.ORDER_BOOK.search(s) and (not V.AWARD_VERB.search(s) or len(amounts(s)) >= 3)) \
+                    or V.PERIOD_INFLOW.search(s):
+                continue                         # order-book or inflow totals (or an order-book table), not one order
             if V.MOU.search(s) and not V.ORDER_NOUN.search(s) and V.MOU_INVESTMENT.search(s):
                 return "CAPACITY", "CAPACITY", m  # an investment MoU is a capacity ambition
         if V.ACCOUNTING_NOISE.search(s) or V.BIO_NOISE.search(s) or (name != "FINANCING" and V.HISTORY_NOISE.search(s)):

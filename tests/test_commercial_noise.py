@@ -137,3 +137,9 @@ def test_period_order_inflow_is_not_one_order(text):
 def test_a_single_award_with_a_period_word_is_kept():
     assert families("The Company has received an order worth Rs. 678.50 crore from Larsen & Toubro Limited "
                     "for supply of optical fibre cable.") == ["ORDER"]
+
+
+def test_an_order_book_table_is_not_an_order():
+    assert families("Order Book Status TOTAL ORDER + NEW ORDERS - ORDERS EXECUTED = ORDER BOOK Order Book as on 1st "
+                    "October 2020 New Order bagged in Q3FY21 Orders executed in Q3FY21 AMC: 128.10 Cr AMC: 1.74 Cr "
+                    "AMC: 4.08 Cr") == []
