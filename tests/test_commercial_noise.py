@@ -99,3 +99,14 @@ def test_commercial_4_noise(text):
 ])
 def test_commercial_6_noise(text):
     assert families(text) == []
+
+
+@pytest.mark.parametrize("text", [
+    "HINDPRAKASH INDUSTRIES LIMITED 30L, Hindprakash House plot No. L1/OO, GIDC, Vatva, Ahmedabad.",
+    "PRAXIS HOME RETAIL LIMITED REF: SEC/COD/BSE-NSE/2020-21 Date: January 16, 2021 To, Listing Department.",
+    "Order delivered on: 12.01.2021 Coram: HON’BLE MR. Justice.",
+    "During the previous year the Company accounted for the Framework Agreement dated 18 April 2019 signed with "
+    "banks and Financial Institutions.",
+])
+def test_commercial_7_noise(text):
+    assert families(text) == []

@@ -17,7 +17,7 @@ from __future__ import annotations
 import hashlib
 import re
 
-RULES_VERSION = "commercial-6"
+RULES_VERSION = "commercial-7"
 
 I = re.I
 
@@ -88,7 +88,7 @@ ORDER_CUE = re.compile(
     r"\b(?:received|receives|receipt of|bagged|bags|bagging(?: of)?|secured|secures|won|wins|awarded|has been awarded)"
     r"\b.{0,80}\b(?:orders?|contracts?|letter of (?:award|intent)|LoA|LoI|purchase orders?|work orders?)\b|"
     r"\b(?:orders?|contracts?)\b.{0,40}\b(?:worth|valued at|aggregating|amounting to|of value)\b|"
-    r"\bletter of (?:award|intent)\b|(?-i:\bL-?1\b(?!\s*\d))(?: bidder| position)?|\blowest bidder\b|(?-i:\bMo[Uu]s?\b|\bMOUs?\b)|"
+    r"\bletter of (?:award|intent)\b|(?-i:\bL-?1\b(?!\s*\d|/))(?: bidder| position)?|\blowest bidder\b|(?-i:\bMo[Uu]s?\b|\bMOUs?\b)|"
     r"\bmemorandum of understanding\b|\bframework agreement\b|\brate contract\b|"
     r"\bmaster (?:supply|service) agreement\b|\brelease orders?\b|"
     r"\b(?:orders?|contracts?|LoA|purchase orders?|work orders?)\b.{0,80}\b(?:cancell?ed|terminated|"
@@ -99,7 +99,7 @@ BINDING = re.compile(r"\b(?:purchase order|work order|contract (?:signed|execute
                      r"(?:received|receives|bagged|bags|secured|secures|won|wins|booked)\b[^.]{0,60}?\b(?:orders?|"
                      r"contracts?)|bagged|secured|awarded|firm orders?|confirmed (?:\w+ ){0,2}orders?|"
                      r"(?:receipt|bagging) of (?:an? )?(?:orders?|contracts?))\b", I)
-PROVISIONAL = re.compile(r"(?-i:\bL-?1\b(?!\s*\d))|\blowest bidder\b|\bletter of intent\b|\bLoI\b|\bselected as\b|\bshortlisted\b", I)
+PROVISIONAL = re.compile(r"(?-i:\bL-?1\b(?!\s*\d|/))|\blowest bidder\b|\bletter of intent\b|\bLoI\b|\bselected as\b|\bshortlisted\b", I)
 MOU = re.compile(r"(?-i:\bMo[Uu]s?\b|\bMOUs?\b)|\bmemorandum of understanding\b", I)
 FRAMEWORK = re.compile(r"\bframework agreement\b|\brate contract\b|\bmaster (?:supply|service) agreement\b", I)
 INQUIRY = re.compile(r"\bin (?:advanced )?discussions?\b|\bpipeline\b|\benquir(?:y|ies)\b|\bbids? submitted\b|"
@@ -204,7 +204,7 @@ COMMERCIAL_START_CUE = re.compile(
     r"\b(?:commenc\w*|start(?:ed|s|ing)?|start of|beg[ai]n\w*|achiev\w*|declared)\s+(?:the\s+)?"
     r"(?:its\s+)?(?:commercial (?:production|operations?|supplies|dispatch(?:es)?|shipments?|sales)|"
     r"(?:production|operations) at|supplies to|deliveries to)\b|"
-    r"\bcommercial operations? date\b|(?-i:\bCOD\b)|"
+    r"\bcommercial operations? date\b|(?-i:(?<!/)\bCOD\b(?!/))|"
     r"\bfirst (?:commercial )?(?:shipment|dispatch|consignment|export (?:order|shipment)|supplies|delivery|batch)\b|"
     r"\b(?:commercial|regular|serial|mass|volume) production\b[^.]{0,40}\b(?:commenced|started|began|begun|commence|start)\b|"
     r"\bdeclared (?:as )?commercial\b|\bstarted (?:supplies|deliveries|shipments|dispatches)\b", I)
@@ -264,7 +264,9 @@ ORDER_LEGAL_NOISE = re.compile(
     r"\bclaimants?\b|\bIB Code\b|\binsolvency\b|\bcontracts?,\s*(?:[\w-]+\s+){0,3}agreements?\b|"
     r"\bSecurities Contracts\b|\bContracts \(Regulation\)|\bdamages\b|\btrial court\b|\bbid guarantees?\b|"
     r"\bbid is unsuccessful\b|\bparticipated in\b[^.]{0,40}\b(?:RFPs?|bids?|tenders?)\b|"
-    r"\bissued by\b[^.]{0,80}\b(?:Board|Commission|Authority|Secretary)\b|\bRegulatory Commission\b", I)
+    r"\bissued by\b[^.]{0,80}\b(?:Board|Commission|Authority|Secretary)\b|\bRegulatory Commission\b|"
+    r"\bcoram\b|\bhon.?ble\b|\border (?:delivered|pronounced|reserved) on\b|"
+    r"\bframework agreement\b[^.]{0,80}\b(?:banks?|lenders?|financial institutions?)\b", I)
 # An MoU about property, payment instalments or its own cancellation is not a customer order
 MOU_NOISE = re.compile(r"\bpropert(?:y|ies)\b|\bland\b|\brescind\w*|\b(?:on|upon) (?:the )?execution of the MoU\b|"
                        r"\btermination of the MoU\b|\bcancel\w* the MoU\b|\bsecurity deposit\b|\blenders?\b|\bleasehold\b", I)
