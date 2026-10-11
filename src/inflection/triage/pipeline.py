@@ -6,7 +6,7 @@
    the slots (``rules.allocate``) and stores the shortlist with one item per company, shortlisted
    or not.  One shortlist per week; ``dry_run`` previews without storing.
 2. ``show`` prints a week's shortlist; ``record`` stores a triage result on a shortlisted company,
-   once, which starts its cooldown.
+   once, which starts its cooldown, with the latest packet it was given (``inflection.packets``).
 
 The cutoff is the end of the week (Sunday midnight IST), or now for the current week, so a past
 week can be rebuilt as it would have looked then: evaluations are read by their ``as_of``.
@@ -131,9 +131,12 @@ def record(conn, day: date, symbol: str, action: str, note: Optional[str] = None
     with conn.transaction():
         n = conn.execute(
             """UPDATE triage_shortlist_items SET triage_action = %s, triage_note = %s, triaged_by = %s,
-                      triaged_at = now(), revision = revision + 1
+                      triaged_at = now(), revision = revision + 1,
+                      packet_id = (SELECT packet_id FROM triage_packets p
+                                    WHERE p.shortlist_id = %s AND p.issuer_id = %s
+                                    ORDER BY p.created_at DESC, p.packet_id LIMIT 1)
                 WHERE shortlist_id = %s AND issuer_id = %s AND revision = %s AND triage_action IS NULL""",
-            (action, note, by, sid, issuer_id, rev)).rowcount
+            (action, note, by, sid, issuer_id, sid, issuer_id, rev)).rowcount
         if n != 1:
             return dict(symbol=symbol, error="changed by someone else; read it again")
         conn.execute("""INSERT INTO audit_log (actor, actor_kind, action, target_table, target_id, details)
