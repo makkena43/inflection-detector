@@ -15,6 +15,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8"]
+verify = ["anthropic>=1.0"]           # python -m inflection.commercial verify
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -31,6 +31,7 @@ from ..asof import IST, available_at
 from ..states import PublicationBasis
 from ..units import Money, Scale
 from . import vocabulary as V
+from . import verify
 from .extract import Mention, extract_document
 from .resolve import (CLASS_ORDER, Assessment, EventState, Placement, Resolver, assess, evaluation, execution_end,
                       materiality)
@@ -352,12 +353,19 @@ def resolve(conn, limit: Optional[int] = None, now: Optional[datetime] = None) -
     now = now or datetime.now(timezone.utc)
     run_id = uuid.uuid4()
     rows = conn.execute(
-        f"""SELECT {_MENTION_COLS} FROM commercial_mentions m
+        f"""SELECT {_MENTION_COLS}, {verify.REJECTED_SQL} FROM commercial_mentions m
              WHERE m.rules_version = %s
                AND NOT EXISTS (SELECT 1 FROM commercial_resolutions r WHERE r.mention_id = m.mention_id)
              ORDER BY m.issuer_id, m.published_at, m.text_artifact_id, m.page_no, m.span_start
              LIMIT %s""", (V.RULES_VERSION, limit)).fetchall()
     out: Counter = Counter()
+    rejected = [r for r in rows if r[-1]]
+    rows = [r[:-1] for r in rows if not r[-1]]
+    for r in rejected:                         # the model check found no company event in the passage
+        with conn.transaction():
+            _apply(conn, r[:-1], Placement("NOT_AN_EVENT", note=f"rejected by model check {verify.VERIFIER_VERSION}"),
+                   run_id)
+        out["REJECTED_BY_CHECK"] += 1
     for issuer_id, issuer_rows in groupby(rows, key=lambda r: r[1]):
         resolver = Resolver(str(issuer_id), load_events(conn, issuer_id))
         active = _active_case(conn, issuer_id)

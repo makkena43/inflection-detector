@@ -1,8 +1,10 @@
 """python -m inflection.commercial {scan,resolve,run,report,show} ...
 
     scan    [--from DATE] [--to DATE] [--limit N]   read filings not yet read under the current rules
+    verify  [--from DATE] [--to DATE] [--limit N]   model check of passages not yet verified (needs the
+                                                    anthropic package and an API key or `ant auth login`)
     resolve [--limit N]                             place passages onto company events, evaluate
-    run     [--from DATE] [--to DATE]               scan, then resolve
+    run     [--from DATE] [--to DATE] [--verify]    scan, (verify,) then resolve
     report  [--from DATE] [--to DATE] [--top N]     counts by status, family, outcome, stage, priority
     show    SYMBOL                                  one company's commercial timeline
 
@@ -25,18 +27,28 @@ def main(argv: Optional[list[str]] = None) -> int:
     import psycopg
 
     ap = argparse.ArgumentParser(prog="python -m inflection.commercial")
-    ap.add_argument("command", choices=("scan", "resolve", "run", "report", "show"))
+    ap.add_argument("command", choices=("scan", "verify", "resolve", "run", "report", "show"))
     ap.add_argument("symbol", nargs="?")
     ap.add_argument("--from", dest="start", type=date.fromisoformat)
     ap.add_argument("--to", dest="end", type=date.fromisoformat)
     ap.add_argument("--limit", type=int)
     ap.add_argument("--top", type=int, default=20)
+    ap.add_argument("--verify", action="store_true", help="run: check passages with the model before resolving")
+    ap.add_argument("--workers", type=int, default=4, help="verify: parallel model calls")
     a = ap.parse_args(argv)
     if a.command == "show" and not a.symbol:
         ap.error("show needs a SYMBOL")
     with psycopg.connect(os.environ["INFLECTION_DSN"], autocommit=True) as conn:
         if a.command in ("scan", "run"):
             print("scan:", json.dumps(dict(pipeline.scan(conn, a.start, a.end, a.limit))))
+        if a.command == "verify" or (a.command == "run" and a.verify):
+            import anthropic
+
+            from . import verify
+            lo, hi = pipeline._day_bounds(a.start, a.end)
+            print("verify:", json.dumps(dict(verify.verify_pending(
+                conn, anthropic.Anthropic(), lo, hi, a.limit, a.workers,
+                progress=lambda i, n, c: print(f"  verify {i}/{n} {json.dumps(c)}", flush=True)))))
         if a.command in ("resolve", "run"):
             print("resolve:", json.dumps(dict(pipeline.resolve(conn, a.limit))))
         if a.command == "report":
