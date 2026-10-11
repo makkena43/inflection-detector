@@ -44,3 +44,43 @@ def test_noise_is_not_a_commercial_mention(text):
 ])
 def test_genuine_mentions_are_kept(text, family):
     assert families(text) == [family]
+
+
+@pytest.mark.parametrize("text", [
+    "M. No: FCS-631 7 Encl: a/a HERITAGE FOODS LIMITED CIN : L1 5209TG1992PLC014332 AN ISO: 22000 CERTIFIED COMPANY.",
+    "In our opinion, the company has defaulted in repayment of loans or borrowings to a financial institution.",
+    "Sub: Disclosures of details on payment of interest/repayment of principal amount on loans from banks.",
+    "a. Repayment of borrowings (32.50)",
+    "The Chairman called the Meeting to order as the requisite quorum was present and delivered his speech.",
+    "The Securities Contracts (Regulation) Rules, 1957, as amended or modified from time to time.",
+    "The Group has assessed that its master service agreement with operators contains a lease, as lessor.",
+    "If the Company fails to clear title to the property by September 30, 2020, the Company would rescind or "
+    "cancel the MOU.",
+    "Further, the commercial operation date (COD) in respect of a few subsidiaries has been delayed due to "
+    "various reasons.",
+    "In case of preferential issue the listed entity shall disclose the following additional details.",
+])
+def test_commercial_3_noise(text):
+    assert families(text) == []
+
+
+@pytest.mark.parametrize("text, family", [
+    ("The Company has been declared L1 bidder for a Rs. 450 crore NHAI contract.", "ORDER"),
+    ("Patratu Project: The Company has started its commercial operation from the Patratu plant.", "COMMERCIAL_START"),
+    ("The Company reduced Net Debt by Rs. 1,099 crore in the quarter.", "DEBT_REDUCTION"),
+])
+def test_commercial_3_keeps(text, family):
+    assert families(text) == [family]
+
+
+@pytest.mark.parametrize("text", [
+    "Rental revenue is recognized as and when services are rendered as per the master service agreement.",
+    "Contracts (Regulation) Rules, 1957, as amended.",
+    "The brief summary of the MOU signed by the Company and the lenders are as follows:",
+    "The Group has received legal advice that the order and the reduced damages awarded are supported by evidence.",
+    "Bid guarantees are returned either upon receipt of an order or in case our bid is unsuccessful.",
+    "Reduction in repo rates has resulted in overall lower average cost of debt.",
+    "The proceeds will be used for repayment of outstanding loans, meeting our working capital requirements.",
+])
+def test_commercial_4_noise(text):
+    assert families(text) == []

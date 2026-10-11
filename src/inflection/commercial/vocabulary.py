@@ -17,7 +17,7 @@ from __future__ import annotations
 import hashlib
 import re
 
-RULES_VERSION = "commercial-2"
+RULES_VERSION = "commercial-4"
 
 I = re.I
 
@@ -69,7 +69,8 @@ LEGAL_ORDER = re.compile(
     r"imposing|levying|appeal|adjudicating)\b", I)
 # "in order to", buy-back / market orders, standing orders: the word "order" without a customer
 ORDER_NOISE = re.compile(r"\bin order (?:to|for|that)\b|\bin the order of\b|\b(?:standing|delegation|pecking|"
-                         r"chronological|descending|ascending) order\b|\border of (?:the )?(?:board|court|tribunal)\b",
+                         r"chronological|descending|ascending) order\b|\border of (?:the )?(?:board|court|tribunal)\b|"
+                         r"\b(?:meeting|called) to order\b",
                          I)
 MARKET_ORDER = re.compile(r"\b(?:buy-?back|tender offer|open offer|eligible shareholders?|bids? from|stock ?brokers?|"
                           r"trading members?|demat|order book of the exchange|bidding period|custodian|participant)\b", I)
@@ -87,7 +88,7 @@ ORDER_CUE = re.compile(
     r"\b(?:received|receives|receipt of|bagged|bags|bagging(?: of)?|secured|secures|won|wins|awarded|has been awarded)"
     r"\b.{0,80}\b(?:orders?|contracts?|letter of (?:award|intent)|LoA|LoI|purchase orders?|work orders?)\b|"
     r"\b(?:orders?|contracts?)\b.{0,40}\b(?:worth|valued at|aggregating|amounting to|of value)\b|"
-    r"\bletter of (?:award|intent)\b|(?-i:\bL-?1\b)(?: bidder| position)?|\blowest bidder\b|(?-i:\bMo[Uu]s?\b|\bMOUs?\b)|"
+    r"\bletter of (?:award|intent)\b|(?-i:\bL-?1\b(?!\s*\d))(?: bidder| position)?|\blowest bidder\b|(?-i:\bMo[Uu]s?\b|\bMOUs?\b)|"
     r"\bmemorandum of understanding\b|\bframework agreement\b|\brate contract\b|"
     r"\bmaster (?:supply|service) agreement\b|\brelease orders?\b|"
     r"\b(?:orders?|contracts?|LoA|purchase orders?|work orders?)\b.{0,80}\b(?:cancell?ed|terminated|"
@@ -98,7 +99,7 @@ BINDING = re.compile(r"\b(?:purchase order|work order|contract (?:signed|execute
                      r"(?:received|receives|bagged|bags|secured|secures|won|wins|booked)\b[^.]{0,60}?\b(?:orders?|"
                      r"contracts?)|bagged|secured|awarded|firm orders?|confirmed (?:\w+ ){0,2}orders?|"
                      r"(?:receipt|bagging) of (?:an? )?(?:orders?|contracts?))\b", I)
-PROVISIONAL = re.compile(r"(?-i:\bL-?1\b)|\blowest bidder\b|\bletter of intent\b|\bLoI\b|\bselected as\b|\bshortlisted\b", I)
+PROVISIONAL = re.compile(r"(?-i:\bL-?1\b(?!\s*\d))|\blowest bidder\b|\bletter of intent\b|\bLoI\b|\bselected as\b|\bshortlisted\b", I)
 MOU = re.compile(r"(?-i:\bMo[Uu]s?\b|\bMOUs?\b)|\bmemorandum of understanding\b", I)
 FRAMEWORK = re.compile(r"\bframework agreement\b|\brate contract\b|\bmaster (?:supply|service) agreement\b", I)
 INQUIRY = re.compile(r"\bin (?:advanced )?discussions?\b|\bpipeline\b|\benquir(?:y|ies)\b|\bbids? submitted\b|"
@@ -260,15 +261,28 @@ QUALIFICATION_NOISE = re.compile(r"\bEIR\b[^.]{0,25}\b(?:method|amortis\w*|amort
 # Litigation, scheme-of-arrangement asset lists and JV formation are not customer orders
 ORDER_LEGAL_NOISE = re.compile(
     r"\b(?:certified copy of|said|impugned|interim|final) (?:the )?order\b|\bpetition(?:er)?s?\b|\brespondents?\b|"
-    r"\bclaimants?\b|\bIB Code\b|\binsolvency\b|\bcontracts?,\s*(?:[\w-]+\s+){0,3}agreements?\b", I)
+    r"\bclaimants?\b|\bIB Code\b|\binsolvency\b|\bcontracts?,\s*(?:[\w-]+\s+){0,3}agreements?\b|"
+    r"\bSecurities Contracts\b|\bContracts \(Regulation\)|\bdamages\b|\btrial court\b|\bbid guarantees?\b|"
+    r"\bbid is unsuccessful\b|\bparticipated in\b[^.]{0,40}\b(?:RFPs?|bids?|tenders?)\b", I)
+# An MoU about property, payment instalments or its own cancellation is not a customer order
+MOU_NOISE = re.compile(r"\bpropert(?:y|ies)\b|\bland\b|\brescind\w*|\b(?:on|upon) (?:the )?execution of the MoU\b|"
+                       r"\btermination of the MoU\b|\bcancel\w* the MoU\b|\bsecurity deposit\b|\blenders?\b|\bleasehold\b", I)
+# Accounting-policy text (any family)
+ACCOUNTING_NOISE = re.compile(r"\bInd AS\b|\bexpected credit loss\w*|(?-i:\bECL\b)|\beffective interest\b|"
+                              r"\bamorti[sz]ed cost\b|\bfair value through\b|\blessor\b|\blessee\b|\bderecogni\w*|"
+                              r"\brevenue (?:is )?recogni[sz]ed\b|\brecogni[sz]ed as (?:and when )?(?:revenue|services)\b|"
+                              r"\binvoicing in excess\b|\bbilled in subsequent\b", I)
+# A start that is delayed has not happened (glued PDF text included: "hasbeendelayed")
+START_NOISE = re.compile(r"delay(?:ed|s)?|postpon\w*|deferr?\w*", I)
 JV_FORMATION = re.compile(r"\b(?:JVC?|joint venture(?: company)?)\b[^.]{0,80}\b(?:formed|incorporat\w*|shareholding)\b", I)
 # Defaults, cash-flow lines, objects of an issue, scheduled servicing and related-party tables are not
 # debt reduction
 DEBT_NOISE = re.compile(
-    r"\bdefaults?\b|\bnon[- ]payment\b|\boverdue\b|\bdelay(?:ed|s)? in (?:the )?(?:payment|repayment|servicing)\b|"
+    r"\bdefault(?:s|ed)?\b|\bnon[- ]payment\b|\bpayment of interest\b|\(\s*\d[\d,.]*\s*\)\s*$|\boverdue\b|\bdelay(?:ed|s)? in (?:the )?(?:payment|repayment|servicing)\b|"
     r"\bproceeds from\b|\bobjects? of\b|\btowards (?:debt )?repayments?\b|"
     r"\b(?:date|dates) of (?:the )?payment of interest\b|\bfollow[- ]up for redemption\b|"
-    r"\bterms and conditions of (?:the )?debentures\b|\binterest paid on loan\b", I)
+    r"\bterms and conditions of (?:the )?debentures\b|\binterest paid on loan\b|\brepo rates?\b|"
+    r"\bworking capital requirements?\b|\bhas not \w+ in (?:the )?repayment\b", I)
 # The company's share price, exchange clarifications and industry-wide shortages are not issuer pricing
 PRICING_NOISE = re.compile(
     r"\bprice (?:of|in) the (?:company'?s |company’s )?(?:security|securities|shares?|scrip|stock)\b|"
@@ -280,7 +294,9 @@ FINANCING_NOISE = re.compile(
     r"\butili[sz]ation of (?:the )?(?:issue |net )?proceeds\b|\bproceeds\b[^.]{0,40}\bshall be utili[sz]ed\b|"
     r"\bin the manner\b|\btime frame within which\b|\bultimate beneficial\b|\bcurrent and post\b|"
     r"\btrigger events?\b|\bpublic issue\s*/\s*rights issue\b|\bpreferential issue,? etc\b|"
-    r"\bclarifications?\b", I)
+    r"\bclarifications?\b|\blisted entity shall disclose\b|\bin case of (?:a )?preferential issue\b|"
+    r"\btype of issuance\b|\bsubject to certain exceptions\b|\bincentive\b|\bunutili[sz]ed\b|\blead manager\b|"
+    r"-/-|\bintends? to subscribe\b", I)
 
 # ---------------------------------------------------------------- families
 

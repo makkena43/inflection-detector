@@ -420,8 +420,14 @@ def _family(s: str) -> Optional[tuple[str, str, re.Match]]:
                 continue                         # order-book or inflow totals, not one order
             if V.MOU.search(s) and not V.ORDER_NOUN.search(s) and V.MOU_INVESTMENT.search(s):
                 return "CAPACITY", "CAPACITY", m  # an investment MoU is a capacity ambition
+        if V.ACCOUNTING_NOISE.search(s):
+            return None                          # accounting-policy text
         if name == "ORDER" and (V.ORDER_LEGAL_NOISE.search(s) or (V.MOU.search(s) and V.JV_FORMATION.search(s))):
             continue                             # litigation, asset lists, JV formation
+        if name == "ORDER" and V.MOU.search(s) and not V.ORDER_NOUN.search(s) and V.MOU_NOISE.search(s):
+            continue                             # property / payment-term MoUs
+        if name == "COMMERCIAL_START" and V.START_NOISE.search(s):
+            continue                             # a delayed start has not happened
         if name == "QUALIFICATION" and V.CORPORATE_APPROVAL.search(s) and not re.search(r"vendor|supplier", s, re.I):
             continue                             # approved by the board / members: not a customer approval
         if name == "QUALIFICATION" and V.QUALIFICATION_NOISE.search(s):
