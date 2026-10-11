@@ -29,12 +29,13 @@ The design spec (v1.0, sections 1 to 23) is in [`docs/spec.md`](docs/spec.md). K
 | Commercial route: filing text -> cited passages (orders, qualifications, commercial starts, capacity, debt, loss-drag removal, pricing, launches, financing) -> per-company event timeline with dated versions -> materiality against point-in-time revenue -> priority class and one candidate evaluation per filing | `src/inflection/commercial/` | §5.1, §5.2, §15 tests 1, 3-5, §18 |
 | Financial route: each results XBRL filing against the same period a year earlier (point in time, same scope and length) -> spec 18.1 checks (margins, operating profit, segment losses, finance cost; working capital reported as not covered) -> mechanism from commercial events public by then -> the same priority classes; one line per company across both routes | `src/inflection/financial/`, `src/inflection/queue.py` | §18.1, §18.2 |
 | Weekly shortlist for AI triage: the combined queue at the week's cutoff, each company with its waiting time -> slots (updates, ranked P1/P2, oldest-first exploration, rotating watch audit) with an optional cap that defers visibly, a 30-day cooldown after a triage, stale marking; triage results recorded per company | `src/inflection/triage/`, `src/inflection/queue.py` | §5.2, §5.3, §15 test 13, §18.2, §18.3 |
+| Triage packets: per shortlisted company, a frozen point-in-time cut at the shortlist's cutoff (why now, risk flags, trigger and earlier comparable passages, all contradicting evidence, eight-quarter financial snapshot in one scope, price and liquidity adjusted for splits and bonuses, documents on demand) inside a 12,000-token budget with every cut listed; versioned by content hash, exported for a chat with the triage return schema | `src/inflection/packets/` | §5.3, §6, §9 Mode A, §15 tests 6, 7, 12, §17 |
 
 Code ported from MakroGraph is listed, with its reasons and changes, in [`docs/reuse_inventory.md`](docs/reuse_inventory.md). This project does not import MakroGraph code at run time; its price history can be copied in once (below).
 
 ## Not built yet
 
-Dividend-adjusted (total return) prices, BSE-only companies' results, balance-sheet figures (working-capital days), opening research cases from triage results, the triage packet itself, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
+Dividend-adjusted (total return) prices, BSE-only companies' results, balance-sheet figures (working-capital days), opening research cases from triage results, importing a model's triage JSON with evidence-ID checks, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest and the validation harness.
 
 ## Checking the exchange adapters live
 
@@ -204,6 +205,30 @@ commercial stage, better class or U0) and `DATA_REPAIR` are stored too, so `show
 whole queue.  A company waiting over 90 days is marked `STALE_UNRESEARCHED` and stays queued.  One
 shortlist per week; `record` stores the triage action on a shortlisted company once
 (`DEFER_BUDGET` does not start a cooldown).  Apply migration `0009` first.
+
+## Triage packets
+
+```bash
+python -m inflection.packets assemble                # every shortlisted company this week (or --week 2026-10-05)
+python -m inflection.packets show KPIGREEN           # the latest packet as Markdown (--json for the structure)
+python -m inflection.packets export --out ~/triage   # WEEK/NN-SYMBOL/{packet.md, packet.json, triage_result.json}
+python -m inflection.packets page PACKET_ID TEXT_ARTIFACT_ID 2-4   # up to five pages of a filing
+```
+
+`assemble` builds one packet per shortlisted company from the database alone, cut at the
+shortlist's cutoff and mode with the shared as-of predicate: filings and passages by publication
+time, figures by `available_at`, prices as date-only by trade date (in replay also by when the
+system recorded them).  Each packet holds why the company is in the queue now (its evaluations and
+last triage), risk flags, the trigger events and passages, every contradicting passage, earlier
+comparable passages from the last three years, the latest eight quarters and three years in one
+statement scope with year-on-year growth (blank on a zero or negative base), trailing twelve
+months and the share count, the last close, returns, 52-week range, traded value and month-end
+closes (adjusted for splits and bonuses with a known multiplier, blank across one without), and
+the trigger documents to read page by page.  Over the 12,000-token budget, earlier passages are cut
+oldest first, then trigger passages beyond two per event; contradicting evidence is never cut, and
+every cut is listed in the packet.  Packets are append-only: a rerun with the same content keeps
+the packet, new content (a filing or figure recorded late) adds one that supersedes it.  `triage
+record` stores which packet the result was given.  Apply migration `0010` first.
 
 ## Running tests
 
