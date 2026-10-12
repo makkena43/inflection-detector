@@ -40,7 +40,7 @@ _BOUNDARY = re.compile(
     r"|\n(?=[ \t]*(?:\(?\d{1,2}[.)]\s|\(?[a-zA-Z][.)]\s|\(?[ivxIVX]{1,4}[.)]\s|[•●▪◦]|[-–]\s))")  # list item
 _ABBREV_END = re.compile(r"(?:\b(?:No|Nos|Rs|Ltd|Pvt|Co|Inc|M/s|Mr|Ms|Dr|viz|approx|Sr|Jr|Re|Mn|Cr|Bn|vs|"
                          r"i\.e|e\.g|etc|Govt|Dept|Corp|Intl|Ref|w\.e\.f)|\b[A-Z])\.$")
-_TABLE_NUMBER = re.compile(r"\(?-?\d[\d,]*\.\d+\)?|\(\d[\d,]*\)")
+_TABLE_NUMBER = re.compile(r"[({]?-?\d[\d,]*\.\d+[)}]?|\(\d[\d,]*\)")
 _ENUMERATOR = re.compile(r"\(?(?:\d{1,3}|[a-zA-Z]|[ivxIVX]{1,4})[.)]")
 MAX_SENTENCE = 600
 SHORT_DOCUMENT_PAGES = 4         # document-level order terms are read only from short announcements
@@ -432,11 +432,33 @@ def _family(s: str) -> Optional[tuple[str, str, re.Match]]:
     return None
 
 
-def sentence_mention(sent: Sentence) -> Optional[Mention]:
+def not_a_disclosure(s: str, as_of: Optional[date] = None) -> Optional[str]:
+    """Why a sentence is not a disclosure at all (None when it may be one).  Rules never fire on a
+    sentence with realised-award wording or a stated amount, except the dash-column and COD rules,
+    which have no amount to protect."""
+    awarded = bool(V.AWARD_VERB.search(s)) or bool(amounts(s))
+    if V.DASH_COLUMNS.search(s):
+        return "STATEMENT_ROW"
+    if V.COD_TERM.search(s) and not V.COD_ACHIEVED.search(s):
+        return "COD_DEFINITION"
+    if V.TEMPLATE_ROW.search(s):
+        return "TEMPLATE_ROW"
+    if not awarded and not V.NEWS_WORD.search(s) and (V.COVER_LETTER.search(s) or V.BOARD_MEETING.search(s)):
+        return "COVER_LETTER"
+    if as_of is not None and not awarded:
+        years = [int(y) for y in V.YEAR.findall(s)]
+        if years and max(years) <= as_of.year - V.STALE_AFTER_YEARS and V.ORDER_CUE.search(s):
+            return "STALE_DATE"
+    return None
+
+
+def sentence_mention(sent: Sentence, as_of: Optional[date] = None) -> Optional[Mention]:
     s = sent.text
     if (len(s) < 12 or is_garbled(s) or V.SAFE_HARBOUR.search(s) or V.ANNEX_FIELD.search(s) or table_row(s)
             or s.rstrip().endswith("?")):
         return None                               # questions (analysts on calls) are not disclosures
+    if not_a_disclosure(s, as_of):
+        return None
     hit = _family(s)
     if hit is None:
         return None
@@ -601,13 +623,13 @@ def _enrich_single_order(text: str, mentions: list[Mention]) -> None:
                 d["relationship_from_document"] = True
 
 
-def extract_document(pages: list[tuple[int, str]]) -> tuple[list[Mention], int]:
+def extract_document(pages: list[tuple[int, str]], as_of: Optional[date] = None) -> tuple[list[Mention], int]:
     """(mentions, sentences read) for one text artifact given its (page_no, body) pages."""
     sentences = [s for page_no, body in pages for s in split_page(page_no, body)]
     out: list[Mention] = []
     seen: set = set()
     for sent in sentences:
-        m = sentence_mention(sent)
+        m = sentence_mention(sent, as_of)
         if m is None:
             continue
         key = (m.family, re.sub(r"\W+", " ", m.quote.lower()))

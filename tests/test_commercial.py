@@ -456,3 +456,35 @@ def test_filing_without_issuer_is_data_repair_until_linked(db):
     assert pipeline.scan(db)["SCANNED"] == 1
     assert db.execute("SELECT status FROM commercial_scans WHERE text_artifact_id = %s", (art,)).fetchone() == (
         "SCANNED",)
+
+
+# ---------------- pre-filters: false-positive classes seen in the January 2021 model check ----------------
+
+@pytest.mark.parametrize("text", [
+    "Commercial Operation Date (SCOD)",
+    "C.O.D. Commercial Operations Date",
+    "Repayment of Loans Given - - - - - -",
+    "Any advance paid or received for the contract, if any: none",
+    "Scrip Code: 511072 Sub: Intimation to the exchange under Regulation 30 of the Listing Regulations",
+])
+def test_prefilter_drops_non_disclosures(text):
+    assert mentions(text) == []
+
+
+@pytest.mark.parametrize("text, family", [
+    ("Agra – Etawah Project achieves COD and starts toll collection at full tariffs.", "COMMERCIAL_START"),
+    ("Declaration of COD of 50 MW capacity by THDC India Limited.", "COMMERCIAL_START"),
+    ("Scrip Code: 532439 Olectra Greentech has received a Letter of Award for 100 electric buses from MSRTC.",
+     "ORDER"),
+    ("To BSE Limited. We are pleased to inform you that the Company has received an order worth Rs 45 crore "
+     "from Eastern Rail Systems Limited.", "ORDER"),
+])
+def test_prefilter_keeps_real_events(text, family):
+    assert [m.family for m in mentions(text)] == [family]
+
+
+def test_old_letter_of_intent_is_dropped_only_when_filing_date_is_known():
+    text = "On 30 April 2019, MSEDCL issued a letter of intent to STPL for execution of PPA of 507 MW."
+    assert extract_document([(1, text)], as_of=date(2021, 1, 28))[0] == []
+    assert extract_document([(1, text)], as_of=date(2019, 6, 1))[0] != []
+    assert extract_document([(1, text)])[0] != []
