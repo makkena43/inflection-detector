@@ -119,7 +119,7 @@ def scan(conn, start: Optional[date] = None, end: Optional[date] = None, limit: 
                 continue
             pages = conn.execute("SELECT page_no, body FROM text_pages WHERE text_artifact_id = %s ORDER BY page_no",
                                  (artifact,)).fetchall()
-            mentions, sentences = extract_document(pages)
+            mentions, sentences = extract_document(pages, as_of=at.date())
             with conn.cursor() as cur:
                 cur.executemany(
                     """INSERT INTO commercial_mentions

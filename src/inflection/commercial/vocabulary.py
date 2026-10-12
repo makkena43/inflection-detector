@@ -17,7 +17,7 @@ from __future__ import annotations
 import hashlib
 import re
 
-RULES_VERSION = "commercial-1"
+RULES_VERSION = "commercial-2"
 
 I = re.I
 
@@ -57,6 +57,34 @@ SKIP_CATEGORY = re.compile(
     r"credit rating\b(?!.*upgrad)|disclosure under sast|regulation 31\(4\)|encumbrance|pledge|"
     r"analyst ?/ ?investor meet(?:ing)? (?:intimation|schedule)|schedule of analyst|"
     r"intimation of (?:analyst|investor) (?:meet|call)", I)
+# Pre-filters (rules version commercial-2): passages that are not disclosures at all.  Each one only
+# fires when no realised-award wording, amount or achieved-date verb rescues the sentence.
+# "Scheduled Commercial Operation Date (SCOD)" / "C.O.D. Commercial Operations Date": a defined term,
+# not a commissioning, unless the sentence says it was achieved or declared.
+COD_TERM = re.compile(r"\bSCOD\b|\bC\.O\.D\.?|\bcommercial operations? date\b", I)
+COD_ACHIEVED = re.compile(r"\b(?:achiev\w*|declar\w*|attain\w*|reach\w*|commenc\w*|commission\w*|started|completed|"
+                          r"operationali[sz]\w*|successfully)\b", I)
+# Exchange cover letter / header run into one sentence ("Date: ... To BSE Limited The National Stock Exchange ...").
+COVER_LETTER = re.compile(r"\bscrip (?:code|id)\b|\bto,? (?:the )?(?:BSE Limited|National Stock Exchange)\b|"
+                          r"\bdear sirs?\b|\bthe (?:manager|general manager|listing department)\b.{0,80}"
+                          r"(?:exchange|BSE)|^\W*(?:ref|sub|subject)\s*[:.\-]", I)
+# Board-meeting intimations: "the Board of Directors, at its meeting held today, approved ..." (results, fund
+# raising, record dates).  Not a commercial event on their own.
+BOARD_MEETING = re.compile(r"\bboard of directors\b.{0,120}\bmeeting\b.{0,40}\b(?:held|today|on)\b", I)
+# Words that make a cover-letter sentence carry real news; the cover-letter rules stand down if any is present.
+NEWS_WORD = re.compile(r"\b(?:awards?(?:ed)?|orders?|contracts?|letter of (?:award|intent)|LoA|LoI|L-?1|commission\w*|"
+                       r"approvals?|approved by|launch\w*|capacity|plant|facility|commenc\w*|COD|bagged|secured|won|"
+                       r"wins?|receiv\w*|empanel\w*|ANDA|USFDA)\b", I)
+# SEBI disclosure template rows copied without an answer ("Any advance paid or received for the contract").
+TEMPLATE_ROW = re.compile(r"\bany advance paid or received\b|\bmanner of determining the pricing\b|"
+                          r"\bwhether the (?:order|contract)s? (?:is|are) (?:from|with)\b|"
+                          r"\bindicative time period\b", I)
+# Cash-flow / statement rows whose columns are dashes ("Repayment of Loans Given - - - - -").
+DASH_COLUMNS = re.compile(r"(?:^|\s)[-\u2013\u2014](?:\s+[-\u2013\u2014]){2,}(?:\s|$)")
+YEAR = re.compile(r"\b(20[0-3]\d)\b")
+# Letters of intent / awards that the sentence itself dates two or more years before the filing.
+STALE_AFTER_YEARS = 2
+
 # Regulatory / legal orders are not customer orders.
 _AUTHORITY = (r"(?:NCLT|NCL T|NCLAT|court|tribunal|SEBI|SAT|GST|tax|income[- ]tax|assessments?|demand|penalty|show[- ]cause|"
               r"adjudicat\w*|arbitra\w*|regulator|authority|commissioner|CESTAT|DGGI|enforcement|RBI|"
