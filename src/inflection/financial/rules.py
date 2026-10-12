@@ -19,7 +19,7 @@ from datetime import datetime, timedelta
 from decimal import Decimal
 from typing import Optional
 
-RULES_VERSION = "financial-2"
+RULES_VERSION = "financial-3"
 
 CR = Decimal(10) ** 7
 
