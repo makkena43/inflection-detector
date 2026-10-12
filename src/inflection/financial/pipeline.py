@@ -29,6 +29,7 @@ from typing import Optional
 from psycopg.types.json import Jsonb
 
 from ..asof import IST
+from ..commercial import vocabulary as CV
 from ..financials import SOURCE
 from . import rules as R
 
@@ -102,7 +103,8 @@ def _mechanisms(conn, issuer_id, at: datetime) -> list[R.Mechanism]:
              FROM events e JOIN event_versions v USING (event_id)
             WHERE e.issuer_id = %s AND e.event_type IS NOT NULL AND e.first_public_at BETWEEN %s AND %s
               AND coalesce(v.published_at, e.first_public_at) <= %s
-            ORDER BY e.event_id, v.version_no DESC""", (issuer_id, lo, at, at)).fetchall()
+              AND e.rules_version = %s                -- the commercial route's current reading only
+            ORDER BY e.event_id, v.version_no DESC""", (issuer_id, lo, at, at, CV.RULES_VERSION)).fetchall()
     from ..commercial.vocabulary import STAGE_RANK
     return sorted((R.Mechanism(str(eid), str(vid), etype, stage or "UNKNOWN", STAGE_RANK.get(stage or "", 0),
                                obs or "OBSERVED", first, details or {})

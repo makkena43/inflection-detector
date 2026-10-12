@@ -24,6 +24,7 @@ from typing import Optional
 from psycopg.types.json import Jsonb
 
 from ..asof import IST, eligible
+from ..commercial import vocabulary as CV
 from ..financial.pipeline import _SYMBOL
 from ..queue import LABEL
 from ..states import PublicationBasis, RunMode
@@ -122,8 +123,9 @@ def _passages(conn, it: dict) -> tuple[list[dict], dict]:
              FROM evidence_links e JOIN event_versions v USING (event_version_id) JOIN events ev ON ev.event_id = v.event_id
              LEFT JOIN document_publications p ON p.publication_id = e.publication_id
             WHERE ev.issuer_id = %s AND e.published_at > %s AND e.published_at <= %s
+              AND ev.rules_version = %s               -- one reading of each filing: the current rules'
             ORDER BY e.published_at DESC, e.evidence_id""",
-        (it["issuer_id"], it["cutoff"] - timedelta(days=LOOKBACK_DAYS), it["cutoff"])).fetchall()
+        (it["issuer_id"], it["cutoff"] - timedelta(days=LOOKBACK_DAYS), it["cutoff"], CV.RULES_VERSION)).fetchall()
     triggers = {str(v) for v in it["trigger_event_version_ids"]}
     found, excluded = [], {}
     for r in rows:

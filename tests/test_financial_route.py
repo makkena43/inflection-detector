@@ -8,6 +8,7 @@ from decimal import Decimal
 import pytest
 
 from inflection import financials, queue
+from inflection.commercial import vocabulary as CV
 from inflection.financial import pipeline
 from inflection.financial import rules as R
 from inflection.sources.common import IST
@@ -186,8 +187,8 @@ def _results(db, iss, src, n, end, at, scope="CONSOLIDATED", segments=None, unve
 
 def _event(db, iss, event_type, stage, at):
     eid = db.execute("""INSERT INTO events (issuer_id, event_type, first_public_at, rules_version, created_by)
-                        VALUES (%s, %s, %s, 'commercial-1', 'test') RETURNING event_id""",
-                     (iss, event_type, at)).fetchone()[0]
+                        VALUES (%s, %s, %s, %s, 'test') RETURNING event_id""",
+                     (iss, event_type, at, CV.RULES_VERSION)).fetchone()[0]
     return db.execute("""INSERT INTO event_versions (event_id, version_no, commercial_stage, event_type,
                                                      observation_status, content_hash, published_at, details,
                                                      magnitude_missing_reason)
@@ -292,3 +293,13 @@ def test_a_filing_read_before_its_year_earlier_figures_is_read_again_when_they_a
     out = pipeline.scan(db, now=t("2026-02-11"))
     assert out["EVALUATED"] == 1 and out["NO_COMPARABLE"] == 1               # Q1 FY26 now compared; FY25 has none
     assert pipeline.scan(db) == {}
+
+
+def test_mechanisms_come_from_the_current_commercial_rules_only(db):
+    iss, src = _seed(db)
+    t = lambda d: datetime.fromisoformat(d + "T18:30:00+05:30")             # noqa: E731
+    _event(db, iss, "ORDER", "BINDING_DEMAND", t("2025-09-15"))
+    old = _event(db, iss, "ORDER", "BINDING_DEMAND", t("2025-09-16"))
+    db.execute("UPDATE events SET rules_version = 'commercial-old' WHERE event_id = "
+               "(SELECT event_id FROM event_versions WHERE event_version_id = %s)", (old,))
+    assert len(pipeline._mechanisms(db, iss, t("2025-11-01"))) == 1
