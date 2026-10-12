@@ -55,11 +55,14 @@ def lines(conn, start: Optional[datetime] = None, end: Optional[datetime] = None
     return from_rows(evaluation_rows(conn, start, end), since)
 
 
-# A commercial evaluation made under older rules whose filing has since been read under the current
+# An evaluation made under older rules whose filing has since been read under the route's current
 # rules: the re-read replaces it (evaluations are append-only, so it stays stored but out of the queue).
-_SUPERSEDED = """c.route = 'COMMERCIAL' AND c.policy_version <> %(cv)s AND EXISTS (
+_SUPERSEDED = """(c.route = 'COMMERCIAL' AND c.policy_version <> %(cv)s AND EXISTS (
     SELECT 1 FROM commercial_scans s WHERE s.rules_version = %(cv)s
-       AND s.text_artifact_id = (c.components->'filing'->>'text_artifact_id')::uuid)"""
+       AND s.text_artifact_id = (c.components->'filing'->>'text_artifact_id')::uuid))
+ OR (c.route = 'FINANCIAL' AND c.policy_version <> %(fv)s AND EXISTS (
+    SELECT 1 FROM financial_scans old JOIN financial_scans cur USING (publication_id)
+     WHERE old.evaluation_id = c.evaluation_id AND cur.rules_version = %(fv)s))"""
 
 
 def evaluation_rows(conn, start: Optional[datetime] = None, end: Optional[datetime] = None,
@@ -77,7 +80,7 @@ def evaluation_rows(conn, start: Optional[datetime] = None, end: Optional[dateti
                AND (%(hi)s::timestamptz IS NULL OR c.as_of < %(hi)s)
                AND (%(all)s OR NOT ({_SUPERSEDED}))
              ORDER BY c.issuer_id, c.as_of""",
-        dict(lo=start, hi=end, all=include_superseded, cv=CV.RULES_VERSION)).fetchall()
+        dict(lo=start, hi=end, all=include_superseded, cv=CV.RULES_VERSION, fv=FR.RULES_VERSION)).fetchall()
 
 
 def from_rows(rows: list[tuple], since: Optional[dict] = None) -> list[dict]:

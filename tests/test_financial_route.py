@@ -303,3 +303,17 @@ def test_mechanisms_come_from_the_current_commercial_rules_only(db):
     db.execute("UPDATE events SET rules_version = 'commercial-old' WHERE event_id = "
                "(SELECT event_id FROM event_versions WHERE event_version_id = %s)", (old,))
     assert len(pipeline._mechanisms(db, iss, t("2025-11-01"))) == 1
+
+
+def test_the_queue_reads_a_results_filing_once_under_the_current_rules(db, monkeypatch):
+    iss, src = _seed(db)
+    t = lambda d: datetime.fromisoformat(d + "T18:30:00+05:30")             # noqa: E731
+    _results(db, iss, src, 1, date(2024, 6, 30), t("2024-08-10"), **BASE)
+    _results(db, iss, src, 3, date(2025, 6, 30), t("2025-08-09"), **{**BASE, "total_expenses": 850})
+    pipeline.scan(db, now=t("2026-02-11"))
+    before = len(queue.evaluation_rows(db))
+    assert before == 1
+    monkeypatch.setattr(R, "RULES_VERSION", "financial-next")
+    pipeline.scan(db, now=t("2026-02-11"))
+    assert len(queue.evaluation_rows(db)) == 1
+    assert len(queue.evaluation_rows(db, include_superseded=True)) == 2
