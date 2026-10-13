@@ -194,6 +194,10 @@ def test_assemble_from_the_database_at_the_shortlist_cutoff(db, tmp_path):
     template = json.loads((folder / "triage_result.json").read_text())
     assert template["packet_hash"] == new["packet_hash"] and template["triage_action"] == ""
     assert set(C.RETURN_FIELDS) <= set(template)
+    assert template["triage_rules_version"] == "triage-rules-3.2"
+    md = (folder / "packet.md").read_text()
+    assert "Triage rules triage-rules-3.2" in md and "size estimated from quantity" in md
+    assert "At most three" not in md                          # no weekly limit on picks
     assert triage.record(db, date(2026, 3, 16), "ABC", "WATCH_MILESTONE")["triage_action"] == "WATCH_MILESTONE"
     assert db.execute("SELECT packet_id::text FROM triage_shortlist_items").fetchone()[0] == new["packet_id"]
 
