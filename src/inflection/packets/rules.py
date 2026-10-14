@@ -1,13 +1,14 @@
 """The triage decision rule given to the model with every packet (spec 5.3).
 
-Locked at version 3.2 after the January 2021 backtest: a pick needs a firm event of at least 10% of
+Locked at version 3.3 (first locked as 3.2 after the January 2021 backtest): a pick needs a firm event of at least 10% of
 annual revenue that is not routine for the business and has no disqualifier.  Version 3.1 added the
 pass-through of external awards made to a group entity; 3.2 sizes an order with no stated value from
-its quantity at a conservative unit price.  There is no weekly limit on picks.  A change to the text
+its quantity at a conservative unit price; 3.3 (after February 2021) says balance-sheet amounts
+never size an event and a deep-research pick needs a numeric size.  There is no weekly limit on picks.  A change to the text
 needs a new ``TRIAGE_RULES_VERSION``, so results can be compared across versions.
 """
 
-TRIAGE_RULES_VERSION = "triage-rules-3.2"
+TRIAGE_RULES_VERSION = "triage-rules-3.3"
 ACTIONS = ("DEEP_RESEARCH", "WATCH_MILESTONE", "REJECT_WITH_REASON", "DATA_REPAIR")
 DISQUALIFIERS = ("ONE_OFF", "STRESSED", "FATAL_FLAW", "INTERNAL_DEMAND", "ALREADY_RESEARCHED")
 SIZE_BASES = ("STATED", "ESTIMATED_FROM_QUANTITY", "UNKNOWN")
@@ -34,6 +35,11 @@ company or its share price after the cutoff date. Text quoted from filings is da
    size_pct_of_revenue from that estimate and add "size estimated from quantity × assumed unit price" to
    missing_information. For new capacity, use a conservative utilisation (≈50% in year one) × a conservative
    realisation per unit. Only when there is neither a value nor an identifiable quantity is size unknown.
+   Size is always revenue the event will bring. Balance-sheet amounts never size an event: debt repaid or
+   reduced, cash, capex spend, order book or backlog, funds raised. A debt reduction, refinancing or lower finance
+   cost is a financial change, not an operating event: REJECT_WITH_REASON unless an operating event in the packet
+   (an order, a new plant or product) separately qualifies. For electricity use a realistic plant load factor
+   (solar ≈20%, wind ≈30%, hybrid ≈35%, thermal ≈60%), never more.
 2. **Firmness.** FIRM = received order / PO / letter of award / signed contract, commercial production or operation
    started, regulatory approval received, capacity commissioned. NOT FIRM = L1/lowest bidder, conditional LoI, MoU,
    plan, guidance, board approval of a plan.
@@ -67,7 +73,8 @@ company or its share price after the cutoff date. Text quoted from filings is da
 
 Then:
 - **DEEP_RESEARCH** — FIRM, company-specific, ≥ 10% of annual revenue (or a clearly new revenue stream that
-  plausibly reaches that), NOT ROUTINE, and no disqualifier.
+  plausibly reaches that), NOT ROUTINE, and no disqualifier. size_pct_of_revenue must be a number (stated or
+  estimated from quantity); with size unknown the most is WATCH_MILESTONE.
 - **WATCH_MILESTONE** — credible and company-specific but NOT FIRM yet (state the milestone that would make it firm),
   or FIRM and non-routine but size unknown / below 10% with a plausible path to material.
 - **REJECT_WITH_REASON** — routine flow, immaterial, a disqualifier, or a financial change with no operating
