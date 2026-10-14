@@ -195,3 +195,45 @@ def test_unreadable_xbrl_is_failed_with_reason_and_not_retried(db, tmp_path):
     assert reason.startswith("XBRL: no in-bse-fin")
     dl2, t = client({"INDAS_1.xml": [(200, filing())]})
     assert financials.load_pending(db, Archive(tmp_path / "a"), dl2, retry_failed=True) == {} and not t.calls
+
+
+def test_parallel_downloads_overlap_and_keep_a_bounded_ordered_queue():
+    from threading import Barrier, Lock
+    from inflection.sources.http import HttpClient, Response
+    barrier = Barrier(4)
+    lock = Lock()
+    calls = []
+    class DownloadClient:
+        def get(self, url, **kwargs):
+            with lock:
+                calls.append(url)
+            if int(url) < 4:
+                barrier.wait(timeout=5)
+            return Response(url, 200, url.encode())
+    rows = [(i, None, str(i)) for i in range(12)]
+    downloads = financials._download_rows(rows, HttpClient(), 4, DownloadClient)
+    row, response = next(downloads)
+    assert row[0] == 0 and response.body == b"0"
+    assert sorted(calls) == ["0", "1", "2", "3"]
+    rest = list(downloads)
+    assert [row[0] for row, response in rest] == list(range(1, 12))
+    assert len(calls) == len(set(calls)) == 12
+
+
+def test_parallel_load_stores_each_filing_once(db, tmp_path):
+    _company(db)
+    c, _ = client({"period=Quarterly": [(200, [entry(1), entry(3)])],
+                   "period=Half-Yearly": [(200, [])], "period=Annual": [(200, [])],
+                   "nseindia.com": [(200, b"")]})
+    financials.list_results(db, c, date(2021, 1, 1), date(2024, 11, 30))
+    def download_client():
+        return client({"INDAS_1.xml": [(200, filing())],
+                       "INDAS_3.xml": [(200, filing())]})[0]
+    out = financials.load_pending(db, Archive(tmp_path / "parallel"), download_client(),
+                                 workers=2, client_factory=download_client)
+    assert out["LOADED"] == 2
+    assert db.execute("SELECT count(DISTINCT publication_id) FROM financial_facts").fetchone()[0] == 2
+    count = db.execute("SELECT count(*) FROM financial_facts").fetchone()[0]
+    assert financials.load_pending(db, Archive(tmp_path / "parallel"), download_client(),
+                                  workers=2, client_factory=download_client) == {}
+    assert db.execute("SELECT count(*) FROM financial_facts").fetchone()[0] == count

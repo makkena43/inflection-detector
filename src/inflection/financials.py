@@ -16,7 +16,9 @@ value and ``UNVERIFIED``, the filed text kept.
 from __future__ import annotations
 
 import hashlib
-from collections import Counter
+from collections import Counter, deque
+from concurrent.futures import ThreadPoolExecutor
+from threading import local
 from datetime import date, datetime, time, timedelta
 from typing import Iterable, Optional
 
@@ -161,7 +163,38 @@ def _fail(conn, pid, rev, reason: str) -> None:
                            revision = revision + 1 WHERE publication_id = %s AND revision = %s""", (reason, pid, rev))
 
 
-def load_pending(conn, archive: Archive, client: HttpClient, limit: int = 500, retry_failed: bool = False) -> Counter:
+def _download_rows(rows, client, workers=1, client_factory=None):
+    """Bounded concurrent downloads, yielded in publication order; no worker touches the DB."""
+    if workers < 1:
+        raise ValueError("workers must be positive")
+    if workers == 1:
+        for row in rows:
+            yield row, client.get(row[2], referer=REFERER, accept="application/xml, text/xml, */*")
+        return
+    state = local()
+    def download(row):
+        if not hasattr(state, "client"):
+            state.client = client_factory() if client_factory else HttpClient(
+                min_interval=client.min_interval, retries=client.retries,
+                backoff=client.backoff, timeout=client.timeout, user_agent=client.user_agent)
+        return row, state.client.get(row[2], referer=REFERER, accept="application/xml, text/xml, */*")
+    remaining = iter(rows)
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        pending = deque()
+        for _ in range(workers):
+            row = next(remaining, None)
+            if row is None:
+                break
+            pending.append(pool.submit(download, row))
+        while pending:
+            yield pending.popleft().result()
+            row = next(remaining, None)
+            if row is not None:
+                pending.append(pool.submit(download, row))
+
+
+def load_pending(conn, archive: Archive, client: HttpClient, limit: int = 500, retry_failed: bool = False,
+                 workers: int = 1, client_factory=None, progress=None) -> Counter:
     """Download, archive and parse listed XBRL filings; append their figures to ``financial_facts``."""
     states = ["DISCOVERED", "FAILED"] if retry_failed else ["DISCOVERED"]
     rows = conn.execute(
@@ -170,10 +203,11 @@ def load_pending(conn, archive: Archive, client: HttpClient, limit: int = 500, r
             WHERE s.name = %s AND p.pipeline_state = ANY(%s)
             ORDER BY p.published_at NULLS LAST, p.publication_id LIMIT %s""", (SOURCE, states, limit)).fetchall()
     out: Counter = Counter()
-    for pid, rev, url, issuer_id, published_at, failure in rows:
-        if failure and not failure.startswith(("BLOCKED", "FAILED")):
-            continue                     # only download failures are retried; a bad file stays FAILED
-        resp = client.get(url, referer=REFERER, accept="application/xml, text/xml, */*")
+    rows = [row for row in rows if not row[5] or row[5].startswith(("BLOCKED", "FAILED"))]
+    for index, (row, resp) in enumerate(_download_rows(rows, client, workers, client_factory), 1):
+        pid, rev, url, issuer_id, published_at, failure = row
+        if progress and (index == 1 or (index - 1) % 100 == 0):
+            progress(index - 1, len(rows), dict(out))
         with conn.transaction():
             if not resp.ok:
                 kind = "BLOCKED" if resp.blocked else ("NOT_FOUND" if resp.status == 404 else "FAILED")
@@ -207,6 +241,8 @@ def load_pending(conn, archive: Archive, client: HttpClient, limit: int = 500, r
         out["LOADED"] += 1
         out["figures"] += len(parsed.figures)
         out["unverified_figures"] += sum(f.unverified for f in parsed.figures)
+    if progress:
+        progress(len(rows), len(rows), dict(out))
     return out
 
 
@@ -231,7 +267,7 @@ def results_report(conn) -> dict:
 
 def main(argv: Optional[list[str]] = None) -> int:
     """python -m inflection.financials list [--from 2021-01-01] [--to 2024-11-30] [--symbols A,B] [--relist]
-    python -m inflection.financials load --archive DIR [--limit N] [--retry-failed]
+    python -m inflection.financials load --archive DIR [--limit N] [--retry-failed] [--workers N]
     python -m inflection.financials report
 
     Connects with INFLECTION_DSN.  ``list`` resumes: symbols already listed for the window are skipped."""
@@ -253,8 +289,11 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--archive", type=Path)
     ap.add_argument("--limit", type=int, default=100000)
     ap.add_argument("--retry-failed", action="store_true", help="retry BLOCKED/FAILED downloads")
-    ap.add_argument("--interval", type=float, default=1.0, help="seconds between requests")
+    ap.add_argument("--interval", type=float, default=1.0, help="seconds between requests per worker")
+    ap.add_argument("--workers", type=int, default=1, help="parallel download workers (default: 1)")
     a = ap.parse_args(argv)
+    if a.workers < 1:
+        ap.error("--workers must be positive")
     if a.command == "load" and not a.archive:
         ap.error("load needs --archive")
     with psycopg.connect(os.environ["INFLECTION_DSN"], autocommit=True) as conn:
@@ -265,7 +304,8 @@ def main(argv: Optional[list[str]] = None) -> int:
                                   progress=lambda s, st, f, n: print(f"{s}: {st}, {f} in window, {n} new", flush=True))
             print(json.dumps(dict(counts), indent=2))
         elif a.command == "load":
-            print(json.dumps(dict(load_pending(conn, Archive(a.archive), client, a.limit, a.retry_failed)), indent=2))
+            print(json.dumps(dict(load_pending(conn, Archive(a.archive), client, a.limit, a.retry_failed, workers=a.workers,
+                progress=lambda done, total, counts: print(f"load: {done}/{total} {json.dumps(counts)}", flush=True))), indent=2))
         print(json.dumps(results_report(conn), indent=2))
     return 0
 

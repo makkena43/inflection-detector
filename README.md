@@ -125,7 +125,7 @@ with no usable split or bonus stored.
 
 ```bash
 python -m inflection.financials list --from 2021-01-01 --to 2024-11-30   # every current NSE symbol; resumable
-python -m inflection.financials load --archive ~/inflection-archive       # download, parse, store figures
+python -m inflection.financials load --archive ~/inflection-archive --workers 4       # download, parse, store figures
 python -m inflection.financials report
 ```
 
