@@ -348,16 +348,21 @@ def _evaluate(conn, issuer_id, at: datetime, items: list[tuple[Placement, Mentio
          _hash(payload))).fetchone()[0]
 
 
-def resolve(conn, limit: Optional[int] = None, now: Optional[datetime] = None) -> Counter:
-    """Place unresolved mentions of the current rules version and evaluate each filing's changes."""
+def resolve(conn, limit: Optional[int] = None, now: Optional[datetime] = None,
+            before: Optional[datetime] = None) -> Counter:
+    """Place unresolved mentions of the current rules version and evaluate each filing's changes.
+
+    ``before`` limits it to passages published earlier, so a month can be resolved once its model
+    check is in while later months wait for theirs."""
     now = now or datetime.now(timezone.utc)
     run_id = uuid.uuid4()
     rows = conn.execute(
         f"""SELECT {_MENTION_COLS}, {verify.REJECTED_SQL} FROM commercial_mentions m
              WHERE m.rules_version = %s
                AND NOT EXISTS (SELECT 1 FROM commercial_resolutions r WHERE r.mention_id = m.mention_id)
+               AND (%s::timestamptz IS NULL OR m.published_at < %s)
              ORDER BY m.issuer_id, m.published_at, m.text_artifact_id, m.page_no, m.span_start
-             LIMIT %s""", (V.RULES_VERSION, limit)).fetchall()
+             LIMIT %s""", (V.RULES_VERSION, before, before, limit)).fetchall()
     out: Counter = Counter()
     rejected = [r for r in rows if r[-1]]
     rows = [r[:-1] for r in rows if not r[-1]]

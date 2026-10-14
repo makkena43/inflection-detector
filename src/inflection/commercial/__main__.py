@@ -3,7 +3,7 @@
     scan    [--from DATE] [--to DATE] [--limit N]   read filings not yet read under the current rules
     verify  [--from DATE] [--to DATE] [--limit N]   model check of passages not yet verified (needs the
                                                     anthropic package and an API key or `ant auth login`)
-    resolve [--limit N]                             place passages onto company events, evaluate
+    resolve [--limit N] [--to DATE]                 place passages onto company events, evaluate
     run     [--from DATE] [--to DATE] [--verify]    scan, (verify,) then resolve
     report  [--from DATE] [--to DATE] [--top N]     counts by status, family, outcome, stage, priority
     show    SYMBOL                                  one company's commercial timeline
@@ -52,7 +52,8 @@ def main(argv: Optional[list[str]] = None) -> int:
                 conn, anthropic.Anthropic(), lo, hi, a.limit, a.workers, model=a.model or verify.MODEL,
                 progress=lambda i, n, c: print(f"  verify {i}/{n} {json.dumps(c)}", flush=True)))))
         if a.command in ("resolve", "run"):
-            print("resolve:", json.dumps(dict(pipeline.resolve(conn, a.limit))))
+            before = pipeline._day_bounds(None, a.end)[1] if a.command == "resolve" and a.end else None
+            print("resolve:", json.dumps(dict(pipeline.resolve(conn, a.limit, before=before))))
         if a.command == "report":
             print(json.dumps(pipeline.report(conn, a.start, a.end, a.top), indent=2, default=str))
         if a.command == "show":

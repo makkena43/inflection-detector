@@ -94,3 +94,18 @@ def test_verdicts_are_kept_per_model_and_resolve_reads_the_configured_one(db):
     assert verify.pending(db, model=other) == [] and verify.pending(db)          # the configured model still to do
     res = pipeline.resolve(db)
     assert res["NEW"] >= 1 and not res["REJECTED_BY_CHECK"]                     # other model's verdicts ignored
+
+
+def test_resolve_before_leaves_later_passages_for_their_own_check(db):
+    iss, src = _seed(db)
+    _filing(db, iss, src, 1, datetime(2026, 1, 20, 18, 5, tzinfo=IST), ["Cover letter", SEBI_ANNEX])
+    _filing(db, iss, src, 2, datetime(2026, 2, 20, 18, 5, tzinfo=IST), ["Cover letter", SEBI_ANNEX])
+    pipeline.scan(db)
+    first = pipeline.resolve(db, before=datetime(2026, 2, 1, tzinfo=IST))
+    assert sum(v for k, v in first.items() if k != "evaluations") >= 1
+    left = db.execute("""SELECT count(*) FROM commercial_mentions m WHERE NOT EXISTS
+                         (SELECT 1 FROM commercial_resolutions r WHERE r.mention_id = m.mention_id)""").fetchone()[0]
+    assert left >= 1                                                   # February waits for its own check
+    pipeline.resolve(db)
+    assert db.execute("""SELECT count(*) FROM commercial_mentions m WHERE NOT EXISTS
+                         (SELECT 1 FROM commercial_resolutions r WHERE r.mention_id = m.mention_id)""").fetchone()[0] == 0
