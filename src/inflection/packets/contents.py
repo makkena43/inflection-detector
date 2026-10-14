@@ -24,8 +24,9 @@ from typing import Optional
 
 from ..asof import IST
 from ..units import Money, Scale, growth
+from . import rules as R
 
-PACKET_VERSION = "triage-packet-1"
+PACKET_VERSION = "triage-packet-2"            # 2: carries the triage decision rule (rules.py)
 SCHEMA_VERSION = "1"
 TOKEN_BUDGET = 12_000                 # spec 5.3: initial packet target
 CHARS_PER_TOKEN = 4                   # rough estimate for English and figures; stated in the packet
@@ -41,7 +42,8 @@ STAGES = ("AMBITION", "FUNDED_PLAN", "QUALIFIED", "BINDING_DEMAND", "COMMERCIAL_
           "CANCELLED", "UNKNOWN")
 RETURN_FIELDS = ("issuer_id", "as_of", "event_ids", "mechanism", "what_changed", "commercial_stage",
                  "materiality_status", "next_milestone", "funding_status", "contradictions",
-                 "missing_information", "evidence_refs", "triage_action")
+                 "missing_information", "evidence_refs", "size_pct_of_revenue", "size_basis", "firm", "routine",
+                 "disqualifier", "pass_through", "triage_action", "confidence", "rationale", "triage_rules_version")
 
 
 def estimate_tokens(text: str) -> int:
@@ -535,14 +537,9 @@ def render(c: dict) -> str:
     L += [f"- {t['section']}: {t['omitted']} left out. {t['note']}" for t in m["truncation"]]
     if not m["missing_evidence"] and not m["truncation"]:
         L.append("None.")
-    L += ["", "## Your task", "",
-          "Decide one triage action from this packet alone. This is triage, not investment research, and you "
-          "may not recommend buying. Unknown is an acceptable answer: list it under missing_information. "
-          "Cite passages by their evidence id in evidence_refs; do not cite anything not shown here or read "
-          "with the page command.",
-          f"Actions: {', '.join(ACTIONS)}. At most three companies a week go to DEEP_RESEARCH.",
+    L += ["", "## Your task", "", f"Triage rules {R.TRIAGE_RULES_VERSION}.", "", R.RULES, "",
           f"Return JSON with exactly these fields: {', '.join(RETURN_FIELDS)}. "
-          f"commercial_stage is one of {', '.join(STAGES)}."]
+          f"Keep issuer_id, as_of, packet_hash, event_ids and triage_rules_version as given."]
     return "\n".join(L) + "\n"
 
 
@@ -552,4 +549,6 @@ def result_template(content: dict, packet_hash: str) -> dict:
                 packet_hash=packet_hash,
                 event_ids=sorted({e["event_id"] for e in content["events"]}), mechanism="", what_changed="",
                 commercial_stage="UNKNOWN", materiality_status="", next_milestone=None, funding_status="",
-                contradictions=[], missing_information=[], evidence_refs=[], triage_action="")
+                contradictions=[], missing_information=[], evidence_refs=[], size_pct_of_revenue=None,
+                size_basis="UNKNOWN", firm=None, routine=None, disqualifier=None, pass_through=False,
+                triage_action="", confidence="", rationale="", triage_rules_version=R.TRIAGE_RULES_VERSION)

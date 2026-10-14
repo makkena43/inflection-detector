@@ -246,3 +246,15 @@ def test_bse_history_without_isin_joins_the_scrip_codes_company(db):
                      ("INE666F01066", "SYMBOL", "NEW", date(2023, 6, 1), None)]
     assert "bse_spans_extended" not in prices.build_company_list(db)["counts"]
     assert [r["rows_written"] for r in prices.fill_prices(db, exchanges=("BSE",))] == [2, 1, 0, 2]
+
+
+def test_bse_filings_before_a_codes_first_known_day_join_its_company(db):
+    c, _ = client({"AnnSubCategoryGetData": [(200, {"Table": [bse_row(1)], "Table1": [{"ROWCNT": 1}]})]})
+    ingest.record_window(db, bse.BSEAnnouncements(c).list_window(DAY, DAY))       # scrip 543210, filed on DAY
+    db.execute("""INSERT INTO bhavcopy_rows (exchange, trade_date, code, series, ticker, isin, instrument_name,
+                                             source_formats) VALUES
+        ('BSE', '2026-10-20', '543210', 'B', 'XYZ', 'INE222B01022', 'XYZ LTD', '{BSE_UDIFF}')""")
+    prices.build_company_list(db)                         # the code is first known after the filing
+    assert prices.link_publications(db) == [dict(source="bse_announcements", linked=1, unlinked=0)]
+    assert db.execute("SELECT i.legal_name FROM document_publications JOIN issuers i USING (issuer_id)"
+                      ).fetchone() == ("XYZ LTD",)

@@ -8,6 +8,7 @@ from decimal import Decimal
 import pytest
 
 from inflection import financials, queue
+from inflection.commercial import vocabulary as CV
 from inflection.financial import pipeline
 from inflection.financial import rules as R
 from inflection.sources.common import IST
@@ -186,8 +187,8 @@ def _results(db, iss, src, n, end, at, scope="CONSOLIDATED", segments=None, unve
 
 def _event(db, iss, event_type, stage, at):
     eid = db.execute("""INSERT INTO events (issuer_id, event_type, first_public_at, rules_version, created_by)
-                        VALUES (%s, %s, %s, 'commercial-1', 'test') RETURNING event_id""",
-                     (iss, event_type, at)).fetchone()[0]
+                        VALUES (%s, %s, %s, %s, 'test') RETURNING event_id""",
+                     (iss, event_type, at, CV.RULES_VERSION)).fetchone()[0]
     return db.execute("""INSERT INTO event_versions (event_id, version_no, commercial_stage, event_type,
                                                      observation_status, content_hash, published_at, details,
                                                      magnitude_missing_reason)
@@ -280,3 +281,39 @@ def test_real_xbrl_filing_against_the_year_before(db, tmp_path):
     assert cls == "P3" and reasons[0].startswith("operating profit up 33.3% year on year (₹366.34 cr to ₹488.46 cr)")
     assert comp["filing"]["comparable_period_end"] == "2020-12-31"
     assert datetime.fromisoformat(comp["filing"]["available_at"]) == datetime(2022, 2, 25, 20, 56, 4, tzinfo=IST)
+
+
+def test_a_filing_read_before_its_year_earlier_figures_is_read_again_when_they_arrive(db):
+    iss, src = _seed(db)
+    t = lambda d: datetime.fromisoformat(d + "T18:30:00+05:30")             # noqa: E731
+    _results(db, iss, src, 3, date(2025, 6, 30), t("2025-08-09"), **{**BASE, "total_expenses": 850})
+    assert pipeline.scan(db, now=t("2026-02-11"))["NO_COMPARABLE"] == 1
+    assert pipeline.scan(db) == {}                                           # nothing new: not read again
+    _results(db, iss, src, 1, date(2024, 6, 30), t("2024-08-10"), **BASE)   # backfilled later
+    out = pipeline.scan(db, now=t("2026-02-11"))
+    assert out["EVALUATED"] == 1 and out["NO_COMPARABLE"] == 1               # Q1 FY26 now compared; FY25 has none
+    assert pipeline.scan(db) == {}
+
+
+def test_mechanisms_come_from_the_current_commercial_rules_only(db):
+    iss, src = _seed(db)
+    t = lambda d: datetime.fromisoformat(d + "T18:30:00+05:30")             # noqa: E731
+    _event(db, iss, "ORDER", "BINDING_DEMAND", t("2025-09-15"))
+    old = _event(db, iss, "ORDER", "BINDING_DEMAND", t("2025-09-16"))
+    db.execute("UPDATE events SET rules_version = 'commercial-old' WHERE event_id = "
+               "(SELECT event_id FROM event_versions WHERE event_version_id = %s)", (old,))
+    assert len(pipeline._mechanisms(db, iss, t("2025-11-01"))) == 1
+
+
+def test_the_queue_reads_a_results_filing_once_under_the_current_rules(db, monkeypatch):
+    iss, src = _seed(db)
+    t = lambda d: datetime.fromisoformat(d + "T18:30:00+05:30")             # noqa: E731
+    _results(db, iss, src, 1, date(2024, 6, 30), t("2024-08-10"), **BASE)
+    _results(db, iss, src, 3, date(2025, 6, 30), t("2025-08-09"), **{**BASE, "total_expenses": 850})
+    pipeline.scan(db, now=t("2026-02-11"))
+    before = len(queue.evaluation_rows(db))
+    assert before == 1
+    monkeypatch.setattr(R, "RULES_VERSION", "financial-next")
+    pipeline.scan(db, now=t("2026-02-11"))
+    assert len(queue.evaluation_rows(db)) == 1
+    assert len(queue.evaluation_rows(db, include_superseded=True)) == 2

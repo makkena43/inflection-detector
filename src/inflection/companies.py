@@ -271,18 +271,70 @@ UPDATE document_publications p SET issuer_id = s.issuer_id, revision = p.revisio
 
 
 def link_publications(conn) -> dict:
-    """Link filings by ISIN, then by the code valid on the filing date.  Returns what each step linked."""
+    """Link filings to known securities by ISIN, then by the code valid on the filing date, and only
+    then create a PROVISIONAL company for an ISIN still unknown.  A filing can carry an ISIN the
+    company has since replaced (NSE's 2021 filings carry pre-split ISINs); creating a company for it
+    before trying the dated symbol split one company in two.  Returns what each step linked."""
     counts: Counter = Counter()
+    with conn.transaction():
+        counts["nse_by_isin"] = conn.execute(_LINK_NSE).rowcount
+        counts["bse_by_isin"] = conn.execute(_LINK_BSE).rowcount
+    before = sum(r["linked"] for r in prices.issuer_link_report(conn))
+    prices.link_publications(conn)
+    counts["by_code"] = sum(r["linked"] for r in prices.issuer_link_report(conn)) - before
     with conn.transaction():
         for isin, name, sme in conn.execute(_NEW_FROM_FILINGS).fetchall():
             prices._security(conn, isin, name or isin, "SME" if sme else "UNKNOWN", counts, "nse_announcements",
                              CREATED_BY)
-        counts["nse_by_isin"] = conn.execute(_LINK_NSE).rowcount
-        counts["bse_by_isin"] = conn.execute(_LINK_BSE).rowcount
-    before = sum(r["linked"] for r in prices.issuer_link_report(conn))
-    report = prices.link_publications(conn)
-    counts["by_code"] = sum(r["linked"] for r in report) - before
+        counts["nse_by_isin"] += conn.execute(_LINK_NSE).rowcount
+    report = prices.issuer_link_report(conn)
     return {"counts": dict(counts), "filings": report, "top_unlinked": prices.unlinked_symbols(conn)}
+
+
+# A PROVISIONAL company made from a filing ISIN, with no exchange code of its own, whose NSE filings'
+# symbols all resolve on their dates to one other company: the same company under an older ISIN.
+_DUPLICATES = f"""
+WITH orphan AS (
+    SELECT i.issuer_id FROM issuers i
+     WHERE i.identity_status = 'PROVISIONAL'
+       AND EXISTS (SELECT 1 FROM securities s WHERE s.issuer_id = i.issuer_id)
+       AND NOT EXISTS (SELECT 1 FROM securities s JOIN identifier_history h USING (security_id)
+                        WHERE s.issuer_id = i.issuer_id)
+), resolved AS (
+    SELECT p.issuer_id AS orphan_id, s.issuer_id AS target_id, count(*) AS filings
+      FROM document_publications p JOIN sources src USING (source_id)
+      JOIN orphan o ON o.issuer_id = p.issuer_id
+      LEFT JOIN identifier_history h
+        ON h.exchange = 'NSE' AND h.kind = 'SYMBOL' AND upper(h.value) = upper(p.raw_metadata->>'_symbol')
+       AND {prices._PUB_DAY} BETWEEN h.valid_from AND coalesce(h.valid_to, 'infinity'::date)
+      LEFT JOIN securities s ON s.security_id = h.security_id
+     WHERE src.name = 'nse_announcements'
+     GROUP BY 1, 2
+)
+SELECT orphan_id, min(target_id::text)::uuid, sum(filings)
+  FROM resolved GROUP BY 1
+HAVING count(*) = 1 AND bool_and(target_id IS NOT NULL AND target_id <> orphan_id)"""
+
+
+def merge_filing_duplicates(conn) -> dict:
+    """Fold each PROVISIONAL company that only duplicates a known one (see ``_DUPLICATES``) into it: its
+    securities (the older ISIN) and filings move over, and the merge is written to the audit log.
+    Rows derived from the filings (passages, events, evaluations) keep the old company until the
+    routes are re-run under new rules."""
+    counts: Counter = Counter()
+    for orphan, target, n in conn.execute(_DUPLICATES).fetchall():
+        with conn.transaction():
+            isins = [r[0] for r in conn.execute("SELECT isin FROM securities WHERE issuer_id = %s", (orphan,))]
+            conn.execute("UPDATE securities SET issuer_id = %s WHERE issuer_id = %s", (target, orphan))
+            moved = conn.execute("""UPDATE document_publications SET issuer_id = %s, revision = revision + 1
+                                     WHERE issuer_id = %s""", (target, orphan)).rowcount
+            conn.execute("""INSERT INTO audit_log (actor, actor_kind, action, target_table, target_id, details)
+                            VALUES (%s, 'SYSTEM', 'MERGE_DUPLICATE_ISSUER', 'issuers', %s, %s)""",
+                         (CREATED_BY, str(target), Jsonb(dict(merged_issuer=str(orphan), isins=isins,
+                                                              filings_moved=moved, filings_resolved=int(n)))))
+        counts["issuers_merged"] += 1
+        counts["filings_moved"] += moved
+    return dict(counts)
 
 
 def master_report(conn) -> dict:
@@ -349,6 +401,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         elif a.command == "build":
             print(json.dumps(build_from_master(conn), indent=2))
             print(json.dumps(link_publications(conn), indent=2))
+            print(json.dumps({"duplicates": merge_filing_duplicates(conn)}, indent=2))
         else:
             print(json.dumps(master_report(conn), indent=2))
     return 0

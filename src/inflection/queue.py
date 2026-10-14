@@ -19,6 +19,7 @@ from collections import defaultdict
 from datetime import date, datetime
 from typing import Optional
 
+from .commercial import vocabulary as CV
 from .financial import rules as FR
 from .financial.pipeline import _SYMBOL, _day_bounds
 
@@ -54,8 +55,21 @@ def lines(conn, start: Optional[datetime] = None, end: Optional[datetime] = None
     return from_rows(evaluation_rows(conn, start, end), since)
 
 
-def evaluation_rows(conn, start: Optional[datetime] = None, end: Optional[datetime] = None) -> list[tuple]:
-    """The evaluations with ``as_of`` in [start, end), as ``from_rows`` reads them, by company and time."""
+# An evaluation made under older rules whose filing has since been read under the route's current
+# rules: the re-read replaces it (evaluations are append-only, so it stays stored but out of the queue).
+_SUPERSEDED = """(c.route = 'COMMERCIAL' AND c.policy_version <> %(cv)s AND EXISTS (
+    SELECT 1 FROM commercial_scans s WHERE s.rules_version = %(cv)s
+       AND s.text_artifact_id = (c.components->'filing'->>'text_artifact_id')::uuid))
+ OR (c.route = 'FINANCIAL' AND c.policy_version <> %(fv)s AND EXISTS (
+    SELECT 1 FROM financial_scans old JOIN financial_scans cur USING (publication_id)
+     WHERE old.evaluation_id = c.evaluation_id AND cur.rules_version = %(fv)s))"""
+
+
+def evaluation_rows(conn, start: Optional[datetime] = None, end: Optional[datetime] = None,
+                    include_superseded: bool = False) -> list[tuple]:
+    """The evaluations with ``as_of`` in [start, end), as ``from_rows`` reads them, by company and time.
+    Commercial evaluations superseded by a re-read under the current rules are left out unless
+    ``include_superseded`` (an actual-system replay, which must see what was stored at the time)."""
     return conn.execute(
         f"""SELECT c.issuer_id, {LABEL.format(col='c.issuer_id')}, i.legal_name, c.route, c.as_of,
                    c.priority_class, c.outcome, c.reasons, c.components, c.ranking_tuple,
@@ -64,7 +78,9 @@ def evaluation_rows(conn, start: Optional[datetime] = None, end: Optional[dateti
               FROM candidate_evaluations c JOIN issuers i USING (issuer_id)
              WHERE (%(lo)s::timestamptz IS NULL OR c.as_of >= %(lo)s)
                AND (%(hi)s::timestamptz IS NULL OR c.as_of < %(hi)s)
-             ORDER BY c.issuer_id, c.as_of""", dict(lo=start, hi=end)).fetchall()
+               AND (%(all)s OR NOT ({_SUPERSEDED}))
+             ORDER BY c.issuer_id, c.as_of""",
+        dict(lo=start, hi=end, all=include_superseded, cv=CV.RULES_VERSION, fv=FR.RULES_VERSION)).fetchall()
 
 
 def from_rows(rows: list[tuple], since: Optional[dict] = None) -> list[dict]:

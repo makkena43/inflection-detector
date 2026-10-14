@@ -133,3 +133,30 @@ def test_filings_link_by_isin_including_suspended_names(db):
     rep = companies.master_report(db)
     assert {"list": "NSE_SME_EQUITY_L", "snapshot": "2026-10-10", "status": "ACTIVE", "rows": 1,
             "with_isin": 1} in rep["lists"]
+
+
+def test_a_filing_with_a_replaced_isin_links_by_its_dated_symbol_not_a_new_company(db):
+    _load(db)
+    companies.build_from_master(db)
+    old_isin = {**nse_row(1, "https://x/a.pdf"), "symbol": "ABC", "sm_isin": "INE111A01003", "sm_name": "ABC Ltd"}
+    ingest.record_window(db, nse_window([old_isin]))
+    out = companies.link_publications(db)
+    assert out["counts"].get("issuers_created", 0) == 0 and out["counts"]["by_code"] == 1
+    assert db.execute("""SELECT i.legal_name FROM document_publications p JOIN issuers i USING (issuer_id)""").fetchone() \
+        == ("ABC Limited",)
+
+
+def test_an_existing_duplicate_company_is_merged_into_the_known_one(db):
+    _load(db)
+    companies.build_from_master(db)
+    dup = db.execute("INSERT INTO issuers (legal_name) VALUES ('ABC Ltd') RETURNING issuer_id").fetchone()[0]
+    db.execute("INSERT INTO securities (issuer_id, isin, instrument_type) VALUES (%s, 'INE111A01003', 'EQUITY')", (dup,))
+    ingest.record_window(db, nse_window([{**nse_row(1, "https://x/a.pdf"), "symbol": "ABC",
+                                          "sm_isin": "INE111A01003"}]))
+    db.execute("UPDATE document_publications SET issuer_id = %s", (dup,))
+    assert companies.merge_filing_duplicates(db) == dict(issuers_merged=1, filings_moved=1)
+    real = db.execute("SELECT issuer_id FROM securities WHERE isin = 'INE111A01011'").fetchone()[0]
+    assert db.execute("SELECT DISTINCT issuer_id FROM document_publications").fetchall() == [(real,)]
+    assert db.execute("SELECT issuer_id FROM securities WHERE isin = 'INE111A01003'").fetchone() == (real,)
+    assert db.execute("SELECT action FROM audit_log").fetchall() == [("MERGE_DUPLICATE_ISSUER",)]
+    assert companies.merge_filing_duplicates(db) == {}                           # nothing left to merge

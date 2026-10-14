@@ -309,7 +309,7 @@ def run(conn, first: date, last: date, mode: str = "PUBLIC_INFORMATION_RECONSTRU
     weeks = [(w, c) for w, c in R.weeks(first, last) if c <= now]
     if not weeks:
         raise ValueError("no complete week in the interval")
-    rows = queue.evaluation_rows(conn, None, weeks[-1][1])
+    rows = queue.evaluation_rows(conn, None, weeks[-1][1], include_superseded=mode == "ACTUAL_SYSTEM_REPLAY")
     week_rows, items = _queue_weeks(rows, weeks, mode, tp, holdout_from)
     cov = _coverage(conn, weeks[0][0], weeks[-1][0])
     for w in week_rows:

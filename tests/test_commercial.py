@@ -456,3 +456,32 @@ def test_filing_without_issuer_is_data_repair_until_linked(db):
     assert pipeline.scan(db)["SCANNED"] == 1
     assert db.execute("SELECT status FROM commercial_scans WHERE text_artifact_id = %s", (art,)).fetchone() == (
         "SCANNED",)
+
+
+def test_new_rules_do_not_resolve_onto_events_of_superseded_rules(db, monkeypatch):
+    iss, src = _seed(db)
+    _filing(db, iss, src, 1, datetime(2026, 1, 20, 18, 5, tzinfo=IST), ["Cover letter", SEBI_ANNEX])
+    pipeline.scan(db)
+    pipeline.resolve(db)
+    assert pipeline.load_events(db, iss)
+    monkeypatch.setattr(V, "RULES_VERSION", "commercial-next")
+    assert pipeline.load_events(db, iss) == []               # old-rule events are not the new rules' history
+    pipeline.scan(db)
+    out = pipeline.resolve(db)
+    assert out["NEW"] >= 1 and not out["REPETITION"]
+
+
+def test_the_queue_reads_a_filing_once_under_the_current_rules(db, monkeypatch):
+    from inflection import queue
+    iss, src = _seed(db)
+    _filing(db, iss, src, 1, datetime(2026, 1, 20, 18, 5, tzinfo=IST), ["Cover letter", SEBI_ANNEX])
+    pipeline.scan(db)
+    pipeline.resolve(db)
+    before = len(queue.evaluation_rows(db))
+    assert before >= 1
+    monkeypatch.setattr(V, "RULES_VERSION", "commercial-next")
+    pipeline.scan(db)
+    pipeline.resolve(db)
+    rows = queue.evaluation_rows(db)
+    assert len(rows) == before                                                # the old read drops out
+    assert len(queue.evaluation_rows(db, include_superseded=True)) == 2 * before

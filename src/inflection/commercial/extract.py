@@ -112,7 +112,21 @@ def is_garbled(text: str) -> bool:
         return False
     singles = sum(1 for t in toks if len(t.strip(".,;:!?()")) <= 1)
     wordlike = sum(1 for t in toks if _WORDLIKE.match(t))
-    return singles / len(toks) > 0.35 or wordlike / len(toks) < 0.5
+    if singles / len(toks) > 0.35 or wordlike / len(toks) < 0.5:
+        return True
+    # OCR or glued-text noise ("kEm. tar cftd ... ofUnderstanding ... Powerfrom145MW"): almost no function
+    # words and many tokens with case flips, letter-digit joins, stray symbols or no vowel
+    if len(toks) >= 10:
+        words = [t.strip(".,;:!?()\"'").lower() for t in toks]
+        function = sum(w in _FUNCTION_WORDS for w in words) / len(toks)
+        junk = sum(1 for t in toks if _JUNK_TOKEN.search(t) or not re.search(r"[aeiouy]", t, re.I)) / len(toks)
+        return function < 0.08 and junk > 0.25
+    return False
+
+
+_FUNCTION_WORDS = frozenset("the of and to in a an for is are was were has have had be been by on with from at as "
+                            "that this its our we it which will or not".split())
+_JUNK_TOKEN = re.compile(r"[a-z][A-Z]|[A-Za-z][0-9]|[0-9][A-Za-z]|[^\w\s.,;:()'\"&/%-]")
 
 
 def table_row(s: str) -> bool:
@@ -285,6 +299,7 @@ class Mention:
 
 
 def clean_counterparty(raw: str) -> str:
+    raw = re.split(r"\.\s+(?!(?:Ltd|Limited|Inc|Corp|Corporation|Pvt|Private|Co|Company|LLP|LLC|PLC)\b)(?=[A-Z][a-z]*(?:\s+[a-z]|$))", raw.strip(), maxsplit=1)[0]   # "L&T. A number" -> "L&T"
     words = raw.strip().split()
     while words and words[0].lower() in {"the", "m/s", "m/s."}:
         words.pop(0)
@@ -415,12 +430,29 @@ def _family(s: str) -> Optional[tuple[str, str, re.Match]]:
         if name == "ORDER":
             if V.LEGAL_ORDER.search(s) or V.MARKET_ORDER.search(s):
                 continue                         # a court / tax / regulator order
-            if V.ORDER_BOOK.search(s) and not V.AWARD_VERB.search(s):
-                continue                         # order-book or inflow totals, not one order
+            if (V.ORDER_BOOK.search(s) and (not V.AWARD_VERB.search(s) or len(amounts(s)) >= 3)) \
+                    or V.PERIOD_INFLOW.search(s):
+                continue                         # order-book or inflow totals (or an order-book table), not one order
             if V.MOU.search(s) and not V.ORDER_NOUN.search(s) and V.MOU_INVESTMENT.search(s):
                 return "CAPACITY", "CAPACITY", m  # an investment MoU is a capacity ambition
+        if V.ACCOUNTING_NOISE.search(s) or V.BIO_NOISE.search(s) or (name != "FINANCING" and V.HISTORY_NOISE.search(s)):
+            return None                          # accounting-policy, ESOP, form or biography text
+        if name == "ORDER" and (V.ORDER_LEGAL_NOISE.search(s) or (V.MOU.search(s) and V.JV_FORMATION.search(s))):
+            continue                             # litigation, asset lists, JV formation
+        if name == "ORDER" and V.MOU.search(s) and not V.ORDER_NOUN.search(s) and V.MOU_NOISE.search(s):
+            continue                             # property / payment-term MoUs
+        if name == "COMMERCIAL_START" and V.START_NOISE.search(s):
+            continue                             # a delayed start has not happened
         if name == "QUALIFICATION" and V.CORPORATE_APPROVAL.search(s) and not re.search(r"vendor|supplier", s, re.I):
             continue                             # approved by the board / members: not a customer approval
+        if name == "QUALIFICATION" and V.QUALIFICATION_NOISE.search(s):
+            continue                             # accounting text ("EIR method")
+        if name == "DEBT_REDUCTION" and V.DEBT_NOISE.search(s):
+            continue                             # defaults, cash-flow lines, objects of an issue, servicing
+        if name == "PRICING" and V.PRICING_NOISE.search(s):
+            continue                             # share price, exchange clarifications, shortages
+        if name == "FINANCING" and V.FINANCING_NOISE.search(s):
+            continue                             # issue procedure and fund-use statements
         if name == "PRICING" and V.INPUT_COST.search(s) and not V.PASS_THROUGH.search(s):
             continue                             # input prices rising is not the issuer pricing up
         if name == "CAPACITY" and not (amounts(s) or V.CAPACITY_QTY.search(s) or V.FACILITY.search(s)

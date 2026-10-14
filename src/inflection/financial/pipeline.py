@@ -29,6 +29,7 @@ from typing import Optional
 from psycopg.types.json import Jsonb
 
 from ..asof import IST
+from ..commercial import vocabulary as CV
 from ..financials import SOURCE
 from . import rules as R
 
@@ -102,7 +103,8 @@ def _mechanisms(conn, issuer_id, at: datetime) -> list[R.Mechanism]:
              FROM events e JOIN event_versions v USING (event_id)
             WHERE e.issuer_id = %s AND e.event_type IS NOT NULL AND e.first_public_at BETWEEN %s AND %s
               AND coalesce(v.published_at, e.first_public_at) <= %s
-            ORDER BY e.event_id, v.version_no DESC""", (issuer_id, lo, at, at)).fetchall()
+              AND e.rules_version = %s                -- the commercial route's current reading only
+            ORDER BY e.event_id, v.version_no DESC""", (issuer_id, lo, at, at, CV.RULES_VERSION)).fetchall()
     from ..commercial.vocabulary import STAGE_RANK
     return sorted((R.Mechanism(str(eid), str(vid), etype, stage or "UNKNOWN", STAGE_RANK.get(stage or "", 0),
                                obs or "OBSERVED", first, details or {})
@@ -172,7 +174,12 @@ def scan(conn, start: Optional[date] = None, end: Optional[date] = None, limit: 
         """SELECT p.publication_id, p.issuer_id FROM document_publications p JOIN sources s USING (source_id)
             WHERE s.name = %(src)s AND p.pipeline_state = 'TEXT_READY'
               AND NOT EXISTS (SELECT 1 FROM financial_scans f WHERE f.publication_id = p.publication_id
-                                 AND f.rules_version = %(rv)s AND f.status <> 'NO_ISSUER')
+                                 AND f.rules_version = %(rv)s AND f.status <> 'NO_ISSUER'
+                                 -- read again once the company's figures grew after a "no comparable"
+                                 -- read (a backfill that loads the earlier year later)
+                                 AND NOT (f.status = 'NO_COMPARABLE' AND EXISTS (
+                                     SELECT 1 FROM financial_facts ff WHERE ff.issuer_id = p.issuer_id
+                                        AND ff.recorded_at > f.scanned_at)))
               AND (%(lo)s::timestamptz IS NULL OR p.published_at >= %(lo)s)
               AND (%(hi)s::timestamptz IS NULL OR p.published_at < %(hi)s)
             ORDER BY p.published_at NULLS LAST, p.publication_id LIMIT %(limit)s""",

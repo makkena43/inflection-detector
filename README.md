@@ -94,7 +94,7 @@ carried a different ISIN).  NSE symbols are reused; their history is dated by th
 ```bash
 python -m inflection.companies fetch --archive ~/inflection-archive   # NSE lists + symbol changes, BSE list by status
 python -m inflection.companies import ~/Downloads/Equity.csv --exchange bse   # BSE list saved from bseindia.com
-python -m inflection.companies build      # issuers, securities, dated codes; then link filings by ISIN
+python -m inflection.companies build      # issuers, securities, dated codes; link filings; merge duplicates
 python -m inflection.companies report
 ```
 
@@ -125,7 +125,7 @@ with no usable split or bonus stored.
 
 ```bash
 python -m inflection.financials list --from 2021-01-01 --to 2024-11-30   # every current NSE symbol; resumable
-python -m inflection.financials load --archive ~/inflection-archive       # download, parse, store figures
+python -m inflection.financials load --archive ~/inflection-archive --workers 4       # download, parse, store figures
 python -m inflection.financials report
 ```
 

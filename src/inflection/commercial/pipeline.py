@@ -31,6 +31,7 @@ from ..asof import IST, available_at
 from ..states import PublicationBasis
 from ..units import Money, Scale
 from . import vocabulary as V
+from . import verify
 from .extract import Mention, extract_document
 from .resolve import (CLASS_ORDER, Assessment, EventState, Placement, Resolver, assess, evaluation, execution_end,
                       materiality)
@@ -169,8 +170,8 @@ def load_events(conn, issuer_id) -> list[EventState]:
                   (SELECT array_agg(DISTINCT l.text_artifact_id::text) FROM evidence_links l
                      JOIN event_versions x ON x.event_version_id = l.event_version_id WHERE x.event_id = e.event_id)
              FROM events e JOIN event_versions v USING (event_id)
-            WHERE e.issuer_id = %s AND e.event_type IS NOT NULL
-            ORDER BY e.event_id, v.version_no DESC""", (issuer_id,)).fetchall()
+            WHERE e.issuer_id = %s AND e.event_type IS NOT NULL AND e.rules_version = %s
+            ORDER BY e.event_id, v.version_no DESC""", (issuer_id, V.RULES_VERSION)).fetchall()
     out = []
     for (eid, etype, first, vid, vno, stage, obs, mag, cur, scale, basis, cp, fac, stream, scope, deadline, details,
          published_at, arts) in rows:
@@ -347,17 +348,29 @@ def _evaluate(conn, issuer_id, at: datetime, items: list[tuple[Placement, Mentio
          _hash(payload))).fetchone()[0]
 
 
-def resolve(conn, limit: Optional[int] = None, now: Optional[datetime] = None) -> Counter:
-    """Place unresolved mentions of the current rules version and evaluate each filing's changes."""
+def resolve(conn, limit: Optional[int] = None, now: Optional[datetime] = None,
+            before: Optional[datetime] = None) -> Counter:
+    """Place unresolved mentions of the current rules version and evaluate each filing's changes.
+
+    ``before`` limits it to passages published earlier, so a month can be resolved once its model
+    check is in while later months wait for theirs."""
     now = now or datetime.now(timezone.utc)
     run_id = uuid.uuid4()
     rows = conn.execute(
-        f"""SELECT {_MENTION_COLS} FROM commercial_mentions m
+        f"""SELECT {_MENTION_COLS}, {verify.REJECTED_SQL} FROM commercial_mentions m
              WHERE m.rules_version = %s
                AND NOT EXISTS (SELECT 1 FROM commercial_resolutions r WHERE r.mention_id = m.mention_id)
+               AND (%s::timestamptz IS NULL OR m.published_at < %s)
              ORDER BY m.issuer_id, m.published_at, m.text_artifact_id, m.page_no, m.span_start
-             LIMIT %s""", (V.RULES_VERSION, limit)).fetchall()
+             LIMIT %s""", (V.RULES_VERSION, before, before, limit)).fetchall()
     out: Counter = Counter()
+    rejected = [r for r in rows if r[-1]]
+    rows = [r[:-1] for r in rows if not r[-1]]
+    for r in rejected:                         # the model check found no company event in the passage
+        with conn.transaction():
+            _apply(conn, r[:-1], Placement("NOT_AN_EVENT", note=f"rejected by model check {verify.VERIFIER_VERSION}"),
+                   run_id)
+        out["REJECTED_BY_CHECK"] += 1
     for issuer_id, issuer_rows in groupby(rows, key=lambda r: r[1]):
         resolver = Resolver(str(issuer_id), load_events(conn, issuer_id))
         active = _active_case(conn, issuer_id)
@@ -459,8 +472,8 @@ def timeline(conn, symbol: str) -> dict:
                   (SELECT count(*) FROM evidence_links l WHERE l.event_version_id = v.event_version_id
                     AND l.relation = 'CONTEXT')
              FROM events e JOIN event_versions v USING (event_id)
-            WHERE e.issuer_id = %s AND e.event_type IS NOT NULL
-            ORDER BY e.first_public_at, e.event_id, v.version_no""", (issuer_id,)).fetchall()
+            WHERE e.issuer_id = %s AND e.event_type IS NOT NULL AND e.rules_version = %s
+            ORDER BY e.first_public_at, e.event_id, v.version_no""", (issuer_id, V.RULES_VERSION)).fetchall()
     events = []
     for eid, items in groupby(versions, key=lambda r: r[0]):
         items = list(items)
