@@ -65,3 +65,14 @@ def test_include_read_also_removes_partly_read_bytes_but_keeps_failed(db, tmp_pa
     assert _exists(archive, sha["nopdf"])                            # FAILED keeps its bytes for a retry
     assert r.files_deleted == 4
     assert db.execute("SELECT count(*) FROM text_pages").fetchone()[0] > 0
+
+
+def test_a_purged_file_downloaded_again_is_deleted_again(db, tmp_path):
+    archive, sha = _processed_archive(db, tmp_path)
+    purge_archive(db, archive, cap=0)
+    assert not _exists(archive, sha["full"])
+    path = archive.root / sha["full"][:2] / sha["full"]
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(b"same bytes stored again by a later filing")
+    purge_archive(db, archive, cap=0)
+    assert not path.exists()

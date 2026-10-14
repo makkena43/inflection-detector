@@ -52,6 +52,18 @@ HAVING bool_and(p.pipeline_state = ANY(%s))
  ORDER BY min(coalesce(p.published_at, p.published_date::timestamptz, p.first_seen_at)), v.sha256"""
 
 
+# Bytes purged once can come back: another filing attaches the same PDF and the downloader stores it
+# again.  Those copies are already recorded in archive_purges, so they are deleted again on sight once
+# every filing using them is read.
+_REDOWNLOADED = """
+SELECT a.sha256 FROM archive_purges a
+  JOIN document_versions v ON v.sha256 = a.sha256
+  JOIN document_versions pv ON pv.document_id = v.document_id
+  JOIN document_publications p ON p.document_version_id = pv.document_version_id
+ GROUP BY a.sha256
+HAVING bool_and(p.pipeline_state = ANY(%s))"""
+
+
 def archive_bytes(root: Path) -> int:
     total = 0
     for dirpath, _, files in os.walk(root):
@@ -93,6 +105,14 @@ def purge_archive(conn, archive: Archive, cap: int, target: Optional[int] = None
     target = int(cap * 0.9) if target is None else min(target, cap)
     size = before = archive_bytes(archive.root)
     deleted = freed = 0
+    if size > cap and not dry_run:
+        states = list(READ_STATES) if include_read else ["TEXT_READY"]
+        for (sha,) in conn.execute(_REDOWNLOADED, (states,)).fetchall():
+            path = archive.root / sha[:2] / sha
+            if path.exists():
+                n = path.stat().st_size
+                path.unlink()
+                deleted, freed, size = deleted + 1, freed + n, size - n
     if size > cap:
         rows = (conn.execute(_CANDIDATES_READ, (list(READ_STATES),)) if include_read else conn.execute(_CANDIDATES))
         reason = REASON_READ if include_read else REASON
