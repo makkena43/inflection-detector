@@ -37,8 +37,12 @@ PAGE_SIZE = 50
 
 # MakroGraph's sweep list (``_COOKIE_FREE_CATEGORIES``); filings outside these are not listed
 # when the all-category query is unavailable, which is why such windows are PARTIAL.
-CATEGORIES = ("Board Meeting", "Result", "Corp. Action", "AGM/EGM", "Scheme of Arrangement", "Acquisition",
-              "Amalgamation", "Analysts/Institutional Investor Meet", "Press Release")
+# "Company Update" is where BSE files orders, press releases, investor presentations and con-call transcripts
+# (as subcategories); "Others" and "Insider Trading / SAST" complete BSE's current category list (checked 2026-10-19:
+# "Press Release" and "Analysts/Institutional Investor Meet" return nothing as categories any more).
+CATEGORIES = ("Board Meeting", "Result", "Corp. Action", "AGM/EGM", "Company Update", "Others", "Insider Trading / SAST",
+              "New Listing", "Scheme of Arrangement", "Acquisition", "Amalgamation",
+              "Analysts/Institutional Investor Meet", "Press Release")
 
 _TIME_FORMATS = ("%Y-%m-%dT%H:%M:%S.%f", "%Y-%m-%dT%H:%M:%S", "%m/%d/%Y %I:%M:%S %p", "%d/%m/%Y %H:%M:%S",
                  "%Y-%m-%d %H:%M:%S", "%d-%m-%Y %H:%M:%S")
@@ -103,7 +107,7 @@ def _row_count(data) -> Optional[int]:
 
 
 class BSEAnnouncements:
-    def __init__(self, client: Optional[HttpClient] = None, max_pages: int = 40,
+    def __init__(self, client: Optional[HttpClient] = None, max_pages: int = 120,   # Company Update: ~3,000 rows a week
                  categories: tuple[str, ...] = CATEGORIES):
         self.client = client or HttpClient()
         self.max_pages, self.categories = max_pages, categories
