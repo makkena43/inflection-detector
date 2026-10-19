@@ -186,7 +186,7 @@ class NSEResultsListing:
                 elif entry.xbrl_url not in seen:
                     seen.add(entry.xbrl_url)
                     out.entries.append(entry)
-        q = urlencode({"index": index, "symbol": symbol})
+        q = urlencode({"index": index, "symbol": symbol, "size": 200})       # default page size is 20
         status, data, note = decode_json(self.client.get(f"{INTEGRATED_URL}?{q}", referer=INTEGRATED_REFERER))
         statuses.append(status)
         if note:

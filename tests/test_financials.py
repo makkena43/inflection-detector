@@ -150,6 +150,7 @@ def test_integrated_filings_extend_the_listing_past_2024():
     assert (e.from_date, e.to_date, e.listing_period) == (date(2025, 4, 1), date(2025, 6, 30), "Integrated")
     assert e.disseminated_at == datetime(2025, 8, 11, 17, 28, 6, tzinfo=IST)
     assert got["INTEGRATED_FILING_INDAS_3_WEB"].from_date == date(2025, 1, 1)
+    assert any("integrated-filing-results" in u and "size=200" in u for u in t.calls)
     c, _ = client({"corporates-financial-results": [(200, [entry(1)])],
                    "integrated-filing-results": [(200, {"data": rows[:1], "totalCount": 40})], "nseindia.com": [(200, b"")]})
     r = NSEResultsListing(c).list_symbol("RAIN")
