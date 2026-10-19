@@ -120,16 +120,40 @@ def test_entry_dates_come_from_the_exchange_dissemination_time():   # ported
 def test_listing_statuses():
     c, t = client({"period=Quarterly": [(200, [entry(1), {**entry(2), "xbrl": "-"}])],
                    "period=Half-Yearly": [(200, [])], "period=Annual": [(200, [entry(1), entry(3)])],
-                   "nseindia.com": [(200, b"")]})
+                   "integrated-filing-results": [(200, {"data": [], "totalCount": 0})], "nseindia.com": [(200, b"")]})
     r = NSEResultsListing(c).list_symbol("RAIN")
     assert r.status == WindowStatus.COMPLETE and [e.external_id for e in r.entries] == ["INDAS_1", "INDAS_3"]
     assert r.notes == ["1 listed filings have no XBRL file"]
     assert any("symbol=RAIN" in u and "index=equities" in u for u in t.calls)
     c, _ = client({"period=Annual": [(403, b"")], "corporates-financial-results": [(200, [entry(1)])],
-                   "nseindia.com": [(200, b"")]})
+                   "integrated-filing-results": [(200, {"data": []})], "nseindia.com": [(200, b"")]})
     assert NSEResultsListing(c).list_symbol("RAIN").status == WindowStatus.PARTIAL
-    c, _ = client({"corporates-financial-results": [(200, b"<html>challenge</html>")], "nseindia.com": [(200, b"")]})
+    c, _ = client({"corporates-financial-results": [(200, b"<html>challenge</html>")],
+                   "integrated-filing-results": [(200, b"<html>challenge</html>")], "nseindia.com": [(200, b"")]})
     assert NSEResultsListing(c).list_symbol("RAIN").status == WindowStatus.BLOCKED
+
+
+def integrated(n, qe="30-JUN-2025", kind="Integrated Filing- Financials", cons="Consolidated"):
+    return {"xbrl": f"https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_{n}_WEB.xml",
+            "qe_Date": qe, "broadcast_Date": "11-Aug-2025 17:28:06", "consolidated": cons, "type": kind}
+
+
+def test_integrated_filings_extend_the_listing_past_2024():
+    rows = [integrated(1), integrated(2, kind="Integrated Filing- Governance"), integrated(3, qe="31-MAR-2025")]
+    c, t = client({"corporates-financial-results": [(200, [entry(1)])],
+                   "integrated-filing-results": [(200, {"data": rows, "totalCount": 3})], "nseindia.com": [(200, b"")]})
+    r = NSEResultsListing(c).list_symbol("RAIN")
+    assert r.status == WindowStatus.COMPLETE
+    got = {e.external_id: e for e in r.entries}
+    assert set(got) == {"INDAS_1", "INTEGRATED_FILING_INDAS_1_WEB", "INTEGRATED_FILING_INDAS_3_WEB"}
+    e = got["INTEGRATED_FILING_INDAS_1_WEB"]
+    assert (e.from_date, e.to_date, e.listing_period) == (date(2025, 4, 1), date(2025, 6, 30), "Integrated")
+    assert e.disseminated_at == datetime(2025, 8, 11, 17, 28, 6, tzinfo=IST)
+    assert got["INTEGRATED_FILING_INDAS_3_WEB"].from_date == date(2025, 1, 1)
+    c, _ = client({"corporates-financial-results": [(200, [entry(1)])],
+                   "integrated-filing-results": [(200, {"data": rows[:1], "totalCount": 40})], "nseindia.com": [(200, b"")]})
+    r = NSEResultsListing(c).list_symbol("RAIN")
+    assert r.status == WindowStatus.PARTIAL and any("1 of 40" in n for n in r.notes)
 
 
 def test_window_is_period_end_from_and_public_by():
@@ -152,7 +176,7 @@ def _company(db):
 def test_list_and_load_into_financial_facts(db, tmp_path):
     issuer = _company(db)
     listing = {"period=Quarterly": [(200, [entry(1), entry(2, to="31-Dec-2020"), entry(3)])],
-               "period=Half-Yearly": [(200, [])], "period=Annual": [(200, [])], "nseindia.com": [(200, b"")]}
+               "period=Half-Yearly": [(200, [])], "period=Annual": [(200, [])], "integrated-filing-results": [(200, {"data": []})], "nseindia.com": [(200, b"")]}
     c, _ = client(listing)
     w = (date(2021, 1, 1), date(2024, 11, 30))
     counts = financials.list_results(db, c, *w)

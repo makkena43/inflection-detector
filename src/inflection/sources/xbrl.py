@@ -35,6 +35,10 @@ from .nse import NSE_BASE
 
 RESULTS_URL = f"{NSE_BASE}/api/corporates-financial-results"
 REFERER = f"{NSE_BASE}/companies-listing/corporate-filings-financial-results"
+# From early 2025 NSE files quarterly results as "Integrated Filing- Financials"; the old listing stops at
+# Dec 2024.  Its XBRL uses the same Ind AS result tags, so parse_results_xbrl reads it unchanged.
+INTEGRATED_URL = f"{NSE_BASE}/api/integrated-filing-results"
+INTEGRATED_REFERER = f"{NSE_BASE}/companies-listing/corporate-integrated-filing"
 ARCHIVES_PREFIX = "https://nsearchives.nseindia.com/"
 PERIODS = ("Quarterly", "Half-Yearly", "Annual")
 MAX_BYTES = 5_000_000          # results XBRL files are ~50-150 KB
@@ -114,7 +118,7 @@ def _dmy(s: Optional[str]) -> Optional[date]:
 
 
 def _dissemination(e: dict) -> tuple[Optional[datetime], str]:
-    for key in ("exchdisstime", "broadCastDate", "filingDate"):
+    for key in ("exchdisstime", "broadCastDate", "filingDate", "broadcast_Date", "creation_Date"):
         s = (e.get(key) or "").strip()
         for fmt in ("%d-%b-%Y %H:%M:%S", "%d-%b-%Y %H:%M"):
             try:
@@ -131,6 +135,19 @@ def parse_entry(e: dict, symbol: str, period: str) -> Optional[ResultEntry]:
     when, raw_time = _dissemination(e)
     return ResultEntry(symbol, url, period, _dmy(e.get("fromDate")), _dmy(e.get("toDate")),
                        str(e.get("consolidated") or ""), when, raw_time, e)
+
+
+def parse_integrated_entry(e: dict, symbol: str) -> Optional[ResultEntry]:
+    """A row of the integrated-filing listing; only the financials rows carry results XBRL."""
+    if "financ" not in str(e.get("type") or "").lower():
+        return None
+    url = (e.get("xbrl") or "").strip()
+    end = _dmy(e.get("qe_Date"))
+    if not url.startswith(ARCHIVES_PREFIX) or not re.search(r"/[A-Za-z0-9_\-]+\.xml$", url) or end is None:
+        return None
+    when, raw_time = _dissemination(e)
+    start = date(end.year if end.month > 2 else end.year - 1, (end.month - 3) % 12 + 1, 1)
+    return ResultEntry(symbol, url, "Integrated", start, end, str(e.get("consolidated") or ""), when, raw_time, e)
 
 
 class NSEResultsListing:
@@ -167,6 +184,22 @@ class NSEResultsListing:
                 if entry is None:
                     no_xbrl += 1
                 elif entry.xbrl_url not in seen:
+                    seen.add(entry.xbrl_url)
+                    out.entries.append(entry)
+        q = urlencode({"index": index, "symbol": symbol})
+        status, data, note = decode_json(self.client.get(f"{INTEGRATED_URL}?{q}", referer=INTEGRATED_REFERER))
+        statuses.append(status)
+        if note:
+            out.notes.append(f"Integrated: {note}")
+        if status == WindowStatus.COMPLETE:
+            items = (data or {}).get("data") or [] if isinstance(data, dict) else (data or [])
+            total = (data or {}).get("totalCount") if isinstance(data, dict) else None
+            if isinstance(total, int) and total > len(items):
+                statuses[-1] = WindowStatus.PARTIAL
+                out.notes.append(f"Integrated: {len(items)} of {total} rows returned")
+            for item in items:
+                entry = parse_integrated_entry(item, symbol) if isinstance(item, dict) else None
+                if entry is not None and entry.xbrl_url not in seen:
                     seen.add(entry.xbrl_url)
                     out.entries.append(entry)
         if no_xbrl:
