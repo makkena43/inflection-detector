@@ -107,7 +107,7 @@ def _row_count(data) -> Optional[int]:
 
 
 class BSEAnnouncements:
-    def __init__(self, client: Optional[HttpClient] = None, max_pages: int = 120,   # Company Update: ~3,000 rows a week
+    def __init__(self, client: Optional[HttpClient] = None, max_pages: int = 300,   # Company Update: ~3,000 rows a week, up to ~12,000 in results weeks
                  categories: tuple[str, ...] = CATEGORIES):
         self.client = client or HttpClient()
         self.max_pages, self.categories = max_pages, categories
