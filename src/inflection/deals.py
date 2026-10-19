@@ -29,6 +29,7 @@ PIT_REFERER = f"{NSE_BASE}/companies-listing/corporate-filings-insider-trading"
 DEALS_URL = f"{NSE_BASE}/api/historicalOR/bulk-block-short-deals"
 DEALS_REFERER = f"{NSE_BASE}/report-detail/display-bulk-and-block-deals"
 WINDOW = 15
+DEALS_CAP = 70          # rows per deals call; a day at the cap may be missing rows (counted as capped_days)
 
 
 def _d(s: Optional[str], fmts=("%d-%b-%Y", "%d-%m-%Y", "%d-%b-%Y %H:%M")) -> Optional[datetime]:
@@ -92,13 +93,21 @@ def fetch(conn, client: HttpClient, start: date, end: date) -> dict:
         with conn.cursor() as cur:
             for r in rows:
                 cur.execute(INS_SQL, r); out["insider"] += cur.rowcount
-        for kind, opt in (("BULK", "bulk_deals"), ("BLOCK", "block_deals")):
-            st, data, _ = decode_json(client.get(f"{DEALS_URL}?{urlencode({'optionType': opt, 'from': a, 'to': b})}", referer=DEALS_REFERER))
-            out["failed_windows"] += st != WindowStatus.COMPLETE
-            rows = [p for p in (parse_deal(r, kind) for r in ((data or {}).get("data") or [] if isinstance(data, dict) else [])) if p]
-            with conn.cursor() as cur:
-                for r in rows:
-                    cur.execute(DEAL_SQL, r); out[kind.lower()] += cur.rowcount
+        day = d
+        while day <= e:                      # the deals API returns at most 70 rows per call, so ask one day at a time
+            if day.weekday() < 5:
+                for kind, opt in (("BULK", "bulk_deals"), ("BLOCK", "block_deals")):
+                    ds = day.strftime("%d-%m-%Y")
+                    st, data, _ = decode_json(client.get(f"{DEALS_URL}?{urlencode({'optionType': opt, 'from': ds, 'to': ds})}",
+                                                         referer=DEALS_REFERER))
+                    out["failed_windows"] += st != WindowStatus.COMPLETE
+                    raw = (data or {}).get("data") or [] if isinstance(data, dict) else []
+                    out["capped_days"] = out.get("capped_days", 0) + (len(raw) >= DEALS_CAP)
+                    rows = [p for p in (parse_deal(r, kind) for r in raw) if p]
+                    with conn.cursor() as cur:
+                        for r in rows:
+                            cur.execute(DEAL_SQL, r); out[kind.lower()] += cur.rowcount
+            day += timedelta(days=1)
         out["windows"] += 1
         d = e + timedelta(days=1)
     return out
