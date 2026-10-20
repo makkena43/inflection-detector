@@ -267,7 +267,7 @@ def valuation(fin: dict, price: dict) -> dict:
         return (op / r if r else None), r
     now, r_now = ttm_opm(slice(-4, None))
     before, r_before = ttm_opm(slice(-8, -4)) if len(rev) >= 8 else (None, None)
-    mcap = Decimal(price["market_cap_cr"]) if price.get("market_cap_cr") else None
+    mcap = num(price.get("market_cap_cr"))
     return dict(status="FOUND",
                 price_to_sales=_fmt(mcap / r_now, 2) if mcap and r_now else None,
                 market_cap_cr=_fmt(mcap, 0) if mcap else None, ttm_revenue_cr=_fmt(r_now, 2) if r_now else None,

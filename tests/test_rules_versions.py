@@ -41,3 +41,7 @@ def test_valuation_tolerates_formatted_or_missing_cells():
                                          depreciation=[dict(value="–")] * 4, other_income=_q([0] * 4)))
     v = C.valuation(fin, dict(market_cap_cr="400"))
     assert v["status"] == "FOUND" and v["opm_ttm_pct"] is None and v["ttm_revenue_cr"] is None
+
+    assert C.valuation(dict(status="FOUND", rows=dict(revenue=_q([100] * 4), pbt=_q([5] * 4), finance_cost=_q([1] * 4),
+                                                       depreciation=_q([2] * 4), other_income=_q([0] * 4))),
+                       dict(market_cap_cr="1,200"))["price_to_sales"] == "3.00"
