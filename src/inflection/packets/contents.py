@@ -361,7 +361,7 @@ def _passage(p: dict) -> dict:
 
 def build(head: dict, identity: dict, evaluations: list[dict], prior_triage: Optional[dict], events: list[dict],
           passages: list[dict], documents: list[dict], fin: dict, price: dict, excluded: dict,
-          budget: int = TOKEN_BUDGET) -> tuple[dict, str]:
+          budget: int = TOKEN_BUDGET, order_book: Optional[list[dict]] = None) -> tuple[dict, str]:
     """(content, markdown).  ``passages`` carry kind TRIGGER, CONTRADICTS or PRIOR, newest first."""
     trig = [_passage(p) for p in passages if p["kind"] == "TRIGGER"]
     contra = [_passage(p) for p in passages if p["kind"] == "CONTRADICTS"]
@@ -397,7 +397,7 @@ def build(head: dict, identity: dict, evaluations: list[dict], prior_triage: Opt
                                   for e in evaluations]),
         risk_flags=flags, events=events, trigger_passages=trig, contradicting_passages=contra,
         prior_passages=prior, documents=documents, financials=fin, price=price,
-        **({"valuation": valuation(fin, price)} if R.WITH_VALUATION else {}))
+        **({"valuation": valuation(fin, price), "order_book": order_book or []} if R.WITH_VALUATION else {}))
 
 
     def fits() -> bool:
@@ -565,6 +565,17 @@ def render(c: dict) -> str:
                   + (f", {v['opm_change_pts']} points on a year earlier" if v['opm_change_pts'] else "")
                   + (f"; TTM revenue growth {v['revenue_growth_ttm_pct']}%" if v['revenue_growth_ttm_pct'] else "") + ".",
                   f"({v['note']}.)", ""]
+    ob = c.get("order_book")
+    if ob is not None:
+        L += ["## Order book and order inflow (extracted from presentations and concalls)", ""]
+        if not ob:
+            L += ["None reported in documents public by the cutoff.", ""]
+        else:
+            L += _table(["quarter ending", "order book (INR crore)", "book YoY %", "order inflow (INR crore)", "inflow YoY %"],
+                        [[x["quarter_end"], x["order_book_cr"] or "–", x["book_yoy_pct"] if x["book_yoy_pct"] is not None else "–",
+                          x["order_inflow_cr"] or "–", x["inflow_yoy_pct"] if x["inflow_yoy_pct"] is not None else "–"] for x in ob])
+            L += ["Figures are extracted by rules from company documents and may be a segment's book or a pipeline; "
+                  "use them as context for how normal the trigger order is, not as a size.", ""]
     L += ["## Full documents on demand", "",
           f"Read up to {MAX_PAGES_PER_RETRIEVAL} pages at a time, once, for context this packet lacks:",
           "`python -m inflection.packets page PACKET_ID TEXT_ARTIFACT_ID PAGES` (for example `3` or `2-4`).", ""]

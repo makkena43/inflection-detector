@@ -28,6 +28,7 @@ from ..commercial import vocabulary as CV
 from ..financial.pipeline import _SYMBOL
 from ..queue import LABEL
 from ..states import PublicationBasis, RunMode
+from .. import orderbook
 from . import contents as C
 
 CREATED_BY = "inflection.packets"
@@ -240,8 +241,9 @@ def packet_for(conn, it: dict, budget: int = C.TOKEN_BUDGET) -> tuple[dict, str]
     shares = fin.get("shares", {}).pop("base", None) if fin.get("status") == "FOUND" else None
     prices, actions = _prices(conn, it)
     price = C.price_summary(prices, actions, it["cutoff"].astimezone(IST).date(), shares)
+    ob = orderbook.series(conn, it["issuer_id"], it["cutoff"]) if C.R.WITH_VALUATION else None
     return C.build(it, _identity(conn, it), evaluations, _prior_triage(conn, it), _events(conn, it), passages,
-                   _documents(conn, it, evaluations, passages), fin, price, excluded, budget)
+                   _documents(conn, it, evaluations, passages), fin, price, excluded, budget, order_book=ob)
 
 
 def _latest(conn, shortlist_id, issuer_id):
