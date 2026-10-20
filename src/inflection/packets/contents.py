@@ -26,7 +26,7 @@ from ..asof import IST
 from ..units import Money, Scale, growth
 from . import rules as R
 
-PACKET_VERSION = "triage-packet-2"            # 2: carries the triage decision rule (rules.py)
+PACKET_VERSION = "triage-packet-3" if R.WITH_VALUATION else "triage-packet-2"            # 2: carries the triage decision rule (rules.py)
 SCHEMA_VERSION = "1"
 TOKEN_BUDGET = 12_000                 # spec 5.3: initial packet target
 CHARS_PER_TOKEN = 4                   # rough estimate for English and figures; stated in the packet
@@ -244,6 +244,34 @@ def price_summary(prices: list[tuple], actions: list[dict], cutoff_day: date,
     return out
 
 
+def valuation(fin: dict, price: dict) -> dict:
+    """P/S (market cap / TTM revenue), TTM operating margin and its change on a year earlier, TTM revenue growth.
+    Operating profit = profit before tax + finance cost + depreciation - other income (exceptional items included)."""
+    if fin.get("status") != "FOUND":
+        return dict(status="MISSING", reason="no financial snapshot")
+    def col(metric):
+        return [Decimal(c["value"]) if c.get("value") is not None else None for c in fin["rows"].get(metric, [])]
+    rev, pbt, fc, dep, oi = (col(m) for m in ("revenue", "pbt", "finance_cost", "depreciation", "other_income"))
+    def ttm_opm(sl):
+        q = list(zip(*(x[sl] for x in (rev, pbt, fc, dep))))
+        o = oi[sl]
+        if len(q) < 4 or any(None in t for t in q): return None, None
+        r = sum(t[0] for t in q)
+        op = sum(t[1] + t[2] + t[3] for t in q) - sum(x or 0 for x in o)
+        return (op / r if r else None), r
+    now, r_now = ttm_opm(slice(-4, None))
+    before, r_before = ttm_opm(slice(-8, -4)) if len(rev) >= 8 else (None, None)
+    mcap = Decimal(price["market_cap_cr"]) if price.get("market_cap_cr") else None
+    return dict(status="FOUND",
+                price_to_sales=_fmt(mcap / r_now, 2) if mcap and r_now else None,
+                market_cap_cr=_fmt(mcap, 0) if mcap else None, ttm_revenue_cr=_fmt(r_now, 2) if r_now else None,
+                opm_ttm_pct=_fmt(now * 100, 1) if now is not None else None,
+                opm_change_pts=_fmt((now - before) * 100, 1) if now is not None and before is not None else None,
+                revenue_growth_ttm_pct=_fmt((r_now / r_before - 1) * 100, 1) if r_now and r_before else None,
+                note="computed from the financial snapshot and the last close; operating margin = PBT + finance cost "
+                     "+ depreciation - other income, over revenue")
+
+
 # ---------------------------------------------------------------- risk flags
 
 def risk_flags(item: dict, evaluations: list[dict], events: list[dict], documents: list[dict], fin: dict,
@@ -368,7 +396,8 @@ def build(head: dict, identity: dict, evaluations: list[dict], prior_triage: Opt
                                        outcome=e["outcome"], reasons=e["reasons"], detail=_why(e))
                                   for e in evaluations]),
         risk_flags=flags, events=events, trigger_passages=trig, contradicting_passages=contra,
-        prior_passages=prior, documents=documents, financials=fin, price=price)
+        prior_passages=prior, documents=documents, financials=fin, price=price,
+        **({"valuation": valuation(fin, price)} if R.WITH_VALUATION else {}))
 
 
     def fits() -> bool:
@@ -524,6 +553,18 @@ def render(c: dict) -> str:
                 f"{a['ex_date']} {a['kind']}" + (f" x{a['price_multiplier']}" if a["price_multiplier"] else "")
                 for a in p["corporate_actions"]) + ".")
         L.append("")
+    v = c.get("valuation")
+    if v is not None:
+        L += ["## Valuation and margin (computed)", ""]
+        if v.get("status") != "FOUND":
+            L += [f"Missing: {v.get('reason')}.", ""]
+        else:
+            L += [f"Price to sales (market cap / TTM revenue): {v['price_to_sales'] or '–'} "
+                  f"(market cap INR {v['market_cap_cr'] or '–'} crore, TTM revenue INR {v['ttm_revenue_cr'] or '–'} crore). "
+                  f"TTM operating margin {v['opm_ttm_pct'] or '–'}%"
+                  + (f", {v['opm_change_pts']} points on a year earlier" if v['opm_change_pts'] else "")
+                  + (f"; TTM revenue growth {v['revenue_growth_ttm_pct']}%" if v['revenue_growth_ttm_pct'] else "") + ".",
+                  f"({v['note']}.)", ""]
     L += ["## Full documents on demand", "",
           f"Read up to {MAX_PAGES_PER_RETRIEVAL} pages at a time, once, for context this packet lacks:",
           "`python -m inflection.packets page PACKET_ID TEXT_ARTIFACT_ID PAGES` (for example `3` or `2-4`).", ""]

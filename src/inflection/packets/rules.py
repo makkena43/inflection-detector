@@ -6,14 +6,20 @@ pass-through of external awards made to a group entity; 3.2 sizes an order with 
 its quantity at a conservative unit price; 3.3 (after February 2021) says balance-sheet amounts
 never size an event and a deep-research pick needs a numeric size.  There is no weekly limit on picks.  A change to the text
 needs a new ``TRIAGE_RULES_VERSION``, so results can be compared across versions.
+
+Version 3.4 (2026-10-20, after the 2021-2025 backtest): a routine order is not rejected when the company has a thin
+operating margin (OPM < 10%) or is cheaply valued (market cap < 1.5x revenue): those routine orders beat the index as
+often as our picks did.  Packets for 3.4 carry a computed valuation-and-margin section.  Both versions stay available:
+INFLECTION_TRIAGE_RULES=3.3 selects the old text (default 3.4).
 """
 
-TRIAGE_RULES_VERSION = "triage-rules-3.3"
+import os
+
 ACTIONS = ("DEEP_RESEARCH", "WATCH_MILESTONE", "REJECT_WITH_REASON", "DATA_REPAIR")
 DISQUALIFIERS = ("ONE_OFF", "STRESSED", "FATAL_FLAW", "INTERNAL_DEMAND", "ALREADY_RESEARCHED")
 SIZE_BASES = ("STATED", "ESTIMATED_FROM_QUANTITY", "UNKNOWN")
 
-RULES = """\
+RULES_3_3 = """\
 You are triaging an Indian listed company for an earnings-inflection research desk. The goal: detect a
 material, credible change in the company's future earnings before its full contribution appears in reported
 results — a change in the company's trajectory, not business as usual. Deep research is where open questions
@@ -97,3 +103,24 @@ Then:
 
 This is triage, not investment research: you may not recommend buying. Unknown is an acceptable answer: list it
 under missing_information. Do not cite anything not shown here or read with the page command."""
+
+
+_ROUTINE_33 = """     it is one of several similar orders in its recent history. Routine orders are not inflections even if large."""
+_ROUTINE_34 = """     it is one of several similar orders in its recent history. Routine orders are not inflections even if large —
+     EXCEPT when the packet's "Valuation and margin" section shows a thin operating margin (TTM OPM below 10%) or a
+     cheap valuation (market cap below 1.5x TTM revenue). Then a large routine order can still lift earnings and the
+     rating: set routine=true but decide as if it were not routine, and say so in the rationale."""
+_DEEP_33 = """- **DEEP_RESEARCH** — FIRM, company-specific, ≥ 10% of annual revenue (or a clearly new revenue stream that
+  plausibly reaches that), NOT ROUTINE, and no disqualifier."""
+_DEEP_34 = """- **DEEP_RESEARCH** — FIRM, company-specific, ≥ 10% of annual revenue (or a clearly new revenue stream that
+  plausibly reaches that), NOT ROUTINE (or routine under the thin-margin / cheap-valuation exception in step 3), and
+  no disqualifier."""
+assert _ROUTINE_33 in RULES_3_3 and _DEEP_33 in RULES_3_3
+RULES_3_4 = RULES_3_3.replace(_ROUTINE_33, _ROUTINE_34).replace(_DEEP_33, _DEEP_34)
+
+VERSIONS = {"3.3": ("triage-rules-3.3", RULES_3_3), "3.4": ("triage-rules-3.4", RULES_3_4)}
+ACTIVE = os.environ.get("INFLECTION_TRIAGE_RULES", "3.4")
+if ACTIVE not in VERSIONS:
+    raise ValueError(f"INFLECTION_TRIAGE_RULES must be one of {sorted(VERSIONS)}, not {ACTIVE!r}")
+TRIAGE_RULES_VERSION, RULES = VERSIONS[ACTIVE]
+WITH_VALUATION = ACTIVE != "3.3"          # 3.4 packets carry the computed valuation-and-margin section
