@@ -29,6 +29,7 @@ from ..financial.pipeline import _SYMBOL
 from ..queue import LABEL
 from ..states import PublicationBasis, RunMode
 from .. import orderbook
+from ..triage.pipeline import run_tag
 from . import contents as C
 
 CREATED_BY = "inflection.packets"
@@ -48,8 +49,8 @@ def _items(conn, week_start: date, symbol: Optional[str] = None) -> list[dict]:
                    {LABEL.format(col='i.issuer_id')}, iss.legal_name, {_SYMBOL.format(col='i.issuer_id')} IS NOT NULL
               FROM triage_shortlist_items i JOIN triage_shortlists s USING (shortlist_id)
               JOIN issuers iss USING (issuer_id)
-             WHERE s.week_start = %s AND i.position IS NOT NULL
-             ORDER BY i.position""", (week_start,)).fetchall()
+             WHERE s.week_start = %s AND s.run_tag = %s AND i.position IS NOT NULL
+             ORDER BY i.position""", (week_start, run_tag())).fetchall()
     keys = ("shortlist_id", "week_start", "cutoff", "mode", "policy_version", "policy_hash", "issuer_id", "slot",
             "position", "priority", "corroborated", "waiting_since", "stale", "reason", "note", "evaluation_ids",
             "trigger_event_version_ids", "label", "name", "has_symbol")
@@ -85,8 +86,8 @@ def _prior_triage(conn, it: dict) -> Optional[dict]:
     r = conn.execute(
         """SELECT s.week_start, i.triage_action, i.triage_note
              FROM triage_shortlist_items i JOIN triage_shortlists s USING (shortlist_id)
-            WHERE i.issuer_id = %s AND i.triage_action IS NOT NULL AND s.cutoff < %s AND i.triaged_at <= %s
-            ORDER BY s.cutoff DESC LIMIT 1""", (it["issuer_id"], it["cutoff"], it["cutoff"])).fetchone()
+            WHERE i.issuer_id = %s AND i.triage_action IS NOT NULL AND s.cutoff < %s AND i.triaged_at <= %s AND s.run_tag = %s
+            ORDER BY s.cutoff DESC LIMIT 1""", (it["issuer_id"], it["cutoff"], it["cutoff"], run_tag())).fetchone()
     return dict(week_start=r[0].isoformat(), action=r[1], note=r[2]) if r else None
 
 
@@ -259,7 +260,7 @@ def _week(day: date) -> date:
 
 def assemble(conn, day: date, symbol: Optional[str] = None, budget: int = C.TOKEN_BUDGET) -> dict:
     week_start = _week(day)
-    if conn.execute("SELECT 1 FROM triage_shortlists WHERE week_start = %s", (week_start,)).fetchone() is None:
+    if conn.execute("SELECT 1 FROM triage_shortlists WHERE week_start = %s AND run_tag = %s", (week_start, run_tag())).fetchone() is None:
         return dict(week_start=week_start.isoformat(), error="no shortlist for this week; run triage build first")
     items = _items(conn, week_start, symbol)
     if symbol and not items:

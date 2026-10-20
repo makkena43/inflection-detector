@@ -14,6 +14,7 @@ week can be rebuilt as it would have looked then: evaluations are read by their 
 
 from __future__ import annotations
 
+import os
 from datetime import date, datetime, time, timedelta, timezone
 from typing import Optional
 
@@ -25,6 +26,11 @@ from ..queue import LABEL
 from . import rules as R
 
 CREATED_BY = "inflection.triage"
+
+
+def run_tag() -> str:
+    """Which run's shortlists to build and read: 'base' (the original run) unless INFLECTION_RUN_TAG names another."""
+    return os.environ.get("INFLECTION_RUN_TAG", "base")
 ACTIONS = ("DEEP_RESEARCH", "WATCH_MILESTONE", "REJECT_WITH_REASON", "DATA_REPAIR", "DEFER_BUDGET")
 
 
@@ -42,8 +48,8 @@ def _last_triage(conn, cutoff: datetime) -> dict:
     rows = conn.execute(
         """SELECT DISTINCT ON (i.issuer_id) i.issuer_id, s.cutoff, i.priority_class, i.trigger_event_version_ids
              FROM triage_shortlist_items i JOIN triage_shortlists s USING (shortlist_id)
-            WHERE i.triage_action IS NOT NULL AND i.triage_action <> 'DEFER_BUDGET' AND s.cutoff < %s
-            ORDER BY i.issuer_id, s.cutoff DESC""", (cutoff,)).fetchall()
+            WHERE i.triage_action IS NOT NULL AND i.triage_action <> 'DEFER_BUDGET' AND s.cutoff < %s AND s.run_tag = %s
+            ORDER BY i.issuer_id, s.cutoff DESC""", (cutoff, run_tag())).fetchall()
     return {r[0]: R.Triaged(r[1], r[2], {str(v) for v in r[3]}) for r in rows}
 
 
@@ -57,8 +63,8 @@ def _public(it: dict, cutoff: datetime) -> dict:
 def build(conn, day: date, mode: str = "LIVE", dry_run: bool = False, now: Optional[datetime] = None,
           **overrides) -> dict:
     week_start, cutoff = week_bounds(day, now)
-    existing = conn.execute("SELECT shortlist_id FROM triage_shortlists WHERE week_start = %s",
-                            (week_start,)).fetchone()
+    existing = conn.execute("SELECT shortlist_id FROM triage_shortlists WHERE week_start = %s AND run_tag = %s",
+                            (week_start, run_tag())).fetchone()
     if existing and not dry_run:
         return dict(show(conn, week_start), existing=True)
     p = R.policy(**overrides)
@@ -73,10 +79,10 @@ def build(conn, day: date, mode: str = "LIVE", dry_run: bool = False, now: Optio
         return out
     with conn.transaction():
         sid = conn.execute(
-            """INSERT INTO triage_shortlists (week_start, cutoff, mode, policy_version, policy, summary, created_by)
-               VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING shortlist_id""",
+            """INSERT INTO triage_shortlists (week_start, cutoff, mode, policy_version, policy, summary, created_by, run_tag)
+               VALUES (%s, %s, %s, %s, %s, %s, %s, %s) RETURNING shortlist_id""",
             (week_start, cutoff, mode, R.POLICY_VERSION, Jsonb(dict(p, hash=R.policy_hash(p))), Jsonb(summary),
-             CREATED_BY)).fetchone()[0]
+             CREATED_BY, run_tag())).fetchone()[0]
         with conn.cursor() as cur:
             cur.executemany(
                 """INSERT INTO triage_shortlist_items
@@ -93,7 +99,7 @@ def build(conn, day: date, mode: str = "LIVE", dry_run: bool = False, now: Optio
 def show(conn, day: date, everything: bool = False) -> dict:
     week_start = day - timedelta(days=day.weekday())
     head = conn.execute("""SELECT shortlist_id, cutoff, policy_version, policy, summary FROM triage_shortlists
-                            WHERE week_start = %s""", (week_start,)).fetchone()
+                            WHERE week_start = %s AND run_tag = %s""", (week_start, run_tag())).fetchone()
     if head is None:
         return dict(week_start=week_start.isoformat(), error="no shortlist for this week; run build")
     sid, cutoff, pv, p, summary = head
@@ -119,8 +125,8 @@ def record(conn, day: date, symbol: str, action: str, note: Optional[str] = None
     row = conn.execute(
         f"""SELECT i.shortlist_id, i.issuer_id, i.slot, i.triage_action, i.revision
               FROM triage_shortlist_items i JOIN triage_shortlists s USING (shortlist_id)
-             WHERE s.week_start = %s
-               AND upper({LABEL.format(col='i.issuer_id')}) = upper(%s)""", (week_start, symbol)).fetchone()
+             WHERE s.week_start = %s AND s.run_tag = %s
+               AND upper({LABEL.format(col='i.issuer_id')}) = upper(%s)""", (week_start, run_tag(), symbol)).fetchone()
     if row is None:
         return dict(symbol=symbol, error=f"not in the shortlist for the week of {week_start}")
     sid, issuer_id, slot, done, rev = row
