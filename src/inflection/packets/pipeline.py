@@ -29,7 +29,7 @@ from ..financial.pipeline import _SYMBOL
 from ..queue import LABEL
 from ..states import PublicationBasis, RunMode
 from .. import orderbook
-from ..triage.pipeline import run_tag
+from ..triage.pipeline import base_until, run_tag
 from . import contents as C
 
 CREATED_BY = "inflection.packets"
@@ -86,8 +86,9 @@ def _prior_triage(conn, it: dict) -> Optional[dict]:
     r = conn.execute(
         """SELECT s.week_start, i.triage_action, i.triage_note
              FROM triage_shortlist_items i JOIN triage_shortlists s USING (shortlist_id)
-            WHERE i.issuer_id = %s AND i.triage_action IS NOT NULL AND s.cutoff < %s AND i.triaged_at <= %s AND s.run_tag = %s
-            ORDER BY s.cutoff DESC LIMIT 1""", (it["issuer_id"], it["cutoff"], it["cutoff"], run_tag())).fetchone()
+            WHERE i.issuer_id = %s AND i.triage_action IS NOT NULL AND s.cutoff < %s AND i.triaged_at <= %s
+              AND (s.run_tag = %s OR (s.run_tag = 'base' AND s.cutoff <= %s))
+            ORDER BY s.cutoff DESC LIMIT 1""", (it["issuer_id"], it["cutoff"], it["cutoff"], run_tag(), base_until())).fetchone()
     return dict(week_start=r[0].isoformat(), action=r[1], note=r[2]) if r else None
 
 

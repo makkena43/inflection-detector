@@ -183,3 +183,17 @@ def test_a_rerun_tag_builds_its_own_shortlist_for_the_same_week(db, monkeypatch)
     assert [i["symbol"] for i in again["shortlist"]] == ["AAA"]               # the base run's decision is not its history
     assert pipeline.record(db, WEEK, "AAA", "WATCH_MILESTONE")["triage_action"] == "WATCH_MILESTONE"
     assert db.execute("SELECT count(*) FROM triage_shortlists").fetchone() == (2,)
+
+
+def test_a_rerun_inherits_base_history_before_its_start(db, monkeypatch):
+    t = lambda d: datetime.fromisoformat(d + "T18:00:00+05:30")             # noqa: E731
+    a = _issuer(db, "AAA")
+    _evaluation(db, a, t("2026-10-06"), "P2")
+    now = datetime(2026, 10, 25, tzinfo=IST)
+    pipeline.build(db, WEEK, now=now)
+    pipeline.record(db, WEEK, "AAA", "REJECT_WITH_REASON")
+    nxt = WEEK + timedelta(weeks=1)
+    monkeypatch.setenv("INFLECTION_RUN_TAG", "rerun-3.4")
+    monkeypatch.setenv("INFLECTION_RUN_BASE_UNTIL", nxt.isoformat())
+    every = {i["symbol"]: i for i in pipeline.build(db, nxt, now=now, dry_run=True)["shortlist"]}
+    assert "AAA" not in every                                               # triaged in the base run, nothing new since

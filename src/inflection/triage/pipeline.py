@@ -28,6 +28,13 @@ from . import rules as R
 CREATED_BY = "inflection.triage"
 
 
+def base_until() -> datetime:
+    """A re-run inherits the base run's triage history before this date (INFLECTION_RUN_BASE_UNTIL, the re-run's
+    first week), so its first weeks do not treat every company ever queued as never triaged."""
+    v = os.environ.get("INFLECTION_RUN_BASE_UNTIL")
+    return datetime.fromisoformat(v).replace(tzinfo=IST) if v else datetime(1900, 1, 1, tzinfo=IST)
+
+
 def run_tag() -> str:
     """Which run's shortlists to build and read: 'base' (the original run) unless INFLECTION_RUN_TAG names another."""
     return os.environ.get("INFLECTION_RUN_TAG", "base")
@@ -48,8 +55,9 @@ def _last_triage(conn, cutoff: datetime) -> dict:
     rows = conn.execute(
         """SELECT DISTINCT ON (i.issuer_id) i.issuer_id, s.cutoff, i.priority_class, i.trigger_event_version_ids
              FROM triage_shortlist_items i JOIN triage_shortlists s USING (shortlist_id)
-            WHERE i.triage_action IS NOT NULL AND i.triage_action <> 'DEFER_BUDGET' AND s.cutoff < %s AND s.run_tag = %s
-            ORDER BY i.issuer_id, s.cutoff DESC""", (cutoff, run_tag())).fetchall()
+            WHERE i.triage_action IS NOT NULL AND i.triage_action <> 'DEFER_BUDGET' AND s.cutoff < %s
+              AND (s.run_tag = %s OR (s.run_tag = 'base' AND s.cutoff <= %s))
+            ORDER BY i.issuer_id, s.cutoff DESC""", (cutoff, run_tag(), base_until())).fetchall()
     return {r[0]: R.Triaged(r[1], r[2], {str(v) for v in r[3]}) for r in rows}
 
 
