@@ -572,10 +572,14 @@ def render(c: dict) -> str:
             L += ["None reported in documents public by the cutoff.", ""]
         else:
             L += _table(["quarter ending", "order book (INR crore)", "book YoY %", "order inflow (INR crore)", "inflow YoY %"],
-                        [[x["quarter_end"], x["order_book_cr"] or "–", x["book_yoy_pct"] if x["book_yoy_pct"] is not None else "–",
-                          x["order_inflow_cr"] or "–", x["inflow_yoy_pct"] if x["inflow_yoy_pct"] is not None else "–"] for x in ob])
-            L += ["Figures are extracted by rules from company documents and may be a segment's book or a pipeline; "
-                  "use them as context for how normal the trigger order is, not as a size.", ""]
+                        [[x["quarter_end"], f"{x['order_book_cr'] or '–'}{' (doubtful)' if x.get('book_doubtful') else ''}",
+                          x["book_yoy_pct"] if x["book_yoy_pct"] is not None else "–",
+                          f"{x['order_inflow_cr'] or '–'}{' (doubtful)' if x.get('inflow_doubtful') else ''}",
+                          x["inflow_yoy_pct"] if x["inflow_yoy_pct"] is not None else "–"] for x in ob])
+            L += ["Figures are extracted by rules from company documents and may be a segment's book or a pipeline "
+                  "('doubtful' = breaks sharply from the neighbouring quarters); use them as context for how normal the "
+                  "trigger order is, not as a size. If you are making a DEEP_RESEARCH call, confirm the latest company-total "
+                  "order book and quarterly order inflow from the documents and report them in order_book_check.", ""]
     L += ["## Full documents on demand", "",
           f"Read up to {MAX_PAGES_PER_RETRIEVAL} pages at a time, once, for context this packet lacks:",
           "`python -m inflection.packets page PACKET_ID TEXT_ARTIFACT_ID PAGES` (for example `3` or `2-4`).", ""]

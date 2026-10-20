@@ -22,7 +22,7 @@ from typing import Iterable, Optional
 
 import psycopg
 
-EXTRACTOR_VERSION = "orderbook-1"
+EXTRACTOR_VERSION = "orderbook-2"   # 2: prefers company-total wording
 CATS = ['investor presentation', 'press release', 'financial result updates', 'analysts/institutional investor meet/con. call updates',
         'updates', 'company update', 'press release / media release', 'outcome of board meeting', 'result']
 NUM = r"(?:rs\.?|inr|₹)?\s*([\d,]+(?:\.\d+)?)\s*(crores?|cr\.?|bn|billion|mn|million|lakhs?|lacs?)\b"
@@ -30,6 +30,8 @@ BOOK = re.compile(r"\b(order\s?book|order\s?backlog|unexecuted\s+order|outstandi
 INFLOW = re.compile(r"\b(order\s+inflows?|order\s+intake|orders?\s+received|new\s+orders?|order\s+bookings?|fresh\s+orders?)\b", re.I)
 SCALE = {"crore": 1, "crores": 1, "cr": 1, "cr.": 1, "bn": 100, "billion": 100, "mn": 0.1, "million": 0.1,
          "lakh": 0.01, "lakhs": 0.01, "lac": 0.01, "lacs": 0.01}
+TOTAL = re.compile(r"\b(total|consolidated|overall|company[- ]wide|group)\b", re.I)
+SEGMENT = re.compile(r"\b(segment|division|business unit|vertical|defen[cs]e order book|export order book|domestic order book)\b", re.I)
 SKIP = re.compile(r"\?|\bforward[- ]looking\b|\bsafe harbou?r\b", re.I)
 
 
@@ -61,9 +63,10 @@ def figures(body: str) -> dict:
                     if -80 <= pos - m.start() and pos - m.end() <= 80]
             if not near: continue
             v = min(near)[1]
-            if kind not in best or v > best[kind][0]:
-                best[kind] = (v, s[:400])
-    return best
+            rank = (1 if TOTAL.search(s) else 0) - (1 if SEGMENT.search(s) else 0)     # company total over a segment line
+            if kind not in best or (rank, v) > (best[kind][2], best[kind][0]):
+                best[kind] = (v, s[:400], rank)
+    return {k: (v, s) for k, (v, s, _) in best.items()}
 
 
 def quarter_end(published: date) -> date:
@@ -95,20 +98,52 @@ def scan(conn, start: date, end: date) -> dict:
     return {"documents_with_figures": len({p for p, _ in per}), "inserted": n}
 
 
+SOURCE_RANK = {"investor presentation": 3, "press release": 3, "press release / media release": 3, "financial result updates": 3,
+               "result": 3, "outcome of board meeting": 2, "updates": 2, "company update": 2}   # concall transcripts: 1
+
+
 def series(conn, issuer_id, cutoff: Optional[datetime] = None, quarters: int = 8) -> list[dict]:
-    """Per quarter (latest last): order book and inflow (largest figure public by the cutoff) and year-on-year growth."""
+    """Per quarter (latest last): order book and inflow public by the cutoff, from the best source that quarter
+    (presentations / results releases before concall talk), with year-on-year growth.  A figure that breaks from
+    both neighbouring quarters (under half or over double both), or a book under one quarter's revenue at a
+    company whose book is normally at least 2x revenue, is marked doubtful and left out of the growth figures."""
     q = defaultdict(dict)
-    for qe, kind, amt, pub in conn.execute(
-            """SELECT quarter_end, kind, max(amount_cr), min(published_at) FROM order_book_figures
-                WHERE issuer_id=%s AND (%s::timestamptz IS NULL OR published_at <= %s) GROUP BY 1, 2""", (issuer_id, cutoff, cutoff)):
-        q[qe][kind] = float(amt); q[qe]["first_public"] = min(pub, q[qe].get("first_public", pub))
+    for qe, kind, amt, pub, cat in conn.execute(
+            """SELECT f.quarter_end, f.kind, f.amount_cr, f.published_at, lower(coalesce(p.original_category, ''))
+                 FROM order_book_figures f JOIN document_publications p USING (publication_id)
+                WHERE f.issuer_id=%s AND f.extractor_version=%s AND (%s::timestamptz IS NULL OR f.published_at <= %s)""",
+            (issuer_id, EXTRACTOR_VERSION, cutoff, cutoff)):
+        key = (SOURCE_RANK.get(cat, 1), float(amt))
+        if kind not in q[qe] or key > q[qe][kind]:
+            q[qe][kind] = key
+    rev = {pe: float(v) / 1e7 for pe, v in conn.execute(
+        """SELECT DISTINCT ON (period_end) period_end, value FROM financial_facts WHERE issuer_id=%s AND metric='revenue'
+           AND period_type='QUARTER' AND value IS NOT NULL ORDER BY period_end, (scope='CONSOLIDATED') DESC, recorded_at DESC""",
+        (issuer_id,))}
+    ends = sorted(q)
+    val = {(qe, k): q[qe][k][1] for qe in ends for k in ("BOOK", "INFLOW") if k in q[qe]}
+    ratios = sorted(val[(qe, "BOOK")] / (rev[qe] * 4) for qe in ends if (qe, "BOOK") in val and rev.get(qe))
+    typical = ratios[len(ratios) // 2] if ratios else None
+    doubtful = set()
+    for k in ("BOOK", "INFLOW"):
+        ks = [qe for qe in ends if (qe, k) in val]
+        for i, qe in enumerate(ks):
+            nb = [val[(x, k)] for x in ks[max(0, i - 1):i] + ks[i + 1:i + 2]]
+            v = val[(qe, k)]
+            if len(nb) == 2 and (v < 0.5 * min(nb) or v > 2 * max(nb)):
+                doubtful.add((qe, k))
+            if k == "BOOK" and typical and typical >= 2 and rev.get(qe) and v < rev[qe]:
+                doubtful.add((qe, k))
+    def ok(qe, k):
+        return val.get((qe, k)) if (qe, k) in val and (qe, k) not in doubtful else None
     out = []
-    for qe in sorted(q):
-        prev = q.get(date(qe.year - 1, qe.month, qe.day), {})
-        x = q[qe]
-        out.append(dict(quarter_end=qe.isoformat(), order_book_cr=x.get("BOOK"), order_inflow_cr=x.get("INFLOW"),
-                        book_yoy_pct=round((x["BOOK"] / prev["BOOK"] - 1) * 100, 1) if x.get("BOOK") and prev.get("BOOK") else None,
-                        inflow_yoy_pct=round((x["INFLOW"] / prev["INFLOW"] - 1) * 100, 1) if x.get("INFLOW") and prev.get("INFLOW") else None))
+    for qe in ends:
+        py = date(qe.year - 1, qe.month, qe.day)
+        b, i, pb, pi = ok(qe, "BOOK"), ok(qe, "INFLOW"), ok(py, "BOOK"), ok(py, "INFLOW")
+        out.append(dict(quarter_end=qe.isoformat(), order_book_cr=val.get((qe, "BOOK")), order_inflow_cr=val.get((qe, "INFLOW")),
+                        book_doubtful=(qe, "BOOK") in doubtful, inflow_doubtful=(qe, "INFLOW") in doubtful,
+                        book_yoy_pct=round((b / pb - 1) * 100, 1) if b and pb else None,
+                        inflow_yoy_pct=round((i / pi - 1) * 100, 1) if i and pi else None))
     return out[-quarters:]
 
 

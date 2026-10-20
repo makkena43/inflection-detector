@@ -23,3 +23,8 @@ def test_quarter_reported():
     assert quarter_end(date(2023, 2, 10)) == date(2022, 12, 31)
     assert quarter_end(date(2023, 5, 19)) == date(2023, 3, 31)
     assert quarter_end(date(2023, 11, 9)) == date(2023, 9, 30)
+
+
+def test_company_total_wins_over_a_segment_line():
+    f = figures("Defence order book now stands at Rs. 2,817 crores. Total order book stood at Rs 1,900 crore.")
+    assert f["BOOK"][0] == 1900.0
