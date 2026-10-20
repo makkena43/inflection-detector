@@ -23,6 +23,8 @@ from typing import Iterable, Optional
 import psycopg
 
 EXTRACTOR_VERSION = "orderbook-2"   # 2: prefers company-total wording
+CHECKED_VERSION = "haiku-check-1"   # a doubtful figure re-read by a model from the source page; replaces the extracted one
+                                    # (amount 0 = the document states no company total: the extracted figure is dropped)
 CATS = ['investor presentation', 'press release', 'financial result updates', 'analysts/institutional investor meet/con. call updates',
         'updates', 'company update', 'press release / media release', 'outcome of board meeting', 'result']
 NUM = r"(?:rs\.?|inr|₹)?\s*([\d,]+(?:\.\d+)?)\s*(crores?|cr\.?|bn|billion|mn|million|lakhs?|lacs?)\b"
@@ -134,6 +136,17 @@ def series(conn, issuer_id, cutoff: Optional[datetime] = None, quarters: int = 8
                 doubtful.add((qe, k))
             if k == "BOOK" and typical and typical >= 2 and rev.get(qe) and v < rev[qe]:
                 doubtful.add((qe, k))
+    for qe, kind, amt in conn.execute(
+            """SELECT quarter_end, kind, amount_cr FROM order_book_figures WHERE issuer_id=%s AND extractor_version=%s
+                 AND (%s::timestamptz IS NULL OR published_at <= %s)""", (issuer_id, CHECKED_VERSION, cutoff, cutoff)):
+        if float(amt) == 0:                     # checked: the document states no company total -> drop the extracted figure
+            val.pop((qe, kind), None)
+        else:
+            val[(qe, kind)] = float(amt)
+        doubtful.discard((qe, kind))
+        if qe not in ends: ends.append(qe)
+    ends.sort()
+
     def ok(qe, k):
         return val.get((qe, k)) if (qe, k) in val and (qe, k) not in doubtful else None
     out = []
