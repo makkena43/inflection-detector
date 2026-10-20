@@ -34,3 +34,10 @@ def test_valuation_section():
     assert v["price_to_sales"] == "0.80" and v["opm_ttm_pct"] == "10.4" and v["opm_change_pts"] == "2.4"
     assert v["revenue_growth_ttm_pct"] == "25.0"
     assert C.valuation(dict(status="MISSING"), {})["status"] == "MISSING"
+
+
+def test_valuation_tolerates_formatted_or_missing_cells():
+    fin = dict(status="FOUND", rows=dict(revenue=_q(["1,000"] * 4), pbt=_q([50] * 4), finance_cost=_q([0] * 4),
+                                         depreciation=[dict(value="–")] * 4, other_income=_q([0] * 4)))
+    v = C.valuation(fin, dict(market_cap_cr="400"))
+    assert v["status"] == "FOUND" and v["opm_ttm_pct"] is None and v["ttm_revenue_cr"] is None

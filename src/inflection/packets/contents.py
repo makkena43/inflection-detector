@@ -19,7 +19,7 @@ import hashlib
 import json
 import math
 from datetime import date, datetime, timedelta, timezone
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from typing import Optional
 
 from ..asof import IST
@@ -249,8 +249,14 @@ def valuation(fin: dict, price: dict) -> dict:
     Operating profit = profit before tax + finance cost + depreciation - other income (exceptional items included)."""
     if fin.get("status") != "FOUND":
         return dict(status="MISSING", reason="no financial snapshot")
+    def num(v):
+        try:
+            return Decimal(str(v).replace(",", "")) if v not in (None, "", "–", "-") else None
+        except InvalidOperation:
+            return None
+
     def col(metric):
-        return [Decimal(c["value"]) if c.get("value") is not None else None for c in fin["rows"].get(metric, [])]
+        return [num(c.get("value")) for c in fin["rows"].get(metric, [])]
     rev, pbt, fc, dep, oi = (col(m) for m in ("revenue", "pbt", "finance_cost", "depreciation", "other_income"))
     def ttm_opm(sl):
         q = list(zip(*(x[sl] for x in (rev, pbt, fc, dep))))
