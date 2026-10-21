@@ -172,7 +172,8 @@ def _shares(mine: list[dict], at: dict) -> dict:
                base=counts[end])
     if prior:
         p = max(prior)
-        out["change_pct_vs_year_earlier"] = _fmt((counts[end] / counts[p] - 1) * 100, 1)
+        if counts[p]:                                   # a zero share count (bad filing) gives no change, not a crash
+            out["change_pct_vs_year_earlier"] = _fmt((counts[end] / counts[p] - 1) * 100, 1)
     return out
 
 
