@@ -46,11 +46,19 @@ def _num(v) -> Optional[Decimal]:
         return None
 
 
+# programme types left out because they are transfers to people, not spending that reaches companies as orders
+WELFARE = {"agriculture|rural", "agriculture|rural finance", "employment|labour", "food security|welfare", "msme|artisans",
+           "pulses|agriculture", "research|science", "tribal welfare|rural infrastructure", "edible oil|agriculture|oil palm",
+           "infrastructure planning|logistics"}
+
+
 def load(conn, path: str) -> dict:
     n = 0
     with open(path, newline="") as fh:
         for r in csv.DictReader(fh):
-            if not (r.get("name") and r.get("announced_date") and r.get("keywords") and r.get("source_url")):
+            if not (r.get("name") and r.get("announced_date") and r.get("keywords")):
+                continue
+            if (r.get("sectors") or "").strip().lower() in WELFARE:
                 continue
             conn.execute(
                 """INSERT INTO govt_programmes (name, announced_date, outlay_cr, ministry, keywords, sectors, source_url, notes)
@@ -58,7 +66,7 @@ def load(conn, path: str) -> dict:
                        ministry = EXCLUDED.ministry, keywords = EXCLUDED.keywords, sectors = EXCLUDED.sectors,
                        source_url = EXCLUDED.source_url, notes = EXCLUDED.notes""",
                 (r["name"].strip(), r["announced_date"], _num(r.get("outlay_cr")), r.get("ministry"), r["keywords"].lower(),
-                 r.get("sectors"), r["source_url"], r.get("notes")))
+                 r.get("sectors"), r.get("source_url") or "UNVERIFIED", r.get("notes")))
             n += 1
     return {"programmes": n}
 
@@ -110,9 +118,12 @@ def exposure(conn, issuer_id, cutoff: Optional[datetime] = None) -> list[dict]:
             WHERE m.issuer_id = %s AND (%s::timestamptz IS NULL OR m.published_at <= %s)
             GROUP BY g.programme_id, g.name, g.announced_date, g.outlay_cr
             ORDER BY count(*) FILTER (WHERE m.is_order) DESC, count(*) DESC LIMIT 8""", (issuer_id, cutoff, cutoff)).fetchall()
+    # early cycle: the company's first order under the programme came within two years of its announcement (in the
+    # 2021-23 decisions these picks beat the rest by far; 2024-25 held on excess return but is a small sample)
     return [dict(programme=n, announced=a.isoformat(), outlay_cr=float(o) if o is not None else None,
                  first_mention=f.date().isoformat() if f else None, first_order_mention=fo.date().isoformat() if fo else None,
-                 documents=d, order_documents=od, snippet=(s or "")[:300]) for n, a, o, f, fo, d, od, s in rows]
+                 early_cycle=bool(fo and (fo.date() - a).days <= 730), documents=d, order_documents=od, snippet=(s or "")[:300])
+            for n, a, o, f, fo, d, od, s in rows]
 
 
 def main(argv: Optional[list[str]] = None) -> int:

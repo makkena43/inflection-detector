@@ -635,7 +635,8 @@ def ownership_section(o: Optional[dict]) -> list[str]:
     pr = o.get("programmes") or []
     L += (["Government programmes (Rs 10,000 crore+ outlay) the company had named in its filings by the cutoff:", ""]
           + _table(["programme (announced, outlay INR crore)", "first mention", "first order mention", "documents (order)", "latest passage"],
-                   [[f"{x['programme']} ({x['announced']}, {f(x['outlay_cr'])})", f(x["first_mention"]), f(x["first_order_mention"]),
+                   [[f"{x['programme']} ({x['announced']}, {f(x['outlay_cr'])})", f(x["first_mention"]),
+                     f(x["first_order_mention"]) + (" (early in the programme)" if x.get("early_cycle") else ""),
                      f"{x['documents']} ({x['order_documents']})", x["snippet"][:200]] for x in pr])
           if pr else ["Government programmes: the company's filings name none of the listed programmes by the cutoff.", ""])
     sig = o.get("signal_filings") or []
