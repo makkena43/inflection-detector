@@ -122,9 +122,10 @@ RULES_3_4 = RULES_3_3.replace(_ROUTINE_33, _ROUTINE_34).replace(_DEEP_33, _DEEP_
 # pattern, PLI approvals, capacity / production / rating / preferential-issue filings) as context only.
 _SOURCES_35 = """
 Context only: the "Ownership and other signals" section (promoter, mutual fund and foreign holdings, promoter
-pledges, PLI approvals, capacity-added / production-started, credit-rating and preferential-issue filings) does not
-make an event firm, large or new. Use it to judge whether the change is real (e.g. capacity commissioned, rating
-upgraded, promoters or funds adding) and say so in the rationale; a commissioned capacity can itself be the
+pledges, PLI approvals, government programmes the company has orders under, capacity-added / production-started,
+credit-rating and preferential-issue filings) does not make an event firm, large or new. Use it to judge whether
+the change is real (e.g. capacity commissioned, rating upgraded, promoters or funds adding, an order under a large
+funded programme that can repeat) and say so in the rationale; a commissioned capacity can itself be the
 new-revenue trigger, sized as ESTIMATED_FROM_QUANTITY."""
 RULES_3_5 = RULES_3_4 + "\n" + _SOURCES_35
 

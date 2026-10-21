@@ -610,8 +610,9 @@ def render(c: dict) -> str:
 
 
 def ownership_section(o: Optional[dict]) -> list[str]:
-    """Markdown for the 3.5 'Ownership and other signals' section: shareholding by quarter, PLI approvals, and
-    capacity / production / rating / preferential / acquisition filings in the year before the cutoff."""
+    """Markdown for the 3.5 'Ownership and other signals' section: shareholding by quarter, PLI approvals, government
+    programmes named in the company's filings, and capacity / production / rating / preferential / acquisition
+    filings in the year before the cutoff."""
     o = o or {}
     f = lambda v: "–" if v is None else v
     L = ["## Ownership and other signals (context only)", ""]
@@ -631,6 +632,12 @@ def ownership_section(o: Optional[dict]) -> list[str]:
         + (f", committed investment INR {x['committed_investment_cr']} crore" if x.get("committed_investment_cr") else "")
         + (f", {x['product_segment']}" if x.get("product_segment") else "") + f". {x['source_url']}" for x in pli] + [""]
           if pli else ["PLI scheme approvals: none found for this company.", ""])
+    pr = o.get("programmes") or []
+    L += (["Government programmes (Rs 10,000 crore+ outlay) the company had named in its filings by the cutoff:", ""]
+          + _table(["programme (announced, outlay INR crore)", "first mention", "first order mention", "documents (order)", "latest passage"],
+                   [[f"{x['programme']} ({x['announced']}, {f(x['outlay_cr'])})", f(x["first_mention"]), f(x["first_order_mention"]),
+                     f"{x['documents']} ({x['order_documents']})", x["snippet"][:200]] for x in pr])
+          if pr else ["Government programmes: the company's filings name none of the listed programmes by the cutoff.", ""])
     sig = o.get("signal_filings") or []
     L += (["Capacity, production, rating, fund-raising and acquisition filings in the 12 months before the cutoff "
            "(read with the page command when they matter):"] + [

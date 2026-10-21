@@ -28,7 +28,7 @@ from ..commercial import vocabulary as CV
 from ..financial.pipeline import _SYMBOL
 from ..queue import LABEL
 from ..states import PublicationBasis, RunMode
-from .. import orderbook, shareholding
+from .. import orderbook, programmes, shareholding
 from ..triage.pipeline import base_until, run_tag
 from . import contents as C
 
@@ -255,7 +255,8 @@ SIGNAL_CATEGORIES = ["capacity addition", "commencement of commercial production
 
 
 def _ownership(conn, it: dict) -> dict:
-    """Shareholding by quarter, PLI approvals and recent signal filings, all public by the cutoff."""
+    """Shareholding by quarter, PLI approvals, government programmes the company had named, and recent signal
+    filings, all public by the cutoff."""
     pli = conn.execute(
         """SELECT approval_date, scheme, tranche, committed_investment_cr, product_segment, source_url FROM pli_beneficiaries
             WHERE issuer_id = %s AND approval_date <= %s ORDER BY approval_date""",
@@ -270,6 +271,7 @@ def _ownership(conn, it: dict) -> dict:
         (it["issuer_id"], it["cutoff"], it["cutoff"], SIGNAL_CATEGORIES, SIGNAL_CATEGORIES)).fetchall()
     return dict(
         shareholding=shareholding.series(conn, it["issuer_id"], it["cutoff"]),
+        programmes=programmes.exposure(conn, it["issuer_id"], it["cutoff"]),
         pli=[dict(approval_date=d.isoformat(), scheme=sc, tranche=t, committed_investment_cr=float(c) if c is not None else None,
                   product_segment=ps, source_url=u) for d, sc, t, c, ps, u in pli],
         signal_filings=_dedupe_signals(sig))

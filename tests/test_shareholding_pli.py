@@ -65,3 +65,20 @@ def test_ownership_section_renders_without_data():
                                         "signal_filings": [dict(published_at="2026-08-01 10:00 IST", category="capacity addition",
                                                                 title="New line", text_artifact_id=None)]}))
     assert "33.58 (0.01)" in md and "PLI ACC" in md and "capacity addition" in md
+
+
+def test_programme_tsquery_and_order_snippet():
+    from inflection import programmes as G
+    assert G.tsquery("kavach|train collision avoidance") == "kavach | (train <-> collision <-> avoidance)"
+    s, is_order = G.snippet("The company has received an order for Kavach equipment from RDSO.", "kavach|tcas")
+    assert is_order and "Kavach" in s
+    s, is_order = G.snippet("We see the Kavach opportunity as large over the next decade.", "kavach")
+    assert s and not is_order
+    assert G.snippet("Nothing here.", "kavach") == (None, False)
+
+
+def test_ownership_section_lists_programmes():
+    md = "\n".join(C.ownership_section({"programmes": [dict(programme="Kavach", announced="2022-02-01", outlay_cr=None,
+                                                            first_mention="2022-05-01", first_order_mention="2022-08-01",
+                                                            documents=4, order_documents=2, snippet="order for Kavach")]}))
+    assert "Kavach (2022-02-01, –)" in md and "4 (2)" in md
