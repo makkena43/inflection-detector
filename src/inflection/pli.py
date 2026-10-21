@@ -5,7 +5,8 @@
 The CSV (columns scheme, tranche_or_round, company_name_as_published, approval_date, committed_investment_cr,
 incentive_or_output_cr, product_segment, source_url, notes) is compiled from PIB and ministry releases.  A name is
 matched to an issuer only when, after dropping legal suffixes, it equals the issuer's name or is the unique issuer
-whose name starts with it (two words at least); everything else stays unmatched (most approvals are unlisted).
+whose name starts with it (two words at least), among issuers with a listed security; a few subsidiaries named in
+approvals map to their listed parent (ALIASES).  Everything else stays unmatched (most approvals are unlisted).
 """
 from __future__ import annotations
 
@@ -28,6 +29,14 @@ def norm(name: str) -> str:
     return " ".join(SUFFIX.sub(" ", s).split())
 
 
+# Approvals often name a subsidiary; these are wholly owned by the listed parent (from the parents' filings).
+ALIASES = {"padget electronics": "dixon technologies", "dixon electro appliances": "dixon technologies",
+           "hfcl technologies": "hfcl", "syrma technology": "syrma sgs technology", "tata power solar": "tata power",
+           "tata power solar systems": "tata power", "waaree": "waaree energies", "pg technoplast": "pg electroplast",
+           "epac durables solutions": "epack durable", "dixon devices": "dixon technologies",
+           "dixon technologies solutions": "dixon technologies", "blue star climatech": "blue star"}
+
+
 def matcher(names: list[tuple]) -> "callable":
     exact, words = {}, defaultdict(set)
     for iid, legal in names:
@@ -38,6 +47,7 @@ def matcher(names: list[tuple]) -> "callable":
 
     def match(name: str) -> Optional[str]:
         n = norm(name)
+        n = ALIASES.get(n, n)
         if not n:
             return None
         if len(exact.get(n, ())) == 1:
@@ -58,7 +68,8 @@ def _num(v) -> Optional[Decimal]:
 
 
 def load(conn, path: str) -> dict:
-    match = matcher(conn.execute("SELECT issuer_id, legal_name FROM issuers").fetchall())
+    match = matcher(conn.execute("""SELECT issuer_id, legal_name FROM issuers i
+                                     WHERE EXISTS (SELECT 1 FROM securities s WHERE s.issuer_id = i.issuer_id)""").fetchall())
     out = {"rows": 0, "matched": 0}
     with open(path, newline="") as fh:
         for r in csv.DictReader(fh):
