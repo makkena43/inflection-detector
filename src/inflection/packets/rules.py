@@ -118,9 +118,21 @@ _DEEP_34 = """- **DEEP_RESEARCH** — FIRM, company-specific, ≥ 10% of annual 
 assert _ROUTINE_33 in RULES_3_3 and _DEEP_33 in RULES_3_3
 RULES_3_4 = RULES_3_3.replace(_ROUTINE_33, _ROUTINE_34).replace(_DEEP_33, _DEEP_34)
 
-VERSIONS = {"3.3": ("triage-rules-3.3", RULES_3_3), "3.4": ("triage-rules-3.4", RULES_3_4)}
+# 3.5 (2026-10-21): same decision rule as 3.4; packets add an "Ownership and other signals" section (shareholding
+# pattern, PLI approvals, capacity / production / rating / preferential-issue filings) as context only.
+_SOURCES_35 = """
+Context only: the "Ownership and other signals" section (promoter, mutual fund and foreign holdings, promoter
+pledges, PLI approvals, capacity-added / production-started, credit-rating and preferential-issue filings) does not
+make an event firm, large or new. Use it to judge whether the change is real (e.g. capacity commissioned, rating
+upgraded, promoters or funds adding) and say so in the rationale; a commissioned capacity can itself be the
+new-revenue trigger, sized as ESTIMATED_FROM_QUANTITY."""
+RULES_3_5 = RULES_3_4 + "\n" + _SOURCES_35
+
+VERSIONS = {"3.3": ("triage-rules-3.3", RULES_3_3), "3.4": ("triage-rules-3.4", RULES_3_4),
+            "3.5": ("triage-rules-3.5", RULES_3_5)}
 ACTIVE = os.environ.get("INFLECTION_TRIAGE_RULES", "3.4")
 if ACTIVE not in VERSIONS:
     raise ValueError(f"INFLECTION_TRIAGE_RULES must be one of {sorted(VERSIONS)}, not {ACTIVE!r}")
 TRIAGE_RULES_VERSION, RULES = VERSIONS[ACTIVE]
 WITH_VALUATION = ACTIVE != "3.3"          # 3.4 packets carry the computed valuation-and-margin section
+WITH_SOURCES = ACTIVE not in ("3.3", "3.4")   # 3.5 packets also carry the ownership-and-other-signals section

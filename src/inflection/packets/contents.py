@@ -26,7 +26,7 @@ from ..asof import IST
 from ..units import Money, Scale, growth
 from . import rules as R
 
-PACKET_VERSION = "triage-packet-3" if R.WITH_VALUATION else "triage-packet-2"            # 2: carries the triage decision rule (rules.py)
+PACKET_VERSION = ("triage-packet-4" if R.WITH_SOURCES else "triage-packet-3") if R.WITH_VALUATION else "triage-packet-2"            # 2: carries the triage decision rule (rules.py)
 SCHEMA_VERSION = "1"
 TOKEN_BUDGET = 12_000                 # spec 5.3: initial packet target
 CHARS_PER_TOKEN = 4                   # rough estimate for English and figures; stated in the packet
@@ -368,7 +368,8 @@ def _passage(p: dict) -> dict:
 
 def build(head: dict, identity: dict, evaluations: list[dict], prior_triage: Optional[dict], events: list[dict],
           passages: list[dict], documents: list[dict], fin: dict, price: dict, excluded: dict,
-          budget: int = TOKEN_BUDGET, order_book: Optional[list[dict]] = None) -> tuple[dict, str]:
+          budget: int = TOKEN_BUDGET, order_book: Optional[list[dict]] = None,
+          ownership: Optional[dict] = None) -> tuple[dict, str]:
     """(content, markdown).  ``passages`` carry kind TRIGGER, CONTRADICTS or PRIOR, newest first."""
     trig = [_passage(p) for p in passages if p["kind"] == "TRIGGER"]
     contra = [_passage(p) for p in passages if p["kind"] == "CONTRADICTS"]
@@ -404,7 +405,8 @@ def build(head: dict, identity: dict, evaluations: list[dict], prior_triage: Opt
                                   for e in evaluations]),
         risk_flags=flags, events=events, trigger_passages=trig, contradicting_passages=contra,
         prior_passages=prior, documents=documents, financials=fin, price=price,
-        **({"valuation": valuation(fin, price), "order_book": order_book or []} if R.WITH_VALUATION else {}))
+        **({"valuation": valuation(fin, price), "order_book": order_book or []} if R.WITH_VALUATION else {}),
+        **({"ownership": ownership or {}} if R.WITH_SOURCES else {}))
 
 
     def fits() -> bool:
@@ -587,6 +589,7 @@ def render(c: dict) -> str:
                   "('doubtful' = breaks sharply from the neighbouring quarters); use them as context for how normal the "
                   "trigger order is, not as a size. If you are making a DEEP_RESEARCH call, confirm the latest company-total "
                   "order book and quarterly order inflow from the documents and report them in order_book_check.", ""]
+    L += ownership_section(c.get("ownership")) if "ownership" in c else []
     L += ["## Full documents on demand", "",
           f"Read up to {MAX_PAGES_PER_RETRIEVAL} pages at a time, once, for context this packet lacks:",
           "`python -m inflection.packets page PACKET_ID TEXT_ARTIFACT_ID PAGES` (for example `3` or `2-4`).", ""]
@@ -604,6 +607,36 @@ def render(c: dict) -> str:
           f"Return JSON with exactly these fields: {', '.join(RETURN_FIELDS)}. "
           f"Keep issuer_id, as_of, packet_hash, event_ids and triage_rules_version as given."]
     return "\n".join(L) + "\n"
+
+
+def ownership_section(o: Optional[dict]) -> list[str]:
+    """Markdown for the 3.5 'Ownership and other signals' section: shareholding by quarter, PLI approvals, and
+    capacity / production / rating / preferential / acquisition filings in the year before the cutoff."""
+    o = o or {}
+    f = lambda v: "–" if v is None else v
+    L = ["## Ownership and other signals (context only)", ""]
+    sh = o.get("shareholding") or []
+    if sh:
+        L += ["Shareholding pattern (% of shares; change on a year earlier in brackets):", ""]
+        L += _table(["quarter ending", "promoter", "promoter pledged (% of promoter)", "mutual funds", "foreign inst.",
+                     "domestic inst.", "retail (< Rs 2 lakh)"],
+                    [[x["period_end"], f"{f(x['promoter_pct'])} ({f(x.get('promoter_chg_yoy'))})", f(x["promoter_pledged_pct"]),
+                      f"{f(x['mf_pct'])} ({f(x.get('mf_chg_yoy'))})", f"{f(x['fii_pct'])} ({f(x.get('fii_chg_yoy'))})",
+                      f(x["dii_pct"]), f(x["retail_pct"])] for x in sh])
+    else:
+        L += ["Shareholding pattern: none public by the cutoff in our data.", ""]
+    pli = o.get("pli") or []
+    L += (["PLI scheme approvals public by the cutoff:"] + [
+        f"- {x['approval_date']}: {x['scheme']}{' ' + x['tranche'] if x.get('tranche') else ''}"
+        + (f", committed investment INR {x['committed_investment_cr']} crore" if x.get("committed_investment_cr") else "")
+        + (f", {x['product_segment']}" if x.get("product_segment") else "") + f". {x['source_url']}" for x in pli] + [""]
+          if pli else ["PLI scheme approvals: none found for this company.", ""])
+    sig = o.get("signal_filings") or []
+    L += (["Capacity, production, rating, fund-raising and acquisition filings in the 12 months before the cutoff "
+           "(read with the page command when they matter):"] + [
+        f"- {x['published_at']} {x['category']}: {x.get('title') or ''} (text {x.get('text_artifact_id') or 'not extracted'})"
+        for x in sig] + [""] if sig else ["Capacity, production, rating, fund-raising and acquisition filings: none in the 12 months before the cutoff.", ""])
+    return L
 
 
 def result_template(content: dict, packet_hash: str) -> dict:

@@ -28,7 +28,7 @@ from ..commercial import vocabulary as CV
 from ..financial.pipeline import _SYMBOL
 from ..queue import LABEL
 from ..states import PublicationBasis, RunMode
-from .. import orderbook
+from .. import orderbook, shareholding
 from ..triage.pipeline import base_until, run_tag
 from . import contents as C
 
@@ -244,8 +244,46 @@ def packet_for(conn, it: dict, budget: int = C.TOKEN_BUDGET) -> tuple[dict, str]
     prices, actions = _prices(conn, it)
     price = C.price_summary(prices, actions, it["cutoff"].astimezone(IST).date(), shares)
     ob = orderbook.series(conn, it["issuer_id"], it["cutoff"]) if C.R.WITH_VALUATION else None
+    own = _ownership(conn, it) if C.R.WITH_SOURCES else None
     return C.build(it, _identity(conn, it), evaluations, _prior_triage(conn, it), _events(conn, it), passages,
-                   _documents(conn, it, evaluations, passages), fin, price, excluded, budget, order_book=ob)
+                   _documents(conn, it, evaluations, passages), fin, price, excluded, budget, order_book=ob, ownership=own)
+
+
+SIGNAL_CATEGORIES = ["capacity addition", "commencement of commercial production/operations", "credit rating",
+                     "credit rating- revision", "credit rating- new", "credit rating- others", "preferential issue",
+                     "allotment of warrants", "acquisition", "scheme of arrangement", "amalgamation/merger"]
+
+
+def _ownership(conn, it: dict) -> dict:
+    """Shareholding by quarter, PLI approvals and recent signal filings, all public by the cutoff."""
+    pli = conn.execute(
+        """SELECT approval_date, scheme, tranche, committed_investment_cr, product_segment, source_url FROM pli_beneficiaries
+            WHERE issuer_id = %s AND approval_date <= %s ORDER BY approval_date""",
+        (it["issuer_id"], it["cutoff"].astimezone(IST).date())).fetchall()
+    sig = conn.execute(
+        """SELECT DISTINCT ON (p.publication_id) p.published_at, coalesce(nullif(lower(p.original_subcategory), ''), lower(p.original_category)),
+                  p.title, ta.text_artifact_id
+             FROM document_publications p LEFT JOIN text_artifacts ta USING (document_version_id)
+            WHERE p.issuer_id = %s AND p.published_at <= %s AND p.published_at > %s - interval '365 days'
+              AND (lower(coalesce(p.original_category, '')) = ANY(%s) OR lower(coalesce(p.original_subcategory, '')) = ANY(%s))
+            ORDER BY p.publication_id""",
+        (it["issuer_id"], it["cutoff"], it["cutoff"], SIGNAL_CATEGORIES, SIGNAL_CATEGORIES)).fetchall()
+    return dict(
+        shareholding=shareholding.series(conn, it["issuer_id"], it["cutoff"]),
+        pli=[dict(approval_date=d.isoformat(), scheme=sc, tranche=t, committed_investment_cr=float(c) if c is not None else None,
+                  product_segment=ps, source_url=u) for d, sc, t, c, ps, u in pli],
+        signal_filings=_dedupe_signals(sig))
+
+
+def _dedupe_signals(rows) -> list[dict]:
+    """Newest first, one per day and category (NSE and BSE copies of one filing), the read copy preferred."""
+    best = {}
+    for pub, cat, title, ta in rows:
+        k = (pub.astimezone(IST).date(), cat.replace("- revision", "").replace("- new", "").replace("- others", "").strip())
+        if k not in best or (ta and not best[k][3]):
+            best[k] = (pub, cat, title, ta)
+    return [dict(published_at=C.ist(pub), category=cat, title=(title or "")[:200], text_artifact_id=str(ta) if ta else None)
+            for pub, cat, title, ta in sorted(best.values(), key=lambda r: r[0], reverse=True)[:15]]
 
 
 def _latest(conn, shortlist_id, issuer_id):
