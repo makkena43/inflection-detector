@@ -127,10 +127,20 @@ credit-rating and preferential-issue filings) does not make an event firm, large
 the change is real (e.g. capacity commissioned, rating upgraded, promoters or funds adding, an order under a large
 funded programme that can repeat) and say so in the rationale; a commissioned capacity can itself be the
 new-revenue trigger, sized as ESTIMATED_FROM_QUANTITY."""
-RULES_3_5 = RULES_3_4 + "\n" + _SOURCES_35
+RULES_3_5_0 = RULES_3_4 + "\n" + _SOURCES_35
+
+# 3.5.1 (2026-10-25): within the thin-margin / cheap-valuation exception, a routine order goes to deep research only
+# when TTM revenue is already growing (exception-parameter study 2021-25: firm + growth +34% 12m vs Smallcap 250,
+# rest +7%).  Selected by INFLECTION_TRIAGE_RULES=3.5; the original 3.5 text stays available as 3.5.0.
+_ROUTINE_351 = _ROUTINE_34 + """
+     Under this exception, send it to DEEP_RESEARCH only if the order is firm and TTM revenue growth in the
+     "Valuation and margin" section is above 0%; if revenue growth is zero or negative, use WATCH_MILESTONE (the next
+     milestone is revenue turning up). If revenue growth is not shown, decide as above and list it as missing."""
+RULES_3_5 = RULES_3_5_0.replace(_ROUTINE_34, _ROUTINE_351)
+assert _ROUTINE_351 in RULES_3_5
 
 VERSIONS = {"3.3": ("triage-rules-3.3", RULES_3_3), "3.4": ("triage-rules-3.4", RULES_3_4),
-            "3.5": ("triage-rules-3.5", RULES_3_5)}
+            "3.5.0": ("triage-rules-3.5", RULES_3_5_0), "3.5": ("triage-rules-3.5.1", RULES_3_5)}
 ACTIVE = os.environ.get("INFLECTION_TRIAGE_RULES", "3.4")
 if ACTIVE not in VERSIONS:
     raise ValueError(f"INFLECTION_TRIAGE_RULES must be one of {sorted(VERSIONS)}, not {ACTIVE!r}")
