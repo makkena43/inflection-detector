@@ -292,6 +292,20 @@ if len(sys.argv) > 2 and sys.argv[2] == "runup":
           "R2 order200%+FII up qoq": lambda x: sz(x, 200) and gt(x["fii_q"], 0),
           "R3 order200%+ of mcap": lambda x: (x["o_mc"] or 0) >= 2.0}
     CB["ANY C1-C5"] = lambda x: any(CB[c](x) for c in CB if c[:1] == "C")
+    if len(sys.argv) > 3 and sys.argv[3] == "period":
+        say("## 18. Skip picks whose price rose >= T in the 12 months before entry: per period, kept vs skipped")
+        say("   cells: period kept n / profit per 1L (stop -20%, 36m) / median vs SC  ||  skipped n / profit / median vs SC")
+        for c, f in CB.items():
+            say(f"\n   {c}")
+            for T in (1.5, 2.0, 3.0):
+                cells = []
+                for sp, lab in (("train", "21-23"), ("valid", "24"), ("hold", "25-26")):
+                    sel = [x for x in P if f(x) and x["split"] == sp]
+                    a = [x for x in sel if not ge(x["r1y"], T)]; b = [x for x in sel if ge(x["r1y"], T)]
+                    q = lambda v: (f"n{len(v)} Rs{1e5*st.mean(x['p36'] for x in v)/1e5:.2f}L {100*st.median(x['ex36'] for x in v):+.0f}%" if v else "n0")
+                    cells.append(f"{lab}: {q(a)} || {q(b)}")
+                say(f"      skip 1y>={T}x  " + " | ".join(cells))
+        sys.exit(0)
     RULES = {"1y>=2x": lambda x: ge(x["r1y"], 2), "1y>=3x": lambda x: ge(x["r1y"], 3), "2y>=3x": lambda x: ge(x["r2y"], 3),
              "2y>=5x": lambda x: ge(x["r2y"], 5), "3y>=5x": lambda x: ge(x["r3y"], 5), "3y>=10x": lambda x: ge(x["r3y"], 10),
              "3y-low>=3x": lambda x: x["xlow"] >= 3, "3y-low>=5x": lambda x: x["xlow"] >= 5, "3y-low>=10x": lambda x: x["xlow"] >= 10}
