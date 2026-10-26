@@ -268,6 +268,56 @@ if EXTRA:
 
 
 
+if len(sys.argv) > 2 and sys.argv[2] == "runup":
+    # Does skipping picks whose price already ran 3x/5x/10x before entry improve the rulebook and watch-list combos?
+    def back(x, days):
+        s = x["s"]; k = x["k"]; j = s.at(s.d[k] - timedelta(days=days))
+        return s.p[k] / s.p[j] if j < k and (s.d[k] - s.d[j]).days >= days - 10 else None
+    for x in P:
+        s, k = x["s"], x["k"]
+        x["r1y"], x["r2y"], x["r3y"] = back(x, 365), back(x, 730), back(x, 1095)
+        x["xlow"] = s.p[k] / min(s.p[s.at(s.d[k] - timedelta(days=1095)):k + 1])
+        x["hist"] = (s.d[k] - s.d[0]).days / 365.25
+        q = x["p"]; x["prom_pct"] = fnum(q.get("promoter_holding_pct"))
+        x["p36"] = outcome(x, dict(stop=0.20, maxd=1095))["mult"] - 1
+        x["ex36"] = outcome(x, dict(stop=0.20, maxd=1095))["ex"]
+    sz = lambda x, v: (x["size"] or 0) >= v
+    CB = {"ALL picks": lambda x: True,
+          "C1 order100%+near high+liq2cr": lambda x: sz(x, 100) and x["t_hi"] and (x["liq"] or 0) >= 2,
+          "C2 order25%+near high+6m>60%": lambda x: sz(x, 25) and x["t_hi"] and (x["runup6"] or 0) > 0.60,
+          "C3 order25%+OPM<10%+uptrend": lambda x: sz(x, 25) and x["opm"] is not None and x["opm"] < 0.10 and x["t3"] >= 2,
+          "C4 order100%+not routine+200DMA": lambda x: sz(x, 100) and not x["routine"] and x["t_up"],
+          "C5 FII up qoq+prom60%+near high": lambda x: gt(x["fii_q"], 0) and (x["prom_pct"] or 0) >= 60 and x["t_hi"],
+          "R1 order300%+uptrend": lambda x: sz(x, 300) and x["t3"] >= 2,
+          "R2 order200%+FII up qoq": lambda x: sz(x, 200) and gt(x["fii_q"], 0),
+          "R3 order200%+ of mcap": lambda x: (x["o_mc"] or 0) >= 2.0}
+    CB["ANY C1-C5"] = lambda x: any(CB[c](x) for c in CB if c[:1] == "C")
+    RULES = {"1y>=2x": lambda x: ge(x["r1y"], 2), "1y>=3x": lambda x: ge(x["r1y"], 3), "2y>=3x": lambda x: ge(x["r2y"], 3),
+             "2y>=5x": lambda x: ge(x["r2y"], 5), "3y>=5x": lambda x: ge(x["r3y"], 5), "3y>=10x": lambda x: ge(x["r3y"], 10),
+             "3y-low>=3x": lambda x: x["xlow"] >= 3, "3y-low>=5x": lambda x: x["xlow"] >= 5, "3y-low>=10x": lambda x: x["xlow"] >= 10}
+    say("## 17. Prior run-up before entry (price at entry vs 1y/2y/3y earlier, and vs lowest close in the 3y before)")
+    say(f"   picks {len(P)}; with 1y history {sum(x['r1y'] is not None for x in P)}, 2y {sum(x['r2y'] is not None for x in P)}, 3y {sum(x['r3y'] is not None for x in P)}")
+    for r, f in RULES.items():
+        sel = [x for x in P if f(x)]
+        say(f"   {r}: {len(sel)} picks")
+    m = lambda v: f"Rs{1e5*st.mean(v):,.0f}" if v else "-"
+    for c, f in CB.items():
+        sel = [x for x in P if f(x)]
+        say(f"\n   {c}: {len(sel)} buys, base {m([x['p36'] for x in sel])}/1L (stop -20%, 36m)")
+        for r, g in RULES.items():
+            out = [x for x in sel if g(x)]; kept = [x for x in sel if not g(x)]
+            if not out: continue
+            say(f"      skip {r:11s}: drops {len(out):2d} (they made {m([x['p36'] for x in out])}) -> kept {len(kept)} make {m([x['p36'] for x in kept])}"
+                + ((" | " + ", ".join("%s %s %+.0f%%" % (x["label"][:14], str(x["year"])[2:], 100 * x["p36"]) for x in out))[:220] if len(out) <= 8 else ""))
+    say("\n   ALL picks by period, median 36m excess vs SC: ran-up vs rest")
+    for r in ("1y>=3x", "2y>=5x", "3y-low>=5x", "3y-low>=10x"):
+        cells = []
+        for sp in ("train", "valid", "hold"):
+            a = [x["ex36"] for x in P if x["split"] == sp and RULES[r](x)]; b = [x["ex36"] for x in P if x["split"] == sp and not RULES[r](x)]
+            cells.append(f"{sp} {100*st.median(a):+.0f}%(n{len(a)}) vs {100*st.median(b):+.0f}%" if a else f"{sp} n0")
+        say(f"   {r:11s}: " + " | ".join(cells))
+    sys.exit(0)
+
 if len(sys.argv) > 2 and sys.argv[2] == "deep":
     import itertools, random, re
     up = lambda v: v is not None and v > 0
