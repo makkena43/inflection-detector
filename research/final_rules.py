@@ -265,6 +265,123 @@ if EXTRA:
 
     sys.exit(0)
 
+
+if len(sys.argv) > 2 and sys.argv[2] == "search":
+    import itertools, random
+    RULE = dict(stop=0.20)  # stop -20% on close, else sell at 24m (validated earlier)
+    for x in P:
+        o = outcome(x, RULE); x["ret"], x["ex"], x["open"] = o["mult"] - 1, o["ex"], o["open"]
+        q = x["p"]
+        x["ob_yoy"] = fnum(q.get("order_book.book_yoy_pct")); x["inflow_yoy"] = fnum(q.get("order_book.inflow_yoy_pct"))
+        x["mgmt"] = fnum(q.get("mgmt_target_x")); x["prom_buy"] = fnum(q.get("promoter_net_cr")); x["inst_buy"] = fnum(q.get("inst_net_cr"))
+    pct = max((abs(x["revg"]) for x in P if x["revg"] is not None), default=0) > 5   # revg in % or fraction
+    g = lambda v: v / 100 if (v is not None and pct) else v
+    o_pct = max((abs(x["opm"]) for x in P if x["opm"] is not None), default=0) > 2
+    m = lambda v: v / 100 if (v is not None and o_pct) else v
+    COND = {
+        "order>=25%rev": lambda x: ge(x["size"], 25), "order>=50%rev": lambda x: ge(x["size"], 50),
+        "order>=100%rev": lambda x: ge(x["size"], 100), "order>=200%rev": lambda x: ge(x["size"], 200),
+        "order>=25%mcap": lambda x: ge(x["o_mc"], 0.25), "order>=50%mcap": lambda x: ge(x["o_mc"], 0.5),
+        "order>=100%mcap": lambda x: ge(x["o_mc"], 1.0),
+        "12m orders>=50%rev": lambda x: ge(x["o12"], 50), "12m orders>=100%rev": lambda x: ge(x["o12"], 100),
+        "yr1 exec>=25%rev": lambda x: ge(x["oy1"], 25), "yr1 exec>=50%rev": lambda x: ge(x["oy1"], 50),
+        "order book growing": lambda x: gt(x["ob_yoy"], 0) or gt(x["inflow_yoy"], 0),
+        "order book +30%": lambda x: ge(x["ob_yoy"], 30) or ge(x["inflow_yoy"], 30),
+        "mcap<500cr": lambda x: lt(x["mcap"], 500), "mcap<2000cr": lambda x: lt(x["mcap"], 2000),
+        "mcap<5000cr": lambda x: lt(x["mcap"], 5000), "mcap>=2000cr": lambda x: ge(x["mcap"], 2000),
+        "P/S<0.75": lambda x: lt(x["ps"], 0.75), "P/S<1.5": lambda x: lt(x["ps"], 1.5), "P/S<3": lambda x: lt(x["ps"], 3),
+        "P/S>=3": lambda x: ge(x["ps"], 3),
+        "OPM<10%": lambda x: lt(m(x["opm"]), 0.10), "OPM>=15%": lambda x: ge(m(x["opm"]), 0.15), "loss-making": lambda x: lt(m(x["opm"]), 0),
+        "OPM rising": lambda x: gt(m(x["opm_chg"]), 0.01),
+        "rev growing": lambda x: gt(x["revg"], 0), "rev growth>20%": lambda x: gt(g(x["revg"]), 0.20),
+        "firm order": lambda x: x["firm"], "routine order": lambda x: x["routine"], "not routine": lambda x: not x["routine"],
+        "FII up YoY": lambda x: gt(x["fii"], 0), "FII up QoQ": lambda x: gt(x["fii_q"], 0),
+        "promoter not cut YoY": lambda x: ge(x["prom"], 0), "promoter up YoY": lambda x: gt(x["prom"], 0),
+        "promoter not cut QoQ": lambda x: ge(x["prom_q"], 0),
+        "promoter bought": lambda x: ge(x["prom_buy"], 1), "institutions bought": lambda x: ge(x["inst_buy"], 1),
+        "mgmt target>=1.5x rev": lambda x: ge(x["mgmt"], 1.5),
+        "tech>=2/3": lambda x: x["t3"] >= 2, "tech 3/3": lambda x: x["t3"] == 3,
+        "6m run-up>30%": lambda x: gt(x["runup6"], 0.30), "6m run-up<0": lambda x: lt(x["runup6"], 0),
+        "liquid>=0.5cr/day": lambda x: ge(x["liq"], 0.5), "liquid>=2cr/day": lambda x: ge(x["liq"], 2),
+        "score>=3": lambda x: ge(x["score"], 3), "score>=4": lambda x: ge(x["score"], 4),
+    }
+    names = list(COND)
+    mask = {c: sum(1 << i for i, x in enumerate(P) if COND[c](x)) for c in names}
+    SPL = {s: sum(1 << i for i, x in enumerate(P) if x["split"] == s) for s in ("train", "valid", "hold")}
+    def idx(b):
+        out = []
+        while b:
+            l = b & -b; out.append(l.bit_length() - 1); b ^= l
+        return out
+    def stats(b, ex):
+        ii = idx(b)
+        if not ii: return None
+        e = [ex[i] for i in ii]; r = [P[i]["ret"] for i in ii]
+        return dict(n=len(ii), mex=st.median(e), beat=sum(v > 0 for v in e) / len(e), mret=st.median(r), avg=st.mean(r),
+                    worst=min(r))
+    EX = [x["ex"] for x in P]
+    say(f"conditions {len(names)}; revg in % = {pct}; OPM in % = {o_pct}")
+    say("\n## 9. Single conditions (stop -20% else 24m). n / median vs SC / beat% for train<=2023 | 2024 | 2025-26")
+    for c in names:
+        cells = []
+        for s in ("train", "valid", "hold"):
+            z = stats(mask[c] & SPL[s], EX)
+            cells.append(f"{z['n']:3d} {100*z['mex']:+4.0f}% {100*z['beat']:3.0f}%" if z else "  0")
+        say(f"   {c:22s} " + " | ".join(cells))
+    combos = [(c,) for c in names] + list(itertools.combinations(names, 2)) + list(itertools.combinations(names, 3))
+    def run(ex):
+        found, seen_b = [], set()
+        for cb in combos:  # shortest combos first, so a longer one picking the same stocks is skipped
+            b = -1
+            for c in cb: b &= mask[c]
+            if b == 0 or b in seen_b: continue
+            seen_b.add(b)
+            tr = stats(b & SPL["train"], ex)
+            if not tr or tr["n"] < 10 or tr["mex"] <= 0 or tr["beat"] < 0.55: continue
+            va = stats(b & SPL["valid"], ex)
+            if not va or va["n"] < 4 or va["mex"] <= 0: continue
+            found.append((min(tr["mex"], va["mex"]), cb, tr, va, b))
+        found.sort(key=lambda f: -f[0])
+        return found
+    found = run(EX)
+    say(f"\n## 10. Combos of 1-3 conditions tested: {len(combos)}. Passing train (n>=10, median beats index, >=55% beat) AND 2024 (n>=4, median beats index): {len(found)}")
+    random.seed(7)
+    fake = []
+    for _ in range(10):  # chance baseline: shuffle returns within each split, rerun the same search
+        ex2 = EX[:]
+        for s in SPL:
+            ii = idx(SPL[s]); vals = [ex2[i] for i in ii]; random.shuffle(vals)
+            for i, v in zip(ii, vals): ex2[i] = v
+        f2 = run(ex2)
+        hp = [stats(f[4] & SPL["hold"], ex2) for f in f2[:25]]
+        fake.append((len(f2), sum(1 for h in hp if h and h["mex"] > 0) / max(1, len(hp))))
+    say("   by chance (returns shuffled, 10 runs): passing combos " + ", ".join(str(a) for a, _ in fake)
+        + " | share of top-25 also beating index in 2025-26: " + ", ".join(f"{100*b:.0f}%" for _, b in fake))
+    say("\n## 11. Top 40 passing combos, ranked on train+2024 only; 2025-26 shown as the untouched test")
+    say("   combo | train n med beat | 2024 n med beat | 2025-26 n med beat avg-return | picks/yr")
+    seen = 0
+    for sc_, cb, tr, va, b in found[:40]:
+        ho = stats(b & SPL["hold"], EX)
+        per = len(idx(b)) / 5.8
+        hs = f"{ho['n']:3d} {100*ho['mex']:+4.0f}% {100*ho['beat']:3.0f}% avg {100*ho['avg']:+4.0f}%" if ho else "  0"
+        say(f"   {' + '.join(cb)[:62]:62s} | {tr['n']:3d} {100*tr['mex']:+4.0f}% {100*tr['beat']:3.0f}% | {va['n']:3d} {100*va['mex']:+4.0f}% {100*va['beat']:3.0f}% | {hs} | {per:.0f}")
+    ok = [(f, stats(f[4] & SPL["hold"], EX)) for f in found]
+    ok = [(f, h) for f, h in ok if h and h["n"] >= 5 and h["mex"] > 0]
+    say(f"\n## 12. Of the {len(found)} passing combos, {len(ok)} also beat the index in 2025-26 (n>=5). Top 15 by worst-of-three median:")
+    ok.sort(key=lambda fh: -min(fh[0][2]["mex"], fh[0][3]["mex"], fh[1]["mex"]))
+    for f, h in ok[:15]:
+        _, cb, tr, va, b = f
+        allr = [P[i]["ret"] for i in idx(b)]
+        say(f"   {' + '.join(cb)[:62]:62s} | {tr['n']} {100*tr['mex']:+.0f}% | {va['n']} {100*va['mex']:+.0f}% | {h['n']} {100*h['mex']:+.0f}% | "
+            f"Rs1L each: {len(allr)} buys, avg profit Rs{1e5*st.mean(allr):,.0f}, win {100*sum(r>0 for r in allr)/len(allr):.0f}%")
+        say("      " + ", ".join(f"{P[i]['label']} {str(P[i]['year'])[2:]}" for i in idx(b))[:240])
+    with open(os.path.join(DIR, "combo_search.csv"), "w", newline="") as fh:
+        w = csv.writer(fh); w.writerow(["combo", "train_n", "train_med_ex", "valid_n", "valid_med_ex", "hold_n", "hold_med_ex"])
+        for sc_, cb, tr, va, b in found:
+            ho = stats(b & SPL["hold"], EX)
+            w.writerow([" + ".join(cb), tr["n"], round(tr["mex"], 3), va["n"], round(va["mex"], 3), ho["n"] if ho else 0, round(ho["mex"], 3) if ho else ""])
+    sys.exit(0)
+
 if len(sys.argv) > 2 and sys.argv[2] == "combo":
     say("holding columns:", [c for c in picks[0] if "change" in c or "fii" in c.lower() or "promoter" in c.lower()][:12])
     say("promoter+FII YoY known by year:", {y: sum(1 for x in P if x["year"] == y and x["prom"] is not None and x["fii"] is not None) for y in range(2021, 2027)})
