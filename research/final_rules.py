@@ -266,6 +266,57 @@ if EXTRA:
     sys.exit(0)
 
 
+
+if len(sys.argv) > 2 and sys.argv[2] == "menu":
+    for x in P:
+        q = x["p"]; x["mgmt"] = fnum(q.get("mgmt_target_x"))
+    up = lambda v: v is not None and v > 0
+    keep = lambda v: v is not None and v >= 0
+    T = lambda x: x["t3"] >= 2
+    M = {
+        "M1 FII up YoY + promoter up YoY": lambda x: up(x["fii"]) and up(x["prom"]),
+        "M2 FII up YoY + promoter not cut YoY": lambda x: up(x["fii"]) and keep(x["prom"]),
+        "M3 M2 + tech>=2/3": lambda x: up(x["fii"]) and keep(x["prom"]) and T(x),
+        "M4 order>=100%rev + FII up YoY": lambda x: ge(x["size"], 100) and up(x["fii"]),
+        "M5 score>=4 + FII up YoY + prom not cut": lambda x: ge(x["score"], 4) and up(x["fii"]) and keep(x["prom"]),
+        "M6 P/S<1.5 + mcap<2000 + FII up YoY": lambda x: lt(x["ps"], 1.5) and lt(x["mcap"], 2000) and up(x["fii"]),
+        "M7 FII up QoQ + promoter not cut QoQ": lambda x: up(x["fii_q"]) and keep(x["prom_q"]),
+        "M8 M7 + tech>=2/3": lambda x: up(x["fii_q"]) and keep(x["prom_q"]) and T(x),
+        "M9 order>=25%rev + FII up QoQ + tech": lambda x: ge(x["size"], 25) and up(x["fii_q"]) and T(x),
+        "M10 order>=50% + 12m orders>=50% + tech": lambda x: ge(x["size"], 50) and ge(x["o12"], 50) and T(x),
+        "M11 order>=100%rev + tech + liquid": lambda x: ge(x["size"], 100) and T(x) and ge(x["liq"], 0.5),
+        "M12 mcap>=2000 + FII up QoQ + tech": lambda x: ge(x["mcap"], 2000) and up(x["fii_q"]) and T(x),
+        "M13 order>=25%rev + OPM<10% + tech": lambda x: ge(x["size"], 25) and lt(x["opm"], 0.10) and T(x),
+        "M14 FII up YoY (alone)": lambda x: up(x["fii"]),
+        "M15 FII up QoQ (alone)": lambda x: up(x["fii_q"]),
+        "M00 all picks": lambda x: True,
+    }
+    def hold(x, days):
+        s = x["s"]; k0 = x["k"]; t1 = s.d[k0] + timedelta(days=days)
+        if t1 > s.d[-1]: return None
+        k1 = s.at(t1); p = s.p[k1] / s.p[k0] - 1 - COST
+        return p, p - (sc(s.d[k1]) / sc(s.d[k0]) - 1)
+    say("## 13. Menu. Buy-and-hold returns (only picks old enough), avg / median, positive share; then Rs1L each with stop -20%")
+    say("   combo | n | 12m avg med pos | 24m avg med beatSC | 36m avg med beatSC | Rs1L stop-20%: sell 24m avg profit | sell 36m avg profit | 24m median vs SC by period")
+    for name, f in M.items():
+        sel = [x for x in P if f(x)]
+        cells = []
+        for d in (365, 730, 1095):
+            h = [hold(x, d) for x in sel]; h = [v for v in h if v]
+            if not h: cells.append(" n=0"); continue
+            r = [a for a, _ in h]; e = [b for _, b in h]
+            third = f"{sum(v > 0 for v in r)}/{len(r)} up" if d == 365 else f"{100*sum(v>0 for v in e)/len(e):.0f}% beat"
+            cells.append(f"n{len(r)} {100*st.mean(r):+.0f}% {100*st.median(r):+.0f}% {third}")
+        p24 = [outcome(x, dict(stop=0.20))["mult"] - 1 for x in sel]
+        p36 = [outcome(x, dict(stop=0.20, maxd=1095))["mult"] - 1 for x in sel]
+        per = []
+        for sp in ("train", "valid", "hold"):
+            e = [outcome(x, dict(stop=0.20))["ex"] for x in sel if x["split"] == sp]
+            per.append(f"{100*st.median(e):+.0f}%({len(e)})" if e else "-")
+        say(f"   {name[:40]:40s} | {len(sel):3d} | " + " | ".join(cells)
+            + (f" | Rs{1e5*st.mean(p24):,.0f} | Rs{1e5*st.mean(p36):,.0f} | " if sel else " | - | - | ") + " ".join(per))
+    sys.exit(0)
+
 if len(sys.argv) > 2 and sys.argv[2] == "search":
     import itertools, random
     RULE = dict(stop=0.20)  # stop -20% on close, else sell at 24m (validated earlier)
