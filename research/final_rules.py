@@ -297,7 +297,8 @@ if len(sys.argv) > 2 and sys.argv[2] == "combo":
         say("   12m by year (n, median vs SC, closed only): " + "  ".join(
             f"{y}:{len([r for r in v if not r['open']])},{100*st.median([r['ex'] for r in v if not r['open']]):+.0f}%" if any(not r['open'] for r in v) else f"{y}:0"
             for y, v in sorted(yrs.items())))
-        say("   names: " + ", ".join(f"{x['label']} {x['year']}" for x in P if f(x))[:600])
+        if not name.startswith(("C0", "C7", "C8")):
+            say("   names: " + ", ".join(f"{x['label']} {str(x['year'])[2:]}" for x in P if f(x))[:300])
     say("\n## 7. Exit rules on combos (per pick, all years)")
     ER = {"hold 24m": dict(maxd=730), "stop -15% else 24m": dict(stop=0.15), "stop -20% else 24m": dict(stop=0.20),
           "stop -25% else 24m": dict(stop=0.25), "stop -20% else 36m": dict(stop=0.20, maxd=1095),
