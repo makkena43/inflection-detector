@@ -267,6 +267,180 @@ if EXTRA:
 
 
 
+
+if len(sys.argv) > 2 and sys.argv[2] == "deep":
+    import itertools, random, re
+    up = lambda v: v is not None and v > 0
+    keep = lambda v: v is not None and v >= 0
+    for x in P:
+        q = x["p"]
+        x["mgmt"] = fnum(q.get("mgmt_target_x")); x["prom_buy"] = fnum(q.get("promoter_net_cr")); x["inst_buy"] = fnum(q.get("inst_net_cr"))
+        x["ob"] = fnum(q.get("order_book.order_book_cr")); x["ob_yoy"] = fnum(q.get("order_book.book_yoy_pct"))
+        x["in_yoy"] = fnum(q.get("order_book.inflow_yoy_pct"))
+        oc = fnum(q.get("order_cr")); x["rev"] = oc * 100 / x["size"] if oc and x["size"] else None
+        x["ob_rev"] = x["ob"] / x["rev"] if x["ob"] and x["rev"] else None
+        x["prom_pct"] = fnum(q.get("promoter_holding_pct")); x["fii_pct"] = fnum(q.get("fii_holding_pct"))
+        x["estimated"] = "estim" in str(q.get("size_basis", "")).lower()
+        x["conf"] = str(q.get("confidence", "")).lower()
+        x["below_falling"] = "Below falling 200" in str(q.get("signals", ""))
+    # extra as-of data straight from the DB (shareholding detail, filings, insider and bulk deals)
+    try:
+        import psycopg
+        c = psycopg.connect("postgresql:///inflection")
+        cols = [r[0] for r in c.execute("select column_name from information_schema.columns where table_name='identifier_history'")]
+        symcol = "value" if "value" in cols else ("identifier" if "identifier" in cols else cols[2])
+        iss = list({x["iss"] for x in P})
+        sym = dict(c.execute(f"""select distinct on (s.issuer_id) s.issuer_id::text, h.{symcol} from securities s join identifier_history h using(security_id)
+          where s.issuer_id = any(%s::uuid[]) and h.exchange='NSE' and h.kind='SYMBOL' order by s.issuer_id, h.valid_to nulls first""", (iss,)).fetchall())
+        pubs = c.execute("""select issuer_id::text, published_at::date, coalesce(original_subcategory, original_category), coalesce(title,'')
+          from document_publications where issuer_id = any(%s::uuid[]) and coalesce(original_subcategory, original_category) ~*
+          'rating|preferential|warrant|acqui|management control|open offer|capacity|commercial production|buy.?back|bonus|split'""", (iss,)).fetchall()
+        bypub = defaultdict(list)
+        for i, d, cat, ti in pubs: bypub[i].append((d, cat, ti))
+        try: pli = {r[0] for r in c.execute("select distinct issuer_id::text from pli_beneficiaries where issuer_id is not null")}
+        except Exception: c.rollback(); pli = set()
+        for x in P:
+            i, e = x["iss"], x["s"].d[x["k"]]
+            s = c.execute("""select period_end, promoter_pct, fii_pct, dii_pct, mf_pct, promoter_pledged_pct from shareholding_patterns
+               where issuer_id=%s and coalesce(broadcast_at::date, period_end + 21) < %s order by period_end desc limit 5""", (i, e)).fetchall()
+            def chg(k, back):
+                if len(s) > back and s[0][k] is not None and s[back][k] is not None: return float(s[0][k] - s[back][k])
+            x["dii_y"], x["dii_q"], x["mf_y"], x["mf_q"] = chg(3, 4), chg(3, 1), chg(4, 4), chg(4, 1)
+            x["inst_y"] = (x["dii_y"] or 0) + (x["fii"] or 0) if x["dii_y"] is not None and x["fii"] is not None else None
+            x["mf_pct"] = float(s[0][4]) if s and s[0][4] is not None else None
+            x["pledge"] = float(s[0][5]) if s and s[0][5] is not None else None
+            x["pledge_chg"] = chg(5, 4)
+            def has(pat, days, tpat=None):
+                return any(e - timedelta(days=days) <= d < e and re.search(pat, cat, re.I) and (not tpat or re.search(tpat, ti, re.I)) for d, cat, ti in bypub[i])
+            x["pref"] = has("preferential|warrant", 365); x["rating_up"] = has("rating", 365, "upgrad")
+            x["rating_dn"] = has("rating", 365, "downgrad|negative|not cooperating"); x["control"] = has("management control|open offer", 365)
+            x["acq"] = has("acqui", 365); x["capacity"] = has("capacity|commercial production", 365); x["buyback"] = has("buy.?back", 365)
+            x["bonus"] = has("bonus|split", 365); x["pli"] = i in pli
+            sy = sym.get(i)
+            x["ins_buy"] = x["bulk"] = None
+            if sy:
+                v = c.execute("""select sum(case when transaction_type ilike 'buy%%' then value_inr else -value_inr end) from insider_trades
+                  where symbol=%s and person_category ilike 'promoter%%' and trade_to between %s and %s""", (sy, e - timedelta(days=182), e)).fetchone()[0]
+                x["ins_buy"] = float(v) / 1e7 if v is not None else 0.0
+                v = c.execute("""select sum(case when side ilike 'b%%' then quantity*price else -quantity*price end) from bulk_block_deals
+                  where symbol=%s and trade_date between %s and %s""", (sy, e - timedelta(days=182), e)).fetchone()[0]
+                x["bulk"] = float(v) / 1e7 if v is not None else None
+        say("db features: ok")
+    except Exception as err:
+        say("db features failed:", repr(err)[:200])
+    G = lambda k: (lambda x: x.get(k))
+    def thr(k, op, v): return lambda x: (x.get(k) is not None) and (x[k] >= v if op == ">=" else (x[k] > v if op == ">" else x[k] < v))
+    COND = {}
+    for v in (25, 50, 100, 200, 300, 500): COND[f"order>={v}%rev"] = thr("size", ">=", v)
+    for v in (0.25, 0.5, 1.0, 2.0): COND[f"order>={int(v*100)}%mcap"] = thr("o_mc", ">=", v)
+    for v in (50, 100, 200, 300): COND[f"12m orders>={v}%rev"] = thr("o12", ">=", v)
+    for v in (25, 50, 100): COND[f"yr1 exec>={v}%rev"] = thr("oy1", ">=", v)
+    for v in (1, 2, 3): COND[f"order book>={v}x rev"] = thr("ob_rev", ">=", v)
+    for v in (0, 30, 50, 100): COND[f"order book +{v}% yoy"] = thr("ob_yoy", ">", v)
+    COND["order inflow +30% yoy"] = thr("in_yoy", ">", 30)
+    for v in (500, 2000, 5000): COND[f"mcap<{v}cr"] = thr("mcap", "<", v)
+    COND["mcap>=2000cr"] = thr("mcap", ">=", 2000); COND["mcap>=10000cr"] = thr("mcap", ">=", 10000)
+    for v in (0.75, 1.5, 3): COND[f"P/S<{v}"] = thr("ps", "<", v)
+    COND["P/S>=3"] = thr("ps", ">=", 3)
+    COND["OPM<10%"] = thr("opm", "<", 0.10); COND["OPM>=15%"] = thr("opm", ">=", 0.15); COND["OPM rising"] = thr("opm_chg", ">", 0.01)
+    COND["rev growing"] = thr("revg", ">", 0)
+    COND["routine order"] = lambda x: x["routine"]; COND["not routine"] = lambda x: not x["routine"]
+    COND["stated (not estimated) size"] = lambda x: not x["estimated"]
+    for v in (0, 0.5, 1, 2, 5): COND[f"FII +{v}pp yoy" if v else "FII up yoy"] = thr("fii", ">", v) if v == 0 else thr("fii", ">=", v)
+    for v in (0, 0.5, 1, 2): COND[f"FII +{v}pp qoq" if v else "FII up qoq"] = thr("fii_q", ">", v) if v == 0 else thr("fii_q", ">=", v)
+    COND["FII holding<2%"] = thr("fii_pct", "<", 2); COND["FII holding>=5%"] = thr("fii_pct", ">=", 5)
+    COND["promoter not cut yoy"] = thr("prom", ">=", 0); COND["promoter not cut qoq"] = thr("prom_q", ">=", 0)
+    for v in (0, 1, 5, 10): COND[f"promoter +{v}pp yoy" if v else "promoter up yoy"] = thr("prom", ">", v) if v == 0 else thr("prom", ">=", v)
+    COND["promoter holding>=60%"] = thr("prom_pct", ">=", 60); COND["promoter holding>=70%"] = thr("prom_pct", ">=", 70)
+    COND["promoter holding<50%"] = thr("prom_pct", "<", 50)
+    COND["DII up yoy"] = thr("dii_y", ">", 0); COND["DII up qoq"] = thr("dii_q", ">", 0)
+    COND["MF up yoy"] = thr("mf_y", ">", 0); COND["MF up qoq"] = thr("mf_q", ">", 0); COND["MF holding>=2%"] = thr("mf_pct", ">=", 2)
+    COND["FII+DII up yoy"] = thr("inst_y", ">", 0); COND["FII+DII +2pp yoy"] = thr("inst_y", ">=", 2)
+    COND["no pledge"] = lambda x: x.get("pledge") is not None and x["pledge"] <= 0
+    COND["pledge falling"] = thr("pledge_chg", "<", 0)
+    COND["promoter bought (insider, 6m)"] = thr("ins_buy", ">=", 1); COND["bulk deals net buy 6m"] = thr("bulk", ">=", 1)
+    COND["bulk deals net sell 6m"] = thr("bulk", "<", -1)
+    for k, lab in (("pref", "pref issue/warrants 12m"), ("rating_up", "rating upgrade 12m"), ("rating_dn", "rating downgrade 12m"),
+                   ("control", "change of control 12m"), ("acq", "acquisition 12m"), ("capacity", "capacity addition 12m"),
+                   ("buyback", "buyback 12m"), ("bonus", "bonus/split 12m"), ("pli", "PLI beneficiary")):
+        COND[lab] = (lambda kk: (lambda x: bool(x.get(kk))))(k)
+    COND["mgmt target>=1.5x rev"] = thr("mgmt", ">=", 1.5)
+    COND["uptrend 2/3"] = lambda x: x["t3"] >= 2; COND["uptrend 3/3"] = lambda x: x["t3"] == 3
+    COND["above rising 200DMA"] = lambda x: x["t_up"]; COND["near 52w high"] = lambda x: x["t_hi"]; COND["beats index 6m"] = lambda x: x["t_rs"]
+    COND["6m run-up>30%"] = thr("runup6", ">", 0.30); COND["6m run-up>60%"] = thr("runup6", ">", 0.60); COND["6m run-up<0"] = thr("runup6", "<", 0)
+    COND["liquid>=0.5cr/day"] = thr("liq", ">=", 0.5); COND["liquid>=2cr/day"] = thr("liq", ">=", 2)
+    COND["score>=3"] = thr("score", ">=", 3); COND["score>=4"] = thr("score", ">=", 4); COND["score>=5"] = thr("score", ">=", 5)
+    names = list(COND)
+    for x in P:
+        o = outcome(x, dict(stop=0.20)); x["ex"] = o["ex"]
+        x["p36"] = outcome(x, dict(stop=0.20, maxd=1095))["mult"] - 1
+    mask = {}
+    for cnd in names:
+        try: mask[cnd] = sum(1 << i for i, x in enumerate(P) if COND[cnd](x))
+        except Exception: mask[cnd] = 0
+    names = [cnd for cnd in names if bin(mask[cnd]).count("1") >= 8]
+    SPL = {s: sum(1 << i for i, x in enumerate(P) if x["split"] == s) for s in ("train", "valid", "hold")}
+    def idx(b):
+        out = []
+        while b:
+            l = b & -b; out.append(l.bit_length() - 1); b ^= l
+        return out
+    def med(b, ex):
+        ii = idx(b)
+        if not ii: return 0, None, None
+        e = [ex[i] for i in ii]; return len(ii), st.median(e), sum(v > 0 for v in e) / len(e)
+    EX = [x["ex"] for x in P]
+    say(f"\n## 14. Deep search: {len(names)} conditions with >=8 picks (dropped {len(COND)-len(names)} too rare)")
+    say("   rare / dropped: " + ", ".join(f"{k}({bin(mask.get(k,0)).count('1')})" for k in COND if k not in names)[:400])
+    combos = [(a,) for a in names] + list(itertools.combinations(names, 2)) + list(itertools.combinations(names, 3))
+    def run(ex):
+        out, seen = [], set()
+        for cb in combos:
+            b = -1
+            for a in cb: b &= mask[a]
+            if b == 0 or b in seen: continue
+            seen.add(b)
+            n1, m1, w1 = med(b & SPL["train"], ex)
+            if n1 < 10 or m1 <= 0 or w1 < 0.55: continue
+            n2, m2, _ = med(b & SPL["valid"], ex)
+            if n2 < 4 or m2 <= 0: continue
+            n3, m3, _ = med(b & SPL["hold"], ex)
+            if n3 < 5 or m3 <= 0: continue
+            out.append((cb, b, (n1, m1), (n2, m2), (n3, m3)))
+        return out
+    real = run(EX)
+    random.seed(11); fake = []
+    for _ in range(5):
+        ex2 = EX[:]
+        for s in SPL:
+            ii = idx(SPL[s]); vals = [ex2[i] for i in ii]; random.shuffle(vals)
+            for i, v in zip(ii, vals): ex2[i] = v
+        fake.append(len(run(ex2)))
+    say(f"   combos tested {len(combos)}; beat the index in ALL THREE periods: {len(real)}; with shuffled returns (luck): {fake}")
+    def hold(x, days):
+        s = x["s"]; k0 = x["k"]; t1 = s.d[k0] + timedelta(days=days)
+        if t1 > s.d[-1]: return None
+        return s.p[s.at(t1)] / s.p[k0] - 1 - COST
+    rows = []
+    for cb, b, a1, a2, a3 in real:
+        sel = [P[i] for i in idx(b)]
+        rows.append((st.mean(x["p36"] for x in sel), cb, b, a1, a2, a3, sel))
+    rows.sort(key=lambda r: -r[0])
+    say("\n## 15. Top 30 distinct all-period combos, ranked by avg profit per Rs1L (stop -20%, hold up to 36m)")
+    say("   combo | buys | profit/1L 36m | 12m avg(med) | 24m avg(med) | 36m avg(med) | med vs SC 21-23/24/25-26 (n)")
+    shown = []
+    for p36, cb, b, a1, a2, a3, sel in rows:
+        if any(bin(b & s2).count("1") / bin(b | s2).count("1") >= 0.6 for s2 in shown): continue
+        shown.append(b)
+        cells = []
+        for d in (365, 730, 1095):
+            h = [v for v in (hold(x, d) for x in sel) if v is not None]
+            cells.append(f"{100*st.mean(h):+.0f}%({100*st.median(h):+.0f}%) n{len(h)}" if h else "-")
+        say(f"   {' + '.join(cb)[:70]:70s} | {len(sel):2d} | Rs{1e5*p36:,.0f} | " + " | ".join(cells)
+            + f" | {100*a1[1]:+.0f}%({a1[0]}) {100*a2[1]:+.0f}%({a2[0]}) {100*a3[1]:+.0f}%({a3[0]})")
+        if len(shown) >= 30: break
+    sys.exit(0)
+
 if len(sys.argv) > 2 and sys.argv[2] == "menu":
     for x in P:
         q = x["p"]; x["mgmt"] = fnum(q.get("mgmt_target_x"))
