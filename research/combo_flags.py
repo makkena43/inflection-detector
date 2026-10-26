@@ -1,4 +1,4 @@
-"""Rulebook v5 combo checks for the local dashboard.
+"""Rulebook v5.1 combo checks for the local dashboard.
 
 Same definitions as research/final_rules.py: price checks use split/bonus-adjusted NSE closes up to the entry date
 (week_start + 14 days), liquidity is the median daily traded value of the 60 sessions before entry.
@@ -7,10 +7,10 @@ import statistics
 from datetime import timedelta
 
 COMBOS = {
-    "C1": "Order 100%+ rev + near 52w high + liquid Rs2cr/day",
+    "C1": "Order 25%+ rev + mcap <Rs2,000cr + uptrend 3/3",
     "C2": "Order 25%+ rev + near 52w high + 6m run-up >60%",
     "C3": "Order 25%+ rev + OPM <10% + uptrend 2/3",
-    "C4": "Order 100%+ rev + not routine + above rising 200DMA",
+    "C4": "Order 100%+ rev + stated size + uptrend 3/3",
     "C5": "FII up qoq + promoter holding 60%+ + near 52w high",
     "R1": "Watch list: order 300%+ rev + uptrend 2/3",
     "R2": "Watch list: order 200%+ rev + FII up qoq",
@@ -58,12 +58,13 @@ def flags(conn, r, sec, entry):
     num = lambda v: float(v) if v is not None else None
     size, opm = num(r.get("size_pct_of_revenue")), num(r.get("opm"))
     fii_q, prom = num(r.get("fii_change_pp")), num(r.get("promoter_holding_pct"))
-    routine = bool(r.get("routine"))
+    mcap = num(r.get("mcap_cr"))
+    stated = "estim" not in str(r.get("size_basis") or "").lower()
     out = []
-    if (size or 0) >= 100 and t["hi"] and (t["liq"] or 0) >= 2: out.append("C1")
+    if (size or 0) >= 25 and mcap is not None and mcap < 2000 and t["n"] == 3: out.append("C1")
     if (size or 0) >= 25 and t["hi"] and (t["runup6"] or 0) > 0.60: out.append("C2")
     if (size or 0) >= 25 and opm is not None and opm < 0.10 and t["n"] >= 2: out.append("C3")
-    if (size or 0) >= 100 and not routine and t["up"]: out.append("C4")
+    if (size or 0) >= 100 and stated and t["n"] == 3: out.append("C4")
     if fii_q is not None and fii_q > 0 and (prom or 0) >= 60 and t["hi"]: out.append("C5")
     if (size or 0) >= 300 and t["n"] >= 2: out.append("R1")
     if (size or 0) >= 200 and fii_q is not None and fii_q > 0: out.append("R2")
