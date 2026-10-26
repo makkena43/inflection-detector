@@ -264,6 +264,57 @@ if EXTRA:
             say(f"   {lab:9s} {sname:14s} stop -20%, after 2x trail 30%, 36m {portfolio(SEL[sname], dict(stop=0.20, trail=0.30, arm=1.0, maxd=1095), start)}")
 
     sys.exit(0)
+
+if len(sys.argv) > 2 and sys.argv[2] == "combo":
+    say("holding columns:", [c for c in picks[0] if "change" in c or "fii" in c.lower() or "promoter" in c.lower()][:12])
+    say("promoter+FII known by year:", {y: sum(1 for x in P if x["year"] == y and x["prom"] is not None and x["fii"] is not None) for y in range(2021, 2027)})
+    up = lambda v: v is not None and v > 0
+    keep = lambda v: v is not None and v >= 0
+    T2 = lambda x: (x["tech"] if x["tech"] is not None else x["t3"]) >= 2
+    C = {
+        "C0 all picks": lambda x: True,
+        "C1 promoter up + FII up": lambda x: up(x["prom"]) and up(x["fii"]),
+        "C2 FII up + promoter not reduced": lambda x: up(x["fii"]) and keep(x["prom"]),
+        "C3 C2 + technicals >=2/3": lambda x: up(x["fii"]) and keep(x["prom"]) and T2(x),
+        "C4 order >=100% rev + FII up": lambda x: ge(x["size"], 100) and up(x["fii"]),
+        "C5 score>=4 + FII up + promoter not reduced": lambda x: ge(x["score"], 4) and up(x["fii"]) and keep(x["prom"]),
+        "C6 P/S<1.5 + mcap<2000 + FII up": lambda x: lt(x["ps"], 1.5) and lt(x["mcap"], 2000) and up(x["fii"]),
+        "C7 FII up (alone)": lambda x: up(x["fii"]),
+        "C8 FII down or flat (known)": lambda x: x["fii"] is not None and not up(x["fii"]),
+        "C9 C2 + technicals own t3>=2": lambda x: up(x["fii"]) and keep(x["prom"]) and x["t3"] >= 2,
+    }
+    say("\n## 6. Combos per pick (splits: train<=2023, valid 2024, hold 2025-26). exit hold 12m / 24m")
+    for name, f in C.items():
+        say(name)
+        for lab, rule in (("12m", EXITS["E1 hold 12m"]), ("24m", EXITS["E2 hold 24m"])):
+            for sp in ("train", "valid", "hold"):
+                rows = [outcome(x, rule) for x in P if x["split"] == sp and f(x)]
+                say(f"   {lab} {sp:5s} {summarise(rows)}")
+        yrs = defaultdict(list)
+        for x in P:
+            if f(x): yrs[x["year"]].append(outcome(x, EXITS["E1 hold 12m"]))
+        say("   12m by year (n, median vs SC, closed only): " + "  ".join(
+            f"{y}:{len([r for r in v if not r['open']])},{100*st.median([r['ex'] for r in v if not r['open']]):+.0f}%" if any(not r['open'] for r in v) else f"{y}:0"
+            for y, v in sorted(yrs.items())))
+        say("   names: " + ", ".join(f"{x['label']} {x['year']}" for x in P if f(x))[:600])
+    say("\n## 7. Exit rules on combos (per pick, all years)")
+    ER = {"hold 24m": dict(maxd=730), "stop -15% else 24m": dict(stop=0.15), "stop -20% else 24m": dict(stop=0.20),
+          "stop -25% else 24m": dict(stop=0.25), "stop -20% else 36m": dict(stop=0.20, maxd=1095),
+          "stop -20%, half at 2x, trail 30%, 36m": dict(stop=0.20, half=2.0, trail=0.30, arm=1.0, maxd=1095),
+          "stop -20% until +50%, trail 30%, 36m": dict(stop=0.20, trail=0.30, arm=0.50, maxd=1095),
+          "trail 30% from peak, 36m": dict(trail=0.30, maxd=1095)}
+    for cname in ("C2 FII up + promoter not reduced", "C3 C2 + technicals >=2/3", "C1 promoter up + FII up", "C4 order >=100% rev + FII up"):
+        say(cname)
+        for en, rule in ER.items():
+            say(f"   {en:38s} train+valid {summarise([outcome(x, rule) for x in P if x['split'] != 'hold' and C[cname](x)])}")
+            say(f"   {'':38s} hold        {summarise([outcome(x, rule) for x in P if x['split'] == 'hold' and C[cname](x)])}")
+    say("\n## 8. Portfolio on combos")
+    for start, lab in ((date(2022, 1, 1), "2022-now"), (date(2024, 1, 1), "2024-now"), (date(2025, 1, 1), "2025-now")):
+        for cname in ("C0 all picks", "C2 FII up + promoter not reduced", "C3 C2 + technicals >=2/3", "C1 promoter up + FII up", "C4 order >=100% rev + FII up", "C7 FII up (alone)"):
+            for size, mx in ((0.05, 20), (0.10, 10)):
+                for en in ("stop -20% else 24m", "stop -20%, half at 2x, trail 30%, 36m"):
+                    say(f"   {lab} {cname[:32]:32s} {int(size*100):2d}%x{mx:2d} {en[:26]:26s} {portfolio(C[cname], ER[en], start, size, mx)}")
+    sys.exit(0)
 # ---------- 1. selection (hold 24m) ----------
 say("\n## 1. Selection rules, exit = hold 24m (2025-26 mostly still open)")
 base = EXITS["E2 hold 24m"]
