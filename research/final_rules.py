@@ -378,6 +378,27 @@ if len(sys.argv) > 2 and sys.argv[2] == "deep":
     for cnd in names:
         try: mask[cnd] = sum(1 << i for i, x in enumerate(P) if COND[cnd](x))
         except Exception: mask[cnd] = 0
+    if len(sys.argv) > 3 and sys.argv[3] == "rare":
+        def hold(x, days):
+            s = x["s"]; k0 = x["k"]; t1 = s.d[k0] + timedelta(days=days)
+            if t1 > s.d[-1]: return None
+            return s.p[s.at(t1)] / s.p[k0] - 1 - COST
+        extra = {"order>=200%rev + FII up qoq": lambda x: COND["order>=200%rev"](x) and COND["FII up qoq"](x),
+                 "order>=200%rev + uptrend 2/3": lambda x: COND["order>=200%rev"](x) and x["t3"] >= 2,
+                 "order>=300%rev + uptrend 2/3": lambda x: COND["order>=300%rev"](x) and x["t3"] >= 2}
+        rare = [cnd for cnd in names if bin(mask[cnd]).count("1") < 12] + list(extra)
+        say("## 16. Rare data points: every pick, returns (12m/24m/36m buy-and-hold) and Rs1L profit with stop -20%, sell 36m")
+        for cnd in rare:
+            f = extra.get(cnd) or COND[cnd]
+            sel = [x for x in P if f(x)]
+            if not sel: say(f"   {cnd}: 0 picks"); continue
+            cells = []
+            for d in (365, 730, 1095):
+                h = [v for v in (hold(x, d) for x in sel) if v is not None]
+                cells.append(f"{100*st.mean(h):+.0f}%({100*st.median(h):+.0f}%) n{len(h)}" if h else "-")
+            say(f"   {cnd} | {len(sel)} picks | Rs{1e5*st.mean(x['p36'] for x in sel):,.0f}/1L | " + " | ".join(cells))
+            say("      " + ", ".join(f"{x['label']} {str(x['year'])[2:]} {100*x['p36']:+.0f}%" for x in sel)[:300])
+        sys.exit(0)
     names = [cnd for cnd in names if bin(mask[cnd]).count("1") >= 8]
     SPL = {s: sum(1 << i for i, x in enumerate(P) if x["split"] == s) for s in ("train", "valid", "hold")}
     def idx(b):
