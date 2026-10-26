@@ -12,6 +12,9 @@ COMBOS = {
     "C3": "Order 25%+ rev + OPM <10% + uptrend 2/3",
     "C4": "Order 100%+ rev + not routine + above rising 200DMA",
     "C5": "FII up qoq + promoter holding 60%+ + near 52w high",
+    "R1": "Watch list: order 300%+ rev + uptrend 2/3",
+    "R2": "Watch list: order 200%+ rev + FII up qoq",
+    "R3": "Watch list: order 200%+ of mcap",
 }
 
 
@@ -49,7 +52,7 @@ def price_checks(conn, sec, entry):
 
 
 def flags(conn, r, sec, entry):
-    """List of combo ids (C1..C5) a pick row from app.picks() matches, plus the price checks used."""
+    """List of combo ids (C1..C5, watch list R1..R3) a pick row from app.picks() matches, plus the price checks used."""
     t = price_checks(conn, sec, entry) if sec else None
     if not t: return [], None
     num = lambda v: float(v) if v is not None else None
@@ -62,4 +65,7 @@ def flags(conn, r, sec, entry):
     if (size or 0) >= 25 and opm is not None and opm < 0.10 and t["n"] >= 2: out.append("C3")
     if (size or 0) >= 100 and not routine and t["up"]: out.append("C4")
     if fii_q is not None and fii_q > 0 and (prom or 0) >= 60 and t["hi"]: out.append("C5")
+    if (size or 0) >= 300 and t["n"] >= 2: out.append("R1")
+    if (size or 0) >= 200 and fii_q is not None and fii_q > 0: out.append("R2")
+    if (num(r.get("order_to_mcap")) or 0) >= 2.0: out.append("R3")
     return out, t
