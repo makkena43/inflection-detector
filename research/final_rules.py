@@ -206,47 +206,6 @@ def summarise(rows):
             f"beat {100*sum(v>0 for v in e)/len(e):3.0f}% | worst10% {100*p10:+4.0f}% | yrs {y:.1f} ~{100*cagr:+.0f}%/yr")
 
 
-# ---------- 1. selection (hold 24m) ----------
-say("\n## 1. Selection rules, exit = hold 24m (2025-26 mostly still open)")
-base = EXITS["E2 hold 24m"]
-for name, f in SEL.items():
-    say(name)
-    for sp in ("train", "valid", "hold"):
-        rows = [outcome(x, base) for x in P if x["split"] == sp and f(x)]
-        say(f"   {sp:5s} {summarise(rows)}")
-
-say("\n## 1b. Same, exit = hold 12m, train / valid / holdout medians vs SC")
-for name, f in SEL.items():
-    cells = []
-    for sp in ("train", "valid", "hold"):
-        rows = [outcome(x, EXITS['E1 hold 12m']) for x in P if x["split"] == sp and f(x)]
-        cells.append(f"{sp} n={len(rows)} {100*st.median([r['ex'] for r in rows]):+.0f}%" if rows else f"{sp} n=0")
-    say(f"   {name:45s} " + " | ".join(cells))
-
-# ---------- 2. exits on S0 and S1 ----------
-for sname in ("S0 all picks", "S1 firm + revenue growing", "S5 S1 + cheap or thin (P/S<1.5 or OPM<10%)"):
-    say(f"\n## 2. Exit rules on {sname}")
-    f = SEL[sname]
-    for ename, rule in EXITS.items():
-        say(ename)
-        for sp in ("train", "valid", "hold"):
-            say(f"   {sp:5s} {summarise([outcome(x, rule) for x in P if x['split'] == sp and f(x)])}")
-
-# ---------- 3. entry timing ----------
-say("\n## 3. Entry timing on S1 (hold 24m): buy Monday after review week (+7d) vs +14d vs wait for close above 50DMA")
-f = SEL["S1 firm + revenue growing"]
-for x in P:
-    s = x["s"]; k = x["k7"]; x["k50"] = None
-    for j in range(k, min(len(s.d), k + 60)):
-        m = s.sma(j, 50)
-        if m and s.p[j] > m and (s.d[j] - s.d[k]).days <= 60: x["k50"] = j; break
-for label, entry in (("+7d", "k7"), ("+14d", "k"), ("above 50DMA within 60d", "k50")):
-    for sp in ("train", "valid", "hold"):
-        rows = [outcome(x, base, entry=entry) for x in P if x["split"] == sp and f(x) and x[entry] is not None]
-        skipped = sum(1 for x in P if x["split"] == sp and f(x) and x[entry] is None)
-        say(f"   {label:24s} {sp:5s} {summarise(rows)} skipped {skipped}")
-
-
 # ---------- 4. portfolio simulation ----------
 def portfolio(f, rule, start, size=0.05, maxpos=20):
     trades = []
@@ -290,6 +249,60 @@ def portfolio(f, rule, start, size=0.05, maxpos=20):
     expo = st.mean(v / t for _, t, v in eq_hist)
     return (f"CAGR {100*((e1/e0)**(1/yrs)-1):+5.1f}% vs SC250 {100*(b**(1/yrs)-1):+5.1f}% | max DD {100*mdd:.0f}% | "
             f"trades {n} | avg invested {100*expo:.0f}%")
+
+
+
+EXTRA = len(sys.argv) > 2 and sys.argv[2] == "extra"
+if EXTRA:
+    say("\n## 5. Score gates and stop levels, portfolio 5% x 20")
+    SEL["S14 score>=3"] = lambda x: ge(x["score"], 3)
+    for start, lab in ((date(2021, 1, 1), "2021-now"), (date(2024, 1, 1), "2024-now"), (date(2025, 1, 1), "2025-now")):
+        for sname in ("S0 all picks", "S14 score>=3", "S2 score>=4", "S3 score>=5"):
+            for st_ in (0.15, 0.20, 0.25, 0.30):
+                say(f"   {lab:9s} {sname:14s} stop -{int(st_*100)}% else 24m  {portfolio(SEL[sname], dict(stop=st_), start)}")
+            say(f"   {lab:9s} {sname:14s} stop -20% else 36m   {portfolio(SEL[sname], dict(stop=0.20, maxd=1095), start)}")
+            say(f"   {lab:9s} {sname:14s} stop -20%, after 2x trail 30%, 36m {portfolio(SEL[sname], dict(stop=0.20, trail=0.30, arm=1.0, maxd=1095), start)}")
+
+    sys.exit(0)
+# ---------- 1. selection (hold 24m) ----------
+say("\n## 1. Selection rules, exit = hold 24m (2025-26 mostly still open)")
+base = EXITS["E2 hold 24m"]
+for name, f in SEL.items():
+    say(name)
+    for sp in ("train", "valid", "hold"):
+        rows = [outcome(x, base) for x in P if x["split"] == sp and f(x)]
+        say(f"   {sp:5s} {summarise(rows)}")
+
+say("\n## 1b. Same, exit = hold 12m, train / valid / holdout medians vs SC")
+for name, f in SEL.items():
+    cells = []
+    for sp in ("train", "valid", "hold"):
+        rows = [outcome(x, EXITS['E1 hold 12m']) for x in P if x["split"] == sp and f(x)]
+        cells.append(f"{sp} n={len(rows)} {100*st.median([r['ex'] for r in rows]):+.0f}%" if rows else f"{sp} n=0")
+    say(f"   {name:45s} " + " | ".join(cells))
+
+# ---------- 2. exits on S0 and S1 ----------
+for sname in ("S0 all picks", "S1 firm + revenue growing", "S5 S1 + cheap or thin (P/S<1.5 or OPM<10%)"):
+    say(f"\n## 2. Exit rules on {sname}")
+    f = SEL[sname]
+    for ename, rule in EXITS.items():
+        say(ename)
+        for sp in ("train", "valid", "hold"):
+            say(f"   {sp:5s} {summarise([outcome(x, rule) for x in P if x['split'] == sp and f(x)])}")
+
+# ---------- 3. entry timing ----------
+say("\n## 3. Entry timing on S1 (hold 24m): buy Monday after review week (+7d) vs +14d vs wait for close above 50DMA")
+f = SEL["S1 firm + revenue growing"]
+for x in P:
+    s = x["s"]; k = x["k7"]; x["k50"] = None
+    for j in range(k, min(len(s.d), k + 60)):
+        m = s.sma(j, 50)
+        if m and s.p[j] > m and (s.d[j] - s.d[k]).days <= 60: x["k50"] = j; break
+for label, entry in (("+7d", "k7"), ("+14d", "k"), ("above 50DMA within 60d", "k50")):
+    for sp in ("train", "valid", "hold"):
+        rows = [outcome(x, base, entry=entry) for x in P if x["split"] == sp and f(x) and x[entry] is not None]
+        skipped = sum(1 for x in P if x["split"] == sp and f(x) and x[entry] is None)
+        say(f"   {label:24s} {sp:5s} {summarise(rows)} skipped {skipped}")
 
 
 say("\n## 4. Portfolio: 5% per stock, max 20, idle cash earns 0")
