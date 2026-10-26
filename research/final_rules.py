@@ -106,8 +106,8 @@ for p in picks:
         mcap=fnum(p.get("mcap_cr")), o_mc=fnum(p.get("order_to_mcap")), size=fnum(p.get("size_pct_of_revenue")),
         score=fnum(p.get("score")), tech=fnum(p.get("tech_score")), o12=fnum(p.get("orders_12m_pct")),
         oy1=fnum(p.get("orders_y1_pct")), liq=fnum(p.get("liq")) if p.get("liq") not in (None, "") else (st.median(tv) if tv else None),
-        prom=next((fnum(p[c]) for c in p if "promoter" in c and "change" in c and fnum(p[c]) is not None), None),
-        fii=next((fnum(p[c]) for c in p if "fii" in c and "change" in c and fnum(p[c]) is not None), None),
+        prom=fnum(p.get("promoter_yoy_pp")), prom_q=fnum(p.get("promoter_change_pp")),
+        fii=fnum(p.get("fii_yoy_pp")), fii_q=fnum(p.get("fii_change_pp")),
         runup6=r6,
         # own technicals at entry (no look-ahead): uptrend, near 52w high, beating the index over 6m
         t_up=bool(sma200 and sma50 and sma200_old and p0 > sma200 and sma50 > sma200 and sma200 > sma200_old),
@@ -267,7 +267,7 @@ if EXTRA:
 
 if len(sys.argv) > 2 and sys.argv[2] == "combo":
     say("holding columns:", [c for c in picks[0] if "change" in c or "fii" in c.lower() or "promoter" in c.lower()][:12])
-    say("promoter+FII known by year:", {y: sum(1 for x in P if x["year"] == y and x["prom"] is not None and x["fii"] is not None) for y in range(2021, 2027)})
+    say("promoter+FII YoY known by year:", {y: sum(1 for x in P if x["year"] == y and x["prom"] is not None and x["fii"] is not None) for y in range(2021, 2027)})
     up = lambda v: v is not None and v > 0
     keep = lambda v: v is not None and v >= 0
     T2 = lambda x: (x["tech"] if x["tech"] is not None else x["t3"]) >= 2
@@ -282,6 +282,7 @@ if len(sys.argv) > 2 and sys.argv[2] == "combo":
         "C7 FII up (alone)": lambda x: up(x["fii"]),
         "C8 FII down or flat (known)": lambda x: x["fii"] is not None and not up(x["fii"]),
         "C9 C2 + technicals own t3>=2": lambda x: up(x["fii"]) and keep(x["prom"]) and x["t3"] >= 2,
+        "C10 C2 using quarter-on-quarter change": lambda x: up(x["fii_q"]) and keep(x["prom_q"]),
     }
     say("\n## 6. Combos per pick (splits: train<=2023, valid 2024, hold 2025-26). exit hold 12m / 24m")
     for name, f in C.items():
