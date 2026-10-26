@@ -116,7 +116,13 @@ for p in picks:
     x["t3"] = x["t_up"] + x["t_hi"] + x["t_rs"]
     x["split"] = "train" if x["year"] <= 2023 else ("valid" if x["year"] == 2024 else "hold")
     P.append(x)
-say(f"picks {len(picks)}, with clean NSE prices {len(P)} (dropped for jumps: {len(bad)})")
+# buy each company once per 12 months: a later pick of the same issuer within 365 days of a kept one is a repeat
+P.sort(key=lambda x: x["wk"]); _last = {}; _keep = []
+for x in P:
+    if x["iss"] in _last and (x["wk"] - _last[x["iss"]]).days < 365: continue
+    _last[x["iss"]] = x["wk"]; _keep.append(x)
+REPEATS = len(P) - len(_keep); P = _keep
+say(f"picks {len(picks)}, with clean NSE prices {len(P)} (dropped for jumps: {len(bad)}; repeats within 12m: {REPEATS})")
 say("by year:", dict(sorted(defaultdict(int, {y: sum(1 for x in P if x['year'] == y) for y in range(2021, 2027)}).items())))
 say("revg known:", sum(x["revg"] is not None for x in P), " score known:", sum(x["score"] is not None for x in P),
     " promoter chg known:", sum(x["prom"] is not None for x in P))
