@@ -347,7 +347,7 @@ if len(sys.argv) > 2 and sys.argv[2] == "since":
         x["exch"] = str(x["p"].get("combo_checks.exchange") or "NSE") or "NSE"
     ids = ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "R1", "R2", "R3"]
     CB = {i: (lambda i: lambda x: i in x["tags"])(i) for i in ids}
-    CB["ANY CORE (C2/C3/C5)"] = lambda x: bool(x["tags"] & {"C2", "C3", "C5"})
+    CB["ANY CORE (C2/C3/C5/C7)"] = lambda x: bool(x["tags"] & {"C2", "C3", "C5", "C7"})
     CB["ANY C1-C7"] = lambda x: any(t.startswith("C") for t in x["tags"])
     CB["ALL picks"] = lambda x: True
     def hold(x, days):

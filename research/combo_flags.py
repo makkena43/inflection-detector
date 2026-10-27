@@ -13,7 +13,7 @@ COMBOS = {
     "C4": "Order 100%+ rev + stated size + uptrend 3/3 (Rs1.37L per 1L, 36m)",
     "C5": "CORE: FII up qoq + promoter holding 60%+ + near 52w high (Rs1.13L per 1L, 36m)",
     "C6": "FII up qoq + MF holding 2%+ + above rising 200DMA (Rs1.08L per 1L, 36m)",
-    "C7": "FII up yoy + MF up yoy + liquid Rs2cr/day (Rs1.17L per 1L, 36m)",
+    "C7": "CORE: FII up yoy + MF up yoy + liquid Rs2cr/day (Rs1.17L per 1L, 36m; best since 2024)",
     "R1": "Watch list: order 300%+ rev + uptrend 2/3 (Rs1.76L per 1L, 36m)",
     "R2": "Watch list: order 200%+ rev + FII up qoq (Rs1.33L per 1L, 36m)",
     "R3": "Watch list: order 200%+ of mcap (Rs1.24L per 1L, 36m)",
