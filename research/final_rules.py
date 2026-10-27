@@ -153,7 +153,7 @@ SEL = {
 
 
 # ---------- exit rules ----------
-def sim(x, stop=None, trail=None, arm=None, maxd=730, half=None, time6=False, dma=False, entry="k"):
+def sim(x, stop=None, trail=None, arm=None, maxd=730, half=None, time6=False, dma=False, entry="k", target=None):
     """Return (events, open): events = [(index, fraction_sold)]. arm: trailing stop starts once gain >= arm."""
     s = x["s"]; k0 = x[entry]; d0, p0 = s.d[k0], s.p[k0]; peak = p0; left = 1.0; ev = []
     armed = arm is None; checked6 = False
@@ -171,6 +171,7 @@ def sim(x, stop=None, trail=None, arm=None, maxd=730, half=None, time6=False, dm
         if dma and days >= 91:
             m = s.sma(k, 200)
             if m and p < 0.97 * m: hit = True
+        if target and p >= p0 * target: hit = True
         if days >= maxd: hit = True
         if hit:
             ev.append((k, left)); return ev, False
@@ -338,6 +339,10 @@ if len(sys.argv) > 2 and sys.argv[2] == "runup":
         say(f"   {r:11s}: " + " | ".join(cells))
     sys.exit(0)
 
+QRULE = None
+if len(sys.argv) > 3 and sys.argv[2] == "deep" and sys.argv[3].startswith("quick"):
+    # deep quick T M: sell everything at +T% or a -20% close, else after M months
+    QRULE = dict(stop=0.20, target=1 + float(sys.argv[4]) / 100, maxd=int(float(sys.argv[5]) * 30.4))
 if len(sys.argv) > 2 and sys.argv[2] == "deep":
     import itertools, random, re
     up = lambda v: v is not None and v > 0
@@ -442,8 +447,11 @@ if len(sys.argv) > 2 and sys.argv[2] == "deep":
     COND["score>=3"] = thr("score", ">=", 3); COND["score>=4"] = thr("score", ">=", 4); COND["score>=5"] = thr("score", ">=", 5)
     names = list(COND)
     for x in P:
-        o = outcome(x, dict(stop=0.20)); x["ex"] = o["ex"]
-        x["p36"] = outcome(x, dict(stop=0.20, maxd=1095))["mult"] - 1
+        o = outcome(x, QRULE or dict(stop=0.20)); x["ex"] = o["ex"]
+        x["p36"] = outcome(x, QRULE or dict(stop=0.20, maxd=1095))["mult"] - 1
+        if QRULE:  # quick mode: did it reach the target within the window, and how many days did it take
+            ev, op = sim(x, **QRULE); k1 = ev[-1][0]
+            x["qhit"] = x["s"].p[k1] >= x["s"].p[x["k"]] * QRULE["target"]; x["qdays"] = (x["s"].d[k1] - x["s"].d[x["k"]]).days
     mask = {}
     for cnd in names:
         try: mask[cnd] = sum(1 << i for i, x in enumerate(P) if COND[cnd](x))
@@ -517,7 +525,8 @@ if len(sys.argv) > 2 and sys.argv[2] == "deep":
         sel = [P[i] for i in idx(b)]
         rows.append((st.mean(x["p36"] for x in sel), cb, b, a1, a2, a3, sel))
     rows.sort(key=lambda r: -r[0])
-    say("\n## 15. Top 30 distinct all-period combos, ranked by avg profit per Rs1L (stop -20%, hold up to 36m)")
+    say("\n## 15. Top 30 distinct all-period combos, ranked by avg profit per Rs1L " + (f"(QUICK: {QRULE})" if QRULE else "(stop -20%, hold up to 36m)"))
+    if QRULE: say(f"   ALL picks: {len(P)} | Rs{1e5*st.mean(x['p36'] for x in P):,.0f} | hit {100*sum(x['qhit'] for x in P)/len(P):.0f}%")
     say("   combo | buys | profit/1L 36m | 12m avg(med) | 24m avg(med) | 36m avg(med) | med vs SC 21-23/24/25-26 (n)")
     shown = []
     for p36, cb, b, a1, a2, a3, sel in rows:
@@ -527,6 +536,7 @@ if len(sys.argv) > 2 and sys.argv[2] == "deep":
         for d in (365, 730, 1095):
             h = [v for v in (hold(x, d) for x in sel) if v is not None]
             cells.append(f"{100*st.mean(h):+.0f}%({100*st.median(h):+.0f}%) n{len(h)}" if h else "-")
+        if QRULE: cells = [f"hit {100*sum(x['qhit'] for x in sel)/len(sel):.0f}% in med {st.median([x['qdays'] for x in sel if x['qhit']] or [0]):.0f}d"]
         say(f"   {' + '.join(cb)[:70]:70s} | {len(sel):2d} | Rs{1e5*p36:,.0f} | " + " | ".join(cells)
             + f" | {100*a1[1]:+.0f}%({a1[0]}) {100*a2[1]:+.0f}%({a2[0]}) {100*a3[1]:+.0f}%({a3[0]})")
         if len(shown) >= 30: break

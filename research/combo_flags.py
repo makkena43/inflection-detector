@@ -12,6 +12,8 @@ COMBOS = {
     "C3": "Order 25%+ rev + OPM <10% + uptrend 2/3",
     "C4": "Order 100%+ rev + stated size + uptrend 3/3",
     "C5": "FII up qoq + promoter holding 60%+ + near 52w high",
+    "C6": "FII up qoq + MF holding 2%+ + above rising 200DMA",
+    "C7": "FII up yoy + MF up yoy + liquid Rs2cr/day",
     "R1": "Watch list: order 300%+ rev + uptrend 2/3",
     "R2": "Watch list: order 200%+ rev + FII up qoq",
     "R3": "Watch list: order 200%+ of mcap",
@@ -51,8 +53,18 @@ def price_checks(conn, sec, entry):
     return dict(up=up, hi=hi, rs=bool(rs), n=int(up) + int(hi) + int(bool(rs)), runup6=r6, liq=liq)
 
 
+def mf_checks(conn, iss, entry):
+    """Mutual fund holding % and its change over 4 quarters, from the latest shareholding pattern published before entry."""
+    rows = conn.execute("""SELECT mf_pct FROM shareholding_patterns WHERE issuer_id=%s
+                           AND coalesce(broadcast_at::date, period_end + 21) < %s ORDER BY period_end DESC LIMIT 5""",
+                        (iss, entry)).fetchall()
+    if not rows or rows[0][0] is None: return None, None
+    now = float(rows[0][0])
+    return now, (now - float(rows[4][0]) if len(rows) > 4 and rows[4][0] is not None else None)
+
+
 def flags(conn, r, sec, entry):
-    """List of combo ids (C1..C5, watch list R1..R3) a pick row from app.picks() matches, plus the price checks used."""
+    """List of combo ids (C1..C7, watch list R1..R3) a pick row from app.picks() matches, plus the price checks used."""
     t = price_checks(conn, sec, entry) if sec else None
     if not t: return [], None
     num = lambda v: float(v) if v is not None else None
@@ -66,6 +78,10 @@ def flags(conn, r, sec, entry):
     if (size or 0) >= 25 and opm is not None and opm < 0.10 and t["n"] >= 2: out.append("C3")
     if (size or 0) >= 100 and stated and t["n"] == 3: out.append("C4")
     if fii_q is not None and fii_q > 0 and (prom or 0) >= 60 and t["hi"]: out.append("C5")
+    fii_y = num(r.get("fii_yoy_pp"))
+    mf, mf_y = mf_checks(conn, r["issuer_id"], entry) if r.get("issuer_id") else (None, None)
+    if fii_q is not None and fii_q > 0 and (mf or 0) >= 2 and t["up"]: out.append("C6")
+    if fii_y is not None and fii_y > 0 and mf_y is not None and mf_y > 0 and (t["liq"] or 0) >= 2: out.append("C7")
     if (size or 0) >= 300 and t["n"] >= 2: out.append("R1")
     if (size or 0) >= 200 and fii_q is not None and fii_q > 0: out.append("R2")
     if (num(r.get("order_to_mcap")) or 0) >= 2.0: out.append("R3")
