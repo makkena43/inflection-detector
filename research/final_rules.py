@@ -339,6 +339,39 @@ if len(sys.argv) > 2 and sys.argv[2] == "runup":
         say(f"   {r:11s}: " + " | ".join(cells))
     sys.exit(0)
 
+if len(sys.argv) > 2 and sys.argv[2] == "multibag":
+    # How many 2x/5x/10x winners each dashboard combo produced: price multiple after 24m and 36m (buy and hold),
+    # and the peak close within 36m; only picks with a full window count. Also with the -20% stop applied.
+    sz = lambda x, v: (x["size"] or 0) >= v
+    for x in P: x["prom_pct"] = fnum(x["p"].get("promoter_holding_pct"))
+    CB = {"C1": lambda x: sz(x, 25) and lt(x["mcap"], 2000) and x["t3"] == 3,
+          "C2 CORE": lambda x: sz(x, 25) and x["t_hi"] and (x["runup6"] or 0) > 0.60,
+          "C3 CORE": lambda x: sz(x, 25) and lt(x["opm"], 0.10) and x["t3"] >= 2,
+          "C4": lambda x: sz(x, 100) and "estim" not in str(x["p"].get("size_basis", "")).lower() and x["t3"] == 3,
+          "C5 CORE": lambda x: gt(x["fii_q"], 0) and (x["prom_pct"] or 0) >= 60 and x["t_hi"],
+          "ALL picks": lambda x: True}
+    def mult(x, days):
+        s = x["s"]; t1 = s.d[x["k"]] + timedelta(days=days)
+        return s.p[s.at(t1)] / s.p[x["k"]] if t1 <= s.d[-1] else None
+    def peak(x, days):
+        s = x["s"]; t1 = s.d[x["k"]] + timedelta(days=days)
+        if t1 > s.d[-1]: return None
+        return max(s.p[x["k"]:s.at(t1) + 1]) / s.p[x["k"]]
+    say("## 20. Multibaggers per combo (buy and hold, no stop). n = picks with a full window")
+    say("   combo | 24m: n avg med >=2x >=5x | 36m: n avg med >=2x >=5x >=10x | peak within 36m: >=5x >=10x | stopped -20% first (of 36m n) | 5x+ names")
+    for c, f in CB.items():
+        sel = [x for x in P if f(x)]
+        a = [(x, mult(x, 730)) for x in sel]; a = [(x, m) for x, m in a if m]
+        b = [(x, mult(x, 1095), peak(x, 1095)) for x in sel]; b = [(x, m, pk) for x, m, pk in b if m]
+        stopped = sum(1 for x, m, pk in b if sim(x, stop=0.20, maxd=1095)[0][-1][0] < x["s"].at(x["s"].d[x["k"]] + timedelta(days=1094)))
+        cnt = lambda v, t: sum(1 for z in v if z >= t)
+        m24 = [m for _, m in a]; m36 = [m for _, m, _ in b]; pk = [p for _, _, p in b]
+        names = ", ".join(f"{x['label'][:12]} {str(x['year'])[2:]} {m:.1f}x" for x, m, _ in sorted(b, key=lambda r: -r[1]) if m >= 5)
+        say(f"   {c:9s} | 24m: {len(m24)} " + (f"{100*(st.mean(m24)-1):+.0f}% {100*(st.median(m24)-1):+.0f}% {cnt(m24,2)} {cnt(m24,5)}" if m24 else "-")
+            + f" | 36m: {len(m36)} " + (f"{100*(st.mean(m36)-1):+.0f}% {100*(st.median(m36)-1):+.0f}% {cnt(m36,2)} {cnt(m36,5)} {cnt(m36,10)}" if m36 else "-")
+            + f" | peak: {cnt(pk,5)} {cnt(pk,10)} | stopped {stopped}/{len(b)} | {names[:200]}")
+    sys.exit(0)
+
 if len(sys.argv) > 2 and sys.argv[2] == "bigquick":
     # Big-order combos with quick exits: sell all at +T% or a -20% close, else after M months
     sz = lambda x, v: (x["size"] or 0) >= v
