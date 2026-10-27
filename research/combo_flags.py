@@ -30,14 +30,17 @@ def _sc(conn, d):
 
 
 def price_source(conn, iss, sec=None):
-    """(security_id, provider) to price a pick: NSE when it has a year of prices (deeper volume), else the listing with
-    the longest history (BSE-only companies, and companies that moved to NSE recently but have years of BSE history)."""
-    row = conn.execute("""SELECT p.security_id, p.provider FROM prices p JOIN securities s USING (security_id)
-                          WHERE s.issuer_id = %s AND p.provider IN ('nse_bhavcopy', 'bse_bhavcopy') AND p.adjustment = 'UNADJUSTED'
-                          GROUP BY 1, 2 ORDER BY (p.provider = 'nse_bhavcopy' AND count(*) >= 260) DESC, count(*) DESC,
-                                   (p.provider = 'nse_bhavcopy') DESC, (p.security_id = %s) DESC
-                          LIMIT 1""", (iss, sec)).fetchone()
-    return (row[0], row[1]) if row else (None, None)
+    """(security_id, provider) to price a pick: NSE (deeper volume) unless BSE has clearly more history, i.e. NSE has
+    under 80% of BSE's trading days (BSE-only companies, and companies that moved to NSE recently)."""
+    rows = conn.execute("""SELECT p.security_id, p.provider, count(*) FROM prices p JOIN securities s USING (security_id)
+                           WHERE s.issuer_id = %s AND p.provider IN ('nse_bhavcopy', 'bse_bhavcopy') AND p.adjustment = 'UNADJUSTED'
+                           GROUP BY 1, 2 ORDER BY count(*) DESC, (p.security_id = %s) DESC""", (iss, sec)).fetchall()
+    best = {}
+    for sid, prov, n in rows: best.setdefault(prov, (sid, n))
+    nse, bse = best.get("nse_bhavcopy"), best.get("bse_bhavcopy")
+    if nse and (not bse or nse[1] >= 0.8 * bse[1]): return nse[0], "nse_bhavcopy"
+    if bse: return bse[0], "bse_bhavcopy"
+    return None, None
 
 
 def price_checks(conn, sec, entry, provider="nse_bhavcopy"):
