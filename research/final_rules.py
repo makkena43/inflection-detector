@@ -339,6 +339,39 @@ if len(sys.argv) > 2 and sys.argv[2] == "runup":
         say(f"   {r:11s}: " + " | ".join(cells))
     sys.exit(0)
 
+if len(sys.argv) > 2 and sys.argv[2] == "since":
+    # Dashboard combos (the exact tags app.picks() wrote to picks.csv) on picks from a start year, NSE and BSE apart
+    y0 = int(sys.argv[3]) if len(sys.argv) > 3 else 2024
+    for x in P:
+        x["tags"] = {t.strip() for t in str(x["p"].get("combos") or "").split(";") if t.strip()}
+        x["exch"] = str(x["p"].get("combo_checks.exchange") or "NSE") or "NSE"
+    ids = ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "R1", "R2", "R3"]
+    CB = {i: (lambda i: lambda x: i in x["tags"])(i) for i in ids}
+    CB["ANY CORE (C2/C3/C5)"] = lambda x: bool(x["tags"] & {"C2", "C3", "C5"})
+    CB["ANY C1-C7"] = lambda x: any(t.startswith("C") for t in x["tags"])
+    CB["ALL picks"] = lambda x: True
+    def hold(x, days):
+        s = x["s"]; t1 = s.d[x["k"]] + timedelta(days=days)
+        return s.p[s.at(t1)] / s.p[x["k"]] - 1 - COST if t1 <= s.d[-1] else None
+    def row(sel):
+        if not sel: return "-"
+        o = [outcome(x, dict(stop=0.20, maxd=1095)) for x in sel]
+        q = [outcome(x, dict(stop=0.20, target=1.5, maxd=182)) for x in sel]
+        h12 = [v for v in (hold(x, 365) for x in sel) if v is not None]
+        hits = sum(1 for x in sel if (lambda ev: x["s"].p[ev[0][-1][0]] >= 1.5 * x["s"].p[x["k"]])(sim(x, stop=0.20, target=1.5, maxd=182)))
+        return (f"n{len(sel):3d} Rs{1e5*st.mean(r['mult'] - 1 for r in o):>8,.0f} vsSC {100*st.median(r['ex'] for r in o):+4.0f}% beat {100*sum(r['ex'] > 0 for r in o)/len(o):3.0f}%"
+                + (f" 12m {100*st.mean(h12):+.0f}%({100*st.median(h12):+.0f}%) n{len(h12)}" if h12 else " 12m -")
+                + f" | +50%/6m hit {100*hits/len(sel):.0f}% Rs{1e5*st.mean(r['mult'] - 1 for r in q):,.0f}")
+    sub = [x for x in P if x["year"] >= y0]
+    say(f"## 21. Dashboard combos on picks from {y0}: {len(sub)} picks (NSE {sum(x['exch'] == 'NSE' for x in sub)}, BSE {sum(x['exch'] == 'BSE' for x in sub)})")
+    say("   profit per Rs1L = stop -20%, sell at 36m, open trades at the last close; vsSC = median excess; 12m = buy-and-hold where 12m has passed")
+    for c, f in CB.items():
+        say(f"   {c:20s} ALL {row([x for x in sub if f(x)])}")
+        for e in ("NSE", "BSE"):
+            sel = [x for x in sub if f(x) and x["exch"] == e]
+            if sel: say(f"   {'':20s} {e} {row(sel)}")
+    sys.exit(0)
+
 if len(sys.argv) > 2 and sys.argv[2] == "multibag":
     # How many 2x/5x/10x winners each dashboard combo produced: price multiple after 24m and 36m (buy and hold),
     # and the peak close within 36m; only picks with a full window count. Also with the -20% stop applied.
