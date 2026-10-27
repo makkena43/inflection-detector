@@ -6,6 +6,7 @@ sys.path.insert(0, "/Users/makkenasrinivas/inflection-jobs/ui")
 sys.path.insert(0, "/Users/makkenasrinivas/PycharmProjects/inflection-detector/src")
 import app  # dashboard module; server only starts under __main__
 import psycopg
+import combo_flags  # same price source rule as the dashboard
 
 rows = app.picks(0, "picks")          # one DEEP pick per issuer per year, all years
 flat = []
@@ -25,22 +26,25 @@ print("picks", len(flat), flush=True)
 
 c = psycopg.connect("postgresql:///inflection")
 issuers = sorted({str(r["issuer_id"]) for r in rows})
-n_missing = 0
+n_missing = n_bse = 0
 with open(os.path.join(HERE, "prices.csv"), "w", newline="") as fh:
     w = csv.writer(fh); w.writerow(["issuer_id", "trade_date", "close", "turnover_cr"])
     for iss in issuers:
-        s = c.execute("""select h.security_id from securities s join identifier_history h using(security_id) where s.issuer_id=%s
-                         and h.exchange='NSE' and h.kind='SYMBOL' order by h.valid_to nulls first limit 1""", (iss,)).fetchone()
-        if not s: n_missing += 1; continue
-        for d, cl, t in c.execute("""
-            select a.trade_date, a.close, u.close*u.volume/1e7 from
-              (select distinct on (trade_date) trade_date, close::float from prices_split_bonus_adjusted
-                where security_id=%s and provider='nse_bhavcopy' and close>0 and trade_date>='2020-01-01' order by trade_date) a
+        sec, prov = combo_flags.price_source(c, iss)  # NSE listing, else BSE for BSE-only companies
+        if not sec: n_missing += 1; continue
+        n_bse += prov == "bse_bhavcopy"
+        q = """select a.trade_date, a.close, u.close*u.volume/1e7 from
+              (select distinct on (trade_date) trade_date, close::float from {src}
+                where security_id=%s and provider=%s and close>0 and trade_date>='2020-01-01' {adj} order by trade_date) a
             left join (select distinct on (trade_date) trade_date, close::float, volume::float from prices
-                where security_id=%s and provider='nse_bhavcopy' and adjustment='UNADJUSTED' and trade_date>='2020-01-01' order by trade_date) u
-            using (trade_date) order by 1""", (s[0], s[0])).fetchall():
+                where security_id=%s and provider=%s and adjustment='UNADJUSTED' and trade_date>='2020-01-01' order by trade_date) u
+            using (trade_date) order by 1"""
+        rows_ = c.execute(q.format(src="prices_split_bonus_adjusted", adj=""), (sec, prov, sec, prov)).fetchall()
+        if len(rows_) < 60:  # no adjusted series (BSE): raw closes; final_rules drops names with split-size jumps
+            rows_ = c.execute(q.format(src="prices", adj="and adjustment='UNADJUSTED'"), (sec, prov, sec, prov)).fetchall()
+        for d, cl, t in rows_:
             w.writerow([iss, d, round(cl, 4), round(t, 3) if t is not None else ""])
-print("issuers", len(issuers), "without NSE symbol", n_missing, flush=True)
+print("issuers", len(issuers), "priced from BSE", n_bse, "without prices", n_missing, flush=True)
 
 with open(os.path.join(HERE, "index.csv"), "w", newline="") as fh:
     w = csv.writer(fh); w.writerow(["index_name", "trade_date", "close"])

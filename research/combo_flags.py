@@ -29,12 +29,28 @@ def _sc(conn, d):
     return r[0] if r else None
 
 
-def price_checks(conn, sec, entry):
+def price_source(conn, iss, sec=None):
+    """(security_id, provider) to price a pick: the NSE listing when it has prices, else the BSE one (BSE-only companies)."""
+    for prov in ("nse_bhavcopy", "bse_bhavcopy"):
+        row = conn.execute("""SELECT p.security_id FROM prices p JOIN securities s USING (security_id)
+                              WHERE s.issuer_id = %s AND p.provider = %s AND p.adjustment = 'UNADJUSTED'
+                              GROUP BY 1 ORDER BY (p.security_id = %s) DESC, max(p.trade_date) DESC LIMIT 1""",
+                           (iss, prov, sec)).fetchone()
+        if row: return row[0], prov
+    return None, None
+
+
+def price_checks(conn, sec, entry, provider="nse_bhavcopy"):
     """Uptrend checks at the last close on or before entry. Returns None without enough history."""
     rows = conn.execute("""SELECT DISTINCT ON (trade_date) trade_date, close::float FROM prices_split_bonus_adjusted
-                           WHERE security_id=%s AND provider='nse_bhavcopy' AND close > 0
+                           WHERE security_id=%s AND provider=%s AND close > 0
                              AND trade_date <= %s AND trade_date >= %s::date - 450 ORDER BY trade_date""",
-                        (sec, entry, entry)).fetchall()
+                        (sec, provider, entry, entry)).fetchall()
+    if len(rows) < 60:  # adjusted series may not cover BSE: fall back to raw closes (split jumps then show as a false drop)
+        rows = conn.execute("""SELECT DISTINCT ON (trade_date) trade_date, close::float FROM prices
+                               WHERE security_id=%s AND provider=%s AND adjustment='UNADJUSTED' AND close > 0
+                                 AND trade_date <= %s AND trade_date >= %s::date - 450 ORDER BY trade_date""",
+                            (sec, provider, entry, entry)).fetchall()
     if len(rows) < 60: return None
     d = [r[0] for r in rows]; p = [r[1] for r in rows]; k = len(p) - 1; p0 = p[k]
     sma = lambda j, n: sum(p[j + 1 - n:j + 1]) / n if j + 1 >= n else None
@@ -46,11 +62,11 @@ def price_checks(conn, sec, entry):
     r6 = p0 / p[j] - 1 if j is not None and j < k else None
     a, b = _sc(conn, t6), _sc(conn, d[k])
     rs = r6 is not None and a and b and r6 > b / a - 1
-    liq = conn.execute("""SELECT close::float * volume::float / 1e7 FROM prices WHERE security_id=%s AND provider='nse_bhavcopy'
+    liq = conn.execute("""SELECT close::float * volume::float / 1e7 FROM prices WHERE security_id=%s AND provider=%s
                           AND adjustment='UNADJUSTED' AND trade_date < %s AND volume > 0
-                          ORDER BY trade_date DESC LIMIT 60""", (sec, d[k])).fetchall()
+                          ORDER BY trade_date DESC LIMIT 60""", (sec, provider, d[k])).fetchall()
     liq = statistics.median(v[0] for v in liq) if liq else None
-    return dict(up=up, hi=hi, rs=bool(rs), n=int(up) + int(hi) + int(bool(rs)), runup6=r6, liq=liq)
+    return dict(up=up, hi=hi, rs=bool(rs), n=int(up) + int(hi) + int(bool(rs)), runup6=r6, liq=liq, exchange=provider[:3].upper())
 
 
 def mf_checks(conn, iss, entry):
@@ -65,7 +81,8 @@ def mf_checks(conn, iss, entry):
 
 def flags(conn, r, sec, entry):
     """List of combo ids (C1..C7, watch list R1..R3) a pick row from app.picks() matches, plus the price checks used."""
-    t = price_checks(conn, sec, entry) if sec else None
+    sec, prov = price_source(conn, r["issuer_id"], sec) if r.get("issuer_id") else (sec, "nse_bhavcopy")
+    t = price_checks(conn, sec, entry, prov) if sec else None
     if not t: return [], None
     num = lambda v: float(v) if v is not None else None
     size, opm = num(r.get("size_pct_of_revenue")), num(r.get("opm"))
