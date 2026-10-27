@@ -339,6 +339,36 @@ if len(sys.argv) > 2 and sys.argv[2] == "runup":
         say(f"   {r:11s}: " + " | ".join(cells))
     sys.exit(0)
 
+if len(sys.argv) > 2 and sys.argv[2] == "runtags":
+    # Dashboard combo tags vs prior run-up: do picks already up 5x/10x over 2-3 years do worse inside each combo?
+    def back(x, days):
+        s = x["s"]; k = x["k"]; j = s.at(s.d[k] - timedelta(days=days))
+        return s.p[k] / s.p[j] if j < k and (s.d[k] - s.d[j]).days >= days - 10 else None
+    for x in P:
+        s, k = x["s"], x["k"]
+        x["tags"] = {t.strip() for t in str(x["p"].get("combos") or "").split(";") if t.strip()}
+        x["r2y"], x["r3y"] = back(x, 730), back(x, 1095)
+        x["xlow"] = s.p[k] / min(s.p[s.at(s.d[k] - timedelta(days=1095)):k + 1])
+        o = outcome(x, dict(stop=0.20, maxd=1095)); x["p36"], x["ex36"] = o["mult"] - 1, o["ex"]
+    ids = ["C1", "C2", "C3", "C4", "C5", "C6", "C7"]
+    CB = {i: (lambda i: lambda x: i in x["tags"])(i) for i in ids}
+    CB["ANY CORE"] = lambda x: bool(x["tags"] & {"C2", "C3", "C5", "C7"})
+    CB["ALL picks"] = lambda x: True
+    RULES = {"2y>=5x": lambda x: ge(x["r2y"], 5), "3y>=5x": lambda x: ge(x["r3y"], 5),
+             "3y-low>=5x": lambda x: x["xlow"] >= 5, "3y-low>=10x": lambda x: x["xlow"] >= 10}
+    q = lambda v: (f"n{len(v)} Rs{1e5*st.mean(x['p36'] for x in v):,.0f} vsSC {100*st.median(x['ex36'] for x in v):+.0f}% beat {100*sum(x['ex36'] > 0 for x in v)/len(v):.0f}%" if v else "n0")
+    say("## 22. Dashboard combos: picks already up 5x/10x before entry vs the rest (profit per Rs1L, stop -20%, 36m; open trades at last close)")
+    for c, f in CB.items():
+        sel = [x for x in P if f(x)]
+        say(f"\n   {c}: {q(sel)}")
+        for r, g in RULES.items():
+            a = [x for x in sel if g(x)]; b = [x for x in sel if not g(x)]
+            say(f"      {r:11s} ran-up {q(a)}  ||  rest {q(b)}")
+        if c in ("C7", "ANY CORE"):
+            a = sorted((x for x in sel if RULES["3y-low>=5x"](x)), key=lambda x: x["wk"])
+            say("      ran-up names (3y-low>=5x): " + "; ".join("%s %s x%.1f %+.0f%%" % (x["label"][:16], x["wk"], x["xlow"], 100 * x["p36"]) for x in a))
+    sys.exit(0)
+
 if len(sys.argv) > 2 and sys.argv[2] == "since":
     # Dashboard combos (the exact tags app.picks() wrote to picks.csv) on picks from a start year, NSE and BSE apart
     y0 = int(sys.argv[3]) if len(sys.argv) > 3 else 2024
