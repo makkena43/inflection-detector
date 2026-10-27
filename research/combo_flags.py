@@ -30,11 +30,12 @@ def _sc(conn, d):
 
 
 def price_source(conn, iss, sec=None):
-    """(security_id, provider) to price a pick: the listing with the longest price history, NSE on a tie
-    (BSE-only companies, and companies that moved to NSE recently but have years of BSE history)."""
+    """(security_id, provider) to price a pick: NSE when it has a year of prices (deeper volume), else the listing with
+    the longest history (BSE-only companies, and companies that moved to NSE recently but have years of BSE history)."""
     row = conn.execute("""SELECT p.security_id, p.provider FROM prices p JOIN securities s USING (security_id)
                           WHERE s.issuer_id = %s AND p.provider IN ('nse_bhavcopy', 'bse_bhavcopy') AND p.adjustment = 'UNADJUSTED'
-                          GROUP BY 1, 2 ORDER BY count(*) DESC, (p.provider = 'nse_bhavcopy') DESC, (p.security_id = %s) DESC
+                          GROUP BY 1, 2 ORDER BY (p.provider = 'nse_bhavcopy' AND count(*) >= 260) DESC, count(*) DESC,
+                                   (p.provider = 'nse_bhavcopy') DESC, (p.security_id = %s) DESC
                           LIMIT 1""", (iss, sec)).fetchone()
     return (row[0], row[1]) if row else (None, None)
 
