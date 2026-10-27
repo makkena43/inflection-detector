@@ -7,16 +7,16 @@ import statistics
 from datetime import timedelta
 
 COMBOS = {
-    "C1": "Order 25%+ rev + mcap <Rs2,000cr + uptrend 3/3",
-    "C2": "Order 25%+ rev + near 52w high + 6m run-up >60%",
-    "C3": "Order 25%+ rev + OPM <10% + uptrend 2/3",
-    "C4": "Order 100%+ rev + stated size + uptrend 3/3",
-    "C5": "FII up qoq + promoter holding 60%+ + near 52w high",
-    "C6": "FII up qoq + MF holding 2%+ + above rising 200DMA",
-    "C7": "FII up yoy + MF up yoy + liquid Rs2cr/day",
-    "R1": "Watch list: order 300%+ rev + uptrend 2/3",
-    "R2": "Watch list: order 200%+ rev + FII up qoq",
-    "R3": "Watch list: order 200%+ of mcap",
+    "C1": "Order 25%+ rev + mcap <Rs2,000cr + uptrend 3/3 (Rs2.06L per 1L, 36m; thin recent edge)",
+    "C2": "CORE: Order 25%+ rev + near 52w high + 6m run-up >60% (Rs1.62L per 1L, 36m)",
+    "C3": "CORE: Order 25%+ rev + OPM <10% + uptrend 2/3 (Rs1.62L per 1L, 36m; quick +50% hit 53%)",
+    "C4": "Order 100%+ rev + stated size + uptrend 3/3 (Rs1.37L per 1L, 36m)",
+    "C5": "CORE: FII up qoq + promoter holding 60%+ + near 52w high (Rs1.13L per 1L, 36m)",
+    "C6": "FII up qoq + MF holding 2%+ + above rising 200DMA (Rs1.08L per 1L, 36m)",
+    "C7": "FII up yoy + MF up yoy + liquid Rs2cr/day (Rs1.17L per 1L, 36m)",
+    "R1": "Watch list: order 300%+ rev + uptrend 2/3 (Rs1.76L per 1L, 36m)",
+    "R2": "Watch list: order 200%+ rev + FII up qoq (Rs1.33L per 1L, 36m)",
+    "R3": "Watch list: order 200%+ of mcap (Rs1.24L per 1L, 36m)",
 }
 
 

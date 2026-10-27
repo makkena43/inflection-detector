@@ -339,6 +339,43 @@ if len(sys.argv) > 2 and sys.argv[2] == "runup":
         say(f"   {r:11s}: " + " | ".join(cells))
     sys.exit(0)
 
+if len(sys.argv) > 2 and sys.argv[2] == "bigquick":
+    # Big-order combos with quick exits: sell all at +T% or a -20% close, else after M months
+    sz = lambda x, v: (x["size"] or 0) >= v
+    for x in P: x["prom_pct"] = fnum(x["p"].get("promoter_holding_pct"))
+    BASE = {"order>=100%rev": lambda x: sz(x, 100), "order>=200%rev": lambda x: sz(x, 200), "order>=300%rev": lambda x: sz(x, 300),
+            "order>=100%mcap": lambda x: (x["o_mc"] or 0) >= 1.0, "order>=200%mcap": lambda x: (x["o_mc"] or 0) >= 2.0,
+            "12m orders>=200%rev": lambda x: ge(x["o12"], 200), "12m orders>=300%rev": lambda x: ge(x["o12"], 300)}
+    ADD = {"": lambda x: True, "+ uptrend 2/3": lambda x: x["t3"] >= 2, "+ uptrend 3/3": lambda x: x["t3"] == 3,
+           "+ near 52w high": lambda x: x["t_hi"], "+ FII up qoq": lambda x: gt(x["fii_q"], 0),
+           "+ liquid 2cr": lambda x: ge(x["liq"], 2), "+ mcap<2000cr": lambda x: lt(x["mcap"], 2000),
+           "+ OPM<10%": lambda x: lt(x["opm"], 0.10), "+ not routine": lambda x: not x["routine"]}
+    CORE = {"CORE C2": lambda x: sz(x, 25) and x["t_hi"] and (x["runup6"] or 0) > 0.60,
+            "CORE C3": lambda x: sz(x, 25) and lt(x["opm"], 0.10) and x["t3"] >= 2,
+            "CORE C5": lambda x: gt(x["fii_q"], 0) and (x["prom_pct"] or 0) >= 60 and x["t_hi"]}
+    GRID = [(50, 3), (50, 6), (100, 6), (100, 12)]
+    def cell(sel, T, M):
+        r = dict(stop=0.20, target=1 + T / 100, maxd=int(M * 30.4)); out = []
+        for x in sel:
+            ev, op = sim(x, **r); k1 = ev[-1][0]; s = x["s"]
+            out.append((s.p[k1] / s.p[x["k"]] - 1 - COST, s.p[k1] >= s.p[x["k"]] * r["target"], (s.d[k1] - s.d[x["k"]]).days))
+        hits = [d for _, h, d in out if h]
+        return f"Rs{1e5*st.mean(v for v, _, _ in out):,.0f} hit {100*len(hits)/len(out):.0f}%" + (f" {st.median(hits):.0f}d" if hits else "")
+    def per(sel):  # buys by period, to show where the picks come from
+        return "/".join(str(sum(1 for x in sel if x["split"] == sp)) for sp in ("train", "valid", "hold"))
+    say("## 19. Quick exits on big-order and core combos: avg profit per Rs1L per trade, % hitting the target, median days to hit")
+    say("   combo | buys (21-23/24/25-26) | " + " | ".join(f"+{T}% in {M}m" for T, M in GRID) + " | hold 36m")
+    say(f"   ALL picks | {len(P)} ({per(P)}) | " + " | ".join(cell(P, T, M) for T, M in GRID)
+        + f" | Rs{1e5*st.mean(outcome(x, dict(stop=0.20, maxd=1095))['mult'] - 1 for x in P):,.0f}")
+    rows = [(k, f) for k, f in CORE.items()] + [(b + (" " + a if a else ""), (lambda bf, af: (lambda x: bf(x) and af(x)))(bf, af))
+                                                 for b, bf in BASE.items() for a, af in ADD.items()]
+    for name, f in rows:
+        sel = [x for x in P if f(x)]
+        if len(sel) < 4: continue
+        say(f"   {name:38s} | {len(sel):3d} ({per(sel)}) | " + " | ".join(cell(sel, T, M) for T, M in GRID)
+            + f" | Rs{1e5*st.mean(outcome(x, dict(stop=0.20, maxd=1095))['mult'] - 1 for x in sel):,.0f}")
+    sys.exit(0)
+
 QRULE = None
 if len(sys.argv) > 3 and sys.argv[2] == "deep" and sys.argv[3].startswith("quick"):
     # deep quick T M: sell everything at +T% or a -20% close, else after M months
