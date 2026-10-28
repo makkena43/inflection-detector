@@ -1,0 +1,30 @@
+{
+  "primary_clean": {
+    "cluster_bootstrap_double_difference_95": [
+      0.058080808080808066,
+      0.4493844049247606
+    ],
+    "resamples": 3000
+  },
+  "buying_1cr": {
+    "cluster_bootstrap_double_difference_95": [
+      -0.07518796992481203,
+      0.48746867167919805
+    ],
+    "resamples": 3000
+  },
+  "policy_order": {
+    "cluster_bootstrap_double_difference_95": [
+      -0.12460267005721548,
+      0.5345581802274715
+    ],
+    "resamples": 3000
+  },
+  "pli_approved": {
+    "cluster_bootstrap_double_difference_95": [
+      -0.3515625,
+      0.4748322147651007
+    ],
+    "resamples": 2998
+  }
+}

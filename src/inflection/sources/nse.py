@@ -13,6 +13,7 @@ month chunking, attachment URL resolution and field mapping.  Changes in the por
 from __future__ import annotations
 
 import calendar
+import hashlib
 from datetime import date
 from typing import Optional
 from urllib.parse import urlencode
@@ -56,6 +57,13 @@ def attachment_url(item: dict) -> str:
 
 def parse_item(item: dict, segment: str) -> Optional[Announcement]:
     exchange_id = str(item.get("seq_id") or item.get("id") or "").strip()
+    raw = item
+    if not exchange_id:
+        anchors = (str(item.get("symbol") or "").strip().upper(), attachment_url(item),
+                   str(item.get("an_dt") or "").strip())
+        if all(anchors):
+            exchange_id = "derived:" + hashlib.sha256("|".join(anchors).encode()).hexdigest()
+            raw = {**item, "_id_basis": "SYMBOL_ATTACHMENT_EXCHANGE_TIME"}
     if not exchange_id:
         return None
     raw_time = str(item.get("an_dt") or item.get("exchdisstime") or item.get("dt") or "")
@@ -69,7 +77,7 @@ def parse_item(item: dict, segment: str) -> Optional[Announcement]:
         subject=(item.get("attchmntText") or "").strip(),
         attachment_url=attachment_url(item),
         published_at=published_at, published_date=published_date, publication_basis=basis,
-        raw_time=raw_time, raw=item)
+        raw_time=raw_time, raw=raw)
 
 
 class NSEAnnouncements:
@@ -101,6 +109,7 @@ class NSEAnnouncements:
                 a = parse_item(item, segment) if isinstance(item, dict) else None
                 if a is None:
                     result.notes.append("row without seq_id skipped")
+                    result.status = WindowStatus.PARTIAL
                     continue
                 if a.exchange_id not in seen:
                     seen.add(a.exchange_id)

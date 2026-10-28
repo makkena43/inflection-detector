@@ -316,6 +316,8 @@ def clean_counterparty(raw: str) -> str:
 def _relationship(s: str, verb: Optional[re.Match], cp: Optional[re.Match]) -> tuple[str, str]:
     """(relationship, ownership scope) from one sentence."""
     scope = "UNKNOWN"
+    if V.NO_GROUP_INTEREST.search(s) or V.ASSERT_UNRELATED.search(s):
+        return "ISSUER_ASSERTED_UNRELATED", scope
     sub = V.SUBSIDIARY_RECIPIENT.search(s)
     if sub and verb and sub.start() < verb.start() and (cp is None or sub.start() < cp.start()):
         scope = "SUBSIDIARY"                 # the subsidiary received the order
@@ -563,7 +565,8 @@ def _fill_order_value(sentences: list[Sentence], mentions: list[Mention]) -> Non
     values: dict = {}
     for sent in sentences:
         t = sent.text
-        if V.ORDER_VALUE_CUE.search(t) and V.ORDER_NOUN.search(t):
+        if (V.ORDER_VALUE_CUE.search(t) and V.ORDER_NOUN.search(t)
+                and not V.ORDER_BOOK.search(t) and not V.PERIOD_INFLOW.search(t)):
             found = [a for a in amounts(t) if a.currency == "INR" and a.value > 0]
             if found:
                 values.setdefault(found[0].to_base(), (found[0], sent))
@@ -595,6 +598,18 @@ def _enrich_single_order(text: str, mentions: list[Mention]) -> None:
     one = re.sub(r"\s+", " ", text)
     for m in orders:
         d = m.details
+        if "deadline" not in d:
+            delivery = re.search(r"\b(?:by|before|on or before)\s+([A-Za-z]+)\s+(\d{1,2}),?\s+(20\d{2})\b", one, re.I)
+            if delivery:
+                month = _MONTHS.get(delivery.group(1).lower())
+                try:
+                    end = date(int(delivery.group(3)), month, int(delivery.group(2))) if month else None
+                except ValueError:
+                    end = None
+                if end:
+                    d["deadline"] = end.isoformat()
+                    d["deadline_text"] = delivery.group(0)
+                    d["deadline_from_document"] = True
         if "duration_months" not in d:
             hit = (re.search(r"\b(?:execut|deliver|complet|suppl)\w*\b[^.]{0,60}?" + V.DURATION.pattern[2:], one, re.I)
                    or V.DURATION_COLON.search(one))
@@ -624,7 +639,22 @@ def _enrich_single_order(text: str, mentions: list[Mention]) -> None:
         hit = V.ANNEX_GEOGRAPHY.search(flat)
         if hit:
             d["customer_geography"] = hit.group(1).upper()
-        if m.relationship == "UNKNOWN":
+        # Only one distinct order value is being enriched. Read the explicit annexure
+        # answer even when generic prose supplied an earlier relationship label.
+        answer = V.RELATED_ANSWER.search(one) or V.RELATED_TABLE_ANSWER.search(one)
+        explicit = ("CONFIRMED_RELATED" if answer.group("answer").lower() == "yes"
+                    else "ISSUER_ASSERTED_UNRELATED") if answer else None
+        if explicit:
+            if m.relationship not in ("UNKNOWN", explicit):
+                d["relationship_conflict"] = dict(prose=m.relationship, disclosure=explicit)
+                # Conflicting positive relationship evidence needs review, not an
+                # automatic internal-demand rejection or an automatic clearance.
+                m.relationship = "UNKNOWN"
+            else:
+                m.relationship = explicit
+            d["relationship_from_document"] = True
+            d["relationship_source"] = answer.group(0)
+        elif m.relationship == "UNKNOWN":
             if V.ASSERT_RELATED.search(flat):
                 m.relationship = "CONFIRMED_RELATED"
                 d["relationship_from_document"] = True

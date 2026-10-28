@@ -26,7 +26,7 @@ from psycopg.types.json import Jsonb
 
 from .sources.common import IST
 from .sources.download import Archive
-from .sources.http import HttpClient
+from .sources.http import HttpClient, Response
 from .sources.xbrl import REFERER, ListingResult, NSEResultsListing, ResultEntry, listed_period, parse_results_xbrl
 from .states import CoverageStatus
 
@@ -61,11 +61,11 @@ def current_symbols(conn, symbols: Optional[Iterable[str]] = None) -> list[tuple
 
 
 def listed_symbols(conn, start: date, end: date) -> set[str]:
-    """Symbols whose listing for this window already came back COMPLETE or EMPTY_UNVERIFIED."""
+    """Only proven-complete listings are cached; uncertain empty responses must be retried."""
     rows = conn.execute(
         """SELECT DISTINCT r.reconciliation_result->>'symbol'
              FROM ingestion_runs r JOIN sources s USING (source_id)
-            WHERE s.name = %s AND r.coverage_status IN ('COMPLETE', 'EMPTY_UNVERIFIED')
+            WHERE s.name = %s AND r.coverage_status = 'COMPLETE'
               AND r.reconciliation_result->>'from' = %s AND r.reconciliation_result->>'to' = %s""",
         (SOURCE, start.isoformat(), end.isoformat())).fetchall()
     return {r[0] for r in rows}
@@ -163,13 +163,21 @@ def _fail(conn, pid, rev, reason: str) -> None:
                            revision = revision + 1 WHERE publication_id = %s AND revision = %s""", (reason, pid, rev))
 
 
-def _download_rows(rows, client, workers=1, client_factory=None):
+def _download_rows(rows, client, workers=1, client_factory=None, archive=None):
     """Bounded concurrent downloads, yielded in publication order; no worker touches the DB."""
     if workers < 1:
         raise ValueError("workers must be positive")
+    def fetch(row, http):
+        if archive is not None and len(row) > 6 and row[6] and row[7]:
+            path = (archive.root / row[6]).resolve()
+            if path.is_relative_to(archive.root.resolve()) and path.is_file():
+                body = path.read_bytes()
+                if hashlib.sha256(body).hexdigest() == row[7]:
+                    return Response(row[2], 200, body)
+        return http.get(row[2], referer=REFERER, accept="application/xml, text/xml, */*")
     if workers == 1:
         for row in rows:
-            yield row, client.get(row[2], referer=REFERER, accept="application/xml, text/xml, */*")
+            yield row, fetch(row, client)
         return
     state = local()
     def download(row):
@@ -177,7 +185,7 @@ def _download_rows(rows, client, workers=1, client_factory=None):
             state.client = client_factory() if client_factory else HttpClient(
                 min_interval=client.min_interval, retries=client.retries,
                 backoff=client.backoff, timeout=client.timeout, user_agent=client.user_agent)
-        return row, state.client.get(row[2], referer=REFERER, accept="application/xml, text/xml, */*")
+        return row, fetch(row, state.client)
     remaining = iter(rows)
     with ThreadPoolExecutor(max_workers=workers) as pool:
         pending = deque()
@@ -194,18 +202,26 @@ def _download_rows(rows, client, workers=1, client_factory=None):
 
 
 def load_pending(conn, archive: Archive, client: HttpClient, limit: int = 500, retry_failed: bool = False,
-                 workers: int = 1, client_factory=None, progress=None) -> Counter:
+                 workers: int = 1, client_factory=None, progress=None, reparse_failed: bool = False,
+                 start: Optional[date] = None, end: Optional[date] = None) -> Counter:
     """Download, archive and parse listed XBRL filings; append their figures to ``financial_facts``."""
-    states = ["DISCOVERED", "FAILED"] if retry_failed else ["DISCOVERED"]
+    states = ["DISCOVERED", "FAILED"] if retry_failed or reparse_failed else ["DISCOVERED"]
     rows = conn.execute(
-        """SELECT p.publication_id, p.revision, p.attachment_url, p.issuer_id, p.published_at, p.failure_reason
+        """SELECT p.publication_id, p.revision, p.attachment_url, p.issuer_id, p.published_at, p.failure_reason,
+                  v.storage_key,v.sha256
              FROM document_publications p JOIN sources s USING (source_id)
+             LEFT JOIN document_versions v USING(document_version_id)
             WHERE s.name = %s AND p.pipeline_state = ANY(%s)
-            ORDER BY p.published_at NULLS LAST, p.publication_id LIMIT %s""", (SOURCE, states, limit)).fetchall()
+              AND (p.pipeline_state='DISCOVERED' OR
+                (%s AND (p.failure_reason IS NULL OR p.failure_reason LIKE 'BLOCKED%%' OR p.failure_reason LIKE 'FAILED%%')) OR
+                (%s AND p.failure_reason LIKE 'XBRL:%%'))
+              AND (%s::date IS NULL OR p.published_at >= (%s::date::timestamp AT TIME ZONE 'Asia/Kolkata'))
+              AND (%s::date IS NULL OR p.published_at < ((%s::date+1)::timestamp AT TIME ZONE 'Asia/Kolkata'))
+            ORDER BY p.published_at NULLS LAST, p.publication_id LIMIT %s""",
+        (SOURCE, states, retry_failed, reparse_failed, start,start,end,end,limit)).fetchall()
     out: Counter = Counter()
-    rows = [row for row in rows if not row[5] or row[5].startswith(("BLOCKED", "FAILED"))]
-    for index, (row, resp) in enumerate(_download_rows(rows, client, workers, client_factory), 1):
-        pid, rev, url, issuer_id, published_at, failure = row
+    for index, (row, resp) in enumerate(_download_rows(rows, client, workers, client_factory, archive), 1):
+        pid, rev, url, issuer_id, published_at, failure = row[:6]
         if progress and (index == 1 or (index - 1) % 100 == 0):
             progress(index - 1, len(rows), dict(out))
         with conn.transaction():
@@ -216,8 +232,9 @@ def load_pending(conn, archive: Archive, client: HttpClient, limit: int = 500, r
                 continue
             stored = archive.put(resp.body, url.rsplit("/", 1)[-1])
             _, vid = _store_xml(conn, stored)
-            conn.execute("""UPDATE document_publications SET document_version_id = %s, ingested_at = now(),
-                                   response_sha256 = %s WHERE publication_id = %s""", (vid, stored.sha256, pid))
+            conn.execute("""UPDATE document_publications SET document_version_id = %s,
+                                   ingested_at = CASE WHEN document_version_id=%s THEN coalesce(ingested_at,now()) ELSE now() END,
+                                   response_sha256 = %s WHERE publication_id = %s""", (vid, vid, stored.sha256, pid))
             raw = conn.execute("SELECT raw_metadata FROM document_publications WHERE publication_id = %s",
                                (pid,)).fetchone()[0]
             parsed = parse_results_xbrl(resp.body, listed_period(raw))
@@ -266,7 +283,7 @@ def results_report(conn) -> dict:
 
 
 def main(argv: Optional[list[str]] = None) -> int:
-    """python -m inflection.financials list [--from 2021-01-01] [--to 2024-11-30] [--symbols A,B] [--relist]
+    """python -m inflection.financials list [--from 2021-01-01] [--to TODAY] [--symbols A,B] [--relist]
     python -m inflection.financials load --archive DIR [--limit N] [--retry-failed] [--workers N]
     python -m inflection.financials report
 
@@ -280,15 +297,16 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     ap = argparse.ArgumentParser(prog="python -m inflection.financials")
     ap.add_argument("command", choices=("list", "load", "report"))
-    ap.add_argument("--from", dest="start", type=date.fromisoformat, default=date(2021, 1, 1),
+    ap.add_argument("--from", dest="start", type=date.fromisoformat,
                     help="periods ending on or after this date")
-    ap.add_argument("--to", dest="end", type=date.fromisoformat, default=date(2024, 11, 30),
+    ap.add_argument("--to", dest="end", type=date.fromisoformat,
                     help="filings made public on or before this date")
     ap.add_argument("--symbols", help="comma-separated NSE symbols (default: every current NSE symbol)")
     ap.add_argument("--relist", action="store_true")
     ap.add_argument("--archive", type=Path)
     ap.add_argument("--limit", type=int, default=100000)
     ap.add_argument("--retry-failed", action="store_true", help="retry BLOCKED/FAILED downloads")
+    ap.add_argument("--reparse-failed", action="store_true", help="retry parser failures, using verified archived bytes when present")
     ap.add_argument("--interval", type=float, default=1.0, help="seconds between requests per worker")
     ap.add_argument("--workers", type=int, default=1, help="parallel download workers (default: 1)")
     a = ap.parse_args(argv)
@@ -300,11 +318,12 @@ def main(argv: Optional[list[str]] = None) -> int:
         client = HttpClient(min_interval=a.interval)
         if a.command == "list":
             symbols = [s.strip() for s in a.symbols.split(",")] if a.symbols else None
-            counts = list_results(conn, client, a.start, a.end, symbols, a.relist,
+            counts = list_results(conn, client, a.start or date(2021,1,1), a.end or date.today(), symbols, a.relist,
                                   progress=lambda s, st, f, n: print(f"{s}: {st}, {f} in window, {n} new", flush=True))
             print(json.dumps(dict(counts), indent=2))
         elif a.command == "load":
             print(json.dumps(dict(load_pending(conn, Archive(a.archive), client, a.limit, a.retry_failed, workers=a.workers,
+                reparse_failed=a.reparse_failed,start=a.start,end=a.end,
                 progress=lambda done, total, counts: print(f"load: {done}/{total} {json.dumps(counts)}", flush=True))), indent=2))
         print(json.dumps(results_report(conn), indent=2))
     return 0

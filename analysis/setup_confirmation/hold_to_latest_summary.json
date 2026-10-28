@@ -1,0 +1,41 @@
+{
+  "each_selection": {
+    "n": 40,
+    "invested": 4000000,
+    "value": 20415100.706928216,
+    "profit": 16415100.706928216,
+    "return_pct": 410.3775176732054,
+    "dates": [
+      "2026-10-09"
+    ],
+    "unverified": 0,
+    "doubles": 18,
+    "losses": 10
+  },
+  "once_per_company": {
+    "n": 35,
+    "invested": 3500000,
+    "value": 19518147.074750535,
+    "profit": 16018147.074750535,
+    "return_pct": 457.66134499287244,
+    "dates": [
+      "2026-10-09"
+    ],
+    "unverified": 0,
+    "doubles": 16,
+    "losses": 8
+  },
+  "evidence_pass_each": {
+    "n": 23,
+    "invested": 2300000,
+    "value": 9859213.469248312,
+    "profit": 7559213.469248312,
+    "return_pct": 328.66145518470915,
+    "dates": [
+      "2026-10-09"
+    ],
+    "unverified": 0,
+    "doubles": 10,
+    "losses": 5
+  }
+}

@@ -1,0 +1,3905 @@
+{
+  "signal": {
+    "review_id": "b0bae9ad-c2a0-4e32-8970-56cd05bf82f5",
+    "issuer_id": "a1732569-cf12-40c4-8f79-d69b6f1ab7b7",
+    "week_start": "2026-09-28",
+    "label": "526775",
+    "legal_name": "VALIANT COMMUNICATIONS LTD.",
+    "triage_action": "DEEP_RESEARCH",
+    "is_pick": true,
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "rules_version": "triage-rules-3.5.1",
+    "size_pct_of_revenue": 44.2,
+    "size_basis": "STATED",
+    "firm": true,
+    "routine": false,
+    "disqualifier": null,
+    "confidence": "MEDIUM",
+    "rationale": "The Letter of Award worth Rs 40.25 crore is 44.2% of TTM revenue of Rs 91.13 crore, with no execution period stated, and an LoA counts as a firm award. Orders of this size are rare in the packet: the Rs 41.35 crore January 2025 order was the company's largest to date, and the March 2025 GETCO letter of intent was similar, so this is not a routine monthly order. No disqualifier applies: TTM PAT is Rs 25.28 crore, TTM operating margin is 38.6%, and finance cost is negligible.",
+    "excess_6m": null,
+    "excess_12m": null,
+    "excess_24m": null,
+    "return_12m": null,
+    "return_24m": null,
+    "holding_period": null,
+    "holding_previous_period": null,
+    "promoter_holding_pct": null,
+    "fii_holding_pct": null,
+    "promoter_change_pp": null,
+    "fii_change_pp": null,
+    "holding_year_ago_period": null,
+    "promoter_yoy_pp": null,
+    "fii_yoy_pp": null,
+    "return_36m": null,
+    "benchmark_36m": null,
+    "excess_36m": null,
+    "benchmark_12m": null,
+    "benchmark_24m": null,
+    "runup_6m": null,
+    "margin_ttm": 0.2774059036541205,
+    "category": "Other pick",
+    "order_cr_derived": 40.27946,
+    "order_cr": 40.25,
+    "order_cr_basis": "review amount",
+    "mcap_cr": null,
+    "orders_12m_pct": 59.4,
+    "orders_y1_pct": 29.7,
+    "orders_12m_incl_big_pct": 59.4,
+    "order_to_mcap": null,
+    "mgmt_target_x": null,
+    "promoter_net_cr": 0.0,
+    "inst_net_cr": 0.0,
+    "tech": {
+      "up": true,
+      "hi": true,
+      "rs": true,
+      "n": 3,
+      "runup6": 0.71121946315472,
+      "liq": 1.9238600875,
+      "exchange": "BSE",
+      "below_falling_200": false,
+      "price_date": "2026-10-12",
+      "history_days": 303,
+      "near_high_threshold": 0.8
+    },
+    "tech_score": 3,
+    "price_date": "2026-10-12",
+    "exchange": "BSE",
+    "order_book": {
+      "quarter_end": "2022-03-31",
+      "order_book_cr": null,
+      "order_inflow_cr": 19.0,
+      "book_doubtful": false,
+      "inflow_doubtful": false,
+      "book_yoy_pct": null,
+      "inflow_yoy_pct": null
+    },
+    "score": 1,
+    "score_inputs": {
+      "order_mcap_25": null,
+      "mcap_lt_2000": null,
+      "ps_lt_1_5": null,
+      "opm_up_1pp": null,
+      "opm_lt_10": false,
+      "mgmt_target_1_5x": false,
+      "tech_2_of_3": true,
+      "revenue_growing": null,
+      "order_book_growing": null,
+      "illiquid_penalty": null,
+      "expensive_penalty": null
+    },
+    "score_known": 3,
+    "score_n": 9,
+    "ps": null,
+    "opm": 0.3860419181389224,
+    "signals": [
+      "Technicals 3/3",
+      "Data 3/9 known"
+    ],
+    "combos": [
+      "C2"
+    ],
+    "combo_checks": {
+      "up": true,
+      "hi": true,
+      "rs": true,
+      "n": 3,
+      "runup6": 0.71121946315472,
+      "liq": 1.9238600875,
+      "exchange": "BSE",
+      "below_falling_200": false,
+      "price_date": "2026-10-12",
+      "history_days": 303,
+      "near_high_threshold": 0.8
+    }
+  },
+  "identifiers": [
+    {
+      "security_id": "498fe164-fa29-46b9-8387-e6905c0bddcb",
+      "exchange": "BSE",
+      "kind": "SCRIP_CODE",
+      "value": "526775"
+    },
+    {
+      "security_id": "498fe164-fa29-46b9-8387-e6905c0bddcb",
+      "exchange": "BSE",
+      "kind": "SYMBOL",
+      "value": "VALIANT"
+    }
+  ],
+  "exchange": "BSE",
+  "security_id": "498fe164-fa29-46b9-8387-e6905c0bddcb",
+  "prices": [
+    {
+      "trade_date": "2026-10-27",
+      "close": "1599.05",
+      "volume": "41004"
+    },
+    {
+      "trade_date": "2026-10-26",
+      "close": "1390.60",
+      "volume": "34167"
+    },
+    {
+      "trade_date": "2026-10-23",
+      "close": "1376.60",
+      "volume": "47250"
+    },
+    {
+      "trade_date": "2026-10-22",
+      "close": "1480.20",
+      "volume": "14062"
+    },
+    {
+      "trade_date": "2026-10-21",
+      "close": "1510.50",
+      "volume": "44579"
+    },
+    {
+      "trade_date": "2026-10-19",
+      "close": "1624.70",
+      "volume": "14989"
+    },
+    {
+      "trade_date": "2026-10-16",
+      "close": "1686.55",
+      "volume": "12524"
+    },
+    {
+      "trade_date": "2026-10-15",
+      "close": "1678.90",
+      "volume": "11400"
+    },
+    {
+      "trade_date": "2026-10-14",
+      "close": "1706.85",
+      "volume": "9816"
+    },
+    {
+      "trade_date": "2026-10-13",
+      "close": "1737.80",
+      "volume": "20669"
+    },
+    {
+      "trade_date": "2026-10-12",
+      "close": "1702.15",
+      "volume": "32767"
+    },
+    {
+      "trade_date": "2026-10-09",
+      "close": "1700.70",
+      "volume": "23489"
+    },
+    {
+      "trade_date": "2026-10-08",
+      "close": "1706.75",
+      "volume": "26928"
+    },
+    {
+      "trade_date": "2026-10-07",
+      "close": "1786.60",
+      "volume": "16359"
+    },
+    {
+      "trade_date": "2026-10-06",
+      "close": "1808.30",
+      "volume": "62447"
+    },
+    {
+      "trade_date": "2026-10-05",
+      "close": "1686.25",
+      "volume": "16191"
+    },
+    {
+      "trade_date": "2026-10-01",
+      "close": "1686.35",
+      "volume": "28892"
+    },
+    {
+      "trade_date": "2026-09-30",
+      "close": "1734.00",
+      "volume": "92780"
+    },
+    {
+      "trade_date": "2026-09-29",
+      "close": "1652.10",
+      "volume": "95419"
+    },
+    {
+      "trade_date": "2026-09-28",
+      "close": "1436.65",
+      "volume": "14979"
+    },
+    {
+      "trade_date": "2026-09-25",
+      "close": "1476.85",
+      "volume": "27782"
+    },
+    {
+      "trade_date": "2026-09-24",
+      "close": "1445.50",
+      "volume": "7890"
+    },
+    {
+      "trade_date": "2026-09-23",
+      "close": "1452.75",
+      "volume": "29063"
+    },
+    {
+      "trade_date": "2026-09-22",
+      "close": "1428.75",
+      "volume": "24062"
+    },
+    {
+      "trade_date": "2026-09-21",
+      "close": "1427.75",
+      "volume": "31096"
+    },
+    {
+      "trade_date": "2026-09-18",
+      "close": "1391.05",
+      "volume": "66898"
+    },
+    {
+      "trade_date": "2026-09-17",
+      "close": "1259.90",
+      "volume": "12497"
+    },
+    {
+      "trade_date": "2026-09-16",
+      "close": "1269.90",
+      "volume": "11820"
+    },
+    {
+      "trade_date": "2026-09-15",
+      "close": "1246.00",
+      "volume": "12844"
+    },
+    {
+      "trade_date": "2026-09-11",
+      "close": "1323.50",
+      "volume": "14089"
+    },
+    {
+      "trade_date": "2026-09-10",
+      "close": "1345.00",
+      "volume": "27646"
+    },
+    {
+      "trade_date": "2026-09-09",
+      "close": "1321.30",
+      "volume": "8046"
+    },
+    {
+      "trade_date": "2026-09-08",
+      "close": "1320.40",
+      "volume": "21857"
+    },
+    {
+      "trade_date": "2026-09-07",
+      "close": "1309.70",
+      "volume": "29798"
+    },
+    {
+      "trade_date": "2026-09-04",
+      "close": "1246.20",
+      "volume": "8208"
+    },
+    {
+      "trade_date": "2026-09-03",
+      "close": "1253.20",
+      "volume": "29787"
+    },
+    {
+      "trade_date": "2026-09-02",
+      "close": "1237.35",
+      "volume": "22843"
+    },
+    {
+      "trade_date": "2026-09-01",
+      "close": "1202.55",
+      "volume": "14790"
+    },
+    {
+      "trade_date": "2026-08-31",
+      "close": "1246.95",
+      "volume": "37847"
+    },
+    {
+      "trade_date": "2026-08-28",
+      "close": "1142.75",
+      "volume": "14376"
+    },
+    {
+      "trade_date": "2026-08-27",
+      "close": "1082.50",
+      "volume": "11707"
+    },
+    {
+      "trade_date": "2026-08-26",
+      "close": "1105.55",
+      "volume": "11761"
+    },
+    {
+      "trade_date": "2026-08-25",
+      "close": "1114.05",
+      "volume": "9051"
+    },
+    {
+      "trade_date": "2026-08-24",
+      "close": "1124.15",
+      "volume": "8783"
+    },
+    {
+      "trade_date": "2026-08-21",
+      "close": "1129.65",
+      "volume": "3777"
+    },
+    {
+      "trade_date": "2026-08-20",
+      "close": "1133.80",
+      "volume": "6768"
+    },
+    {
+      "trade_date": "2026-08-19",
+      "close": "1112.15",
+      "volume": "10884"
+    },
+    {
+      "trade_date": "2026-08-18",
+      "close": "1155.15",
+      "volume": "14801"
+    },
+    {
+      "trade_date": "2026-08-17",
+      "close": "1207.10",
+      "volume": "8281"
+    },
+    {
+      "trade_date": "2026-08-14",
+      "close": "1184.95",
+      "volume": "9212"
+    },
+    {
+      "trade_date": "2026-08-13",
+      "close": "1226.20",
+      "volume": "20300"
+    },
+    {
+      "trade_date": "2026-08-12",
+      "close": "1268.90",
+      "volume": "92314"
+    },
+    {
+      "trade_date": "2026-08-11",
+      "close": "1220.10",
+      "volume": "24620"
+    },
+    {
+      "trade_date": "2026-08-10",
+      "close": "1167.25",
+      "volume": "16989"
+    },
+    {
+      "trade_date": "2026-08-07",
+      "close": "1183.15",
+      "volume": "40314"
+    },
+    {
+      "trade_date": "2026-08-06",
+      "close": "1144.80",
+      "volume": "50434"
+    },
+    {
+      "trade_date": "2026-08-05",
+      "close": "1040.75",
+      "volume": "21175"
+    },
+    {
+      "trade_date": "2026-08-04",
+      "close": "946.15",
+      "volume": "10569"
+    },
+    {
+      "trade_date": "2026-08-03",
+      "close": "946.75",
+      "volume": "13993"
+    },
+    {
+      "trade_date": "2026-07-31",
+      "close": "946.15",
+      "volume": "11621"
+    },
+    {
+      "trade_date": "2026-07-30",
+      "close": "935.75",
+      "volume": "19436"
+    },
+    {
+      "trade_date": "2026-07-29",
+      "close": "994.55",
+      "volume": "8672"
+    },
+    {
+      "trade_date": "2026-07-28",
+      "close": "995.20",
+      "volume": "10072"
+    },
+    {
+      "trade_date": "2026-07-27",
+      "close": "1036.55",
+      "volume": "27802"
+    },
+    {
+      "trade_date": "2026-07-24",
+      "close": "966.90",
+      "volume": "8709"
+    },
+    {
+      "trade_date": "2026-07-23",
+      "close": "979.00",
+      "volume": "5657"
+    },
+    {
+      "trade_date": "2026-07-22",
+      "close": "988.20",
+      "volume": "13632"
+    },
+    {
+      "trade_date": "2026-07-21",
+      "close": "948.20",
+      "volume": "17515"
+    },
+    {
+      "trade_date": "2026-07-20",
+      "close": "990.80",
+      "volume": "10189"
+    },
+    {
+      "trade_date": "2026-07-17",
+      "close": "973.50",
+      "volume": "33509"
+    },
+    {
+      "trade_date": "2026-07-16",
+      "close": "983.30",
+      "volume": "25584"
+    },
+    {
+      "trade_date": "2026-07-15",
+      "close": "1033.80",
+      "volume": "10875"
+    },
+    {
+      "trade_date": "2026-07-14",
+      "close": "1053.15",
+      "volume": "12162"
+    },
+    {
+      "trade_date": "2026-07-13",
+      "close": "1037.10",
+      "volume": "5654"
+    },
+    {
+      "trade_date": "2026-07-10",
+      "close": "1084.10",
+      "volume": "7563"
+    },
+    {
+      "trade_date": "2026-07-09",
+      "close": "1070.85",
+      "volume": "8648"
+    },
+    {
+      "trade_date": "2026-07-08",
+      "close": "1010.45",
+      "volume": "14519"
+    },
+    {
+      "trade_date": "2026-07-07",
+      "close": "1042.80",
+      "volume": "9730"
+    },
+    {
+      "trade_date": "2026-07-06",
+      "close": "1063.55",
+      "volume": "7880"
+    },
+    {
+      "trade_date": "2026-07-03",
+      "close": "1080.45",
+      "volume": "10073"
+    },
+    {
+      "trade_date": "2026-07-02",
+      "close": "1021.85",
+      "volume": "16827"
+    },
+    {
+      "trade_date": "2026-07-01",
+      "close": "1040.80",
+      "volume": "12495"
+    },
+    {
+      "trade_date": "2026-06-30",
+      "close": "1085.25",
+      "volume": "13001"
+    },
+    {
+      "trade_date": "2026-06-29",
+      "close": "1075.80",
+      "volume": "25369"
+    },
+    {
+      "trade_date": "2026-06-25",
+      "close": "1049.70",
+      "volume": "35074"
+    },
+    {
+      "trade_date": "2026-06-24",
+      "close": "1142.00",
+      "volume": "26377"
+    },
+    {
+      "trade_date": "2026-06-23",
+      "close": "1161.70",
+      "volume": "9851"
+    },
+    {
+      "trade_date": "2026-06-22",
+      "close": "1204.10",
+      "volume": "10750"
+    },
+    {
+      "trade_date": "2026-06-19",
+      "close": "1199.45",
+      "volume": "5697"
+    },
+    {
+      "trade_date": "2026-06-18",
+      "close": "1198.70",
+      "volume": "9502"
+    },
+    {
+      "trade_date": "2026-06-17",
+      "close": "1207.75",
+      "volume": "9119"
+    },
+    {
+      "trade_date": "2026-06-16",
+      "close": "1215.10",
+      "volume": "15835"
+    },
+    {
+      "trade_date": "2026-06-15",
+      "close": "1204.50",
+      "volume": "17226"
+    },
+    {
+      "trade_date": "2026-06-12",
+      "close": "1208.00",
+      "volume": "11970"
+    },
+    {
+      "trade_date": "2026-06-11",
+      "close": "1191.40",
+      "volume": "5121"
+    },
+    {
+      "trade_date": "2026-06-10",
+      "close": "1241.85",
+      "volume": "5538"
+    },
+    {
+      "trade_date": "2026-06-09",
+      "close": "1243.95",
+      "volume": "10993"
+    },
+    {
+      "trade_date": "2026-06-08",
+      "close": "1259.25",
+      "volume": "20022"
+    },
+    {
+      "trade_date": "2026-06-05",
+      "close": "1239.30",
+      "volume": "24335"
+    },
+    {
+      "trade_date": "2026-06-04",
+      "close": "1171.85",
+      "volume": "15291"
+    },
+    {
+      "trade_date": "2026-06-03",
+      "close": "1207.15",
+      "volume": "6743"
+    },
+    {
+      "trade_date": "2026-06-02",
+      "close": "1233.00",
+      "volume": "26047"
+    },
+    {
+      "trade_date": "2026-06-01",
+      "close": "1264.60",
+      "volume": "39925"
+    },
+    {
+      "trade_date": "2026-05-29",
+      "close": "1242.10",
+      "volume": "23428"
+    },
+    {
+      "trade_date": "2026-05-27",
+      "close": "1220.75",
+      "volume": "11538"
+    },
+    {
+      "trade_date": "2026-05-26",
+      "close": "1176.20",
+      "volume": "7458"
+    },
+    {
+      "trade_date": "2026-05-25",
+      "close": "1186.25",
+      "volume": "25481"
+    },
+    {
+      "trade_date": "2026-05-22",
+      "close": "1190.65",
+      "volume": "36374"
+    },
+    {
+      "trade_date": "2026-05-21",
+      "close": "1134.35",
+      "volume": "66649"
+    },
+    {
+      "trade_date": "2026-05-20",
+      "close": "1087.45",
+      "volume": "5411"
+    },
+    {
+      "trade_date": "2026-05-19",
+      "close": "1133.45",
+      "volume": "17859"
+    },
+    {
+      "trade_date": "2026-05-18",
+      "close": "1102.15",
+      "volume": "12073"
+    },
+    {
+      "trade_date": "2026-05-15",
+      "close": "1158.40",
+      "volume": "31211"
+    },
+    {
+      "trade_date": "2026-05-14",
+      "close": "1103.25",
+      "volume": "11291"
+    },
+    {
+      "trade_date": "2026-05-13",
+      "close": "1101.85",
+      "volume": "22259"
+    },
+    {
+      "trade_date": "2026-05-12",
+      "close": "1076.90",
+      "volume": "28616"
+    },
+    {
+      "trade_date": "2026-05-11",
+      "close": "1039.05",
+      "volume": "8555"
+    },
+    {
+      "trade_date": "2026-05-08",
+      "close": "989.60",
+      "volume": "14012"
+    },
+    {
+      "trade_date": "2026-05-07",
+      "close": "942.50",
+      "volume": "7191"
+    },
+    {
+      "trade_date": "2026-05-06",
+      "close": "941.00",
+      "volume": "18045"
+    },
+    {
+      "trade_date": "2026-05-05",
+      "close": "916.70",
+      "volume": "9737"
+    },
+    {
+      "trade_date": "2026-05-04",
+      "close": "934.35",
+      "volume": "11131"
+    },
+    {
+      "trade_date": "2026-04-30",
+      "close": "914.40",
+      "volume": "8276"
+    },
+    {
+      "trade_date": "2026-04-29",
+      "close": "898.65",
+      "volume": "20438"
+    },
+    {
+      "trade_date": "2026-04-28",
+      "close": "926.00",
+      "volume": "6578"
+    },
+    {
+      "trade_date": "2026-04-27",
+      "close": "933.15",
+      "volume": "11586"
+    },
+    {
+      "trade_date": "2026-04-24",
+      "close": "937.15",
+      "volume": "8373"
+    },
+    {
+      "trade_date": "2026-04-23",
+      "close": "935.40",
+      "volume": "9277"
+    },
+    {
+      "trade_date": "2026-04-22",
+      "close": "930.15",
+      "volume": "32554"
+    },
+    {
+      "trade_date": "2026-04-21",
+      "close": "939.85",
+      "volume": "13439"
+    },
+    {
+      "trade_date": "2026-04-20",
+      "close": "968.00",
+      "volume": "7005"
+    },
+    {
+      "trade_date": "2026-04-17",
+      "close": "997.55",
+      "volume": "9968"
+    },
+    {
+      "trade_date": "2026-04-16",
+      "close": "1003.35",
+      "volume": "9925"
+    },
+    {
+      "trade_date": "2026-04-15",
+      "close": "985.45",
+      "volume": "13430"
+    },
+    {
+      "trade_date": "2026-04-13",
+      "close": "994.70",
+      "volume": "7986"
+    },
+    {
+      "trade_date": "2026-04-10",
+      "close": "1008.00",
+      "volume": "9141"
+    },
+    {
+      "trade_date": "2026-04-09",
+      "close": "994.05",
+      "volume": "9171"
+    },
+    {
+      "trade_date": "2026-04-08",
+      "close": "968.20",
+      "volume": "10540"
+    },
+    {
+      "trade_date": "2026-04-07",
+      "close": "922.10",
+      "volume": "9049"
+    },
+    {
+      "trade_date": "2026-04-06",
+      "close": "955.40",
+      "volume": "4936"
+    },
+    {
+      "trade_date": "2026-04-02",
+      "close": "918.10",
+      "volume": "6347"
+    },
+    {
+      "trade_date": "2026-04-01",
+      "close": "930.20",
+      "volume": "6138"
+    },
+    {
+      "trade_date": "2026-03-30",
+      "close": "908.00",
+      "volume": "12623"
+    },
+    {
+      "trade_date": "2026-03-27",
+      "close": "955.75",
+      "volume": "13021"
+    },
+    {
+      "trade_date": "2026-03-25",
+      "close": "1000.00",
+      "volume": "18577"
+    },
+    {
+      "trade_date": "2026-03-24",
+      "close": "995.65",
+      "volume": "7789"
+    },
+    {
+      "trade_date": "2026-03-23",
+      "close": "979.25",
+      "volume": "9006"
+    },
+    {
+      "trade_date": "2026-03-20",
+      "close": "1027.10",
+      "volume": "4633"
+    },
+    {
+      "trade_date": "2026-03-19",
+      "close": "1039.25",
+      "volume": "5974"
+    },
+    {
+      "trade_date": "2026-03-18",
+      "close": "1023.10",
+      "volume": "4557"
+    },
+    {
+      "trade_date": "2026-03-17",
+      "close": "999.75",
+      "volume": "7965"
+    },
+    {
+      "trade_date": "2026-03-16",
+      "close": "1015.55",
+      "volume": "9900"
+    },
+    {
+      "trade_date": "2026-03-13",
+      "close": "989.45",
+      "volume": "18514"
+    },
+    {
+      "trade_date": "2026-03-12",
+      "close": "1041.50",
+      "volume": "4600"
+    },
+    {
+      "trade_date": "2026-03-11",
+      "close": "1045.65",
+      "volume": "8996"
+    },
+    {
+      "trade_date": "2026-03-10",
+      "close": "1096.65",
+      "volume": "14101"
+    },
+    {
+      "trade_date": "2026-03-09",
+      "close": "1073.25",
+      "volume": "11227"
+    },
+    {
+      "trade_date": "2026-03-06",
+      "close": "1040.95",
+      "volume": "23770"
+    },
+    {
+      "trade_date": "2026-03-05",
+      "close": "1084.10",
+      "volume": "16608"
+    },
+    {
+      "trade_date": "2026-03-04",
+      "close": "1032.50",
+      "volume": "17159"
+    },
+    {
+      "trade_date": "2026-03-02",
+      "close": "983.35",
+      "volume": "8594"
+    },
+    {
+      "trade_date": "2026-02-27",
+      "close": "956.95",
+      "volume": "6115"
+    },
+    {
+      "trade_date": "2026-02-26",
+      "close": "969.15",
+      "volume": "8323"
+    },
+    {
+      "trade_date": "2026-02-25",
+      "close": "989.90",
+      "volume": "9368"
+    },
+    {
+      "trade_date": "2026-02-24",
+      "close": "1040.95",
+      "volume": "15012"
+    },
+    {
+      "trade_date": "2026-02-23",
+      "close": "1095.70",
+      "volume": "8713"
+    },
+    {
+      "trade_date": "2026-02-20",
+      "close": "1120.40",
+      "volume": "7994"
+    },
+    {
+      "trade_date": "2026-02-19",
+      "close": "1106.20",
+      "volume": "14877"
+    },
+    {
+      "trade_date": "2026-02-18",
+      "close": "1069.30",
+      "volume": "11868"
+    },
+    {
+      "trade_date": "2026-02-17",
+      "close": "1105.20",
+      "volume": "45787"
+    },
+    {
+      "trade_date": "2026-02-16",
+      "close": "1030.50",
+      "volume": "8675"
+    },
+    {
+      "trade_date": "2026-02-13",
+      "close": "1032.90",
+      "volume": "12359"
+    },
+    {
+      "trade_date": "2026-02-12",
+      "close": "1045.30",
+      "volume": "21737"
+    },
+    {
+      "trade_date": "2026-02-11",
+      "close": "1020.55",
+      "volume": "25188"
+    },
+    {
+      "trade_date": "2026-02-10",
+      "close": "1071.70",
+      "volume": "23533"
+    },
+    {
+      "trade_date": "2026-02-09",
+      "close": "1036.70",
+      "volume": "26999"
+    },
+    {
+      "trade_date": "2026-02-06",
+      "close": "1018.55",
+      "volume": "28402"
+    },
+    {
+      "trade_date": "2026-02-05",
+      "close": "947.85",
+      "volume": "25162"
+    },
+    {
+      "trade_date": "2026-02-04",
+      "close": "896.15",
+      "volume": "79604"
+    },
+    {
+      "trade_date": "2026-02-03",
+      "close": "878.35",
+      "volume": "28252"
+    },
+    {
+      "trade_date": "2026-02-02",
+      "close": "836.55",
+      "volume": "8821"
+    },
+    {
+      "trade_date": "2026-01-30",
+      "close": "832.85",
+      "volume": "6849"
+    },
+    {
+      "trade_date": "2026-01-29",
+      "close": "874.85",
+      "volume": "11917"
+    },
+    {
+      "trade_date": "2026-01-28",
+      "close": "896.45",
+      "volume": "19952"
+    },
+    {
+      "trade_date": "2026-01-27",
+      "close": "856.00",
+      "volume": "19609"
+    },
+    {
+      "trade_date": "2026-01-23",
+      "close": "818.40",
+      "volume": "33203"
+    },
+    {
+      "trade_date": "2026-01-22",
+      "close": "780.00",
+      "volume": "26924"
+    },
+    {
+      "trade_date": "2026-01-21",
+      "close": "756.75",
+      "volume": "79597"
+    },
+    {
+      "trade_date": "2026-01-20",
+      "close": "742.45",
+      "volume": "14378"
+    },
+    {
+      "trade_date": "2026-01-19",
+      "close": "781.50",
+      "volume": "2159"
+    },
+    {
+      "trade_date": "2026-01-16",
+      "close": "803.10",
+      "volume": "11972"
+    },
+    {
+      "trade_date": "2026-01-14",
+      "close": "813.10",
+      "volume": "3240"
+    },
+    {
+      "trade_date": "2026-01-13",
+      "close": "795.95",
+      "volume": "4206"
+    },
+    {
+      "trade_date": "2026-01-12",
+      "close": "784.00",
+      "volume": "10194"
+    },
+    {
+      "trade_date": "2026-01-09",
+      "close": "806.70",
+      "volume": "7004"
+    },
+    {
+      "trade_date": "2026-01-08",
+      "close": "839.50",
+      "volume": "14210"
+    },
+    {
+      "trade_date": "2026-01-07",
+      "close": "832.70",
+      "volume": "22900"
+    },
+    {
+      "trade_date": "2026-01-06",
+      "close": "842.50",
+      "volume": "6890"
+    },
+    {
+      "trade_date": "2026-01-05",
+      "close": "841.80",
+      "volume": "5100"
+    },
+    {
+      "trade_date": "2026-01-02",
+      "close": "860.25",
+      "volume": "11459"
+    },
+    {
+      "trade_date": "2026-01-01",
+      "close": "855.10",
+      "volume": "11076"
+    },
+    {
+      "trade_date": "2025-12-31",
+      "close": "875.50",
+      "volume": "16788"
+    },
+    {
+      "trade_date": "2025-12-30",
+      "close": "862.30",
+      "volume": "20485"
+    },
+    {
+      "trade_date": "2025-12-29",
+      "close": "839.75",
+      "volume": "12528"
+    },
+    {
+      "trade_date": "2025-12-26",
+      "close": "829.80",
+      "volume": "44021"
+    },
+    {
+      "trade_date": "2025-12-24",
+      "close": "808.15",
+      "volume": "6283"
+    },
+    {
+      "trade_date": "2025-12-23",
+      "close": "809.15",
+      "volume": "8402"
+    },
+    {
+      "trade_date": "2025-12-22",
+      "close": "825.15",
+      "volume": "9823"
+    },
+    {
+      "trade_date": "2025-12-19",
+      "close": "838.70",
+      "volume": "8494"
+    },
+    {
+      "trade_date": "2025-12-18",
+      "close": "803.95",
+      "volume": "21387"
+    },
+    {
+      "trade_date": "2025-12-17",
+      "close": "808.80",
+      "volume": "14247"
+    },
+    {
+      "trade_date": "2025-12-16",
+      "close": "851.35",
+      "volume": "16262"
+    },
+    {
+      "trade_date": "2025-12-15",
+      "close": "822.25",
+      "volume": "12694"
+    },
+    {
+      "trade_date": "2025-12-12",
+      "close": "801.05",
+      "volume": "13995"
+    },
+    {
+      "trade_date": "2025-12-11",
+      "close": "765.65",
+      "volume": "12519"
+    },
+    {
+      "trade_date": "2025-12-10",
+      "close": "750.35",
+      "volume": "23520"
+    },
+    {
+      "trade_date": "2025-12-09",
+      "close": "702.90",
+      "volume": "28258"
+    },
+    {
+      "trade_date": "2025-12-08",
+      "close": "639.05",
+      "volume": "11800"
+    },
+    {
+      "trade_date": "2025-12-05",
+      "close": "658.25",
+      "volume": "1514"
+    },
+    {
+      "trade_date": "2025-12-04",
+      "close": "678.25",
+      "volume": "1429"
+    },
+    {
+      "trade_date": "2025-12-03",
+      "close": "689.10",
+      "volume": "7685"
+    },
+    {
+      "trade_date": "2025-12-02",
+      "close": "680.60",
+      "volume": "9883"
+    },
+    {
+      "trade_date": "2025-12-01",
+      "close": "700.95",
+      "volume": "6210"
+    },
+    {
+      "trade_date": "2025-11-28",
+      "close": "711.00",
+      "volume": "21736"
+    },
+    {
+      "trade_date": "2025-11-27",
+      "close": "693.50",
+      "volume": "21769"
+    },
+    {
+      "trade_date": "2025-11-26",
+      "close": "661.30",
+      "volume": "35829"
+    },
+    {
+      "trade_date": "2025-11-25",
+      "close": "696.10",
+      "volume": "11894"
+    },
+    {
+      "trade_date": "2025-11-24",
+      "close": "732.70",
+      "volume": "10390"
+    },
+    {
+      "trade_date": "2025-11-21",
+      "close": "771.25",
+      "volume": "2969"
+    },
+    {
+      "trade_date": "2025-11-20",
+      "close": "784.15",
+      "volume": "8056"
+    },
+    {
+      "trade_date": "2025-11-19",
+      "close": "764.70",
+      "volume": "4302"
+    },
+    {
+      "trade_date": "2025-11-18",
+      "close": "772.70",
+      "volume": "9062"
+    },
+    {
+      "trade_date": "2025-11-17",
+      "close": "766.45",
+      "volume": "18806"
+    },
+    {
+      "trade_date": "2025-11-14",
+      "close": "772.25",
+      "volume": "5381"
+    },
+    {
+      "trade_date": "2025-11-13",
+      "close": "788.00",
+      "volume": "2250"
+    },
+    {
+      "trade_date": "2025-11-12",
+      "close": "780.00",
+      "volume": "3431"
+    },
+    {
+      "trade_date": "2025-11-11",
+      "close": "767.10",
+      "volume": "1686"
+    },
+    {
+      "trade_date": "2025-11-10",
+      "close": "761.00",
+      "volume": "4990"
+    },
+    {
+      "trade_date": "2025-11-07",
+      "close": "773.15",
+      "volume": "3315"
+    },
+    {
+      "trade_date": "2025-11-06",
+      "close": "788.90",
+      "volume": "6985"
+    },
+    {
+      "trade_date": "2025-11-04",
+      "close": "805.00",
+      "volume": "3359"
+    },
+    {
+      "trade_date": "2025-11-03",
+      "close": "795.40",
+      "volume": "8085"
+    },
+    {
+      "trade_date": "2025-10-31",
+      "close": "779.85",
+      "volume": "6484"
+    },
+    {
+      "trade_date": "2025-10-30",
+      "close": "795.75",
+      "volume": "16747"
+    },
+    {
+      "trade_date": "2025-10-29",
+      "close": "780.15",
+      "volume": "10757"
+    },
+    {
+      "trade_date": "2025-10-28",
+      "close": "764.90",
+      "volume": "4832"
+    },
+    {
+      "trade_date": "2025-10-27",
+      "close": "774.00",
+      "volume": "4201"
+    },
+    {
+      "trade_date": "2025-10-24",
+      "close": "781.75",
+      "volume": "709"
+    },
+    {
+      "trade_date": "2025-10-23",
+      "close": "797.70",
+      "volume": "3806"
+    },
+    {
+      "trade_date": "2025-10-21",
+      "close": "813.95",
+      "volume": "1355"
+    },
+    {
+      "trade_date": "2025-10-20",
+      "close": "798.50",
+      "volume": "6024"
+    },
+    {
+      "trade_date": "2025-10-17",
+      "close": "783.00",
+      "volume": "9326"
+    },
+    {
+      "trade_date": "2025-10-16",
+      "close": "769.00",
+      "volume": "5570"
+    },
+    {
+      "trade_date": "2025-10-15",
+      "close": "754.45",
+      "volume": "5625"
+    },
+    {
+      "trade_date": "2025-10-14",
+      "close": "739.70",
+      "volume": "8106"
+    },
+    {
+      "trade_date": "2025-10-13",
+      "close": "725.20",
+      "volume": "8467"
+    },
+    {
+      "trade_date": "2025-10-10",
+      "close": "740.00",
+      "volume": "6966"
+    },
+    {
+      "trade_date": "2025-10-09",
+      "close": "1131.60",
+      "volume": "6813"
+    },
+    {
+      "trade_date": "2025-10-08",
+      "close": "1154.65",
+      "volume": "1389"
+    },
+    {
+      "trade_date": "2025-10-07",
+      "close": "1178.20",
+      "volume": "22838"
+    },
+    {
+      "trade_date": "2025-10-06",
+      "close": "1162.35",
+      "volume": "12714"
+    },
+    {
+      "trade_date": "2025-10-03",
+      "close": "1107.00",
+      "volume": "12901"
+    },
+    {
+      "trade_date": "2025-10-01",
+      "close": "1054.30",
+      "volume": "9548"
+    },
+    {
+      "trade_date": "2025-09-30",
+      "close": "1004.10",
+      "volume": "24764"
+    },
+    {
+      "trade_date": "2025-09-29",
+      "close": "969.40",
+      "volume": "13444"
+    },
+    {
+      "trade_date": "2025-09-26",
+      "close": "985.30",
+      "volume": "12108"
+    },
+    {
+      "trade_date": "2025-09-25",
+      "close": "969.80",
+      "volume": "3273"
+    },
+    {
+      "trade_date": "2025-09-24",
+      "close": "997.75",
+      "volume": "5608"
+    },
+    {
+      "trade_date": "2025-09-23",
+      "close": "1007.65",
+      "volume": "6413"
+    },
+    {
+      "trade_date": "2025-09-22",
+      "close": "1008.70",
+      "volume": "21804"
+    },
+    {
+      "trade_date": "2025-09-19",
+      "close": "981.00",
+      "volume": "10080"
+    },
+    {
+      "trade_date": "2025-09-18",
+      "close": "967.05",
+      "volume": "4823"
+    },
+    {
+      "trade_date": "2025-09-17",
+      "close": "968.50",
+      "volume": "13601"
+    },
+    {
+      "trade_date": "2025-09-16",
+      "close": "927.95",
+      "volume": "4868"
+    },
+    {
+      "trade_date": "2025-09-15",
+      "close": "920.20",
+      "volume": "8848"
+    },
+    {
+      "trade_date": "2025-09-12",
+      "close": "890.50",
+      "volume": "2014"
+    },
+    {
+      "trade_date": "2025-09-11",
+      "close": "901.60",
+      "volume": "1738"
+    },
+    {
+      "trade_date": "2025-09-10",
+      "close": "897.75",
+      "volume": "11000"
+    },
+    {
+      "trade_date": "2025-09-09",
+      "close": "927.75",
+      "volume": "5442"
+    },
+    {
+      "trade_date": "2025-09-08",
+      "close": "934.30",
+      "volume": "4015"
+    },
+    {
+      "trade_date": "2025-09-05",
+      "close": "918.60",
+      "volume": "19467"
+    },
+    {
+      "trade_date": "2025-09-04",
+      "close": "875.85",
+      "volume": "17391"
+    },
+    {
+      "trade_date": "2025-09-03",
+      "close": "920.50",
+      "volume": "13398"
+    },
+    {
+      "trade_date": "2025-09-02",
+      "close": "942.25",
+      "volume": "6372"
+    },
+    {
+      "trade_date": "2025-09-01",
+      "close": "950.05",
+      "volume": "11326"
+    },
+    {
+      "trade_date": "2025-08-29",
+      "close": "1000.05",
+      "volume": "15592"
+    },
+    {
+      "trade_date": "2025-08-28",
+      "close": "953.30",
+      "volume": "16108"
+    },
+    {
+      "trade_date": "2025-08-26",
+      "close": "907.95",
+      "volume": "9435"
+    },
+    {
+      "trade_date": "2025-08-25",
+      "close": "932.10",
+      "volume": "9242"
+    },
+    {
+      "trade_date": "2025-08-22",
+      "close": "946.20",
+      "volume": "2277"
+    },
+    {
+      "trade_date": "2025-08-21",
+      "close": "979.90",
+      "volume": "7970"
+    },
+    {
+      "trade_date": "2025-08-20",
+      "close": "934.80",
+      "volume": "7179"
+    },
+    {
+      "trade_date": "2025-08-19",
+      "close": "959.30",
+      "volume": "10674"
+    },
+    {
+      "trade_date": "2025-08-18",
+      "close": "1006.10",
+      "volume": "80574"
+    },
+    {
+      "trade_date": "2025-08-14",
+      "close": "972.70",
+      "volume": "10854"
+    },
+    {
+      "trade_date": "2025-08-13",
+      "close": "926.40",
+      "volume": "5246"
+    },
+    {
+      "trade_date": "2025-08-12",
+      "close": "882.30",
+      "volume": "9939"
+    },
+    {
+      "trade_date": "2025-08-11",
+      "close": "840.30",
+      "volume": "4362"
+    },
+    {
+      "trade_date": "2025-08-08",
+      "close": "845.20",
+      "volume": "3469"
+    },
+    {
+      "trade_date": "2025-08-07",
+      "close": "862.40",
+      "volume": "1330"
+    }
+  ],
+  "adjusted_prices": [
+    {
+      "trade_date": "2026-10-27",
+      "close": "1599.05"
+    },
+    {
+      "trade_date": "2026-10-26",
+      "close": "1390.60"
+    },
+    {
+      "trade_date": "2026-10-23",
+      "close": "1376.60"
+    },
+    {
+      "trade_date": "2026-10-22",
+      "close": "1480.20"
+    },
+    {
+      "trade_date": "2026-10-21",
+      "close": "1510.50"
+    },
+    {
+      "trade_date": "2026-10-19",
+      "close": "1624.70"
+    },
+    {
+      "trade_date": "2026-10-16",
+      "close": "1686.55"
+    },
+    {
+      "trade_date": "2026-10-15",
+      "close": "1678.90"
+    },
+    {
+      "trade_date": "2026-10-14",
+      "close": "1706.85"
+    },
+    {
+      "trade_date": "2026-10-13",
+      "close": "1737.80"
+    },
+    {
+      "trade_date": "2026-10-12",
+      "close": "1702.15"
+    },
+    {
+      "trade_date": "2026-10-09",
+      "close": "1700.70"
+    },
+    {
+      "trade_date": "2026-10-08",
+      "close": "1706.75"
+    },
+    {
+      "trade_date": "2026-10-07",
+      "close": "1786.60"
+    },
+    {
+      "trade_date": "2026-10-06",
+      "close": "1808.30"
+    },
+    {
+      "trade_date": "2026-10-05",
+      "close": "1686.25"
+    },
+    {
+      "trade_date": "2026-10-01",
+      "close": "1686.35"
+    },
+    {
+      "trade_date": "2026-09-30",
+      "close": "1734.00"
+    },
+    {
+      "trade_date": "2026-09-29",
+      "close": "1652.10"
+    },
+    {
+      "trade_date": "2026-09-28",
+      "close": "1436.65"
+    },
+    {
+      "trade_date": "2026-09-25",
+      "close": "1476.85"
+    },
+    {
+      "trade_date": "2026-09-24",
+      "close": "1445.50"
+    },
+    {
+      "trade_date": "2026-09-23",
+      "close": "1452.75"
+    },
+    {
+      "trade_date": "2026-09-22",
+      "close": "1428.75"
+    },
+    {
+      "trade_date": "2026-09-21",
+      "close": "1427.75"
+    },
+    {
+      "trade_date": "2026-09-18",
+      "close": "1391.05"
+    },
+    {
+      "trade_date": "2026-09-17",
+      "close": "1259.90"
+    },
+    {
+      "trade_date": "2026-09-16",
+      "close": "1269.90"
+    },
+    {
+      "trade_date": "2026-09-15",
+      "close": "1246.00"
+    },
+    {
+      "trade_date": "2026-09-11",
+      "close": "1323.50"
+    },
+    {
+      "trade_date": "2026-09-10",
+      "close": "1345.00"
+    },
+    {
+      "trade_date": "2026-09-09",
+      "close": "1321.30"
+    },
+    {
+      "trade_date": "2026-09-08",
+      "close": "1320.40"
+    },
+    {
+      "trade_date": "2026-09-07",
+      "close": "1309.70"
+    },
+    {
+      "trade_date": "2026-09-04",
+      "close": "1246.20"
+    },
+    {
+      "trade_date": "2026-09-03",
+      "close": "1253.20"
+    },
+    {
+      "trade_date": "2026-09-02",
+      "close": "1237.35"
+    },
+    {
+      "trade_date": "2026-09-01",
+      "close": "1202.55"
+    },
+    {
+      "trade_date": "2026-08-31",
+      "close": "1246.95"
+    },
+    {
+      "trade_date": "2026-08-28",
+      "close": "1142.75"
+    },
+    {
+      "trade_date": "2026-08-27",
+      "close": "1082.50"
+    },
+    {
+      "trade_date": "2026-08-26",
+      "close": "1105.55"
+    },
+    {
+      "trade_date": "2026-08-25",
+      "close": "1114.05"
+    },
+    {
+      "trade_date": "2026-08-24",
+      "close": "1124.15"
+    },
+    {
+      "trade_date": "2026-08-21",
+      "close": "1129.65"
+    },
+    {
+      "trade_date": "2026-08-20",
+      "close": "1133.80"
+    },
+    {
+      "trade_date": "2026-08-19",
+      "close": "1112.15"
+    },
+    {
+      "trade_date": "2026-08-18",
+      "close": "1155.15"
+    },
+    {
+      "trade_date": "2026-08-17",
+      "close": "1207.10"
+    },
+    {
+      "trade_date": "2026-08-14",
+      "close": "1184.95"
+    },
+    {
+      "trade_date": "2026-08-13",
+      "close": "1226.20"
+    },
+    {
+      "trade_date": "2026-08-12",
+      "close": "1268.90"
+    },
+    {
+      "trade_date": "2026-08-11",
+      "close": "1220.10"
+    },
+    {
+      "trade_date": "2026-08-10",
+      "close": "1167.25"
+    },
+    {
+      "trade_date": "2026-08-07",
+      "close": "1183.15"
+    },
+    {
+      "trade_date": "2026-08-06",
+      "close": "1144.80"
+    },
+    {
+      "trade_date": "2026-08-05",
+      "close": "1040.75"
+    },
+    {
+      "trade_date": "2026-08-04",
+      "close": "946.15"
+    },
+    {
+      "trade_date": "2026-08-03",
+      "close": "946.75"
+    },
+    {
+      "trade_date": "2026-07-31",
+      "close": "946.15"
+    },
+    {
+      "trade_date": "2026-07-30",
+      "close": "935.75"
+    },
+    {
+      "trade_date": "2026-07-29",
+      "close": "994.55"
+    },
+    {
+      "trade_date": "2026-07-28",
+      "close": "995.20"
+    },
+    {
+      "trade_date": "2026-07-27",
+      "close": "1036.55"
+    },
+    {
+      "trade_date": "2026-07-24",
+      "close": "966.90"
+    },
+    {
+      "trade_date": "2026-07-23",
+      "close": "979.00"
+    },
+    {
+      "trade_date": "2026-07-22",
+      "close": "988.20"
+    },
+    {
+      "trade_date": "2026-07-21",
+      "close": "948.20"
+    },
+    {
+      "trade_date": "2026-07-20",
+      "close": "990.80"
+    },
+    {
+      "trade_date": "2026-07-17",
+      "close": "973.50"
+    },
+    {
+      "trade_date": "2026-07-16",
+      "close": "983.30"
+    },
+    {
+      "trade_date": "2026-07-15",
+      "close": "1033.80"
+    },
+    {
+      "trade_date": "2026-07-14",
+      "close": "1053.15"
+    },
+    {
+      "trade_date": "2026-07-13",
+      "close": "1037.10"
+    },
+    {
+      "trade_date": "2026-07-10",
+      "close": "1084.10"
+    },
+    {
+      "trade_date": "2026-07-09",
+      "close": "1070.85"
+    },
+    {
+      "trade_date": "2026-07-08",
+      "close": "1010.45"
+    },
+    {
+      "trade_date": "2026-07-07",
+      "close": "1042.80"
+    },
+    {
+      "trade_date": "2026-07-06",
+      "close": "1063.55"
+    },
+    {
+      "trade_date": "2026-07-03",
+      "close": "1080.45"
+    },
+    {
+      "trade_date": "2026-07-02",
+      "close": "1021.85"
+    },
+    {
+      "trade_date": "2026-07-01",
+      "close": "1040.80"
+    },
+    {
+      "trade_date": "2026-06-30",
+      "close": "1085.25"
+    },
+    {
+      "trade_date": "2026-06-29",
+      "close": "1075.80"
+    },
+    {
+      "trade_date": "2026-06-25",
+      "close": "1049.70"
+    },
+    {
+      "trade_date": "2026-06-24",
+      "close": "1142.00"
+    },
+    {
+      "trade_date": "2026-06-23",
+      "close": "1161.70"
+    },
+    {
+      "trade_date": "2026-06-22",
+      "close": "1204.10"
+    },
+    {
+      "trade_date": "2026-06-19",
+      "close": "1199.45"
+    },
+    {
+      "trade_date": "2026-06-18",
+      "close": "1198.70"
+    },
+    {
+      "trade_date": "2026-06-17",
+      "close": "1207.75"
+    },
+    {
+      "trade_date": "2026-06-16",
+      "close": "1215.10"
+    },
+    {
+      "trade_date": "2026-06-15",
+      "close": "1204.50"
+    },
+    {
+      "trade_date": "2026-06-12",
+      "close": "1208.00"
+    },
+    {
+      "trade_date": "2026-06-11",
+      "close": "1191.40"
+    },
+    {
+      "trade_date": "2026-06-10",
+      "close": "1241.85"
+    },
+    {
+      "trade_date": "2026-06-09",
+      "close": "1243.95"
+    },
+    {
+      "trade_date": "2026-06-08",
+      "close": "1259.25"
+    },
+    {
+      "trade_date": "2026-06-05",
+      "close": "1239.30"
+    },
+    {
+      "trade_date": "2026-06-04",
+      "close": "1171.85"
+    },
+    {
+      "trade_date": "2026-06-03",
+      "close": "1207.15"
+    },
+    {
+      "trade_date": "2026-06-02",
+      "close": "1233.00"
+    },
+    {
+      "trade_date": "2026-06-01",
+      "close": "1264.60"
+    },
+    {
+      "trade_date": "2026-05-29",
+      "close": "1242.10"
+    },
+    {
+      "trade_date": "2026-05-27",
+      "close": "1220.75"
+    },
+    {
+      "trade_date": "2026-05-26",
+      "close": "1176.20"
+    },
+    {
+      "trade_date": "2026-05-25",
+      "close": "1186.25"
+    },
+    {
+      "trade_date": "2026-05-22",
+      "close": "1190.65"
+    },
+    {
+      "trade_date": "2026-05-21",
+      "close": "1134.35"
+    },
+    {
+      "trade_date": "2026-05-20",
+      "close": "1087.45"
+    },
+    {
+      "trade_date": "2026-05-19",
+      "close": "1133.45"
+    },
+    {
+      "trade_date": "2026-05-18",
+      "close": "1102.15"
+    },
+    {
+      "trade_date": "2026-05-15",
+      "close": "1158.40"
+    },
+    {
+      "trade_date": "2026-05-14",
+      "close": "1103.25"
+    },
+    {
+      "trade_date": "2026-05-13",
+      "close": "1101.85"
+    },
+    {
+      "trade_date": "2026-05-12",
+      "close": "1076.90"
+    },
+    {
+      "trade_date": "2026-05-11",
+      "close": "1039.05"
+    },
+    {
+      "trade_date": "2026-05-08",
+      "close": "989.60"
+    },
+    {
+      "trade_date": "2026-05-07",
+      "close": "942.50"
+    },
+    {
+      "trade_date": "2026-05-06",
+      "close": "941.00"
+    },
+    {
+      "trade_date": "2026-05-05",
+      "close": "916.70"
+    },
+    {
+      "trade_date": "2026-05-04",
+      "close": "934.35"
+    },
+    {
+      "trade_date": "2026-04-30",
+      "close": "914.40"
+    },
+    {
+      "trade_date": "2026-04-29",
+      "close": "898.65"
+    },
+    {
+      "trade_date": "2026-04-28",
+      "close": "926.00"
+    },
+    {
+      "trade_date": "2026-04-27",
+      "close": "933.15"
+    },
+    {
+      "trade_date": "2026-04-24",
+      "close": "937.15"
+    },
+    {
+      "trade_date": "2026-04-23",
+      "close": "935.40"
+    },
+    {
+      "trade_date": "2026-04-22",
+      "close": "930.15"
+    },
+    {
+      "trade_date": "2026-04-21",
+      "close": "939.85"
+    },
+    {
+      "trade_date": "2026-04-20",
+      "close": "968.00"
+    },
+    {
+      "trade_date": "2026-04-17",
+      "close": "997.55"
+    },
+    {
+      "trade_date": "2026-04-16",
+      "close": "1003.35"
+    },
+    {
+      "trade_date": "2026-04-15",
+      "close": "985.45"
+    },
+    {
+      "trade_date": "2026-04-13",
+      "close": "994.70"
+    },
+    {
+      "trade_date": "2026-04-10",
+      "close": "1008.00"
+    },
+    {
+      "trade_date": "2026-04-09",
+      "close": "994.05"
+    },
+    {
+      "trade_date": "2026-04-08",
+      "close": "968.20"
+    },
+    {
+      "trade_date": "2026-04-07",
+      "close": "922.10"
+    },
+    {
+      "trade_date": "2026-04-06",
+      "close": "955.40"
+    },
+    {
+      "trade_date": "2026-04-02",
+      "close": "918.10"
+    },
+    {
+      "trade_date": "2026-04-01",
+      "close": "930.20"
+    },
+    {
+      "trade_date": "2026-03-30",
+      "close": "908.00"
+    },
+    {
+      "trade_date": "2026-03-27",
+      "close": "955.75"
+    },
+    {
+      "trade_date": "2026-03-25",
+      "close": "1000.00"
+    },
+    {
+      "trade_date": "2026-03-24",
+      "close": "995.65"
+    },
+    {
+      "trade_date": "2026-03-23",
+      "close": "979.25"
+    },
+    {
+      "trade_date": "2026-03-20",
+      "close": "1027.10"
+    },
+    {
+      "trade_date": "2026-03-19",
+      "close": "1039.25"
+    },
+    {
+      "trade_date": "2026-03-18",
+      "close": "1023.10"
+    },
+    {
+      "trade_date": "2026-03-17",
+      "close": "999.75"
+    },
+    {
+      "trade_date": "2026-03-16",
+      "close": "1015.55"
+    },
+    {
+      "trade_date": "2026-03-13",
+      "close": "989.45"
+    },
+    {
+      "trade_date": "2026-03-12",
+      "close": "1041.50"
+    },
+    {
+      "trade_date": "2026-03-11",
+      "close": "1045.65"
+    },
+    {
+      "trade_date": "2026-03-10",
+      "close": "1096.65"
+    },
+    {
+      "trade_date": "2026-03-09",
+      "close": "1073.25"
+    },
+    {
+      "trade_date": "2026-03-06",
+      "close": "1040.95"
+    },
+    {
+      "trade_date": "2026-03-05",
+      "close": "1084.10"
+    },
+    {
+      "trade_date": "2026-03-04",
+      "close": "1032.50"
+    },
+    {
+      "trade_date": "2026-03-02",
+      "close": "983.35"
+    },
+    {
+      "trade_date": "2026-02-27",
+      "close": "956.95"
+    },
+    {
+      "trade_date": "2026-02-26",
+      "close": "969.15"
+    },
+    {
+      "trade_date": "2026-02-25",
+      "close": "989.90"
+    },
+    {
+      "trade_date": "2026-02-24",
+      "close": "1040.95"
+    },
+    {
+      "trade_date": "2026-02-23",
+      "close": "1095.70"
+    },
+    {
+      "trade_date": "2026-02-20",
+      "close": "1120.40"
+    },
+    {
+      "trade_date": "2026-02-19",
+      "close": "1106.20"
+    },
+    {
+      "trade_date": "2026-02-18",
+      "close": "1069.30"
+    },
+    {
+      "trade_date": "2026-02-17",
+      "close": "1105.20"
+    },
+    {
+      "trade_date": "2026-02-16",
+      "close": "1030.50"
+    },
+    {
+      "trade_date": "2026-02-13",
+      "close": "1032.90"
+    },
+    {
+      "trade_date": "2026-02-12",
+      "close": "1045.30"
+    },
+    {
+      "trade_date": "2026-02-11",
+      "close": "1020.55"
+    },
+    {
+      "trade_date": "2026-02-10",
+      "close": "1071.70"
+    },
+    {
+      "trade_date": "2026-02-09",
+      "close": "1036.70"
+    },
+    {
+      "trade_date": "2026-02-06",
+      "close": "1018.55"
+    },
+    {
+      "trade_date": "2026-02-05",
+      "close": "947.85"
+    },
+    {
+      "trade_date": "2026-02-04",
+      "close": "896.15"
+    },
+    {
+      "trade_date": "2026-02-03",
+      "close": "878.35"
+    },
+    {
+      "trade_date": "2026-02-02",
+      "close": "836.55"
+    },
+    {
+      "trade_date": "2026-01-30",
+      "close": "832.85"
+    },
+    {
+      "trade_date": "2026-01-29",
+      "close": "874.85"
+    },
+    {
+      "trade_date": "2026-01-28",
+      "close": "896.45"
+    },
+    {
+      "trade_date": "2026-01-27",
+      "close": "856.00"
+    },
+    {
+      "trade_date": "2026-01-23",
+      "close": "818.40"
+    },
+    {
+      "trade_date": "2026-01-22",
+      "close": "780.00"
+    },
+    {
+      "trade_date": "2026-01-21",
+      "close": "756.75"
+    },
+    {
+      "trade_date": "2026-01-20",
+      "close": "742.45"
+    },
+    {
+      "trade_date": "2026-01-19",
+      "close": "781.50"
+    },
+    {
+      "trade_date": "2026-01-16",
+      "close": "803.10"
+    },
+    {
+      "trade_date": "2026-01-14",
+      "close": "813.10"
+    },
+    {
+      "trade_date": "2026-01-13",
+      "close": "795.95"
+    },
+    {
+      "trade_date": "2026-01-12",
+      "close": "784.00"
+    },
+    {
+      "trade_date": "2026-01-09",
+      "close": "806.70"
+    },
+    {
+      "trade_date": "2026-01-08",
+      "close": "839.50"
+    },
+    {
+      "trade_date": "2026-01-07",
+      "close": "832.70"
+    },
+    {
+      "trade_date": "2026-01-06",
+      "close": "842.50"
+    },
+    {
+      "trade_date": "2026-01-05",
+      "close": "841.80"
+    },
+    {
+      "trade_date": "2026-01-02",
+      "close": "860.25"
+    },
+    {
+      "trade_date": "2026-01-01",
+      "close": "855.10"
+    },
+    {
+      "trade_date": "2025-12-31",
+      "close": "875.50"
+    },
+    {
+      "trade_date": "2025-12-30",
+      "close": "862.30"
+    },
+    {
+      "trade_date": "2025-12-29",
+      "close": "839.75"
+    },
+    {
+      "trade_date": "2025-12-26",
+      "close": "829.80"
+    },
+    {
+      "trade_date": "2025-12-24",
+      "close": "808.15"
+    },
+    {
+      "trade_date": "2025-12-23",
+      "close": "809.15"
+    },
+    {
+      "trade_date": "2025-12-22",
+      "close": "825.15"
+    },
+    {
+      "trade_date": "2025-12-19",
+      "close": "838.70"
+    },
+    {
+      "trade_date": "2025-12-18",
+      "close": "803.95"
+    },
+    {
+      "trade_date": "2025-12-17",
+      "close": "808.80"
+    },
+    {
+      "trade_date": "2025-12-16",
+      "close": "851.35"
+    },
+    {
+      "trade_date": "2025-12-15",
+      "close": "822.25"
+    },
+    {
+      "trade_date": "2025-12-12",
+      "close": "801.05"
+    },
+    {
+      "trade_date": "2025-12-11",
+      "close": "765.65"
+    },
+    {
+      "trade_date": "2025-12-10",
+      "close": "750.35"
+    },
+    {
+      "trade_date": "2025-12-09",
+      "close": "702.90"
+    },
+    {
+      "trade_date": "2025-12-08",
+      "close": "639.05"
+    },
+    {
+      "trade_date": "2025-12-05",
+      "close": "658.25"
+    },
+    {
+      "trade_date": "2025-12-04",
+      "close": "678.25"
+    },
+    {
+      "trade_date": "2025-12-03",
+      "close": "689.10"
+    },
+    {
+      "trade_date": "2025-12-02",
+      "close": "680.60"
+    },
+    {
+      "trade_date": "2025-12-01",
+      "close": "700.95"
+    },
+    {
+      "trade_date": "2025-11-28",
+      "close": "711.00"
+    },
+    {
+      "trade_date": "2025-11-27",
+      "close": "693.50"
+    },
+    {
+      "trade_date": "2025-11-26",
+      "close": "661.30"
+    },
+    {
+      "trade_date": "2025-11-25",
+      "close": "696.10"
+    },
+    {
+      "trade_date": "2025-11-24",
+      "close": "732.70"
+    },
+    {
+      "trade_date": "2025-11-21",
+      "close": "771.25"
+    },
+    {
+      "trade_date": "2025-11-20",
+      "close": "784.15"
+    },
+    {
+      "trade_date": "2025-11-19",
+      "close": "764.70"
+    },
+    {
+      "trade_date": "2025-11-18",
+      "close": "772.70"
+    },
+    {
+      "trade_date": "2025-11-17",
+      "close": "766.45"
+    },
+    {
+      "trade_date": "2025-11-14",
+      "close": "772.25"
+    },
+    {
+      "trade_date": "2025-11-13",
+      "close": "788.00"
+    },
+    {
+      "trade_date": "2025-11-12",
+      "close": "780.00"
+    },
+    {
+      "trade_date": "2025-11-11",
+      "close": "767.10"
+    },
+    {
+      "trade_date": "2025-11-10",
+      "close": "761.00"
+    },
+    {
+      "trade_date": "2025-11-07",
+      "close": "773.15"
+    },
+    {
+      "trade_date": "2025-11-06",
+      "close": "788.90"
+    },
+    {
+      "trade_date": "2025-11-04",
+      "close": "805.00"
+    },
+    {
+      "trade_date": "2025-11-03",
+      "close": "795.40"
+    },
+    {
+      "trade_date": "2025-10-31",
+      "close": "779.85"
+    },
+    {
+      "trade_date": "2025-10-30",
+      "close": "795.75"
+    },
+    {
+      "trade_date": "2025-10-29",
+      "close": "780.15"
+    },
+    {
+      "trade_date": "2025-10-28",
+      "close": "764.90"
+    },
+    {
+      "trade_date": "2025-10-27",
+      "close": "774.00"
+    },
+    {
+      "trade_date": "2025-10-24",
+      "close": "781.75"
+    },
+    {
+      "trade_date": "2025-10-23",
+      "close": "797.70"
+    },
+    {
+      "trade_date": "2025-10-21",
+      "close": "813.95"
+    },
+    {
+      "trade_date": "2025-10-20",
+      "close": "798.50"
+    },
+    {
+      "trade_date": "2025-10-17",
+      "close": "783.00"
+    },
+    {
+      "trade_date": "2025-10-16",
+      "close": "769.00"
+    },
+    {
+      "trade_date": "2025-10-15",
+      "close": "754.45"
+    },
+    {
+      "trade_date": "2025-10-14",
+      "close": "739.70"
+    },
+    {
+      "trade_date": "2025-10-13",
+      "close": "725.20"
+    },
+    {
+      "trade_date": "2025-10-10",
+      "close": "740.00"
+    },
+    {
+      "trade_date": "2025-10-09",
+      "close": "1131.60"
+    },
+    {
+      "trade_date": "2025-10-08",
+      "close": "1154.65"
+    },
+    {
+      "trade_date": "2025-10-07",
+      "close": "1178.20"
+    },
+    {
+      "trade_date": "2025-10-06",
+      "close": "1162.35"
+    },
+    {
+      "trade_date": "2025-10-03",
+      "close": "1107.00"
+    },
+    {
+      "trade_date": "2025-10-01",
+      "close": "1054.30"
+    },
+    {
+      "trade_date": "2025-09-30",
+      "close": "1004.10"
+    },
+    {
+      "trade_date": "2025-09-29",
+      "close": "969.40"
+    },
+    {
+      "trade_date": "2025-09-26",
+      "close": "985.30"
+    },
+    {
+      "trade_date": "2025-09-25",
+      "close": "969.80"
+    },
+    {
+      "trade_date": "2025-09-24",
+      "close": "997.75"
+    },
+    {
+      "trade_date": "2025-09-23",
+      "close": "1007.65"
+    },
+    {
+      "trade_date": "2025-09-22",
+      "close": "1008.70"
+    },
+    {
+      "trade_date": "2025-09-19",
+      "close": "981.00"
+    },
+    {
+      "trade_date": "2025-09-18",
+      "close": "967.05"
+    },
+    {
+      "trade_date": "2025-09-17",
+      "close": "968.50"
+    },
+    {
+      "trade_date": "2025-09-16",
+      "close": "927.95"
+    },
+    {
+      "trade_date": "2025-09-15",
+      "close": "920.20"
+    },
+    {
+      "trade_date": "2025-09-12",
+      "close": "890.50"
+    },
+    {
+      "trade_date": "2025-09-11",
+      "close": "901.60"
+    },
+    {
+      "trade_date": "2025-09-10",
+      "close": "897.75"
+    },
+    {
+      "trade_date": "2025-09-09",
+      "close": "927.75"
+    },
+    {
+      "trade_date": "2025-09-08",
+      "close": "934.30"
+    },
+    {
+      "trade_date": "2025-09-05",
+      "close": "918.60"
+    },
+    {
+      "trade_date": "2025-09-04",
+      "close": "875.85"
+    },
+    {
+      "trade_date": "2025-09-03",
+      "close": "920.50"
+    },
+    {
+      "trade_date": "2025-09-02",
+      "close": "942.25"
+    },
+    {
+      "trade_date": "2025-09-01",
+      "close": "950.05"
+    },
+    {
+      "trade_date": "2025-08-29",
+      "close": "1000.05"
+    },
+    {
+      "trade_date": "2025-08-28",
+      "close": "953.30"
+    },
+    {
+      "trade_date": "2025-08-26",
+      "close": "907.95"
+    },
+    {
+      "trade_date": "2025-08-25",
+      "close": "932.10"
+    },
+    {
+      "trade_date": "2025-08-22",
+      "close": "946.20"
+    },
+    {
+      "trade_date": "2025-08-21",
+      "close": "979.90"
+    },
+    {
+      "trade_date": "2025-08-20",
+      "close": "934.80"
+    },
+    {
+      "trade_date": "2025-08-19",
+      "close": "959.30"
+    },
+    {
+      "trade_date": "2025-08-18",
+      "close": "1006.10"
+    },
+    {
+      "trade_date": "2025-08-14",
+      "close": "972.70"
+    },
+    {
+      "trade_date": "2025-08-13",
+      "close": "926.40"
+    },
+    {
+      "trade_date": "2025-08-12",
+      "close": "882.30"
+    },
+    {
+      "trade_date": "2025-08-11",
+      "close": "840.30"
+    },
+    {
+      "trade_date": "2025-08-08",
+      "close": "845.20"
+    },
+    {
+      "trade_date": "2025-08-07",
+      "close": "862.40"
+    }
+  ],
+  "market": {
+    "date": "2026-10-27",
+    "close": 1599.05,
+    "sma50": 1407.76,
+    "sma200": 1118.54375,
+    "from_high": -0.11571641873582927,
+    "history_sessions": 300,
+    "raw_turnover_median_60_cr": 2.462224415
+  },
+  "facts": [
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "28800000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "26200000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "22600000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "7700000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "7800000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "7200000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "7100000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "6700000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "18.93",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "12.47",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "9.08",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "6.97",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "5.83",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "4.84",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "6.54",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "5.85",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "1900000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "2100000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "1500000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "600000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "500000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "500000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "500000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "400000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "16300000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "12000000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "3000000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "7600000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "5600000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "4400000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "3700000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "2600000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "114400000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "76300000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "76300000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "116900000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "114400000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "114400000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "76300000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "76300000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "216600000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "95100000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "65800000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "80800000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "66700000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "55400000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "49900000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "44600000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "292800000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "128300000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "87800000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "108000000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "91900000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "74600000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "66700000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "59700000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "841100000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "504000000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "457100000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "251400000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "239900000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "219400000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "200600000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "181200000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "76200000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "33200000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "22000000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "27200000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "25200000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "19200000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "16800000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "15100000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "857400000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "515900000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "460100000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "259000000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "245500000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "223800000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "204300000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "183800000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    }
+  ],
+  "holdings": [],
+  "documents": [
+    {
+      "publication_id": "2203305f-4ecb-4fef-a049-053cd2fbcf40",
+      "published_at": "2026-10-08 09:35:08.120000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Clarification On Price Movement",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1d8e73e5-5378-48bb-8afb-e213468e034f.pdf"
+    },
+    {
+      "publication_id": "3d4f21fc-f03a-4c6c-b6c6-2396ce0b829a",
+      "published_at": "2026-10-07 17:40:19.920000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Clarification sought from Valiant Communications Ltd",
+      "category": "Company Update",
+      "attachment_url": null
+    },
+    {
+      "publication_id": "b2ecf1db-990f-4019-902e-934c3f7e5dc7",
+      "published_at": "2026-10-06 13:49:16.367000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/bdf78ebd-0dd0-48ac-9930-5712fbc51802.pdf"
+    },
+    {
+      "publication_id": "665611e6-96e8-414c-a180-8a75af672a5a",
+      "published_at": "2026-09-30 15:56:12.937000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Closure of Trading Window",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1b96ef7c-299d-41dd-aa22-60165e2b6033.pdf"
+    },
+    {
+      "publication_id": "eec87804-4a4d-483d-90ca-13cae78d70f2",
+      "published_at": "2026-09-30 15:53:46.367000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - 33RD Annual General Meeting - Voting Results",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/eed6d661-cdb2-49c4-b1b1-23db395d1793.pdf"
+    },
+    {
+      "publication_id": "84317429-4298-44b4-b92e-fef5697be833",
+      "published_at": "2026-09-30 15:49:45.603000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Shareholder Meeting / Postal Ballot-Scrutinizer''s Report",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7948ac2c-2642-46f7-8417-35f88b9f4824.pdf"
+    },
+    {
+      "publication_id": "37361481-abee-4bf5-bde2-ac0ca16c3ee9",
+      "published_at": "2026-09-30 15:47:38.700000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Shareholder Meeting / Postal Ballot-Outcome of AGM",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b2a3ce63-fca5-46b7-aeba-30fecf8b26ab.pdf"
+    },
+    {
+      "publication_id": "22bd402e-fc0f-4e51-8d2c-d8f9385c7070",
+      "published_at": "2026-09-29 12:41:03.217000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/da3b3c0b-2899-43e4-b7b5-615fc8dc6fe2.pdf"
+    },
+    {
+      "publication_id": "752fab80-d56f-4b2c-b9c6-092963ec7693",
+      "published_at": "2026-09-10 13:39:47.720000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2e64623a-eb62-4e59-95e0-ff313c348952.pdf"
+    },
+    {
+      "publication_id": "378f7e48-6a04-4fc7-8e90-25913c337e66",
+      "published_at": "2026-09-08 10:11:09.790000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c788d8d5-eef0-4541-8c69-03c4b5490dd3.pdf"
+    },
+    {
+      "publication_id": "3dbe57bb-a493-417b-9d1a-32847c3a675d",
+      "published_at": "2026-09-03 12:20:30.993000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/bf436976-5248-4258-b688-9b334dda9cd6.pdf"
+    },
+    {
+      "publication_id": "72efe684-a08d-4106-95a2-4a211fd3a9ae",
+      "published_at": "2026-09-03 12:18:54.173000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Letter Sent To Shareholders Providing Web-Link Of Annual Report For FY 2025-2026",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/748d8a8a-41d4-4af3-a68e-e2732ac90c6e.pdf"
+    },
+    {
+      "publication_id": "faae75e4-f8ea-45c4-839f-e039c8c96acc",
+      "published_at": "2026-09-02 14:55:59.103000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Reg. 34 (1) Annual Report.",
+      "category": "Others",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3b794d44-b364-45e0-a24c-fe7ba4a79819.pdf"
+    },
+    {
+      "publication_id": "762fd307-0c9d-49cf-86e3-29a3e7161a9e",
+      "published_at": "2026-09-02 13:36:10.930000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Notice Of Annual General Meeting (''AGM'')",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ca7b0609-48b7-48ac-9706-869425533f04.pdf"
+    },
+    {
+      "publication_id": "5f6f6530-f3a5-4eca-a26a-c853039eff98",
+      "published_at": "2026-08-20 09:34:16.180000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Communication To Shareholders - Intimation Of Tax Deduction On Dividend",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/256a321f-c716-47d9-813f-5b15162a9d66.pdf"
+    },
+    {
+      "publication_id": "4368b37e-68a0-490f-9175-1c153ba118d8",
+      "published_at": "2026-08-18 12:04:26.890000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/af46f82f-c65c-4ce0-bd10-6060e01994e8.pdf"
+    },
+    {
+      "publication_id": "b5545b09-503c-447d-9561-b7cc9ab29680",
+      "published_at": "2026-08-13 14:37:36.657000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Intimation Of Date Of Annual General Meeting And Record Date For Payment Of Final Dividend On Equity Shares For The Financial Year 2025-26",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0008b832-d463-4c42-8881-5610b1648889.pdf"
+    },
+    {
+      "publication_id": "3f4f6935-ae8c-4c7d-9fe7-d2de5679306a",
+      "published_at": "2026-08-13 14:26:05.590000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Intimation Of Date Of Annual General Meeting And Record Date For Payment Of Final Dividend On Equity Shares For The Financial Year 2025-26",
+      "category": "Corp. Action",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/41cd3a10-5e6b-4c7e-9e58-b1e6b8f08083.pdf"
+    },
+    {
+      "publication_id": "33d41045-4039-4add-b7ad-b485321734bc",
+      "published_at": "2026-08-13 11:39:45.780000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dabfedea-09d1-47f7-8dc5-caf7302763f0.pdf"
+    },
+    {
+      "publication_id": "2ac424af-d56b-4007-a47e-0c92237399bc",
+      "published_at": "2026-08-12 12:45:54.037000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Business Updates",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/094f9572-62f9-4243-a6be-41b338ca9b65.pdf"
+    },
+    {
+      "publication_id": "cba4c8a2-f15e-4c59-8052-d03cc8d0b7b6",
+      "published_at": "2026-08-12 12:40:58.843000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Approval Of Unaudited Financial Results For The Quarter Ended 30-06-2026",
+      "category": "Result",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/749500ec-3182-4959-a7c5-4ec6530a1959.pdf"
+    },
+    {
+      "publication_id": "f058c5f5-6d69-46b3-b7bc-d4e8d6c545df",
+      "published_at": "2026-08-12 12:34:13.823000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Board Meeting Outcome for Approval Of Unaudited Financial Results For The Quarter Ended 30-06-2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fca7ab58-f017-4e1e-937d-1dcd580b877a.pdf"
+    },
+    {
+      "publication_id": "b615251e-a806-4746-8909-5721ba4c8bce",
+      "published_at": "2026-08-05 09:47:57.060000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e8839d0a-6120-4001-a241-55e29819c33e.pdf"
+    },
+    {
+      "publication_id": "f51a6ec1-a297-43f5-af69-8562c0a5080f",
+      "published_at": "2026-08-05 09:44:17.240000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/da71e876-ee31-493c-891e-2384a9620f63.pdf"
+    },
+    {
+      "publication_id": "e097a22e-f7da-4903-8bc1-8efdffd58bca",
+      "published_at": "2026-08-03 10:02:34.040000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/64d8989e-d18f-4b4e-a6cb-e51e111bca37.pdf"
+    },
+    {
+      "publication_id": "fb7b1717-cd6b-4e91-8bfd-74f4d9c384ad",
+      "published_at": "2026-07-27 11:38:42.930000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Board Meeting Intimation for Approval Of The Un-Audited Financial\r\nResults For The Quarter Ended On 30-06-2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b3d46fc7-8bb5-4c74-b289-f60f73d4679f.pdf"
+    },
+    {
+      "publication_id": "78b5fe17-fb15-49d5-9fdb-07e1c5540971",
+      "published_at": "2026-07-27 11:26:24.130000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3882a39e-1848-4123-855b-f2fabbb5d322.pdf"
+    },
+    {
+      "publication_id": "6f235118-d248-4cfa-824f-c0612aeb1cf8",
+      "published_at": "2026-07-06 13:18:50.977000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/68be9a57-f66a-48f4-be5f-71d6e800bcb7.pdf"
+    },
+    {
+      "publication_id": "6b4eb90f-b095-41e9-ae3f-70fd879ebb49",
+      "published_at": "2026-06-30 14:13:46.540000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Closure of Trading Window",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/23a1d8d1-eb1d-41d1-b74f-40caebeabcfb.pdf"
+    },
+    {
+      "publication_id": "5fef6595-f019-48cb-b41b-8782cb54fceb",
+      "published_at": "2026-06-03 09:31:37.920000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Receipt Of Listing Approval From BSE Ltd.",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b69bd388-1a4e-4a91-adab-7fe4ed15865f.pdf"
+    },
+    {
+      "publication_id": "42c2d5bd-2a36-4f3b-9b1c-647b0320298a",
+      "published_at": "2026-06-01 09:31:45.360000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5c88ab05-1cf3-4216-82cc-789e479c2ec4.pdf"
+    },
+    {
+      "publication_id": "87e55dc1-ba9c-4d38-9be6-5529323d7623",
+      "published_at": "2026-05-30 13:37:58.923000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Compliances-Reg.24(A)-Annual Secretarial Compliance",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3a666048-8a22-4cf9-a933-18be6199693d.pdf"
+    },
+    {
+      "publication_id": "bca9d637-58e4-452d-8be2-6fa5189bf071",
+      "published_at": "2026-05-30 13:27:43.353000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Business Updates",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/33177e86-ddac-4bd5-ac86-832936c57e86.pdf"
+    },
+    {
+      "publication_id": "4b106287-047f-4446-8aa3-6512e03723f7",
+      "published_at": "2026-05-30 13:25:42.067000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Corporate Action-Board approves Dividend",
+      "category": "Corp. Action",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ab2411b6-9cbc-4f31-a253-4e40eaf83b5c.pdf"
+    },
+    {
+      "publication_id": "fede0354-9e52-4b4c-8f64-d3d4fd18c71f",
+      "published_at": "2026-05-30 13:17:13.050000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Board Meeting Outcome for OUTCOME OF BOARD MEETING",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e28fa819-127b-473d-a42b-3cb8c24afff5.pdf"
+    },
+    {
+      "publication_id": "1f01219f-eb96-47e0-b80a-02746d05d052",
+      "published_at": "2026-05-30 13:06:35.680000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Approval Of Audited Financial Results For Financial Year Ended 31-03-2026",
+      "category": "Result",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/41ba369a-29b3-461c-ab9c-d295e932843c.pdf"
+    },
+    {
+      "publication_id": "6e42865f-688c-4f9a-871f-84b569234770",
+      "published_at": "2026-05-26 12:52:49.147000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c37e0b70-7334-4fca-908a-6c648c863c0f.pdf"
+    },
+    {
+      "publication_id": "9a386f36-16c3-4474-bacb-611415237466",
+      "published_at": "2026-05-18 15:09:05.980000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Board Meeting Intimation for The Approval Of Audited Financial Results For Financial Year Ended 31 March, 2026 And Recommendation Of Dividend.",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7a66b0dd-f0c8-41bc-b81f-0c63e7e8360c.pdf"
+    },
+    {
+      "publication_id": "97abb377-fff8-4771-a940-0cbc21e11489",
+      "published_at": "2026-05-07 11:13:21.090000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Announcement under Regulation 30 (LODR)-Allotment",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/29ee3739-994b-4a38-88d5-28134634d42f.pdf"
+    },
+    {
+      "publication_id": "e37bddda-b9ab-4fbd-b538-4a775b4198a7",
+      "published_at": "2026-04-08 16:13:58.633000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Notice To Shareholders Regarding Opening Of Special Window For Transfer And Dematerialisation Of Physical Securities.",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f6c09a0a-4734-4c7b-a188-d2ee35ee18d7.pdf"
+    },
+    {
+      "publication_id": "7def51d7-4452-4447-8d93-2d2f7d8c0c13",
+      "published_at": "2026-04-06 12:13:32.777000+05:30",
+      "title": "Valiant Communications Ltd-$ - 526775 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/48720b5b-d7dd-4973-82ef-5110aecf3aff.pdf"
+    }
+  ],
+  "events": [
+    {
+      "published_at": "2026-09-29 12:41:03.217000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": "4025",
+      "scale": "LAKH",
+      "currency": "INR",
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM",
+      "quote": "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022 \u2022 F: +91-11-2543 4300, 4105 5604 \u2022\u2022\u2022\u2022\u2022\u2022 E: admin@valiantcom.com I W: www.valiantcom.com Date: 29-09-2026 The Secretary, BSE Limited Phiroze Jeejeebhoy Tower, 25th Floor, Dalal Street, Mumbai - 400 023 Ref: Receives Letter of Award (LOA) worth \"4,025 Lacs for Indian Power Utility Sector Dear Sir I Madam, With the above reference, please find enclosed herewith the required disclosure in compliance with Regulation 30 of SEBI {Listing Obligations and Disclosure Requirements) Regulations, 2015.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/da3b3c0b-2899-43e4-b7b5-615fc8dc6fe2.pdf",
+      "page_no": 1
+    },
+    {
+      "published_at": "2026-09-10 13:39:47.720000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": "1388",
+      "scale": "LAKH",
+      "currency": "INR",
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM",
+      "quote": "\u2022\u2022\u2022\u2022\u2022\u2022 F: +91-11-2543 4300, 4105 5604 E: admin@valiantcom.com I W: www.valiantcom.com Date: 10-09-2026 The Secretary, BSE Limited Phiroze Jeejeebhoy Tower, 25th Floor, Dalal Street, Mumbai - 400 023 Ref: Receipt of Purchase Order of INR 1,388 Lacs Dear Sir I Madam, With the above reference, please find enclosed herewith the required disclosure in compliance with Regulation 30 of SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2e64623a-eb62-4e59-95e0-ff313c348952.pdf",
+      "page_no": 1
+    },
+    {
+      "published_at": "2026-09-08 10:11:09.790000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": "985",
+      "scale": "LAKH",
+      "currency": "INR",
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "NON_BINDING",
+      "quote": "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022 \u2022 F: +91-11-2543 4300, 4105 5604 \u2022\u2022\u2022\u2022\u2022\u2022 E : admin@valiantcom.com I W : www.vaiiantcom.com Date: 08-09-2026 The Secretary, BSE Limited Phiroze Jeejeebhoy Tower, 25th Floor, Dalal Street, Mumbai - 400 023 Ref: Receipt of Purchase Orders of INR 985 Lacs Dear Sir I Madam, With the above reference, please find enclosed herewith the required disclosure in compliance with Regulation 30 of SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c788d8d5-eef0-4541-8c69-03c4b5490dd3.pdf",
+      "page_no": 1
+    },
+    {
+      "published_at": "2026-08-12 12:34:13.823000+05:30",
+      "family": "FINANCING",
+      "event_type": "EQUITY_FINANCING",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED",
+      "quote": "During the quarter ended 30-06-2026, the Preferential Issue Committee, at its meeting held on 07-05-2026, allotted 2,50,000 Equity Shares of Rs. 10/-each on conversion of 2,50,000 Warrants.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fca7ab58-f017-4e1e-937d-1dcd580b877a.pdf",
+      "page_no": 3
+    }
+  ],
+  "statement_pages": [
+    {
+      "published_at": "2026-05-30 13:17:13.050000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e28fa819-127b-473d-a42b-3cb8c24afff5.pdf",
+      "page_no": 6,
+      "body": "VALIANT COMMUNICATIONS LIMITED\nConsolidated Balance Sheet (Audited) as at 31 March, 2026\n~in Lacs\nParticulars As at 31-03-2026 As at 31-03-2025\nASSETS\nNon-current assets\n(a) Property, plant and equipment 988 651\n(b) Capital work-in-progress 6 49\n(c) Other intangible assets 382 351\n(d) Right of use assets 32 43\n(e) Financial Assets\nOther financial assets 56 22\n(f) Deferred tax assets (net) 56 58\n(g) Other non-current assets 9\nTotal non-current assets 1,529 1,174\nCurrent assets\n(a) Inventories 1,260 1,811\n(b) Financial Assets\n(i) Investments 570 224\n(ii) Trade receivables 1,891 1,973\n(iii) Cash and cash equivalents 1,860 359\n(iv) Bank balances other than (iii) above 3,808 1,467\n(v) Other financial assets 77 25\n(c) Income tax assets (Net)* 0 0\n(d) Other current assets 159 156\nTotal current assets 9,625 6,015\nTotal assets 11,154 7,189\nEQUITY AND LIABILITIES\nEquity\n(a) Equity share capital 1,144 763\n(b) Other equity 8,506 5,392\nEquity attributable to the owners 9,650 6,155\nNon-controlling interest 4 4\nTotal equity 9,654 6,159\nLIABILITIES\nNon-current liabilities\n(a) Financial liabilities\n(i) Borrowings 159 108\n(ii) Lease liabilities 36 46\n(b) Provisions 2 -\nTotal non-current liabilities 197 154\nCurrent liabilities\n(a) Financial liabilities\n(i) Borrowings 57 52\n(ii) Trade payables\n-Outstanding dues of micro enterprises and small enterprises 4\n-Outstanding dues of creditors other than micro and small\n553 420\nenterprises\n(iii) Other financial liabilities 218 ,203\n(b) Other current liabilities 386 141\n(c) Provisions 19 17\n(d) Current tax liabilities (net) 70 39\nTotal current liabilities 1,303 876\nTotal equity and liabilities 11,154 7,189\n*Amount below the rounding off norm adopted by the Company\n11"
+    },
+    {
+      "published_at": "2026-05-30 13:17:13.050000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e28fa819-127b-473d-a42b-3cb8c24afff5.pdf",
+      "page_no": 7,
+      "body": "VALIANT COMMUNICATIONS LIMITED\nConsolidated Cash Flow Statement (Audited) for the year ended 31 March, 2026\n~in Lacs\nParticulars 31-03-2026 31-03-2025\nA. CASH FLOW FROM OPERATING ACTIVITIES\nNet profit before tax 3,213 1,276\nAdjustment for\nDepreciation and amortization 288 262\nRemeasurement of the employee defined benefit plans (23) (10)\n(Profit)/ loss on sale of fixed assets* 0 (1)\nInterest income (138) (101)\nFinance cost 19 21\nGain on current investments carried at FVTPL (323) (61)\nDividend income (5) (2)\nDeferred tax translation adjustments for subsidiaries (4) -\nForeign currency translation reserve adjustments 65 17\nNet (gain)/ loss on foreign currency translation (32) (153) (16) 109\nOperating profit before working capital changes 3,060 1,385\nAdjustment for\n(Increase)/ decrease in trade receivables 82 (886)\n(Increase)/ decrease in other financial assets (86) (21)\n(Increase)/ decrease in other current assets (4) (64)\n(Increase)/ decrease in inventories 551 (359)\nIncrease/ (decrease) in trade payables 129 300\nIncrease/ (decrease) in other financial liabilities 15 81\nIncrease/ (decrease) in other current liabilities and provisions 281 (25)\nCash generated from operations 4,028 411\nTaxes paid (net of refunds) (783) (333)\nNet cash generated from operating activities 3,245 78\nB. CASH FLOW FROM INVESTING ACTIVITIES\nPurchase of property, plant and equipment (459) (128)\nPurchase of intangible assets (188) (172)\nProceeds from sales of property, plant and equipment 1 2\nSale (purchases) and other movements of investments (23) (5)\nCapital advances (9) 15\nCapital Work in Progress 43 (49)\nMovement in other bank balance (2,340) (1,233)\nDividend income 5 2\nInterest income 138 101\nNet cash generated from investing activities (2,832) (1,467)\nc.\nCASH FLOW FROM FINANCING ACTIVITIES\nDividend Paid (115) -\nExpenses on issue of Bonus Shares (8) -\nProceeds from Warrant Allotment Equity Money 1,152 -\nRepayment of lease obligation (14) (14)\nProceeds from Jong -term borrowing 114 30\nInterest paid (15) (15)\nRepayment of borrowing (58) (47)\nNet cash generated from financing activities 1,056 (46)\nNet gain/ (loss) on foreign currency translation 32 16\nNet increase in cash and cash equivalents 1,501 (1.419)\nCash and cash equivalents (opening balance) 359 1,778\nCash and cash equivalents (closing balance) l,l:lbU 359\n*Amount below the rounding off norm adopted by the Company\nPOSE\n0"
+    },
+    {
+      "published_at": "2026-05-30 13:17:13.050000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e28fa819-127b-473d-a42b-3cb8c24afff5.pdf",
+      "page_no": 10,
+      "body": "\u2022 Obtain an understanding of internal financial controls relevant to the audit in order to\ndesign audit procedures that are appropriate in the circumstances. Under Section 143(3)(i)\nof the Act, we are also responsible for expressing our opinion on whether the Group has\nadequate internal financial controls with reference to the Consolidated Financial\nStatements in place and the operating effectiveness of such controls. (Refer Other Matter\nsection below).\n\u2022 Evaluate the appropriateness of accounting policies used and the reasonableness of\naccounting estimates and related disclosures made by the Board of Directors\n\u2022 Conclude on the appropriateness of the Board of Directors' use of the going concern basis\nof accounting and, based on the audit evidence obtained, whether a material uncertainty\nexists related to events or conditions that may cast significant doubt on the ability of the\nGroup to continue as a going concern. If we conclude that a material unce1iainty exists,\nwe are required to draw attention in our auditor's report to the related disclosures in the\nConsolidated Financial Results or, if such disclosures are inadequate, to modify our\nopinion. Our conclusions are based on the audit evidence obtained up to the date of our\nauditor's report. However, future events or conditions may cause the Group to cease to\ncontinue as a going concern.\n\u2022 Evaluate the overall presentation, structure and content of the Consolidated Financial\nResults, including the disclosures, and whether the Consolidated Financial Results\nrepresent the underlying transactions and events in a manner that achieves fair\npresentation.\n\u2022 Perform procedures in accordance with the circular issued by the SEBI under Regulation\n33(8) of the Listing Regulations to the extent applicable.\n\u2022 Obtain sufficient appropriate audit evidence regarding the financial information of the\nentities within the Group to express an opinion on the Consolidated Financial Results.\nWe are responsible for the direction, supervision and performance of the audit of financial\ninformation of such entities included in the Consolidated Financial Results of which we\nare the independent auditors.\nWe communicate with those charged with governance of the Holding Company and such other\nentities included in the Consolidated Financial Results of which we are the independent auditors\nregarding, among other matters, the planned scope and timing of the audit and significant audit\nfindings, including any significant deficiencies in internal control that we identify during our audit.\nWe also provide those charged with governance with a statement that we have complied with\nrelevant ethical requirements regarding independence, and to communicate with them all\nrelationships and other matters that may reasonably be thought to bear on our independence,\nand where applicable, related safeguards.\nOther Matters\n\u2022 We did not audit the financial statements of two subsidiaries, namely, Valiant\nCommunications (UK) Limited and Valcomm Technologies Inc., included in the\nConsolidated Annual Financial Results, whose financial statements reflects the total assets\nof Rs. 1004.40 Lacs and net assets of Rs. 975.00 Lacs as at March 31st, 2026; total revenue\nof Rs. 173.03 Lacs for the year ended March 31st, 2026, total net profit after tax of\nRs. 251.88 Lacs for the year ended March 31st, 2026, total comprehensive income of\nRs. 317.15 Lacs for the year ended March 31st, 2026 and net cash inflows of R .\nl>-~p_K B,.ql\\i\n~\"'\" \"'\"'7<\nj[ FRN 008953C ~\ng: Z-418&,Sec r-12 *0\n*\nq '01\n~\n<>rt, ~'1><:-\n\"rec Acco0';\n_...----:"
+    },
+    {
+      "published_at": "2026-05-30 13:17:13.050000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e28fa819-127b-473d-a42b-3cb8c24afff5.pdf",
+      "page_no": 15,
+      "body": "VALIANT COMMUNICATIONS LIMITED\nBalance Sheet (Audited Standalone) as at 31 March, 2026\n~ in Lacs\nParticulars As at 31-03-2026 As at 31-03-2025\nASSETS\nNon-current assets\n(a) Property, plant and equipment 988 651\n(b) Capital work-in-progress 6 49\n(c) Other intangible assets 382 351\n(d) Right of use assets 32 43\n(e) Financial assets\n(i) Investments 206 206\n(ii) Other financial assets 53 19\n(f) Deferred tax assets (net) 39 18\n(g) Other non-current assets 9 -\nTotal non-current assets 1,715 1,337\nCurrent assets\n(a) Inventories 1,260 1,809\n(b) Financial assets\n(i) Trade receivables 1,887 1,956\n(ii) Cash and cash equivalents 1,617 138\n(iii) Bank balances other than (ii) above 3,782 1,438\n(iv) Other financial assets 73 22\n(c) Other current assets 158 155\nTotal current assets 8,777 5,518\nTotal assets 10,492 6,855\nEQUITY AND LIABILITIES\nEquity\n(a) Equity share capital 1,144 763\n(b) Other equity 7,877 5,082\nTotal equity 9,021 5,845\nLIABILITIES\nNon-current liabilities\n(a) Financial liabilities\n(i) Borrowings 159 108\n(ii) Lease liabilities 36 45\n(b) Provisions 2 -\nTotal non-current liabilities 197 153\nCurrent liabilities\n(a) Financial liabilities\n(i) Borrowings 57 52\n(ii) Trade payables\n-Outstanding dues of micro enterprises and small\n- 4\nenterprises\n-Outstanding dues of creditors other than micro and small\n529 402\nenterprises\n(iii) Other financial liabilities 218 203\n(b) Other current liabilities 386 140\n(c) Provisions 20 17\n(d) Current tax liabilities (net) 64 39\nTotal current liabilities 1,274 857\nTotal equity and liabilities 10,492 6,855"
+    },
+    {
+      "published_at": "2026-05-30 13:17:13.050000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e28fa819-127b-473d-a42b-3cb8c24afff5.pdf",
+      "page_no": 16,
+      "body": "VALIANT COMMUNICATIONS LIMITED\nCash Flow Statement (Audited Standalone) for the year ended 31 March, 2026\n~in Lacs\nParticulars 31-03-2026 31-03-2025\nA. CASH FLOW FROM OPERATING ACTIVITIES\nNet profit before tax 2,928 1,283\nAdjustment for\nDepreciation and amortization 288 262\nRemeasurement of the employee defined benefit plans (24) (10)\n(Profit)/ loss on sale of fixed assets - (1)\nInterest income (135) (99)\nFinance cost 19 21\nNet (gain)/ loss on foreign currency translation (27) 121 (20) 153\nOperating profit before working capital changes 3,049 1,436\nAdjustment for\n(Increase)/ decrease in trade receivables 69 (869)\n(Increase)/ decrease in other financial assets (85) (19)\n(Increase)/ decrease in other current assets (3) (64)\n(Increase)/ decrease in inventories 549 (359)\nIncrease/ (decrease) in trade payables 123 299\nIncrease/ (decrease) in other current financial liabilities 15 82\nIncrease/ (decrease) in other current liabilities and provisions 275 (25)\nCash generated from operations 3,992 481\nDirect tax refunds (net)/ paid (777) (332)\nNet cash generated from operating Activities 3,215 149\nB. CASH FLOW FROM INVESTING ACTIVITIES\nPurchase of property, plant and equipment (459) (128)\nPurchase of intangible assets (188) (172)\nProceeds from sales of property, plant and equipment 2 3\nCapital advances (9) 15\nCapital Work in Progress 43 (49)\nMovement in other Bank balance (2,344) (1,234)\nInterest income 136 99\nNet cash generated from investing activities (2,819) (1,466)\nc. CASH FLOW FROM FINANCING ACTIVITIES\nDividend Paid (ll5) -\nExpenses on issue of Bonus Shares (8) -\nMoney received against Convertible Warrants 1,152 -\nRepayment of lease obligation (14) (14)\nProceeds from long -term borrowings ll4 30\nInterest paid (15) (15)\nRepayment of borrowing (58) (47)\nNet cash generated from financing activities 1,056 (46)\nNet gain/ (loss) on foreign currency translation 27 20\nNet increase in cash and cash equivalents 1,479 (1,343)\nCash and cash equivalents (opening balance) 138 1,481\nCash and cash equivalents (closing balance) 1,617 138\n0"
+    },
+    {
+      "published_at": "2026-05-30 13:17:13.050000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e28fa819-127b-473d-a42b-3cb8c24afff5.pdf",
+      "page_no": 19,
+      "body": "\u2022 Evaluate the appropriateness of accounting policies used and the reasonableness of\naccounting estimates and related disclosures made by the Board of Directors.\n\u2022 Conclude on the appropriateness of the Board of Directors' use of the going concern basis of\naccounting and, based on the audit evidence obtained, whether a material uncertainty exists\nrelated to events or conditions that may cast significant doubt on the ability of the Company\nto continue as a going concern. If we conclude that a material uncertainty exists, we are\nrequired to draw attention in our auditor's report to the related disclosures in the Standalone\nFinancial Results or, if such disclosures are inadequate, to modify our opinion. Our conclusions\nare based on the audit evidence obtained up to the date of our auditor's report. However,\nfuture events or conditions may cause the Company to cease to continue as a going concern.\n\u2022 Evaluate the overall presentation, structure and content of the Standalone Financial Results,\nincluding the disclosures, and whether the Standalone Financial Results represent the\nunderlying transactions and events in a manner that achieves fair presentation.\nWe communicate with those charged with governance regarding, among other matters, the planned\nscope and timing of the audit and significant audit findings, including any significant deficiencies in\ninternal control that we identify during our audit.\nWe also provide those charged with governance with a statement that we have complied with relevant\nethical requirements regarding independence, and to communicate with them all relationships and\nother matters that may reasonably be thought to bear on our independence, and where applicable,\nrelated safeguards.\nOther Matters\n\u2022 The Standalone Financial Results include the results for the quarter ended March 31st, 2026\nbeing the balancing figures between the audited figures in respect of the full financial year\nand the published unaudited year to date figures up to the third quarter of the current\nfinancial year which were subject to limited review by us.\n\u2022 The Standalone Annual Financial Results dealt with by this report has been prepared for the\nexpress purpose of filing with stock exchange on which the Company's shares is listed. These\nresults are based on and should be read with the Audited Standalone Financial Statements of\nthe Company for the year ended March 31st, 2026 on which we issued an unmodified audit\nopinion vide our report of even date.\nFor Pawan Nanak Bansal & Co.\nFRN-00895\n~\n'1\n'tin\nAlo! I\nPartner\nM. No. 510960\nPlace of Signature: New Delhi UDIN: 26510960BCIFBF7236\nDate: 30-05-2026"
+    },
+    {
+      "published_at": "2026-05-30 13:06:35.680000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/41ba369a-29b3-461c-ab9c-d295e932843c.pdf",
+      "page_no": 6,
+      "body": "VALIANT COMMUNICATIONS LIMITED\nConsolidated Balance Sheet (Audited) as at 31 March, 2026\n~in Lacs\nParticulars As at 31-03-2026 As at 31-03-2025\nASSETS\nNon-current assets\n(a) Property, plant and equipment 988 651\n(b) Capital work-in-progress 6 49\n(c) Other intangible assets 382 351\n(d) Right of use assets 32 43\n(e) Financial Assets\nOther financial assets 56 22\n(f) Deferred tax assets (net) 56 58\n(g) Other non-current assets 9\nTotal non-current assets 1,529 1,174\nCurrent assets\n(a) Inventories 1,260 1,811\n(b) Financial Assets\n(i) Investments 570 224\n(ii) Trade receivables 1,891 1,973\n(iii) Cash and cash equivalents 1,860 359\n(iv) Bank balances other than (iii) above 3,808 1,467\n(v) Other financial assets 77 25\n(c) Income tax assets (Net)* 0 0\n(d) Other current assets 159 156\nTotal current assets 9,625 6,015\nTotal assets 11,154 7,189\nEQUITY AND LIABILITIES\nEquity\n(a) Equity share capital 1,144 763\n(b) Other equity 8,506 5,392\nEquity attributable to the owners 9,650 6,155\nNon-controlling interest 4 4\nTotal equity 9,654 6,159\nLIABILITIES\nNon-current liabilities\n(a) Financial liabilities\n(i) Borrowings 159 108\n(ii) Lease liabilities 36 46\n(b) Provisions 2 -\nTotal non-current liabilities 197 154\nCurrent liabilities\n(a) Financial liabilities\n(i) Borrowings 57 52\n(ii) Trade payables\n-Outstanding dues of micro enterprises and small enterprises 4\n-Outstanding dues of creditors other than micro and small\n553 420\nenterprises\n(iii) Other financial liabilities 218 ,203\n(b) Other current liabilities 386 141\n(c) Provisions 19 17\n(d) Current tax liabilities (net) 70 39\nTotal current liabilities 1,303 876\nTotal equity and liabilities 11,154 7,189\n*Amount below the rounding off norm adopted by the Company\n11"
+    },
+    {
+      "published_at": "2026-05-30 13:06:35.680000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/41ba369a-29b3-461c-ab9c-d295e932843c.pdf",
+      "page_no": 7,
+      "body": "VALIANT COMMUNICATIONS LIMITED\nConsolidated Cash Flow Statement (Audited) for the year ended 31 March, 2026\n~in Lacs\nParticulars 31-03-2026 31-03-2025\nA. CASH FLOW FROM OPERATING ACTIVITIES\nNet profit before tax 3,213 1,276\nAdjustment for\nDepreciation and amortization 288 262\nRemeasurement of the employee defined benefit plans (23) (10)\n(Profit)/ loss on sale of fixed assets* 0 (1)\nInterest income (138) (101)\nFinance cost 19 21\nGain on current investments carried at FVTPL (323) (61)\nDividend income (5) (2)\nDeferred tax translation adjustments for subsidiaries (4) -\nForeign currency translation reserve adjustments 65 17\nNet (gain)/ loss on foreign currency translation (32) (153) (16) 109\nOperating profit before working capital changes 3,060 1,385\nAdjustment for\n(Increase)/ decrease in trade receivables 82 (886)\n(Increase)/ decrease in other financial assets (86) (21)\n(Increase)/ decrease in other current assets (4) (64)\n(Increase)/ decrease in inventories 551 (359)\nIncrease/ (decrease) in trade payables 129 300\nIncrease/ (decrease) in other financial liabilities 15 81\nIncrease/ (decrease) in other current liabilities and provisions 281 (25)\nCash generated from operations 4,028 411\nTaxes paid (net of refunds) (783) (333)\nNet cash generated from operating activities 3,245 78\nB. CASH FLOW FROM INVESTING ACTIVITIES\nPurchase of property, plant and equipment (459) (128)\nPurchase of intangible assets (188) (172)\nProceeds from sales of property, plant and equipment 1 2\nSale (purchases) and other movements of investments (23) (5)\nCapital advances (9) 15\nCapital Work in Progress 43 (49)\nMovement in other bank balance (2,340) (1,233)\nDividend income 5 2\nInterest income 138 101\nNet cash generated from investing activities (2,832) (1,467)\nc.\nCASH FLOW FROM FINANCING ACTIVITIES\nDividend Paid (115) -\nExpenses on issue of Bonus Shares (8) -\nProceeds from Warrant Allotment Equity Money 1,152 -\nRepayment of lease obligation (14) (14)\nProceeds from Jong -term borrowing 114 30\nInterest paid (15) (15)\nRepayment of borrowing (58) (47)\nNet cash generated from financing activities 1,056 (46)\nNet gain/ (loss) on foreign currency translation 32 16\nNet increase in cash and cash equivalents 1,501 (1.419)\nCash and cash equivalents (opening balance) 359 1,778\nCash and cash equivalents (closing balance) l,l:lbU 359\n*Amount below the rounding off norm adopted by the Company\nPOSE\n0"
+    },
+    {
+      "published_at": "2026-05-30 13:06:35.680000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/41ba369a-29b3-461c-ab9c-d295e932843c.pdf",
+      "page_no": 10,
+      "body": "\u2022 Obtain an understanding of internal financial controls relevant to the audit in order to\ndesign audit procedures that are appropriate in the circumstances. Under Section 143(3)(i)\nof the Act, we are also responsible for expressing our opinion on whether the Group has\nadequate internal financial controls with reference to the Consolidated Financial\nStatements in place and the operating effectiveness of such controls. (Refer Other Matter\nsection below).\n\u2022 Evaluate the appropriateness of accounting policies used and the reasonableness of\naccounting estimates and related disclosures made by the Board of Directors\n\u2022 Conclude on the appropriateness of the Board of Directors' use of the going concern basis\nof accounting and, based on the audit evidence obtained, whether a material uncertainty\nexists related to events or conditions that may cast significant doubt on the ability of the\nGroup to continue as a going concern. If we conclude that a material unce1iainty exists,\nwe are required to draw attention in our auditor's report to the related disclosures in the\nConsolidated Financial Results or, if such disclosures are inadequate, to modify our\nopinion. Our conclusions are based on the audit evidence obtained up to the date of our\nauditor's report. However, future events or conditions may cause the Group to cease to\ncontinue as a going concern.\n\u2022 Evaluate the overall presentation, structure and content of the Consolidated Financial\nResults, including the disclosures, and whether the Consolidated Financial Results\nrepresent the underlying transactions and events in a manner that achieves fair\npresentation.\n\u2022 Perform procedures in accordance with the circular issued by the SEBI under Regulation\n33(8) of the Listing Regulations to the extent applicable.\n\u2022 Obtain sufficient appropriate audit evidence regarding the financial information of the\nentities within the Group to express an opinion on the Consolidated Financial Results.\nWe are responsible for the direction, supervision and performance of the audit of financial\ninformation of such entities included in the Consolidated Financial Results of which we\nare the independent auditors.\nWe communicate with those charged with governance of the Holding Company and such other\nentities included in the Consolidated Financial Results of which we are the independent auditors\nregarding, among other matters, the planned scope and timing of the audit and significant audit\nfindings, including any significant deficiencies in internal control that we identify during our audit.\nWe also provide those charged with governance with a statement that we have complied with\nrelevant ethical requirements regarding independence, and to communicate with them all\nrelationships and other matters that may reasonably be thought to bear on our independence,\nand where applicable, related safeguards.\nOther Matters\n\u2022 We did not audit the financial statements of two subsidiaries, namely, Valiant\nCommunications (UK) Limited and Valcomm Technologies Inc., included in the\nConsolidated Annual Financial Results, whose financial statements reflects the total assets\nof Rs. 1004.40 Lacs and net assets of Rs. 975.00 Lacs as at March 31st, 2026; total revenue\nof Rs. 173.03 Lacs for the year ended March 31st, 2026, total net profit after tax of\nRs. 251.88 Lacs for the year ended March 31st, 2026, total comprehensive income of\nRs. 317.15 Lacs for the year ended March 31st, 2026 and net cash inflows of R .\nl>-~p_K B,.ql\\i\n~\"'\" \"'\"'7<\nj[ FRN 008953C ~\ng: Z-418&,Sec r-12 *0\n*\nq '01\n~\n<>rt, ~'1><:-\n\"rec Acco0';\n_...----:"
+    },
+    {
+      "published_at": "2026-05-30 13:06:35.680000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/41ba369a-29b3-461c-ab9c-d295e932843c.pdf",
+      "page_no": 15,
+      "body": "VALIANT COMMUNICATIONS LIMITED\nBalance Sheet (Audited Standalone) as at 31 March, 2026\n~ in Lacs\nParticulars As at 31-03-2026 As at 31-03-2025\nASSETS\nNon-current assets\n(a) Property, plant and equipment 988 651\n(b) Capital work-in-progress 6 49\n(c) Other intangible assets 382 351\n(d) Right of use assets 32 43\n(e) Financial assets\n(i) Investments 206 206\n(ii) Other financial assets 53 19\n(f) Deferred tax assets (net) 39 18\n(g) Other non-current assets 9 -\nTotal non-current assets 1,715 1,337\nCurrent assets\n(a) Inventories 1,260 1,809\n(b) Financial assets\n(i) Trade receivables 1,887 1,956\n(ii) Cash and cash equivalents 1,617 138\n(iii) Bank balances other than (ii) above 3,782 1,438\n(iv) Other financial assets 73 22\n(c) Other current assets 158 155\nTotal current assets 8,777 5,518\nTotal assets 10,492 6,855\nEQUITY AND LIABILITIES\nEquity\n(a) Equity share capital 1,144 763\n(b) Other equity 7,877 5,082\nTotal equity 9,021 5,845\nLIABILITIES\nNon-current liabilities\n(a) Financial liabilities\n(i) Borrowings 159 108\n(ii) Lease liabilities 36 45\n(b) Provisions 2 -\nTotal non-current liabilities 197 153\nCurrent liabilities\n(a) Financial liabilities\n(i) Borrowings 57 52\n(ii) Trade payables\n-Outstanding dues of micro enterprises and small\n- 4\nenterprises\n-Outstanding dues of creditors other than micro and small\n529 402\nenterprises\n(iii) Other financial liabilities 218 203\n(b) Other current liabilities 386 140\n(c) Provisions 20 17\n(d) Current tax liabilities (net) 64 39\nTotal current liabilities 1,274 857\nTotal equity and liabilities 10,492 6,855"
+    },
+    {
+      "published_at": "2026-05-30 13:06:35.680000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/41ba369a-29b3-461c-ab9c-d295e932843c.pdf",
+      "page_no": 16,
+      "body": "VALIANT COMMUNICATIONS LIMITED\nCash Flow Statement (Audited Standalone) for the year ended 31 March, 2026\n~in Lacs\nParticulars 31-03-2026 31-03-2025\nA. CASH FLOW FROM OPERATING ACTIVITIES\nNet profit before tax 2,928 1,283\nAdjustment for\nDepreciation and amortization 288 262\nRemeasurement of the employee defined benefit plans (24) (10)\n(Profit)/ loss on sale of fixed assets - (1)\nInterest income (135) (99)\nFinance cost 19 21\nNet (gain)/ loss on foreign currency translation (27) 121 (20) 153\nOperating profit before working capital changes 3,049 1,436\nAdjustment for\n(Increase)/ decrease in trade receivables 69 (869)\n(Increase)/ decrease in other financial assets (85) (19)\n(Increase)/ decrease in other current assets (3) (64)\n(Increase)/ decrease in inventories 549 (359)\nIncrease/ (decrease) in trade payables 123 299\nIncrease/ (decrease) in other current financial liabilities 15 82\nIncrease/ (decrease) in other current liabilities and provisions 275 (25)\nCash generated from operations 3,992 481\nDirect tax refunds (net)/ paid (777) (332)\nNet cash generated from operating Activities 3,215 149\nB. CASH FLOW FROM INVESTING ACTIVITIES\nPurchase of property, plant and equipment (459) (128)\nPurchase of intangible assets (188) (172)\nProceeds from sales of property, plant and equipment 2 3\nCapital advances (9) 15\nCapital Work in Progress 43 (49)\nMovement in other Bank balance (2,344) (1,234)\nInterest income 136 99\nNet cash generated from investing activities (2,819) (1,466)\nc. CASH FLOW FROM FINANCING ACTIVITIES\nDividend Paid (ll5) -\nExpenses on issue of Bonus Shares (8) -\nMoney received against Convertible Warrants 1,152 -\nRepayment of lease obligation (14) (14)\nProceeds from long -term borrowings ll4 30\nInterest paid (15) (15)\nRepayment of borrowing (58) (47)\nNet cash generated from financing activities 1,056 (46)\nNet gain/ (loss) on foreign currency translation 27 20\nNet increase in cash and cash equivalents 1,479 (1,343)\nCash and cash equivalents (opening balance) 138 1,481\nCash and cash equivalents (closing balance) 1,617 138\n0"
+    },
+    {
+      "published_at": "2026-05-30 13:06:35.680000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/41ba369a-29b3-461c-ab9c-d295e932843c.pdf",
+      "page_no": 19,
+      "body": "\u2022 Evaluate the appropriateness of accounting policies used and the reasonableness of\naccounting estimates and related disclosures made by the Board of Directors.\n\u2022 Conclude on the appropriateness of the Board of Directors' use of the going concern basis of\naccounting and, based on the audit evidence obtained, whether a material uncertainty exists\nrelated to events or conditions that may cast significant doubt on the ability of the Company\nto continue as a going concern. If we conclude that a material uncertainty exists, we are\nrequired to draw attention in our auditor's report to the related disclosures in the Standalone\nFinancial Results or, if such disclosures are inadequate, to modify our opinion. Our conclusions\nare based on the audit evidence obtained up to the date of our auditor's report. However,\nfuture events or conditions may cause the Company to cease to continue as a going concern.\n\u2022 Evaluate the overall presentation, structure and content of the Standalone Financial Results,\nincluding the disclosures, and whether the Standalone Financial Results represent the\nunderlying transactions and events in a manner that achieves fair presentation.\nWe communicate with those charged with governance regarding, among other matters, the planned\nscope and timing of the audit and significant audit findings, including any significant deficiencies in\ninternal control that we identify during our audit.\nWe also provide those charged with governance with a statement that we have complied with relevant\nethical requirements regarding independence, and to communicate with them all relationships and\nother matters that may reasonably be thought to bear on our independence, and where applicable,\nrelated safeguards.\nOther Matters\n\u2022 The Standalone Financial Results include the results for the quarter ended March 31st, 2026\nbeing the balancing figures between the audited figures in respect of the full financial year\nand the published unaudited year to date figures up to the third quarter of the current\nfinancial year which were subject to limited review by us.\n\u2022 The Standalone Annual Financial Results dealt with by this report has been prepared for the\nexpress purpose of filing with stock exchange on which the Company's shares is listed. These\nresults are based on and should be read with the Audited Standalone Financial Statements of\nthe Company for the year ended March 31st, 2026 on which we issued an unmodified audit\nopinion vide our report of even date.\nFor Pawan Nanak Bansal & Co.\nFRN-00895\n~\n'1\n'tin\nAlo! I\nPartner\nM. No. 510960\nPlace of Signature: New Delhi UDIN: 26510960BCIFBF7236\nDate: 30-05-2026"
+    }
+  ]
+}

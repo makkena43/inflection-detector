@@ -168,3 +168,32 @@ def test_a_company_without_a_symbol_is_named_by_isin_and_can_be_recorded(db):
     item = out["shortlist"][0]
     assert item["symbol"] == "INE216B01012" and "no exchange symbol on record" in item["note"]
     assert pipeline.record(db, WEEK, "ine216b01012", "DATA_REPAIR")["triage_action"] == "DATA_REPAIR"
+
+
+def test_a_rerun_tag_builds_its_own_shortlist_for_the_same_week(db, monkeypatch):
+    t = lambda d: datetime.fromisoformat(d + "T18:00:00+05:30")             # noqa: E731
+    a = _issuer(db, "AAA")
+    _evaluation(db, a, t("2026-10-06"), "P2")
+    now = datetime(2026, 10, 25, tzinfo=IST)
+    base = pipeline.build(db, WEEK, now=now)
+    assert pipeline.record(db, WEEK, "AAA", "REJECT_WITH_REASON")["triage_action"] == "REJECT_WITH_REASON"
+    monkeypatch.setenv("INFLECTION_RUN_TAG", "rerun-3.4")
+    again = pipeline.build(db, WEEK, now=now)
+    assert "existing" not in again and again["shortlist_id"] != base["shortlist_id"]
+    assert [i["symbol"] for i in again["shortlist"]] == ["AAA"]               # the base run's decision is not its history
+    assert pipeline.record(db, WEEK, "AAA", "WATCH_MILESTONE")["triage_action"] == "WATCH_MILESTONE"
+    assert db.execute("SELECT count(*) FROM triage_shortlists").fetchone() == (2,)
+
+
+def test_a_rerun_inherits_base_history_before_its_start(db, monkeypatch):
+    t = lambda d: datetime.fromisoformat(d + "T18:00:00+05:30")             # noqa: E731
+    a = _issuer(db, "AAA")
+    _evaluation(db, a, t("2026-10-06"), "P2")
+    now = datetime(2026, 10, 25, tzinfo=IST)
+    pipeline.build(db, WEEK, now=now)
+    pipeline.record(db, WEEK, "AAA", "REJECT_WITH_REASON")
+    nxt = WEEK + timedelta(weeks=1)
+    monkeypatch.setenv("INFLECTION_RUN_TAG", "rerun-3.4")
+    monkeypatch.setenv("INFLECTION_RUN_BASE_UNTIL", nxt.isoformat())
+    every = {i["symbol"]: i for i in pipeline.build(db, nxt, now=now, dry_run=True)["shortlist"]}
+    assert "AAA" not in every                                               # triaged in the base run, nothing new since

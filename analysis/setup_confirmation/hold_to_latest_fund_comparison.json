@@ -1,0 +1,662 @@
+{
+  "full_35": {
+    "n": 35,
+    "cost": 3500000,
+    "stock_value": 19518147.074750535,
+    "stock_return_pct": 457.66134499287244,
+    "first_entry": "2021-01-25",
+    "last_entry": "2025-12-15",
+    "funds": {
+      "120828": {
+        "value": 8450271.289825326,
+        "return_pct": 141.4363225664379,
+        "excess_stock_pp": 316.2250224264346,
+        "nav_date_mismatches": 0,
+        "positions": [
+          {
+            "label": "HITECH",
+            "entry_date": "2021-01-25",
+            "nav_date": "2021-01-25",
+            "entry_nav": 74.3106,
+            "end_nav": 312.2613,
+            "fund_value": 420210.9793219272
+          },
+          {
+            "label": "OMINFRAL",
+            "entry_date": "2021-02-01",
+            "nav_date": "2021-02-01",
+            "entry_nav": 74.5656,
+            "end_nav": 312.2613,
+            "fund_value": 418773.9386526763
+          },
+          {
+            "label": "TITAGARH",
+            "entry_date": "2021-02-22",
+            "nav_date": "2021-02-22",
+            "entry_nav": 80.0736,
+            "end_nav": 312.2613,
+            "fund_value": 389967.85457379214
+          },
+          {
+            "label": "NILAINFRA",
+            "entry_date": "2021-02-22",
+            "nav_date": "2021-02-22",
+            "entry_nav": 80.0736,
+            "end_nav": 312.2613,
+            "fund_value": 389967.85457379214
+          },
+          {
+            "label": "AARVI",
+            "entry_date": "2021-03-01",
+            "nav_date": "2021-03-01",
+            "entry_nav": 83.5999,
+            "end_nav": 312.2613,
+            "fund_value": 373518.7482281677
+          },
+          {
+            "label": "RPPINFRA",
+            "entry_date": "2021-03-01",
+            "nav_date": "2021-03-01",
+            "entry_nav": 83.5999,
+            "end_nav": 312.2613,
+            "fund_value": 373518.7482281677
+          },
+          {
+            "label": "SALASAR",
+            "entry_date": "2021-03-01",
+            "nav_date": "2021-03-01",
+            "entry_nav": 83.5999,
+            "end_nav": 312.2613,
+            "fund_value": 373518.7482281677
+          },
+          {
+            "label": "SUTLEJTEX",
+            "entry_date": "2021-03-15",
+            "nav_date": "2021-03-15",
+            "entry_nav": 84.3312,
+            "end_nav": 312.2613,
+            "fund_value": 370279.68296431215
+          },
+          {
+            "label": "HIRECT",
+            "entry_date": "2021-03-15",
+            "nav_date": "2021-03-15",
+            "entry_nav": 84.3312,
+            "end_nav": 312.2613,
+            "fund_value": 370279.68296431215
+          },
+          {
+            "label": "MANINDS",
+            "entry_date": "2021-04-05",
+            "nav_date": "2021-04-05",
+            "entry_nav": 88.387,
+            "end_nav": 312.2613,
+            "fund_value": 353288.7189292543
+          },
+          {
+            "label": "RICOAUTO",
+            "entry_date": "2021-07-05",
+            "nav_date": "2021-07-05",
+            "entry_nav": 124.2346,
+            "end_nav": 312.2613,
+            "fund_value": 251348.09465318036
+          },
+          {
+            "label": "MINDACORP",
+            "entry_date": "2021-08-30",
+            "nav_date": "2021-08-30",
+            "entry_nav": 124.8816,
+            "end_nav": 312.2613,
+            "fund_value": 250045.88346081408
+          },
+          {
+            "label": "ENGINERSIN",
+            "entry_date": "2021-09-13",
+            "nav_date": "2021-09-13",
+            "entry_nav": 130.8412,
+            "end_nav": 312.2613,
+            "fund_value": 238656.70752026123
+          },
+          {
+            "label": "AHLUCONT",
+            "entry_date": "2021-09-20",
+            "nav_date": "2021-09-20",
+            "entry_nav": 127.0564,
+            "end_nav": 312.2613,
+            "fund_value": 245765.89609024025
+          },
+          {
+            "label": "DSSL",
+            "entry_date": "2022-01-10",
+            "nav_date": "2022-01-10",
+            "entry_nav": 147.9651,
+            "end_nav": 312.2613,
+            "fund_value": 211037.12970153097
+          },
+          {
+            "label": "TARIL",
+            "entry_date": "2022-01-17",
+            "nav_date": "2022-01-17",
+            "entry_nav": 150.1396,
+            "end_nav": 312.2613,
+            "fund_value": 207980.6393516434
+          },
+          {
+            "label": "MBECL",
+            "entry_date": "2022-02-21",
+            "nav_date": "2022-02-21",
+            "entry_nav": 132.1381,
+            "end_nav": 312.2613,
+            "fund_value": 236314.3559654634
+          },
+          {
+            "label": "KHADIM",
+            "entry_date": "2022-02-28",
+            "nav_date": "2022-02-28",
+            "entry_nav": 129.0441,
+            "end_nav": 312.2613,
+            "fund_value": 241980.29975798973
+          },
+          {
+            "label": "ESSENTIA",
+            "entry_date": "2022-03-14",
+            "nav_date": "2022-03-14",
+            "entry_nav": 133.5699,
+            "end_nav": 312.2613,
+            "fund_value": 233781.18872590308
+          },
+          {
+            "label": "BLKASHYAP",
+            "entry_date": "2022-04-11",
+            "nav_date": "2022-04-11",
+            "entry_nav": 149.768,
+            "end_nav": 312.2613,
+            "fund_value": 208496.67485711235
+          },
+          {
+            "label": "TEXRAIL",
+            "entry_date": "2022-06-06",
+            "nav_date": "2022-06-06",
+            "entry_nav": 127.6585,
+            "end_nav": 312.2613,
+            "fund_value": 244606.74377342674
+          },
+          {
+            "label": "LUMAXIND",
+            "entry_date": "2023-02-27",
+            "nav_date": "2023-02-27",
+            "entry_nav": 145.9151,
+            "end_nav": 312.2613,
+            "fund_value": 214002.04639547245
+          },
+          {
+            "label": "BHEL",
+            "entry_date": "2023-04-24",
+            "nav_date": "2023-04-24",
+            "entry_nav": 153.2031,
+            "end_nav": 312.2613,
+            "fund_value": 203821.7895068703
+          },
+          {
+            "label": "ITI",
+            "entry_date": "2023-06-05",
+            "nav_date": "2023-06-05",
+            "entry_nav": 164.8488,
+            "end_nav": 312.2613,
+            "fund_value": 189422.85294160465
+          },
+          {
+            "label": "GULPOLY",
+            "entry_date": "2023-08-14",
+            "nav_date": "2023-08-14",
+            "entry_nav": 186.298,
+            "end_nav": 312.2613,
+            "fund_value": 167613.87669218134
+          },
+          {
+            "label": "BEML",
+            "entry_date": "2023-08-21",
+            "nav_date": "2023-08-21",
+            "entry_nav": 187.9717,
+            "end_nav": 312.2613,
+            "fund_value": 166121.44274909468
+          },
+          {
+            "label": "SOMICONVEY",
+            "entry_date": "2023-11-20",
+            "nav_date": "2023-11-20",
+            "entry_nav": 202.5014,
+            "end_nav": 312.2613,
+            "fund_value": 154202.04502289862
+          },
+          {
+            "label": "HECPROJECT",
+            "entry_date": "2024-01-23",
+            "nav_date": "2024-01-23",
+            "entry_nav": 235.6637,
+            "end_nav": 312.2613,
+            "fund_value": 132502.92684023886
+          },
+          {
+            "label": "MANAKCOAT",
+            "entry_date": "2024-10-14",
+            "nav_date": "2024-10-14",
+            "entry_nav": 298.2797,
+            "end_nav": 312.2613,
+            "fund_value": 104687.41251918921
+          },
+          {
+            "label": "EXICOM",
+            "entry_date": "2025-02-17",
+            "nav_date": "2025-02-17",
+            "entry_nav": 238.9114,
+            "end_nav": 312.2613,
+            "fund_value": 130701.71620106869
+          },
+          {
+            "label": "PPAP",
+            "entry_date": "2025-02-24",
+            "nav_date": "2025-02-24",
+            "entry_nav": 240.7077,
+            "end_nav": 312.2613,
+            "fund_value": 129726.34444182717
+          },
+          {
+            "label": "REMSONSIND",
+            "entry_date": "2025-05-26",
+            "nav_date": "2025-05-26",
+            "entry_nav": 270.2846,
+            "end_nav": 312.2613,
+            "fund_value": 115530.55556994368
+          },
+          {
+            "label": "GULFPETRO",
+            "entry_date": "2025-06-09",
+            "nav_date": "2025-06-09",
+            "entry_nav": 278.3227,
+            "end_nav": 312.2613,
+            "fund_value": 112193.97483568534
+          },
+          {
+            "label": "BAJEL",
+            "entry_date": "2025-06-16",
+            "nav_date": "2025-06-16",
+            "entry_nav": 275.6176,
+            "end_nav": 312.2613,
+            "fund_value": 113295.12338834676
+          },
+          {
+            "label": "MUKKA",
+            "entry_date": "2025-12-15",
+            "nav_date": "2025-12-15",
+            "entry_nav": 276.0672,
+            "end_nav": 312.2613,
+            "fund_value": 113110.61219876898
+          }
+        ]
+      },
+      "152237": {
+        "unavailable_prelaunch": 27
+      }
+    }
+  },
+  "post_motilal_launch": {
+    "n": 8,
+    "cost": 800000,
+    "stock_value": 931658.5457779528,
+    "stock_return_pct": 16.457318222244098,
+    "first_entry": "2024-01-23",
+    "last_entry": "2025-12-15",
+    "funds": {
+      "120828": {
+        "value": 951748.6659950686,
+        "return_pct": 18.968583249383574,
+        "excess_stock_pp": -2.511265027139481,
+        "nav_date_mismatches": 0,
+        "positions": [
+          {
+            "label": "HECPROJECT",
+            "entry_date": "2024-01-23",
+            "nav_date": "2024-01-23",
+            "entry_nav": 235.6637,
+            "end_nav": 312.2613,
+            "fund_value": 132502.92684023886
+          },
+          {
+            "label": "MANAKCOAT",
+            "entry_date": "2024-10-14",
+            "nav_date": "2024-10-14",
+            "entry_nav": 298.2797,
+            "end_nav": 312.2613,
+            "fund_value": 104687.41251918921
+          },
+          {
+            "label": "EXICOM",
+            "entry_date": "2025-02-17",
+            "nav_date": "2025-02-17",
+            "entry_nav": 238.9114,
+            "end_nav": 312.2613,
+            "fund_value": 130701.71620106869
+          },
+          {
+            "label": "PPAP",
+            "entry_date": "2025-02-24",
+            "nav_date": "2025-02-24",
+            "entry_nav": 240.7077,
+            "end_nav": 312.2613,
+            "fund_value": 129726.34444182717
+          },
+          {
+            "label": "REMSONSIND",
+            "entry_date": "2025-05-26",
+            "nav_date": "2025-05-26",
+            "entry_nav": 270.2846,
+            "end_nav": 312.2613,
+            "fund_value": 115530.55556994368
+          },
+          {
+            "label": "GULFPETRO",
+            "entry_date": "2025-06-09",
+            "nav_date": "2025-06-09",
+            "entry_nav": 278.3227,
+            "end_nav": 312.2613,
+            "fund_value": 112193.97483568534
+          },
+          {
+            "label": "BAJEL",
+            "entry_date": "2025-06-16",
+            "nav_date": "2025-06-16",
+            "entry_nav": 275.6176,
+            "end_nav": 312.2613,
+            "fund_value": 113295.12338834676
+          },
+          {
+            "label": "MUKKA",
+            "entry_date": "2025-12-15",
+            "nav_date": "2025-12-15",
+            "entry_nav": 276.0672,
+            "end_nav": 312.2613,
+            "fund_value": 113110.61219876898
+          }
+        ]
+      },
+      "152237": {
+        "value": 1058493.419333626,
+        "return_pct": 32.31167741670327,
+        "excess_stock_pp": -15.85435919445916,
+        "nav_date_mismatches": 0,
+        "positions": [
+          {
+            "label": "HECPROJECT",
+            "entry_date": "2024-01-23",
+            "nav_date": "2024-01-23",
+            "entry_nav": 9.9654,
+            "end_nav": 17.2014,
+            "fund_value": 172611.23487265938
+          },
+          {
+            "label": "MANAKCOAT",
+            "entry_date": "2024-10-14",
+            "nav_date": "2024-10-14",
+            "entry_nav": 14.2779,
+            "end_nav": 17.2014,
+            "fund_value": 120475.70020801378
+          },
+          {
+            "label": "EXICOM",
+            "entry_date": "2025-02-17",
+            "nav_date": "2025-02-17",
+            "entry_nav": 12.346,
+            "end_nav": 17.2014,
+            "fund_value": 139327.71747934553
+          },
+          {
+            "label": "PPAP",
+            "entry_date": "2025-02-24",
+            "nav_date": "2025-02-24",
+            "entry_nav": 12.3357,
+            "end_nav": 17.2014,
+            "fund_value": 139444.052627739
+          },
+          {
+            "label": "REMSONSIND",
+            "entry_date": "2025-05-26",
+            "nav_date": "2025-05-26",
+            "entry_nav": 13.8262,
+            "end_nav": 17.2014,
+            "fund_value": 124411.62430747421
+          },
+          {
+            "label": "GULFPETRO",
+            "entry_date": "2025-06-09",
+            "nav_date": "2025-06-09",
+            "entry_nav": 14.325,
+            "end_nav": 17.2014,
+            "fund_value": 120079.58115183246
+          },
+          {
+            "label": "BAJEL",
+            "entry_date": "2025-06-16",
+            "nav_date": "2025-06-16",
+            "entry_nav": 14.1628,
+            "end_nav": 17.2014,
+            "fund_value": 121454.7970740249
+          },
+          {
+            "label": "MUKKA",
+            "entry_date": "2025-12-15",
+            "nav_date": "2025-12-15",
+            "entry_nav": 14.2527,
+            "end_nav": 17.2014,
+            "fund_value": 120688.71161253657
+          }
+        ]
+      }
+    }
+  },
+  "evidence_checked_23": {
+    "n": 23,
+    "cost": 2300000,
+    "stock_value": 9859213.469248312,
+    "stock_return_pct": 328.66145518470915,
+    "first_entry": "2021-02-01",
+    "last_entry": "2025-06-16",
+    "funds": {
+      "120828": {
+        "value": 5344220.004680214,
+        "return_pct": 132.35739150783542,
+        "excess_stock_pp": 196.3040636768738,
+        "nav_date_mismatches": 0,
+        "positions": [
+          {
+            "label": "OMINFRAL",
+            "entry_date": "2021-02-01",
+            "nav_date": "2021-02-01",
+            "entry_nav": 74.5656,
+            "end_nav": 312.2613,
+            "fund_value": 418773.9386526763
+          },
+          {
+            "label": "TITAGARH",
+            "entry_date": "2021-02-22",
+            "nav_date": "2021-02-22",
+            "entry_nav": 80.0736,
+            "end_nav": 312.2613,
+            "fund_value": 389967.85457379214
+          },
+          {
+            "label": "AARVI",
+            "entry_date": "2021-03-01",
+            "nav_date": "2021-03-01",
+            "entry_nav": 83.5999,
+            "end_nav": 312.2613,
+            "fund_value": 373518.7482281677
+          },
+          {
+            "label": "SALASAR",
+            "entry_date": "2021-03-01",
+            "nav_date": "2021-03-01",
+            "entry_nav": 83.5999,
+            "end_nav": 312.2613,
+            "fund_value": 373518.7482281677
+          },
+          {
+            "label": "HIRECT",
+            "entry_date": "2021-03-15",
+            "nav_date": "2021-03-15",
+            "entry_nav": 84.3312,
+            "end_nav": 312.2613,
+            "fund_value": 370279.68296431215
+          },
+          {
+            "label": "MANINDS",
+            "entry_date": "2021-04-05",
+            "nav_date": "2021-04-05",
+            "entry_nav": 88.387,
+            "end_nav": 312.2613,
+            "fund_value": 353288.7189292543
+          },
+          {
+            "label": "ENGINERSIN",
+            "entry_date": "2021-09-13",
+            "nav_date": "2021-09-13",
+            "entry_nav": 130.8412,
+            "end_nav": 312.2613,
+            "fund_value": 238656.70752026123
+          },
+          {
+            "label": "AHLUCONT",
+            "entry_date": "2021-09-20",
+            "nav_date": "2021-09-20",
+            "entry_nav": 127.0564,
+            "end_nav": 312.2613,
+            "fund_value": 245765.89609024025
+          },
+          {
+            "label": "DSSL",
+            "entry_date": "2022-01-10",
+            "nav_date": "2022-01-10",
+            "entry_nav": 147.9651,
+            "end_nav": 312.2613,
+            "fund_value": 211037.12970153097
+          },
+          {
+            "label": "TARIL",
+            "entry_date": "2022-01-17",
+            "nav_date": "2022-01-17",
+            "entry_nav": 150.1396,
+            "end_nav": 312.2613,
+            "fund_value": 207980.6393516434
+          },
+          {
+            "label": "DSSL",
+            "entry_date": "2022-03-14",
+            "nav_date": "2022-03-14",
+            "entry_nav": 133.5699,
+            "end_nav": 312.2613,
+            "fund_value": 233781.18872590308
+          },
+          {
+            "label": "ESSENTIA",
+            "entry_date": "2022-03-14",
+            "nav_date": "2022-03-14",
+            "entry_nav": 133.5699,
+            "end_nav": 312.2613,
+            "fund_value": 233781.18872590308
+          },
+          {
+            "label": "BLKASHYAP",
+            "entry_date": "2022-04-11",
+            "nav_date": "2022-04-11",
+            "entry_nav": 149.768,
+            "end_nav": 312.2613,
+            "fund_value": 208496.67485711235
+          },
+          {
+            "label": "TEXRAIL",
+            "entry_date": "2022-06-06",
+            "nav_date": "2022-06-06",
+            "entry_nav": 127.6585,
+            "end_nav": 312.2613,
+            "fund_value": 244606.74377342674
+          },
+          {
+            "label": "SALASAR",
+            "entry_date": "2023-02-27",
+            "nav_date": "2023-02-27",
+            "entry_nav": 145.9151,
+            "end_nav": 312.2613,
+            "fund_value": 214002.04639547245
+          },
+          {
+            "label": "BEML",
+            "entry_date": "2023-08-21",
+            "nav_date": "2023-08-21",
+            "entry_nav": 187.9717,
+            "end_nav": 312.2613,
+            "fund_value": 166121.44274909468
+          },
+          {
+            "label": "SOMICONVEY",
+            "entry_date": "2023-11-20",
+            "nav_date": "2023-11-20",
+            "entry_nav": 202.5014,
+            "end_nav": 312.2613,
+            "fund_value": 154202.04502289862
+          },
+          {
+            "label": "HECPROJECT",
+            "entry_date": "2024-01-23",
+            "nav_date": "2024-01-23",
+            "entry_nav": 235.6637,
+            "end_nav": 312.2613,
+            "fund_value": 132502.92684023886
+          },
+          {
+            "label": "SOMICONVEY",
+            "entry_date": "2024-03-26",
+            "nav_date": "2024-03-26",
+            "entry_nav": 243.5154,
+            "end_nav": 312.2613,
+            "fund_value": 128230.61703695125
+          },
+          {
+            "label": "MANAKCOAT",
+            "entry_date": "2024-10-14",
+            "nav_date": "2024-10-14",
+            "entry_nav": 298.2797,
+            "end_nav": 312.2613,
+            "fund_value": 104687.41251918921
+          },
+          {
+            "label": "REMSONSIND",
+            "entry_date": "2025-05-26",
+            "nav_date": "2025-05-26",
+            "entry_nav": 270.2846,
+            "end_nav": 312.2613,
+            "fund_value": 115530.55556994368
+          },
+          {
+            "label": "GULFPETRO",
+            "entry_date": "2025-06-09",
+            "nav_date": "2025-06-09",
+            "entry_nav": 278.3227,
+            "end_nav": 312.2613,
+            "fund_value": 112193.97483568534
+          },
+          {
+            "label": "BAJEL",
+            "entry_date": "2025-06-16",
+            "nav_date": "2025-06-16",
+            "entry_nav": 275.6176,
+            "end_nav": 312.2613,
+            "fund_value": 113295.12338834676
+          }
+        ]
+      },
+      "152237": {
+        "unavailable_prelaunch": 17
+      }
+    }
+  }
+}

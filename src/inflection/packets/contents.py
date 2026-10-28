@@ -19,14 +19,15 @@ import hashlib
 import json
 import math
 from datetime import date, datetime, timedelta, timezone
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from typing import Optional
 
 from ..asof import IST
 from ..units import Money, Scale, growth
+from ..periods import consecutive_quarters
 from . import rules as R
 
-PACKET_VERSION = "triage-packet-2"            # 2: carries the triage decision rule (rules.py)
+PACKET_VERSION = "triage-packet-6" if R.WITH_VALUATION else "triage-packet-2"
 SCHEMA_VERSION = "1"
 TOKEN_BUDGET = 12_000                 # spec 5.3: initial packet target
 CHARS_PER_TOKEN = 4                   # rough estimate for English and figures; stated in the packet
@@ -129,8 +130,7 @@ def financial_snapshot(facts: list[dict]) -> dict:
 
     def ttm(metric: str) -> dict:
         last = quarters[-4:]
-        months = [q.year * 12 + q.month for q in last]
-        if len(last) < 4 or any(b - a != 3 for a, b in zip(months, months[1:])):
+        if not consecutive_quarters(last):
             return dict(value=None, why="four consecutive quarters not available")
         vals = [money(metric, "QUARTER", q) for q in last]
         if any(v is None for v in vals):
@@ -159,20 +159,27 @@ def _shares(mine: list[dict], at: dict) -> dict:
     periods = ("QUARTER", "ANNUAL")
     counts = {}
     for end in sorted({f["period_end"] for f in mine if f["metric"] == "paid_up_capital"}):
-        cap = next((at[("paid_up_capital", p, end)] for p in periods if ("paid_up_capital", p, end) in at), None)
-        fv = next((at[("face_value", p, end)] for p in periods if ("face_value", p, end) in at), None)
-        if cap and fv and cap["value"] is not None and cap["scale"] and fv["value"]:
-            counts[end] = Money(Decimal(cap["value"]), cap["currency"] or "INR", Scale(cap["scale"])).to_base() \
-                / Decimal(fv["value"])
+        for ptype in periods:
+            cap, fv = (at.get((m, ptype, end)) for m in ('paid_up_capital', 'face_value'))
+            if (not cap or not fv or not cap.get('publication_id')
+                    or cap.get('publication_id') != fv.get('publication_id')):
+                continue
+            if (cap['value'] is None or fv['value'] is None or not cap.get('scale')
+                    or cap['value'] <= 0 or fv['value'] <= 0
+                    or cap.get('currency') != fv.get('currency')):
+                continue
+            counts[end] = Money(Decimal(cap['value']), cap['currency'] or 'INR', Scale(cap['scale'])).to_base() / Decimal(fv['value'])
+            break
     if not counts:
         return dict(value=None, why="paid-up capital or face value not filed")
     end = max(counts)
-    prior = [e for e in counts if (end - e).days >= 330]
+    prior = [e for e in counts if 330 <= (end - e).days <= 400]
     out = dict(value=_fmt(counts[end] / Decimal(10) ** 7, 3), unit="crore shares", period_end=end.isoformat(),
                base=counts[end])
     if prior:
         p = max(prior)
-        out["change_pct_vs_year_earlier"] = _fmt((counts[end] / counts[p] - 1) * 100, 1)
+        if counts[p]:                                   # a zero share count (bad filing) gives no change, not a crash
+            out["change_pct_vs_year_earlier"] = _fmt((counts[end] / counts[p] - 1) * 100, 1)
     return out
 
 
@@ -242,6 +249,46 @@ def price_summary(prices: list[tuple], actions: list[dict], cutoff_day: date,
     if shares:
         out["market_cap_cr"] = _fmt(shares * last_c / Decimal(10) ** 7, 0)
     return out
+
+
+def valuation(fin: dict, price: dict) -> dict:
+    """P/S (market cap / TTM revenue), TTM operating margin and its change on a year earlier, TTM revenue growth.
+    Operating profit = profit before tax + finance cost + depreciation - other income (exceptional items included)."""
+    if fin.get("status") != "FOUND":
+        return dict(status="MISSING", reason="no financial snapshot")
+    def num(v):
+        try:
+            value = Decimal(str(v).replace(",", "")) if v not in (None, "", "–", "-") else None
+            return value if value is not None and value.is_finite() else None
+        except InvalidOperation:
+            return None
+
+    def col(metric):
+        return [num(c.get("value")) for c in fin["rows"].get(metric, [])]
+    rev, pbt, fc, dep, oi = (col(m) for m in ("revenue", "pbt", "finance_cost", "depreciation", "other_income"))
+    ends = [date.fromisoformat(q) for q in fin.get('quarters', [])]
+    def ttm_opm(sl):
+        if not consecutive_quarters(ends[sl]):
+            return None, None
+        revenues = rev[sl]
+        r = sum(revenues) if len(revenues) == 4 and all(v is not None for v in revenues) else None
+        q = list(zip(*(x[sl] for x in (rev, pbt, fc, dep))))
+        o = oi[sl]
+        if len(q) < 4 or any(None in t for t in q) or len(o) != 4 or any(x is None for x in o):
+            return None, r
+        op = sum(t[1] + t[2] + t[3] for t in q) - sum(x or 0 for x in o)
+        return (op / r if r else None), r
+    now, r_now = ttm_opm(slice(-4, None))
+    before, r_before = ttm_opm(slice(-8, -4)) if consecutive_quarters(ends[-8:], 8) else (None, None)
+    mcap = num(price.get("market_cap_cr"))
+    return dict(status="FOUND",
+                price_to_sales=_fmt(mcap / r_now, 2) if mcap and r_now else None,
+                market_cap_cr=_fmt(mcap, 0) if mcap else None, ttm_revenue_cr=_fmt(r_now, 2) if r_now else None,
+                opm_ttm_pct=_fmt(now * 100, 1) if now is not None else None,
+                opm_change_pts=_fmt((now - before) * 100, 1) if now is not None and before is not None else None,
+                revenue_growth_ttm_pct=_fmt((r_now / r_before - 1) * 100, 1) if r_now is not None and r_before is not None and r_before > 0 else None,
+                note="computed from the financial snapshot and the last close; operating margin = PBT + finance cost "
+                     "+ depreciation - other income, over revenue")
 
 
 # ---------------------------------------------------------------- risk flags
@@ -333,7 +380,8 @@ def _passage(p: dict) -> dict:
 
 def build(head: dict, identity: dict, evaluations: list[dict], prior_triage: Optional[dict], events: list[dict],
           passages: list[dict], documents: list[dict], fin: dict, price: dict, excluded: dict,
-          budget: int = TOKEN_BUDGET) -> tuple[dict, str]:
+          budget: int = TOKEN_BUDGET, order_book: Optional[list[dict]] = None,
+          ownership: Optional[dict] = None) -> tuple[dict, str]:
     """(content, markdown).  ``passages`` carry kind TRIGGER, CONTRADICTS or PRIOR, newest first."""
     trig = [_passage(p) for p in passages if p["kind"] == "TRIGGER"]
     contra = [_passage(p) for p in passages if p["kind"] == "CONTRADICTS"]
@@ -368,7 +416,9 @@ def build(head: dict, identity: dict, evaluations: list[dict], prior_triage: Opt
                                        outcome=e["outcome"], reasons=e["reasons"], detail=_why(e))
                                   for e in evaluations]),
         risk_flags=flags, events=events, trigger_passages=trig, contradicting_passages=contra,
-        prior_passages=prior, documents=documents, financials=fin, price=price)
+        prior_passages=prior, documents=documents, financials=fin, price=price,
+        **({"valuation": valuation(fin, price), "order_book": order_book or []} if R.WITH_VALUATION else {}),
+        **({"ownership": ownership or {}} if R.WITH_SOURCES else {}))
 
 
     def fits() -> bool:
@@ -524,6 +574,34 @@ def render(c: dict) -> str:
                 f"{a['ex_date']} {a['kind']}" + (f" x{a['price_multiplier']}" if a["price_multiplier"] else "")
                 for a in p["corporate_actions"]) + ".")
         L.append("")
+    v = c.get("valuation")
+    if v is not None:
+        L += ["## Valuation and margin (computed)", ""]
+        if v.get("status") != "FOUND":
+            L += [f"Missing: {v.get('reason')}.", ""]
+        else:
+            L += [f"Price to sales (market cap / TTM revenue): {v['price_to_sales'] or '–'} "
+                  f"(market cap INR {v['market_cap_cr'] or '–'} crore, TTM revenue INR {v['ttm_revenue_cr'] or '–'} crore). "
+                  f"TTM operating margin {v['opm_ttm_pct'] or '–'}%"
+                  + (f", {v['opm_change_pts']} points on a year earlier" if v['opm_change_pts'] else "")
+                  + (f"; TTM revenue growth {v['revenue_growth_ttm_pct']}%" if v['revenue_growth_ttm_pct'] else "") + ".",
+                  f"({v['note']}.)", ""]
+    ob = c.get("order_book")
+    if ob is not None:
+        L += ["## Order book and order inflow (extracted from presentations and concalls)", ""]
+        if not ob:
+            L += ["None reported in documents public by the cutoff.", ""]
+        else:
+            L += _table(["quarter ending", "order book (INR crore)", "book YoY %", "order inflow (INR crore)", "inflow YoY %"],
+                        [[x["quarter_end"], f"{x['order_book_cr'] or '–'}{' (doubtful)' if x.get('book_doubtful') else ''}",
+                          x["book_yoy_pct"] if x["book_yoy_pct"] is not None else "–",
+                          f"{x['order_inflow_cr'] or '–'}{' (doubtful)' if x.get('inflow_doubtful') else ''}",
+                          x["inflow_yoy_pct"] if x["inflow_yoy_pct"] is not None else "–"] for x in ob])
+            L += ["Figures are extracted by rules from company documents and may be a segment's book or a pipeline "
+                  "('doubtful' = breaks sharply from the neighbouring quarters); use them as context for how normal the "
+                  "trigger order is, not as a size. If you are making a DEEP_RESEARCH call, confirm the latest company-total "
+                  "order book and quarterly order inflow from the documents and report them in order_book_check.", ""]
+    L += ownership_section(c.get("ownership")) if "ownership" in c else []
     L += ["## Full documents on demand", "",
           f"Read up to {MAX_PAGES_PER_RETRIEVAL} pages at a time, once, for context this packet lacks:",
           "`python -m inflection.packets page PACKET_ID TEXT_ARTIFACT_ID PAGES` (for example `3` or `2-4`).", ""]
@@ -541,6 +619,44 @@ def render(c: dict) -> str:
           f"Return JSON with exactly these fields: {', '.join(RETURN_FIELDS)}. "
           f"Keep issuer_id, as_of, packet_hash, event_ids and triage_rules_version as given."]
     return "\n".join(L) + "\n"
+
+
+def ownership_section(o: Optional[dict]) -> list[str]:
+    """Markdown for the 3.5 'Ownership and other signals' section: shareholding by quarter, PLI approvals, government
+    programmes named in the company's filings, and capacity / production / rating / preferential / acquisition
+    filings in the year before the cutoff."""
+    o = o or {}
+    f = lambda v: "–" if v is None else v
+    L = ["## Ownership and other signals (context only)", ""]
+    sh = o.get("shareholding") or []
+    if sh:
+        L += ["Shareholding pattern (% of shares; change on a year earlier in brackets):", ""]
+        L += _table(["quarter ending", "promoter", "promoter pledged (% of promoter)", "mutual funds", "foreign inst.",
+                     "domestic inst.", "retail (< Rs 2 lakh)"],
+                    [[x["period_end"], f"{f(x['promoter_pct'])} ({f(x.get('promoter_chg_yoy'))})", f(x["promoter_pledged_pct"]),
+                      f"{f(x['mf_pct'])} ({f(x.get('mf_chg_yoy'))})", f"{f(x['fii_pct'])} ({f(x.get('fii_chg_yoy'))})",
+                      f(x["dii_pct"]), f(x["retail_pct"])] for x in sh])
+    else:
+        L += ["Shareholding pattern: none public by the cutoff in our data.", ""]
+    pli = o.get("pli") or []
+    L += (["PLI scheme approvals public by the cutoff:"] + [
+        f"- {x['approval_date']}: {x['scheme']}{' ' + x['tranche'] if x.get('tranche') else ''}"
+        + (f", committed investment INR {x['committed_investment_cr']} crore" if x.get("committed_investment_cr") else "")
+        + (f", {x['product_segment']}" if x.get("product_segment") else "") + f". {x['source_url']}" for x in pli] + [""]
+          if pli else ["PLI scheme approvals: none found for this company.", ""])
+    pr = o.get("programmes") or []
+    L += (["Government programmes (Rs 10,000 crore+ outlay) the company had named in its filings by the cutoff:", ""]
+          + _table(["programme (announced, outlay INR crore)", "first mention", "first order mention", "documents (order)", "latest passage"],
+                   [[f"{x['programme']} ({x['announced']}, {f(x['outlay_cr'])})", f(x["first_mention"]),
+                     f(x["first_order_mention"]) + (" (early in the programme)" if x.get("early_cycle") else ""),
+                     f"{x['documents']} ({x['order_documents']})", x["snippet"][:200]] for x in pr])
+          if pr else ["Government programmes: the company's filings name none of the listed programmes by the cutoff.", ""])
+    sig = o.get("signal_filings") or []
+    L += (["Capacity, production, rating, fund-raising and acquisition filings in the 12 months before the cutoff "
+           "(read with the page command when they matter):"] + [
+        f"- {x['published_at']} {x['category']}: {x.get('title') or ''} (text {x.get('text_artifact_id') or 'not extracted'})"
+        for x in sig] + [""] if sig else ["Capacity, production, rating, fund-raising and acquisition filings: none in the 12 months before the cutoff.", ""])
+    return L
 
 
 def result_template(content: dict, packet_hash: str) -> dict:

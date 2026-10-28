@@ -1,0 +1,59 @@
+{
+  "prior_broad_group": {
+    "n": 33,
+    "doubles": 17,
+    "triples": 10,
+    "losses": 5,
+    "median_return_24m": 1.01721763085399,
+    "median_excess_24m": 0.724879902100689,
+    "median_smallcap_excess24": 0.7072212513601088,
+    "median_drawdown24": -0.44952354647148185,
+    "unverified": 0,
+    "drawdown_over30": 29,
+    "later_n": 10,
+    "later_doubles": 3
+  },
+  "evidence_qualified": {
+    "n": 19,
+    "doubles": 10,
+    "triples": 6,
+    "losses": 1,
+    "median_return_24m": 1.01721763085399,
+    "median_excess_24m": 0.724879902100689,
+    "median_smallcap_excess24": 0.7072212513601088,
+    "median_drawdown24": -0.4430593307713938,
+    "unverified": 0,
+    "drawdown_over30": 17,
+    "later_n": 5,
+    "later_doubles": 0
+  },
+  "qualified_ps_below1": {
+    "n": 10,
+    "doubles": 8,
+    "triples": 6,
+    "losses": 0,
+    "median_return_24m": 2.41145771439889,
+    "median_excess_24m": 1.94876472055368,
+    "median_smallcap_excess24": 1.792266693748369,
+    "median_drawdown24": -0.4359753540755065,
+    "unverified": 0,
+    "drawdown_over30": 10,
+    "later_n": 0,
+    "later_doubles": 0
+  },
+  "qualified_order50_ps1": {
+    "n": 6,
+    "doubles": 5,
+    "triples": 3,
+    "losses": 0,
+    "median_return_24m": 2.142229997613495,
+    "median_excess_24m": 1.6643543027205352,
+    "median_smallcap_excess24": 1.4879920759955647,
+    "median_drawdown24": -0.42665803178604395,
+    "unverified": 0,
+    "drawdown_over30": 6,
+    "later_n": 0,
+    "later_doubles": 0
+  },
+  "return_mismatches": []
+}

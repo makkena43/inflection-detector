@@ -1,0 +1,10 @@
+{
+  "index.html": {
+    "target": "/Users/makkenasrinivas/inflection-jobs/ui/index.html",
+    "original_sha256": "becf74c3f7c6c29f317925bcd2e73569942ef7c0059612a26139127f778e3607"
+  },
+  "run_range_2026.sh": {
+    "target": "/Users/makkenasrinivas/inflection-jobs/run_range_2026.sh",
+    "original_sha256": "d9382cd121d214ee4315fff2448b34f6185c5401ccdf1ea63541314d0910712e"
+  }
+}

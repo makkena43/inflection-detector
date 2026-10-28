@@ -30,6 +30,7 @@ from psycopg.types.json import Jsonb
 from ..asof import IST, available_at
 from ..states import PublicationBasis
 from ..units import Money, Scale
+from ..periods import consecutive_quarters
 from . import vocabulary as V
 from . import verify
 from .extract import Mention, extract_document
@@ -191,11 +192,11 @@ def annual_revenue(conn, issuer_id, at: datetime) -> tuple[Optional[Decimal], di
     the last four reported quarters (consolidated first, else standalone).  Exact rupees."""
     rows = conn.execute(
         """SELECT DISTINCT ON (scope, period_type, period_end) scope, period_type, period_start, period_end, value
-             FROM financial_facts
-            WHERE issuer_id = %s AND metric = 'revenue' AND segment IS NULL AND NOT cumulative
+             FROM financial_facts_asof
+            WHERE issuer_id = %s AND metric = 'revenue' AND segment IS NULL AND (NOT cumulative OR period_type='ANNUAL')
               AND value IS NOT NULL AND available_at IS NOT NULL AND available_at <= %s
               AND period_type IN ('QUARTER','ANNUAL') AND scope IN ('CONSOLIDATED','STANDALONE')
-            ORDER BY scope, period_type, period_end, available_at DESC""", (issuer_id, at)).fetchall()
+            ORDER BY scope, period_type, period_end, available_at DESC, recorded_at DESC, fact_id""", (issuer_id, at)).fetchall()
     for scope in ("CONSOLIDATED", "STANDALONE"):
         annual = [r for r in rows if r[0] == scope and r[1] == "ANNUAL"]
         quarters = sorted((r for r in rows if r[0] == scope and r[1] == "QUARTER"), key=lambda r: r[3])[-4:]
@@ -203,7 +204,7 @@ def annual_revenue(conn, issuer_id, at: datetime) -> tuple[Optional[Decimal], di
         if annual:
             a = annual[-1]
             best = (a[3], Decimal(a[4]), dict(scope=scope, basis="ANNUAL", period_end=a[3].isoformat()))
-        if len(quarters) == 4 and (quarters[-1][3] - quarters[0][3]).days <= 300:
+        if consecutive_quarters([q[3] for q in quarters]):
             q_end = quarters[-1][3]
             if best is None or q_end > best[0]:
                 best = (q_end, sum(Decimal(q[4]) for q in quarters),

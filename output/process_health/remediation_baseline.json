@@ -1,0 +1,542 @@
+{
+  "windows": [
+    {
+      "run_id": "fb671525-6ffe-4799-b2ba-3d8edc9e8989",
+      "name": "bse_announcements",
+      "segment": "equity",
+      "window_start": "2026-07-30 00:00:00+05:30",
+      "window_end": "2026-08-06 00:00:00+05:30",
+      "coverage_status": "PARTIAL",
+      "received_count": 9430,
+      "reconciliation_result": {
+        "notes": [
+          "-1: no rows",
+          "all-category query unavailable; listed a category subset: Board Meeting, Result, Corp. Action, AGM/EGM, Company Update, Others, Insider Trading / SAST, New Listing, Scheme of Arrangement, Acquisition, Amalgamation, Analysts/Institutional Investor Meet, Press Release",
+          "Scheme of Arrangement: no rows",
+          "Acquisition: no rows",
+          "Amalgamation: no rows",
+          "Analysts/Institutional Investor Meet: no rows",
+          "Press Release: no rows"
+        ],
+        "requests": 199
+      }
+    },
+    {
+      "run_id": "31aa9154-da00-4c74-b856-64b58cf12037",
+      "name": "bse_announcements",
+      "segment": "equity",
+      "window_start": "2026-08-06 00:00:00+05:30",
+      "window_end": "2026-08-13 00:00:00+05:30",
+      "coverage_status": "PARTIAL",
+      "received_count": 12774,
+      "reconciliation_result": {
+        "notes": [
+          "-1: no rows",
+          "all-category query unavailable; listed a category subset: Board Meeting, Result, Corp. Action, AGM/EGM, Company Update, Others, Insider Trading / SAST, New Listing, Scheme of Arrangement, Acquisition, Amalgamation, Analysts/Institutional Investor Meet, Press Release",
+          "Scheme of Arrangement: no rows",
+          "Acquisition: no rows",
+          "Amalgamation: no rows",
+          "Analysts/Institutional Investor Meet: no rows",
+          "Press Release: no rows"
+        ],
+        "requests": 266
+      }
+    },
+    {
+      "run_id": "fc4d0492-a123-4735-b8df-e1450c0cf3ba",
+      "name": "bse_announcements",
+      "segment": "equity",
+      "window_start": "2026-08-13 00:00:00+05:30",
+      "window_end": "2026-08-20 00:00:00+05:30",
+      "coverage_status": "PARTIAL",
+      "received_count": 10928,
+      "reconciliation_result": {
+        "notes": [
+          "-1: no rows",
+          "all-category query unavailable; listed a category subset: Board Meeting, Result, Corp. Action, AGM/EGM, Company Update, Others, Insider Trading / SAST, New Listing, Scheme of Arrangement, Acquisition, Amalgamation, Analysts/Institutional Investor Meet, Press Release",
+          "Scheme of Arrangement: no rows",
+          "Acquisition: no rows",
+          "Amalgamation: no rows",
+          "Analysts/Institutional Investor Meet: no rows",
+          "Press Release: no rows"
+        ],
+        "requests": 229
+      }
+    },
+    {
+      "run_id": "b16bf4fd-9d3f-4708-9dfb-235043068261",
+      "name": "bse_announcements",
+      "segment": "equity",
+      "window_start": "2026-08-20 00:00:00+05:30",
+      "window_end": "2026-08-27 00:00:00+05:30",
+      "coverage_status": "PARTIAL",
+      "received_count": 6234,
+      "reconciliation_result": {
+        "notes": [
+          "-1: no rows",
+          "all-category query unavailable; listed a category subset: Board Meeting, Result, Corp. Action, AGM/EGM, Company Update, Others, Insider Trading / SAST, New Listing, Scheme of Arrangement, Acquisition, Amalgamation, Analysts/Institutional Investor Meet, Press Release",
+          "Scheme of Arrangement: no rows",
+          "Acquisition: no rows",
+          "Amalgamation: no rows",
+          "Analysts/Institutional Investor Meet: no rows",
+          "Press Release: no rows"
+        ],
+        "requests": 135
+      }
+    },
+    {
+      "run_id": "825aa05d-79bc-469a-a353-10a844d7900c",
+      "name": "bse_announcements",
+      "segment": "equity",
+      "window_start": "2026-08-27 00:00:00+05:30",
+      "window_end": "2026-09-03 00:00:00+05:30",
+      "coverage_status": "PARTIAL",
+      "received_count": 8505,
+      "reconciliation_result": {
+        "notes": [
+          "-1: no rows",
+          "all-category query unavailable; listed a category subset: Board Meeting, Result, Corp. Action, AGM/EGM, Company Update, Others, Insider Trading / SAST, New Listing, Scheme of Arrangement, Acquisition, Amalgamation, Analysts/Institutional Investor Meet, Press Release",
+          "Scheme of Arrangement: no rows",
+          "Acquisition: no rows",
+          "Amalgamation: no rows",
+          "Analysts/Institutional Investor Meet: no rows",
+          "Press Release: no rows"
+        ],
+        "requests": 181
+      }
+    },
+    {
+      "run_id": "d632357f-90bb-45a4-b2a0-bd30b67b8500",
+      "name": "bse_announcements",
+      "segment": "equity",
+      "window_start": "2026-09-03 00:00:00+05:30",
+      "window_end": "2026-09-10 00:00:00+05:30",
+      "coverage_status": "PARTIAL",
+      "received_count": 11674,
+      "reconciliation_result": {
+        "notes": [
+          "-1: no rows",
+          "all-category query unavailable; listed a category subset: Board Meeting, Result, Corp. Action, AGM/EGM, Company Update, Others, Insider Trading / SAST, New Listing, Scheme of Arrangement, Acquisition, Amalgamation, Analysts/Institutional Investor Meet, Press Release",
+          "Scheme of Arrangement: no rows",
+          "Acquisition: no rows",
+          "Amalgamation: no rows",
+          "Analysts/Institutional Investor Meet: no rows",
+          "Press Release: no rows"
+        ],
+        "requests": 244
+      }
+    },
+    {
+      "run_id": "aabefd87-5fba-4e88-a660-809b446cb823",
+      "name": "bse_announcements",
+      "segment": "equity",
+      "window_start": "2026-09-10 00:00:00+05:30",
+      "window_end": "2026-09-17 00:00:00+05:30",
+      "coverage_status": "PARTIAL",
+      "received_count": 3610,
+      "reconciliation_result": {
+        "notes": [
+          "-1: no rows",
+          "all-category query unavailable; listed a category subset: Board Meeting, Result, Corp. Action, AGM/EGM, Company Update, Others, Insider Trading / SAST, New Listing, Scheme of Arrangement, Acquisition, Amalgamation, Analysts/Institutional Investor Meet, Press Release",
+          "Scheme of Arrangement: no rows",
+          "Acquisition: no rows",
+          "Amalgamation: no rows",
+          "Analysts/Institutional Investor Meet: no rows",
+          "Press Release: no rows"
+        ],
+        "requests": 83
+      }
+    },
+    {
+      "run_id": "687fffe1-bc91-44e3-99f8-6f166066f6ea",
+      "name": "bse_announcements",
+      "segment": "equity",
+      "window_start": "2026-09-17 00:00:00+05:30",
+      "window_end": "2026-09-24 00:00:00+05:30",
+      "coverage_status": "PARTIAL",
+      "received_count": 5386,
+      "reconciliation_result": {
+        "notes": [
+          "-1: no rows",
+          "all-category query unavailable; listed a category subset: Board Meeting, Result, Corp. Action, AGM/EGM, Company Update, Others, Insider Trading / SAST, New Listing, Scheme of Arrangement, Acquisition, Amalgamation, Analysts/Institutional Investor Meet, Press Release",
+          "Scheme of Arrangement: no rows",
+          "Acquisition: no rows",
+          "Amalgamation: no rows",
+          "Analysts/Institutional Investor Meet: no rows",
+          "Press Release: no rows"
+        ],
+        "requests": 118
+      }
+    },
+    {
+      "run_id": "634c9b85-b741-46c9-b2bf-23641eaa983b",
+      "name": "bse_announcements",
+      "segment": "equity",
+      "window_start": "2026-09-24 00:00:00+05:30",
+      "window_end": "2026-10-01 00:00:00+05:30",
+      "coverage_status": "PARTIAL",
+      "received_count": 12773,
+      "reconciliation_result": {
+        "notes": [
+          "-1: no rows",
+          "all-category query unavailable; listed a category subset: Board Meeting, Result, Corp. Action, AGM/EGM, Company Update, Others, Insider Trading / SAST, New Listing, Scheme of Arrangement, Acquisition, Amalgamation, Analysts/Institutional Investor Meet, Press Release",
+          "Scheme of Arrangement: no rows",
+          "Acquisition: no rows",
+          "Amalgamation: no rows",
+          "Analysts/Institutional Investor Meet: no rows",
+          "Press Release: no rows"
+        ],
+        "requests": 266
+      }
+    },
+    {
+      "run_id": "6e245464-f807-4c90-b63f-0a18cf3137be",
+      "name": "bse_announcements",
+      "segment": "equity",
+      "window_start": "2026-10-01 00:00:00+05:30",
+      "window_end": "2026-10-08 00:00:00+05:30",
+      "coverage_status": "PARTIAL",
+      "received_count": 5753,
+      "reconciliation_result": {
+        "notes": [
+          "-1: no rows",
+          "all-category query unavailable; listed a category subset: Board Meeting, Result, Corp. Action, AGM/EGM, Company Update, Others, Insider Trading / SAST, New Listing, Scheme of Arrangement, Acquisition, Amalgamation, Analysts/Institutional Investor Meet, Press Release",
+          "Scheme of Arrangement: no rows",
+          "Acquisition: no rows",
+          "Amalgamation: no rows",
+          "Analysts/Institutional Investor Meet: no rows",
+          "Press Release: no rows"
+        ],
+        "requests": 126
+      }
+    },
+    {
+      "run_id": "39b02222-8c26-4f38-82e3-38f1dfefcb94",
+      "name": "bse_announcements",
+      "segment": "equity",
+      "window_start": "2026-10-08 00:00:00+05:30",
+      "window_end": "2026-10-15 00:00:00+05:30",
+      "coverage_status": "PARTIAL",
+      "received_count": 5839,
+      "reconciliation_result": {
+        "notes": [
+          "-1: no rows",
+          "all-category query unavailable; listed a category subset: Board Meeting, Result, Corp. Action, AGM/EGM, Company Update, Others, Insider Trading / SAST, New Listing, Scheme of Arrangement, Acquisition, Amalgamation, Analysts/Institutional Investor Meet, Press Release",
+          "Scheme of Arrangement: no rows",
+          "Acquisition: no rows",
+          "Amalgamation: no rows",
+          "Analysts/Institutional Investor Meet: no rows",
+          "Press Release: no rows"
+        ],
+        "requests": 127
+      }
+    },
+    {
+      "run_id": "5c6a4d94-1235-4d36-a3c9-01780f8e4ec5",
+      "name": "bse_announcements",
+      "segment": "equity",
+      "window_start": "2026-10-15 00:00:00+05:30",
+      "window_end": "2026-10-19 00:00:00+05:30",
+      "coverage_status": "PARTIAL",
+      "received_count": 2340,
+      "reconciliation_result": {
+        "notes": [
+          "-1: no rows",
+          "all-category query unavailable; listed a category subset: Board Meeting, Result, Corp. Action, AGM/EGM, Company Update, Others, Insider Trading / SAST, New Listing, Scheme of Arrangement, Acquisition, Amalgamation, Analysts/Institutional Investor Meet, Press Release",
+          "Scheme of Arrangement: no rows",
+          "Acquisition: no rows",
+          "Amalgamation: no rows",
+          "Analysts/Institutional Investor Meet: no rows",
+          "Press Release: no rows"
+        ],
+        "requests": 57
+      }
+    },
+    {
+      "run_id": "59cd265c-28bc-4e00-833c-8ff657a8e8f3",
+      "name": "bse_announcements",
+      "segment": "equity",
+      "window_start": "2026-10-16 00:00:00+05:30",
+      "window_end": "2026-10-23 00:00:00+05:30",
+      "coverage_status": "PARTIAL",
+      "received_count": 3749,
+      "reconciliation_result": {
+        "notes": [
+          "-1: no rows",
+          "all-category query unavailable; listed a category subset: Board Meeting, Result, Corp. Action, AGM/EGM, Company Update, Others, Insider Trading / SAST, New Listing, Scheme of Arrangement, Acquisition, Amalgamation, Analysts/Institutional Investor Meet, Press Release",
+          "Scheme of Arrangement: no rows",
+          "Acquisition: no rows",
+          "Amalgamation: no rows",
+          "Analysts/Institutional Investor Meet: no rows",
+          "Press Release: no rows"
+        ],
+        "requests": 85
+      }
+    },
+    {
+      "run_id": "0ae00757-a86d-444a-abcf-8cdfeaa23e7a",
+      "name": "bse_announcements",
+      "segment": "equity",
+      "window_start": "2026-10-22 00:00:00+05:30",
+      "window_end": "2026-10-25 00:00:00+05:30",
+      "coverage_status": "PARTIAL",
+      "received_count": 2441,
+      "reconciliation_result": {
+        "notes": [
+          "-1: no rows",
+          "all-category query unavailable; listed a category subset: Board Meeting, Result, Corp. Action, AGM/EGM, Company Update, Others, Insider Trading / SAST, New Listing, Scheme of Arrangement, Acquisition, Amalgamation, Analysts/Institutional Investor Meet, Press Release",
+          "Scheme of Arrangement: no rows",
+          "Acquisition: no rows",
+          "Amalgamation: no rows",
+          "Analysts/Institutional Investor Meet: no rows",
+          "Press Release: no rows"
+        ],
+        "requests": 59
+      }
+    },
+    {
+      "run_id": "35fc3eac-ac12-4287-8b3d-bc9f1ba77b78",
+      "name": "bse_announcements",
+      "segment": "equity",
+      "window_start": "2026-10-22 00:00:00+05:30",
+      "window_end": "2026-10-27 00:00:00+05:30",
+      "coverage_status": "PARTIAL",
+      "received_count": 2499,
+      "reconciliation_result": {
+        "notes": [
+          "-1: no rows",
+          "all-category query unavailable; listed a category subset: Board Meeting, Result, Corp. Action, AGM/EGM, Company Update, Others, Insider Trading / SAST, New Listing, Scheme of Arrangement, Acquisition, Amalgamation, Analysts/Institutional Investor Meet, Press Release",
+          "Scheme of Arrangement: no rows",
+          "Acquisition: no rows",
+          "Amalgamation: no rows",
+          "Analysts/Institutional Investor Meet: no rows",
+          "Press Release: no rows"
+        ],
+        "requests": 60
+      }
+    },
+    {
+      "run_id": "9ea11188-1958-4218-a76e-24afb533f833",
+      "name": "bse_announcements",
+      "segment": "equity",
+      "window_start": "2026-10-23 00:00:00+05:30",
+      "window_end": "2026-10-25 00:00:00+05:30",
+      "coverage_status": "PARTIAL",
+      "received_count": 1192,
+      "reconciliation_result": {
+        "notes": [
+          "-1: no rows",
+          "all-category query unavailable; listed a category subset: Board Meeting, Result, Corp. Action, AGM/EGM, Company Update, Others, Insider Trading / SAST, New Listing, Scheme of Arrangement, Acquisition, Amalgamation, Analysts/Institutional Investor Meet, Press Release",
+          "Scheme of Arrangement: no rows",
+          "Acquisition: no rows",
+          "Amalgamation: no rows",
+          "Analysts/Institutional Investor Meet: no rows",
+          "Press Release: no rows"
+        ],
+        "requests": 34
+      }
+    }
+  ],
+  "missing_days": [
+    {
+      "name": "bse_announcements",
+      "segment": "equity",
+      "day": "2026-10-27"
+    },
+    {
+      "name": "bse_announcements",
+      "segment": "equity",
+      "day": "2026-10-28"
+    },
+    {
+      "name": "nse_announcements",
+      "segment": "equities",
+      "day": "2026-10-27"
+    },
+    {
+      "name": "nse_announcements",
+      "segment": "equities",
+      "day": "2026-10-28"
+    },
+    {
+      "name": "nse_announcements",
+      "segment": "sme",
+      "day": "2026-10-20"
+    },
+    {
+      "name": "nse_announcements",
+      "segment": "sme",
+      "day": "2026-10-21"
+    },
+    {
+      "name": "nse_announcements",
+      "segment": "sme",
+      "day": "2026-10-22"
+    },
+    {
+      "name": "nse_announcements",
+      "segment": "sme",
+      "day": "2026-10-23"
+    },
+    {
+      "name": "nse_announcements",
+      "segment": "sme",
+      "day": "2026-10-24"
+    },
+    {
+      "name": "nse_announcements",
+      "segment": "sme",
+      "day": "2026-10-25"
+    },
+    {
+      "name": "nse_announcements",
+      "segment": "sme",
+      "day": "2026-10-26"
+    },
+    {
+      "name": "nse_announcements",
+      "segment": "sme",
+      "day": "2026-10-27"
+    },
+    {
+      "name": "nse_announcements",
+      "segment": "sme",
+      "day": "2026-10-28"
+    }
+  ],
+  "text_handoff": [
+    {
+      "publication_id": "bede934d-d442-4408-9dce-5da6116d93bb",
+      "document_version_id": "79401354-a09b-471d-97f4-93b0efc755bf",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/PPL_ROID_100012_KMP_Doc.zip",
+      "published_at": "2026-10-08 18:14:12+05:30",
+      "title": "Prakash Pipes Limited has informed the Exchange about Resignation of Director/KMP/SMP",
+      "media_type": "application/zip",
+      "storage_key": "0f/0fb17c82b1c4f997c5464b5b8b099f736c6b71ccdd33ee63f9d23e9673f55a2a",
+      "sha256": "0fb17c82b1c4f997c5464b5b8b099f736c6b71ccdd33ee63f9d23e9673f55a2a",
+      "jsonb_agg": null
+    },
+    {
+      "publication_id": "aea02c13-bd69-4d70-bc49-d343cd0b4cef",
+      "document_version_id": "d68b323c-bab6-4ad1-be2f-55e6b120c64d",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/TRAVELFOOD_ROID_99999_KMP_Doc.zip",
+      "published_at": "2026-10-08 17:33:07+05:30",
+      "title": "Travel Food Services Limited has informed the Exchange about Resignation of Director/KMP/SMP",
+      "media_type": "application/zip",
+      "storage_key": "80/8035acc472c2509b2a3084aaab7594dc45aafd6f7ed4de66a84625a23da74e89",
+      "sha256": "8035acc472c2509b2a3084aaab7594dc45aafd6f7ed4de66a84625a23da74e89",
+      "jsonb_agg": null
+    },
+    {
+      "publication_id": "a4867690-80b6-4ac6-9fc7-5b36bbee9857",
+      "document_version_id": "ebda433c-aea5-46ff-81d5-3ee9dbeb35a7",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SHARDACHIRAG_11082026222032_STX_Intimaiton_Earning_Call_Audio_Recording.zip",
+      "published_at": "2026-08-11 22:21:40+05:30",
+      "title": "Sharda Motor Industries Limited has informed the Exchange about Link of Recording and Audio Recording",
+      "media_type": "application/zip",
+      "storage_key": "29/29ca1e5ef1b500af4aa5cadd48ec55481d6d329e944ff48e3a5c597327215c59",
+      "sha256": "29ca1e5ef1b500af4aa5cadd48ec55481d6d329e944ff48e3a5c597327215c59",
+      "jsonb_agg": null
+    },
+    {
+      "publication_id": "ef53c125-d6cd-4ebe-9d16-1c2bc4bfaf77",
+      "document_version_id": "d4763664-e38a-4699-a00b-61a4166658a5",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/FOCUS_ROSA_99976_KMP_Doc.zip",
+      "published_at": "2026-10-08 13:57:38+05:30",
+      "title": "Focus Lighting and Fixtures Limited has informed the Exchange about Resignation of Statutory Auditor",
+      "media_type": "application/zip",
+      "storage_key": "36/36b2140e1095752433b247425107fb1d3ba0ac08c21780db1f20a06b18e1e118",
+      "sha256": "36b2140e1095752433b247425107fb1d3ba0ac08c21780db1f20a06b18e1e118",
+      "jsonb_agg": null
+    },
+    {
+      "publication_id": "40c70066-975e-4bf9-9723-7802c9aacf2d",
+      "document_version_id": "d5cb06c8-a64e-451a-818b-db10b6458443",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/FOCUS_ROSA_99974_KMP_Doc.zip",
+      "published_at": "2026-10-08 13:56:39+05:30",
+      "title": "Focus Lighting and Fixtures Limited has informed the Exchange about Resignation of Statutory Auditor",
+      "media_type": "application/zip",
+      "storage_key": "65/65f43e79208e9bda75eb9f3ec25565b48518cb9fab976f49860e4c75e7ba1450",
+      "sha256": "65f43e79208e9bda75eb9f3ec25565b48518cb9fab976f49860e4c75e7ba1450",
+      "jsonb_agg": null
+    },
+    {
+      "publication_id": "6fc42a2c-1103-4ecc-ad08-2176c48b7f01",
+      "document_version_id": "f22432b9-6a9a-4c32-92e5-86ef534ce209",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SADBHIN_ROID_99986_KMP_Doc.zip",
+      "published_at": "2026-10-08 16:10:32+05:30",
+      "title": "Sadbhav Infrastructure Project Limited has informed the Exchange about Resignation of Director/KMP/SMP",
+      "media_type": "application/zip",
+      "storage_key": "80/80425a56ecf417637ac706830f284a8dd7259950864be39bfa4e67ff9ae37435",
+      "sha256": "80425a56ecf417637ac706830f284a8dd7259950864be39bfa4e67ff9ae37435",
+      "jsonb_agg": null
+    },
+    {
+      "publication_id": "98d83fde-64f1-4dd6-8bb5-c19d5a4346a8",
+      "document_version_id": "f8416798-78ef-47b2-8280-c790f16dbf65",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/team_bbodade_02092026155952_SHANKARA.zip",
+      "published_at": "2026-09-02 16:03:14+05:30",
+      "title": "Shankara Building Products Limited has submitted to\u00a0 the Exchange a copy of Recommendation on the open offer to the shareholders of the company by Committee of Independent Directors in terms of Regulation 26(7) of SEBI (SAST) Regulations, 2011 (SEBI (SAST) Regulations, 2011)",
+      "media_type": "application/zip",
+      "storage_key": "f4/f4034374b900eadc4feabafbd3cc536960ce808258426e9a309098b22ff77944",
+      "sha256": "f4034374b900eadc4feabafbd3cc536960ce808258426e9a309098b22ff77944",
+      "jsonb_agg": null
+    },
+    {
+      "publication_id": "54fded99-0bcb-4b91-8809-feeef2228e96",
+      "document_version_id": "8d6ce4e7-8d6f-4cb8-a47f-472ddb0f38db",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/BETA_22102026180007_audio.zip",
+      "published_at": "2026-10-22 18:00:14+05:30",
+      "title": "Beta Drugs Limited has informed the Exchange about Link of Recording",
+      "media_type": "application/zip",
+      "storage_key": "67/67c0c019a6a9f3ce545c582f2c93eb9d4ab7de61eea2e50bd377eaef3bdc723c",
+      "sha256": "67c0c019a6a9f3ce545c582f2c93eb9d4ab7de61eea2e50bd377eaef3bdc723c",
+      "jsonb_agg": null
+    },
+    {
+      "publication_id": "2e9c3e91-95d3-407c-bed7-e1bb64f1d000",
+      "document_version_id": "8062365c-dc28-4e4b-a8e4-b2b3b186b3a2",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/RUSTOMJEE_04082026164500_10045028__2_.zip",
+      "published_at": "2026-08-04 16:45:32+05:30",
+      "title": "Keystone Realtors Limited has informed the Exchange about Link of Recording",
+      "media_type": "application/zip",
+      "storage_key": "d4/d4a2046b3b239bd853802d2e2b943c1a54741eb3442822645a7595bc63d982e0",
+      "sha256": "d4a2046b3b239bd853802d2e2b943c1a54741eb3442822645a7595bc63d982e0",
+      "jsonb_agg": null
+    },
+    {
+      "publication_id": "d970a65c-675a-4781-949a-6b54d9e5eaa7",
+      "document_version_id": "c8ac6f04-b5d1-444e-b3cc-3ea0d32e817b",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/vipulr_07092026191306_TBZ_DPS_CoverLetter.zip",
+      "published_at": "2026-09-07 19:15:27+05:30",
+      "title": "Axis Capital Limited (Manager to the Offer) has submitted to the Exchange a Detailed public statement dated September 4, 2026 (the  Detailed Public Statement ) in relation to the open offer to the Public Shareholders (as defined in the Public Announcement) of Tribhovandas Bhimji Zaveri Limited ( Open Offer ).",
+      "media_type": "application/zip",
+      "storage_key": "b6/b6fb9dc544b9c70873c5206a232f87e679a4da77adc7875faad3592e96232b19",
+      "sha256": "b6fb9dc544b9c70873c5206a232f87e679a4da77adc7875faad3592e96232b19",
+      "jsonb_agg": null
+    }
+  ],
+  "results_failed": [
+    {
+      "publication_id": "a0257531-820b-493f-a516-c87f1f6ff91c",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1738910_15102026040914_WEB.xml",
+      "failure_reason": "XBRL: not a results XBRL file (empty, oversized or declares entities)",
+      "published_at": "2026-10-15 16:08:46+05:30",
+      "pipeline_state": "FAILED"
+    },
+    {
+      "publication_id": "9b684515-e401-42ce-813e-aca0842b5c37",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1736455_12102026074754_WEB.xml",
+      "failure_reason": "XBRL: not a results XBRL file (empty, oversized or declares entities)",
+      "published_at": "2026-10-12 19:46:22+05:30",
+      "pipeline_state": "FAILED"
+    },
+    {
+      "publication_id": "e952b2df-5833-425e-8878-1636d530631c",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1740886_17102026052751_WEB.xml",
+      "failure_reason": "XBRL: not a results XBRL file (empty, oversized or declares entities)",
+      "published_at": "2026-10-17 17:27:59+05:30",
+      "pipeline_state": "FAILED"
+    }
+  ]
+}

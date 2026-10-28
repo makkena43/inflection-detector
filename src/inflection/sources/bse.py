@@ -8,7 +8,8 @@ endpoint and parameters, the per-category sweep, weekly windows, attachment URL 
   the CLI routes through ``curl_cffi_transport`` (browser TLS fingerprint) when curl_cffi is
   installed, since api.bseindia.com's Akamai edge rejects plain urllib; Playwright/Selenium
   cookie harvesting and the cookie cache are not ported;
-* the all-category query (``strCat=-1``) is tried first; when it returns nothing the sweep over
+* each calendar day is queried separately: the all-category endpoint can silently return no
+  rows for a multi-day range. The all-category query (``strCat=-1``) is tried first; when it returns nothing the sweep over
   ``CATEGORIES`` runs and the window is PARTIAL (a category subset), never COMPLETE;
 * pages are followed until the reported row count is reached; a page cap makes the window
   TRUNCATED instead of silently stopping (MakroGraph assumed < 50 rows and capped runs at 500);
@@ -37,8 +38,12 @@ PAGE_SIZE = 50
 
 # MakroGraph's sweep list (``_COOKIE_FREE_CATEGORIES``); filings outside these are not listed
 # when the all-category query is unavailable, which is why such windows are PARTIAL.
-CATEGORIES = ("Board Meeting", "Result", "Corp. Action", "AGM/EGM", "Scheme of Arrangement", "Acquisition",
-              "Amalgamation", "Analysts/Institutional Investor Meet", "Press Release")
+# "Company Update" is where BSE files orders, press releases, investor presentations and con-call transcripts
+# (as subcategories); "Others" and "Insider Trading / SAST" complete BSE's current category list (checked 2026-10-19:
+# "Press Release" and "Analysts/Institutional Investor Meet" return nothing as categories any more).
+CATEGORIES = ("Board Meeting", "Result", "Corp. Action", "AGM/EGM", "Company Update", "Others", "Insider Trading / SAST",
+              "New Listing", "Scheme of Arrangement", "Acquisition", "Amalgamation",
+              "Analysts/Institutional Investor Meet", "Press Release")
 
 _TIME_FORMATS = ("%Y-%m-%dT%H:%M:%S.%f", "%Y-%m-%dT%H:%M:%S", "%m/%d/%Y %I:%M:%S %p", "%d/%m/%Y %H:%M:%S",
                  "%Y-%m-%d %H:%M:%S", "%d-%m-%Y %H:%M:%S")
@@ -103,7 +108,7 @@ def _row_count(data) -> Optional[int]:
 
 
 class BSEAnnouncements:
-    def __init__(self, client: Optional[HttpClient] = None, max_pages: int = 40,
+    def __init__(self, client: Optional[HttpClient] = None, max_pages: int = 300,   # Company Update: ~3,000 rows a week, up to ~12,000 in results weeks
                  categories: tuple[str, ...] = CATEGORIES):
         self.client = client or HttpClient()
         self.max_pages, self.categories = max_pages, categories
@@ -135,9 +140,33 @@ class BSEAnnouncements:
             return WindowStatus.EMPTY_UNVERIFIED, [], [f"{category}: no rows"]
         if total is not None and len(rows) < total:
             return WindowStatus.TRUNCATED, rows, [f"{category}: {len(rows)} of {total} rows"]
+        ids = [str(r.get('NEWSID')) for r in rows if isinstance(r, dict) and r.get('NEWSID')]
+        if len(ids) != len(set(ids)):
+            return WindowStatus.PARTIAL, rows, [f"{category}: duplicate IDs across pages; listing may have shifted during pagination"]
         return WindowStatus.COMPLETE, rows, notes
 
     def list_window(self, from_date: date, to_date: date, scrip: str = "") -> WindowResult:
+        if from_date > to_date:
+            raise ValueError("start must not be after end")
+        if from_date < to_date:
+            # The public all-category endpoint returns an empty payload for multi-day
+            # queries even when individual days have thousands of rows. Query each day.
+            days = list(self.iter_range(from_date, to_date, scrip))
+            statuses = {w.status for w in days}
+            status = (WindowStatus.COMPLETE if statuses == {WindowStatus.COMPLETE} else
+                      WindowStatus.TRUNCATED if WindowStatus.TRUNCATED in statuses else
+                      WindowStatus.PARTIAL if any(w.announcements for w in days) else
+                      WindowStatus.BLOCKED if WindowStatus.BLOCKED in statuses else
+                      WindowStatus.FAILED if WindowStatus.FAILED in statuses else
+                      WindowStatus.PARTIAL if WindowStatus.PARTIAL in statuses else WindowStatus.EMPTY_UNVERIFIED)
+            seen = {}
+            for w in days:
+                for a in w.announcements:
+                    seen.setdefault(a.exchange_id, a)
+            return WindowResult("BSE", "equity", from_date, to_date, status,
+                announcements=list(seen.values()),
+                notes=[f"{w.from_date}: {n}" for w in days for n in w.notes],
+                requests=sum(w.requests for w in days))
         before = self.client.requests
         result = WindowResult("BSE", "equity", from_date, to_date, WindowStatus.COMPLETE)
         status, rows, notes = self._query("-1", from_date, to_date, scrip)
@@ -165,6 +194,8 @@ class BSEAnnouncements:
             a = parse_item(row) if isinstance(row, dict) else None
             if a is None:
                 result.notes.append("row without NEWSID skipped")
+                if result.status == WindowStatus.COMPLETE:
+                    result.status = WindowStatus.PARTIAL
             elif a.exchange_id not in seen:
                 seen.add(a.exchange_id)
                 result.announcements.append(a)
@@ -172,4 +203,9 @@ class BSEAnnouncements:
         return result
 
     def list_range(self, start: date, end: date, scrip: str = "") -> list[WindowResult]:
-        return [self.list_window(a, b, scrip) for a, b in week_chunks(start, end)]
+        return list(self.iter_range(start, end, scrip))
+
+    def iter_range(self, start: date, end: date, scrip: str = ""):
+        """Yield each completed day so callers can persist progress before the next request."""
+        for a, b in week_chunks(start, end, days=1):
+            yield self.list_window(a, b, scrip)

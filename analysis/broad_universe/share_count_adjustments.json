@@ -1,0 +1,398 @@
+{
+  "historical": [
+    {
+      "label": "SONATSOFTW",
+      "week": "2022-10-10",
+      "old_pe": 13.42989182389937,
+      "new_pe": 17.906522431865824,
+      "factor": 1.3333333333333333
+    },
+    {
+      "label": "IRISDOREME",
+      "week": "2025-08-25",
+      "old_pe": 22.606768885620816,
+      "new_pe": 45.21353777124163,
+      "factor": 2.0
+    },
+    {
+      "label": "GLOBAL",
+      "week": "2022-10-31",
+      "old_pe": 15.419520535901091,
+      "new_pe": 30.839041071802182,
+      "factor": 2.0
+    },
+    {
+      "label": "GLOBAL",
+      "week": "2025-01-06",
+      "old_pe": 4.439131297971384,
+      "new_pe": 11.097828244928461,
+      "factor": 2.5
+    },
+    {
+      "label": "GRPLTD",
+      "week": "2024-08-12",
+      "old_pe": 20.653632888793034,
+      "new_pe": 82.61453155517214,
+      "factor": 4.0
+    },
+    {
+      "label": "GPTINFRA",
+      "week": "2023-01-16",
+      "old_pe": 5.429728928434762,
+      "new_pe": 10.859457856869524,
+      "factor": 2.0
+    },
+    {
+      "label": "OIL",
+      "week": "2024-08-12",
+      "old_pe": 11.209949597308324,
+      "new_pe": 16.814924395962485,
+      "factor": 1.5
+    },
+    {
+      "label": "LIKHITHA",
+      "week": "2023-01-02",
+      "old_pe": 8.299581864585349,
+      "new_pe": 16.599163729170698,
+      "factor": 2.0
+    },
+    {
+      "label": "ESSENTIA",
+      "week": "2022-02-28",
+      "old_pe": 14.553479421928998,
+      "new_pe": 43.66043826578699,
+      "factor": 3.0
+    },
+    {
+      "label": "GENSOL",
+      "week": "2024-01-01",
+      "old_pe": null,
+      "new_pe": null,
+      "factor": 3.0
+    },
+    {
+      "label": "PDSL",
+      "week": "2023-01-16",
+      "old_pe": null,
+      "new_pe": null,
+      "factor": 5.0
+    },
+    {
+      "label": "ROTO",
+      "week": "2025-07-28",
+      "old_pe": 16.157194451604393,
+      "new_pe": 48.47158335481318,
+      "factor": 3.0
+    },
+    {
+      "label": "NBCC",
+      "week": "2025-01-13",
+      "old_pe": 33.859178556360376,
+      "new_pe": 50.788767834540565,
+      "factor": 1.5
+    },
+    {
+      "label": "PREMIERPOL",
+      "week": "2025-01-13",
+      "old_pe": 5.304014592622618,
+      "new_pe": 26.52007296311309,
+      "factor": 5.0
+    },
+    {
+      "label": "GEEKAYWIRE",
+      "week": "2023-10-16",
+      "old_pe": 0.00023880030065322378,
+      "new_pe": 0.001194001503266119,
+      "factor": 5.0
+    },
+    {
+      "label": "JBMA",
+      "week": "2022-02-07",
+      "old_pe": 23.632969884768084,
+      "new_pe": 59.08242471192021,
+      "factor": 2.5
+    },
+    {
+      "label": "AJOONI",
+      "week": "2022-12-19",
+      "old_pe": null,
+      "new_pe": null,
+      "factor": 5.0
+    },
+    {
+      "label": "NEWGEN",
+      "week": "2024-01-15",
+      "old_pe": 26.235096256884223,
+      "new_pe": 52.470192513768446,
+      "factor": 2.0
+    },
+    {
+      "label": "SUKHJITS",
+      "week": "2024-11-11",
+      "old_pe": 7.74437700386954,
+      "new_pe": 15.48875400773908,
+      "factor": 2.0
+    },
+    {
+      "label": "SHARDAMOTR",
+      "week": "2021-06-21",
+      "old_pe": 5.961753648184686,
+      "new_pe": 29.80876824092343,
+      "factor": 5.0
+    },
+    {
+      "label": "VERTOZ",
+      "week": "2024-07-29",
+      "old_pe": 3.049713910041572,
+      "new_pe": 60.99427820083144,
+      "factor": 20.0
+    },
+    {
+      "label": "SPLPETRO",
+      "week": "2023-01-23",
+      "old_pe": null,
+      "new_pe": null,
+      "factor": 2.0
+    },
+    {
+      "label": "FOCUS",
+      "week": "2023-12-18",
+      "old_pe": 6.774081932514076,
+      "new_pe": 33.87040966257038,
+      "factor": 5.0
+    },
+    {
+      "label": "APOLLO",
+      "week": "2023-05-29",
+      "old_pe": 3.8592757143923797,
+      "new_pe": 38.5927571439238,
+      "factor": 10.0
+    },
+    {
+      "label": "FINPIPE",
+      "week": "2021-04-26",
+      "old_pe": 3.8691779975402323,
+      "new_pe": 19.345889987701163,
+      "factor": 5.0
+    },
+    {
+      "label": "EASEMYTRIP",
+      "week": "2022-11-07",
+      "old_pe": 9.688670744233821,
+      "new_pe": 77.50936595387057,
+      "factor": 8.0
+    },
+    {
+      "label": "VISAKAIND",
+      "week": "2023-07-03",
+      "old_pe": 13.810391400169072,
+      "new_pe": 69.05195700084536,
+      "factor": 5.0
+    },
+    {
+      "label": "BDL",
+      "week": "2024-06-24",
+      "old_pe": 101.52067103342046,
+      "new_pe": 203.0413420668409,
+      "factor": 2.0
+    },
+    {
+      "label": "SUMEETINDS",
+      "week": "2025-11-24",
+      "old_pe": 1.693933202589838,
+      "new_pe": 8.46966601294919,
+      "factor": 5.0
+    },
+    {
+      "label": "MONARCH",
+      "week": "2024-09-30",
+      "old_pe": 9.610181392717339,
+      "new_pe": 19.220362785434677,
+      "factor": 2.0
+    },
+    {
+      "label": "LIBAS",
+      "week": "2021-06-21",
+      "old_pe": null,
+      "new_pe": null,
+      "factor": 1.2
+    },
+    {
+      "label": "UNIVASTU",
+      "week": "2025-12-01",
+      "old_pe": 4.726352421688552,
+      "new_pe": 14.179057265065655,
+      "factor": 3.0
+    },
+    {
+      "label": "IRB",
+      "week": "2023-02-20",
+      "old_pe": 2.9834422051141454,
+      "new_pe": 29.834422051141452,
+      "factor": 10.0
+    },
+    {
+      "label": "KELLTONTEC",
+      "week": "2025-09-08",
+      "old_pe": 3.057962876022511,
+      "new_pe": 15.289814380112555,
+      "factor": 5.0
+    },
+    {
+      "label": "HATSUN",
+      "week": "2021-01-11",
+      "old_pe": 74.49438768782514,
+      "new_pe": 99.32585025043352,
+      "factor": 1.3333333333333333
+    },
+    {
+      "label": "SKYGOLD",
+      "week": "2025-01-13",
+      "old_pe": 5.4205851509936815,
+      "new_pe": 54.205851509936814,
+      "factor": 10.0
+    },
+    {
+      "label": "NESTLEIND",
+      "week": "2024-01-01",
+      "old_pe": null,
+      "new_pe": null,
+      "factor": 10.0
+    },
+    {
+      "label": "SALASAR",
+      "week": "2024-01-22",
+      "old_pe": 21.825893137263687,
+      "new_pe": 109.12946568631844,
+      "factor": 5.0
+    },
+    {
+      "label": "GAEL",
+      "week": "2024-04-29",
+      "old_pe": 10.645363625138907,
+      "new_pe": 21.290727250277815,
+      "factor": 2.0
+    },
+    {
+      "label": "COCHINSHIP",
+      "week": "2024-01-29",
+      "old_pe": 18.787703380159552,
+      "new_pe": 37.575406760319105,
+      "factor": 2.0
+    },
+    {
+      "label": "KPIGREEN",
+      "week": "2024-09-16",
+      "old_pe": 26.77447797251513,
+      "new_pe": 53.54895594503026,
+      "factor": 2.0
+    },
+    {
+      "label": "AAKASH",
+      "week": "2022-02-28",
+      "old_pe": null,
+      "new_pe": null,
+      "factor": 10.0
+    }
+  ],
+  "latest": [
+    {
+      "label": "MBAPL",
+      "week": null,
+      "old_pe": 46.749186960228684,
+      "new_pe": 233.74593480114342,
+      "factor": 5.0
+    },
+    {
+      "label": "GOODLUCK",
+      "week": null,
+      "old_pe": 8.143914053178795,
+      "new_pe": 24.431742159536384,
+      "factor": 3.0
+    },
+    {
+      "label": "KIRLPNU",
+      "week": null,
+      "old_pe": 16.541285278413426,
+      "new_pe": 33.08257055682685,
+      "factor": 2.0
+    },
+    {
+      "label": "TDPOWERSYS",
+      "week": null,
+      "old_pe": 45.09416081533326,
+      "new_pe": 90.18832163066652,
+      "factor": 2.0
+    },
+    {
+      "label": "MOLDTKPAC",
+      "week": null,
+      "old_pe": 14.260877820236008,
+      "new_pe": 28.521755640472016,
+      "factor": 2.0
+    },
+    {
+      "label": "POCL",
+      "week": null,
+      "old_pe": 23.60262748167412,
+      "new_pe": 59.0065687041853,
+      "factor": 2.5
+    },
+    {
+      "label": "BLSE",
+      "week": null,
+      "old_pe": 23.34921264008838,
+      "new_pe": 46.69842528017676,
+      "factor": 2.0
+    },
+    {
+      "label": "HARDWYN",
+      "week": null,
+      "old_pe": 36.20451726863577,
+      "new_pe": 50.686324176090075,
+      "factor": 1.4
+    },
+    {
+      "label": "PGIL",
+      "week": null,
+      "old_pe": 19.481710637227398,
+      "new_pe": 38.963421274454795,
+      "factor": 2.0
+    },
+    {
+      "label": "SIYSIL",
+      "week": null,
+      "old_pe": 10.318986212366807,
+      "new_pe": 41.27594484946723,
+      "factor": 4.0
+    },
+    {
+      "label": "GOLDIAM",
+      "week": null,
+      "old_pe": 16.374109926585092,
+      "new_pe": 21.83214656878012,
+      "factor": 1.3333333333333333
+    },
+    {
+      "label": "MOLDTECH",
+      "week": null,
+      "old_pe": 17.24413732795985,
+      "new_pe": 34.4882746559197,
+      "factor": 2.0
+    },
+    {
+      "label": "TVSHLTD",
+      "week": null,
+      "old_pe": 11.752284573104816,
+      "new_pe": 552.3573749359264,
+      "factor": 47.0
+    },
+    {
+      "label": "KRISHANA",
+      "week": null,
+      "old_pe": 30.984348300529035,
+      "new_pe": 154.92174150264518,
+      "factor": 5.0
+    }
+  ]
+}

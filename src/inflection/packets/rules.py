@@ -6,14 +6,20 @@ pass-through of external awards made to a group entity; 3.2 sizes an order with 
 its quantity at a conservative unit price; 3.3 (after February 2021) says balance-sheet amounts
 never size an event and a deep-research pick needs a numeric size.  There is no weekly limit on picks.  A change to the text
 needs a new ``TRIAGE_RULES_VERSION``, so results can be compared across versions.
+
+Version 3.4 (2026-10-20, after the 2021-2025 backtest): a routine order is not rejected when the company has a thin
+operating margin (OPM < 10%) or is cheaply valued (market cap < 1.5x revenue): those routine orders beat the index as
+often as our picks did.  Packets for 3.4 carry a computed valuation-and-margin section.  Both versions stay available:
+INFLECTION_TRIAGE_RULES=3.3 selects the old text (default 3.4).
 """
 
-TRIAGE_RULES_VERSION = "triage-rules-3.3"
+import os
+
 ACTIONS = ("DEEP_RESEARCH", "WATCH_MILESTONE", "REJECT_WITH_REASON", "DATA_REPAIR")
 DISQUALIFIERS = ("ONE_OFF", "STRESSED", "FATAL_FLAW", "INTERNAL_DEMAND", "ALREADY_RESEARCHED")
 SIZE_BASES = ("STATED", "ESTIMATED_FROM_QUANTITY", "UNKNOWN")
 
-RULES = """\
+RULES_3_3 = """\
 You are triaging an Indian listed company for an earnings-inflection research desk. The goal: detect a
 material, credible change in the company's future earnings before its full contribution appears in reported
 results — a change in the company's trajectory, not business as usual. Deep research is where open questions
@@ -97,3 +103,69 @@ Then:
 
 This is triage, not investment research: you may not recommend buying. Unknown is an acceptable answer: list it
 under missing_information. Do not cite anything not shown here or read with the page command."""
+
+
+_ROUTINE_33 = """     it is one of several similar orders in its recent history. Routine orders are not inflections even if large."""
+_ROUTINE_34 = """     it is one of several similar orders in its recent history. Routine orders are not inflections even if large —
+     EXCEPT when the packet's "Valuation and margin" section shows a thin operating margin (TTM OPM below 10%) or a
+     cheap valuation (market cap below 1.5x TTM revenue). Then a large routine order can still lift earnings and the
+     rating: set routine=true but decide as if it were not routine, and say so in the rationale."""
+_DEEP_33 = """- **DEEP_RESEARCH** — FIRM, company-specific, ≥ 10% of annual revenue (or a clearly new revenue stream that
+  plausibly reaches that), NOT ROUTINE, and no disqualifier."""
+_DEEP_34 = """- **DEEP_RESEARCH** — FIRM, company-specific, ≥ 10% of annual revenue (or a clearly new revenue stream that
+  plausibly reaches that), NOT ROUTINE (or routine under the thin-margin / cheap-valuation exception in step 3), and
+  no disqualifier."""
+assert _ROUTINE_33 in RULES_3_3 and _DEEP_33 in RULES_3_3
+RULES_3_4 = RULES_3_3.replace(_ROUTINE_33, _ROUTINE_34).replace(_DEEP_33, _DEEP_34)
+
+# 3.5 (2026-10-21): same decision rule as 3.4; packets add an "Ownership and other signals" section (shareholding
+# pattern, PLI approvals, capacity / production / rating / preferential-issue filings) as context only.
+_SOURCES_35 = """
+Context only: the "Ownership and other signals" section (promoter, mutual fund and foreign holdings, promoter
+pledges, PLI approvals, government programmes the company has orders under, capacity-added / production-started,
+credit-rating and preferential-issue filings) does not make an event firm, large or new. Use it to judge whether
+the change is real (e.g. capacity commissioned, rating upgraded, promoters or funds adding, an order under a large
+funded programme that can repeat) and say so in the rationale; a commissioned capacity can itself be the
+new-revenue trigger, sized as ESTIMATED_FROM_QUANTITY."""
+RULES_3_5_0 = RULES_3_4 + "\n" + _SOURCES_35
+
+# 3.5.1 (2026-10-25): within the thin-margin / cheap-valuation exception, a routine order goes to deep research only
+# when TTM revenue is already growing (exception-parameter study 2021-25: firm + growth +34% 12m vs Smallcap 250,
+# rest +7%).  Selected by INFLECTION_TRIAGE_RULES=3.5; the original 3.5 text stays available as 3.5.0.
+_ROUTINE_351 = _ROUTINE_34 + """
+     Under this exception, send it to DEEP_RESEARCH only if the order is firm and TTM revenue growth in the
+     "Valuation and margin" section is above 0%; if revenue growth is zero or negative, use WATCH_MILESTONE (the next
+     milestone is revenue turning up). If revenue growth is not shown, decide as above and list it as missing."""
+RULES_3_5 = RULES_3_5_0.replace(_ROUTINE_34, _ROUTINE_351)
+assert _ROUTINE_351 in RULES_3_5
+
+_AUDIT_36 = """
+
+### Evidence audit safeguards
+
+- Establish related-party status relative to THIS issuer. A customer's description as a named third-party
+  group company (for example, a Tata Group company) is not evidence that it belongs to the issuer's group.
+  Read the explicit related-party and promoter-interest answers in the order annexure. If prose and annexure
+  conflict, use WATCH_MILESTONE for source verification; never reject every event because one event is related.
+- Keep individual awards, quarterly intake, annual intake, backlog, capacity and capex separate. Period totals
+  cannot populate size_pct_of_revenue for a single award. Cite the reporting duration and source for comparisons.
+- A routine individual order can coexist with a changing business cycle. If comparable, dated backlog or intake
+  is rising AND disclosed revenue or operating margin is improving, retain a WATCH_MILESTONE for cycle research
+  even if no individual award qualifies. State the next operating confirmation needed. This does not establish
+  a firm new contract, justify an invented order size, or automatically qualify for DEEP_RESEARCH.
+- Check the selected event's publication and completion dates. A completed or cancelled award is not a fresh
+  trigger. Do not reuse an old award after its stated completion date without a dated execution update.
+- Review every viable external event separately. An internal or cancelled event cannot veto another eligible
+  external award. State which event supports the decision and which evidence is excluded.
+"""
+RULES_3_6 = RULES_3_5 + _AUDIT_36
+
+VERSIONS = {"3.3": ("triage-rules-3.3", RULES_3_3), "3.4": ("triage-rules-3.4", RULES_3_4),
+            "3.5.0": ("triage-rules-3.5", RULES_3_5_0), "3.5": ("triage-rules-3.5.1", RULES_3_5),
+            "3.6": ("triage-rules-3.6", RULES_3_6)}
+ACTIVE = os.environ.get("INFLECTION_TRIAGE_RULES", "3.4")
+if ACTIVE not in VERSIONS:
+    raise ValueError(f"INFLECTION_TRIAGE_RULES must be one of {sorted(VERSIONS)}, not {ACTIVE!r}")
+TRIAGE_RULES_VERSION, RULES = VERSIONS[ACTIVE]
+WITH_VALUATION = ACTIVE != "3.3"          # 3.4 packets carry the computed valuation-and-margin section
+WITH_SOURCES = ACTIVE not in ("3.3", "3.4")   # 3.5 packets also carry the ownership-and-other-signals section

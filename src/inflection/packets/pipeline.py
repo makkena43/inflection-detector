@@ -28,6 +28,8 @@ from ..commercial import vocabulary as CV
 from ..financial.pipeline import _SYMBOL
 from ..queue import LABEL
 from ..states import PublicationBasis, RunMode
+from .. import orderbook, programmes, shareholding
+from ..triage.pipeline import base_until, run_tag
 from . import contents as C
 
 CREATED_BY = "inflection.packets"
@@ -47,8 +49,8 @@ def _items(conn, week_start: date, symbol: Optional[str] = None) -> list[dict]:
                    {LABEL.format(col='i.issuer_id')}, iss.legal_name, {_SYMBOL.format(col='i.issuer_id')} IS NOT NULL
               FROM triage_shortlist_items i JOIN triage_shortlists s USING (shortlist_id)
               JOIN issuers iss USING (issuer_id)
-             WHERE s.week_start = %s AND i.position IS NOT NULL
-             ORDER BY i.position""", (week_start,)).fetchall()
+             WHERE s.week_start = %s AND s.run_tag = %s AND i.position IS NOT NULL
+             ORDER BY i.position""", (week_start, run_tag())).fetchall()
     keys = ("shortlist_id", "week_start", "cutoff", "mode", "policy_version", "policy_hash", "issuer_id", "slot",
             "position", "priority", "corroborated", "waiting_since", "stale", "reason", "note", "evaluation_ids",
             "trigger_event_version_ids", "label", "name", "has_symbol")
@@ -85,7 +87,8 @@ def _prior_triage(conn, it: dict) -> Optional[dict]:
         """SELECT s.week_start, i.triage_action, i.triage_note
              FROM triage_shortlist_items i JOIN triage_shortlists s USING (shortlist_id)
             WHERE i.issuer_id = %s AND i.triage_action IS NOT NULL AND s.cutoff < %s AND i.triaged_at <= %s
-            ORDER BY s.cutoff DESC LIMIT 1""", (it["issuer_id"], it["cutoff"], it["cutoff"])).fetchone()
+              AND (s.run_tag = %s OR (s.run_tag = 'base' AND s.cutoff <= %s))
+            ORDER BY s.cutoff DESC LIMIT 1""", (it["issuer_id"], it["cutoff"], it["cutoff"], run_tag(), base_until())).fetchone()
     return dict(week_start=r[0].isoformat(), action=r[1], note=r[2]) if r else None
 
 
@@ -108,7 +111,9 @@ def _events(conn, it: dict) -> list[dict]:
                         previous_stage=r[18], counterparty=r[5], relationship=(r[15] or {}).get("relationship"),
                         amount=f"{r[6]:f} {r[7]} {r[8]}" if r[6] is not None else None, amount_basis=r[9],
                         observation_status=r[10], ownership_scope=r[11], contradiction_status=r[12],
-                        deadline=r[13].isoformat() if r[13] else None, novelty=r[14], published_at=C.ist(r[16])))
+                        deadline=r[13].isoformat() if r[13] else None, novelty=r[14], published_at=C.ist(r[16]),
+                        details={k: v for k, v in (r[15] or {}).items()
+                                 if k in ('relationship_conflict', 'relationship_source', 'deadline')}))
     return out
 
 
@@ -194,8 +199,9 @@ def _facts(conn, it: dict) -> list[dict]:
     rows = conn.execute(
         """SELECT metric, period_type, period_end, scope, value, currency, scale, value_kind, missing_reason,
                   available_at, recorded_at, publication_id
-             FROM financial_facts
+             FROM financial_facts_asof
             WHERE issuer_id = %s AND segment IS NULL AND scope IN ('CONSOLIDATED', 'STANDALONE')
+              AND (NOT cumulative OR period_type='ANNUAL')
               AND period_type IN ('QUARTER', 'ANNUAL') AND metric = ANY(%s)
               AND available_at IS NOT NULL AND available_at <= %s
             ORDER BY available_at, recorded_at, fact_id""",
@@ -240,8 +246,49 @@ def packet_for(conn, it: dict, budget: int = C.TOKEN_BUDGET) -> tuple[dict, str]
     shares = fin.get("shares", {}).pop("base", None) if fin.get("status") == "FOUND" else None
     prices, actions = _prices(conn, it)
     price = C.price_summary(prices, actions, it["cutoff"].astimezone(IST).date(), shares)
+    ob = orderbook.series(conn, it["issuer_id"], it["cutoff"]) if C.R.WITH_VALUATION else None
+    own = _ownership(conn, it) if C.R.WITH_SOURCES else None
     return C.build(it, _identity(conn, it), evaluations, _prior_triage(conn, it), _events(conn, it), passages,
-                   _documents(conn, it, evaluations, passages), fin, price, excluded, budget)
+                   _documents(conn, it, evaluations, passages), fin, price, excluded, budget, order_book=ob, ownership=own)
+
+
+SIGNAL_CATEGORIES = ["capacity addition", "commencement of commercial production/operations", "credit rating",
+                     "credit rating- revision", "credit rating- new", "credit rating- others", "preferential issue",
+                     "allotment of warrants", "acquisition", "scheme of arrangement", "amalgamation/merger"]
+
+
+def _ownership(conn, it: dict) -> dict:
+    """Shareholding by quarter, PLI approvals, government programmes the company had named, and recent signal
+    filings, all public by the cutoff."""
+    pli = conn.execute(
+        """SELECT approval_date, scheme, tranche, committed_investment_cr, product_segment, source_url FROM pli_beneficiaries
+            WHERE issuer_id = %s AND approval_date <= %s ORDER BY approval_date""",
+        (it["issuer_id"], it["cutoff"].astimezone(IST).date())).fetchall()
+    sig = conn.execute(
+        """SELECT DISTINCT ON (p.publication_id) p.published_at, coalesce(nullif(lower(p.original_subcategory), ''), lower(p.original_category)),
+                  p.title, ta.text_artifact_id
+             FROM document_publications p LEFT JOIN text_artifacts ta USING (document_version_id)
+            WHERE p.issuer_id = %s AND p.published_at <= %s AND p.published_at > %s - interval '365 days'
+              AND (lower(coalesce(p.original_category, '')) = ANY(%s) OR lower(coalesce(p.original_subcategory, '')) = ANY(%s))
+            ORDER BY p.publication_id""",
+        (it["issuer_id"], it["cutoff"], it["cutoff"], SIGNAL_CATEGORIES, SIGNAL_CATEGORIES)).fetchall()
+    return dict(
+        shareholding=shareholding.series(conn, it["issuer_id"], it["cutoff"]),
+        programmes=programmes.exposure(conn, it["issuer_id"], it["cutoff"]),
+        pli=[dict(approval_date=d.isoformat(), scheme=sc, tranche=t, committed_investment_cr=float(c) if c is not None else None,
+                  product_segment=ps, source_url=u) for d, sc, t, c, ps, u in pli],
+        signal_filings=_dedupe_signals(sig))
+
+
+def _dedupe_signals(rows) -> list[dict]:
+    """Newest first, one per day and category (NSE and BSE copies of one filing), the read copy preferred."""
+    best = {}
+    for pub, cat, title, ta in rows:
+        k = (pub.astimezone(IST).date(), cat.replace("- revision", "").replace("- new", "").replace("- others", "").strip())
+        if k not in best or (ta and not best[k][3]):
+            best[k] = (pub, cat, title, ta)
+    return [dict(published_at=C.ist(pub), category=cat, title=(title or "")[:200], text_artifact_id=str(ta) if ta else None)
+            for pub, cat, title, ta in sorted(best.values(), key=lambda r: r[0], reverse=True)[:15]]
 
 
 def _latest(conn, shortlist_id, issuer_id):
@@ -257,7 +304,7 @@ def _week(day: date) -> date:
 
 def assemble(conn, day: date, symbol: Optional[str] = None, budget: int = C.TOKEN_BUDGET) -> dict:
     week_start = _week(day)
-    if conn.execute("SELECT 1 FROM triage_shortlists WHERE week_start = %s", (week_start,)).fetchone() is None:
+    if conn.execute("SELECT 1 FROM triage_shortlists WHERE week_start = %s AND run_tag = %s", (week_start, run_tag())).fetchone() is None:
         return dict(week_start=week_start.isoformat(), error="no shortlist for this week; run triage build first")
     items = _items(conn, week_start, symbol)
     if symbol and not items:

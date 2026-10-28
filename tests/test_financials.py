@@ -120,16 +120,41 @@ def test_entry_dates_come_from_the_exchange_dissemination_time():   # ported
 def test_listing_statuses():
     c, t = client({"period=Quarterly": [(200, [entry(1), {**entry(2), "xbrl": "-"}])],
                    "period=Half-Yearly": [(200, [])], "period=Annual": [(200, [entry(1), entry(3)])],
-                   "nseindia.com": [(200, b"")]})
+                   "integrated-filing-results": [(200, {"data": [], "totalCount": 0})], "nseindia.com": [(200, b"")]})
     r = NSEResultsListing(c).list_symbol("RAIN")
     assert r.status == WindowStatus.COMPLETE and [e.external_id for e in r.entries] == ["INDAS_1", "INDAS_3"]
     assert r.notes == ["1 listed filings have no XBRL file"]
     assert any("symbol=RAIN" in u and "index=equities" in u for u in t.calls)
     c, _ = client({"period=Annual": [(403, b"")], "corporates-financial-results": [(200, [entry(1)])],
-                   "nseindia.com": [(200, b"")]})
+                   "integrated-filing-results": [(200, {"data": []})], "nseindia.com": [(200, b"")]})
     assert NSEResultsListing(c).list_symbol("RAIN").status == WindowStatus.PARTIAL
-    c, _ = client({"corporates-financial-results": [(200, b"<html>challenge</html>")], "nseindia.com": [(200, b"")]})
+    c, _ = client({"corporates-financial-results": [(200, b"<html>challenge</html>")],
+                   "integrated-filing-results": [(200, b"<html>challenge</html>")], "nseindia.com": [(200, b"")]})
     assert NSEResultsListing(c).list_symbol("RAIN").status == WindowStatus.BLOCKED
+
+
+def integrated(n, qe="30-JUN-2025", kind="Integrated Filing- Financials", cons="Consolidated"):
+    return {"xbrl": f"https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_{n}_WEB.xml",
+            "qe_Date": qe, "broadcast_Date": "11-Aug-2025 17:28:06", "consolidated": cons, "type": kind}
+
+
+def test_integrated_filings_extend_the_listing_past_2024():
+    rows = [integrated(1), integrated(2, kind="Integrated Filing- Governance"), integrated(3, qe="31-MAR-2025")]
+    c, t = client({"corporates-financial-results": [(200, [entry(1)])],
+                   "integrated-filing-results": [(200, {"data": rows, "totalCount": 3})], "nseindia.com": [(200, b"")]})
+    r = NSEResultsListing(c).list_symbol("RAIN")
+    assert r.status == WindowStatus.COMPLETE
+    got = {e.external_id: e for e in r.entries}
+    assert set(got) == {"INDAS_1", "INTEGRATED_FILING_INDAS_1_WEB", "INTEGRATED_FILING_INDAS_3_WEB"}
+    e = got["INTEGRATED_FILING_INDAS_1_WEB"]
+    assert (e.from_date, e.to_date, e.listing_period) == (date(2025, 4, 1), date(2025, 6, 30), "Integrated")
+    assert e.disseminated_at == datetime(2025, 8, 11, 17, 28, 6, tzinfo=IST)
+    assert got["INTEGRATED_FILING_INDAS_3_WEB"].from_date == date(2025, 1, 1)
+    assert any("integrated-filing-results" in u and "size=200" in u for u in t.calls)
+    c, _ = client({"corporates-financial-results": [(200, [entry(1)])],
+                   "integrated-filing-results": [(200, {"data": rows[:1], "totalCount": 40})], "nseindia.com": [(200, b"")]})
+    r = NSEResultsListing(c).list_symbol("RAIN")
+    assert r.status == WindowStatus.PARTIAL and any("1 of 40" in n for n in r.notes)
 
 
 def test_window_is_period_end_from_and_public_by():
@@ -152,7 +177,7 @@ def _company(db):
 def test_list_and_load_into_financial_facts(db, tmp_path):
     issuer = _company(db)
     listing = {"period=Quarterly": [(200, [entry(1), entry(2, to="31-Dec-2020"), entry(3)])],
-               "period=Half-Yearly": [(200, [])], "period=Annual": [(200, [])], "nseindia.com": [(200, b"")]}
+               "period=Half-Yearly": [(200, [])], "period=Annual": [(200, [])], "integrated-filing-results": [(200, {"data": []})], "nseindia.com": [(200, b"")]}
     c, _ = client(listing)
     w = (date(2021, 1, 1), date(2024, 11, 30))
     counts = financials.list_results(db, c, *w)
@@ -237,3 +262,35 @@ def test_parallel_load_stores_each_filing_once(db, tmp_path):
     assert financials.load_pending(db, Archive(tmp_path / "parallel"), download_client(),
                                   workers=2, client_factory=download_client) == {}
     assert db.execute("SELECT count(*) FROM financial_facts").fetchone()[0] == count
+
+
+def test_large_integrated_results_and_late_entity_declarations():
+    body=filing().replace(b'</xbrli:xbrl>', b'<!--'+b'x'*7_000_000+b'--></xbrli:xbrl>')
+    assert len(parse_results_xbrl(body).figures)==len(parse_results_xbrl(filing()).figures)
+    attack=b'<?xml version="1.0"?>'+b' '*6000+b'<!DOCTYPE x [<!ENTITY a "b">]><x/>'
+    assert 'DTD' in parse_results_xbrl(attack).issues[0]
+    assert 'DTD' in parse_results_xbrl(attack.decode().encode('utf-16')).issues[0]
+    from inflection.sources.xbrl import MAX_BYTES
+    assert 'resource limit' in parse_results_xbrl(b'x'*(MAX_BYTES+1)).issues[0]
+
+
+def test_explicit_reparse_uses_verified_archive_and_keeps_first_ingestion(db,tmp_path,monkeypatch):
+    _company(db)
+    listing,_=client({'period=Quarterly':[(200,[entry(1)])],
+        'corporates-financial-results':[(200,[])],'nseindia.com':[(200,b'')]})
+    financials.list_results(db,listing,date(2021,1,1),date(2024,11,30))
+    archive=Archive(tmp_path/'a')
+    real=financials.parse_results_xbrl
+    from inflection.sources.xbrl import ParsedFiling
+    monkeypatch.setattr(financials,'parse_results_xbrl',lambda *a:ParsedFiling([],['old parser limit']))
+    dl,_=client({'INDAS_1.xml':[(200,filing())]})
+    assert financials.load_pending(db,archive,dl)['NO_FIGURES']==1
+    before=db.execute('SELECT ingested_at FROM document_publications').fetchone()[0]
+    monkeypatch.setattr(financials,'parse_results_xbrl',real)
+    offline,t=client({})
+    assert financials.load_pending(db,archive,offline,reparse_failed=True)['LOADED']==1
+    assert not t.calls
+    assert db.execute('SELECT ingested_at FROM document_publications').fetchone()[0]==before
+    n=db.execute('SELECT count(*) FROM financial_facts').fetchone()[0]
+    assert financials.load_pending(db,archive,offline,reparse_failed=True)=={}
+    assert db.execute('SELECT count(*) FROM financial_facts').fetchone()[0]==n

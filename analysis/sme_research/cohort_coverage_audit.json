@@ -1,0 +1,100 @@
+{
+  "shortlist_stages": [
+    {
+      "cohort_year": 2023,
+      "slot": "COOLDOWN",
+      "n": 11,
+      "issuers": 3
+    },
+    {
+      "cohort_year": 2023,
+      "slot": "RANKED",
+      "n": 203,
+      "issuers": 47
+    },
+    {
+      "cohort_year": 2023,
+      "slot": "WATCH",
+      "n": 521,
+      "issuers": 29
+    },
+    {
+      "cohort_year": 2024,
+      "slot": "AUDIT",
+      "n": 2,
+      "issuers": 2
+    },
+    {
+      "cohort_year": 2024,
+      "slot": "COOLDOWN",
+      "n": 6,
+      "issuers": 2
+    },
+    {
+      "cohort_year": 2024,
+      "slot": "RANKED",
+      "n": 405,
+      "issuers": 82
+    },
+    {
+      "cohort_year": 2024,
+      "slot": "WATCH",
+      "n": 2626,
+      "issuers": 87
+    },
+    {
+      "cohort_year": 2025,
+      "slot": "AUDIT",
+      "n": 9,
+      "issuers": 6
+    },
+    {
+      "cohort_year": 2025,
+      "slot": "COOLDOWN",
+      "n": 93,
+      "issuers": 31
+    },
+    {
+      "cohort_year": 2025,
+      "slot": "RANKED",
+      "n": 894,
+      "issuers": 224
+    },
+    {
+      "cohort_year": 2025,
+      "slot": "WATCH",
+      "n": 7115,
+      "issuers": 177
+    }
+  ],
+  "packets": [
+    {
+      "cohort_year": 2023,
+      "n": 200,
+      "issuers": 46,
+      "first_built": "2026-10-20 21:23:45.174993+05:30",
+      "last_built": "2026-10-21 20:32:50.991747+05:30"
+    },
+    {
+      "cohort_year": 2024,
+      "n": 410,
+      "issuers": 84,
+      "first_built": "2026-10-20 21:23:33.812357+05:30",
+      "last_built": "2026-10-22 01:04:47.629376+05:30"
+    },
+    {
+      "cohort_year": 2025,
+      "n": 667,
+      "issuers": 189,
+      "first_built": "2026-10-19 01:29:01.927772+05:30",
+      "last_built": "2026-10-22 03:10:00.507206+05:30"
+    },
+    {
+      "cohort_year": 2026,
+      "n": 140,
+      "issuers": 137,
+      "first_built": "2026-10-20 10:21:14.122435+05:30",
+      "last_built": "2026-10-22 03:27:05.895046+05:30"
+    }
+  ]
+}

@@ -79,7 +79,7 @@ def _weekly_counts(conn, sql: str, params: dict) -> dict:
     return {r[0]: r[1] for r in conn.execute(sql, params).fetchall()}
 
 
-def _coverage(conn, first: date, last: date) -> dict:
+def _coverage(conn, first: date, last: date, mode: str = 'PUBLIC_INFORMATION_RECONSTRUCTION') -> dict:
     """Counts per Monday: announcements, results filings and price days by exchange."""
     lo = datetime.combine(first, datetime.min.time(), tzinfo=IST)
     hi = datetime.combine(last + timedelta(days=7), datetime.min.time(), tzinfo=IST)
@@ -88,10 +88,11 @@ def _coverage(conn, first: date, last: date) -> dict:
                 WHERE s.name = ANY(%(names)s)
                   AND coalesce(p.published_at, p.published_date::timestamp AT TIME ZONE 'Asia/Kolkata') >= %(lo)s
                   AND coalesce(p.published_at, p.published_date::timestamp AT TIME ZONE 'Asia/Kolkata') < %(hi)s
+                  AND (%(actual)s=false OR p.ingested_at < (({week}+7)::timestamp AT TIME ZONE 'Asia/Kolkata'))
                 GROUP BY 1"""
     out = dict(
-        announcements=_weekly_counts(conn, pubs, dict(names=list(ANNOUNCEMENT_SOURCES), lo=lo, hi=hi)),
-        results_filings=_weekly_counts(conn, pubs, dict(names=[XBRL_SOURCE], lo=lo, hi=hi)))
+        announcements=_weekly_counts(conn, pubs, dict(names=list(ANNOUNCEMENT_SOURCES), lo=lo, hi=hi, actual=mode=='ACTUAL_SYSTEM_REPLAY')),
+        results_filings=_weekly_counts(conn, pubs, dict(names=[XBRL_SOURCE], lo=lo, hi=hi, actual=mode=='ACTUAL_SYSTEM_REPLAY')))
     for provider in PROVIDER_ORDER:
         out[f"{provider}_days"] = _weekly_counts(
             conn, """SELECT date_trunc('week', trade_date)::date, count(DISTINCT trade_date) FROM prices
@@ -133,6 +134,7 @@ class Prices:
         self.series: dict = {}
         self.actions: dict = {}
         self.bench: dict = {}
+        self.benchmark_coverage: dict = {}
         self.last_day = dict(conn.execute(
             "SELECT provider, max(trade_date) FROM prices WHERE adjustment = 'UNADJUSTED' GROUP BY 1").fetchall())
 
@@ -174,9 +176,14 @@ class Prices:
     def benchmark(self, provider: str, d1: date, d2: date) -> tuple[Optional[Decimal], int]:
         key = (provider, d1, d2)
         if key not in self.bench:
-            self.bench[key] = self.conn.execute(_UNIVERSE + " SELECT percentile_cont(0.5) WITHIN GROUP (ORDER BY r), "
-                                                "count(*) FROM j WHERE NOT bad",
-                                                dict(p=provider, d1=d1, d2=d2)).fetchone()
+            median_, measured, entered, missing, invalid = self.conn.execute(_UNIVERSE + """
+                SELECT percentile_cont(0.5) WITHIN GROUP (ORDER BY r) FILTER (WHERE NOT bad),
+                       count(*) FILTER (WHERE NOT bad), count(*), count(*) FILTER (WHERE c2 IS NULL),
+                       count(*) FILTER (WHERE bad AND c2 IS NOT NULL) FROM j""",
+                dict(p=provider, d1=d1, d2=d2)).fetchone()
+            self.bench[key] = (median_, measured)
+            self.benchmark_coverage[key] = dict(entry_securities=entered, measured=measured,
+                                               missing_exit=missing, uncertain_actions=invalid)
         m, n = self.bench[key]
         return (Decimal(str(m)).quantize(R.TWO) if m is not None else None), n
 
@@ -184,18 +191,25 @@ class Prices:
 # Every security of one exchange with a close on both days: its split/bonus-adjusted price return,
 # and ``bad`` when a split or bonus in between has no multiplier or is not reconciled.
 _UNIVERSE = """
-WITH a AS (SELECT security_id, close FROM prices
-            WHERE provider = %(p)s AND adjustment = 'UNADJUSTED' AND trade_date = %(d1)s AND close > 0),
-     b AS (SELECT security_id, close FROM prices
-            WHERE provider = %(p)s AND adjustment = 'UNADJUSTED' AND trade_date = %(d2)s AND close > 0),
+WITH a AS (SELECT DISTINCT ON (security_id) security_id, close FROM prices
+            WHERE provider = %(p)s AND adjustment = 'UNADJUSTED' AND trade_date = %(d1)s AND close > 0
+            ORDER BY security_id, recorded_at DESC, provider_version DESC),
+     b AS (SELECT DISTINCT ON (security_id) security_id, close FROM prices
+            WHERE provider = %(p)s AND adjustment = 'UNADJUSTED' AND trade_date = %(d2)s AND close > 0
+            ORDER BY security_id, recorded_at DESC, provider_version DESC),
      j AS (SELECT a.security_id, a.close AS c1, b.close AS c2,
-                  b.close / (a.close * coalesce(f.m, 1)) - 1 AS r, coalesce(f.bad, false) AS bad
-             FROM a JOIN b USING (security_id)
+                  b.close / (a.close * coalesce(f.m, 1)) - 1 AS r,
+                  b.close IS NULL OR coalesce(f.bad, false) AS bad
+             FROM a LEFT JOIN b USING (security_id)
              LEFT JOIN LATERAL (
-                  SELECT exp(sum(ln((x.details->>'price_multiplier')::numeric))) AS m,
-                         bool_or(NOT x.reconciled OR NOT x.details ? 'price_multiplier') AS bad
+                  SELECT exp(sum(CASE WHEN x.kind IN ('SPLIT','BONUS') AND
+                         (x.details->>'price_multiplier')::numeric > 0
+                         THEN ln((x.details->>'price_multiplier')::numeric) END)) AS m,
+                         bool_or(x.kind IN ('RIGHTS','MERGER','DELISTING','DEMERGER') OR
+                             (x.kind IN ('SPLIT','BONUS') AND (NOT x.reconciled OR
+                              coalesce((x.details->>'price_multiplier')::numeric,0) <= 0))) AS bad
                     FROM corporate_actions x
-                   WHERE x.security_id = a.security_id AND x.kind IN ('SPLIT','BONUS')
+                   WHERE x.security_id = a.security_id AND x.kind IN ('SPLIT','BONUS','RIGHTS','MERGER','DELISTING','DEMERGER')
                      AND x.ex_date > %(d1)s AND x.ex_date <= %(d2)s) f ON true)"""
 
 
@@ -230,13 +244,19 @@ def _outcomes(px: Prices, items: list[dict], p: dict) -> list[dict]:
                 bm, n = px.benchmark(provider, o.entry_date, o.exit_date)
                 row.update(benchmark_return=bm, benchmark_count=n,
                            excess_return=(o.price_return - bm) if bm is not None else None)
+                quality = px.benchmark_coverage[(provider, o.entry_date, o.exit_date)]
+                if quality['missing_exit'] or quality['uncertain_actions']:
+                    row['notes'].append(f"benchmark coverage: {quality['measured']}/{quality['entry_securities']} entry securities; "
+                                        f"{quality['missing_exit']} missing exits, {quality['uncertain_actions']} uncertain actions; "
+                                        "survivorship risk remains")
             out.append(row)
     return out
 
 
 # ---------------------------------------------------------------- missed winners
 
-def _winners(conn, px: Prices, items: list[dict], all_lines: dict, first: date, last: date, p: dict) -> list[dict]:
+def _winners(conn, px: Prices, items: list[dict], all_lines: dict, first: date, last: date, p: dict,
+             mode: str = 'PUBLIC_INFORMATION_RECONSTRUCTION') -> list[dict]:
     """Large price moves over the big-move horizon starting each quarter in the interval."""
     days = p["horizons"][p["big_move_horizon"]]
     short = defaultdict(list)
@@ -268,15 +288,17 @@ def _winners(conn, px: Prices, items: list[dict], all_lines: dict, first: date, 
                 lo = d1 - timedelta(days=p["winner_lookback_days"])
                 hi = d1 + timedelta(days=p["winner_lookahead_days"])
                 figures, filings = conn.execute(
-                    """SELECT EXISTS (SELECT 1 FROM financial_facts WHERE issuer_id = %(i)s
-                                         AND available_at BETWEEN %(lo)s AND %(hi)s),
+                    """SELECT EXISTS (SELECT 1 FROM financial_facts_asof WHERE issuer_id = %(i)s
+                                         AND available_at BETWEEN %(lo)s AND %(hi)s
+                                         AND (%(actual)s=false OR recorded_at<=%(hi)s)),
                               EXISTS (SELECT 1 FROM document_publications p JOIN sources s USING (source_id)
                                        WHERE p.issuer_id = %(i)s AND s.name = ANY(%(names)s)
                                          AND coalesce(p.published_at, p.published_date::timestamp
-                                                      AT TIME ZONE 'Asia/Kolkata') BETWEEN %(lo)s AND %(hi)s)""",
+                                                      AT TIME ZONE 'Asia/Kolkata') BETWEEN %(lo)s AND %(hi)s
+                                         AND (%(actual)s=false OR p.ingested_at<=%(hi)s))""",
                     dict(i=issuer, lo=datetime.combine(lo, datetime.min.time(), tzinfo=IST),
                          hi=datetime.combine(hi, datetime.min.time(), tzinfo=IST),
-                         names=list(ANNOUNCEMENT_SOURCES))).fetchone()
+                         names=list(ANNOUNCEMENT_SOURCES),actual=mode=='ACTUAL_SYSTEM_REPLAY')).fetchone()
                 status, when = R.winner_status(short.get(issuer, []), all_lines.get(issuer, []), figures, filings,
                                                d1, p)
                 out.append(dict(window_start=q, security_id=sec, issuer_id=issuer, provider=provider, entry_date=d1,
@@ -311,7 +333,7 @@ def run(conn, first: date, last: date, mode: str = "PUBLIC_INFORMATION_RECONSTRU
         raise ValueError("no complete week in the interval")
     rows = queue.evaluation_rows(conn, None, weeks[-1][1], include_superseded=mode == "ACTUAL_SYSTEM_REPLAY")
     week_rows, items = _queue_weeks(rows, weeks, mode, tp, holdout_from)
-    cov = _coverage(conn, weeks[0][0], weeks[-1][0])
+    cov = _coverage(conn, weeks[0][0], weeks[-1][0], mode)
     for w in week_rows:
         w["coverage"] = dict(evaluations=w.pop("evaluations"),
                              **{k: v.get(w["week_start"], 0) for k, v in cov.items()})
@@ -320,7 +342,7 @@ def run(conn, first: date, last: date, mode: str = "PUBLIC_INFORMATION_RECONSTRU
     queued = defaultdict(list)
     for i in items:
         queued[i["issuer_id"]].append(i["week_start"])
-    winners = _winners(conn, px, items, queued, weeks[0][0], weeks[-1][0], p)
+    winners = _winners(conn, px, items, queued, weeks[0][0], weeks[-1][0], p, mode)
     coverage = _coverage_summary(week_rows, [r for r in rows if r[4] < weeks[-1][1]])
     coverage["prices_last_day"] = {k: v.isoformat() for k, v in px.last_day.items()}
     summary = dict(

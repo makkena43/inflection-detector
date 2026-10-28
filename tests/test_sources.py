@@ -231,3 +231,55 @@ def test_archive_is_idempotent(tmp_path):
     a = Archive(tmp_path)
     first, second = a.put(b"same", "x"), a.put(b"same", "y")
     assert first.path == second.path and len(list(tmp_path.rglob("*"))) == 2   # one dir, one file
+
+
+def test_nse_idless_record_uses_a_stable_visible_source_anchored_identity():
+    row={**NSE_ROW,'seq_id':None}
+    a=nse.parse_item(row,'sme');b=nse.parse_item(dict(row),'sme')
+    assert a.exchange_id==b.exchange_id and a.exchange_id.startswith('derived:')
+    assert a.raw['_id_basis']=='SYMBOL_ATTACHMENT_EXCHANGE_TIME'
+    assert a.raw['seq_id'] is None
+    assert nse.parse_item({**row,'symbol':None},'sme') is None
+
+
+@pytest.mark.parametrize('exchange',['NSE','BSE'])
+def test_unparseable_announcement_prevents_complete_coverage(exchange):
+    if exchange=='NSE':
+        c,_=client({'corporate-announcements':[(200,[NSE_ROW,{'seq_id':None}])],'nseindia.com':[(200,b'')]})
+        w=nse.NSEAnnouncements(c).list_window(date(2026,10,8),date(2026,10,8))
+    else:
+        c,_=client({'AnnSubCategoryGetData':[(200,{'Table':[bse_row(1),{}],'Table1':[{'ROWCNT':2}]})]})
+        w=bse.BSEAnnouncements(c).list_window(date(2026,10,8),date(2026,10,8))
+    assert w.status==WindowStatus.PARTIAL and len(w.announcements)==1
+
+
+def test_bse_ranges_use_daily_queries_and_yield_progress():
+    c,t=client({'AnnSubCategoryGetData':[(200,{'Table':[bse_row(1)],'Table1':[{'ROWCNT':1}]})]})
+    days=bse.BSEAnnouncements(c).iter_range(date(2026,10,8),date(2026,10,9))
+    assert len(t.calls)==0
+    assert next(days).status==WindowStatus.COMPLETE and len(t.calls)==1
+    assert next(days).status==WindowStatus.COMPLETE and len(t.calls)==2
+    from urllib.parse import urlparse,parse_qs
+    for url in t.calls:
+        q=parse_qs(urlparse(url).query)
+        assert q['strPrevDate']==q['strToDate']
+
+
+def test_bse_shifted_pages_are_not_counted_as_complete():
+    c,_=client({'AnnSubCategoryGetData':[
+        (200,{'Table':[bse_row(i) for i in range(50)],'Table1':[{'ROWCNT':51}]}),
+        (200,{'Table':[bse_row(49)],'Table1':[{'ROWCNT':51}]})]})
+    w=bse.BSEAnnouncements(c).list_window(date(2026,10,8),date(2026,10,8))
+    assert w.status==WindowStatus.PARTIAL
+    assert any('duplicate IDs' in x for x in w.notes)
+
+
+def test_bse_a_failed_child_day_cannot_produce_complete_range():
+    from inflection.sources.common import WindowResult
+    class Days(bse.BSEAnnouncements):
+        def iter_range(self,*args):
+            yield WindowResult('BSE','equity',date(2026,10,8),date(2026,10,8),WindowStatus.COMPLETE,
+                              announcements=[bse.parse_item(bse_row(1))])
+            yield WindowResult('BSE','equity',date(2026,10,9),date(2026,10,9),WindowStatus.BLOCKED)
+    w=Days().list_window(date(2026,10,8),date(2026,10,9))
+    assert w.status==WindowStatus.PARTIAL and len(w.announcements)==1

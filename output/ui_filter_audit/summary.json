@@ -1,0 +1,99 @@
+{
+  "entries": 4078,
+  "distinct_stocks": 1955,
+  "picks": 348,
+  "watch": 3730,
+  "eligible_event_rows": 10287,
+  "hidden_eligible_events": 6209,
+  "all_review_rows": 25634,
+  "stock_years_earlier_watch_hidden_by_later_pick": 136,
+  "local_engine_deep_research_excluded": 1008,
+  "local_engine_deep_research_excluded_distinct_stocks": 490,
+  "year_counts": {
+    "2021": 405,
+    "2022": 325,
+    "2023": 550,
+    "2024": 689,
+    "2025": 692,
+    "2026": 1417
+  },
+  "source_dates": [
+    {
+      "last_price": "2026-10-09"
+    }
+  ],
+  "entries_with_unpublished_facts_in_pat_margin": 2077,
+  "pat_margin_entries_checked": 3573,
+  "order_currency_coverage": [
+    {
+      "currency": "INR",
+      "mentions": 9294,
+      "stocks": 872
+    },
+    {
+      "currency": "USD",
+      "mentions": 395,
+      "stocks": 110
+    }
+  ],
+  "basis_pick_counts": {
+    "STATED": 318,
+    "missing": 6,
+    "ESTIMATED_FROM_QUANTITY": 24
+  },
+  "confidence_pick_counts": {
+    "MEDIUM": 237,
+    "LOW": 107,
+    "HIGH": 4
+  },
+  "routine_picks": 42,
+  "unquantified_watch": 3353,
+  "audit_queues": {
+    "Watch for explicit milestone or missing data": 3687,
+    "Research candidate; investment gates still required": 197,
+    "Verify evidence before promotion": 130,
+    "Require proof of acceleration": 21,
+    "Revisit quantified watch milestone": 43
+  },
+  "picks_with_unpublished_pat_facts": 165,
+  "pick_feature_missing": {
+    "mcap_cr": 49,
+    "ps": 102,
+    "opm": 78,
+    "tech_score": 56,
+    "orders_12m_pct": 131,
+    "orders_y1_pct": 131,
+    "promoter_change_pp": 143,
+    "mgmt_target_x": 338
+  },
+  "technical_score_disagreements": 60,
+  "negative_opm_picks_receiving_low_margin_point": 16,
+  "score4_entries": 82,
+  "score4_low_confidence": 25,
+  "score4_routine": 16,
+  "latest_reviews_for_ui_stocks": {
+    "WATCH_MILESTONE": 1070,
+    "REJECT_WITH_REASON": 713,
+    "DEEP_RESEARCH": 172
+  },
+  "descriptive_12m_comparison": {
+    "All picks": {
+      "n": 188,
+      "mean_excess": 0.30946286634445797,
+      "median_excess": 0.0745803916409816,
+      "beat_rate": 0.5797872340425532
+    },
+    "Score >=4": {
+      "n": 59,
+      "mean_excess": 0.3670969416614251,
+      "median_excess": 0.227088488762962,
+      "beat_rate": 0.6610169491525424
+    },
+    "Technicals >=2": {
+      "n": 120,
+      "mean_excess": 0.3953328268257148,
+      "median_excess": 0.2773319164749085,
+      "beat_rate": 0.65
+    }
+  }
+}

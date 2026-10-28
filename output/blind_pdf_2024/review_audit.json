@@ -1,0 +1,17 @@
+{
+  "companies": 38,
+  "counts": {
+    "BUY": 4,
+    "WATCH": 21,
+    "AVOID": 13
+  },
+  "input_directory": "/Users/makkenasrinivas/inflection-jobs/expert/pdf_2024/masked",
+  "external_sources_used": false,
+  "answer_sheet_blank_at_inspection": true,
+  "answer_sheet_original_sha256": "d0638e66b64e75609487abf88c18b7e279f68c1f3e78503512599e44fbac843b",
+  "outputs": [
+    "answers.csv",
+    "verdicts.json",
+    "company_reviews.md"
+  ]
+}

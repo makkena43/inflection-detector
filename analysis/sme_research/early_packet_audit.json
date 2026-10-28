@@ -1,0 +1,47 @@
+{
+  "counts": {
+    "packets": 200,
+    "revenue_present": 0,
+    "key_event_present": 187,
+    "both": 0,
+    "action_WATCH_MILESTONE": 133,
+    "action_REJECT_WITH_REASON": 67
+  },
+  "examples": [
+    {
+      "issuer_id": "c01fe676-4ceb-401a-a4bf-ed16424aefa9",
+      "cutoff": "2023-01-09 00:00:00+05:30",
+      "revenue_present": false,
+      "key_events": 1,
+      "note": "COMMERCIAL_START COMMERCIAL_SHIPMENT no value; firm=True; routine=None; disq=None"
+    },
+    {
+      "issuer_id": "26101c80-34ca-4249-932e-14e601a16a7f",
+      "cutoff": "2023-01-09 00:00:00+05:30",
+      "revenue_present": false,
+      "key_events": 6,
+      "note": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None"
+    },
+    {
+      "issuer_id": "97a42311-54cd-463f-aa97-deb6ecb2ae1b",
+      "cutoff": "2023-01-09 00:00:00+05:30",
+      "revenue_present": false,
+      "key_events": 11,
+      "note": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None"
+    },
+    {
+      "issuer_id": "e9926c45-fe73-454d-82e4-04f276b7c944",
+      "cutoff": "2023-01-09 00:00:00+05:30",
+      "revenue_present": false,
+      "key_events": 1,
+      "note": "ORDER QUALIFIED 55240048 INR UNITS; firm=False; routine=None; disq=None"
+    },
+    {
+      "issuer_id": "c01fe676-4ceb-401a-a4bf-ed16424aefa9",
+      "cutoff": "2023-01-16 00:00:00+05:30",
+      "revenue_present": false,
+      "key_events": 1,
+      "note": "COMMERCIAL_START COMMERCIAL_SHIPMENT no value; firm=True; routine=None; disq=None"
+    }
+  ]
+}

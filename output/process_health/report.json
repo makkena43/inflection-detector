@@ -1,0 +1,299 @@
+{
+  "version": "process-health-2",
+  "generated_at": "2026-10-28T15:52:34.467399+00:00",
+  "window": {
+    "first": "2026-08-01",
+    "last": "2026-10-28"
+  },
+  "active_versions": {
+    "commercial": "commercial-17",
+    "financial": "financial-4"
+  },
+  "checks": [
+    {
+      "key": "snapshot_provenance",
+      "title": "Snapshot dates without original disclosure proof",
+      "status": "LIMITATION",
+      "affected": 146687,
+      "blocking": false,
+      "description": "Raw legacy dates are retained for audit. As-of readers now use first observation, not the inferred filing deadline. Historical source filings still need to be recovered.",
+      "details": [
+        {
+          "affected": 146687,
+          "issuers": 1820
+        }
+      ]
+    },
+    {
+      "key": "financial_unknown",
+      "title": "Financial facts with unknown scope or availability",
+      "status": "WARNING",
+      "affected": 17,
+      "blocking": false,
+      "description": "These cannot support comparable, dated financial calculations.",
+      "details": [
+        {
+          "affected": 17,
+          "issuers": 2
+        }
+      ]
+    },
+    {
+      "key": "publication_provenance",
+      "title": "Filings with no established publication time",
+      "status": "OK",
+      "affected": 0,
+      "blocking": false,
+      "description": "Unknown timing must remain unknown in historical reconstruction.",
+      "details": [
+        {
+          "affected": 0
+        }
+      ]
+    },
+    {
+      "key": "identity_handoff",
+      "title": "Dated filings still missing an issuer identity",
+      "status": "WARNING",
+      "affected": 5967,
+      "blocking": false,
+      "description": "Unlinked filings cannot reach issuer-level analysis; identity repair is separate from a negative company assessment.",
+      "details": [
+        {
+          "affected": 5967
+        }
+      ]
+    },
+    {
+      "key": "source_coverage",
+      "title": "Unresolved announcement-listing windows",
+      "status": "WARNING",
+      "affected": 15,
+      "blocking": true,
+      "description": "Successful retries or complete child windows can cover an older failure in the same stream. Unverified empty responses and gaps remain incomplete.",
+      "details": [
+        {
+          "name": "bse_announcements",
+          "coverage_status": "PARTIAL",
+          "affected": 15
+        }
+      ]
+    },
+    {
+      "key": "results_discovery",
+      "title": "Incomplete results discovery in the requested window",
+      "status": "OK",
+      "affected": 0,
+      "blocking": false,
+      "description": "Only proven-complete results listings are cached. Empty or blocked listings remain retryable.",
+      "details": []
+    },
+    {
+      "key": "results_universe",
+      "title": "Current symbol identities without a complete results listing for this window",
+      "status": "WARNING",
+      "affected": 3179,
+      "blocking": false,
+      "description": "Coverage must not depend on an order announcement. Some instruments may not report corporate results; eligibility needs explicit source classification.",
+      "details": [
+        {
+          "affected": 3179
+        }
+      ]
+    },
+    {
+      "key": "source_missing",
+      "title": "Announcement stream-days with no listing attempts",
+      "status": "OK",
+      "affected": 0,
+      "blocking": false,
+      "description": "No attempt is missing coverage, not a successful empty universe.",
+      "details": []
+    },
+    {
+      "key": "text_handoff",
+      "title": "Text-ready filings without usable extracted text",
+      "status": "OK",
+      "affected": 0,
+      "blocking": false,
+      "description": "ZIP containers are ready only when every PDF member has complete extracted text. Native results use their own parsing check.",
+      "details": [
+        {
+          "affected": 0
+        }
+      ]
+    },
+    {
+      "key": "announcement_backlog",
+      "title": "Announcement attachments awaiting complete text",
+      "status": "WARNING",
+      "affected": 132673,
+      "blocking": true,
+      "description": "Includes undispatched downloads, partial text and OCR. Download-policy exclusions remain visible; analysis of available text alone does not prove full filing coverage.",
+      "details": [
+        {
+          "name": "bse_announcements",
+          "pipeline_state": "DISCOVERED",
+          "affected": 93491
+        },
+        {
+          "name": "bse_announcements",
+          "pipeline_state": "FAILED",
+          "affected": 3
+        },
+        {
+          "name": "bse_announcements",
+          "pipeline_state": "OCR_REQUIRED",
+          "affected": 8
+        },
+        {
+          "name": "bse_announcements",
+          "pipeline_state": "PARTIAL_TEXT",
+          "affected": 1125
+        },
+        {
+          "name": "nse_announcements",
+          "pipeline_state": "DISCOVERED",
+          "affected": 36684
+        },
+        {
+          "name": "nse_announcements",
+          "pipeline_state": "FAILED",
+          "affected": 77
+        },
+        {
+          "name": "nse_announcements",
+          "pipeline_state": "OCR_REQUIRED",
+          "affected": 172
+        },
+        {
+          "name": "nse_announcements",
+          "pipeline_state": "PARTIAL_TEXT",
+          "affected": 1113
+        }
+      ]
+    },
+    {
+      "key": "commercial_backlog",
+      "title": "Extracted filings not scanned under the active rules",
+      "status": "WARNING",
+      "affected": 9,
+      "blocking": true,
+      "description": "A rule-version change creates explicit reprocessing work. Older evaluations are retained until their source is reread.",
+      "details": [
+        {
+          "affected": 9
+        }
+      ]
+    },
+    {
+      "key": "resolution_backlog",
+      "title": "Current commercial passages awaiting resolution",
+      "status": "OK",
+      "affected": 0,
+      "blocking": false,
+      "description": "",
+      "details": [
+        {
+          "affected": 0
+        }
+      ]
+    },
+    {
+      "key": "results_text_backlog",
+      "title": "Results filings awaiting download or parsing",
+      "status": "OK",
+      "affected": 0,
+      "blocking": false,
+      "description": "Discovered results must reach usable facts before this window is marked complete.",
+      "details": []
+    },
+    {
+      "key": "financial_backlog",
+      "title": "Results filings not evaluated under active rules",
+      "status": "OK",
+      "affected": 0,
+      "blocking": false,
+      "description": "",
+      "details": [
+        {
+          "affected": 0
+        }
+      ]
+    },
+    {
+      "key": "financial_comparable",
+      "title": "Results without a comparable prior period",
+      "status": "WARNING",
+      "affected": 340,
+      "blocking": false,
+      "description": "A missing comparable is a data limitation, not a negative business verdict.",
+      "details": [
+        {
+          "status": "NO_COMPARABLE",
+          "affected": 340
+        }
+      ]
+    },
+    {
+      "key": "nonseasonal_results",
+      "title": "Results disclosed outside the old four-month refresh schedule",
+      "status": "INFO",
+      "affected": 566,
+      "blocking": false,
+      "description": "This measures why results discovery must run year-round, independently of commercial mentions. It does not mean all these filings were missed.",
+      "details": [
+        {
+          "affected": 566
+        }
+      ]
+    },
+    {
+      "key": "corporate_actions",
+      "title": "Unverified split and bonus adjustments",
+      "status": "WARNING",
+      "affected": 22,
+      "blocking": false,
+      "description": "Returns crossing these actions must not be labelled verified.",
+      "details": [
+        {
+          "provider": "nse_corporate_actions",
+          "affected": 22
+        }
+      ]
+    },
+    {
+      "key": "price_versions",
+      "title": "Daily prices with multiple stored versions",
+      "status": "OK",
+      "affected": 0,
+      "blocking": false,
+      "description": "Calculators must select the latest version once per security-day, never duplicate observations.",
+      "details": [
+        {
+          "affected": 0
+        }
+      ]
+    },
+    {
+      "key": "outcome_versions",
+      "title": "Historical outcomes with multiple recomputations",
+      "status": "OK",
+      "affected": 0,
+      "blocking": false,
+      "description": "The effective review view selects the latest recomputation rather than the highest historical return.",
+      "details": [
+        {
+          "affected": 0
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "checks": 19,
+    "blocking_checks": 3,
+    "warnings": 8,
+    "status": "INCOMPLETE",
+    "note": "Processing completion is separate from historical-data completeness and predictive performance."
+  }
+}

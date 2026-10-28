@@ -1,0 +1,3277 @@
+{
+  "shortlist": {
+    "review_id": "c76f5f0f-e2f3-433d-9d72-1513f2b58f58",
+    "issuer_id": "6db41fed-1efc-4e27-96fe-b798d344c1ed",
+    "week_start": "2026-07-06",
+    "label": "APEXECO",
+    "legal_name": "Apex Ecotech Limited",
+    "triage_action": "DEEP_RESEARCH",
+    "is_pick": true,
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "rules_version": "triage-rules-3.5.1",
+    "size_pct_of_revenue": 37.0,
+    "size_basis": "STATED",
+    "firm": true,
+    "routine": false,
+    "disqualifier": null,
+    "confidence": "LOW",
+    "rationale": "The firm order, revised to Rs 55 to 67 crore, is at least 37% of FY2026 revenue of Rs 148.65 crore, and the packet shows no earlier firm order of comparable size (the largest firm order before this was Rs 15 crore). It is judged not routine on that basis, with confidence low because the counterparty is unnamed, the value was revised, and the TTM margin and balance sheet are missing. The packet shows no disqualifier and no stressed signal, and the unknowns are the questions for deep research.",
+    "excess_6m": null,
+    "excess_12m": null,
+    "excess_24m": null,
+    "return_12m": null,
+    "return_24m": null,
+    "holding_period": null,
+    "holding_previous_period": null,
+    "promoter_holding_pct": null,
+    "fii_holding_pct": null,
+    "promoter_change_pp": null,
+    "fii_change_pp": null,
+    "return_36m": null,
+    "benchmark_36m": null,
+    "excess_36m": null,
+    "benchmark_12m": null,
+    "benchmark_24m": null,
+    "runup_6m": 1.0206060606060605,
+    "margin_ttm": null,
+    "category": "B: order \u226525% + run-up >60%",
+    "order_cr": null,
+    "mcap_cr": 329.695926,
+    "orders_12m_pct": null,
+    "order_to_mcap": null,
+    "mgmt_target_x": null,
+    "promoter_net_cr": 0.0,
+    "inst_net_cr": 0.0,
+    "tech": {
+      "stage2": true,
+      "near_high": true,
+      "rs_pos": true,
+      "below_falling_200": false
+    },
+    "tech_score": 3,
+    "order_book": {
+      "quarter_end": "2026-03-31",
+      "order_book_cr": 125.0,
+      "order_inflow_cr": null,
+      "book_doubtful": false,
+      "inflow_doubtful": false,
+      "book_yoy_pct": 5.0,
+      "inflow_yoy_pct": null
+    },
+    "score": 2,
+    "ps": null,
+    "opm": null,
+    "signals": [
+      "Technicals 3/3"
+    ],
+    "holding_year_ago_period": null,
+    "promoter_yoy_pp": null,
+    "fii_yoy_pp": null,
+    "return_6m": null,
+    "benchmark_6m": null,
+    "promoter_yoy_relative": null,
+    "fii_yoy_relative": null,
+    "combos": [
+      "C1",
+      "C2"
+    ],
+    "combo_checks": {
+      "up": true,
+      "hi": true,
+      "rs": true,
+      "n": 3,
+      "runup6": 1.0206060606060605,
+      "liq": 0.29218200000000005
+    },
+    "security_id": "8e9dd39f-9565-4764-a996-9d739c6eb8fd"
+  },
+  "asof": "2026-10-27",
+  "reviews": [
+    {
+      "week_start": "2026-07-06",
+      "triage_action": "DEEP_RESEARCH",
+      "is_final": true,
+      "result": {
+        "firm": true,
+        "as_of": "2026-07-12T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": false,
+        "event_ids": [
+          "06ef254d-dd58-4a17-8209-27c1ff3a772e",
+          "13c0b53b-e6c0-4ac7-9c08-8e49a8bfdafe",
+          "15c259bd-6478-43a5-b2ac-e7c3d7a5abbe",
+          "1a0b9e45-3a95-4b18-8976-a93d5bc3f895",
+          "4e776422-b1b3-41b7-83bf-cb4ebe069193",
+          "52be467d-7a10-48b5-bcb6-2f026be70e66",
+          "53dd2257-93e6-4b02-a60d-dd8f06c8ee7b",
+          "7e30016b-fd1d-4970-8309-3b5995334625",
+          "a789bb57-8105-4752-a21a-22b60dfba2cb",
+          "b673f97f-375b-427e-b3f8-5066191a7f9e",
+          "bffac21f-5bb9-469c-a353-e55f87002f3b",
+          "cdae82bd-6532-4450-b1f7-99fa0286bfdf",
+          "e07cd5f2-ca32-46d0-8384-88b487644988",
+          "fd9fc56f-c184-4f1d-8e13-be22c802d8da"
+        ],
+        "issuer_id": "6db41fed-1efc-4e27-96fe-b798d344c1ed",
+        "mechanism": "Firm order received 2026-06-23 (counterparty not named in packet, likely the L&T letter of intent of January 2026 converted to an order) with value revised from Rs 45-55 crore to Rs 55-67 crore after a change in scope of deliverables; the company's first firm order of this size in the packet.",
+        "rationale": "The firm order, revised to Rs 55 to 67 crore, is at least 37% of FY2026 revenue of Rs 148.65 crore, and the packet shows no earlier firm order of comparable size (the largest firm order before this was Rs 15 crore). It is judged not routine on that basis, with confidence low because the counterparty is unnamed, the value was revised, and the TTM margin and balance sheet are missing. The packet shows no disqualifier and no stressed signal, and the unknowns are the questions for deep research.",
+        "confidence": "LOW",
+        "size_basis": "STATED",
+        "packet_hash": "6473871c5e0a6c0a86b76ca238e012befac6b49636ddf937e5b236a31ba94afd",
+        "reviewed_by": "haiku",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "A firm order of about 37% of FY2026 revenue (Rs 148.65 crore), against a previous largest firm order of Rs 15 crore and a 2025 Rs 100 crore order described by management as its first of that size, with revenue doubling in FY2026.",
+        "evidence_refs": [
+          "f33c44de-ef2c-41f9-b1ba-3ec8c5249f40",
+          "58bd87f8-0ded-47a9-8046-1dbd176ed8e5",
+          "b18214f3-de04-4a96-a703-81cc987ab59c",
+          "8134487c-40d1-4681-a5d0-c9b24dc983ab",
+          "20562318-92d4-40ad-a78a-1a702514261a"
+        ],
+        "triage_action": "DEEP_RESEARCH",
+        "contradictions": [
+          "Packet trigger shows Rs 45 crore FIRM, but the filing says the order value was revised to Rs 55 to 67 crore; the revised low end is used for sizing",
+          "Pansen Engineering order (2026-06-18) has no stated value",
+          "Transcript of 2025-11-24 calls a Rs 1,000+ million (about Rs 100 crore) Suez Water order its first of that size; this is not a tested routine-flow comparison"
+        ],
+        "funding_status": "UNRESOLVED",
+        "next_milestone": "Execution start and first billing against the order (no schedule in packet); further firm conversions of the Reliance Consumer Products (Rs 100 crore) and Pragati Power LOIs",
+        "commercial_stage": "BINDING_DEMAND",
+        "order_book_check": {
+          "as_of": "2026-03-31",
+          "source": "no investor presentation or results text listed in packet for page reading; packet extraction only (rules figure 125.0 at 2026-03-31 not confirmed)",
+          "order_book_cr": null,
+          "matches_packet": null,
+          "order_inflow_quarter_cr": null
+        },
+        "materiality_status": "MATERIAL_POTENTIAL",
+        "missing_information": [
+          "Counterparty not named in the 2026-06-23 filing (customer identity assumed from the L&T LOI but not confirmed)",
+          "TTM revenue, TTM operating margin and PAT not shown in packet, so thin-margin and cheap-valuation tests cannot be applied",
+          "Balance sheet, working capital and funding for execution not in packet",
+          "Order book (Rs 125 crore at 2026-03-31) is a rules extraction; no investor presentation or results text is listed for page reading, so no company-total order book was confirmed",
+          "Shareholding and capacity filings not present in packet",
+          "Execution period not stated"
+        ],
+        "size_pct_of_revenue": 37.0,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "The firm order, revised to Rs 55 to 67 crore, is at least 37% of FY2026 revenue of Rs 148.65 crore, and the packet shows no earlier firm order of comparable size (the largest firm order before this was Rs 15 crore). It is judged not routine on that basis, with confidence low because the counterparty is unnamed, the value was revised, and the TTM margin and balance sheet are missing. The packet shows no disqualifier and no stressed signal, and the unknowns are the questions for deep research.",
+      "decided_by": "claude-haiku-5-5 (second opinion on local engine)"
+    },
+    {
+      "week_start": "2026-06-29",
+      "triage_action": "DEEP_RESEARCH",
+      "is_final": true,
+      "result": {
+        "firm": true,
+        "as_of": "2026-07-05T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": false,
+        "event_ids": [
+          "06ef254d-dd58-4a17-8209-27c1ff3a772e",
+          "a789bb57-8105-4752-a21a-22b60dfba2cb"
+        ],
+        "issuer_id": "6db41fed-1efc-4e27-96fe-b798d344c1ed",
+        "mechanism": "",
+        "rationale": "ORDER BINDING_DEMAND 45 INR CRORE = 30.3% of revenue; firm=True; routine=False; disq=None",
+        "confidence": "LOW",
+        "size_basis": "STATED",
+        "packet_hash": "626b00d4518c31597ac7cd8e5b9062c82ab174b4fc50e3861172e6437d85be52",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "",
+        "evidence_refs": [],
+        "triage_action": "DEEP_RESEARCH",
+        "contradictions": [],
+        "funding_status": "",
+        "next_milestone": null,
+        "commercial_stage": "UNKNOWN",
+        "materiality_status": "MATERIAL_POTENTIAL",
+        "missing_information": [],
+        "size_pct_of_revenue": 30.3,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "ORDER BINDING_DEMAND 45 INR CRORE = 30.3% of revenue; firm=True; routine=False; disq=None",
+      "decided_by": "local engine rules-3.5+qwen2.5-3b"
+    },
+    {
+      "week_start": "2026-06-22",
+      "triage_action": "WATCH_MILESTONE",
+      "is_final": true,
+      "result": {
+        "firm": false,
+        "as_of": "2026-06-28T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": null,
+        "event_ids": [
+          "06ef254d-dd58-4a17-8209-27c1ff3a772e",
+          "52be467d-7a10-48b5-bcb6-2f026be70e66",
+          "a789bb57-8105-4752-a21a-22b60dfba2cb"
+        ],
+        "issuer_id": "6db41fed-1efc-4e27-96fe-b798d344c1ed",
+        "mechanism": "A letter of intent (LOI) from Larsen & Toubro Construction for a water and effluent treatment contract, now revised to a scope change (value INR 55-67 crore). Separately, a 15-20 crore order from Pansen Engineering for WTP, ETP, ZLD and STP work.",
+        "rationale": "Size is stated: the revised L&T contract value of INR 55-67 crore is 37-45% of FY26 revenue of INR 148.65 crore, and the lower bound (37%) is used. The event is not firm: the L&T item is still a Letter of Intent, and the scope change does not convert it to a purchase order, so the engine's FIRM tag is wrong. Watch until the L&T LOI converts to a firm order or contract. The one firm order in the packet, from Pansen Engineering (INR 15-20 crore, 10-13% of revenue), is in the range of orders the company wins regularly (INR 10-15 crore in 2025), so it does not decide the action and is not treated as an inflection.",
+        "confidence": "MEDIUM",
+        "size_basis": "STATED",
+        "packet_hash": "ccb1d046159cf8a0c895f03d080dc17720993eb1dccb4a074a6762d053be6b57",
+        "reviewed_by": "haiku",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "On 23 June 2026 the L&T LOI was revised from INR 45-55 crore to INR 55-67 crore after a scope update. The packet's 45 crore FIRM tag is the lower bound of an LOI range, not a firm contract. The Pansen order is firm but routine in size.",
+        "evidence_refs": [
+          "f33c44de-ef2c-41f9-b1ba-3ec8c5249f40",
+          "b18214f3-de04-4a96-a703-81cc987ab59c",
+          "edf604a6-b5ac-4595-a576-8f08300fe967"
+        ],
+        "triage_action": "WATCH_MILESTONE",
+        "contradictions": [
+          "Packet tags the 45 crore event as FIRM; the 23 June filing amends a Letter of Intent (January 2026) and says only that the terms of the LOI or order remain unchanged, so it is not a firm contract.",
+          "Packet tags the Pansen order as unquantified; the 18 June filing gives a price range of INR 15-20 crore, and it is described as received order."
+        ],
+        "funding_status": "UNRESOLVED",
+        "next_milestone": "Conversion of the L&T Construction LOI (revised to INR 55-67 crore on 23 June 2026) into a firm purchase order or contract, with its value and execution period disclosed.",
+        "commercial_stage": "QUALIFIED",
+        "materiality_status": "MATERIAL_POTENTIAL",
+        "missing_information": [
+          "no purchase order or contract from L&T is disclosed; the scope change reason and execution period are not stated",
+          "TTM revenue and TTM operating margin not shown (quarterly data absent); FY26 revenue INR 148.65 crore used",
+          "market cap about INR 335 crore, roughly 2.3x FY26 revenue, so the cheap-valuation exception does not apply",
+          "Pansen execution period 2026-27, price range 15-20 crore; relation to the L&T contract not stated",
+          "company-total order book (extracted 125.0 crore at 2026-03-31) not confirmed from a results document"
+        ],
+        "size_pct_of_revenue": 37.0,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "Size is stated: the revised L&T contract value of INR 55-67 crore is 37-45% of FY26 revenue of INR 148.65 crore, and the lower bound (37%) is used. The event is not firm: the L&T item is still a Letter of Intent, and the scope change does not convert it to a purchase order, so the engine's FIRM tag is wrong. Watch until the L&T LOI converts to a firm order or contract. The one firm order in the packet, from Pansen Engineering (INR 15-20 crore, 10-13% of revenue), is in the range of orders the company wins regularly (INR 10-15 crore in 2025), so it does not decide the action and is not treated as an inflection.",
+      "decided_by": "claude-haiku-5-5 (second opinion on local engine)"
+    },
+    {
+      "week_start": "2026-06-15",
+      "triage_action": "REJECT_WITH_REASON",
+      "is_final": true,
+      "result": {
+        "firm": true,
+        "as_of": "2026-06-21T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": true,
+        "event_ids": [
+          "52be467d-7a10-48b5-bcb6-2f026be70e66"
+        ],
+        "issuer_id": "6db41fed-1efc-4e27-96fe-b798d344c1ed",
+        "mechanism": "",
+        "rationale": "ORDER BINDING_DEMAND no value = 10.1% of revenue; firm=True; routine=True; disq=None",
+        "confidence": "LOW",
+        "size_basis": "STATED",
+        "packet_hash": "e0f5074418db6254939cf09a48a6cafab96566d66c28626330be87f50e52c037",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "",
+        "evidence_refs": [],
+        "triage_action": "REJECT_WITH_REASON",
+        "contradictions": [],
+        "funding_status": "",
+        "next_milestone": null,
+        "commercial_stage": "UNKNOWN",
+        "materiality_status": "MATERIAL_POTENTIAL",
+        "missing_information": [],
+        "size_pct_of_revenue": 10.1,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "ORDER BINDING_DEMAND no value = 10.1% of revenue; firm=True; routine=True; disq=None",
+      "decided_by": "local engine rules-3.5+qwen2.5-3b"
+    },
+    {
+      "week_start": "2026-05-11",
+      "triage_action": "REJECT_WITH_REASON",
+      "is_final": true,
+      "result": {
+        "firm": true,
+        "as_of": "2026-05-17T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": true,
+        "event_ids": [
+          "7e30016b-fd1d-4970-8309-3b5995334625",
+          "b673f97f-375b-427e-b3f8-5066191a7f9e",
+          "cdae82bd-6532-4450-b1f7-99fa0286bfdf"
+        ],
+        "issuer_id": "6db41fed-1efc-4e27-96fe-b798d344c1ed",
+        "mechanism": "",
+        "rationale": "ORDER COMMERCIAL_SHIPMENT no value = 672.7% of revenue; firm=True; routine=True; disq=None",
+        "confidence": "LOW",
+        "size_basis": "STATED",
+        "packet_hash": "d9744f1b97c29b4bcf3774b97548b3d864e3ed894d664c930dd53b7dc980f8b3",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "",
+        "evidence_refs": [],
+        "triage_action": "REJECT_WITH_REASON",
+        "contradictions": [],
+        "funding_status": "",
+        "next_milestone": null,
+        "commercial_stage": "UNKNOWN",
+        "materiality_status": "MATERIAL_POTENTIAL",
+        "missing_information": [],
+        "size_pct_of_revenue": 672.7,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "ORDER COMMERCIAL_SHIPMENT no value = 672.7% of revenue; firm=True; routine=True; disq=None",
+      "decided_by": "local engine rules-3.5+qwen2.5-3b"
+    },
+    {
+      "week_start": "2026-04-06",
+      "triage_action": "REJECT_WITH_REASON",
+      "is_final": true,
+      "result": {
+        "firm": true,
+        "as_of": "2026-04-12T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": true,
+        "event_ids": [
+          "13c0b53b-e6c0-4ac7-9c08-8e49a8bfdafe",
+          "15c259bd-6478-43a5-b2ac-e7c3d7a5abbe",
+          "1a0b9e45-3a95-4b18-8976-a93d5bc3f895",
+          "4e776422-b1b3-41b7-83bf-cb4ebe069193",
+          "53dd2257-93e6-4b02-a60d-dd8f06c8ee7b",
+          "bffac21f-5bb9-469c-a353-e55f87002f3b",
+          "e07cd5f2-ca32-46d0-8384-88b487644988",
+          "fd9fc56f-c184-4f1d-8e13-be22c802d8da"
+        ],
+        "issuer_id": "6db41fed-1efc-4e27-96fe-b798d344c1ed",
+        "mechanism": "",
+        "rationale": "ORDER BINDING_DEMAND 15 INR CRORE = 21.1% of revenue; firm=True; routine=True; disq=None",
+        "confidence": "LOW",
+        "size_basis": "STATED",
+        "packet_hash": "88de8fe5690cab86ef0fd097f12b765b726d8ca7f89f59cab5b317d679027de0",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "",
+        "evidence_refs": [],
+        "triage_action": "REJECT_WITH_REASON",
+        "contradictions": [],
+        "funding_status": "",
+        "next_milestone": null,
+        "commercial_stage": "UNKNOWN",
+        "materiality_status": "MATERIAL_POTENTIAL",
+        "missing_information": [],
+        "size_pct_of_revenue": 21.1,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "ORDER BINDING_DEMAND 15 INR CRORE = 21.1% of revenue; firm=True; routine=True; disq=None",
+      "decided_by": "local engine rules-3.5+qwen2.5-3b"
+    },
+    {
+      "week_start": "2026-02-02",
+      "triage_action": "REJECT_WITH_REASON",
+      "is_final": true,
+      "result": {
+        "firm": false,
+        "as_of": "2026-02-08T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": null,
+        "event_ids": [
+          "53dd2257-93e6-4b02-a60d-dd8f06c8ee7b"
+        ],
+        "issuer_id": "6db41fed-1efc-4e27-96fe-b798d344c1ed",
+        "mechanism": "",
+        "rationale": "ORDER QUALIFIED no value; firm=False; routine=None; disq=None",
+        "confidence": "LOW",
+        "size_basis": "UNKNOWN",
+        "packet_hash": "7448016e100e47014b08cb6aa2fdb00bdd29d3b256a97bf38df190ac79954e95",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "",
+        "evidence_refs": [],
+        "triage_action": "REJECT_WITH_REASON",
+        "contradictions": [],
+        "funding_status": "",
+        "next_milestone": null,
+        "commercial_stage": "UNKNOWN",
+        "materiality_status": "MATERIALITY_UNKNOWN",
+        "missing_information": [],
+        "size_pct_of_revenue": null,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "ORDER QUALIFIED no value; firm=False; routine=None; disq=None",
+      "decided_by": "local engine rules-3.5+qwen2.5-3b"
+    },
+    {
+      "week_start": "2026-01-26",
+      "triage_action": "REJECT_WITH_REASON",
+      "is_final": true,
+      "result": {
+        "firm": false,
+        "as_of": "2026-02-01T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": null,
+        "event_ids": [
+          "13c0b53b-e6c0-4ac7-9c08-8e49a8bfdafe",
+          "1a0b9e45-3a95-4b18-8976-a93d5bc3f895"
+        ],
+        "issuer_id": "6db41fed-1efc-4e27-96fe-b798d344c1ed",
+        "mechanism": "",
+        "rationale": "ORDER QUALIFIED no value; firm=False; routine=None; disq=None",
+        "confidence": "LOW",
+        "size_basis": "UNKNOWN",
+        "packet_hash": "3f4a58bc4c1af9d80d0af421510dc95d049efaec25da5f77a3531b97f1aa8192",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "",
+        "evidence_refs": [],
+        "triage_action": "REJECT_WITH_REASON",
+        "contradictions": [],
+        "funding_status": "",
+        "next_milestone": null,
+        "commercial_stage": "UNKNOWN",
+        "materiality_status": "MATERIALITY_UNKNOWN",
+        "missing_information": [],
+        "size_pct_of_revenue": null,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "ORDER QUALIFIED no value; firm=False; routine=None; disq=None",
+      "decided_by": "local engine rules-3.5+qwen2.5-3b"
+    },
+    {
+      "week_start": "2026-01-05",
+      "triage_action": "REJECT_WITH_REASON",
+      "is_final": true,
+      "result": {
+        "firm": true,
+        "as_of": "2026-01-11T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": true,
+        "event_ids": [
+          "15c259bd-6478-43a5-b2ac-e7c3d7a5abbe",
+          "4e776422-b1b3-41b7-83bf-cb4ebe069193",
+          "bffac21f-5bb9-469c-a353-e55f87002f3b",
+          "e07cd5f2-ca32-46d0-8384-88b487644988",
+          "fd9fc56f-c184-4f1d-8e13-be22c802d8da"
+        ],
+        "issuer_id": "6db41fed-1efc-4e27-96fe-b798d344c1ed",
+        "mechanism": "",
+        "rationale": "ORDER BINDING_DEMAND 15 INR CRORE = 21.1% of revenue; firm=True; routine=True; disq=None",
+        "confidence": "LOW",
+        "size_basis": "STATED",
+        "packet_hash": "6ff988b3c4f0b2bfbe198b48cb78bb095ab8092b4183f90174bcecad1c3ea6b3",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "",
+        "evidence_refs": [],
+        "triage_action": "REJECT_WITH_REASON",
+        "contradictions": [],
+        "funding_status": "",
+        "next_milestone": null,
+        "commercial_stage": "UNKNOWN",
+        "materiality_status": "MATERIAL_POTENTIAL",
+        "missing_information": [],
+        "size_pct_of_revenue": 21.1,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "ORDER BINDING_DEMAND 15 INR CRORE = 21.1% of revenue; firm=True; routine=True; disq=None",
+      "decided_by": "local engine rules-3.5+qwen2.5-3b"
+    }
+  ],
+  "financials": [
+    {
+      "metric": "cost_of_materials",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 489113000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 1123289000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 341287000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 247378000.0,
+      "available_at": "2025-11-08T11:37:01+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 875910000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 65370000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 76881000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 32490000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 25544000.0,
+      "available_at": "2025-11-08T11:37:01+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 51336000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 7.91,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 12.91,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 6.31,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 1.95,
+      "available_at": "2025-11-08T11:37:01+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 10.96,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 7.91,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 12.91,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 6.31,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 1.95,
+      "available_at": "2025-11-08T11:37:01+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 10.96,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 10.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 10.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 10.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 10.0,
+      "available_at": "2025-11-08T11:37:01+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 10.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 803000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 899000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 642000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 51000.0,
+      "available_at": "2025-11-08T11:37:01+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 848000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 0.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 0.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 0.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 0.0,
+      "available_at": "2025-11-08T11:37:01+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 0.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 44504000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 68719000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 28990000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 22781000.0,
+      "available_at": "2025-11-08T11:37:01+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 45937000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 6245000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 12842000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 4994000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 5369000.0,
+      "available_at": "2025-11-08T11:37:01+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 7473000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 131852000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 131852000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 131852000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 131852000.0,
+      "available_at": "2025-11-08T11:37:01+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 131852000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 113848000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 227526000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 92971000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 34464000.0,
+      "available_at": "2025-11-08T11:37:01+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 193064000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 0.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 0.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 0.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 0.0,
+      "available_at": "2025-11-08T11:37:01+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 0.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 709553000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 1486507000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 492544000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 325698000.0,
+      "available_at": "2025-11-08T11:37:01+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 1160809000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 28240000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 57297000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 22888000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 8688000.0,
+      "available_at": "2025-11-08T11:37:01+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 48608000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 601950000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 1271823000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 404567000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 296603000.0,
+      "available_at": "2025-11-08T11:37:01+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 975218000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 715798000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 1499349000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": 497538000.0,
+      "available_at": "2025-05-22T19:08:18+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 331067000.0,
+      "available_at": "2025-11-08T11:37:01+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 1168282000.0,
+      "available_at": "2026-05-06T19:09:30+05:30"
+    }
+  ],
+  "holdings": [],
+  "events": [
+    {
+      "published_at": "2026-06-23T18:16:22+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": 45.0,
+      "scale": "CRORE",
+      "quote": "Obligations and Disclosure Requirements) Regulations, 2015 \u2013 Receipt of Order and Subsequent",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_23062026181611_Revised_LOI.pdf",
+      "page_no": 1,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM"
+    },
+    {
+      "published_at": "2026-06-23T18:16:22+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "of Letter of Intent (LOI).",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_23062026181611_Revised_LOI.pdf",
+      "page_no": 1,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-06-23T18:16:22+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "All other terms and conditions of the Letter of Intent / Order remains unchanged.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_23062026181611_Revised_LOI.pdf",
+      "page_no": 1,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-06-18T18:32:27+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "Subject: Disclosure regarding Bagging/ Receiving of LOI/ Contracts under Regulation 30 of SEBI",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_18062026183214_SEBI_Reporting_Reg_30-_Information_on_Order_Pansen_Engineering__1_.pdf",
+      "page_no": 1,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-06-18T18:32:27+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "we wish to inform you that the Company has received Order from Pansen Engineering India Pvt Ltd",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_18062026183214_SEBI_Reporting_Reg_30-_Information_on_Order_Pansen_Engineering__1_.pdf",
+      "page_no": 1,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-05-15T14:30:11+05:30",
+      "event_type": "CAPACITY",
+      "family": "CAPACITY",
+      "amount": null,
+      "scale": null,
+      "quote": "Then during the years, we commissioned first of our, the first zero liquid discharge plant for the pharma, the automobile sectors.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_15052026142954_Outcome_Transcript_Signed.pdf",
+      "page_no": 5,
+      "commercial_stage": "FUNDED_PLAN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-05-15T14:30:11+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "And during this while, we also commissioned few other technologies and we received few marking project orders from Reliance L&T as stated earlier.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_15052026142954_Outcome_Transcript_Signed.pdf",
+      "page_no": 6,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-05-15T14:30:11+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "These are some of the, you know, the privileged customers who have, you know develop or who have, had faith in us and given us the order, then we had we have executed work for them successfully.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_15052026142954_Outcome_Transcript_Signed.pdf",
+      "page_no": 6,
+      "commercial_stage": "COMMERCIAL_SHIPMENT",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-05-11T21:49:04+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "2019 2020 2023 2024 2025 2026 Commissioned our 1st Received MBR Champions Received the first Mechanical Vapor award from Suez Water 1,000+ million order.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_11052026214853_Apex_Ecotech_LimitedInvestor_Presentation.pdf",
+      "page_no": 9,
+      "commercial_stage": "COMMERCIAL_SHIPMENT",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-02-02T14:58:00+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "Exchange regarding Receiving of Letter of Intent (LOI) under Regulation 30 of SEBI (Listing",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_02022026145745_Clarification_Letter_Apex_Ecotech_signed.pdf",
+      "page_no": 1,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-01-30T14:07:42+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "Subject: Disclosure regarding Receiving of Letter of Intent (LOI) under Regulation 30 of SEBI",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_30012026140714_SEBIReportingReg30Information.pdf",
+      "page_no": 1,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-01-30T14:07:42+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": 45.0,
+      "scale": "CRORE",
+      "quote": "inform you that the Company has received LOI from Larsen & Toubro Limited (L&T Construction)",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_30012026140714_SEBIReportingReg30Information.pdf",
+      "page_no": 1,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "NON_BINDING"
+    },
+    {
+      "published_at": "2025-11-24T18:33:13+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": 15.0,
+      "scale": "CRORE",
+      "quote": "Similarly, Bharatiyam Beverages is also a bottler for Reliance and we have received an order from them between 10 to 15 CR and it's again turnkey expansion plant.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_24112025183213_Intimation_Transcript_Signed.pdf",
+      "page_no": 6,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM"
+    },
+    {
+      "published_at": "2025-11-24T18:33:13+05:30",
+      "event_type": "CAPACITY",
+      "family": "CAPACITY",
+      "amount": null,
+      "scale": null,
+      "quote": "We commissioned our first, you know, Liquid Discharge plant in 2012.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_24112025183213_Intimation_Transcript_Signed.pdf",
+      "page_no": 9,
+      "commercial_stage": "FUNDED_PLAN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2025-11-24T18:33:13+05:30",
+      "event_type": "CAPACITY",
+      "family": "CAPACITY",
+      "amount": null,
+      "scale": null,
+      "quote": "In 2017 we commissioned the first mil scale filtration plant outside India in steel sector.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_24112025183213_Intimation_Transcript_Signed.pdf",
+      "page_no": 9,
+      "commercial_stage": "FUNDED_PLAN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2025-11-24T18:33:13+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "So, in 2025 we received the 1st 1000 million order and we also received the Innovation Award at the Veolia APAC Conference in Kuala Lumpur.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_24112025183213_Intimation_Transcript_Signed.pdf",
+      "page_no": 9,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2025-09-21T13:41:03+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": 100.0,
+      "scale": "CRORE",
+      "quote": "inform you that the Company has received LOI from Reliance Consumer Products Limited for",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_21092025134027_Reporting_Reg_30_Information_LOI.pdf",
+      "page_no": 1,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "NON_BINDING"
+    },
+    {
+      "published_at": "2025-09-20T16:24:12+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": 3.0,
+      "scale": "CRORE",
+      "quote": "inform you that the Company has received LOI from Pragati Power Corporation Limited in the price",
+      "source_url": "https://nsearchives.nseindia.com/corporate/APEXECO_20092025162342_SEBI_Reporting_Reg_30-_signed.pdf",
+      "page_no": 1,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "NON_BINDING"
+    }
+  ],
+  "documents": [
+    {
+      "publication_id": "aa45f982-4890-4264-b337-be7ddb12377b",
+      "published_at": "2026-10-03T16:38:21+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "category": "Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_03102026163735_Certificate.pdf"
+    },
+    {
+      "publication_id": "9552a4ac-ec75-49dc-aac7-ff014121735e",
+      "published_at": "2026-09-28T17:30:43+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding Appointment of  M/s. Raman Chawla & Associates as Statutory Auditor of the company w.e.f. April 01, 2026.",
+      "category": "Appointment",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_28092026173034_AuditorSigned.pdf"
+    },
+    {
+      "publication_id": "b0b6b638-b74b-40e1-bc73-765b6816861e",
+      "published_at": "2026-09-28T17:21:39+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding voting results of  Annual General Meeting held on September 26, 2026",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_28092026172130_EvotingSigned.pdf"
+    },
+    {
+      "publication_id": "54ad6bca-511f-4f12-98d0-79a17077d251",
+      "published_at": "2026-09-28T17:19:30+05:30",
+      "title": "Apex Ecotech Limited has submitted the Exchange a copy of Srutinizers report of  Annual General Meeting held on September 26, 2026",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_28092026171921_ScrutnizerReportSinged.pdf"
+    },
+    {
+      "publication_id": "fb1867dd-4669-4ebf-a527-5efffabbeab1",
+      "published_at": "2026-09-26T18:12:14+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding Proceedings of Annual General Meeting held on September 26, 2026",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_26092026181205_ProceedingsSigned.pdf"
+    },
+    {
+      "publication_id": "7a8cb1a1-09e4-4018-8ed7-247fb8bb6532",
+      "published_at": "2026-09-24T13:25:56+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding the Trading Window closure pursuant to SEBI (Prohibition of Insider Trading) Regulations, 2015",
+      "category": "Trading Window",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_24092026132546_Trading_Window_ClosureSigned.pdf"
+    },
+    {
+      "publication_id": "f9f033d8-7095-4d33-bc85-9e44183ea5fb",
+      "published_at": "2026-09-10T11:34:30+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding change in Registered Office of the company.",
+      "category": "Address Change",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_10092026113340_ROchangesigned.pdf"
+    },
+    {
+      "publication_id": "37c92205-3802-4bfa-b947-66ec4d545211",
+      "published_at": "2026-09-04T16:29:06+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Copy of Newspaper Publication",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_04092026162856_NewspaperAdvt.pdf"
+    },
+    {
+      "publication_id": "f3aec19f-57a1-446e-b392-10362e4729f2",
+      "published_at": "2026-09-02T21:12:21+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange that Record date for the purpose of Meeting  is 19-Sep-2026.",
+      "category": "Record Date",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_02092026211206_Dated_singed.pdf"
+    },
+    {
+      "publication_id": "1b7a8283-9ea6-4756-9269-5ee3ce4bd0ee",
+      "published_at": "2026-09-02T21:10:50+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding Notice of Annual General Meeting to be held on September 26, 2026",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_02092026211034_NoticeofAGMSinged.pdf"
+    },
+    {
+      "publication_id": "6e2a1e4f-51dc-423b-933c-e510ee3040c5",
+      "published_at": "2026-09-02T12:26:26+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding Outcome of Board Meeting held on September 02, 2026.",
+      "category": "Outcome of Board Meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_02092026122616_OutcomeSigned.pdf"
+    },
+    {
+      "publication_id": "a790ae3a-63a0-4fee-8d4b-0427e2dc9402",
+      "published_at": "2026-08-01T20:07:46+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Credit Rating- New",
+      "category": "Credit Rating- New",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_01082026200729_Apex_Ecotech_Limited_Rating_Intimation_1.pdf"
+    },
+    {
+      "publication_id": "30be10e6-a3cf-4909-9f88-789dd112aafe",
+      "published_at": "2026-07-17T15:53:50+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding a press release dated July 17, 2026, titled \"Business Update for Quarter 1 Financial Year ending 2027 \".",
+      "category": "Press Release",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_17072026155339_PressRelease.pdf"
+    },
+    {
+      "publication_id": "bbc24585-2bc6-49b3-90b0-36c2fc8b8f11",
+      "published_at": "2026-07-08T16:21:12+05:30",
+      "title": "Non-Applicability of filing of Quarterly Compliance Report on Corporate Governance as per Regulation 27(2) of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015.",
+      "category": "Quarterly Compliance Report on Corporate governance - within 21 days from the end of the quarter",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_08072026162058_Non-applicabilityCG__1_.pdf"
+    },
+    {
+      "publication_id": "249bdf09-3e2a-461a-96f4-8fef4a3a86ad",
+      "published_at": "2026-07-08T16:11:55+05:30",
+      "title": "Apex Ecotech Limited\u00a0has Submitted to the Exchange a copy of Disclosure under Regulation 31(4) of the Securities and Exchange Board of India (Substantial Acquisition of Shares and Takeovers) Regulations, 2011.",
+      "category": "Disclosure under SEBI Takeover Regulations",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/team_bbodade_28042026182446_APEXECO.pdf"
+    },
+    {
+      "publication_id": "8d180e4e-8fb4-4e9c-9f72-09b08e86f311",
+      "published_at": "2026-07-08T14:02:28+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Certificate under Regulation 74(5) of SEBI (Depositories and Participants) Regulations, 2018",
+      "category": "Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_08072026140210_Intimation74_5_.pdf"
+    },
+    {
+      "publication_id": "892ae83a-a459-4ce6-ad9f-8fb499994aa1",
+      "published_at": "2026-07-02T11:15:09+05:30",
+      "title": "Structure Digital Certificate",
+      "category": "Structural Digital Database",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_02072026111445_SDDCertificatesigned.pdf"
+    },
+    {
+      "publication_id": "3e88f380-7509-4c93-88a9-3bc3fd1489da",
+      "published_at": "2026-06-25T12:51:37+05:30",
+      "title": "SDD Compliance Certificate for Financial Year ending 31st March 2026",
+      "category": "Structural Digital Database",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_25062026124939_SDD_Apex.pdf"
+    },
+    {
+      "publication_id": "4dfd6388-be38-4b66-b9c9-76b3fbf88b3a",
+      "published_at": "2026-06-24T16:38:16+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Outcome of Analysts/Investors Meeting",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_24062026163806_Outcome_Signed.pdf"
+    },
+    {
+      "publication_id": "09906fbe-bdeb-455f-87b3-d509832c71ab",
+      "published_at": "2026-06-23T18:16:22+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+      "category": "Bagging/Receiving of orders/contracts",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_23062026181611_Revised_LOI.pdf"
+    },
+    {
+      "publication_id": "ad32f578-8300-4bfe-b378-ce30e2dc5ccd",
+      "published_at": "2026-06-22T11:31:05+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Investor Presentation",
+      "category": "Investor Presentation",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_22062026112405_Apex_Presentation.pdf"
+    },
+    {
+      "publication_id": "bd46415d-0f35-4bbd-a72f-c474dc8fb7cf",
+      "published_at": "2026-06-19T15:21:28+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Schedule of meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_19062026151555_Investor.pdf"
+    },
+    {
+      "publication_id": "cd53c766-0a57-4003-8d5f-c0d65946e6de",
+      "published_at": "2026-06-18T18:32:27+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+      "category": "Bagging/Receiving of orders/contracts",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_18062026183214_SEBI_Reporting_Reg_30-_Information_on_Order_Pansen_Engineering__1_.pdf"
+    },
+    {
+      "publication_id": "82ddd993-e8e6-45b5-a32a-9d72933fc119",
+      "published_at": "2026-06-18T18:09:38+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding Appointment of  Mr. Aryaman Dosajh as Lead - Strategy & Growth of the company w.e.f. Jun 18, 2026.",
+      "category": "Appointment",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_18062026180516_Senior_Mgt_revision.pdf"
+    },
+    {
+      "publication_id": "68be6413-1cf4-4ac8-a343-e03746f62d51",
+      "published_at": "2026-06-18T13:15:35+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding Appointment of  Mr. Aryaman Dosajh as Lead   Strategy Initiative of the company w.e.f. Jun 18, 2026.",
+      "category": "Appointment",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_18062026131022_Senior_Mgt_final.pdf"
+    },
+    {
+      "publication_id": "3dbe6dad-cd80-4a5c-890d-d4f1279fa29c",
+      "published_at": "2026-05-25T15:45:22+05:30",
+      "title": "Apex Ecotech Limited has Submitted to the Exchange a copy of Disclosure under Regulation 31(4) of the Securities and Exchange Board of India (Substantial Acquisition of Shares and Takeovers) Regulations, 2011.",
+      "category": "Disclosure under SEBI Takeover Regulations",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/team_sandeshc_22042026110931_Declaration.pdf"
+    },
+    {
+      "publication_id": "6d0119c7-6631-481b-9858-8b87d140e615",
+      "published_at": "2026-05-15T14:30:11+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Transcript",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_15052026142954_Outcome_Transcript_Signed.pdf"
+    },
+    {
+      "publication_id": "e076dcf6-6af4-41e5-8f78-5b5343f61afe",
+      "published_at": "2026-05-13T19:12:09+05:30",
+      "title": "Apex Ecotech Limited has submitted the Exchange a copy Srutinizers report of  Extraordinary General Meeting held on May 12, 2026. Further, the company has informed the Exchange regarding voting results.",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_13052026191134_Final_VRSR_Signed.pdf"
+    },
+    {
+      "publication_id": "5c31576a-fdfa-4fea-9582-dc508420bde6",
+      "published_at": "2026-05-12T22:14:44+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Link of Recording",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_12052026221427_AV_Recording.pdf"
+    },
+    {
+      "publication_id": "282053b7-db1b-4d5f-ab1d-fe748c6eeca5",
+      "published_at": "2026-05-12T21:54:52+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding Proceedings of Extraordinary General Meeting held on May 12, 2026",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_12052026215422_Apex_Proceedings_Signed.pdf"
+    },
+    {
+      "publication_id": "9dbb9052-82e0-4a3e-8183-2c10b213ceb2",
+      "published_at": "2026-05-11T21:49:04+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Investor Presentation",
+      "category": "Investor Presentation",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_11052026214853_Apex_Ecotech_LimitedInvestor_Presentation.pdf"
+    },
+    {
+      "publication_id": "18a6cb62-4305-4414-b986-afb3d6f0f14a",
+      "published_at": "2026-05-07T18:09:20+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Schedule of meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_07052026180839_Apex_Post_Earnings_Final.pdf"
+    },
+    {
+      "publication_id": "7f711226-f139-4901-b1de-c4aae372af75",
+      "published_at": "2026-05-07T16:56:39+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding a press release dated May 07, 2026, titled \"Intimation of Press Release\".",
+      "category": "Press Release",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_07052026165615_Apex_Press_Release.pdf"
+    },
+    {
+      "publication_id": "efb4117f-440a-4322-b2ae-aedb2083ba2b",
+      "published_at": "2026-05-06T19:09:30+05:30",
+      "title": "Standalone results 2026-01-01 to 2026-03-31",
+      "category": "Financial results XBRL (Integrated)",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NONINDAS_1664167_06052026070930_WEB.xml"
+    },
+    {
+      "publication_id": "15fbb7a5-e441-4cf2-a1c8-623dc1c9ff88",
+      "published_at": "2026-05-06T18:26:02+05:30",
+      "title": "Apex Ecotech Limited has submitted to the Exchange, the financial results for the period ended March 31, 2026.",
+      "category": "Outcome of Board Meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_06052026182523_Outcome_Apex_Final_Signed.pdf"
+    },
+    {
+      "publication_id": "90431e67-b9a9-4ff6-90a4-85b9b32a2a31",
+      "published_at": "2026-04-16T13:43:16+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Copy of Newspaper Publication",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_16042026134301_Signed_Newspaper_Publication_EGM_Notice.pdf"
+    },
+    {
+      "publication_id": "0125e797-2af2-4f13-b727-4481a01b5964",
+      "published_at": "2026-04-09T13:32:46+05:30",
+      "title": "Outcome of Board Meeting held on April 09, 2026 pursuant to Regulation 30 of SEBI (LODR) Regulations, 2015",
+      "category": "Outcome of Board Meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_09042026133133_Outcome_BM_09042026_Signed.pdf"
+    },
+    {
+      "publication_id": "28fc58b1-ee3b-4109-a5ce-08474f19aa3b",
+      "published_at": "2026-04-07T22:39:01+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Certificate under Regulation 74(5) SEBI (Depositories and Participants) Regulations, 2018",
+      "category": "Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_07042026223844_Intimation_Reg_74_5_.pdf"
+    },
+    {
+      "publication_id": "54d292e3-e014-4e6e-b986-ea9ac15366bf",
+      "published_at": "2026-03-26T17:29:01+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding the Trading Window closure pursuant to SEBI (Prohibition of Insider Trading) Regulations, 2015",
+      "category": "Trading Window",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_26032026172242_Trading_Window_Closure_Intimation_Signed.pdf"
+    },
+    {
+      "publication_id": "e023aaea-cf41-45bf-af9e-85a79b9db0be",
+      "published_at": "2026-03-12T16:11:35+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Outcome",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_12032026160941_Apex_Invester_meet_Outcome_11032026_Signed.pdf"
+    },
+    {
+      "publication_id": "8b77ee25-48ca-4897-ae76-79c329ff5cb1",
+      "published_at": "2026-03-10T16:59:40+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Investor Presentation",
+      "category": "Investor Presentation",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_10032026165854_Apex_Ecotech_Ltd_Mar_26_Investor_Presentation.pdf"
+    },
+    {
+      "publication_id": "3e8ea9e3-a30e-442e-86af-a38c417bcfd7",
+      "published_at": "2026-03-06T14:52:11+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Schedule of meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_06032026144944_Investor_Meet_Prior_Intimation_Signed.pdf"
+    },
+    {
+      "publication_id": "c1efb03b-1edb-4284-9f32-18f21e1534e7",
+      "published_at": "2026-02-07T12:42:21+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Outcome",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_07022026124137_APEX_Outcome_Investor_Meeting_Signed.pdf"
+    },
+    {
+      "publication_id": "00c4ce2a-d8d8-4101-9d4d-d77c2cc0b7fc",
+      "published_at": "2026-02-02T17:12:55+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Schedule of meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_02022026171234_Investor_Meet_Prior_Intimation_signed.pdf"
+    },
+    {
+      "publication_id": "8af40e5a-e485-4ce5-9fbd-e8d38ba06292",
+      "published_at": "2026-02-02T14:58:00+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding 'Typographical/clerical Error in the Announcement dated 30.01.2026'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_02022026145745_Clarification_Letter_Apex_Ecotech_signed.pdf"
+    },
+    {
+      "publication_id": "d3c7352e-a6f6-40f7-b687-a5029152d771",
+      "published_at": "2026-01-30T14:07:42+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+      "category": "Bagging/Receiving of orders/contracts",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_30012026140714_SEBIReportingReg30Information.pdf"
+    },
+    {
+      "publication_id": "b8343da1-9427-40cd-aff2-8a2c08a7c63c",
+      "published_at": "2026-01-28T13:35:24+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding a revised press release dated January 28, 2026, titled \"Business Update for Q3 FY 2025-26 based on Unaudited Financial Data\".",
+      "category": "Press Release (Revised)",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_28012026133458_Apex_Press_Release_Revised_Signed.pdf"
+    },
+    {
+      "publication_id": "fb564742-38d9-4e77-87b1-1418fbca55bb",
+      "published_at": "2026-01-28T13:23:27+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding a press release dated January 28, 2026, titled \"Business Update for Q3 FY 2025-26 based on Unaudited Financial Data\".",
+      "category": "Press Release",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_28012026132258_Apex_Press_Release_Signed.pdf"
+    },
+    {
+      "publication_id": "be25ccbf-ca33-4031-8348-d9e4e1ec4a68",
+      "published_at": "2026-01-14T13:38:47+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "category": "Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_14012026133828_Intimation_under_Reg_74_5__signed.pdf"
+    },
+    {
+      "publication_id": "6f74f2a2-1a52-4b09-9bb3-6f815411b999",
+      "published_at": "2025-12-22T16:32:59+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding Change in Auditors of the company.",
+      "category": "Change in Auditors",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_22122025163253_OutcomeBM22122025.pdf"
+    },
+    {
+      "publication_id": "a085680b-0b36-45c4-a1c2-07473dcf108d",
+      "published_at": "2025-12-14T21:18:28+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding Change in Auditors of the company.",
+      "category": "Change in Auditors",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_14122025211812_Resignation_of_Internal_Auditor.pdf"
+    },
+    {
+      "publication_id": "5c853c9a-a958-4e29-9761-f1e6d35e34f3",
+      "published_at": "2025-12-10T18:26:18+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Outcome of Analysts / Investors Meeting held on December 10, 2025",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_10122025182538_Outcome_of_Analysts_Investors_Meeting.pdf"
+    },
+    {
+      "publication_id": "bebfd9fb-1617-413a-9345-05fe78af9432",
+      "published_at": "2025-12-04T22:03:06+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Schedule of meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_04122025220248_Intimation_of_Schedule.pdf"
+    },
+    {
+      "publication_id": "bb59d4c2-8fd5-475c-bf86-2066b729115e",
+      "published_at": "2025-11-28T18:45:33+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+      "category": "Bagging/Receiving of orders/contracts",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_28112025184517_Intiomation_PO_CRD_signed.pdf"
+    },
+    {
+      "publication_id": "c0b351c1-2518-476a-ac43-23f7d49dbc9b",
+      "published_at": "2025-11-24T18:33:13+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Transcript",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_24112025183213_Intimation_Transcript_Signed.pdf"
+    },
+    {
+      "publication_id": "d8be99db-2295-4e01-b61e-6ca75f457025",
+      "published_at": "2025-11-18T20:46:55+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Link of Recording",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_18112025204035_Intimation_Recording_of_earning_call_signed.pdf"
+    },
+    {
+      "publication_id": "9cc63c23-2daa-44c7-a09c-78a5a3694685",
+      "published_at": "2025-11-17T17:45:41+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Investor Presentation",
+      "category": "Investor Presentation",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_17112025174524_Intimation_Investor_Presentation_signed.pdf"
+    },
+    {
+      "publication_id": "efacfb2f-6887-4306-87b3-cb3eed62081d",
+      "published_at": "2025-11-13T18:15:15+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Schedule of meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_13112025180343_Intimation_of_schedule_Final_signed.pdf"
+    },
+    {
+      "publication_id": "85dd9509-f72a-446d-99e0-d23ecad53636",
+      "published_at": "2025-11-13T11:10:56+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about statement of deviation(s) or variation(s) under Reg. 32",
+      "category": "Statement of deviation(s) or variation(s) under Reg. 32",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_13112025111043_Intimation_Statement_of_deviation.pdf"
+    },
+    {
+      "publication_id": "4d06f3e2-773b-463f-a363-8df2022c281e",
+      "published_at": "2025-11-11T08:59:38+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding a press release dated November 11, 2025, titled \"Media Release on the Unaudited Financial Results for the half year ended on September 30, 2025\".",
+      "category": "Press Release",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_11112025085911_PressReleaseFinal.pdf"
+    },
+    {
+      "publication_id": "71df8fb5-083e-42a6-8bc0-733da128c536",
+      "published_at": "2025-11-08T11:37:01+05:30",
+      "title": "Standalone results 2025-07-01 to 2025-09-30",
+      "category": "Financial results XBRL (Integrated)",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NONINDAS_1568955_08112025113701_WEB.xml"
+    },
+    {
+      "publication_id": "e415f8f1-f5a8-4473-8b9f-4e15252d7e6a",
+      "published_at": "2025-11-07T20:35:38+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about related Party Transactions",
+      "category": "Related Party Transactions",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_07112025203516_Related_Party_-_Intimation_signed.pdf"
+    },
+    {
+      "publication_id": "3761a686-bfe3-4968-944b-1bd0d6ab5ddb",
+      "published_at": "2025-11-07T12:48:43+05:30",
+      "title": "Apex Ecotech Limited has submitted to the Exchange, the financial results for the period ended September 30, 2025.",
+      "category": "Outcome of Board Meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_07112025124704_Outcome_Intimation_Financial_Results.pdf"
+    },
+    {
+      "publication_id": "d9ea2949-272e-4337-9eca-0df173bacd1e",
+      "published_at": "2025-11-04T14:14:16+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about General Updates",
+      "category": "General Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_04112025140739_Intimation.pdf"
+    },
+    {
+      "publication_id": "e6a603b7-ce2f-407f-9640-deb12f25756a",
+      "published_at": "2025-10-14T15:38:58+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+      "category": "Bagging/Receiving of orders/contracts",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_14102025153826_Intimation_PO_Apex.pdf"
+    },
+    {
+      "publication_id": "3305dcde-f60c-4838-9d4d-1d3288cee13c",
+      "published_at": "2025-10-11T13:27:11+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "category": "Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_11102025132637_Intimation_under_74_5__Apex.pdf"
+    },
+    {
+      "publication_id": "2932453d-08c2-4124-bbee-1cefedbd17fa",
+      "published_at": "2025-09-29T12:04:52+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding the Trading Window closure pursuant to SEBI (Prohibition of Insider Trading) Regulations, 2015",
+      "category": "Trading Window",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_29092025120438_Intimation_Trading_Window_Closure.pdf"
+    },
+    {
+      "publication_id": "6eccef2b-e9e3-4576-96fd-577aea25585e",
+      "published_at": "2025-09-27T11:59:32+05:30",
+      "title": "Apex Ecotech Limited has submitted the Exchange a copy Srutinizers report of  Annual General Meeting held on September 25, 2025. Further, the company has informed the Exchange regarding voting results.",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_27092025115842_Voting_Results_Final_Apex.pdf"
+    },
+    {
+      "publication_id": "c9885cce-ee6d-41a7-8a64-cc71d147e920",
+      "published_at": "2025-09-25T21:21:07+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding Proceedings of Annual General Meeting held on September 25, 2025.",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_25092025211605_Proceeding_of_AGM-2025.pdf"
+    },
+    {
+      "publication_id": "b54be7a9-f525-451e-9fcc-753dcf061bb7",
+      "published_at": "2025-09-21T13:41:03+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+      "category": "Bagging/Receiving of orders/contracts",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_21092025134027_Reporting_Reg_30_Information_LOI.pdf"
+    },
+    {
+      "publication_id": "4ad5c924-2b9a-4a1f-9769-289ed4e13618",
+      "published_at": "2025-09-20T16:24:12+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Bagging/Receiving of orders/contracts.",
+      "category": "Bagging/Receiving of orders/contracts",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_20092025162342_SEBI_Reporting_Reg_30-_signed.pdf"
+    },
+    {
+      "publication_id": "8e38c574-29bc-4cd4-b3ff-e69e87bf5108",
+      "published_at": "2025-08-25T16:25:20+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding Appointment of Mrs Vishakha as Company Secretary & Compliance Officer of the company w.e.f. August 25, 2025.",
+      "category": "Appointment",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_25082025162451_Intimation_of_appointment_of_CS.pdf"
+    },
+    {
+      "publication_id": "886e67d7-c2bf-4ad6-903f-0b2a8acf0faa",
+      "published_at": "2025-08-25T16:21:04+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Change in Company Secretary/Compliance Officer",
+      "category": "Change in Company Secretary/Compliance Officer",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_25082025162035_Intimation_of_appointment_of_CS.pdf"
+    },
+    {
+      "publication_id": "87aff5af-f9e9-49f9-8df6-b2d6d0c8919d",
+      "published_at": "2025-07-08T17:51:13+05:30",
+      "title": "APEXECO: Apex Ecotech Limited has informed the Exchange about Certificate under Regulation 74(5) of SEBI (Depositories and Participants) Regulations, 2018",
+      "category": "Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_08072025175028_Apex_74_5__signed.pdf"
+    },
+    {
+      "publication_id": "979cbc92-2b20-49b2-9adb-5dc33d12cf0a",
+      "published_at": "2025-07-03T11:27:54+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding Resignation of Mrs Kirti Jain as Company Secretary & Compliance Officer of the company w.e.f. Jun 30, 2025.",
+      "category": "Resignation",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_03072025112726_NSECSRESIGNATION.pdf"
+    },
+    {
+      "publication_id": "fc4992b2-ef6c-400d-8cb3-2cf246dbdb5f",
+      "published_at": "2025-05-30T12:54:26+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Transcript",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_30052025125345_transcripintimationapex.pdf"
+    },
+    {
+      "publication_id": "9248782a-bd40-4f9a-9e99-093c654ba0e9",
+      "published_at": "2025-05-29T15:53:33+05:30",
+      "title": "Apex Ecotech Limited has Submitted to the Exchange a copy of Disclosure under Regulation 31(4) of the Securities and Exchange Board of India (Substantial Acquisition of Shares and Takeovers) Regulations, 2011.",
+      "category": "Disclosure under SEBI Takeover Regulations",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/team_sandeshc_29042025133621_2.pdf"
+    },
+    {
+      "publication_id": "74624bad-1bab-4a32-af67-878c35fe79b0",
+      "published_at": "2025-05-26T18:11:06+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Investor Presentation",
+      "category": "Investor Presentation",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_26052025181047_APEXINVESTORPRESENT.pdf"
+    },
+    {
+      "publication_id": "b853f365-9db3-4bae-9f86-1f5a3e66a8be",
+      "published_at": "2025-05-26T15:22:44+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Link of Recording",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_26052025152209_4_Recording_of_Call.pdf"
+    },
+    {
+      "publication_id": "531f2575-b20f-49d6-9099-8bada2ec97c4",
+      "published_at": "2025-05-23T16:24:45+05:30",
+      "title": "APEX ECOTECH LIMITED HAS INFORMED THE EXCHANGE ABOUT THE STRUCTURAL DIGITAL DATABASE CERTIFICATE OBTAINED FROM A PRACTICING COMPANY SECRETARY",
+      "category": "Structural Digital Database",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_23052025162434_APEXSDDCERTIFICATE.pdf"
+    },
+    {
+      "publication_id": "8a0476af-5366-460d-877a-52251eeeae4a",
+      "published_at": "2025-05-22T19:39:09+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange regarding a press release dated May 22, 2025, titled \"Audited Financial Results of the Company for the Half Year and Year ended March 31, 2025\".",
+      "category": "Press Release",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_22052025193850_Pressrelease22052025.pdf"
+    },
+    {
+      "publication_id": "1054033e-dc11-4e63-838c-abb28c86f10b",
+      "published_at": "2025-05-22T19:08:18+05:30",
+      "title": "Standalone results 2025-01-01 to 2025-03-31",
+      "category": "Financial results XBRL (Integrated)",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NONINDAS_1447569_22052025070817_WEB.xml"
+    },
+    {
+      "publication_id": "38cb1d4c-1c4e-4824-a599-033b62a4a667",
+      "published_at": "2025-05-22T13:51:20+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about statement of deviation(s) or variation(s) under Reg. 32",
+      "category": "Statement of deviation(s) or variation(s) under Reg. 32",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_22052025135104_APEX_SOD.pdf"
+    },
+    {
+      "publication_id": "10c4a12f-1441-4fa3-9072-92b8c3c01d1b",
+      "published_at": "2025-05-22T13:33:57+05:30",
+      "title": "Apex Ecotech Limited has submitted to the Exchange, the financial results for the period ended March 31, 2025.",
+      "category": "Outcome of Board Meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_22052025133231_OutcomeBM.pdf"
+    },
+    {
+      "publication_id": "35f01fb5-e294-4c48-9a2f-3c1cd21160f2",
+      "published_at": "2025-05-21T12:05:31+05:30",
+      "title": "Apex Ecotech Limited has informed the Exchange about Schedule of meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/APEXECO_21052025120246_earningcallintimationapex_1.pdf"
+    }
+  ],
+  "latest_prices": [
+    {
+      "trade_date": "2026-10-09",
+      "close": 248.25,
+      "volume": 8800.0
+    },
+    {
+      "trade_date": "2026-10-08",
+      "close": 246.3,
+      "volume": 11200.0
+    },
+    {
+      "trade_date": "2026-10-07",
+      "close": 253.15,
+      "volume": 12000.0
+    },
+    {
+      "trade_date": "2026-10-06",
+      "close": 253.65,
+      "volume": 12000.0
+    },
+    {
+      "trade_date": "2026-10-05",
+      "close": 251.0,
+      "volume": 16000.0
+    },
+    {
+      "trade_date": "2026-10-01",
+      "close": 255.95,
+      "volume": 17600.0
+    },
+    {
+      "trade_date": "2026-09-30",
+      "close": 269.35,
+      "volume": 30400.0
+    },
+    {
+      "trade_date": "2026-09-29",
+      "close": 263.95,
+      "volume": 15200.0
+    },
+    {
+      "trade_date": "2026-09-28",
+      "close": 264.75,
+      "volume": 20000.0
+    },
+    {
+      "trade_date": "2026-09-25",
+      "close": 268.15,
+      "volume": 43200.0
+    },
+    {
+      "trade_date": "2026-09-24",
+      "close": 255.4,
+      "volume": 15200.0
+    },
+    {
+      "trade_date": "2026-09-23",
+      "close": 268.8,
+      "volume": 13600.0
+    },
+    {
+      "trade_date": "2026-09-22",
+      "close": 268.0,
+      "volume": 8800.0
+    },
+    {
+      "trade_date": "2026-09-21",
+      "close": 265.0,
+      "volume": 14400.0
+    },
+    {
+      "trade_date": "2026-09-18",
+      "close": 262.5,
+      "volume": 17600.0
+    },
+    {
+      "trade_date": "2026-09-17",
+      "close": 250.0,
+      "volume": 11200.0
+    },
+    {
+      "trade_date": "2026-09-16",
+      "close": 255.0,
+      "volume": 9600.0
+    },
+    {
+      "trade_date": "2026-09-15",
+      "close": 258.9,
+      "volume": 14400.0
+    },
+    {
+      "trade_date": "2026-09-11",
+      "close": 272.5,
+      "volume": 10400.0
+    },
+    {
+      "trade_date": "2026-09-10",
+      "close": 283.15,
+      "volume": 13600.0
+    },
+    {
+      "trade_date": "2026-09-09",
+      "close": 280.0,
+      "volume": 28800.0
+    },
+    {
+      "trade_date": "2026-09-08",
+      "close": 279.55,
+      "volume": 9600.0
+    },
+    {
+      "trade_date": "2026-09-07",
+      "close": 274.9,
+      "volume": 8000.0
+    },
+    {
+      "trade_date": "2026-09-04",
+      "close": 278.2,
+      "volume": 10400.0
+    },
+    {
+      "trade_date": "2026-09-03",
+      "close": 265.0,
+      "volume": 4800.0
+    },
+    {
+      "trade_date": "2026-09-02",
+      "close": 256.0,
+      "volume": 4000.0
+    },
+    {
+      "trade_date": "2026-09-01",
+      "close": 249.05,
+      "volume": 8800.0
+    },
+    {
+      "trade_date": "2026-08-31",
+      "close": 252.0,
+      "volume": 7200.0
+    },
+    {
+      "trade_date": "2026-08-28",
+      "close": 253.9,
+      "volume": 4800.0
+    },
+    {
+      "trade_date": "2026-08-27",
+      "close": 242.0,
+      "volume": 4800.0
+    },
+    {
+      "trade_date": "2026-08-26",
+      "close": 242.25,
+      "volume": 15200.0
+    },
+    {
+      "trade_date": "2026-08-25",
+      "close": 255.0,
+      "volume": 10400.0
+    },
+    {
+      "trade_date": "2026-08-24",
+      "close": 251.75,
+      "volume": 8800.0
+    },
+    {
+      "trade_date": "2026-08-21",
+      "close": 261.0,
+      "volume": 13600.0
+    },
+    {
+      "trade_date": "2026-08-20",
+      "close": 273.0,
+      "volume": 5600.0
+    },
+    {
+      "trade_date": "2026-08-19",
+      "close": 270.75,
+      "volume": 17600.0
+    },
+    {
+      "trade_date": "2026-08-18",
+      "close": 285.0,
+      "volume": 13600.0
+    },
+    {
+      "trade_date": "2026-08-17",
+      "close": 290.2,
+      "volume": 28000.0
+    },
+    {
+      "trade_date": "2026-08-14",
+      "close": 290.0,
+      "volume": 28800.0
+    },
+    {
+      "trade_date": "2026-08-13",
+      "close": 283.0,
+      "volume": 27200.0
+    },
+    {
+      "trade_date": "2026-08-12",
+      "close": 270.0,
+      "volume": 6400.0
+    },
+    {
+      "trade_date": "2026-08-11",
+      "close": 275.45,
+      "volume": 6400.0
+    },
+    {
+      "trade_date": "2026-08-10",
+      "close": 275.45,
+      "volume": 16800.0
+    },
+    {
+      "trade_date": "2026-08-07",
+      "close": 273.05,
+      "volume": 4000.0
+    },
+    {
+      "trade_date": "2026-08-06",
+      "close": 271.0,
+      "volume": 8800.0
+    },
+    {
+      "trade_date": "2026-08-05",
+      "close": 282.55,
+      "volume": 20800.0
+    },
+    {
+      "trade_date": "2026-08-04",
+      "close": 277.75,
+      "volume": 21600.0
+    },
+    {
+      "trade_date": "2026-08-03",
+      "close": 269.9,
+      "volume": 6400.0
+    },
+    {
+      "trade_date": "2026-07-31",
+      "close": 261.8,
+      "volume": 12000.0
+    },
+    {
+      "trade_date": "2026-07-30",
+      "close": 255.0,
+      "volume": 4000.0
+    },
+    {
+      "trade_date": "2026-07-29",
+      "close": 255.0,
+      "volume": 4000.0
+    },
+    {
+      "trade_date": "2026-07-28",
+      "close": 255.3,
+      "volume": 28000.0
+    },
+    {
+      "trade_date": "2026-07-27",
+      "close": 256.0,
+      "volume": 4800.0
+    },
+    {
+      "trade_date": "2026-07-24",
+      "close": 252.0,
+      "volume": 6400.0
+    },
+    {
+      "trade_date": "2026-07-23",
+      "close": 264.4,
+      "volume": 2400.0
+    },
+    {
+      "trade_date": "2026-07-22",
+      "close": 259.95,
+      "volume": 16000.0
+    },
+    {
+      "trade_date": "2026-07-21",
+      "close": 250.05,
+      "volume": 4800.0
+    },
+    {
+      "trade_date": "2026-07-20",
+      "close": 250.05,
+      "volume": 6400.0
+    },
+    {
+      "trade_date": "2026-07-17",
+      "close": 252.3,
+      "volume": 12800.0
+    },
+    {
+      "trade_date": "2026-07-16",
+      "close": 265.55,
+      "volume": 10400.0
+    },
+    {
+      "trade_date": "2026-07-15",
+      "close": 273.95,
+      "volume": 2400.0
+    },
+    {
+      "trade_date": "2026-07-14",
+      "close": 272.0,
+      "volume": 6400.0
+    },
+    {
+      "trade_date": "2026-07-13",
+      "close": 266.9,
+      "volume": 9600.0
+    },
+    {
+      "trade_date": "2026-07-10",
+      "close": 254.2,
+      "volume": 6400.0
+    },
+    {
+      "trade_date": "2026-07-09",
+      "close": 242.1,
+      "volume": 9600.0
+    },
+    {
+      "trade_date": "2026-07-08",
+      "close": 232.0,
+      "volume": 9600.0
+    },
+    {
+      "trade_date": "2026-07-07",
+      "close": 230.65,
+      "volume": 11200.0
+    },
+    {
+      "trade_date": "2026-07-06",
+      "close": 241.0,
+      "volume": 15200.0
+    },
+    {
+      "trade_date": "2026-07-03",
+      "close": 251.0,
+      "volume": 29600.0
+    },
+    {
+      "trade_date": "2026-07-02",
+      "close": 252.25,
+      "volume": 12000.0
+    },
+    {
+      "trade_date": "2026-07-01",
+      "close": 265.5,
+      "volume": 19200.0
+    },
+    {
+      "trade_date": "2026-06-30",
+      "close": 274.7,
+      "volume": 36800.0
+    },
+    {
+      "trade_date": "2026-06-29",
+      "close": 265.0,
+      "volume": 20800.0
+    },
+    {
+      "trade_date": "2026-06-25",
+      "close": 254.0,
+      "volume": 16000.0
+    },
+    {
+      "trade_date": "2026-06-24",
+      "close": 251.0,
+      "volume": 28800.0
+    },
+    {
+      "trade_date": "2026-06-23",
+      "close": 250.65,
+      "volume": 60000.0
+    },
+    {
+      "trade_date": "2026-06-22",
+      "close": 246.65,
+      "volume": 39200.0
+    },
+    {
+      "trade_date": "2026-06-19",
+      "close": 234.95,
+      "volume": 18400.0
+    },
+    {
+      "trade_date": "2026-06-18",
+      "close": 223.8,
+      "volume": 15200.0
+    },
+    {
+      "trade_date": "2026-06-17",
+      "close": 213.15,
+      "volume": 18400.0
+    },
+    {
+      "trade_date": "2026-06-16",
+      "close": 203.0,
+      "volume": 24000.0
+    },
+    {
+      "trade_date": "2026-06-15",
+      "close": 195.3,
+      "volume": 8000.0
+    },
+    {
+      "trade_date": "2026-06-12",
+      "close": 186.0,
+      "volume": 12800.0
+    },
+    {
+      "trade_date": "2026-06-11",
+      "close": 184.0,
+      "volume": 5600.0
+    },
+    {
+      "trade_date": "2026-06-10",
+      "close": 186.95,
+      "volume": 10400.0
+    },
+    {
+      "trade_date": "2026-06-09",
+      "close": 190.0,
+      "volume": 13600.0
+    },
+    {
+      "trade_date": "2026-06-08",
+      "close": 188.0,
+      "volume": 8800.0
+    },
+    {
+      "trade_date": "2026-06-05",
+      "close": 188.0,
+      "volume": 3200.0
+    },
+    {
+      "trade_date": "2026-06-04",
+      "close": 188.0,
+      "volume": 8800.0
+    },
+    {
+      "trade_date": "2026-06-03",
+      "close": 190.0,
+      "volume": 9600.0
+    },
+    {
+      "trade_date": "2026-06-02",
+      "close": 187.0,
+      "volume": 17600.0
+    },
+    {
+      "trade_date": "2026-06-01",
+      "close": 186.3,
+      "volume": 12000.0
+    },
+    {
+      "trade_date": "2026-05-29",
+      "close": 193.0,
+      "volume": 17600.0
+    },
+    {
+      "trade_date": "2026-05-27",
+      "close": 195.6,
+      "volume": 14400.0
+    },
+    {
+      "trade_date": "2026-05-26",
+      "close": 199.95,
+      "volume": 5600.0
+    },
+    {
+      "trade_date": "2026-05-25",
+      "close": 204.0,
+      "volume": 11200.0
+    },
+    {
+      "trade_date": "2026-05-22",
+      "close": 195.5,
+      "volume": 28000.0
+    },
+    {
+      "trade_date": "2026-05-21",
+      "close": 187.5,
+      "volume": 18400.0
+    },
+    {
+      "trade_date": "2026-05-20",
+      "close": 192.2,
+      "volume": 22400.0
+    },
+    {
+      "trade_date": "2026-05-19",
+      "close": 189.0,
+      "volume": 24800.0
+    },
+    {
+      "trade_date": "2026-05-18",
+      "close": 197.15,
+      "volume": 29600.0
+    },
+    {
+      "trade_date": "2026-05-15",
+      "close": 207.5,
+      "volume": 32800.0
+    },
+    {
+      "trade_date": "2026-05-14",
+      "close": 200.45,
+      "volume": 52000.0
+    },
+    {
+      "trade_date": "2026-05-13",
+      "close": 190.95,
+      "volume": 59200.0
+    },
+    {
+      "trade_date": "2026-05-12",
+      "close": 181.9,
+      "volume": 89600.0
+    },
+    {
+      "trade_date": "2026-05-11",
+      "close": 191.5,
+      "volume": 97600.0
+    },
+    {
+      "trade_date": "2026-05-08",
+      "close": 174.1,
+      "volume": 362400.0
+    },
+    {
+      "trade_date": "2026-05-07",
+      "close": 169.9,
+      "volume": 296800.0
+    },
+    {
+      "trade_date": "2026-05-06",
+      "close": 141.6,
+      "volume": 8000.0
+    },
+    {
+      "trade_date": "2026-05-05",
+      "close": 137.35,
+      "volume": 12000.0
+    },
+    {
+      "trade_date": "2026-05-04",
+      "close": 137.3,
+      "volume": 51200.0
+    },
+    {
+      "trade_date": "2026-04-30",
+      "close": 121.0,
+      "volume": 1600.0
+    },
+    {
+      "trade_date": "2026-04-29",
+      "close": 122.5,
+      "volume": 7200.0
+    },
+    {
+      "trade_date": "2026-04-28",
+      "close": 123.5,
+      "volume": 5600.0
+    },
+    {
+      "trade_date": "2026-04-27",
+      "close": 122.0,
+      "volume": 3200.0
+    },
+    {
+      "trade_date": "2026-04-24",
+      "close": 123.95,
+      "volume": 13600.0
+    },
+    {
+      "trade_date": "2026-04-23",
+      "close": 119.5,
+      "volume": 2400.0
+    },
+    {
+      "trade_date": "2026-04-22",
+      "close": 116.9,
+      "volume": 8800.0
+    },
+    {
+      "trade_date": "2026-04-21",
+      "close": 121.0,
+      "volume": 23200.0
+    },
+    {
+      "trade_date": "2026-04-20",
+      "close": 117.15,
+      "volume": 16800.0
+    },
+    {
+      "trade_date": "2026-04-17",
+      "close": 125.55,
+      "volume": 16000.0
+    },
+    {
+      "trade_date": "2026-04-16",
+      "close": 114.0,
+      "volume": 26400.0
+    },
+    {
+      "trade_date": "2026-04-15",
+      "close": 110.95,
+      "volume": 24000.0
+    },
+    {
+      "trade_date": "2026-04-13",
+      "close": 109.0,
+      "volume": 16800.0
+    },
+    {
+      "trade_date": "2026-04-10",
+      "close": 115.0,
+      "volume": 9600.0
+    },
+    {
+      "trade_date": "2026-04-09",
+      "close": 115.15,
+      "volume": 4800.0
+    },
+    {
+      "trade_date": "2026-04-08",
+      "close": 121.95,
+      "volume": 12800.0
+    },
+    {
+      "trade_date": "2026-04-07",
+      "close": 112.85,
+      "volume": 25600.0
+    },
+    {
+      "trade_date": "2026-04-06",
+      "close": 114.9,
+      "volume": 26400.0
+    },
+    {
+      "trade_date": "2026-04-02",
+      "close": 110.85,
+      "volume": 23200.0
+    },
+    {
+      "trade_date": "2026-04-01",
+      "close": 108.1,
+      "volume": 26400.0
+    },
+    {
+      "trade_date": "2026-03-30",
+      "close": 104.6,
+      "volume": 11200.0
+    },
+    {
+      "trade_date": "2026-03-27",
+      "close": 110.0,
+      "volume": 3200.0
+    },
+    {
+      "trade_date": "2026-03-25",
+      "close": 110.1,
+      "volume": 16800.0
+    },
+    {
+      "trade_date": "2026-03-24",
+      "close": 108.0,
+      "volume": 20000.0
+    },
+    {
+      "trade_date": "2026-03-23",
+      "close": 108.5,
+      "volume": 3200.0
+    },
+    {
+      "trade_date": "2026-03-20",
+      "close": 114.0,
+      "volume": 2400.0
+    },
+    {
+      "trade_date": "2026-03-19",
+      "close": 118.0,
+      "volume": 800.0
+    },
+    {
+      "trade_date": "2026-03-18",
+      "close": 122.0,
+      "volume": 4800.0
+    },
+    {
+      "trade_date": "2026-03-17",
+      "close": 108.15,
+      "volume": 61600.0
+    },
+    {
+      "trade_date": "2026-03-16",
+      "close": 109.0,
+      "volume": 3200.0
+    },
+    {
+      "trade_date": "2026-03-13",
+      "close": 106.8,
+      "volume": 7200.0
+    },
+    {
+      "trade_date": "2026-03-12",
+      "close": 115.35,
+      "volume": 800.0
+    },
+    {
+      "trade_date": "2026-03-11",
+      "close": 115.35,
+      "volume": 12000.0
+    },
+    {
+      "trade_date": "2026-03-09",
+      "close": 116.0,
+      "volume": 2400.0
+    },
+    {
+      "trade_date": "2026-03-06",
+      "close": 115.0,
+      "volume": 10400.0
+    },
+    {
+      "trade_date": "2026-03-05",
+      "close": 117.7,
+      "volume": 22400.0
+    },
+    {
+      "trade_date": "2026-03-04",
+      "close": 116.45,
+      "volume": 8000.0
+    },
+    {
+      "trade_date": "2026-03-02",
+      "close": 116.35,
+      "volume": 41600.0
+    },
+    {
+      "trade_date": "2026-02-27",
+      "close": 128.0,
+      "volume": 19200.0
+    },
+    {
+      "trade_date": "2026-02-26",
+      "close": 125.05,
+      "volume": 4800.0
+    },
+    {
+      "trade_date": "2026-02-25",
+      "close": 130.0,
+      "volume": 5600.0
+    },
+    {
+      "trade_date": "2026-02-24",
+      "close": 133.75,
+      "volume": 7200.0
+    },
+    {
+      "trade_date": "2026-02-23",
+      "close": 130.0,
+      "volume": 3200.0
+    },
+    {
+      "trade_date": "2026-02-20",
+      "close": 133.0,
+      "volume": 1600.0
+    },
+    {
+      "trade_date": "2026-02-19",
+      "close": 138.45,
+      "volume": 13600.0
+    },
+    {
+      "trade_date": "2026-02-18",
+      "close": 129.2,
+      "volume": 13600.0
+    },
+    {
+      "trade_date": "2026-02-17",
+      "close": 131.95,
+      "volume": 8000.0
+    },
+    {
+      "trade_date": "2026-02-16",
+      "close": 133.9,
+      "volume": 4800.0
+    },
+    {
+      "trade_date": "2026-02-13",
+      "close": 135.0,
+      "volume": 3200.0
+    },
+    {
+      "trade_date": "2026-02-12",
+      "close": 135.0,
+      "volume": 22400.0
+    },
+    {
+      "trade_date": "2026-02-10",
+      "close": 132.0,
+      "volume": 1600.0
+    },
+    {
+      "trade_date": "2026-02-09",
+      "close": 131.35,
+      "volume": 6400.0
+    },
+    {
+      "trade_date": "2026-02-06",
+      "close": 134.1,
+      "volume": 2400.0
+    },
+    {
+      "trade_date": "2026-02-05",
+      "close": 134.7,
+      "volume": 18400.0
+    },
+    {
+      "trade_date": "2026-02-04",
+      "close": 131.0,
+      "volume": 4000.0
+    },
+    {
+      "trade_date": "2026-02-03",
+      "close": 134.0,
+      "volume": 4800.0
+    },
+    {
+      "trade_date": "2026-02-02",
+      "close": 125.5,
+      "volume": 6400.0
+    },
+    {
+      "trade_date": "2026-01-30",
+      "close": 130.0,
+      "volume": 15200.0
+    },
+    {
+      "trade_date": "2026-01-29",
+      "close": 120.0,
+      "volume": 1600.0
+    },
+    {
+      "trade_date": "2026-01-28",
+      "close": 121.45,
+      "volume": 13600.0
+    },
+    {
+      "trade_date": "2026-01-27",
+      "close": 111.0,
+      "volume": 22400.0
+    },
+    {
+      "trade_date": "2026-01-23",
+      "close": 116.55,
+      "volume": 2400.0
+    },
+    {
+      "trade_date": "2026-01-22",
+      "close": 120.35,
+      "volume": 5600.0
+    },
+    {
+      "trade_date": "2026-01-21",
+      "close": 126.0,
+      "volume": 800.0
+    },
+    {
+      "trade_date": "2026-01-20",
+      "close": 126.4,
+      "volume": 7200.0
+    },
+    {
+      "trade_date": "2026-01-19",
+      "close": 123.75,
+      "volume": 2400.0
+    },
+    {
+      "trade_date": "2026-01-16",
+      "close": 121.05,
+      "volume": 8000.0
+    },
+    {
+      "trade_date": "2026-01-14",
+      "close": 123.3,
+      "volume": 1600.0
+    },
+    {
+      "trade_date": "2026-01-13",
+      "close": 125.0,
+      "volume": 2400.0
+    },
+    {
+      "trade_date": "2026-01-12",
+      "close": 125.0,
+      "volume": 13600.0
+    },
+    {
+      "trade_date": "2026-01-09",
+      "close": 124.5,
+      "volume": 3200.0
+    },
+    {
+      "trade_date": "2026-01-08",
+      "close": 126.0,
+      "volume": 2400.0
+    },
+    {
+      "trade_date": "2026-01-07",
+      "close": 135.5,
+      "volume": 1600.0
+    },
+    {
+      "trade_date": "2026-01-06",
+      "close": 134.0,
+      "volume": 3200.0
+    },
+    {
+      "trade_date": "2026-01-05",
+      "close": 129.0,
+      "volume": 2400.0
+    },
+    {
+      "trade_date": "2026-01-02",
+      "close": 131.0,
+      "volume": 800.0
+    },
+    {
+      "trade_date": "2026-01-01",
+      "close": 131.0,
+      "volume": 4000.0
+    },
+    {
+      "trade_date": "2025-12-31",
+      "close": 132.5,
+      "volume": 3200.0
+    },
+    {
+      "trade_date": "2025-12-30",
+      "close": 128.0,
+      "volume": 4800.0
+    },
+    {
+      "trade_date": "2025-12-29",
+      "close": 126.0,
+      "volume": 9600.0
+    },
+    {
+      "trade_date": "2025-12-26",
+      "close": 130.0,
+      "volume": 4800.0
+    },
+    {
+      "trade_date": "2025-12-24",
+      "close": 129.1,
+      "volume": 11200.0
+    },
+    {
+      "trade_date": "2025-12-23",
+      "close": 129.05,
+      "volume": 8000.0
+    },
+    {
+      "trade_date": "2025-12-22",
+      "close": 131.0,
+      "volume": 8800.0
+    },
+    {
+      "trade_date": "2025-12-19",
+      "close": 130.55,
+      "volume": 4800.0
+    },
+    {
+      "trade_date": "2025-12-18",
+      "close": 131.75,
+      "volume": 2400.0
+    },
+    {
+      "trade_date": "2025-12-17",
+      "close": 131.9,
+      "volume": 7200.0
+    },
+    {
+      "trade_date": "2025-12-16",
+      "close": 131.5,
+      "volume": 1600.0
+    },
+    {
+      "trade_date": "2025-12-15",
+      "close": 131.5,
+      "volume": 3200.0
+    },
+    {
+      "trade_date": "2025-12-12",
+      "close": 134.3,
+      "volume": 4000.0
+    },
+    {
+      "trade_date": "2025-12-11",
+      "close": 135.15,
+      "volume": 4000.0
+    },
+    {
+      "trade_date": "2025-12-10",
+      "close": 136.95,
+      "volume": 7200.0
+    },
+    {
+      "trade_date": "2025-12-09",
+      "close": 138.8,
+      "volume": 13600.0
+    },
+    {
+      "trade_date": "2025-12-08",
+      "close": 128.95,
+      "volume": 5600.0
+    },
+    {
+      "trade_date": "2025-12-05",
+      "close": 130.5,
+      "volume": 17600.0
+    },
+    {
+      "trade_date": "2025-12-04",
+      "close": 136.0,
+      "volume": 4800.0
+    },
+    {
+      "trade_date": "2025-12-03",
+      "close": 137.3,
+      "volume": 4000.0
+    },
+    {
+      "trade_date": "2025-12-02",
+      "close": 137.15,
+      "volume": 2400.0
+    },
+    {
+      "trade_date": "2025-12-01",
+      "close": 136.9,
+      "volume": 27200.0
+    },
+    {
+      "trade_date": "2025-11-28",
+      "close": 133.0,
+      "volume": 8000.0
+    },
+    {
+      "trade_date": "2025-11-27",
+      "close": 131.0,
+      "volume": 16800.0
+    },
+    {
+      "trade_date": "2025-11-26",
+      "close": 130.0,
+      "volume": 16000.0
+    },
+    {
+      "trade_date": "2025-11-25",
+      "close": 129.0,
+      "volume": 800.0
+    },
+    {
+      "trade_date": "2025-11-24",
+      "close": 129.0,
+      "volume": 9600.0
+    },
+    {
+      "trade_date": "2025-11-21",
+      "close": 131.55,
+      "volume": 13600.0
+    },
+    {
+      "trade_date": "2025-11-20",
+      "close": 136.5,
+      "volume": 12800.0
+    },
+    {
+      "trade_date": "2025-11-19",
+      "close": 143.7,
+      "volume": 24000.0
+    },
+    {
+      "trade_date": "2025-11-18",
+      "close": 140.45,
+      "volume": 32000.0
+    },
+    {
+      "trade_date": "2025-11-17",
+      "close": 132.6,
+      "volume": 12800.0
+    },
+    {
+      "trade_date": "2025-11-14",
+      "close": 129.95,
+      "volume": 10400.0
+    },
+    {
+      "trade_date": "2025-11-13",
+      "close": 124.75,
+      "volume": 34400.0
+    },
+    {
+      "trade_date": "2025-11-12",
+      "close": 131.25,
+      "volume": 40800.0
+    },
+    {
+      "trade_date": "2025-11-11",
+      "close": 125.0,
+      "volume": 37600.0
+    },
+    {
+      "trade_date": "2025-11-10",
+      "close": 130.0,
+      "volume": 57600.0
+    },
+    {
+      "trade_date": "2025-11-07",
+      "close": 113.3,
+      "volume": 45600.0
+    },
+    {
+      "trade_date": "2025-11-06",
+      "close": 123.15,
+      "volume": 11200.0
+    },
+    {
+      "trade_date": "2025-11-04",
+      "close": 125.55,
+      "volume": 5600.0
+    },
+    {
+      "trade_date": "2025-11-03",
+      "close": 123.5,
+      "volume": 6400.0
+    },
+    {
+      "trade_date": "2025-10-31",
+      "close": 123.55,
+      "volume": 12000.0
+    },
+    {
+      "trade_date": "2025-10-30",
+      "close": 125.55,
+      "volume": 6400.0
+    },
+    {
+      "trade_date": "2025-10-29",
+      "close": 127.5,
+      "volume": 22400.0
+    },
+    {
+      "trade_date": "2025-10-28",
+      "close": 131.5,
+      "volume": 14400.0
+    },
+    {
+      "trade_date": "2025-10-27",
+      "close": 127.35,
+      "volume": 30400.0
+    },
+    {
+      "trade_date": "2025-10-24",
+      "close": 134.15,
+      "volume": 11200.0
+    },
+    {
+      "trade_date": "2025-10-23",
+      "close": 130.35,
+      "volume": 11200.0
+    },
+    {
+      "trade_date": "2025-10-21",
+      "close": 130.0,
+      "volume": 3200.0
+    },
+    {
+      "trade_date": "2025-10-17",
+      "close": 129.0,
+      "volume": 12800.0
+    },
+    {
+      "trade_date": "2025-10-15",
+      "close": 134.0,
+      "volume": 11200.0
+    },
+    {
+      "trade_date": "2025-10-14",
+      "close": 131.45,
+      "volume": 11200.0
+    },
+    {
+      "trade_date": "2025-10-13",
+      "close": 130.15,
+      "volume": 11200.0
+    },
+    {
+      "trade_date": "2025-10-10",
+      "close": 133.0,
+      "volume": 20800.0
+    },
+    {
+      "trade_date": "2025-10-09",
+      "close": 136.0,
+      "volume": 9600.0
+    },
+    {
+      "trade_date": "2025-10-08",
+      "close": 130.8,
+      "volume": 12800.0
+    },
+    {
+      "trade_date": "2025-10-07",
+      "close": 131.5,
+      "volume": 17600.0
+    },
+    {
+      "trade_date": "2025-10-06",
+      "close": 128.55,
+      "volume": 43200.0
+    },
+    {
+      "trade_date": "2025-10-03",
+      "close": 133.15,
+      "volume": 35200.0
+    },
+    {
+      "trade_date": "2025-10-01",
+      "close": 144.0,
+      "volume": 6400.0
+    },
+    {
+      "trade_date": "2025-09-30",
+      "close": 134.55,
+      "volume": 11200.0
+    },
+    {
+      "trade_date": "2025-09-29",
+      "close": 138.4,
+      "volume": 20800.0
+    },
+    {
+      "trade_date": "2025-09-26",
+      "close": 136.25,
+      "volume": 19200.0
+    },
+    {
+      "trade_date": "2025-09-25",
+      "close": 143.75,
+      "volume": 43200.0
+    },
+    {
+      "trade_date": "2025-09-24",
+      "close": 148.85,
+      "volume": 44800.0
+    },
+    {
+      "trade_date": "2025-09-23",
+      "close": 150.45,
+      "volume": 80000.0
+    },
+    {
+      "trade_date": "2025-09-22",
+      "close": 164.6,
+      "volume": 566400.0
+    },
+    {
+      "trade_date": "2025-09-19",
+      "close": 138.0,
+      "volume": 1600.0
+    },
+    {
+      "trade_date": "2025-09-18",
+      "close": 138.0,
+      "volume": 9600.0
+    },
+    {
+      "trade_date": "2025-09-17",
+      "close": 142.0,
+      "volume": 1600.0
+    },
+    {
+      "trade_date": "2025-09-16",
+      "close": 142.0,
+      "volume": 6400.0
+    },
+    {
+      "trade_date": "2025-09-15",
+      "close": 142.0,
+      "volume": 22400.0
+    }
+  ],
+  "entry_price": {
+    "trade_date": "2026-07-20",
+    "close": 250.05
+  },
+  "latest_features": {
+    "opm": null,
+    "margin_change": null,
+    "revenue_growth": null,
+    "liquidity_cr": 0.3607171764705882,
+    "mcap_cr": 327.32259,
+    "ttm_rev_cr": null,
+    "ps": null
+  },
+  "orderbook": [
+    {
+      "quarter_end": "2025-03-31",
+      "order_book_cr": 119.0,
+      "order_inflow_cr": null,
+      "book_doubtful": false,
+      "inflow_doubtful": false,
+      "book_yoy_pct": null,
+      "inflow_yoy_pct": null
+    },
+    {
+      "quarter_end": "2025-09-30",
+      "order_book_cr": 145.0,
+      "order_inflow_cr": null,
+      "book_doubtful": false,
+      "inflow_doubtful": false,
+      "book_yoy_pct": null,
+      "inflow_yoy_pct": null
+    },
+    {
+      "quarter_end": "2026-03-31",
+      "order_book_cr": 125.0,
+      "order_inflow_cr": null,
+      "book_doubtful": false,
+      "inflow_doubtful": false,
+      "book_yoy_pct": 5.0,
+      "inflow_yoy_pct": null
+    }
+  ]
+}

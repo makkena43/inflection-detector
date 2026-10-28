@@ -1,0 +1,18 @@
+{
+  "scope": "21 v1 WATCH rows only",
+  "prompt_path": "/Users/makkenasrinivas/inflection-jobs/expert/prompt_v2.txt",
+  "prompt_sha256": "a706cce1300103d89dadbb8c9437919c882443111232e57981c804eecc537856",
+  "v2_watch_counts": {
+    "WATCH": 8,
+    "BUY": 10,
+    "AVOID": 3
+  },
+  "combined_counts": {
+    "BUY": 14,
+    "WATCH": 8,
+    "AVOID": 16
+  },
+  "unchanged_v1_rows": 17,
+  "source_answer_sheet_modified": false,
+  "external_sources_used": false
+}

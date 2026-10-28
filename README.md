@@ -36,7 +36,7 @@ Code ported from MakroGraph is listed, with its reasons and changes, in [`docs/r
 
 ## Not built yet
 
-Dividend-adjusted (total return) prices, BSE-only companies' results, balance-sheet figures (working-capital days), opening research cases from triage results, importing a model's triage JSON with evidence-ID checks, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest, and the labelled-cohort recall and queue-precision tests of section 12.
+Dividend-adjusted (total return) prices, original-filing-backed historical BSE-only results (current snapshots are available), balance-sheet figures (working-capital days), opening research cases from triage results, importing a model's triage JSON with evidence-ID checks, the research packet export/import (Mode A), the MCP/HTTP service (Mode B), the weekly digest, and the labelled-cohort recall and queue-precision tests of section 12.
 
 ## Checking the exchange adapters live
 
@@ -285,3 +285,72 @@ for f in db/migrations/*.sql; do psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f "$f"
 ```
 
 `0002` adds required columns without defaults, so it expects a database with no data rows yet.
+
+## Detection-quality audits
+
+`python -m inflection.audit --output output/detection_audit --limit 2000` rereads archived
+sources marked related-party and audits effective review decisions. It uses a read-only database
+connection, calls no models, and writes a JSON report plus a Markdown summary. Coverage is explicit:
+if the source-document limit is reached, the report is partial. Findings are verification tasks,
+not automatic promotions or investment recommendations. The local dashboard can read the report
+with `inflection.audit.load_report()`.
+
+The audited local screener is now `inflection.triage.screen` (`local-screen-2`). It evaluates the
+selected event's customer instead of letting a different related-party event veto the company,
+excludes cancelled/completed and past-deadline awards, and keeps improving, comparable order-cycle
+and operating evidence on watch. `inflection.audit.recheck_packet()` derives source corrections
+from archived event-linked passages without rewriting frozen packets or historical decisions.
+
+`INFLECTION_TRIAGE_RULES=3.6` selects the source-audit safeguards for model review; previous rule
+versions remain selectable for reproducibility. Rule 3.6 keeps individual awards, periodic intake
+and backlog separate, requires issuer-specific relationship evidence, and permits a cycle research
+watch when ordinary contracts coexist with improving demand and operations. This is a research
+escalation, not a validated return predictor.
+
+Order-book series now include source publication IDs, disclosure times and inflow reporting duration.
+Historical revenue reads obey the same cutoff; quarterly and annual inflow cannot be compared as if
+they covered the same duration. Unknown durations do not produce year-on-year inflow growth.
+
+## Process integrity and operational health
+
+Apply migrations `0022_process_integrity.sql` and `0023_latest_review_outcomes.sql` before using the
+new readers. `financial_facts_asof` preserves raw immutable facts but replaces legacy BSE snapshot
+filing-deadline estimates with the time those snapshots were actually observed. New BSE snapshot
+loads use observation time, preserve revisions, and distinguish quarterly and annual facts ending
+on the same date. Historical use before observation requires original, dated filings.
+
+`python -m inflection.process_health --from 2026-08-01 --to 2026-10-28` writes a process report to
+`output/process_health/`. It checks each announcement stream (NSE mainboard, NSE SME, BSE), identity
+handoffs, native-results versus PDF processing, active-rule backlogs, uncertain adjustments and
+results discovery. `--gate` returns a nonzero exit status when the requested processing window is
+incomplete. It is read-only and does not select stocks. Completion and data limitations are separate.
+
+The local application’s **Data & process** tab reads this report. Its financial ratios now share a
+cutoff-safe snapshot reader with explicit statement scope, four consecutive quarters and matching
+share-capital/face-value provenance. Missing operating-profit inputs stay unknown; valid revenue
+can still support P/S. Full-year cumulative results remain annual data. The model/packet rule
+versions record these calculation changes.
+
+The prepared local job updates refresh mainboard/SME streams separately, discover NSE results for
+all currently identified symbols throughout the year, retry unverified empty listings, propagate
+worker failures and write completion checkpoints only after successful processing and coverage
+checks. Existing historical logs are not rewritten.
+
+Replay version 2 excludes uncertain corporate-action returns from its primary statistics and
+shows an explicit sensitivity including them. Stopped-trading marks remain visible. Benchmark
+coverage reports missing exits instead of silently presenting the surviving intersection as the
+whole entry universe. The effective review view uses the latest outcome recomputation rather than
+the highest one. These changes improve measurement; they do not validate an investment strategy.
+
+
+Daily BSE coverage repair is resumable and retains every listing attempt:
+`python -m inflection.coverage_repair --from 2026-08-01 --to 2026-10-28`.
+It saves each verified day and displays repair progress in **Data & process**. It stops on blocked
+or failed sources, and a rerun skips already verified days. Listing repair never implies that
+attachments or downstream analysis are complete. The health gate also checks announcement
+attachments still awaiting download, OCR or complete text, including deliberate fast-mode deferrals.
+
+Results parser failures can be retried explicitly with `python -m inflection.financials load
+--archive ~/inflection-archive --reparse-failed`. Verified archived bytes are reused; publication
+times are preserved, and a changed document version receives a new ingestion time. Both results
+loading and announcement download/extraction accept date bounds for repairing a specific period.

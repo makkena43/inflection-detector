@@ -1,0 +1,32 @@
+{
+  "method": "within-year permutation of 24m doubling labels, maximum standardised annual-adjusted statistic across all distinct completed memberships with n>=10",
+  "resamples": 2000,
+  "candidate_memberships": 556,
+  "limitations": "Does not preserve issuer dependence, sector dependence, earlier discretionary searches, model knowledge leakage, or feature data errors. Treat as an exploratory overfitting diagnostic, not confirmatory inference.",
+  "results": [
+    {
+      "rule_id": 1470,
+      "rule": "Order/revenue \u226525% + Margin up \u22652pp + Revenue growth >0%",
+      "z": 2.4896373452655816,
+      "max_adjusted_p": 0.456271864067966
+    },
+    {
+      "rule_id": 35,
+      "rule": "Order/mcap \u22650.25 + Operating margin 0\u201310%",
+      "z": 1.8148122324588472,
+      "max_adjusted_p": 0.8865567216391804
+    },
+    {
+      "rule_id": 467,
+      "rule": "Order/mcap \u22650.25 + P/S <1 + Operating margin 0\u201310%",
+      "z": 1.625848926736277,
+      "max_adjusted_p": 0.9420289855072463
+    },
+    {
+      "rule_id": 778,
+      "rule": "Order/mcap \u22650.5 + P/S <1 + Operating margin 0\u201310%",
+      "z": 1.7782303132870518,
+      "max_adjusted_p": 0.8950524737631185
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "method": "First cheap-profitable snapshot per issuer with technical data present; compare technical >=2 versus <2 at that same first eligible time. Outcome-based action exclusions are a sensitivity, not an ex-ante investable filter.",
+  "all": {
+    "n": 65,
+    "doubles": 8,
+    "five": 0,
+    "losses": 46,
+    "median_return": -0.26279069767441865
+  },
+  "technical_positive": {
+    "n": 12,
+    "doubles": 5,
+    "five": 0,
+    "losses": 4,
+    "median_return": 0.25729717627962945
+  },
+  "technical_negative": {
+    "n": 53,
+    "doubles": 3,
+    "five": 0,
+    "losses": 42,
+    "median_return": -0.29999999999999993
+  },
+  "same_snapshot_permutation_p": 0.0057988402319536095,
+  "snapshot_counts": {
+    "2024-07-01": {
+      "n": 13,
+      "technical_positive": 4,
+      "doubles": 2,
+      "technical_doubles": 1
+    },
+    "2025-01-01": {
+      "n": 17,
+      "technical_positive": 3,
+      "doubles": 1,
+      "technical_doubles": 1
+    },
+    "2025-07-01": {
+      "n": 35,
+      "technical_positive": 5,
+      "doubles": 5,
+      "technical_doubles": 3
+    }
+  }
+}

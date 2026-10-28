@@ -1,0 +1,25 @@
+{
+  "entry_year_counts": {
+    "2024": 9,
+    "2025": 60,
+    "2026": 9
+  },
+  "early_packet_counts": {
+    "packets": 200,
+    "revenue_present": 0,
+    "key_event_present": 187,
+    "both": 0,
+    "action_WATCH_MILESTONE": 133,
+    "action_REJECT_WITH_REASON": 67
+  },
+  "matched_1y_summary": {
+    "n": 52,
+    "median_stock_return": -0.33607254814151366,
+    "median_sme_return": -0.04888242520882785,
+    "median_excess": -0.27656856198733315,
+    "beat_index": 10,
+    "equal_ticket_stock_return": -0.21958687456139409,
+    "equal_ticket_index_return": -0.03990224301190924
+  },
+  "interpretation": "78 is an engine-selected subset with missing early financial coverage, not all SME stocks or a valid historical rally capture cohort. Returns apply to later entries only. Late timing does not explain all underperformance: the cohort also trails SME Emerge on matched dates."
+}

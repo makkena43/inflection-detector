@@ -1,0 +1,179 @@
+label,legal_name,week_start,Order ≥25% mcap,Mgmt target ≥2x revenue,Promoter buying ≥₹1cr,Institution buying ≥₹1cr,Order book growing (dashboard),Technicals ≥2,Operating margin 0–10%,Price/sales <1.5,Score ≥4,Revenue growth ≥20%,Operating margin up ≥2pp,Policy contract (excerpt-supported),Order book shrinking (dashboard),Book growth ≥30% (pre-shortlist),Inflow growth ≥30% (pre-shortlist),order_to_mcap,mgmt_target_x,promoter_net_cr,inst_net_cr,return_12m,return_24m
+APOLLO,Apollo Micro Systems Limited,2021-01-04,False,,False,False,False,True,False,True,False,,,False,False,,,0.15856200380259083,,0.0,0.0,0.164740961610138,1.54677599701826
+BEML,BEML Limited,2021-01-04,False,,False,False,False,True,True,True,False,,,False,False,,,0.18225359693545087,,0.0,0.0,0.963986239518383,0.624919372178026
+PRAJIND,Praj Industries Limited,2021-01-04,False,,False,False,False,True,True,False,False,,,False,False,,,0.10203850698084636,,0.0,0.0,2.43822075782537,1.91392092257002
+HFCL,HFCL Limited,2021-01-11,False,,False,False,False,True,False,True,False,,,False,False,,,0.15964504469039295,,0.0,0.0,1.7870528109029,1.40204429301533
+HITECH,Hi-Tech Pipes Limited,2021-01-11,True,,False,False,False,True,True,True,True,,,False,False,,,0.7270962669676622,,0.0,0.0,1.27494544733188,2.73219599285856
+JBMA,JBM Auto Limited,2021-01-11,False,,False,False,False,True,False,True,False,,,False,False,,,0.2368909653685145,,0.0,0.0,2.97053333333333,2.56333333333333
+OMINFRAL,OM INFRA LIMITED,2021-01-18,True,,False,False,False,True,True,True,False,,,False,False,,,2.693785896349324,,0.0,0.0,0.932489451476793,0.757383966244726
+TEJASNET,Tejas Networks Limited,2021-01-18,False,,False,False,False,True,False,False,False,,,False,False,,,0.0622268468623962,,0.0,0.0,2.06477150053976,2.92587261604894
+OLECTRA,Olectra Greentech Limited,2021-01-25,False,,False,False,False,True,True,False,False,,,False,False,,,0.23972675342727634,,0.0,0.0,3.48086662915025,1.6221159257175
+ADANIGREEN,Adani Green Energy Limited,2021-02-01,False,,True,False,False,True,False,False,False,,,False,False,,,0.0024306731062654456,,1291.0758728,0.0,0.777767323705133,-0.415721879851343
+TALBROAUTO,Talbros Automotive Components Limited,2021-02-01,False,,False,False,False,True,True,True,True,,,False,False,,,0.14234274466455793,,0.0,0.0,1.07806613645877,0.946839681875262
+PSPPROJECT,PSP Projects Limited,2021-02-01,False,,False,False,False,True,False,True,False,,,False,False,,,0.11612099662947464,,0.0,0.0,0.142050209205021,0.410669456066945
+WABAG,VA Tech Wabag Limited,2021-02-08,False,,False,False,False,True,True,True,True,,,False,False,,,0.1934627483237369,,0.0,0.0,0.156589147286822,0.211821705426356
+TITAGARH,TITAGARH RAIL SYSTEMS LIMITED,2021-02-08,True,,False,False,False,False,True,True,True,,,False,False,,,0.30219999544062903,,0.0,0.0,0.840744570837642,3.26990692864529
+NILAINFRA,Nila Infrastructures Limited,2021-02-08,True,,False,False,False,False,True,True,False,,,False,False,,,0.5055387953612256,,0.0,0.0,0.226415094339623,0.10377358490566
+PREMEXPLN,Premier Explosives Limited,2021-02-08,False,,False,False,False,False,False,True,False,,,False,False,,,0.2076332919369288,,0.0,0.0,1.01787709497207,1.6536312849162
+IGPL,IG Petrochemicals Limited,2021-02-08,False,,False,False,False,True,True,True,True,,,False,False,,,0.11261997990230786,,0.0,0.0,0.535246555062066,-0.037125612117071
+SATIA,Satia Industries Limited,2021-02-08,False,,False,False,False,False,False,True,False,,,False,False,,,0.09191435893536122,,0.299325,0.0,0.162230671736375,0.5
+AARVI,Aarvi Encon Limited,2021-02-15,True,,False,False,False,,True,True,False,,,False,False,,,6.788202437373053,,0.0,0.0,0.695734597156398,1.12985781990521
+RPPINFRA,R.P.P. Infra Projects Limited,2021-02-15,True,,False,False,False,True,True,True,True,,,False,False,,,0.5935404227529588,,0.0,0.0,-0.28539156626506,-0.369728915662651
+JKIL,J.Kumar Infraprojects Limited,2021-02-15,True,,False,False,False,True,False,True,True,,,False,False,,,1.4006713335859782,,0.0,0.0,-0.143274078004776,0.370655346245689
+SALASAR,Salasar Techno Engineering Limited,2021-02-15,True,,False,False,False,True,True,True,True,,,False,False,,,0.4317681487967145,,0.0,0.0,0.33984479529034,1.29060743912229
+HAL,Hindustan Aeronautics Limited,2021-02-15,True,,False,False,False,False,False,False,False,,,False,False,,,1.3228080053266391,,0.0,0.0,0.281179451739231,1.47339322736697
+SUTLEJTEX,Sutlej Textiles and Industries Limited,2021-03-01,True,,False,False,False,True,True,True,True,,,False,False,,,0.27147850018053177,,0.0,0.0,0.616252821670429,-0.0293453724604965
+HIRECT,Hirect Limited,2021-03-01,True,,False,False,False,False,True,True,True,,,False,False,,,0.4993419967480534,,0.0,0.0,0.366034931252323,0.552582683017466
+MANINFRA,Man Infraconstruction Limited,2021-03-08,False,,True,False,False,True,False,False,False,,,False,False,,,0.0813311674590899,,2.0733694,0.0,2.87634408582769,1.58602150524704
+NAVINFLUOR,Navin Fluorine International Limited,2021-03-15,False,,False,False,False,True,False,False,False,,,False,False,,,0.208103267380816,,-39.6470857,0.0,0.486490463315492,0.544225569718038
+MANINDS,Man Industries (India) Limited,2021-03-22,True,,False,False,False,True,True,True,True,,,False,False,,,1.1067697897316793,,0.0,0.0,0.287610619469027,0.177623261694058
+VENKEYS,Venky's (India) Limited,2021-03-29,False,,False,False,False,True,True,True,False,,,False,False,,,0.20751282257651474,,0.0,0.0,0.464987356545419,-3.24191143097341e-05
+RATNAMANI,Ratnamani Metals & Tubes Limited,2021-04-12,False,,False,True,False,True,False,False,False,,,False,False,,,0.06626993133017403,,0.0,63.188544863,0.216024605119116,0.690051086815357
+PRINCEPIPE,Prince Pipes And Fittings Limited,2021-05-10,False,,False,False,False,True,False,False,False,,,False,False,,,0.023333366725804213,,0.0,-34.824118398,-0.154907664208889,-0.214435500236758
+GRAVITA,Gravita India Limited,2021-05-17,False,,True,False,False,True,True,True,True,,,False,False,,,0.24056380928082627,,2.5962773,0.0,1.59173871277618,4.90922190201729
+HPL,HPL Electric & Power Limited,2021-05-17,True,,False,False,False,True,False,True,True,,,False,False,,,1.0807267128560432,,0.0,0.0,0.166355140186916,0.745794392523365
+BUTTERFLY,Butterfly Gandhimathi Appliances Limited,2021-05-17,False,,False,False,False,True,True,False,False,,,False,False,,,0.18116970614723538,,0.0,0.0,0.81047461087012,0.42587394743557
+VASCONEQ,Vascon Engineers Limited,2021-05-31,True,,True,False,False,True,False,True,True,,,False,False,,,1.3303137812826462,,1.0959318,0.0,0.0138568129330254,0.960739030023095
+CAPACITE,Capacit'e Infraprojects Limited,2021-06-14,False,,False,False,False,True,False,False,False,,,False,False,,,0.10479878275879384,,-70.5645994,0.0,-0.425058244887393,0.0590214858917939
+ASHOKA,Ashoka Buildcon Limited,2021-06-14,True,,False,False,False,True,False,True,False,,,False,False,,,0.3321482973899094,,0.0,0.0,-0.309254013220019,-0.240793201133145
+RICOAUTO,Rico Auto Industries Limited,2021-06-21,True,,False,False,False,True,True,True,True,,,False,False,,,0.8877986152843687,,0.0,0.0,-0.0934579439252337,1.24818276220145
+KHADIM,Khadim India Limited,2021-06-21,False,,False,False,False,True,True,True,True,,,False,False,,,0.21821833803245724,,0.0,0.0,-0.436535817931877,-0.330991293722316
+JASH,Jash Engineering Limited,2021-06-21,False,,False,False,False,True,False,False,False,,,False,False,,,0.12292284270166266,,-1.1284928,0.0,0.0953584365259879,1.03142111026872
+NBCC,NBCC (India) Limited,2021-06-28,False,,False,False,False,True,True,True,False,,,False,False,,,0.1811986967104593,,0.0,0.0,-0.425297891842346,-0.253895508707608
+POWERMECH,Power Mech Projects Limited,2021-06-28,,,False,True,False,True,,,False,,,False,False,,,,,0.0,8.229,0.102270651975406,3.64966214159615
+RKFORGE,Ramkrishna Forgings Limited,2021-07-12,,,True,False,False,True,,,False,,,False,False,,,,,1.7503122,0.0,0.0737169707695122,2.42527613352047
+MINDACORP,Minda Corporation Limited,2021-08-16,True,,False,False,False,False,True,True,True,True,True,False,False,,,0.4390977504439462,,0.0,0.0,0.852459016393443,1.66680327868852
+ENGINERSIN,Engineers India Limited,2021-08-30,True,,False,False,False,False,True,True,True,False,False,False,False,,,0.2544801472990902,,0.0,0.0,-0.0275482093663912,1.01721763085399
+AHLUCONT,Ahluwalia Contracts (India) Limited,2021-09-06,True,,False,False,False,True,True,True,True,True,False,False,False,,,0.35356205662483936,,0.0,0.0,0.208034051609471,0.897579143389199
+GOCLCORP,GOCL Corporation Limited,2021-10-04,,,False,False,False,True,,,False,,,False,False,,,,,0.0,0.0,-0.243946815955213,0.652624212736179
+MAHSEAMLES,Maharashtra Seamless Limited,2021-10-04,,,False,False,False,True,,,False,,,False,False,,,,,0.0,0.0,0.57022553479818,1.63691801374504
+HONAUT,Honeywell Automation India Limited,2021-10-18,,,False,False,False,False,,,False,,,False,False,,,,,0.0,0.0,-0.0373253869166804,-0.154129466914796
+ITI,ITI Limited,2021-12-20,False,,False,False,False,False,True,False,False,False,True,False,False,,,0.039334719712381006,,0.0,0.0,-0.109606432501058,1.63901819720694
+DSSL,Dynacons Systems & Solutions Limited,2021-12-27,True,,False,False,False,True,True,True,True,True,False,False,False,,,0.35000232776050705,,0.0,0.0,1.27162414436839,3.26633478531425
+VIKASLIFE,Vikas Lifecare Limited,2022-01-03,False,,False,False,False,True,,False,False,,,False,False,,,4.52981879086045e-07,,0.0,0.0,-0.323308270676692,-0.00751879699248126
+NELCO,NELCO Limited,2022-01-03,,,False,False,False,True,,,False,,,False,False,,,,,0.0,0.0,-0.274786750858536,-0.113105129057273
+TARIL,Transformers And Rectifiers (India) Limited,2022-01-03,True,,False,False,False,True,True,True,True,True,False,False,False,,,0.5107804886530094,,0.0,0.0,1.07492795389049,6.56484149855908
+BEL,Bharat Electronics Limited,2022-01-24,False,,False,False,False,True,False,False,False,False,True,False,False,,,0.04466058003862668,,0.0,0.0,0.402028698804231,1.69717961432217
+MASTEK,Mastek Limited,2022-02-07,False,,False,False,False,False,False,False,False,True,True,False,False,True,,0.05717283587128645,,-0.355878,0.0,-0.368435145163141,0.145067513292277
+ELECON,Elecon Engineering Company Limited,2022-02-07,False,,False,True,False,False,False,True,False,,,False,False,,,0.1263490753044407,,0.0,2.89212976,1.84848484848485,5.72996632996633
+COCHINSHIP,Cochin Shipyard Limited,2022-02-07,True,False,False,False,False,False,False,True,True,False,True,False,False,,,2.306282087231224,1.2260976209817673,0.0,0.0,0.593953185955787,4.40214564369311
+MBECL,Mcnally Bharat Engineering Company Limited,2022-02-07,True,,False,False,False,False,True,True,False,False,True,False,False,,,4.833149965517026,,0.0,0.0,-0.385826771653543,-0.165354330708661
+KHADIM,Khadim India Limited,2022-02-14,True,,False,False,False,False,True,True,True,True,True,False,False,,,0.30299220407944405,,0.0,0.0,-0.156068118128907,0.594740245742617
+AHLUCONT,Ahluwalia Contracts (India) Limited,2022-02-14,True,,False,False,False,True,True,True,True,True,False,False,False,,,0.32771585587207536,,0.0,0.0,0.200026062027626,2.05655459994788
+DSSL,Dynacons Systems & Solutions Limited,2022-02-28,True,,False,False,False,True,True,True,True,True,False,False,False,,,0.382112320565241,,0.0,0.0,0.421818181818182,2.0331550802139
+ESSENTIA,Integra Essentia Limited,2022-02-28,True,,False,False,False,,True,True,True,,,False,False,,,0.5671433644423025,,0.0,0.0,3.17647058823529,3.70588235294118
+BLKASHYAP,B. L. Kashyap and Sons Limited,2022-03-28,True,,False,False,False,False,True,True,True,,,False,False,,,0.7233041784640386,,0.0,0.0,0.166077738515901,1.49469964664311
+HAL,Hindustan Aeronautics Limited,2022-03-28,False,,False,False,False,True,False,False,False,False,False,False,False,,,0.06938185889992744,,0.0,0.0,0.681880433488151,3.24604025247112
+LTTS,L&T Technology Services Limited,2022-04-18,False,,False,False,False,False,False,False,False,,,False,False,,,0.017135718936363974,,0.0,0.0,-0.0350169886911101,0.172384502256707
+SOUTHWEST,South West Pinnacle Exploration Limited,2022-04-18,False,,False,False,False,True,False,False,False,False,False,False,False,,,0.04746406547402997,,0.0,0.0,-0.405272564789991,-0.464924039320822
+TATAPOWER,Tata Power Company Limited,2022-05-02,False,,False,False,False,True,,False,False,True,,False,True,False,,0.07271724431994257,,0.0,0.0,-0.0672992056487202,0.903353927625772
+AWHCL,Antony Waste Handling Cell Limited,2022-05-23,True,,False,False,False,False,False,True,False,,,False,False,,,1.0588315445384013,,0.0,0.0,-0.182516339869281,0.340686274509804
+TEXRAIL,Texmaco Rail & Engineering Limited,2022-05-23,True,,False,False,False,True,True,True,True,False,False,False,False,,,4.365585880319617,,0.2844187,0.0,0.314814814814815,2.78976034858388
+HGS,Hinduja Global Solutions Limited,2022-05-30,True,,False,False,False,False,,True,False,False,,False,False,,,1.175978865147547,,0.0,0.0,0.106293777800501,-0.151797126642466
+STERTOOLS,Sterling Tools Limited,2022-05-30,False,,False,False,False,True,False,False,False,,,False,False,,,0.06970258295428612,,0.0,0.0,0.502723083368245,0.560745705906996
+TRITURBINE,Triveni Turbine Limited,2022-08-01,False,,False,False,True,False,False,False,False,True,True,False,False,True,True,0.01467500422511408,,0.0,0.0,1.02551546391753,3.11340206185567
+POWERMECH,Power Mech Projects Limited,2022-08-15,True,,False,False,False,True,False,True,False,,,False,False,,,2.935880438613496,,0.0,0.0,1.8474398065398,3.743840465426
+GENESYS,Genesys International Corporation Limited,2022-10-10,False,,False,False,False,False,False,False,False,,,False,False,,,0.026523399418856303,,0.0,0.0,-0.433372588096748,0.282543708669263
+JWL,Jupiter Wagons Limited,2022-11-07,False,,False,False,False,True,True,False,False,,,False,False,,,0.12390700285634863,,0.0,0.0,3.28030303030303,4.38888888888889
+BAJAJELEC,Bajaj Electricals Limited,2022-11-07,False,,False,False,False,False,True,False,False,False,False,False,False,,,0.0532697305808429,,0.0,0.0,-0.100288237178021,-0.31033536166903
+SUNDRMFAST,Sundram Fasteners Limited,2023-01-16,False,,False,False,False,True,,False,False,,,False,False,,,0.10864347948229688,,0.0,0.0,0.234725385978233,0.00931409769678559
+SIEMENS,Siemens Limited,2023-01-16,True,,False,False,False,True,,False,False,,,False,False,,,0.25532106277910055,,0.0,0.0,0.420459025385235,0.996726144563857
+IONEXCHANG,ION Exchange (India) Limited,2023-01-30,,,False,False,False,True,,,False,,,False,False,,,,,0.0,0.0,0.62252738270394,0.745953898970083
+FCL,Fineotex Chemical Limited,2023-01-30,False,,False,False,False,False,False,False,False,True,False,False,False,,,0.053188844145811036,,0.9088827,0.0,0.531764705882353,0.0992156862745099
+WELCORP,Welspun Corp Limited,2023-01-30,False,,True,False,False,False,,True,False,,,False,False,,,0.16887838370791128,,4.8847016,0.0,1.71001236093943,2.84449938195303
+SALASAR,Salasar Techno Engineering Limited,2023-02-13,True,,False,False,False,True,True,True,True,True,False,False,False,,,0.5569862406423495,,0.0,0.0,2.07737397420868,0.0961313012895664
+LUMAXIND,Lumax Industries Limited,2023-02-13,True,,False,False,False,True,True,True,True,True,True,False,False,,,0.3024451053071379,,0.0,0.0,0.407550765199786,0.402221163580063
+DHRUV,Dhruv Consultancy Services Limited,2023-02-20,True,,False,False,True,False,False,True,False,,,False,False,,,15.686737653757906,,0.0,0.0,1.33970856102004,0.533151183970856
+BDL,Bharat Dynamics Limited,2023-02-20,False,,False,False,False,True,False,False,False,False,False,False,False,,,0.12125683321549763,,0.0,0.0,0.905619290418526,1.25940089228808
+VAISHALI,Vaishali Pharma Limited,2023-02-27,True,,False,False,False,True,False,False,True,False,True,False,False,,,3.580501366524677,,0.0,0.0,-0.0846444304594085,-0.18942731277533
+VOLTAS,Voltas Limited,2023-03-13,False,,False,False,False,False,True,False,False,False,False,False,False,,,0.06493827666536867,,0.0,0.0,0.337828807484357,0.735799769151328
+PARAS,Paras Defence and Space Technologies Limited,2023-03-20,False,,False,False,False,False,False,False,False,,,False,False,,,0.04119411396368191,,0.0,0.0,0.401586307660196,1.06366103109998
+TEJASNET,Tejas Networks Limited,2023-04-03,False,,True,False,True,False,False,False,False,False,False,False,False,True,True,0.06882687428011235,,400.0000008,0.0,0.225711860483062,0.332278725210279
+BHEL,Bharat Heavy Electricals Limited,2023-04-10,True,,False,False,False,True,True,True,True,False,True,False,False,,,0.943474448048957,,0.0,0.0,2.39843239712606,2.01149575440888
+AHLADA,Ahlada Engineers Limited,2023-05-01,False,,False,False,False,False,False,False,False,False,False,False,False,,,9.109789196416416e-05,,0.0,0.0,0.17855455833727,-0.367406707605102
+BSL,BSL Limited,2023-05-08,True,,False,False,False,True,False,True,False,False,False,False,False,,,1.2502947248840268,,0.4295467,0.0,-0.0862333674513818,-0.125076765609007
+TEXRAIL,Texmaco Rail & Engineering Limited,2023-05-08,True,,True,False,False,False,True,True,True,False,False,False,False,,,3.059350330726883,,4.4358751,0.0,2.67036011080332,1.90600184672207
+ENDURANCE,Endurance Technologies Limited,2023-05-15,False,,False,False,False,False,False,False,False,False,False,False,False,,,0.04660508379973383,,0.0,0.0,0.537085576650609,0.715500141683196
+ALICON,Alicon Castalloy Limited,2023-05-22,True,False,False,False,False,False,,True,False,True,,False,False,,,1.3869786913177673,1.0027440930700677,0.0,0.0,0.307606337518901,0.19439879034909
+ITI,ITI Limited,2023-05-22,True,,False,False,False,False,True,False,False,False,False,False,False,,,0.37684941936740135,,0.0,0.0,1.52713891444342,2.03817847286109
+UNIDT,United Drilling Tools Limited,2023-05-29,False,,False,False,False,False,False,False,False,,,False,False,,,0.2132840164174678,,0.0,0.0,0.207895424836601,0.0604444444444445
+GREENLAM,Greenlam Industries Limited,2023-06-05,False,,False,False,False,True,False,False,False,False,False,False,False,,,0.036559656175274756,,0.0,0.0,0.443402777777778,0.112037037037037
+ASIANENE,Asian Energy Services Limited,2023-06-19,False,,True,False,False,True,False,False,False,,,False,False,,,0.14269217989292157,,15.4742472,0.0,1.22397801442803,0.999656475437994
+SANGHVIMOV,Sanghvi Movers Limited,2023-07-10,False,,False,False,False,True,False,False,False,,,False,False,,,0.060549989960050496,,0.0,0.0,0.862961020800559,-0.0723649711588883
+SHAH,Shah Metacorp Limited,2023-07-17,True,,True,False,False,False,False,False,True,True,True,False,False,,,0.3821981255420892,,80.4168,0.0,0.59047619047619,0.212698412698413
+ICEMAKE,Ice Make Refrigeration Limited,2023-07-17,False,,False,False,False,True,False,False,True,True,True,False,False,,,0.08975838588912632,,0.0,0.0,0.755346727154893,0.677468135666451
+MIDHANI,Mishra Dhatu Nigam Limited,2023-07-24,False,,False,False,False,True,False,False,False,False,False,False,False,,,0.02610497384580761,,0.0,0.0,0.214774281805746,0.0995896032831736
+GULPOLY,Gulshan Polyols Limited,2023-07-31,True,,False,False,False,False,True,True,True,False,False,False,False,,,0.5113423437374366,,0.0,0.0,-0.0344553405777895,-0.128597932679565
+SONATSOFTW,Sonata Software Limited,2023-08-07,False,,False,False,False,True,True,False,False,True,False,False,False,,,0.09164940039509929,,0.0,0.0,0.202534094206403,-0.279717574233485
+VIKASECO,Vikas EcoTech Limited,2023-08-07,False,,False,False,False,False,True,True,True,,,False,False,,,0.19426111500830326,,0.0,0.0,0.294915254237288,-0.271186440677966
+BEML,BEML Limited,2023-08-07,True,,False,False,False,True,True,False,True,,,False,False,,,0.37779160872836265,,0.0,0.0,0.821340549944426,0.976610447977577
+MAHEPC,Mahindra EPC Irrigation Limited,2023-08-07,False,,False,False,False,True,False,False,True,False,False,False,False,,,0.0823273232194308,,0.0,0.0,0.0618210862619808,0.451277955271565
+EXXARO,Exxaro Tiles Limited,2023-08-28,False,,False,False,False,True,True,False,False,,,False,False,,,0.054582476866888135,,0.0,0.0,-0.418536585365854,-0.450174216027875
+JYOTISTRUC,Jyoti Structures Limited,2023-09-04,False,,False,False,False,False,True,False,True,True,True,False,False,,,0.23575249395938397,,0.0,0.0,1.0,0.256390977443609
+DYCL,Dynamic Cables Limited,2023-10-09,False,,False,False,False,True,True,True,True,,,False,False,,,0.08238894216109753,,0.0,0.0,0.277360815503529,0.893805309734513
+AAATECH,AAA Technologies Limited,2023-10-09,,,False,False,False,True,,,False,,,False,False,,,,,0.0,0.0,0.991013071895425,0.486274509803921
+NIPPOBATRY,Indo-National Limited,2023-10-16,False,,False,False,False,True,True,True,False,False,False,False,False,,,0.22540100686498854,,0.0,0.0,-0.068141367912535,-0.243918976184422
+SOMICONVEY,Somi Conveyor Beltings Limited,2023-11-06,True,,False,False,False,True,True,True,True,True,False,False,False,,,0.37985349271100066,,0.0,0.0,0.752455590386625,0.456635318704284
+VIKASLIFE,Vikas Lifecare Limited,2023-11-13,False,,False,False,False,True,True,False,True,,,False,False,,,0.068110205848328,,0.0,0.0,-0.15049504950495,-0.615841584158416
+TECHNOE,Techno Electric & Engineering Company Limited,2023-12-25,False,,False,False,False,True,False,False,False,True,False,False,False,,,0.20613661143768905,,0.0,0.0,1.00728724415436,0.345922311640581
+HECPROJECT,HEC Infra Projects Limited,2024-01-08,True,,False,False,False,True,True,True,False,False,,False,False,,,0.725889253175148,,0.0,0.0,0.549407582938389,0.324526066350711
+ASALCBR,Associated Alcohols & Breweries Ltd.,2024-01-08,False,False,False,False,False,True,True,True,True,False,False,False,False,,,0.14745784207580442,1.0050409352543708,0.0,0.0,1.33555219364599,0.600302571860817
+KIRLOSENG,Kirloskar Oil Engines Limited,2024-01-15,False,,False,False,False,True,False,False,False,False,True,False,False,,,0.0769278838490405,,0.0,0.0,0.224372915760475,0.614035087719298
+ALPHAGEO,Alphageo (India) Limited,2024-01-22,False,,False,False,False,True,False,False,False,False,False,False,False,,,0.2255291959533547,,0.0,0.0,0.178100459327308,-0.350244480663802
+DHARMAJ,Dharmaj Crop Guard Limited,2024-01-22,True,,False,False,False,True,False,True,True,,,False,False,,,0.2955826198043234,,0.0,0.0,-0.0714034057545507,-0.0582501467997651
+SASKEN,Sasken Technologies Limited,2024-01-22,False,,True,False,False,True,False,False,False,,,False,False,,,0.1118382180681646,,1.0773987,0.0,0.23759373981089,-0.173589827192696
+MARINE,Marine Electricals (India) Limited,2024-02-12,False,,False,False,False,True,True,False,False,True,,False,True,,,0.06986182099638868,,0.0,0.0,0.45771632471008,0.657716324710081
+OLECTRA,Olectra Greentech Limited,2024-02-19,False,,False,False,False,True,False,False,False,True,True,False,False,,,0.15006567315348926,,0.0,0.0,-0.455179845040792,-0.534968443737493
+HIRECT,Hirect Limited,2024-02-26,,,False,False,False,True,True,,True,True,True,False,False,,,,,0.0,0.0,0.333717978306024,1.20524655742749
+KILITCH,Kilitch Drugs (India) Limited,2024-02-26,False,,False,False,False,True,False,False,False,False,True,False,False,,,0.13176460530830078,,0.0,0.0,-0.144654088050314,-0.111390635918938
+WELENT,Welspun Enterprises Limited,2024-02-26,True,,False,False,False,True,False,True,True,,,False,False,,,0.9573873867474462,,0.0,0.0,0.35196326789107,0.522324255858138
+SOMICONVEY,Somi Conveyor Beltings Limited,2024-03-11,True,,False,False,False,True,True,True,True,True,False,False,False,,,0.4200962529762266,,0.0,0.0,0.434701055099648,-0.23220007815553
+GENESYS,Genesys International Corporation Limited,2024-03-11,False,,False,False,False,True,False,False,False,False,True,False,False,,,0.07262164651889147,,0.0,0.0,0.387105674606824,-0.555596431527637
+DJML,DJ Mediaprint & Logistics Limited,2024-04-15,False,,False,False,False,True,False,True,False,,,False,False,,,0.19752105460778624,,0.0,0.0,0.346733309666983,-0.0199928595949661
+DCXINDIA,DCX Systems Limited,2024-05-20,False,,False,False,False,False,True,False,False,,,False,True,,,0.13027736351905972,,0.0,0.0,-0.0147665925690694,-0.371165449349
+RPTECH,Rashi Peripherals Limited,2024-05-27,,,False,False,False,,,,False,,,False,False,,,,,0.0,0.0,-0.0705624543462381,0.54609203798393
+GVT&D,GE Vernova T&D India Limited,2024-05-27,False,,False,False,True,True,False,False,False,False,True,False,False,,True,0.16350376988099405,,0.0,0.0,0.661021845098393,2.51399169525185
+DREDGECORP,Dredging Corporation of India Limited,2024-06-10,True,,False,False,False,True,False,False,False,False,True,False,False,,,0.6292005972981746,,0.0,0.0,-0.387257472469848,0.0119734312183186
+MANORAMA,Manorama Industries Limited,2024-07-01,False,,False,False,False,True,False,False,False,True,False,False,False,,,0.08032727027704938,,0.0,0.0,1.46122042722609,1.46259857591302
+RAMKY,Ramky Infrastructure Limited,2024-07-15,True,,False,False,False,False,False,False,False,True,False,True,False,,,0.25628809265087854,,0.0,0.0,-0.203160270880361,-0.493741021957726
+SONACOMS,Sona BLW Precision Forgings Limited,2024-07-22,False,,False,False,False,True,False,False,False,False,True,False,False,False,,0.016745167643685565,,0.0,0.0,-0.3208779524569,0.237335763651553
+FILATFASH,Filatex Fashions Limited,2024-07-29,,,False,False,False,,,,False,,,False,False,,,,,0.0,0.0,-0.609271523178808,-0.880794701986755
+ANUP,The Anup Engineering Limited,2024-08-05,False,,False,False,False,True,False,False,False,False,True,False,False,False,,0.02609048194206839,,0.0,0.0,0.19077503163658,-0.0677926706438366
+EMSLIMITED,EMS Limited,2024-08-05,,,False,False,False,True,,,False,,,False,False,,,,,0.0,0.0,-0.357687605519008,-0.54014088606858
+MANAKCOAT,Manaksia Coated Metals & Industries Limited,2024-09-30,True,,False,False,False,True,True,True,True,False,False,False,False,,,0.41996371266434146,,0.0,0.0,1.45119103222793,
+ZODIAC,Zodiac Energy Limited,2024-10-07,False,,False,False,False,True,True,False,False,True,False,False,False,,,0.18384373609221977,,-5.7390656,0.0,-0.342682394058541,
+TDPOWERSYS,TD Power Systems Limited,2024-11-04,False,,False,False,False,True,False,False,False,False,False,False,False,False,True,0.046623139810488344,,0.0,0.0,0.859796067006555,
+DHRUV,Dhruv Consultancy Services Limited,2024-11-11,False,,False,False,False,True,False,False,False,True,False,False,True,True,,0.12350576099067047,,0.0,0.0,-0.641573800318399,
+PENIND,Pennar Industries Limited,2024-11-11,False,,False,False,False,True,True,True,True,False,False,False,False,True,,0.14754382585842238,,0.7094569,0.0,0.141476633602618,
+RATNAVEER,Ratnaveer Precision Engineering Limited,2024-11-18,False,,False,False,False,True,True,False,False,,,False,False,,,0.11487090840922408,,0.0,0.0,-0.391277499035122,
+EXICOM,Exicom Tele-Systems Limited,2025-02-03,True,,False,False,False,False,True,False,False,,,True,False,,,0.8827492020254019,,0.0,0.0,-0.405435745937962,
+PPAP,PPAP Automotive Limited,2025-02-10,True,,False,False,False,False,True,True,True,False,True,False,False,,,0.759902309046437,,0.0,0.0,0.216497137457618,
+RITCO,Ritco Logistics Limited,2025-02-10,False,,False,False,False,False,True,True,True,,,False,False,,,0.15174621823256926,,0.0,0.0,-0.201509433962264,
+CENTUM,Centum Electronics Limited,2025-02-17,False,,False,False,False,False,True,True,False,False,False,False,False,False,,0.20031276691847044,,0.0,0.0,1.2535708139735,
+ACE,Action Construction Equipment Limited,2025-02-17,False,,False,False,False,False,False,False,False,False,False,False,False,,,0.0343090224908931,,0.0,0.0,-0.169410618606917,
+AWHCL,Antony Waste Handling Cell Limited,2025-02-24,True,,False,False,False,False,False,False,False,False,False,False,False,,,0.6556612435374403,,0.0,0.0,-0.0991900905192949,
+ADROITINFO,Adroit Infotech Limited,2025-02-24,False,,False,False,False,False,False,False,False,True,True,False,False,,,0.12937882845241153,,0.0,0.0,-0.391791044776119,
+SWELECTES,Swelect Energy Systems Limited,2025-03-10,False,,False,False,False,False,False,False,False,True,False,False,False,,,0.23681847197610978,,0.0,0.0,-0.0537606837606839,
+REFEX,Refex Industries Limited,2025-04-28,False,,False,False,False,False,True,False,False,True,False,False,False,,,0.14494078226166593,,0.0,0.0,-0.362411081991763,
+JBMA,JBM Auto Limited,2025-05-05,True,,False,False,False,False,False,False,False,False,False,False,False,,,0.6215599613477816,,0.0,0.0,-0.142473673342969,
+REMSONSIND,Remsons Industries Limited,2025-05-12,True,True,True,True,False,False,True,True,True,False,False,False,False,,,0.6168115942696241,2.8457598178713717,2.3736737,3.42914,-0.328840777116639,
+WEBELSOLAR,Websol Energy System Limited,2025-05-12,False,,False,False,False,False,False,False,False,True,True,False,False,,,0.007899015049219813,,0.0,0.0,-0.18414968935125,
+SALZERELEC,Salzer Electronics Limited,2025-05-19,False,,False,False,False,False,False,True,False,False,False,True,False,,,0.11481161597799139,,0.0,0.0,-0.293700917128892,
+AARON,Aaron Industries Limited,2025-05-19,True,,False,False,False,True,False,False,False,True,False,False,False,,,0.3421908576908168,,0.0,0.0,-0.399259353850083,
+GULFPETRO,GP Petroleums Limited,2025-05-26,True,,False,False,False,False,True,True,True,False,False,False,False,,,0.8840066973397818,,-3.9970276,0.0,-0.163341645885287,
+BAJEL,Bajel Projects Limited,2025-06-02,True,,False,False,False,False,True,True,False,,,False,False,,,1.0275443633108998,,0.0,0.0,-0.0886960493263301,
+POLYCAB,Polycab India Limited,2025-06-16,False,,False,False,False,False,False,False,False,True,False,True,False,,,0.05548409181538128,,0.0,0.0,0.520531216608151,
+AXISCADES,AXISCADES Technologies Limited,2025-07-28,False,True,False,False,False,True,False,False,False,False,False,False,False,False,,0.11401169653828841,8.738234816370364,0.0,0.0,0.247981266149871,
+MENONBE,Menon Bearings Limited,2025-08-04,False,,False,False,False,True,False,False,False,False,False,False,False,,,0.040927133603117345,,0.0,0.0,0.929072070699376,
+DIVGIITTS,Divgi Torqtransfer Systems Limited,2025-08-04,True,,False,False,False,True,False,False,False,False,False,False,False,,,0.37457184134262056,,0.0,0.0,0.946204977585407,
+COSMOFIRST,COSMO FIRST LIMITED,2025-08-11,False,,False,False,False,True,True,True,True,False,True,False,False,,,0.17427724207123346,,0.0,0.0,-0.0922259071400703,
+PTCIL,PTC Industries Limited,2025-08-18,False,,False,False,False,True,False,False,False,True,False,False,False,,,0.004821139598726094,,0.0,0.0,0.644147398843931,
+PREMEXPLN,Premier Explosives Limited,2025-08-18,False,,False,False,False,False,False,False,False,True,False,False,True,False,,0.11946892856218842,,0.0,0.0,0.292611700574321,
+SIGNPOST,Signpost India Limited,2025-08-25,True,,False,False,False,False,False,False,False,,,False,False,,,0.43994403038464236,,-72.1295369,0.0,-0.111055107526882,
+NETWEB,Netweb Technologies India Limited,2025-09-01,False,,False,False,False,True,False,False,False,True,False,False,True,False,,0.10617246888114872,,0.0,0.0,0.600471747199001,
+SJVN,SJVN Limited,2025-11-10,False,,False,False,False,False,,False,False,False,,False,False,,,0.032391918143260555,,0.0,0.0,,
+RAMKY,Ramky Infrastructure Limited,2025-11-10,True,,False,False,False,True,False,False,False,False,False,False,False,,,0.5098247127396907,,0.0,0.0,,
+THEJO,Thejo Engineering Limited,2025-11-10,False,,False,False,False,False,False,False,False,False,False,False,False,,,0.06845432334962473,,0.0,0.0,,
+PARAS,Paras Defence and Space Technologies Limited,2025-11-10,False,,False,False,False,False,False,False,False,True,True,False,False,,,0.013235359765273496,,0.0,0.0,,
+JASH,Jash Engineering Limited,2025-11-10,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,0.02575042070321499,1.3364529709550013,0.3045781,0.0,,
+MUKKA,Mukka Proteins Limited,2025-12-01,True,,False,False,False,False,True,True,True,False,True,False,False,,,0.6518988444444446,,0.0,0.0,,

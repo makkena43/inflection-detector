@@ -1,0 +1,3745 @@
+{
+  "signal": {
+    "review_id": "47967328-0f9a-473d-a7af-a61401912cf3",
+    "issuer_id": "ccbe38e2-f13e-4990-9432-815e6f25fdc7",
+    "week_start": "2026-09-14",
+    "label": "538521",
+    "legal_name": "YAAN ENTERPRISES LIMITED",
+    "triage_action": "DEEP_RESEARCH",
+    "is_pick": true,
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "rules_version": "triage-rules-3.5.1",
+    "size_pct_of_revenue": 63.8,
+    "size_basis": "STATED",
+    "firm": true,
+    "routine": true,
+    "disqualifier": null,
+    "confidence": "LOW",
+    "rationale": "The stated order of INR 15.86 crore is firm (purchase order received, 2-month execution) and equals 63.8% of TTM revenue of INR 24.86 crore (size STATED). It is routine in the sense that the company won maize orders of INR 6.5 and 7.3 crore in early 2026, and TTM OPM of 6.0% triggers the thin-margin exception, so it is decided as non-routine. Revenue growth is positive on the packet's annual and quarterly figures (FY2026 +352%, June quarter +59.7%), so it reaches DEEP_RESEARCH, but margin, counterparty concentration and very thin liquidity are open questions.",
+    "excess_6m": null,
+    "excess_12m": null,
+    "excess_24m": null,
+    "return_12m": null,
+    "return_24m": null,
+    "holding_period": null,
+    "holding_previous_period": null,
+    "promoter_holding_pct": null,
+    "fii_holding_pct": null,
+    "promoter_change_pp": null,
+    "fii_change_pp": null,
+    "holding_year_ago_period": null,
+    "promoter_yoy_pp": null,
+    "fii_yoy_pp": null,
+    "return_36m": null,
+    "benchmark_36m": null,
+    "excess_36m": null,
+    "benchmark_12m": null,
+    "benchmark_24m": null,
+    "runup_6m": null,
+    "margin_ttm": 0.03258246178600161,
+    "category": "C: low margin + order \u226525%",
+    "order_cr_derived": 15.86068,
+    "order_cr": 15.86,
+    "order_cr_basis": "review amount",
+    "mcap_cr": null,
+    "orders_12m_pct": 119.3,
+    "orders_y1_pct": 91.6,
+    "orders_12m_incl_big_pct": 119.3,
+    "order_to_mcap": null,
+    "mgmt_target_x": null,
+    "promoter_net_cr": 0.0,
+    "inst_net_cr": 0.0,
+    "tech": {
+      "up": true,
+      "hi": true,
+      "rs": true,
+      "n": 3,
+      "runup6": 0.8222992619100871,
+      "liq": 0.0194935325,
+      "exchange": "BSE",
+      "below_falling_200": false,
+      "price_date": "2026-09-28",
+      "history_days": 295,
+      "near_high_threshold": 0.8
+    },
+    "tech_score": 3,
+    "price_date": "2026-09-28",
+    "exchange": "BSE",
+    "order_book": {},
+    "score": 2,
+    "score_inputs": {
+      "order_mcap_25": null,
+      "mcap_lt_2000": null,
+      "ps_lt_1_5": null,
+      "opm_up_1pp": null,
+      "opm_lt_10": true,
+      "mgmt_target_1_5x": false,
+      "tech_2_of_3": true,
+      "revenue_growing": null,
+      "order_book_growing": null,
+      "illiquid_penalty": null,
+      "expensive_penalty": null
+    },
+    "score_known": 3,
+    "score_n": 9,
+    "ps": null,
+    "opm": 0.06033789219629927,
+    "signals": [
+      "Technicals 3/3",
+      "Data 3/9 known"
+    ],
+    "combos": [
+      "C2",
+      "C3"
+    ],
+    "combo_checks": {
+      "up": true,
+      "hi": true,
+      "rs": true,
+      "n": 3,
+      "runup6": 0.8222992619100871,
+      "liq": 0.0194935325,
+      "exchange": "BSE",
+      "below_falling_200": false,
+      "price_date": "2026-09-28",
+      "history_days": 295,
+      "near_high_threshold": 0.8
+    }
+  },
+  "identifiers": [
+    {
+      "security_id": "f30ac786-4bf3-4e46-942a-496e71133dc8",
+      "exchange": "BSE",
+      "kind": "SCRIP_CODE",
+      "value": "538521"
+    },
+    {
+      "security_id": "f30ac786-4bf3-4e46-942a-496e71133dc8",
+      "exchange": "BSE",
+      "kind": "SYMBOL",
+      "value": "YAANENT"
+    }
+  ],
+  "exchange": "BSE",
+  "security_id": "f30ac786-4bf3-4e46-942a-496e71133dc8",
+  "prices": [
+    {
+      "trade_date": "2026-10-27",
+      "close": "156.95",
+      "volume": "3019"
+    },
+    {
+      "trade_date": "2026-10-26",
+      "close": "153.00",
+      "volume": "532"
+    },
+    {
+      "trade_date": "2026-10-23",
+      "close": "153.20",
+      "volume": "1552"
+    },
+    {
+      "trade_date": "2026-10-22",
+      "close": "159.00",
+      "volume": "50"
+    },
+    {
+      "trade_date": "2026-10-21",
+      "close": "158.00",
+      "volume": "282"
+    },
+    {
+      "trade_date": "2026-10-19",
+      "close": "159.00",
+      "volume": "110"
+    },
+    {
+      "trade_date": "2026-10-16",
+      "close": "160.00",
+      "volume": "81"
+    },
+    {
+      "trade_date": "2026-10-15",
+      "close": "164.00",
+      "volume": "60"
+    },
+    {
+      "trade_date": "2026-10-14",
+      "close": "160.00",
+      "volume": "24"
+    },
+    {
+      "trade_date": "2026-10-13",
+      "close": "163.05",
+      "volume": "3191"
+    },
+    {
+      "trade_date": "2026-10-12",
+      "close": "163.90",
+      "volume": "516"
+    },
+    {
+      "trade_date": "2026-10-09",
+      "close": "159.00",
+      "volume": "557"
+    },
+    {
+      "trade_date": "2026-10-08",
+      "close": "158.00",
+      "volume": "573"
+    },
+    {
+      "trade_date": "2026-10-07",
+      "close": "160.05",
+      "volume": "30"
+    },
+    {
+      "trade_date": "2026-10-06",
+      "close": "160.05",
+      "volume": "275"
+    },
+    {
+      "trade_date": "2026-10-05",
+      "close": "160.05",
+      "volume": "783"
+    },
+    {
+      "trade_date": "2026-10-01",
+      "close": "164.05",
+      "volume": "2135"
+    },
+    {
+      "trade_date": "2026-09-30",
+      "close": "162.95",
+      "volume": "1539"
+    },
+    {
+      "trade_date": "2026-09-29",
+      "close": "156.65",
+      "volume": "7009"
+    },
+    {
+      "trade_date": "2026-09-28",
+      "close": "162.95",
+      "volume": "1745"
+    },
+    {
+      "trade_date": "2026-09-25",
+      "close": "158.80",
+      "volume": "5425"
+    },
+    {
+      "trade_date": "2026-09-24",
+      "close": "150.35",
+      "volume": "5080"
+    },
+    {
+      "trade_date": "2026-09-23",
+      "close": "136.70",
+      "volume": "1022"
+    },
+    {
+      "trade_date": "2026-09-22",
+      "close": "134.40",
+      "volume": "218"
+    },
+    {
+      "trade_date": "2026-09-21",
+      "close": "130.95",
+      "volume": "308"
+    },
+    {
+      "trade_date": "2026-09-18",
+      "close": "127.05",
+      "volume": "646"
+    },
+    {
+      "trade_date": "2026-09-17",
+      "close": "128.85",
+      "volume": "1200"
+    },
+    {
+      "trade_date": "2026-09-16",
+      "close": "120.05",
+      "volume": "2023"
+    },
+    {
+      "trade_date": "2026-09-15",
+      "close": "116.30",
+      "volume": "476"
+    },
+    {
+      "trade_date": "2026-09-11",
+      "close": "124.55",
+      "volume": "1010"
+    },
+    {
+      "trade_date": "2026-09-10",
+      "close": "123.95",
+      "volume": "217"
+    },
+    {
+      "trade_date": "2026-09-09",
+      "close": "119.90",
+      "volume": "66"
+    },
+    {
+      "trade_date": "2026-09-08",
+      "close": "115.10",
+      "volume": "795"
+    },
+    {
+      "trade_date": "2026-09-07",
+      "close": "118.35",
+      "volume": "1649"
+    },
+    {
+      "trade_date": "2026-09-04",
+      "close": "122.30",
+      "volume": "493"
+    },
+    {
+      "trade_date": "2026-09-03",
+      "close": "129.00",
+      "volume": "1691"
+    },
+    {
+      "trade_date": "2026-09-02",
+      "close": "124.80",
+      "volume": "397"
+    },
+    {
+      "trade_date": "2026-08-31",
+      "close": "123.45",
+      "volume": "31"
+    },
+    {
+      "trade_date": "2026-08-28",
+      "close": "119.75",
+      "volume": "35"
+    },
+    {
+      "trade_date": "2026-08-27",
+      "close": "114.45",
+      "volume": "592"
+    },
+    {
+      "trade_date": "2026-08-26",
+      "close": "119.00",
+      "volume": "6"
+    },
+    {
+      "trade_date": "2026-08-24",
+      "close": "115.10",
+      "volume": "1933"
+    },
+    {
+      "trade_date": "2026-08-21",
+      "close": "115.00",
+      "volume": "38"
+    },
+    {
+      "trade_date": "2026-08-20",
+      "close": "119.35",
+      "volume": "2981"
+    },
+    {
+      "trade_date": "2026-08-19",
+      "close": "124.00",
+      "volume": "32"
+    },
+    {
+      "trade_date": "2026-08-18",
+      "close": "122.95",
+      "volume": "51"
+    },
+    {
+      "trade_date": "2026-08-17",
+      "close": "121.00",
+      "volume": "176"
+    },
+    {
+      "trade_date": "2026-08-13",
+      "close": "120.00",
+      "volume": "115"
+    },
+    {
+      "trade_date": "2026-08-12",
+      "close": "120.50",
+      "volume": "1116"
+    },
+    {
+      "trade_date": "2026-08-11",
+      "close": "120.55",
+      "volume": "9541"
+    },
+    {
+      "trade_date": "2026-08-10",
+      "close": "123.00",
+      "volume": "423"
+    },
+    {
+      "trade_date": "2026-08-07",
+      "close": "120.15",
+      "volume": "3739"
+    },
+    {
+      "trade_date": "2026-08-06",
+      "close": "119.95",
+      "volume": "2217"
+    },
+    {
+      "trade_date": "2026-08-05",
+      "close": "115.75",
+      "volume": "1430"
+    },
+    {
+      "trade_date": "2026-08-04",
+      "close": "112.00",
+      "volume": "920"
+    },
+    {
+      "trade_date": "2026-08-03",
+      "close": "112.55",
+      "volume": "1730"
+    },
+    {
+      "trade_date": "2026-07-31",
+      "close": "109.65",
+      "volume": "2191"
+    },
+    {
+      "trade_date": "2026-07-30",
+      "close": "105.50",
+      "volume": "5579"
+    },
+    {
+      "trade_date": "2026-07-29",
+      "close": "103.00",
+      "volume": "8562"
+    },
+    {
+      "trade_date": "2026-07-28",
+      "close": "100.00",
+      "volume": "16534"
+    },
+    {
+      "trade_date": "2026-07-27",
+      "close": "100.00",
+      "volume": "200"
+    },
+    {
+      "trade_date": "2026-07-24",
+      "close": "100.40",
+      "volume": "12973"
+    },
+    {
+      "trade_date": "2026-07-23",
+      "close": "100.50",
+      "volume": "6115"
+    },
+    {
+      "trade_date": "2026-07-22",
+      "close": "100.00",
+      "volume": "5003"
+    },
+    {
+      "trade_date": "2026-07-21",
+      "close": "98.75",
+      "volume": "2161"
+    },
+    {
+      "trade_date": "2026-07-20",
+      "close": "100.70",
+      "volume": "3657"
+    },
+    {
+      "trade_date": "2026-07-17",
+      "close": "100.95",
+      "volume": "5698"
+    },
+    {
+      "trade_date": "2026-07-16",
+      "close": "101.75",
+      "volume": "2101"
+    },
+    {
+      "trade_date": "2026-07-15",
+      "close": "101.55",
+      "volume": "2249"
+    },
+    {
+      "trade_date": "2026-07-14",
+      "close": "101.50",
+      "volume": "178"
+    },
+    {
+      "trade_date": "2026-07-13",
+      "close": "102.95",
+      "volume": "364"
+    },
+    {
+      "trade_date": "2026-07-10",
+      "close": "100.00",
+      "volume": "2085"
+    },
+    {
+      "trade_date": "2026-07-09",
+      "close": "98.15",
+      "volume": "4743"
+    },
+    {
+      "trade_date": "2026-07-08",
+      "close": "97.75",
+      "volume": "666"
+    },
+    {
+      "trade_date": "2026-07-07",
+      "close": "99.50",
+      "volume": "3928"
+    },
+    {
+      "trade_date": "2026-07-06",
+      "close": "99.70",
+      "volume": "2773"
+    },
+    {
+      "trade_date": "2026-07-03",
+      "close": "100.00",
+      "volume": "3501"
+    },
+    {
+      "trade_date": "2026-07-02",
+      "close": "99.00",
+      "volume": "3302"
+    },
+    {
+      "trade_date": "2026-07-01",
+      "close": "99.95",
+      "volume": "7792"
+    },
+    {
+      "trade_date": "2026-06-30",
+      "close": "100.99",
+      "volume": "6391"
+    },
+    {
+      "trade_date": "2026-06-29",
+      "close": "98.00",
+      "volume": "176"
+    },
+    {
+      "trade_date": "2026-06-25",
+      "close": "98.00",
+      "volume": "7465"
+    },
+    {
+      "trade_date": "2026-06-24",
+      "close": "95.99",
+      "volume": "1443"
+    },
+    {
+      "trade_date": "2026-06-23",
+      "close": "94.55",
+      "volume": "770"
+    },
+    {
+      "trade_date": "2026-06-22",
+      "close": "93.99",
+      "volume": "722"
+    },
+    {
+      "trade_date": "2026-06-19",
+      "close": "92.49",
+      "volume": "997"
+    },
+    {
+      "trade_date": "2026-06-18",
+      "close": "94.13",
+      "volume": "1370"
+    },
+    {
+      "trade_date": "2026-06-17",
+      "close": "94.99",
+      "volume": "1209"
+    },
+    {
+      "trade_date": "2026-06-16",
+      "close": "93.49",
+      "volume": "1648"
+    },
+    {
+      "trade_date": "2026-06-15",
+      "close": "94.03",
+      "volume": "11358"
+    },
+    {
+      "trade_date": "2026-06-12",
+      "close": "95.00",
+      "volume": "2849"
+    },
+    {
+      "trade_date": "2026-06-11",
+      "close": "100.00",
+      "volume": "12062"
+    },
+    {
+      "trade_date": "2026-06-10",
+      "close": "100.00",
+      "volume": "15402"
+    },
+    {
+      "trade_date": "2026-06-09",
+      "close": "96.00",
+      "volume": "21982"
+    },
+    {
+      "trade_date": "2026-06-08",
+      "close": "95.15",
+      "volume": "15502"
+    },
+    {
+      "trade_date": "2026-06-05",
+      "close": "95.06",
+      "volume": "4292"
+    },
+    {
+      "trade_date": "2026-06-04",
+      "close": "93.65",
+      "volume": "307"
+    },
+    {
+      "trade_date": "2026-06-03",
+      "close": "94.89",
+      "volume": "2"
+    },
+    {
+      "trade_date": "2026-06-02",
+      "close": "93.18",
+      "volume": "825"
+    },
+    {
+      "trade_date": "2026-06-01",
+      "close": "93.47",
+      "volume": "240"
+    },
+    {
+      "trade_date": "2026-05-29",
+      "close": "91.00",
+      "volume": "151"
+    },
+    {
+      "trade_date": "2026-05-27",
+      "close": "92.55",
+      "volume": "117"
+    },
+    {
+      "trade_date": "2026-05-26",
+      "close": "90.30",
+      "volume": "1512"
+    },
+    {
+      "trade_date": "2026-05-25",
+      "close": "92.65",
+      "volume": "7135"
+    },
+    {
+      "trade_date": "2026-05-22",
+      "close": "92.75",
+      "volume": "2106"
+    },
+    {
+      "trade_date": "2026-05-21",
+      "close": "96.35",
+      "volume": "19662"
+    },
+    {
+      "trade_date": "2026-05-20",
+      "close": "107.05",
+      "volume": "1106"
+    },
+    {
+      "trade_date": "2026-05-19",
+      "close": "112.95",
+      "volume": "80"
+    },
+    {
+      "trade_date": "2026-05-18",
+      "close": "108.20",
+      "volume": "1835"
+    },
+    {
+      "trade_date": "2026-05-15",
+      "close": "113.85",
+      "volume": "1469"
+    },
+    {
+      "trade_date": "2026-05-14",
+      "close": "113.05",
+      "volume": "1538"
+    },
+    {
+      "trade_date": "2026-05-13",
+      "close": "112.85",
+      "volume": "3742"
+    },
+    {
+      "trade_date": "2026-05-12",
+      "close": "120.50",
+      "volume": "1491"
+    },
+    {
+      "trade_date": "2026-05-11",
+      "close": "128.60",
+      "volume": "4187"
+    },
+    {
+      "trade_date": "2026-05-08",
+      "close": "125.20",
+      "volume": "3905"
+    },
+    {
+      "trade_date": "2026-05-07",
+      "close": "123.00",
+      "volume": "5767"
+    },
+    {
+      "trade_date": "2026-05-06",
+      "close": "121.10",
+      "volume": "1825"
+    },
+    {
+      "trade_date": "2026-05-05",
+      "close": "116.05",
+      "volume": "3471"
+    },
+    {
+      "trade_date": "2026-05-04",
+      "close": "116.20",
+      "volume": "3919"
+    },
+    {
+      "trade_date": "2026-04-30",
+      "close": "110.00",
+      "volume": "2481"
+    },
+    {
+      "trade_date": "2026-04-29",
+      "close": "115.65",
+      "volume": "1511"
+    },
+    {
+      "trade_date": "2026-04-28",
+      "close": "113.01",
+      "volume": "1742"
+    },
+    {
+      "trade_date": "2026-04-27",
+      "close": "114.92",
+      "volume": "1707"
+    },
+    {
+      "trade_date": "2026-04-24",
+      "close": "113.98",
+      "volume": "1340"
+    },
+    {
+      "trade_date": "2026-04-23",
+      "close": "112.58",
+      "volume": "2209"
+    },
+    {
+      "trade_date": "2026-04-22",
+      "close": "112.85",
+      "volume": "1145"
+    },
+    {
+      "trade_date": "2026-04-21",
+      "close": "111.72",
+      "volume": "1595"
+    },
+    {
+      "trade_date": "2026-04-20",
+      "close": "110.06",
+      "volume": "1197"
+    },
+    {
+      "trade_date": "2026-04-17",
+      "close": "110.97",
+      "volume": "1084"
+    },
+    {
+      "trade_date": "2026-04-16",
+      "close": "109.99",
+      "volume": "1655"
+    },
+    {
+      "trade_date": "2026-04-15",
+      "close": "104.06",
+      "volume": "694"
+    },
+    {
+      "trade_date": "2026-04-13",
+      "close": "100.28",
+      "volume": "1967"
+    },
+    {
+      "trade_date": "2026-04-10",
+      "close": "102.06",
+      "volume": "1324"
+    },
+    {
+      "trade_date": "2026-04-09",
+      "close": "97.98",
+      "volume": "1975"
+    },
+    {
+      "trade_date": "2026-04-08",
+      "close": "99.33",
+      "volume": "1600"
+    },
+    {
+      "trade_date": "2026-04-07",
+      "close": "93.99",
+      "volume": "1204"
+    },
+    {
+      "trade_date": "2026-04-06",
+      "close": "91.26",
+      "volume": "775"
+    },
+    {
+      "trade_date": "2026-04-02",
+      "close": "87.60",
+      "volume": "652"
+    },
+    {
+      "trade_date": "2026-04-01",
+      "close": "86.38",
+      "volume": "522"
+    },
+    {
+      "trade_date": "2026-03-30",
+      "close": "89.42",
+      "volume": "204"
+    },
+    {
+      "trade_date": "2026-03-27",
+      "close": "90.90",
+      "volume": "1145"
+    },
+    {
+      "trade_date": "2026-03-25",
+      "close": "91.36",
+      "volume": "817"
+    },
+    {
+      "trade_date": "2026-03-24",
+      "close": "88.21",
+      "volume": "6377"
+    },
+    {
+      "trade_date": "2026-03-23",
+      "close": "91.76",
+      "volume": "1542"
+    },
+    {
+      "trade_date": "2026-03-20",
+      "close": "92.50",
+      "volume": "43"
+    },
+    {
+      "trade_date": "2026-03-19",
+      "close": "92.02",
+      "volume": "2203"
+    },
+    {
+      "trade_date": "2026-03-18",
+      "close": "96.60",
+      "volume": "1009"
+    },
+    {
+      "trade_date": "2026-03-17",
+      "close": "95.90",
+      "volume": "701"
+    },
+    {
+      "trade_date": "2026-03-16",
+      "close": "93.09",
+      "volume": "97"
+    },
+    {
+      "trade_date": "2026-03-13",
+      "close": "95.99",
+      "volume": "305"
+    },
+    {
+      "trade_date": "2026-03-12",
+      "close": "94.37",
+      "volume": "2521"
+    },
+    {
+      "trade_date": "2026-03-11",
+      "close": "93.50",
+      "volume": "241"
+    },
+    {
+      "trade_date": "2026-03-10",
+      "close": "92.67",
+      "volume": "1660"
+    },
+    {
+      "trade_date": "2026-03-04",
+      "close": "89.20",
+      "volume": "34"
+    },
+    {
+      "trade_date": "2026-03-02",
+      "close": "89.20",
+      "volume": "53"
+    },
+    {
+      "trade_date": "2026-02-27",
+      "close": "89.70",
+      "volume": "123"
+    },
+    {
+      "trade_date": "2026-02-26",
+      "close": "86.00",
+      "volume": "5"
+    },
+    {
+      "trade_date": "2026-02-25",
+      "close": "84.50",
+      "volume": "1223"
+    },
+    {
+      "trade_date": "2026-02-24",
+      "close": "80.50",
+      "volume": "418"
+    },
+    {
+      "trade_date": "2026-02-23",
+      "close": "84.00",
+      "volume": "220"
+    },
+    {
+      "trade_date": "2026-02-19",
+      "close": "86.05",
+      "volume": "20"
+    },
+    {
+      "trade_date": "2026-02-18",
+      "close": "86.05",
+      "volume": "303"
+    },
+    {
+      "trade_date": "2026-02-17",
+      "close": "90.25",
+      "volume": "30"
+    },
+    {
+      "trade_date": "2026-02-16",
+      "close": "95.00",
+      "volume": "1"
+    },
+    {
+      "trade_date": "2026-02-13",
+      "close": "99.25",
+      "volume": "2"
+    },
+    {
+      "trade_date": "2026-02-12",
+      "close": "99.30",
+      "volume": "216"
+    },
+    {
+      "trade_date": "2026-02-11",
+      "close": "104.50",
+      "volume": "5171"
+    },
+    {
+      "trade_date": "2026-02-10",
+      "close": "110.00",
+      "volume": "250"
+    },
+    {
+      "trade_date": "2026-02-09",
+      "close": "113.00",
+      "volume": "238"
+    },
+    {
+      "trade_date": "2026-02-06",
+      "close": "113.95",
+      "volume": "3123"
+    },
+    {
+      "trade_date": "2026-02-05",
+      "close": "114.30",
+      "volume": "6449"
+    },
+    {
+      "trade_date": "2026-02-04",
+      "close": "115.75",
+      "volume": "1140"
+    },
+    {
+      "trade_date": "2026-02-03",
+      "close": "115.35",
+      "volume": "2822"
+    },
+    {
+      "trade_date": "2026-02-02",
+      "close": "112.45",
+      "volume": "652"
+    },
+    {
+      "trade_date": "2026-01-30",
+      "close": "102.00",
+      "volume": "2346"
+    },
+    {
+      "trade_date": "2026-01-29",
+      "close": "100.50",
+      "volume": "2086"
+    },
+    {
+      "trade_date": "2026-01-28",
+      "close": "100.53",
+      "volume": "1752"
+    },
+    {
+      "trade_date": "2026-01-27",
+      "close": "101.03",
+      "volume": "2162"
+    },
+    {
+      "trade_date": "2026-01-23",
+      "close": "100.50",
+      "volume": "2500"
+    },
+    {
+      "trade_date": "2026-01-22",
+      "close": "100.08",
+      "volume": "6425"
+    },
+    {
+      "trade_date": "2026-01-21",
+      "close": "100.00",
+      "volume": "852"
+    },
+    {
+      "trade_date": "2026-01-20",
+      "close": "100.00",
+      "volume": "13310"
+    },
+    {
+      "trade_date": "2026-01-19",
+      "close": "100.01",
+      "volume": "1635"
+    },
+    {
+      "trade_date": "2026-01-16",
+      "close": "100.50",
+      "volume": "110"
+    },
+    {
+      "trade_date": "2026-01-14",
+      "close": "99.98",
+      "volume": "7557"
+    },
+    {
+      "trade_date": "2026-01-13",
+      "close": "99.88",
+      "volume": "2108"
+    },
+    {
+      "trade_date": "2026-01-12",
+      "close": "95.21",
+      "volume": "1035"
+    },
+    {
+      "trade_date": "2026-01-09",
+      "close": "98.98",
+      "volume": "1213"
+    },
+    {
+      "trade_date": "2026-01-08",
+      "close": "98.12",
+      "volume": "119"
+    },
+    {
+      "trade_date": "2026-01-07",
+      "close": "100.00",
+      "volume": "77"
+    },
+    {
+      "trade_date": "2026-01-06",
+      "close": "100.46",
+      "volume": "2946"
+    },
+    {
+      "trade_date": "2026-01-05",
+      "close": "101.00",
+      "volume": "1102"
+    },
+    {
+      "trade_date": "2026-01-02",
+      "close": "101.50",
+      "volume": "743"
+    },
+    {
+      "trade_date": "2026-01-01",
+      "close": "101.00",
+      "volume": "1087"
+    },
+    {
+      "trade_date": "2025-12-31",
+      "close": "100.00",
+      "volume": "89"
+    },
+    {
+      "trade_date": "2025-12-30",
+      "close": "100.00",
+      "volume": "2216"
+    },
+    {
+      "trade_date": "2025-12-29",
+      "close": "100.00",
+      "volume": "96"
+    },
+    {
+      "trade_date": "2025-12-26",
+      "close": "99.50",
+      "volume": "122"
+    },
+    {
+      "trade_date": "2025-12-24",
+      "close": "100.00",
+      "volume": "398"
+    },
+    {
+      "trade_date": "2025-12-23",
+      "close": "99.50",
+      "volume": "431"
+    },
+    {
+      "trade_date": "2025-12-22",
+      "close": "100.05",
+      "volume": "1953"
+    },
+    {
+      "trade_date": "2025-12-19",
+      "close": "100.05",
+      "volume": "1367"
+    },
+    {
+      "trade_date": "2025-12-18",
+      "close": "99.90",
+      "volume": "3704"
+    },
+    {
+      "trade_date": "2025-12-17",
+      "close": "101.00",
+      "volume": "3019"
+    },
+    {
+      "trade_date": "2025-12-16",
+      "close": "101.50",
+      "volume": "3667"
+    },
+    {
+      "trade_date": "2025-12-15",
+      "close": "101.85",
+      "volume": "3185"
+    },
+    {
+      "trade_date": "2025-12-12",
+      "close": "101.70",
+      "volume": "3001"
+    },
+    {
+      "trade_date": "2025-12-11",
+      "close": "99.75",
+      "volume": "8100"
+    },
+    {
+      "trade_date": "2025-12-10",
+      "close": "100.00",
+      "volume": "641"
+    },
+    {
+      "trade_date": "2025-12-09",
+      "close": "98.00",
+      "volume": "647"
+    },
+    {
+      "trade_date": "2025-12-08",
+      "close": "100.00",
+      "volume": "562"
+    },
+    {
+      "trade_date": "2025-12-05",
+      "close": "101.50",
+      "volume": "1730"
+    },
+    {
+      "trade_date": "2025-12-04",
+      "close": "100.95",
+      "volume": "722"
+    },
+    {
+      "trade_date": "2025-12-03",
+      "close": "100.10",
+      "volume": "211"
+    },
+    {
+      "trade_date": "2025-12-02",
+      "close": "101.80",
+      "volume": "707"
+    },
+    {
+      "trade_date": "2025-12-01",
+      "close": "100.00",
+      "volume": "857"
+    },
+    {
+      "trade_date": "2025-11-28",
+      "close": "102.94",
+      "volume": "432"
+    },
+    {
+      "trade_date": "2025-11-27",
+      "close": "98.75",
+      "volume": "196"
+    },
+    {
+      "trade_date": "2025-11-26",
+      "close": "98.75",
+      "volume": "1"
+    },
+    {
+      "trade_date": "2025-11-25",
+      "close": "98.75",
+      "volume": "951"
+    },
+    {
+      "trade_date": "2025-11-24",
+      "close": "96.02",
+      "volume": "278"
+    },
+    {
+      "trade_date": "2025-11-21",
+      "close": "96.08",
+      "volume": "337"
+    },
+    {
+      "trade_date": "2025-11-20",
+      "close": "95.98",
+      "volume": "1268"
+    },
+    {
+      "trade_date": "2025-11-19",
+      "close": "96.64",
+      "volume": "356"
+    },
+    {
+      "trade_date": "2025-11-18",
+      "close": "96.02",
+      "volume": "1666"
+    },
+    {
+      "trade_date": "2025-11-17",
+      "close": "96.11",
+      "volume": "622"
+    },
+    {
+      "trade_date": "2025-11-14",
+      "close": "97.00",
+      "volume": "1322"
+    },
+    {
+      "trade_date": "2025-11-13",
+      "close": "97.32",
+      "volume": "613"
+    },
+    {
+      "trade_date": "2025-11-12",
+      "close": "97.96",
+      "volume": "4749"
+    },
+    {
+      "trade_date": "2025-11-11",
+      "close": "96.75",
+      "volume": "47"
+    },
+    {
+      "trade_date": "2025-11-10",
+      "close": "93.69",
+      "volume": "494"
+    },
+    {
+      "trade_date": "2025-11-07",
+      "close": "93.75",
+      "volume": "711"
+    },
+    {
+      "trade_date": "2025-11-06",
+      "close": "90.00",
+      "volume": "1506"
+    },
+    {
+      "trade_date": "2025-11-04",
+      "close": "90.25",
+      "volume": "1991"
+    },
+    {
+      "trade_date": "2025-11-03",
+      "close": "92.67",
+      "volume": "1924"
+    },
+    {
+      "trade_date": "2025-10-31",
+      "close": "94.98",
+      "volume": "258"
+    },
+    {
+      "trade_date": "2025-10-30",
+      "close": "89.83",
+      "volume": "4564"
+    },
+    {
+      "trade_date": "2025-10-29",
+      "close": "94.00",
+      "volume": "1562"
+    },
+    {
+      "trade_date": "2025-10-28",
+      "close": "89.57",
+      "volume": "492"
+    },
+    {
+      "trade_date": "2025-10-27",
+      "close": "88.01",
+      "volume": "416"
+    },
+    {
+      "trade_date": "2025-10-24",
+      "close": "87.64",
+      "volume": "2233"
+    },
+    {
+      "trade_date": "2025-10-23",
+      "close": "88.00",
+      "volume": "4608"
+    },
+    {
+      "trade_date": "2025-10-21",
+      "close": "88.39",
+      "volume": "1222"
+    },
+    {
+      "trade_date": "2025-10-20",
+      "close": "85.50",
+      "volume": "480"
+    },
+    {
+      "trade_date": "2025-10-17",
+      "close": "84.06",
+      "volume": "3869"
+    },
+    {
+      "trade_date": "2025-10-16",
+      "close": "82.59",
+      "volume": "898"
+    },
+    {
+      "trade_date": "2025-10-15",
+      "close": "84.00",
+      "volume": "1245"
+    },
+    {
+      "trade_date": "2025-10-14",
+      "close": "84.00",
+      "volume": "200"
+    },
+    {
+      "trade_date": "2025-10-13",
+      "close": "82.00",
+      "volume": "1661"
+    },
+    {
+      "trade_date": "2025-10-10",
+      "close": "82.01",
+      "volume": "1414"
+    },
+    {
+      "trade_date": "2025-10-09",
+      "close": "82.00",
+      "volume": "1146"
+    },
+    {
+      "trade_date": "2025-10-08",
+      "close": "82.00",
+      "volume": "134"
+    },
+    {
+      "trade_date": "2025-10-07",
+      "close": "83.68",
+      "volume": "714"
+    },
+    {
+      "trade_date": "2025-10-03",
+      "close": "84.00",
+      "volume": "197"
+    },
+    {
+      "trade_date": "2025-10-01",
+      "close": "83.00",
+      "volume": "22"
+    },
+    {
+      "trade_date": "2025-09-30",
+      "close": "85.43",
+      "volume": "353"
+    },
+    {
+      "trade_date": "2025-09-29",
+      "close": "80.06",
+      "volume": "570"
+    },
+    {
+      "trade_date": "2025-09-26",
+      "close": "82.80",
+      "volume": "1494"
+    },
+    {
+      "trade_date": "2025-09-25",
+      "close": "84.02",
+      "volume": "1722"
+    },
+    {
+      "trade_date": "2025-09-24",
+      "close": "86.73",
+      "volume": "215"
+    },
+    {
+      "trade_date": "2025-09-23",
+      "close": "86.94",
+      "volume": "330"
+    },
+    {
+      "trade_date": "2025-09-22",
+      "close": "81.05",
+      "volume": "1378"
+    },
+    {
+      "trade_date": "2025-09-19",
+      "close": "81.00",
+      "volume": "102"
+    },
+    {
+      "trade_date": "2025-09-18",
+      "close": "81.94",
+      "volume": "1225"
+    },
+    {
+      "trade_date": "2025-09-17",
+      "close": "84.22",
+      "volume": "764"
+    },
+    {
+      "trade_date": "2025-09-16",
+      "close": "83.42",
+      "volume": "339"
+    },
+    {
+      "trade_date": "2025-09-15",
+      "close": "83.26",
+      "volume": "947"
+    },
+    {
+      "trade_date": "2025-09-12",
+      "close": "77.20",
+      "volume": "781"
+    },
+    {
+      "trade_date": "2025-09-11",
+      "close": "76.65",
+      "volume": "51"
+    },
+    {
+      "trade_date": "2025-09-10",
+      "close": "76.45",
+      "volume": "120"
+    },
+    {
+      "trade_date": "2025-09-09",
+      "close": "76.49",
+      "volume": "484"
+    },
+    {
+      "trade_date": "2025-09-08",
+      "close": "77.65",
+      "volume": "1634"
+    },
+    {
+      "trade_date": "2025-09-05",
+      "close": "80.56",
+      "volume": "1197"
+    },
+    {
+      "trade_date": "2025-09-04",
+      "close": "80.00",
+      "volume": "1506"
+    },
+    {
+      "trade_date": "2025-09-03",
+      "close": "75.51",
+      "volume": "150"
+    },
+    {
+      "trade_date": "2025-09-02",
+      "close": "78.84",
+      "volume": "2071"
+    },
+    {
+      "trade_date": "2025-09-01",
+      "close": "76.75",
+      "volume": "2326"
+    },
+    {
+      "trade_date": "2025-08-29",
+      "close": "75.25",
+      "volume": "194"
+    },
+    {
+      "trade_date": "2025-08-28",
+      "close": "75.15",
+      "volume": "923"
+    },
+    {
+      "trade_date": "2025-08-26",
+      "close": "75.20",
+      "volume": "1050"
+    },
+    {
+      "trade_date": "2025-08-25",
+      "close": "75.10",
+      "volume": "1133"
+    },
+    {
+      "trade_date": "2025-08-21",
+      "close": "75.00",
+      "volume": "1003"
+    },
+    {
+      "trade_date": "2025-08-20",
+      "close": "75.00",
+      "volume": "1946"
+    },
+    {
+      "trade_date": "2025-08-19",
+      "close": "75.00",
+      "volume": "863"
+    },
+    {
+      "trade_date": "2025-08-18",
+      "close": "75.00",
+      "volume": "263"
+    },
+    {
+      "trade_date": "2025-08-14",
+      "close": "75.00",
+      "volume": "490"
+    },
+    {
+      "trade_date": "2025-08-13",
+      "close": "76.99",
+      "volume": "2975"
+    },
+    {
+      "trade_date": "2025-08-12",
+      "close": "81.00",
+      "volume": "1025"
+    },
+    {
+      "trade_date": "2025-08-11",
+      "close": "78.00",
+      "volume": "337"
+    },
+    {
+      "trade_date": "2025-08-08",
+      "close": "78.00",
+      "volume": "1124"
+    },
+    {
+      "trade_date": "2025-08-07",
+      "close": "80.50",
+      "volume": "420"
+    },
+    {
+      "trade_date": "2025-08-06",
+      "close": "81.81",
+      "volume": "7"
+    },
+    {
+      "trade_date": "2025-08-05",
+      "close": "81.81",
+      "volume": "19"
+    },
+    {
+      "trade_date": "2025-08-04",
+      "close": "82.11",
+      "volume": "2635"
+    },
+    {
+      "trade_date": "2025-08-01",
+      "close": "78.00",
+      "volume": "490"
+    },
+    {
+      "trade_date": "2025-07-31",
+      "close": "78.00",
+      "volume": "50"
+    },
+    {
+      "trade_date": "2025-07-30",
+      "close": "78.00",
+      "volume": "806"
+    },
+    {
+      "trade_date": "2025-07-29",
+      "close": "78.33",
+      "volume": "267"
+    },
+    {
+      "trade_date": "2025-07-28",
+      "close": "78.00",
+      "volume": "1867"
+    },
+    {
+      "trade_date": "2025-07-25",
+      "close": "78.22",
+      "volume": "2083"
+    }
+  ],
+  "adjusted_prices": [
+    {
+      "trade_date": "2026-10-27",
+      "close": "156.95"
+    },
+    {
+      "trade_date": "2026-10-26",
+      "close": "153.00"
+    },
+    {
+      "trade_date": "2026-10-23",
+      "close": "153.20"
+    },
+    {
+      "trade_date": "2026-10-22",
+      "close": "159.00"
+    },
+    {
+      "trade_date": "2026-10-21",
+      "close": "158.00"
+    },
+    {
+      "trade_date": "2026-10-19",
+      "close": "159.00"
+    },
+    {
+      "trade_date": "2026-10-16",
+      "close": "160.00"
+    },
+    {
+      "trade_date": "2026-10-15",
+      "close": "164.00"
+    },
+    {
+      "trade_date": "2026-10-14",
+      "close": "160.00"
+    },
+    {
+      "trade_date": "2026-10-13",
+      "close": "163.05"
+    },
+    {
+      "trade_date": "2026-10-12",
+      "close": "163.90"
+    },
+    {
+      "trade_date": "2026-10-09",
+      "close": "159.00"
+    },
+    {
+      "trade_date": "2026-10-08",
+      "close": "158.00"
+    },
+    {
+      "trade_date": "2026-10-07",
+      "close": "160.05"
+    },
+    {
+      "trade_date": "2026-10-06",
+      "close": "160.05"
+    },
+    {
+      "trade_date": "2026-10-05",
+      "close": "160.05"
+    },
+    {
+      "trade_date": "2026-10-01",
+      "close": "164.05"
+    },
+    {
+      "trade_date": "2026-09-30",
+      "close": "162.95"
+    },
+    {
+      "trade_date": "2026-09-29",
+      "close": "156.65"
+    },
+    {
+      "trade_date": "2026-09-28",
+      "close": "162.95"
+    },
+    {
+      "trade_date": "2026-09-25",
+      "close": "158.80"
+    },
+    {
+      "trade_date": "2026-09-24",
+      "close": "150.35"
+    },
+    {
+      "trade_date": "2026-09-23",
+      "close": "136.70"
+    },
+    {
+      "trade_date": "2026-09-22",
+      "close": "134.40"
+    },
+    {
+      "trade_date": "2026-09-21",
+      "close": "130.95"
+    },
+    {
+      "trade_date": "2026-09-18",
+      "close": "127.05"
+    },
+    {
+      "trade_date": "2026-09-17",
+      "close": "128.85"
+    },
+    {
+      "trade_date": "2026-09-16",
+      "close": "120.05"
+    },
+    {
+      "trade_date": "2026-09-15",
+      "close": "116.30"
+    },
+    {
+      "trade_date": "2026-09-11",
+      "close": "124.55"
+    },
+    {
+      "trade_date": "2026-09-10",
+      "close": "123.95"
+    },
+    {
+      "trade_date": "2026-09-09",
+      "close": "119.90"
+    },
+    {
+      "trade_date": "2026-09-08",
+      "close": "115.10"
+    },
+    {
+      "trade_date": "2026-09-07",
+      "close": "118.35"
+    },
+    {
+      "trade_date": "2026-09-04",
+      "close": "122.30"
+    },
+    {
+      "trade_date": "2026-09-03",
+      "close": "129.00"
+    },
+    {
+      "trade_date": "2026-09-02",
+      "close": "124.80"
+    },
+    {
+      "trade_date": "2026-08-31",
+      "close": "123.45"
+    },
+    {
+      "trade_date": "2026-08-28",
+      "close": "119.75"
+    },
+    {
+      "trade_date": "2026-08-27",
+      "close": "114.45"
+    },
+    {
+      "trade_date": "2026-08-26",
+      "close": "119.00"
+    },
+    {
+      "trade_date": "2026-08-24",
+      "close": "115.10"
+    },
+    {
+      "trade_date": "2026-08-21",
+      "close": "115.00"
+    },
+    {
+      "trade_date": "2026-08-20",
+      "close": "119.35"
+    },
+    {
+      "trade_date": "2026-08-19",
+      "close": "124.00"
+    },
+    {
+      "trade_date": "2026-08-18",
+      "close": "122.95"
+    },
+    {
+      "trade_date": "2026-08-17",
+      "close": "121.00"
+    },
+    {
+      "trade_date": "2026-08-13",
+      "close": "120.00"
+    },
+    {
+      "trade_date": "2026-08-12",
+      "close": "120.50"
+    },
+    {
+      "trade_date": "2026-08-11",
+      "close": "120.55"
+    },
+    {
+      "trade_date": "2026-08-10",
+      "close": "123.00"
+    },
+    {
+      "trade_date": "2026-08-07",
+      "close": "120.15"
+    },
+    {
+      "trade_date": "2026-08-06",
+      "close": "119.95"
+    },
+    {
+      "trade_date": "2026-08-05",
+      "close": "115.75"
+    },
+    {
+      "trade_date": "2026-08-04",
+      "close": "112.00"
+    },
+    {
+      "trade_date": "2026-08-03",
+      "close": "112.55"
+    },
+    {
+      "trade_date": "2026-07-31",
+      "close": "109.65"
+    },
+    {
+      "trade_date": "2026-07-30",
+      "close": "105.50"
+    },
+    {
+      "trade_date": "2026-07-29",
+      "close": "103.00"
+    },
+    {
+      "trade_date": "2026-07-28",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2026-07-27",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2026-07-24",
+      "close": "100.40"
+    },
+    {
+      "trade_date": "2026-07-23",
+      "close": "100.50"
+    },
+    {
+      "trade_date": "2026-07-22",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2026-07-21",
+      "close": "98.75"
+    },
+    {
+      "trade_date": "2026-07-20",
+      "close": "100.70"
+    },
+    {
+      "trade_date": "2026-07-17",
+      "close": "100.95"
+    },
+    {
+      "trade_date": "2026-07-16",
+      "close": "101.75"
+    },
+    {
+      "trade_date": "2026-07-15",
+      "close": "101.55"
+    },
+    {
+      "trade_date": "2026-07-14",
+      "close": "101.50"
+    },
+    {
+      "trade_date": "2026-07-13",
+      "close": "102.95"
+    },
+    {
+      "trade_date": "2026-07-10",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2026-07-09",
+      "close": "98.15"
+    },
+    {
+      "trade_date": "2026-07-08",
+      "close": "97.75"
+    },
+    {
+      "trade_date": "2026-07-07",
+      "close": "99.50"
+    },
+    {
+      "trade_date": "2026-07-06",
+      "close": "99.70"
+    },
+    {
+      "trade_date": "2026-07-03",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2026-07-02",
+      "close": "99.00"
+    },
+    {
+      "trade_date": "2026-07-01",
+      "close": "99.95"
+    },
+    {
+      "trade_date": "2026-06-30",
+      "close": "100.99"
+    },
+    {
+      "trade_date": "2026-06-29",
+      "close": "98.00"
+    },
+    {
+      "trade_date": "2026-06-25",
+      "close": "98.00"
+    },
+    {
+      "trade_date": "2026-06-24",
+      "close": "95.99"
+    },
+    {
+      "trade_date": "2026-06-23",
+      "close": "94.55"
+    },
+    {
+      "trade_date": "2026-06-22",
+      "close": "93.99"
+    },
+    {
+      "trade_date": "2026-06-19",
+      "close": "92.49"
+    },
+    {
+      "trade_date": "2026-06-18",
+      "close": "94.13"
+    },
+    {
+      "trade_date": "2026-06-17",
+      "close": "94.99"
+    },
+    {
+      "trade_date": "2026-06-16",
+      "close": "93.49"
+    },
+    {
+      "trade_date": "2026-06-15",
+      "close": "94.03"
+    },
+    {
+      "trade_date": "2026-06-12",
+      "close": "95.00"
+    },
+    {
+      "trade_date": "2026-06-11",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2026-06-10",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2026-06-09",
+      "close": "96.00"
+    },
+    {
+      "trade_date": "2026-06-08",
+      "close": "95.15"
+    },
+    {
+      "trade_date": "2026-06-05",
+      "close": "95.06"
+    },
+    {
+      "trade_date": "2026-06-04",
+      "close": "93.65"
+    },
+    {
+      "trade_date": "2026-06-03",
+      "close": "94.89"
+    },
+    {
+      "trade_date": "2026-06-02",
+      "close": "93.18"
+    },
+    {
+      "trade_date": "2026-06-01",
+      "close": "93.47"
+    },
+    {
+      "trade_date": "2026-05-29",
+      "close": "91.00"
+    },
+    {
+      "trade_date": "2026-05-27",
+      "close": "92.55"
+    },
+    {
+      "trade_date": "2026-05-26",
+      "close": "90.30"
+    },
+    {
+      "trade_date": "2026-05-25",
+      "close": "92.65"
+    },
+    {
+      "trade_date": "2026-05-22",
+      "close": "92.75"
+    },
+    {
+      "trade_date": "2026-05-21",
+      "close": "96.35"
+    },
+    {
+      "trade_date": "2026-05-20",
+      "close": "107.05"
+    },
+    {
+      "trade_date": "2026-05-19",
+      "close": "112.95"
+    },
+    {
+      "trade_date": "2026-05-18",
+      "close": "108.20"
+    },
+    {
+      "trade_date": "2026-05-15",
+      "close": "113.85"
+    },
+    {
+      "trade_date": "2026-05-14",
+      "close": "113.05"
+    },
+    {
+      "trade_date": "2026-05-13",
+      "close": "112.85"
+    },
+    {
+      "trade_date": "2026-05-12",
+      "close": "120.50"
+    },
+    {
+      "trade_date": "2026-05-11",
+      "close": "128.60"
+    },
+    {
+      "trade_date": "2026-05-08",
+      "close": "125.20"
+    },
+    {
+      "trade_date": "2026-05-07",
+      "close": "123.00"
+    },
+    {
+      "trade_date": "2026-05-06",
+      "close": "121.10"
+    },
+    {
+      "trade_date": "2026-05-05",
+      "close": "116.05"
+    },
+    {
+      "trade_date": "2026-05-04",
+      "close": "116.20"
+    },
+    {
+      "trade_date": "2026-04-30",
+      "close": "110.00"
+    },
+    {
+      "trade_date": "2026-04-29",
+      "close": "115.65"
+    },
+    {
+      "trade_date": "2026-04-28",
+      "close": "113.01"
+    },
+    {
+      "trade_date": "2026-04-27",
+      "close": "114.92"
+    },
+    {
+      "trade_date": "2026-04-24",
+      "close": "113.98"
+    },
+    {
+      "trade_date": "2026-04-23",
+      "close": "112.58"
+    },
+    {
+      "trade_date": "2026-04-22",
+      "close": "112.85"
+    },
+    {
+      "trade_date": "2026-04-21",
+      "close": "111.72"
+    },
+    {
+      "trade_date": "2026-04-20",
+      "close": "110.06"
+    },
+    {
+      "trade_date": "2026-04-17",
+      "close": "110.97"
+    },
+    {
+      "trade_date": "2026-04-16",
+      "close": "109.99"
+    },
+    {
+      "trade_date": "2026-04-15",
+      "close": "104.06"
+    },
+    {
+      "trade_date": "2026-04-13",
+      "close": "100.28"
+    },
+    {
+      "trade_date": "2026-04-10",
+      "close": "102.06"
+    },
+    {
+      "trade_date": "2026-04-09",
+      "close": "97.98"
+    },
+    {
+      "trade_date": "2026-04-08",
+      "close": "99.33"
+    },
+    {
+      "trade_date": "2026-04-07",
+      "close": "93.99"
+    },
+    {
+      "trade_date": "2026-04-06",
+      "close": "91.26"
+    },
+    {
+      "trade_date": "2026-04-02",
+      "close": "87.60"
+    },
+    {
+      "trade_date": "2026-04-01",
+      "close": "86.38"
+    },
+    {
+      "trade_date": "2026-03-30",
+      "close": "89.42"
+    },
+    {
+      "trade_date": "2026-03-27",
+      "close": "90.90"
+    },
+    {
+      "trade_date": "2026-03-25",
+      "close": "91.36"
+    },
+    {
+      "trade_date": "2026-03-24",
+      "close": "88.21"
+    },
+    {
+      "trade_date": "2026-03-23",
+      "close": "91.76"
+    },
+    {
+      "trade_date": "2026-03-20",
+      "close": "92.50"
+    },
+    {
+      "trade_date": "2026-03-19",
+      "close": "92.02"
+    },
+    {
+      "trade_date": "2026-03-18",
+      "close": "96.60"
+    },
+    {
+      "trade_date": "2026-03-17",
+      "close": "95.90"
+    },
+    {
+      "trade_date": "2026-03-16",
+      "close": "93.09"
+    },
+    {
+      "trade_date": "2026-03-13",
+      "close": "95.99"
+    },
+    {
+      "trade_date": "2026-03-12",
+      "close": "94.37"
+    },
+    {
+      "trade_date": "2026-03-11",
+      "close": "93.50"
+    },
+    {
+      "trade_date": "2026-03-10",
+      "close": "92.67"
+    },
+    {
+      "trade_date": "2026-03-04",
+      "close": "89.20"
+    },
+    {
+      "trade_date": "2026-03-02",
+      "close": "89.20"
+    },
+    {
+      "trade_date": "2026-02-27",
+      "close": "89.70"
+    },
+    {
+      "trade_date": "2026-02-26",
+      "close": "86.00"
+    },
+    {
+      "trade_date": "2026-02-25",
+      "close": "84.50"
+    },
+    {
+      "trade_date": "2026-02-24",
+      "close": "80.50"
+    },
+    {
+      "trade_date": "2026-02-23",
+      "close": "84.00"
+    },
+    {
+      "trade_date": "2026-02-19",
+      "close": "86.05"
+    },
+    {
+      "trade_date": "2026-02-18",
+      "close": "86.05"
+    },
+    {
+      "trade_date": "2026-02-17",
+      "close": "90.25"
+    },
+    {
+      "trade_date": "2026-02-16",
+      "close": "95.00"
+    },
+    {
+      "trade_date": "2026-02-13",
+      "close": "99.25"
+    },
+    {
+      "trade_date": "2026-02-12",
+      "close": "99.30"
+    },
+    {
+      "trade_date": "2026-02-11",
+      "close": "104.50"
+    },
+    {
+      "trade_date": "2026-02-10",
+      "close": "110.00"
+    },
+    {
+      "trade_date": "2026-02-09",
+      "close": "113.00"
+    },
+    {
+      "trade_date": "2026-02-06",
+      "close": "113.95"
+    },
+    {
+      "trade_date": "2026-02-05",
+      "close": "114.30"
+    },
+    {
+      "trade_date": "2026-02-04",
+      "close": "115.75"
+    },
+    {
+      "trade_date": "2026-02-03",
+      "close": "115.35"
+    },
+    {
+      "trade_date": "2026-02-02",
+      "close": "112.45"
+    },
+    {
+      "trade_date": "2026-01-30",
+      "close": "102.00"
+    },
+    {
+      "trade_date": "2026-01-29",
+      "close": "100.50"
+    },
+    {
+      "trade_date": "2026-01-28",
+      "close": "100.53"
+    },
+    {
+      "trade_date": "2026-01-27",
+      "close": "101.03"
+    },
+    {
+      "trade_date": "2026-01-23",
+      "close": "100.50"
+    },
+    {
+      "trade_date": "2026-01-22",
+      "close": "100.08"
+    },
+    {
+      "trade_date": "2026-01-21",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2026-01-20",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2026-01-19",
+      "close": "100.01"
+    },
+    {
+      "trade_date": "2026-01-16",
+      "close": "100.50"
+    },
+    {
+      "trade_date": "2026-01-14",
+      "close": "99.98"
+    },
+    {
+      "trade_date": "2026-01-13",
+      "close": "99.88"
+    },
+    {
+      "trade_date": "2026-01-12",
+      "close": "95.21"
+    },
+    {
+      "trade_date": "2026-01-09",
+      "close": "98.98"
+    },
+    {
+      "trade_date": "2026-01-08",
+      "close": "98.12"
+    },
+    {
+      "trade_date": "2026-01-07",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2026-01-06",
+      "close": "100.46"
+    },
+    {
+      "trade_date": "2026-01-05",
+      "close": "101.00"
+    },
+    {
+      "trade_date": "2026-01-02",
+      "close": "101.50"
+    },
+    {
+      "trade_date": "2026-01-01",
+      "close": "101.00"
+    },
+    {
+      "trade_date": "2025-12-31",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2025-12-30",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2025-12-29",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2025-12-26",
+      "close": "99.50"
+    },
+    {
+      "trade_date": "2025-12-24",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2025-12-23",
+      "close": "99.50"
+    },
+    {
+      "trade_date": "2025-12-22",
+      "close": "100.05"
+    },
+    {
+      "trade_date": "2025-12-19",
+      "close": "100.05"
+    },
+    {
+      "trade_date": "2025-12-18",
+      "close": "99.90"
+    },
+    {
+      "trade_date": "2025-12-17",
+      "close": "101.00"
+    },
+    {
+      "trade_date": "2025-12-16",
+      "close": "101.50"
+    },
+    {
+      "trade_date": "2025-12-15",
+      "close": "101.85"
+    },
+    {
+      "trade_date": "2025-12-12",
+      "close": "101.70"
+    },
+    {
+      "trade_date": "2025-12-11",
+      "close": "99.75"
+    },
+    {
+      "trade_date": "2025-12-10",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2025-12-09",
+      "close": "98.00"
+    },
+    {
+      "trade_date": "2025-12-08",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2025-12-05",
+      "close": "101.50"
+    },
+    {
+      "trade_date": "2025-12-04",
+      "close": "100.95"
+    },
+    {
+      "trade_date": "2025-12-03",
+      "close": "100.10"
+    },
+    {
+      "trade_date": "2025-12-02",
+      "close": "101.80"
+    },
+    {
+      "trade_date": "2025-12-01",
+      "close": "100.00"
+    },
+    {
+      "trade_date": "2025-11-28",
+      "close": "102.94"
+    },
+    {
+      "trade_date": "2025-11-27",
+      "close": "98.75"
+    },
+    {
+      "trade_date": "2025-11-26",
+      "close": "98.75"
+    },
+    {
+      "trade_date": "2025-11-25",
+      "close": "98.75"
+    },
+    {
+      "trade_date": "2025-11-24",
+      "close": "96.02"
+    },
+    {
+      "trade_date": "2025-11-21",
+      "close": "96.08"
+    },
+    {
+      "trade_date": "2025-11-20",
+      "close": "95.98"
+    },
+    {
+      "trade_date": "2025-11-19",
+      "close": "96.64"
+    },
+    {
+      "trade_date": "2025-11-18",
+      "close": "96.02"
+    },
+    {
+      "trade_date": "2025-11-17",
+      "close": "96.11"
+    },
+    {
+      "trade_date": "2025-11-14",
+      "close": "97.00"
+    },
+    {
+      "trade_date": "2025-11-13",
+      "close": "97.32"
+    },
+    {
+      "trade_date": "2025-11-12",
+      "close": "97.96"
+    },
+    {
+      "trade_date": "2025-11-11",
+      "close": "96.75"
+    },
+    {
+      "trade_date": "2025-11-10",
+      "close": "93.69"
+    },
+    {
+      "trade_date": "2025-11-07",
+      "close": "93.75"
+    },
+    {
+      "trade_date": "2025-11-06",
+      "close": "90.00"
+    },
+    {
+      "trade_date": "2025-11-04",
+      "close": "90.25"
+    },
+    {
+      "trade_date": "2025-11-03",
+      "close": "92.67"
+    },
+    {
+      "trade_date": "2025-10-31",
+      "close": "94.98"
+    },
+    {
+      "trade_date": "2025-10-30",
+      "close": "89.83"
+    },
+    {
+      "trade_date": "2025-10-29",
+      "close": "94.00"
+    },
+    {
+      "trade_date": "2025-10-28",
+      "close": "89.57"
+    },
+    {
+      "trade_date": "2025-10-27",
+      "close": "88.01"
+    },
+    {
+      "trade_date": "2025-10-24",
+      "close": "87.64"
+    },
+    {
+      "trade_date": "2025-10-23",
+      "close": "88.00"
+    },
+    {
+      "trade_date": "2025-10-21",
+      "close": "88.39"
+    },
+    {
+      "trade_date": "2025-10-20",
+      "close": "85.50"
+    },
+    {
+      "trade_date": "2025-10-17",
+      "close": "84.06"
+    },
+    {
+      "trade_date": "2025-10-16",
+      "close": "82.59"
+    },
+    {
+      "trade_date": "2025-10-15",
+      "close": "84.00"
+    },
+    {
+      "trade_date": "2025-10-14",
+      "close": "84.00"
+    },
+    {
+      "trade_date": "2025-10-13",
+      "close": "82.00"
+    },
+    {
+      "trade_date": "2025-10-10",
+      "close": "82.01"
+    },
+    {
+      "trade_date": "2025-10-09",
+      "close": "82.00"
+    },
+    {
+      "trade_date": "2025-10-08",
+      "close": "82.00"
+    },
+    {
+      "trade_date": "2025-10-07",
+      "close": "83.68"
+    },
+    {
+      "trade_date": "2025-10-03",
+      "close": "84.00"
+    },
+    {
+      "trade_date": "2025-10-01",
+      "close": "83.00"
+    },
+    {
+      "trade_date": "2025-09-30",
+      "close": "85.43"
+    },
+    {
+      "trade_date": "2025-09-29",
+      "close": "80.06"
+    },
+    {
+      "trade_date": "2025-09-26",
+      "close": "82.80"
+    },
+    {
+      "trade_date": "2025-09-25",
+      "close": "84.02"
+    },
+    {
+      "trade_date": "2025-09-24",
+      "close": "86.73"
+    },
+    {
+      "trade_date": "2025-09-23",
+      "close": "86.94"
+    },
+    {
+      "trade_date": "2025-09-22",
+      "close": "81.05"
+    },
+    {
+      "trade_date": "2025-09-19",
+      "close": "81.00"
+    },
+    {
+      "trade_date": "2025-09-18",
+      "close": "81.94"
+    },
+    {
+      "trade_date": "2025-09-17",
+      "close": "84.22"
+    },
+    {
+      "trade_date": "2025-09-16",
+      "close": "83.42"
+    },
+    {
+      "trade_date": "2025-09-15",
+      "close": "83.26"
+    },
+    {
+      "trade_date": "2025-09-12",
+      "close": "77.20"
+    },
+    {
+      "trade_date": "2025-09-11",
+      "close": "76.65"
+    },
+    {
+      "trade_date": "2025-09-10",
+      "close": "76.45"
+    },
+    {
+      "trade_date": "2025-09-09",
+      "close": "76.49"
+    },
+    {
+      "trade_date": "2025-09-08",
+      "close": "77.65"
+    },
+    {
+      "trade_date": "2025-09-05",
+      "close": "80.56"
+    },
+    {
+      "trade_date": "2025-09-04",
+      "close": "80.00"
+    },
+    {
+      "trade_date": "2025-09-03",
+      "close": "75.51"
+    },
+    {
+      "trade_date": "2025-09-02",
+      "close": "78.84"
+    },
+    {
+      "trade_date": "2025-09-01",
+      "close": "76.75"
+    },
+    {
+      "trade_date": "2025-08-29",
+      "close": "75.25"
+    },
+    {
+      "trade_date": "2025-08-28",
+      "close": "75.15"
+    },
+    {
+      "trade_date": "2025-08-26",
+      "close": "75.20"
+    },
+    {
+      "trade_date": "2025-08-25",
+      "close": "75.10"
+    },
+    {
+      "trade_date": "2025-08-21",
+      "close": "75.00"
+    },
+    {
+      "trade_date": "2025-08-20",
+      "close": "75.00"
+    },
+    {
+      "trade_date": "2025-08-19",
+      "close": "75.00"
+    },
+    {
+      "trade_date": "2025-08-18",
+      "close": "75.00"
+    },
+    {
+      "trade_date": "2025-08-14",
+      "close": "75.00"
+    },
+    {
+      "trade_date": "2025-08-13",
+      "close": "76.99"
+    },
+    {
+      "trade_date": "2025-08-12",
+      "close": "81.00"
+    },
+    {
+      "trade_date": "2025-08-11",
+      "close": "78.00"
+    },
+    {
+      "trade_date": "2025-08-08",
+      "close": "78.00"
+    },
+    {
+      "trade_date": "2025-08-07",
+      "close": "80.50"
+    },
+    {
+      "trade_date": "2025-08-06",
+      "close": "81.81"
+    },
+    {
+      "trade_date": "2025-08-05",
+      "close": "81.81"
+    },
+    {
+      "trade_date": "2025-08-04",
+      "close": "82.11"
+    },
+    {
+      "trade_date": "2025-08-01",
+      "close": "78.00"
+    },
+    {
+      "trade_date": "2025-07-31",
+      "close": "78.00"
+    },
+    {
+      "trade_date": "2025-07-30",
+      "close": "78.00"
+    },
+    {
+      "trade_date": "2025-07-29",
+      "close": "78.33"
+    },
+    {
+      "trade_date": "2025-07-28",
+      "close": "78.00"
+    },
+    {
+      "trade_date": "2025-07-25",
+      "close": "78.22"
+    }
+  ],
+  "market": {
+    "date": "2026-10-27",
+    "close": 156.95,
+    "sma50": 138.607,
+    "sma200": 110.45895,
+    "from_high": -0.043279487960987684,
+    "history_sessions": 300,
+    "raw_turnover_median_60_cr": 0.009101925
+  },
+  "facts": [
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "900000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "900000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "300000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "200000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "300000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "200000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "200000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "200000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "2.52",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "1.48",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "1.58",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "0.07",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "1.33",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "1.13",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "0.08",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "0.06",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "3500000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "700000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "400000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "1300000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "3100000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "200000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "100000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "100000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "1400000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "900000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "500000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "300000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "500000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "300000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "400000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "100000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "31000000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "31000000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "31000000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "31000000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "31000000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "31000000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "31000000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "31000000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "7800000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "4600000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "4900000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "200000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "4100000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "3500000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "300000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "200000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "10800000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "3900000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "6800000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "300000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "5300000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "4900000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "400000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "300000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "244300000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "54100000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "49800000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "11500000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "137500000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "88800000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "10800000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "7200000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "3000000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "700000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "1900000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "100000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "1100000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "1400000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "100000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "100000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "245700000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "55100000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "50300000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "11800000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "138100000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "89000000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "11300000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "7300000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    }
+  ],
+  "holdings": [],
+  "documents": [
+    {
+      "publication_id": "edc1a000-e349-42d8-ac1e-3de00c06e495",
+      "published_at": "2026-10-16 13:36:33.957000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8985d5ce-f381-4fb2-8dc2-2a0d151ff080.pdf"
+    },
+    {
+      "publication_id": "140b7233-165a-49c7-9b84-55cab3407dd6",
+      "published_at": "2026-10-02 16:02:21.747000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Shareholder Meeting / Postal Ballot-Scrutinizer''s Report",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5f450b5b-dadf-45fe-a99c-a5cead70f4f8.pdf"
+    },
+    {
+      "publication_id": "8413a8df-8883-4bb7-8a20-c72ec9a45962",
+      "published_at": "2026-09-30 17:30:22.590000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Shareholder Meeting / Postal Ballot-Outcome of AGM",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e98e4cbb-1de2-4674-940d-c68fb1d36202.pdf"
+    },
+    {
+      "publication_id": "d9c518bb-ecee-4163-80d1-6700012409c4",
+      "published_at": "2026-09-25 13:18:23.390000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Closure of Trading Window",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/17549da8-8b8d-4379-ad24-575c91f2d7e1.pdf"
+    },
+    {
+      "publication_id": "1584fa16-346f-452d-a22c-eaabcf46a1d9",
+      "published_at": "2026-09-23 17:26:05.553000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2929ac3e-b4ba-4007-86eb-867543fa8903.pdf"
+    },
+    {
+      "publication_id": "6f8a7394-e990-4622-a225-ac09f9bd1c2f",
+      "published_at": "2026-09-22 17:53:39.883000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/bf953977-0734-43d7-bfc9-c668edf73422.pdf"
+    },
+    {
+      "publication_id": "2d06120d-c6b0-4b4d-9253-f22bffe366d5",
+      "published_at": "2026-09-15 16:25:16.170000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/54228530-e18a-493f-a99f-13296b5f8d2c.pdf"
+    },
+    {
+      "publication_id": "59e0f6fe-d8e5-4b10-9491-74bfc483cf71",
+      "published_at": "2026-09-09 17:23:05.297000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ab59f26e-9bba-4833-9540-37fa986babdf.pdf"
+    },
+    {
+      "publication_id": "1efb1d5b-1476-4cb9-af08-fc6c665bdb8d",
+      "published_at": "2026-09-07 17:35:06.623000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Reg. 34 (1) Annual Report.",
+      "category": "Others",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a51ceeb0-030b-4cfd-b77b-21ef9f5520b8.pdf"
+    },
+    {
+      "publication_id": "f0b20c23-bff1-4eeb-af9b-2300e9f3138e",
+      "published_at": "2026-09-07 17:22:30.487000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Notice Of 37Th Annual General Meeting Of The Company",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/524c2ed1-c9c3-43b5-b37c-859cefd76d7c.pdf"
+    },
+    {
+      "publication_id": "cd3b90d7-06cf-441b-9f7e-49815a2fe608",
+      "published_at": "2026-08-12 17:01:42.010000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1ac648f6-6c75-4406-9191-dffa77cbe11a.pdf"
+    },
+    {
+      "publication_id": "179e5063-0ad2-4451-9637-6796d27d0d35",
+      "published_at": "2026-08-10 21:26:23.390000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Announcement under Regulation 30 (LODR)-Change in Management",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3c0fa3df-44ba-4db5-85db-dc39b0372484.pdf"
+    },
+    {
+      "publication_id": "fa4f0406-ce81-475a-8317-97e5d38a5c9d",
+      "published_at": "2026-08-10 21:21:00.613000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Results - Financial Result For Quarter Ended 30Th June 2026.",
+      "category": "Result",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/54c7b290-e1df-4fc9-87d4-91e882d8c075.pdf"
+    },
+    {
+      "publication_id": "22811acc-4a81-43bb-8c70-050061632f83",
+      "published_at": "2026-08-10 21:09:10.967000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Board Meeting Outcome for Pursuant To The Regulation 30 And 33 Of SEBI (LODR) Regulations, 2015, The Board Considered And Approved Standalone Unaudited Financial Statement For The Quarter Ended 30 June 2026.",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/bf4e88f6-1eb8-41d1-a05b-e4d1455c3f8d.pdf"
+    },
+    {
+      "publication_id": "ec37054b-9803-4219-b2c1-9de25c1383d3",
+      "published_at": "2026-07-31 13:32:33.053000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Board Meeting Intimation for Consideration And Approval Of Unaudited Standalone Financial Results Of The Company For The Quarter Ended On 30Th June, 2026.",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/65b44615-17ec-4021-a4f3-bff39edf91d6.pdf"
+    },
+    {
+      "publication_id": "10feefc9-128d-485a-9d34-1514fbb99ba7",
+      "published_at": "2026-07-15 17:33:25.183000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fd04a83e-2493-4334-9efb-cda0c60ba8d5.pdf"
+    },
+    {
+      "publication_id": "78163ce8-d2e5-4c91-9898-3c0edbd6189a",
+      "published_at": "2026-07-11 14:12:00.217000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Announcement under Regulation 30 (LODR)-Resignation of Company Secretary / Compliance Officer",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fc47e789-e564-44b5-b371-3f0eaa0d6fc0.pdf"
+    },
+    {
+      "publication_id": "7a98a0c7-f2b8-4004-a053-eaa5195ffe88",
+      "published_at": "2026-06-22 10:44:13.470000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Closure of Trading Window",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/07368335-4c9a-47e0-8fc5-03fe29735d9c.pdf"
+    },
+    {
+      "publication_id": "e53f3411-ac0a-4622-a722-62569545d4ea",
+      "published_at": "2026-06-17 10:06:42.420000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Disclosures under Reg. 29(2) of SEBI (SAST) Regulations, 2011",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/16D78565_6E15_4093_BDB8_40385A7AFB8D_100638.pdf"
+    },
+    {
+      "publication_id": "56e9071c-9f22-49e3-948b-9c1819a94cd9",
+      "published_at": "2026-05-13 13:02:28.663000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9cc8b308-2bef-4e13-be89-2605bf62282e.pdf"
+    },
+    {
+      "publication_id": "cf6c8148-e7f0-45fc-825d-175b3143f319",
+      "published_at": "2026-05-09 18:36:17.500000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Standalone Audited Financial Results For The Financial Year Ended 31St March, 2026",
+      "category": "Result",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f5c1d82a-fa1b-4b2b-a5de-bdb4ceffb1f2.pdf"
+    },
+    {
+      "publication_id": "936c4898-0912-438f-a840-e0ac27d9b089",
+      "published_at": "2026-05-09 18:20:49.900000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Board Meeting Outcome for Outcome Of Board Meeting Held On Saturday 09Th May 2026.",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e074879f-f09c-4666-b98a-1aca0fbeeb29.pdf"
+    },
+    {
+      "publication_id": "e2270f24-0663-4c0b-832d-e0fea1947897",
+      "published_at": "2026-04-30 11:35:51.907000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Board Meeting Intimation for Board Meeting Intimation For Meeting Of The Board Of Directors To Be Held On Saturday, 09Th May, 2026 To Consider And Approve Audited Financial Results For The Quarter And Year Ended On 31St March 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6aaf4ada-bf51-4c57-8822-7f92a12e2371.pdf"
+    },
+    {
+      "publication_id": "c75b7799-dc07-4a9e-9b93-253deb4f7c92",
+      "published_at": "2026-04-10 14:44:12.967000+05:30",
+      "title": "Yaan Enterprises Ltd - 538521 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/87ad0d2d-1b05-4d9e-adcf-58bd5a1b52ac.pdf"
+    }
+  ],
+  "events": [
+    {
+      "published_at": "2026-09-23 17:26:05.553000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED",
+      "quote": "Requirements) Regulations, 2015 regarding Receipt of Purchase order for supply of Maize",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2929ac3e-b4ba-4007-86eb-867543fa8903.pdf",
+      "page_no": 1
+    },
+    {
+      "published_at": "2026-09-23 17:26:05.553000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": "15.86",
+      "scale": "CRORE",
+      "currency": "INR",
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM",
+      "quote": "received a purchase order for the supply of yellow maize approx. value of Rs. 15.86 Crores.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2929ac3e-b4ba-4007-86eb-867543fa8903.pdf",
+      "page_no": 1
+    },
+    {
+      "published_at": "2026-09-22 17:53:39.883000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": "15.86",
+      "scale": "CRORE",
+      "currency": "INR",
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM",
+      "quote": "received a purchase order for the supply of yellow maize approx. value of Rs. 15.86 Crores.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/bf953977-0734-43d7-bfc9-c668edf73422.pdf",
+      "page_no": 1
+    },
+    {
+      "published_at": "2026-09-22 17:53:39.883000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED",
+      "quote": "Requirements) Regulations, 2015 regarding Receipt of Purchase order for supply of Maize",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/bf953977-0734-43d7-bfc9-c668edf73422.pdf",
+      "page_no": 1
+    },
+    {
+      "published_at": "2026-09-15 16:25:16.170000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED",
+      "quote": "2. | Significant terms and conditions of | Goods to be supplied as per order(s)/contract(s) awarded in brief specifications in Purchase Order and 20% Advance and balance payment within 45 days on completion of supply and on receipt of quality analysis certificate.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/54228530-e18a-493f-a99f-13296b5f8d2c.pdf",
+      "page_no": 2
+    },
+    {
+      "published_at": "2026-09-15 16:25:16.170000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": "15.86",
+      "scale": "CRORE",
+      "currency": "INR",
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM",
+      "quote": "has received a purchase order for the supply of yellow maize approx. value of Rs. 15.86 Crores.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/54228530-e18a-493f-a99f-13296b5f8d2c.pdf",
+      "page_no": 1
+    },
+    {
+      "published_at": "2026-09-15 16:25:16.170000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED",
+      "quote": "Requirements) Regulations, 2015 regarding Receipt of Purchase order for supply of",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/54228530-e18a-493f-a99f-13296b5f8d2c.pdf",
+      "page_no": 1
+    }
+  ],
+  "statement_pages": []
+}

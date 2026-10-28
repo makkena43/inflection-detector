@@ -1,0 +1,431 @@
+[
+  {
+    "symbol": "CEIGALL",
+    "scope": "CONSOLIDATED",
+    "annual": {
+      "revenue": 4022.4,
+      "pat": 308.92,
+      "pbt": 417.63,
+      "tax": 108.71,
+      "pat_owners": 311.89,
+      "pat_continuing": 308.92,
+      "pat_discontinued": 0.0,
+      "other_income": 54.26,
+      "exceptional_items": 0.0,
+      "paid_up_capital": 87.1,
+      "face_value": 5.0
+    },
+    "price": {
+      "date": "2026-10-09",
+      "close": 369.0,
+      "entry": {
+        "trade_date": "2026-01-19",
+        "close": 279.95
+      },
+      "return_since_entry": 0.3180925165208073,
+      "from_high": -0.06806414951382744,
+      "sma50": 353.063,
+      "sma200": 322.6628
+    },
+    "annual_sharecount_mcap_cr": 6428.1276,
+    "features": {
+      "opm": 0.14857632590370654,
+      "margin_change": 0.008557609124035359,
+      "revenue_growth": 0.20314107070291043,
+      "liquidity_cr": 16.993165379019608,
+      "mcap_cr": 6428.1276,
+      "ttm_rev_cr": 4153.865,
+      "ps": 1.5475051789116883
+    }
+  },
+  {
+    "symbol": "KRYSTAL",
+    "scope": "CONSOLIDATED",
+    "annual": {
+      "revenue": 1277.28,
+      "pat": 64.35,
+      "pbt": 74.93,
+      "tax": 10.73,
+      "pat_owners": 64.35,
+      "pat_continuing": 64.19,
+      "pat_discontinued": 0.0,
+      "other_income": 19.27,
+      "exceptional_items": 0.0,
+      "paid_up_capital": 13.97,
+      "face_value": 10.0
+    },
+    "price": {
+      "date": "2026-10-09",
+      "close": 626.75,
+      "entry": {
+        "trade_date": "2026-01-27",
+        "close": 601.05
+      },
+      "return_since_entry": 0.04275850594792452,
+      "from_high": -0.08013502605122191,
+      "sma50": 632.961,
+      "sma200": 596.0495
+    },
+    "annual_sharecount_mcap_cr": 875.6951,
+    "features": {
+      "opm": 0.06462677123196826,
+      "margin_change": -0.00013444295457822053,
+      "revenue_growth": 0.028302756623476588,
+      "liquidity_cr": 2.909298204117647,
+      "mcap_cr": 875.6951,
+      "ttm_rev_cr": 1314.904,
+      "ps": 0.66597645151281
+    }
+  },
+  {
+    "symbol": "PSPPROJECT",
+    "scope": "CONSOLIDATED",
+    "annual": {
+      "revenue": 3148.66,
+      "pat": 55.52,
+      "pbt": 74.5,
+      "tax": 18.91,
+      "pat_owners": 55.52,
+      "pat_continuing": 55.59,
+      "pat_discontinued": 0.0,
+      "other_income": 17.26,
+      "exceptional_items": 0.0,
+      "paid_up_capital": 39.64,
+      "face_value": 10.0
+    },
+    "price": {
+      "date": "2026-10-09",
+      "close": 747.45,
+      "entry": {
+        "trade_date": "2026-02-16",
+        "close": 786.3
+      },
+      "return_since_entry": -0.04940862266310553,
+      "from_high": -0.31988171064604176,
+      "sma50": 867.496,
+      "sma200": 834.52925
+    },
+    "annual_sharecount_mcap_cr": 2963.026341,
+    "features": {
+      "opm": 0.06286661191171117,
+      "margin_change": 0.008743507629270487,
+      "revenue_growth": 0.4477043439075221,
+      "liquidity_cr": 6.402873435,
+      "mcap_cr": null,
+      "ttm_rev_cr": 3484.3726,
+      "ps": null
+    }
+  },
+  {
+    "symbol": "SIGMAADV",
+    "scope": "CONSOLIDATED",
+    "annual": {
+      "revenue": 491.88,
+      "pat": 268.04,
+      "pbt": 298.97,
+      "tax": 33.38,
+      "pat_owners": 268.04,
+      "pat_continuing": 265.58,
+      "pat_discontinued": 0.0,
+      "other_income": 295.8,
+      "exceptional_items": -10.5,
+      "paid_up_capital": 176.24,
+      "face_value": 10.0
+    },
+    "price": {
+      "date": "2026-10-09",
+      "close": 1008.8,
+      "entry": {
+        "trade_date": "2026-03-09",
+        "close": 152.47
+      },
+      "return_since_entry": 5.616383550862465,
+      "from_high": -0.10773040863258443,
+      "sma50": 804.413,
+      "sma200": 423.93985
+    },
+    "annual_sharecount_mcap_cr": 17779.060936,
+    "features": {
+      "opm": 0.1291552359523685,
+      "margin_change": null,
+      "revenue_growth": null,
+      "liquidity_cr": 27.034109104313725,
+      "mcap_cr": 177790609.36,
+      "ttm_rev_cr": 842.7951,
+      "ps": 210953.5394308771
+    }
+  },
+  {
+    "symbol": "DSSL",
+    "scope": "CONSOLIDATED",
+    "annual": {
+      "revenue": 1424.28,
+      "pat": 84.81,
+      "pbt": 113.92,
+      "tax": 29.11,
+      "pat_owners": 84.74,
+      "pat_continuing": 84.81,
+      "pat_discontinued": 0.0,
+      "other_income": 5.73,
+      "exceptional_items": 0.0,
+      "paid_up_capital": 12.74,
+      "face_value": 10.0
+    },
+    "price": {
+      "date": "2026-10-09",
+      "close": 1015.45,
+      "entry": {
+        "trade_date": "2026-05-18",
+        "close": 1382.8
+      },
+      "return_since_entry": -0.26565663870407863,
+      "from_high": -0.46417075616062475,
+      "sma50": 1087.729,
+      "sma200": 1116.08075
+    },
+    "annual_sharecount_mcap_cr": 1293.3888195,
+    "features": {
+      "opm": 0.10952750652889746,
+      "margin_change": 0.018788234076824895,
+      "revenue_growth": 0.1051011485328659,
+      "liquidity_cr": 3.8298956784313725,
+      "mcap_cr": 1293.3888195,
+      "ttm_rev_cr": 1409.12,
+      "ps": 0.9178698900732373
+    }
+  },
+  {
+    "symbol": "ANONDITA",
+    "scope": "CONSOLIDATED",
+    "annual": {
+      "revenue": 137.42,
+      "pat": null,
+      "pbt": 46.89,
+      "tax": 12.59,
+      "pat_owners": null,
+      "pat_continuing": null,
+      "pat_discontinued": null,
+      "other_income": 0.84,
+      "exceptional_items": null,
+      "paid_up_capital": 18.09,
+      "face_value": 10.0
+    },
+    "price": {
+      "date": "2026-10-09",
+      "close": 1048.1,
+      "entry": {
+        "trade_date": "2026-06-08",
+        "close": 1195.6
+      },
+      "return_since_entry": -0.12336901973904313,
+      "from_high": -0.1500628471799863,
+      "sma50": 1083.31,
+      "sma200": 965.36275
+    },
+    "annual_sharecount_mcap_cr": 1895.6565459999997,
+    "features": {
+      "opm": null,
+      "margin_change": null,
+      "revenue_growth": null,
+      "liquidity_cr": 7.147067117647059,
+      "mcap_cr": 1895.656546,
+      "ttm_rev_cr": null,
+      "ps": null
+    }
+  },
+  {
+    "symbol": "RICOAUTO",
+    "scope": "CONSOLIDATED",
+    "annual": {
+      "revenue": 2477.73,
+      "pat": 52.42,
+      "pbt": 69.48,
+      "tax": 17.06,
+      "pat_owners": 50.51,
+      "pat_continuing": 52.42,
+      "pat_discontinued": 0.0,
+      "other_income": 9.98,
+      "exceptional_items": -8.32,
+      "paid_up_capital": 13.53,
+      "face_value": 1.0
+    },
+    "price": {
+      "date": "2026-10-09",
+      "close": 115.18,
+      "entry": {
+        "trade_date": "2026-06-15",
+        "close": 133.39
+      },
+      "return_since_entry": -0.13651698028337944,
+      "from_high": -0.26076631795135097,
+      "sma50": 131.4708,
+      "sma200": 125.6055
+    },
+    "annual_sharecount_mcap_cr": 1558.3854,
+    "features": {
+      "opm": 0.07296558648000447,
+      "margin_change": null,
+      "revenue_growth": null,
+      "liquidity_cr": 20.87877025082353,
+      "mcap_cr": 1558.3854,
+      "ttm_rev_cr": 2689.35,
+      "ps": 0.5794654470411066
+    }
+  },
+  {
+    "symbol": "BLUSPRING",
+    "scope": "CONSOLIDATED",
+    "annual": {
+      "revenue": 3382.03,
+      "pat": -23.04,
+      "pbt": -24.43,
+      "tax": -1.39,
+      "pat_owners": -15.34,
+      "pat_continuing": -23.04,
+      "pat_discontinued": 0.0,
+      "other_income": 14.87,
+      "exceptional_items": -36.63,
+      "paid_up_capital": 149.13,
+      "face_value": 10.0
+    },
+    "price": {
+      "date": "2026-10-09",
+      "close": 146.96,
+      "entry": {
+        "trade_date": "2026-07-20",
+        "close": 109.67
+      },
+      "return_since_entry": 0.34002006018054165,
+      "from_high": -0.016595289079229025,
+      "sma50": 127.6948,
+      "sma200": 86.8864
+    },
+    "annual_sharecount_mcap_cr": 2191.643872,
+    "features": {
+      "opm": 0.014613933476000773,
+      "margin_change": null,
+      "revenue_growth": null,
+      "liquidity_cr": 7.076714868,
+      "mcap_cr": 2196.184936,
+      "ttm_rev_cr": 3534.093,
+      "ps": 0.6214281672836567
+    }
+  },
+  {
+    "symbol": "APEXECO",
+    "scope": "STANDALONE",
+    "annual": {
+      "revenue": 148.65,
+      "pat": null,
+      "pbt": 22.75,
+      "tax": 5.73,
+      "pat_owners": null,
+      "pat_continuing": null,
+      "pat_discontinued": null,
+      "other_income": 1.28,
+      "exceptional_items": null,
+      "paid_up_capital": 13.19,
+      "face_value": 10.0
+    },
+    "price": {
+      "date": "2026-10-09",
+      "close": 248.25,
+      "entry": {
+        "trade_date": "2026-07-20",
+        "close": 250.05
+      },
+      "return_since_entry": -0.007198560287942413,
+      "from_high": -0.14455547898001375,
+      "sma50": 265.165,
+      "sma200": 187.6005
+    },
+    "annual_sharecount_mcap_cr": 327.32259,
+    "features": {
+      "opm": null,
+      "margin_change": null,
+      "revenue_growth": null,
+      "liquidity_cr": 0.3607171764705882,
+      "mcap_cr": 327.32259,
+      "ttm_rev_cr": null,
+      "ps": null
+    }
+  },
+  {
+    "symbol": "SWANDEF",
+    "scope": "CONSOLIDATED",
+    "annual": {
+      "revenue": 282.14,
+      "pat": -225.91,
+      "pbt": -227.51,
+      "tax": 0.0,
+      "pat_owners": null,
+      "pat_continuing": -227.51,
+      "pat_discontinued": 0.0,
+      "other_income": 157.84,
+      "exceptional_items": 0.0,
+      "paid_up_capital": 52.68,
+      "face_value": 10.0
+    },
+    "price": {
+      "date": "2026-10-09",
+      "close": 2816.8,
+      "entry": {
+        "trade_date": "2026-08-17",
+        "close": 2390.5
+      },
+      "return_since_entry": 0.1783308931185945,
+      "from_high": 0.0,
+      "sma50": 2569.486,
+      "sma200": 1890.26605
+    },
+    "annual_sharecount_mcap_cr": 14839.522096,
+    "features": {
+      "opm": -0.9028042701626077,
+      "margin_change": 0.9892929942750822,
+      "revenue_growth": 6.416578376031263,
+      "liquidity_cr": 5.9553911,
+      "mcap_cr": 14839.522096,
+      "ttm_rev_cr": 341.6076,
+      "ps": 43.440257464997856
+    }
+  },
+  {
+    "symbol": "NIBE",
+    "scope": "CONSOLIDATED",
+    "annual": {
+      "revenue": 474.45,
+      "pat": 0.06,
+      "pbt": 3.93,
+      "tax": 3.87,
+      "pat_owners": 5.63,
+      "pat_continuing": 0.06,
+      "pat_discontinued": 0.0,
+      "other_income": 3.92,
+      "exceptional_items": 0.0,
+      "paid_up_capital": 14.94,
+      "face_value": 10.0
+    },
+    "price": {
+      "date": "2026-10-09",
+      "close": 1213.2,
+      "entry": {
+        "trade_date": "2026-08-24",
+        "close": 1438.0
+      },
+      "return_since_entry": -0.15632823365785808,
+      "from_high": -0.33896365716776544,
+      "sma50": 1345.544,
+      "sma200": 1247.5715
+    },
+    "annual_sharecount_mcap_cr": 1812.678516,
+    "features": {
+      "opm": 0.060956219258462126,
+      "margin_change": null,
+      "revenue_growth": null,
+      "liquidity_cr": 9.292994881372548,
+      "mcap_cr": 1851.500916,
+      "ttm_rev_cr": 454.9626,
+      "ps": 4.069567291904873
+    }
+  }
+]

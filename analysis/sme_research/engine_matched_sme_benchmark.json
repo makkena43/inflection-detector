@@ -1,0 +1,512 @@
+{
+  "1": {
+    "n": 52,
+    "median_stock_return": -0.33607254814151366,
+    "median_sme_return": -0.04888242520882785,
+    "median_excess": -0.27656856198733315,
+    "beat_index": 10,
+    "equal_ticket_stock_return": -0.21958687456139409,
+    "equal_ticket_index_return": -0.03990224301190924,
+    "positions": [
+      {
+        "symbol": "SADHAV",
+        "entry_date": "2024-05-27",
+        "exit_date": "2025-05-27",
+        "stock_return": -0.47601390498261875,
+        "sme_return": 0.07746218771638302,
+        "excess": -0.5534760926990018
+      },
+      {
+        "symbol": "URBAN",
+        "entry_date": "2024-07-15",
+        "exit_date": "2025-07-15",
+        "stock_return": -0.22243321939486005,
+        "sme_return": 0.006215047040371013,
+        "excess": -0.22864826643523106
+      },
+      {
+        "symbol": "PRITIKA",
+        "entry_date": "2024-07-15",
+        "exit_date": "2025-07-15",
+        "stock_return": 1.5782608695652174,
+        "sme_return": 0.006215047040371013,
+        "excess": 1.5720458225248464
+      },
+      {
+        "symbol": "K2INFRA",
+        "entry_date": "2024-07-15",
+        "exit_date": "2025-07-15",
+        "stock_return": -0.7695560253699789,
+        "sme_return": 0.006215047040371013,
+        "excess": -0.7757710724103499
+      },
+      {
+        "symbol": "VINYAS",
+        "entry_date": "2024-07-15",
+        "exit_date": "2025-07-15",
+        "stock_return": 0.13666621989903027,
+        "sme_return": 0.006215047040371013,
+        "excess": 0.13045117285865926
+      },
+      {
+        "symbol": "AISL",
+        "entry_date": "2024-07-16",
+        "exit_date": "2025-07-16",
+        "stock_return": -0.3116883116883117,
+        "sme_return": 0.015187496696115632,
+        "excess": -0.3268758083844273
+      },
+      {
+        "symbol": "ANLON",
+        "entry_date": "2024-07-22",
+        "exit_date": "2025-07-22",
+        "stock_return": -0.1460446247464503,
+        "sme_return": 0.05083418355356106,
+        "excess": -0.19687880830001137
+      },
+      {
+        "symbol": "AGNI",
+        "entry_date": "2024-07-29",
+        "exit_date": "2025-07-29",
+        "stock_return": -0.5706214689265536,
+        "sme_return": 0.00012252199269768838,
+        "excess": -0.5707439909192513
+      },
+      {
+        "symbol": "JIWANRAM",
+        "entry_date": "2024-07-30",
+        "exit_date": "2025-07-30",
+        "stock_return": -0.33448275862068966,
+        "sme_return": 0.0028250215818663715,
+        "excess": -0.33730778020255603
+      },
+      {
+        "symbol": "BEWLTD",
+        "entry_date": "2025-06-02",
+        "exit_date": "2026-06-02",
+        "stock_return": -0.6163636363636364,
+        "sme_return": -0.04467729980740187,
+        "excess": -0.5716863365562346
+      },
+      {
+        "symbol": "SUPREMEPWR",
+        "entry_date": "2025-06-02",
+        "exit_date": "2026-06-02",
+        "stock_return": 0.5729798786330245,
+        "sme_return": -0.04467729980740187,
+        "excess": 0.6176571784404263
+      },
+      {
+        "symbol": "ALPEXSOLAR",
+        "entry_date": "2025-06-02",
+        "exit_date": "2026-06-02",
+        "stock_return": 0.08021588443833005,
+        "sme_return": -0.04467729980740187,
+        "excess": 0.12489318424573193
+      },
+      {
+        "symbol": "PHANTOMFX",
+        "entry_date": "2025-06-09",
+        "exit_date": "2026-06-09",
+        "stock_return": -0.37074829931972797,
+        "sme_return": -0.06573349161779651,
+        "excess": -0.30501480770193146
+      },
+      {
+        "symbol": "DUGLOBAL",
+        "entry_date": "2025-06-09",
+        "exit_date": "2026-06-09",
+        "stock_return": -0.34683281412253375,
+        "sme_return": -0.06573349161779651,
+        "excess": -0.28109932250473724
+      },
+      {
+        "symbol": "RAJPUTANA",
+        "entry_date": "2025-06-09",
+        "exit_date": "2026-06-09",
+        "stock_return": -0.12919051512673752,
+        "sme_return": -0.06573349161779651,
+        "excess": -0.063457023508941
+      },
+      {
+        "symbol": "ABSMARINE",
+        "entry_date": "2025-06-09",
+        "exit_date": "2026-06-09",
+        "stock_return": 0.5828964613368284,
+        "sme_return": -0.06573349161779651,
+        "excess": 0.6486299529546249
+      },
+      {
+        "symbol": "ORIANA",
+        "entry_date": "2025-06-09",
+        "exit_date": "2026-06-09",
+        "stock_return": -0.1923512480536027,
+        "sme_return": -0.06573349161779651,
+        "excess": -0.1266177564358062
+      },
+      {
+        "symbol": "DRONE",
+        "entry_date": "2025-06-09",
+        "exit_date": "2026-06-09",
+        "stock_return": -0.6451750640478224,
+        "sme_return": -0.06573349161779651,
+        "excess": -0.5794415724300259
+      },
+      {
+        "symbol": "OBSCP",
+        "entry_date": "2025-06-09",
+        "exit_date": "2026-06-09",
+        "stock_return": 0.848852397835417,
+        "sme_return": -0.06573349161779651,
+        "excess": 0.9145858894532135
+      },
+      {
+        "symbol": "ROXHITECH",
+        "entry_date": "2025-06-09",
+        "exit_date": "2026-06-09",
+        "stock_return": -0.33766233766233766,
+        "sme_return": -0.06573349161779651,
+        "excess": -0.27192884604454115
+      },
+      {
+        "symbol": "RBMINFRA",
+        "entry_date": "2025-06-09",
+        "exit_date": "2026-06-09",
+        "stock_return": -0.3116883116883117,
+        "sme_return": -0.06573349161779651,
+        "excess": -0.24595482007051517
+      },
+      {
+        "symbol": "KONSTELEC",
+        "entry_date": "2025-06-09",
+        "exit_date": "2026-06-09",
+        "stock_return": -0.3540090771558244,
+        "sme_return": -0.06573349161779651,
+        "excess": -0.2882755855380279
+      },
+      {
+        "symbol": "KRISHCA",
+        "entry_date": "2025-06-09",
+        "exit_date": "2026-06-09",
+        "stock_return": -0.3377712930877256,
+        "sme_return": -0.06573349161779651,
+        "excess": -0.27203780146992906
+      },
+      {
+        "symbol": "TCL",
+        "entry_date": "2025-06-09",
+        "exit_date": "2026-06-09",
+        "stock_return": 0.03356419818859879,
+        "sme_return": -0.06573349161779651,
+        "excess": 0.0992976898063953
+      },
+      {
+        "symbol": "PARAMATRIX",
+        "entry_date": "2025-06-09",
+        "exit_date": "2026-06-09",
+        "stock_return": -0.41346153846153844,
+        "sme_return": -0.06573349161779651,
+        "excess": -0.3477280468437419
+      },
+      {
+        "symbol": "GPECO",
+        "entry_date": "2025-06-09",
+        "exit_date": "2026-06-09",
+        "stock_return": 0.24349566377585052,
+        "sme_return": -0.06573349161779651,
+        "excess": 0.30922915539364704
+      },
+      {
+        "symbol": "CHAVDA",
+        "entry_date": "2025-06-16",
+        "exit_date": "2026-06-16",
+        "stock_return": -0.2906976744186046,
+        "sme_return": -0.05210672153429108,
+        "excess": -0.23859095288431353
+      },
+      {
+        "symbol": "BARFLEX",
+        "entry_date": "2025-06-16",
+        "exit_date": "2026-06-16",
+        "stock_return": -0.2083936324167872,
+        "sme_return": -0.05210672153429108,
+        "excess": -0.15628691088249613
+      },
+      {
+        "symbol": "AKANKSHA",
+        "entry_date": "2025-06-16",
+        "exit_date": "2026-06-16",
+        "stock_return": -0.19402277039848204,
+        "sme_return": -0.05210672153429108,
+        "excess": -0.14191604886419096
+      },
+      {
+        "symbol": "SHUBHSHREE",
+        "entry_date": "2025-06-16",
+        "exit_date": "2026-06-16",
+        "stock_return": -0.19759358288770046,
+        "sme_return": -0.05210672153429108,
+        "excess": -0.14548686135340938
+      },
+      {
+        "symbol": "DELAPLEX",
+        "entry_date": "2025-06-16",
+        "exit_date": "2026-06-17",
+        "stock_return": -0.31333333333333335,
+        "sme_return": -0.04446093446536503,
+        "excess": -0.2688723988679683
+      },
+      {
+        "symbol": "INNOMET",
+        "entry_date": "2025-06-23",
+        "exit_date": "2026-06-23",
+        "stock_return": -0.36235595390524966,
+        "sme_return": -0.03311462585596159,
+        "excess": -0.3292413280492881
+      },
+      {
+        "symbol": "DELTIC",
+        "entry_date": "2025-06-23",
+        "exit_date": "2026-06-23",
+        "stock_return": -0.5496688741721854,
+        "sme_return": -0.03311462585596159,
+        "excess": -0.5165542483162238
+      },
+      {
+        "symbol": "DIGIKORE",
+        "entry_date": "2025-06-23",
+        "exit_date": "2026-06-23",
+        "stock_return": -0.40619718309859154,
+        "sme_return": -0.03311462585596159,
+        "excess": -0.37308255724262995
+      },
+      {
+        "symbol": "AVPINFRA",
+        "entry_date": "2025-06-30",
+        "exit_date": "2026-06-30",
+        "stock_return": -0.6393354769560557,
+        "sme_return": -0.051386741235884714,
+        "excess": -0.587948735720171
+      },
+      {
+        "symbol": "CHAMUNDA",
+        "entry_date": "2025-06-30",
+        "exit_date": "2026-06-30",
+        "stock_return": 0.02807017543859658,
+        "sme_return": -0.051386741235884714,
+        "excess": 0.07945691667448129
+      },
+      {
+        "symbol": "AILIMITED",
+        "entry_date": "2025-06-30",
+        "exit_date": "2026-07-01",
+        "stock_return": -0.48030303030303034,
+        "sme_return": -0.051403651889461166,
+        "excess": -0.4288993784135692
+      },
+      {
+        "symbol": "TRUST",
+        "entry_date": "2025-07-07",
+        "exit_date": "2026-07-07",
+        "stock_return": -0.5073051948051948,
+        "sme_return": -0.057180542691043,
+        "excess": -0.45012465211415176
+      },
+      {
+        "symbol": "VGINFOTECH",
+        "entry_date": "2025-07-14",
+        "exit_date": "2026-07-14",
+        "stock_return": -0.1775596072931277,
+        "sme_return": -0.06131865503564382,
+        "excess": -0.11624095225748388
+      },
+      {
+        "symbol": "GANESHIN",
+        "entry_date": "2025-07-28",
+        "exit_date": "2026-07-28",
+        "stock_return": -0.5673429479344904,
+        "sme_return": -0.07352583340092456,
+        "excess": -0.4938171145335658
+      },
+      {
+        "symbol": "VISHNUINFR",
+        "entry_date": "2025-07-28",
+        "exit_date": "2026-07-28",
+        "stock_return": -0.0777036822267323,
+        "sme_return": -0.07352583340092456,
+        "excess": -0.0041778488258077395
+      },
+      {
+        "symbol": "KODYTECH",
+        "entry_date": "2025-08-04",
+        "exit_date": "2026-08-04",
+        "stock_return": 0.7574964910042106,
+        "sme_return": -0.06904378871814176,
+        "excess": 0.8265402797223523
+      },
+      {
+        "symbol": "WINSOL",
+        "entry_date": "2025-08-11",
+        "exit_date": "2026-08-11",
+        "stock_return": -0.44607483492296407,
+        "sme_return": -0.03561184663450334,
+        "excess": -0.41046298828846073
+      },
+      {
+        "symbol": "ABHAPOWER",
+        "entry_date": "2025-08-11",
+        "exit_date": "2026-08-11",
+        "stock_return": -0.4397727272727273,
+        "sme_return": -0.03561184663450334,
+        "excess": -0.404160880638224
+      },
+      {
+        "symbol": "BASILIC",
+        "entry_date": "2025-08-18",
+        "exit_date": "2026-08-18",
+        "stock_return": -0.5938782300099812,
+        "sme_return": -0.04637810918177099,
+        "excess": -0.5475001208282102
+      },
+      {
+        "symbol": "SSEGL",
+        "entry_date": "2025-09-01",
+        "exit_date": "2026-09-01",
+        "stock_return": -0.2008213141025641,
+        "sme_return": -0.032718447697547615,
+        "excess": -0.16810286640501648
+      },
+      {
+        "symbol": "OMFURN",
+        "entry_date": "2025-09-08",
+        "exit_date": "2026-09-08",
+        "stock_return": -0.5623547637490318,
+        "sme_return": -0.029641737526091783,
+        "excess": -0.53271302622294
+      },
+      {
+        "symbol": "JAYBEE",
+        "entry_date": "2025-09-15",
+        "exit_date": "2026-09-15",
+        "stock_return": -0.6343631918204045,
+        "sme_return": -0.035810983496602944,
+        "excess": -0.5985522083238015
+      },
+      {
+        "symbol": "ELGNZ",
+        "entry_date": "2025-09-15",
+        "exit_date": "2026-09-15",
+        "stock_return": -0.4204193881058783,
+        "sme_return": -0.035810983496602944,
+        "excess": -0.38460840460927537
+      },
+      {
+        "symbol": "SYNOPTICS",
+        "entry_date": "2025-09-22",
+        "exit_date": "2026-09-22",
+        "stock_return": -0.5476304451890857,
+        "sme_return": -0.03310667126802869,
+        "excess": -0.514523773921057
+      },
+      {
+        "symbol": "ATMASTCO",
+        "entry_date": "2025-09-22",
+        "exit_date": "2026-09-22",
+        "stock_return": -0.4091751621872104,
+        "sme_return": -0.03310667126802869,
+        "excess": -0.3760684909191817
+      },
+      {
+        "symbol": "RULKA",
+        "entry_date": "2025-09-22",
+        "exit_date": "2026-09-22",
+        "stock_return": -0.16861826697892268,
+        "sme_return": -0.03310667126802869,
+        "excess": -0.135511595710894
+      }
+    ]
+  },
+  "2": {
+    "n": 9,
+    "median_stock_return": -0.4530706836616454,
+    "median_sme_return": -0.053441121380456535,
+    "median_excess": -0.4974731460579236,
+    "beat_index": 3,
+    "equal_ticket_stock_return": -0.25769931063448404,
+    "equal_ticket_index_return": -0.04432382591034244,
+    "positions": [
+      {
+        "symbol": "SADHAV",
+        "entry_date": "2024-05-27",
+        "exit_date": "2026-05-27",
+        "stock_return": -0.4530706836616454,
+        "sme_return": 0.04440246239627821,
+        "excess": -0.4974731460579236
+      },
+      {
+        "symbol": "URBAN",
+        "entry_date": "2024-07-15",
+        "exit_date": "2026-07-15",
+        "stock_return": -0.3214330927965565,
+        "sme_return": -0.053441121380456535,
+        "excess": -0.2679919714161
+      },
+      {
+        "symbol": "PRITIKA",
+        "entry_date": "2024-07-15",
+        "exit_date": "2026-07-16",
+        "stock_return": 0.7898550724637681,
+        "sme_return": -0.05130686995161038,
+        "excess": 0.8411619424153784
+      },
+      {
+        "symbol": "K2INFRA",
+        "entry_date": "2024-07-15",
+        "exit_date": "2026-07-15",
+        "stock_return": -0.7963354474982383,
+        "sme_return": -0.053441121380456535,
+        "excess": -0.7428943261177817
+      },
+      {
+        "symbol": "VINYAS",
+        "entry_date": "2024-07-15",
+        "exit_date": "2026-07-15",
+        "stock_return": 0.16159585399633647,
+        "sme_return": -0.053441121380456535,
+        "excess": 0.215036975376793
+      },
+      {
+        "symbol": "AISL",
+        "entry_date": "2024-07-16",
+        "exit_date": "2026-07-16",
+        "stock_return": -0.6493506493506493,
+        "sme_return": -0.049682392152847976,
+        "excess": -0.5996682571978014
+      },
+      {
+        "symbol": "ANLON",
+        "entry_date": "2024-07-22",
+        "exit_date": "2026-07-22",
+        "stock_return": 0.2819472616632861,
+        "sme_return": -0.03125008640449467,
+        "excess": 0.31319734806778077
+      },
+      {
+        "symbol": "AGNI",
+        "entry_date": "2024-07-29",
+        "exit_date": "2026-07-29",
+        "stock_return": -0.6704331450094162,
+        "sme_return": -0.07679016221249546,
+        "excess": -0.5936429827969207
+      },
+      {
+        "symbol": "JIWANRAM",
+        "entry_date": "2024-07-30",
+        "exit_date": "2026-07-31",
+        "stock_return": -0.6620689655172414,
+        "sme_return": -0.07396402072654207,
+        "excess": -0.5881049447906993
+      }
+    ]
+  }
+}

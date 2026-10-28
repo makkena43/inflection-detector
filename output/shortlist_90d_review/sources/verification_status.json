@@ -1,0 +1,182 @@
+{
+  "VALIANT_FY26": {
+    "exists": true,
+    "bytes": 9413117,
+    "page_text_exists": true
+  },
+  "VALIANT_Q1": {
+    "exists": true,
+    "bytes": 4875689,
+    "page_text_exists": true
+  },
+  "VALIANT_ORDER": {
+    "exists": true,
+    "bytes": 862482,
+    "page_text_exists": true
+  },
+  "VALIANT_NEW_ORDER": {
+    "exists": true,
+    "bytes": 852789,
+    "page_text_exists": true
+  },
+  "CRYO_FY26": {
+    "exists": true,
+    "bytes": 4697566,
+    "page_text_exists": true
+  },
+  "CRYO_ORDER": {
+    "exists": true,
+    "bytes": 1043330,
+    "page_text_exists": true
+  },
+  "CRYO_NEW_ORDER": {
+    "exists": true,
+    "bytes": 415847,
+    "page_text_exists": true
+  },
+  "PATELS_ORDER": {
+    "exists": true,
+    "bytes": 463781,
+    "page_text_exists": true
+  },
+  "PATELS_FY26": {
+    "exists": true,
+    "bytes": 2163103,
+    "page_text_exists": true
+  },
+  "PATELS_Q1": {
+    "exists": true,
+    "bytes": 2542214,
+    "page_text_exists": true
+  },
+  "KVS_ORDER": {
+    "exists": true,
+    "bytes": 566304,
+    "page_text_exists": true
+  },
+  "KVS_FY26": {
+    "exists": true,
+    "bytes": 17257337,
+    "page_text_exists": true
+  },
+  "AXIS_ORDER": {
+    "exists": true,
+    "bytes": 498085,
+    "page_text_exists": true
+  },
+  "AXIS_ORDER_DETAIL": {
+    "exists": true,
+    "bytes": 1378165,
+    "page_text_exists": true
+  },
+  "AXIS_FY26": {
+    "exists": true,
+    "bytes": 25614031,
+    "page_text_exists": true
+  },
+  "AXIS_Q1": {
+    "exists": true,
+    "bytes": 7870488,
+    "page_text_exists": true
+  },
+  "EXPO_FY26": {
+    "exists": true,
+    "bytes": 4170631,
+    "page_text_exists": true
+  },
+  "EXPO_DECK": {
+    "exists": true,
+    "bytes": 3107417,
+    "page_text_exists": true
+  },
+  "NIBE_CONTRACT": {
+    "exists": true,
+    "bytes": 647014,
+    "page_text_exists": true
+  },
+  "NIBE_Q1": {
+    "exists": true,
+    "bytes": 2742469,
+    "page_text_exists": true
+  },
+  "ITI_Q1": {
+    "exists": true,
+    "bytes": 5549025,
+    "page_text_exists": true
+  },
+  "ITI_ANNUAL": {
+    "exists": true,
+    "bytes": 5969077,
+    "page_text_exists": true
+  },
+  "TUNI_ORDER": {
+    "exists": true,
+    "bytes": 832938,
+    "page_text_exists": true
+  },
+  "TUNI_H1": {
+    "exists": true,
+    "bytes": 1636368,
+    "page_text_exists": true
+  },
+  "TUNI_RIGHTS": {
+    "exists": true,
+    "bytes": 266867,
+    "page_text_exists": true
+  },
+  "YAAN_ORDER": {
+    "exists": true,
+    "bytes": 420330,
+    "page_text_exists": true
+  },
+  "YAAN_FY26": {
+    "exists": true,
+    "bytes": 6105281,
+    "page_text_exists": true
+  },
+  "YAAN_Q1": {
+    "exists": true,
+    "bytes": 1648636,
+    "page_text_exists": true
+  },
+  "GALAXY_ORDER": {
+    "exists": true,
+    "bytes": 528677,
+    "page_text_exists": true
+  },
+  "GALAXY_FY26": {
+    "exists": true,
+    "bytes": 6009242,
+    "page_text_exists": true
+  },
+  "GALAXY_Q1": {
+    "exists": true,
+    "bytes": 1167604,
+    "page_text_exists": true
+  },
+  "ECO_FY26": {
+    "exists": true,
+    "bytes": 8060703,
+    "page_text_exists": true
+  },
+  "ECO_Q1": {
+    "exists": true,
+    "bytes": 4257262,
+    "page_text_exists": true
+  },
+  "ECO_NEW_ORDER": {
+    "exists": true,
+    "bytes": 561849,
+    "page_text_exists": true
+  },
+  "SWAN_H1_RESULTS": {
+    "exists": true,
+    "bytes": 13339885,
+    "page_text_exists": true
+  },
+  "SWAN_H1_DECK": {
+    "exists": true,
+    "bytes": 1910302,
+    "page_text_exists": true
+  }
+}

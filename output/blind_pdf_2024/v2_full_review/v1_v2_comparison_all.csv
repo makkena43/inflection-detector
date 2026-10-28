@@ -1,0 +1,39 @@
+file,v1_verdict,v1_conviction_original_scale,v2_verdict,v2_investment_conviction,v2_red_flag,v2_review_batch,reason
+Company-01.pdf,WATCH,3,WATCH,3,none,initial_21,"Capacity commissioning is real, but quantified firm offtake does not meet v2's large-order test."
+Company-02.pdf,WATCH,4,BUY,3,none,initial_21,"A firm order over 100% of revenue, low P/S and strong relative momentum outweigh the previous valuation-led hesitation."
+Company-03.pdf,WATCH,4,AVOID,2,"Promoter ownership fell 18.19 percentage points YoY to 41.23%, with no explanation of the change in the packet.",initial_21,V2 explicitly elevates the large unexplained promoter holding reduction to a disqualifying ownership red flag.
+Company-04.pdf,AVOID,5,BUY,2,none,remaining_17,The received seismic award is 184% of depressed TTM revenue; losses and high P/S alone do not satisfy v2's AVOID conditions when a large order supports recovery.
+Company-05.pdf,WATCH,3,WATCH,3,none,initial_21,"The 43% sales estimate represents capacity potential, not a large firm customer commitment."
+Company-06.pdf,AVOID,4,BUY,3,none,remaining_17,"Even excluding renewals, new won orders are about 37% of TTM revenue; declining core results have order support and do not justify a valuation-led AVOID under v2."
+Company-07.pdf,AVOID,4,WATCH,3,none,remaining_17,The received package is meaningful but only 19.7% of sales and about 7% of entry market cap; verified twelve-month flow is below 50%.
+Company-08.pdf,AVOID,5,BUY,3,none,remaining_17,"A firm 2,400-bus award supports large demand in units; rapid growth and price strength now outweigh the prior valuation veto, with manufacturer economics still uncertain."
+Company-09.pdf,AVOID,4,BUY,3,none,remaining_17,Firm railway orders exceed 40% of sales alongside an operating recovery and confirming momentum; high P/E alone no longer warrants AVOID.
+Company-10.pdf,WATCH,3,BUY,3,none,initial_21,The firm pharmaceutical tender is 49% of revenue; valuation and a previous rally are not v2 vetoes.
+Company-11.pdf,BUY,3,BUY,3,none,remaining_17,The direct municipal LOA clears both v2 size tests; BUY survives the rerun with moderate conviction after adjusting profit quality and contract timing.
+Company-12.pdf,BUY,3,WATCH,3,none,remaining_17,"The SBI contract is only 12% of revenue and about 2% of entry market cap, so the earlier quality-and-growth BUY does not meet the applied v2 catalyst-size test."
+Company-13.pdf,AVOID,4,WATCH,2,none,remaining_17,The BMC award is firm but the company's consortium share and TTM base are missing; expensive valuation and volatile profits alone are not v2 AVOID grounds.
+Company-14.pdf,WATCH,3,BUY,3,none,initial_21,"A firm PSU order at 62% of revenue combines with low P/S, thin margins and strong relative price action."
+Company-15.pdf,AVOID,4,WATCH,2,none,remaining_17,"The contract is below v2's large-event thresholds; contradictory packet share data is a major diligence risk, but is not evidence of issuer misconduct or financial distress."
+Company-16.pdf,WATCH,4,BUY,3,none,initial_21,The received export PO clears the 25% revenue test; QIP-related dilution is a risk rather than evidence of promoter disposal or financial distress.
+Company-17.pdf,AVOID,4,BUY,3,none,remaining_17,"The annual firm-flow and operating-recovery evidence clears v2 without relying on the erroneous Rs 5,791 crore single-order reading; high valuation is not a veto."
+Company-18.pdf,WATCH,3,BUY,3,none,initial_21,The order clears v2's market-cap threshold even though it is only 13.6% of annual revenue.
+Company-19.pdf,AVOID,4,BUY,2,none,remaining_17,"The existing seven-year SBI award is large and firm, with positive operating cash and lower debt; no hard v2 stress or falling-average flag is established, though the case is weak."
+Company-20.pdf,AVOID,4,BUY,3,none,remaining_17,The awarded port contract is 213% of revenue and the packet does not establish financial distress; v2 treats strong momentum positively and removes the valuation-only veto.
+Company-21.pdf,WATCH,3,AVOID,2,The ownership table reports net promoter selling of Rs 0.413 crore in the preceding 90 days.,initial_21,"V2 explicitly treats promoter selling as a red flag, and the new-plant sales estimate does not establish firm offtake."
+Company-22.pdf,AVOID,4,WATCH,3,none,remaining_17,Commissioned capacity and conditional revenue guidance are not a large firm offtake order; valuation and the stock split no longer justify AVOID.
+Company-23.pdf,WATCH,3,BUY,3,none,initial_21,"The awarded wastewater project clears both large-event tests; missing funding detail is uncertainty, not demonstrated stress."
+Company-24.pdf,WATCH,4,WATCH,3,none,initial_21,The correctly separated programme additions and disclosed twelve-month flow remain below v2's large-order thresholds.
+Company-25.pdf,AVOID,5,BUY,2,none,remaining_17,"The received USD 35 million export order clears the revenue test independently of the disputed market cap; unknown buyer capacity is a risk, not established fraud or non-firmness."
+Company-26.pdf,WATCH,4,WATCH,3,none,initial_21,The firm Rs 100 crore package is below the large-event markers even after giving momentum its positive v2 weight.
+Company-27.pdf,WATCH,4,BUY,4,none,initial_21,"A majority-share public-water LOA exceeds 50% of revenue, with high promoter ownership and confirming price strength."
+Company-28.pdf,BUY,3,WATCH,3,none,remaining_17,"The firm quarterly intake is 21.6% of revenue and disclosed annual flow is 44.8%, both below v2's applied large-event tests; business quality alone no longer supplies BUY."
+Company-29.pdf,WATCH,3,BUY,3,none,initial_21,The firm Dow PO exceeds 40% of annual sales; a high earnings multiple alone no longer prevents BUY.
+Company-30.pdf,BUY,3,BUY,3,none,remaining_17,"The ONGC LOA comfortably clears the total-value tests, with strong existing profitability, high promoter ownership and confirming momentum."
+Company-31.pdf,WATCH,4,BUY,3,none,initial_21,"This closely matches v2's large-order, cheap-sales, thin-margin and strong-momentum pattern."
+Company-32.pdf,WATCH,4,BUY,3,none,initial_21,The received government award passes the size test and net cash supports execution; renewal content lowers conviction rather than automatically vetoing BUY.
+Company-33.pdf,WATCH,4,AVOID,2,The packet reports Rs 5.739 crore net promoter selling over the preceding 90 days.,initial_21,"The firm solar award qualifies on size, but documented promoter selling invokes v2's explicit ownership veto."
+Company-34.pdf,WATCH,4,WATCH,3,none,initial_21,The claimed large traction contract is only in the reviewer summary; quoted passages still make volume production conditional on qualification.
+Company-35.pdf,WATCH,4,WATCH,2,none,initial_21,"After removing financing, GST and unknown JV participation, a qualifying attributable order size cannot be established."
+Company-36.pdf,WATCH,4,WATCH,3,none,initial_21,"Low P/S and thin-margin leverage are attractive, but the specific trigger is capacity and routine aggregate intake rather than a qualifying new-order step-change."
+Company-37.pdf,AVOID,4,AVOID,2,The packet explicitly marks the stock as below a falling 200-day average.,remaining_17,"The contract clears v2's market-cap test, but the explicit falling-200-day-average flag invokes a hard veto independent of valuation."
+Company-38.pdf,WATCH,4,WATCH,2,none,initial_21,The firm short-cycle orders are supportive but remain below v2's size markers; delay and dilution weaken the per-share case without proving insider selling or financial distress.

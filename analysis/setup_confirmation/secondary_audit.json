@@ -1,0 +1,14 @@
+{
+  "MINDACORP|2021-08-16": "Exclude: lifetime wins and conflicting amount disclosures.",
+  "COCHINSHIP|2022-02-07": "Unresolved: old release says won, but other passages say L1/unsigned; \u20b910000cr came from estimated tender value. No contemporaneous signed contract verified.",
+  "BHEL|2023-04-10": "Unresolved consortium share and long-term services attribution.",
+  "SHAH|2023-07-17": "Pass excerpt check: received export orders ~USD5m/\u20b940cr.",
+  "JYOTISTRUC|2023-09-04": "Pass excerpt check: Apraava LOA \u20b9260.85cr including GST, ~\u20b9221cr excluding GST; execution Nov 2024.",
+  "OLECTRA|2024-02-19": "Exclude from stated-value test: assumed \u20b91cr/bus; award to related EVEY, issuer allocation unresolved.",
+  "HIRECT|2024-02-26": "Pass excerpt check: received Indian Railways orders >\u20b9200cr.",
+  "KILITCH|2024-02-26": "Unresolved issuer economics: foreign-subsidiary USD9.13m tender, assumed FX and attributable share need original-source confirmation.",
+  "GENESYS|2024-03-11": "Unresolved consortium share; headline value not established as issuer share.",
+  "GVT&D|2024-05-27": "Exclude from single-order-materiality test: \u20b957912m is annual inflow, misidentified as largest individual Q4 order. Genuine orders exist but this sizing is not verified.",
+  "PPAP|2025-02-10": "Exclude: lifetime business without executable release schedule.",
+  "MUKKA|2025-12-01": "Unresolved issuer JV share."
+}

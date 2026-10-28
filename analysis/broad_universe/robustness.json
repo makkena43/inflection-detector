@@ -1,0 +1,124 @@
+{
+  "complete_feature_selected": {
+    "selected": 111,
+    "n": 111,
+    "issuers": 98,
+    "doubles": 38,
+    "double_rate": 0.34234234234234234,
+    "triples": 19,
+    "losses": 36,
+    "expected_mature": 111,
+    "missing_mature": 0,
+    "median_return": 0.5484011881880133,
+    "median_smallcap_excess": 0.05889357643463966,
+    "median_drawdown": -0.4554440331259779,
+    "adjustment_unverified": 2,
+    "rate_ci95": [
+      0.2606726872036486,
+      0.43455970245306114
+    ]
+  },
+  "complete_feature_control": {
+    "selected": 1306,
+    "n": 1306,
+    "issuers": 770,
+    "doubles": 232,
+    "double_rate": 0.1776416539050536,
+    "triples": 87,
+    "losses": 540,
+    "expected_mature": 1298,
+    "missing_mature": 0,
+    "median_return": 0.1318714036478067,
+    "median_smallcap_excess": -0.16522483594410947,
+    "median_drawdown": -0.43482879712225253,
+    "adjustment_unverified": 32,
+    "rate_ci95": [
+      0.15786649684162984,
+      0.19930768360889178
+    ]
+  },
+  "year_matched_control_rate": 0.2413751772192464,
+  "year_matched_rate_lift": 0.10096716512309595,
+  "issuer_cluster_bootstrap_rate_difference_ci": [
+    0.0784786891471703,
+    0.25500259875259873
+  ],
+  "resamples": 2000,
+  "unique_first_qualifying": {
+    "selected": 98,
+    "n": 98,
+    "issuers": 98,
+    "doubles": 33,
+    "double_rate": 0.336734693877551,
+    "triples": 16,
+    "losses": 30,
+    "expected_mature": 98,
+    "missing_mature": 0,
+    "median_return": 0.5762043654764599,
+    "median_smallcap_excess": 0.07658886471923798,
+    "median_drawdown": -0.453312182787322,
+    "adjustment_unverified": 2,
+    "rate_ci95": [
+      0.25089992900091485,
+      0.4348866258057654
+    ]
+  },
+  "without_two_biggest_winners": {
+    "selected": 109,
+    "n": 109,
+    "issuers": 96,
+    "doubles": 36,
+    "double_rate": 0.3302752293577982,
+    "triples": 17,
+    "losses": 36,
+    "expected_mature": 109,
+    "missing_mature": 0,
+    "median_return": 0.5353812397147557,
+    "median_smallcap_excess": 0.008848750807037842,
+    "median_drawdown": -0.4567203854460874,
+    "adjustment_unverified": 2,
+    "rate_ci95": [
+      0.24908361228527495,
+      0.4230231284911763
+    ]
+  },
+  "selected_new_companies": {
+    "selected": 18,
+    "n": 18,
+    "issuers": 17,
+    "doubles": 3,
+    "double_rate": 0.16666666666666666,
+    "triples": 3,
+    "losses": 9,
+    "expected_mature": 18,
+    "missing_mature": 0,
+    "median_return": 0.018720160350067294,
+    "median_smallcap_excess": -0.3015269568278001,
+    "median_drawdown": -0.49088779616160905,
+    "adjustment_unverified": 1,
+    "rate_ci95": [
+      0.05836470400465757,
+      0.39222499638359243
+    ]
+  },
+  "control_new_companies": {
+    "selected": 165,
+    "n": 165,
+    "issuers": 143,
+    "doubles": 13,
+    "double_rate": 0.07878787878787878,
+    "triples": 6,
+    "losses": 98,
+    "expected_mature": 161,
+    "missing_mature": 0,
+    "median_return": -0.09800763035184401,
+    "median_smallcap_excess": -0.30737269964910174,
+    "median_drawdown": -0.5068557365522091,
+    "adjustment_unverified": 2,
+    "rate_ci95": [
+      0.046619396082262975,
+      0.13012377621650698
+    ]
+  },
+  "selection_note": "One screen chosen after inspecting 11 related fixed hypotheses; intervals unadjusted for this selection, sector/time dependence and earlier discretionary studies."
+}

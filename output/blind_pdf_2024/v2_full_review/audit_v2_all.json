@@ -1,0 +1,79 @@
+{
+  "scope": "all 38 masked company packets, in two v2 batches",
+  "prompt_path": "/Users/makkenasrinivas/inflection-jobs/expert/prompt_v2.txt",
+  "prompt_sha256": "a706cce1300103d89dadbb8c9437919c882443111232e57981c804eecc537856",
+  "initial_21_results_sha256": "9acf5ecc28462467a306ecc6acbdff0240cc388de110e596f78908f677473327",
+  "remaining_17_decisions_sha256": "521679e788e8a55376a1684bbcb8ffe3c7e49e4f972152a5115a700f787b50c0",
+  "remaining_17_counts": {
+    "BUY": 10,
+    "WATCH": 6,
+    "AVOID": 1
+  },
+  "all_38_counts": {
+    "WATCH": 14,
+    "BUY": 20,
+    "AVOID": 4
+  },
+  "initial_21_revised": false,
+  "unreviewed_carried_forward_rows": 0,
+  "external_sources_used": false,
+  "future_outcomes_used": false,
+  "original_answer_sheet_modified": false,
+  "source_pdf_sha256": {
+    "Company-01.pdf": "d94068c26f0f71a53c95cb6e9909d180d638525202c939d5f10090f96442740a",
+    "Company-02.pdf": "d3a56141d0d3e544d41a02a1dd1dda78e6ecad7ec348eb15c76e6bbb624a9e25",
+    "Company-03.pdf": "baed2d03c2217a52127405d8cff817b79d52b9eaf2e8f43eb6bc4a7912ec5f85",
+    "Company-04.pdf": "74a9181f4de55318941825b5bb554b1e35223cdc1e37839f60a870f3694035bc",
+    "Company-05.pdf": "2caf33cdb7edeca0aea6bf9382cd3a210e3bdb6748b90048de5036edf4dd2f82",
+    "Company-06.pdf": "6413a4d88dfa6a85d66b020b917af854c8e6855b0cda9ef922ffc42dd9cfe8c9",
+    "Company-07.pdf": "16fdcc86614f3dae3e0760bcb389d4debbc75ea1665318bfedaa569fbfb0e49a",
+    "Company-08.pdf": "ef880887d4a6aaf868a1219d8c946a08dd30062ffee663291fa49732d088d56b",
+    "Company-09.pdf": "4b6a38410bcbb892a015dc1624f7c6197382da812955332208f6c7bce1aa0e8c",
+    "Company-10.pdf": "52113388efdf31f574f6098d6f1a4d3dfdd1dac71970e7c88479af1f4aca7c86",
+    "Company-11.pdf": "a8ef8ad1371319135ce1c9e36aaadd38d5f2f82270ba00239b7a816284158025",
+    "Company-12.pdf": "10021ad91552a9c561ba63e112bbd96a709b370bfaaa9d5343545c6e588affc0",
+    "Company-13.pdf": "03412dfafb1f56679e27c8af43a4e2c0994cb6a97cf2459d7002e6fdd0eb54f2",
+    "Company-14.pdf": "0e29ec9b4bf5f526cd34c0550b4e85ac53bb9a8caafd5399a3d36a1a9dbc9131",
+    "Company-15.pdf": "62ab5a0c37b9e7d227080d042290329c8cface381b326c2308facfceabbecfa3",
+    "Company-16.pdf": "6272f9e7f74bf586eea812205c6a7a95b75701fff128438307e13b2c32887fcf",
+    "Company-17.pdf": "3bc73179c045d352bd410fe3325d1f213fbac9c532ff662c7c1451ada739612d",
+    "Company-18.pdf": "4bdb49d312b5bad9ba44f78bfd100e968063e15fdbae42a328ab3b707d936392",
+    "Company-19.pdf": "320f46fcc44b1f00837c6db2063c344367dae1d841330769e768f45da7713744",
+    "Company-20.pdf": "282d44a475a077b9e6b5c5057f67b13b9af7e1b7722a882365f4f2e922148fbe",
+    "Company-21.pdf": "7427960f06562fcb70c0239c67f7a16e780cd20c0fa742eb29d9ab81d9022af2",
+    "Company-22.pdf": "f149b16867dd3c0648cec20779d17a63221c1415c7fa8413428b1287b6c68b1e",
+    "Company-23.pdf": "bac548d64cfa0be346c4a618ccaee64566b536a488607d55d48c8eb83a7560d3",
+    "Company-24.pdf": "b783fe7d4e44d26cfe5f61124ba6a72a69acfb68ec812763d9944e60960b2698",
+    "Company-25.pdf": "b73ac9f4d97bc5404a47a2fcbda2a38299dc52da6b148cdebc4965867654f803",
+    "Company-26.pdf": "27e36db3c07db79afb70d49c4a2e276cb4d68e5f4b006313db042eea1e443f16",
+    "Company-27.pdf": "6f20a203977f484b79a981a2c3b2e8e400a368ee959ffdea162452486a5ce015",
+    "Company-28.pdf": "3229744ddfbd988d2cff923f11b1d89d7f82aa32efc0ab2dcd49154a9081fc70",
+    "Company-29.pdf": "e868e1a393e9ca33fcbe24f7cad5aae2e1950d0a67b29f67dd10d38b6e89c7a0",
+    "Company-30.pdf": "aa9a6c61610a52fd36091778644b6d0c039ad137c78a8280c50889c6c874a534",
+    "Company-31.pdf": "a2097b59eb896877df316ee157056181f53c462ecc6eced24c5d3de66ff2048b",
+    "Company-32.pdf": "3982e38543af2db01ce8153f97b53cdafa4c1fe5a3ca90e5b338bc48651b24d2",
+    "Company-33.pdf": "771a68508515d4ba47c248963c3d1f3f2f2f6b06781a7a4a51641817364abbfc",
+    "Company-34.pdf": "954ee1971384881d4589de0c7c47d1ff96fc9154bb64e04abaec80f931f51607",
+    "Company-35.pdf": "29a8afd036b812187ad0553222663454b3a5dc67143249dd838ce2576e2a2d4e",
+    "Company-36.pdf": "58e12cd896b1ecf4d15bf790d68c2b9afd1e1fc8b77e0774c7765a7647a00aae",
+    "Company-37.pdf": "9445573176e59d4ba427086e40b35d426d2f947bbb6ad409b9e2002b54f0c219",
+    "Company-38.pdf": "08820790435ea123f328618676cf775ef34d2180dff249a4c4d32515cd9e0e83"
+  },
+  "verdict_transition_matrix": {
+    "BUY": {
+      "BUY": 2,
+      "WATCH": 2,
+      "AVOID": 0
+    },
+    "WATCH": {
+      "BUY": 10,
+      "WATCH": 8,
+      "AVOID": 3
+    },
+    "AVOID": {
+      "BUY": 8,
+      "WATCH": 4,
+      "AVOID": 1
+    }
+  }
+}

@@ -1,0 +1,314 @@
+[
+  {
+    "file": "Company-04.pdf",
+    "verdict": "BUY",
+    "conviction": 2,
+    "red_flag": "none",
+    "thesis": "A firm seismic award is exceptionally large against current revenue and could restore operating utilisation. Recent losses and poor earnings quality make the investment case weak despite that support. V2 produces BUY at conviction 2 because clear financial distress or an ownership veto is not established.",
+    "risks": [
+      "Mobilisation and receivables require funding not quantified in the packet.",
+      "Contract contribution fails to cover the severely underutilised fixed-cost base.",
+      "The depressed revenue denominator exaggerates the scale of a sustainable recovery."
+    ],
+    "rerating_months": 15,
+    "evidence_ids": [
+      "2b13552d-25b6-41bd-9265-e4d0a47ef930",
+      "ea8af802-29e1-4b73-91d0-db4af46e02c1"
+    ]
+  },
+  {
+    "file": "Company-06.pdf",
+    "verdict": "BUY",
+    "conviction": 3,
+    "red_flag": "none",
+    "thesis": "New won orders alone exceed v2's revenue threshold after renewals are excluded. Debt-free evidence, promoter buying and relative price strength support a recovery attempt. BUY with moderate conviction because revenue conversion and core-margin repair have not yet appeared in results.",
+    "risks": [
+      "Won orders convert slowly or replace expiring revenue rather than growing the base.",
+      "Other income continues to mask weak recurring operating profit.",
+      "Unidentified customers and missing contract duration reduce cash-flow visibility."
+    ],
+    "rerating_months": 12,
+    "evidence_ids": [
+      "7b156039-296e-426b-b43b-026aa0d3fae0",
+      "d122aa5d-542e-4925-9c82-ca087b47a412"
+    ]
+  },
+  {
+    "file": "Company-07.pdf",
+    "verdict": "WATCH",
+    "conviction": 3,
+    "red_flag": "none",
+    "thesis": "The electrical and maintenance awards are credible and provide useful execution visibility. Positive momentum supports the company, but the package and disclosed annual flow remain below v2's large-order thresholds. WATCH for a larger firm flow or evidence of stronger margin conversion.",
+    "risks": [
+      "The two-year maintenance portion delays recognition relative to the six-month headline.",
+      "Working-capital finance costs consume thin project profits.",
+      "Further share issuance limits per-share operating leverage."
+    ],
+    "rerating_months": 12,
+    "evidence_ids": [
+      "ae03452b-e493-4c48-ab83-e3cd183cf5b9"
+    ]
+  },
+  {
+    "file": "Company-08.pdf",
+    "verdict": "BUY",
+    "conviction": 3,
+    "red_flag": "none",
+    "thesis": "The received bus award provides substantial unit demand through an established manufacturer/operator route. Revenue acceleration and strong relative price action support a v2 BUY despite the high valuation. Conviction is moderate because the manufacturer's actual contract value, related-party terms and funding needs are not fully disclosed.",
+    "risks": [
+      "Operator GCC value or assumed unit prices overstate the manufacturer's attributable supply revenue.",
+      "Capacity investment and customer receivables require more financing than expected.",
+      "Margins and deliveries fail to support the very demanding equity valuation."
+    ],
+    "rerating_months": 18,
+    "evidence_ids": [
+      "8e9c6e4b-154a-4270-b075-0ddce005e423",
+      "db723533-e415-445c-9189-a1cce0203878",
+      "9d317da6-5d95-4142-b551-60bbd84600c2",
+      "470a7170-80e3-4bab-8219-2cbd9d4020b3",
+      "60c75d92-1424-4492-8e94-c103723369ac"
+    ]
+  },
+  {
+    "file": "Company-09.pdf",
+    "verdict": "BUY",
+    "conviction": 3,
+    "red_flag": "none",
+    "thesis": "The received railway orders are large enough to support continued recovery in sales and operating utilisation. Improving operating margins and strong relative momentum reinforce the v2 case. BUY with moderate conviction because funding costs and exceptional charges still limit recurring shareholder earnings.",
+    "risks": [
+      "Receivables and rising borrowing costs absorb operating gains.",
+      "Exceptional charges recur and prevent a clean PAT recovery.",
+      "Order execution is slower or less profitable than the current margin trend implies."
+    ],
+    "rerating_months": 12,
+    "evidence_ids": [
+      "bb2d0a01-f8db-4eed-ac62-6a19d058f2fe",
+      "bd294eca-27c1-4955-98f5-7840ecfc6911",
+      "adc262bc-81cb-4853-a380-d564c591f3fe"
+    ]
+  },
+  {
+    "file": "Company-11.pdf",
+    "verdict": "BUY",
+    "conviction": 3,
+    "red_flag": "none",
+    "thesis": "A direct municipal water-treatment award adds substantial firm backlog to an experienced operator. The contract clears both v2 scale tests and the packet shows no established hard disqualifier. BUY remains moderate conviction because construction cash requirements and normalised owner earnings require monitoring.",
+    "risks": [
+      "Municipal billing, guarantees and collections absorb cash during mobilisation.",
+      "Construction delays or fixed-price overruns weaken project returns.",
+      "Exceptional income and minority interests overstate recurring shareholder profit."
+    ],
+    "rerating_months": 18,
+    "evidence_ids": [
+      "ad3684e3-551c-42b4-86ed-23700ab232ee",
+      "5fcfc564-2b25-4f79-ae21-059a8eda9ac6",
+      "d7d9210e-c001-4da8-bf28-fdf674e5c0b8",
+      "3770da14-6ba9-4553-832d-84df2c87f078"
+    ]
+  },
+  {
+    "file": "Company-12.pdf",
+    "verdict": "WATCH",
+    "conviction": 3,
+    "red_flag": "none",
+    "thesis": "The company has sustained earnings growth and a credible SBI product award. The disclosed catalyst and annual firm flow are below the v2 large-order thresholds despite an attractive operating franchise. WATCH at conviction 3 while monitoring organic growth, implementation and per-share returns from fundraising.",
+    "risks": [
+      "Acquisitions or licence mix make reported growth less recurring than it appears.",
+      "Equity and warrant issuance dilute per-share growth without adequate returns.",
+      "Implementation delays or working-capital needs weaken cash conversion."
+    ],
+    "rerating_months": 12,
+    "evidence_ids": [
+      "ec9a30cb-e9ef-4255-9702-294b9a2bc8fc",
+      "25b1ad04-842a-40ff-9820-7e1e5f9ddcb7",
+      "8076c41f-049e-4213-9cae-74d7beb3fc56",
+      "3453ec50-ff23-42bf-9572-fc4e36fd46cf",
+      "c79abee2-b3ac-4a05-88e5-d3c890b01542"
+    ]
+  },
+  {
+    "file": "Company-13.pdf",
+    "verdict": "WATCH",
+    "conviction": 2,
+    "red_flag": "none",
+    "thesis": "The digital-twin contract validates demand but does not establish the company's attributable order economics. Operating and price recovery provide support, so high valuation alone does not warrant AVOID under v2. WATCH with a weak investment case until consortium allocation, complete financials and cash conversion are available.",
+    "risks": [
+      "The consortium allocation leaves the company's economic share below the size threshold.",
+      "Depreciation and volatile profits obscure sustainable operating returns.",
+      "Warrants and convertible instruments dilute shareholder participation."
+    ],
+    "rerating_months": 18,
+    "evidence_ids": [
+      "ecb60b27-2d60-4c4c-b52a-4d4db1ec1d4c",
+      "f17cf4d6-a495-4e09-a410-c9f7479dfea7",
+      "b156d0d3-fa41-40f9-8a32-745f83dd94d5"
+    ]
+  },
+  {
+    "file": "Company-15.pdf",
+    "verdict": "WATCH",
+    "conviction": 2,
+    "red_flag": "none",
+    "thesis": "The insurer award provides small multi-year recurring activity rather than a large earnings catalyst. Positive results and price action support monitoring, while the packet's share-count inconsistency prevents reliable valuation. WATCH with a weak investment case until capital structure and a more material demand catalyst are verified.",
+    "risks": [
+      "Unreconciled share-count and EPS data distort market cap and position sizing.",
+      "The five-year award contributes little incremental annual profit.",
+      "Rising depreciation and financing costs offset improved operating execution."
+    ],
+    "rerating_months": 12,
+    "evidence_ids": [
+      "8abe9ed3-738a-4ce6-9b9c-76bd5585b229",
+      "a0c6437d-7ee0-4fc0-9c02-b71623e1ae8d"
+    ]
+  },
+  {
+    "file": "Company-17.pdf",
+    "verdict": "BUY",
+    "conviction": 3,
+    "red_flag": "none",
+    "thesis": "Firm annual orders, rising backlog and improving operating margins support a genuine demand recovery. Stable high promoter ownership, FII buying and strong relative momentum reinforce v2's BUY conditions. Conviction remains moderate because precise profit reconciliation, order phasing and the demanding valuation leave meaningful execution risk.",
+    "risks": [
+      "Order intake or margin recovery slows before valuation expectations are met.",
+      "Quarterly and annual profit data remain unreconciled.",
+      "Related-party export orders or long delivery schedules weaken incremental cash earnings."
+    ],
+    "rerating_months": 18,
+    "evidence_ids": [
+      "df991d12-6150-4d68-b7bf-59a5b1a0ef4a",
+      "43cbac87-abe1-4e89-b997-d02199400e53",
+      "1756ce38-7449-4cb8-a1a6-92ef9020eb18",
+      "467d1e92-4efb-48da-ae08-d99f10f2747f"
+    ]
+  },
+  {
+    "file": "Company-19.pdf",
+    "verdict": "BUY",
+    "conviction": 2,
+    "red_flag": "none",
+    "thesis": "A large firm SBI outsourcing contract provides demand support through a deployment phase. Losses, asset intensity and weak price confirmation leave a weak investment case despite positive operating cash and falling net debt. V2 produces BUY at conviction 2 because the packet does not establish a hard stress or ownership veto.",
+    "risks": [
+      "Deployment is already reflected in expectations and provides little fresh catalyst.",
+      "ATM capex, interest and depreciation absorb operating cash and prevent shareholder-profit recovery.",
+      "Declining legacy revenue offsets the contract's modest annual contribution."
+    ],
+    "rerating_months": 18,
+    "evidence_ids": [
+      "46fac220-bee4-44e3-88e5-d6719b1f1eb7",
+      "3c6420cd-751e-443b-865e-8bbb0a36fad6",
+      "928367ce-d24b-4d12-bb67-97d06e5737d7",
+      "5171fcc0-b73c-484f-ab79-7c5b61218e2d"
+    ]
+  },
+  {
+    "file": "Company-20.pdf",
+    "verdict": "BUY",
+    "conviction": 3,
+    "red_flag": "none",
+    "thesis": "The awarded port-maintenance contract is exceptionally large against both revenue and market value. Stable high promoter ownership and strong relative momentum support the v2 demand thesis. BUY at moderate conviction because replacement revenue, fleet costs and cash conversion remain uncertain.",
+    "risks": [
+      "The contract replaces existing port work rather than adding the full annual average to sales.",
+      "Fleet downtime, repairs and replacement capex prevent cash-return improvement.",
+      "Delayed port collections or unquantified obligations create funding strain."
+    ],
+    "rerating_months": 18,
+    "evidence_ids": [
+      "64a654bd-24f4-4537-9287-80060cfe60cc",
+      "6bb4327d-868c-4d8a-88d2-95fc8f2c61d2"
+    ]
+  },
+  {
+    "file": "Company-22.pdf",
+    "verdict": "WATCH",
+    "conviction": 3,
+    "red_flag": "none",
+    "thesis": "The expanded plant creates tangible productive capacity in a growing business. The packet's large revenue figure is an estimate rather than committed customer demand. WATCH under v2 for utilisation, profitable offtake and cash generation, with no established hard disqualifier.",
+    "risks": [
+      "New capacity lacks sufficient profitable external demand.",
+      "Inventory, interest and ramp costs absorb the expected operating leverage.",
+      "Conditional guidance is treated as contracted sales and expectations outrun execution."
+    ],
+    "rerating_months": 15,
+    "evidence_ids": [
+      "0ee5a1c7-da2f-42c6-9a5d-80dd31b1e0e4",
+      "014ec1ed-8660-4546-9240-24c447d50e5c",
+      "723fe329-ea41-4ef1-ab3c-ed6c32fbe3c1"
+    ]
+  },
+  {
+    "file": "Company-25.pdf",
+    "verdict": "BUY",
+    "conviction": 2,
+    "red_flag": "none",
+    "thesis": "The reported received export PO is large against annual sales even after respecting its seven-year duration. Buyer financing, mining readiness and conflicting valuation data leave the investment case weak. V2 nevertheless produces BUY at conviction 2 because those uncertainties are not proven non-firmness, misconduct or financial distress.",
+    "risks": [
+      "The buyer cannot finance its hospital rollout or make timely shipment payments.",
+      "Mining production, logistics and quality do not support delivery of a new-business order.",
+      "Conflicting share/valuation data and potential financing dilute or obscure economic returns."
+    ],
+    "rerating_months": 24,
+    "evidence_ids": [
+      "1a5c087d-1ace-4918-810e-9c360e195a80",
+      "ffde7cd2-9752-4a08-8a42-7f06a2af3e8a",
+      "e137aaf0-cf73-4fdc-8121-d5e6f42a8408",
+      "374b7035-a1c6-4eaf-a75c-15bd66a3aed7"
+    ]
+  },
+  {
+    "file": "Company-28.pdf",
+    "verdict": "WATCH",
+    "conviction": 3,
+    "red_flag": "none",
+    "thesis": "The company has recovering export demand, high profitability and financial flexibility. Its verified intake and twelve-month flow remain below the v2 large-order markers after duplicate and backlog counts are removed. WATCH at conviction 3 for further firm flow and cash earnings growth.",
+    "risks": [
+      "Lab-grown diamond prices or inventory values fall faster than product mix improves.",
+      "Order intake is mostly replenishment rather than sustained incremental demand.",
+      "Retail expansion, receivables or shareholder capital actions weaken the cash/per-share case."
+    ],
+    "rerating_months": 12,
+    "evidence_ids": [
+      "a98e7c50-b2c5-4dfd-8976-884dd8838193",
+      "2e72912f-dfc6-4034-8930-dec0ee6b35d0",
+      "a4f61c8b-456c-4de5-bd00-efd6c2c2d093",
+      "dc6f8800-d1ec-4cce-8199-66e86d5e8e75"
+    ]
+  },
+  {
+    "file": "Company-30.pdf",
+    "verdict": "BUY",
+    "conviction": 3,
+    "red_flag": "none",
+    "thesis": "The ONGC award adds a large long-duration opportunity to an already profitable operating platform. High stable promoter ownership and relative price strength support a v2 BUY. Conviction stays moderate because mobilisation, capex and performance-linked billing complicate cash returns and the post-announcement entry price is unavailable.",
+    "risks": [
+      "Performance conditions reduce realised revenue versus the estimated contract total.",
+      "Equipment capex and mobilisation delay free cash flow.",
+      "A post-announcement price gap removes the valuation cushion at the last quoted price."
+    ],
+    "rerating_months": 18,
+    "evidence_ids": [
+      "09f607ac-0df7-4681-80c1-b4dcb6ac9ef0",
+      "733f9514-59a0-4d0a-bc3b-2a3cad73ea6f",
+      "7ca2ac79-f145-4180-bcf5-36665a3c01be",
+      "b167d5ad-783c-4ef8-a7da-8fff3fd3124e",
+      "80f139bb-8aa4-479b-9a8f-5c304d4016c9"
+    ]
+  },
+  {
+    "file": "Company-37.pdf",
+    "verdict": "AVOID",
+    "conviction": 2,
+    "red_flag": "The packet explicitly marks the stock as below a falling 200-day average.",
+    "thesis": "The new contract is large relative to market value and supports business visibility. The stock is explicitly below a falling 200-day average, which v2 identifies as a hard AVOID condition. Weak recurring profit reinforces caution without using valuation alone as the veto.",
+    "risks": [
+      "The falling trend persists despite contract announcements.",
+      "Lease, depreciation and finance burdens absorb incremental operating profit.",
+      "Other income rather than recurring operations sustains reported PAT."
+    ],
+    "rerating_months": 0,
+    "evidence_ids": [
+      "10336f6f-5db3-4aa0-9d55-c6b4a378b169",
+      "4bfa8fc5-4888-4b0f-aaee-7bd2257f6a9c",
+      "12e71eed-6907-4d37-b6af-2bc9cae78739",
+      "8607c20d-6d05-47c9-bd56-720286be7048"
+    ]
+  }
+]

@@ -1,0 +1,103 @@
+== 1. migrations applied
+         version         
+-------------------------
+ 0001_init
+ 0002_spec17_alignment
+ 0003_ingestion_coverage
+ 0004_bhavcopy
+ 0005_archive_purges
+ 0006_listing_master
+ 0007_commercial_route
+ 0008_financial_route
+(8 rows)
+
+== 2. issuers, securities, prices
+ issuers | securities | price_rows | first_price | last_price 
+---------+------------+------------+-------------+------------
+    5095 |       5095 |    5960290 | 2019-06-27  | 2026-10-09
+(1 row)
+
+ exchange |  rows   |    min     |    max     
+----------+---------+------------+------------
+ BSE      | 3171050 | 2023-12-05 | 2026-10-09
+ NSE      | 4129708 | 2019-06-27 | 2026-10-09
+(2 rows)
+
+== 3. filings by source and pipeline state
+      source       | pipeline_state | filings |   first    |    last    | no_issuer 
+-------------------+----------------+---------+------------+------------+-----------
+ nse_announcements | DISCOVERED     |       2 | 2026-10-08 | 2026-10-08 |         0
+ nse_announcements | FAILED         |       2 | 2026-10-08 | 2026-10-08 |         0
+ nse_announcements | OCR_REQUIRED   |       3 | 2026-10-08 | 2026-10-08 |         0
+ nse_announcements | PARTIAL_TEXT   |      52 | 2026-10-08 | 2026-10-08 |         0
+ nse_announcements | TEXT_READY     |     565 | 2026-10-08 | 2026-10-08 |         0
+ nse_results_xbrl  | DISCOVERED     |   43726 | 2021-06-30 | 2024-11-29 |         0
+ nse_results_xbrl  | FAILED         |     142 | 2021-04-19 | 2021-06-30 |         0
+ nse_results_xbrl  | TEXT_READY     |    2128 | 2021-04-06 | 2021-06-30 |         0
+(8 rows)
+
+== 4. filings per year (announcements vs results XBRL)
+      source       | year | count 
+-------------------+------+-------
+ nse_announcements | 2026 |   624
+ nse_results_xbrl  | 2021 |  7936
+ nse_results_xbrl  | 2022 | 10915
+ nse_results_xbrl  | 2023 | 12477
+ nse_results_xbrl  | 2024 | 14668
+(5 rows)
+
+== 5. ingestion runs by source and coverage status
+        source         | coverage_status  | runs |    from    |     to     
+-----------------------+------------------+------+------------+------------
+ bse_bhavcopy          | COMPLETE         |   69 | 2026-07-06 | 2026-10-10
+ bse_bhavcopy          | FAILED           |    2 | 2026-09-14 | 2026-10-03
+ bse_listings          | BLOCKED          |    3 | 2026-10-10 | 2026-10-11
+ makrograph_bhavcopy   | COMPLETE         |    2 | 2019-06-27 | 2026-07-04
+ nse_announcements     | COMPLETE         |    1 | 2026-10-08 | 2026-10-09
+ nse_bhavcopy          | COMPLETE         |   69 | 2026-07-06 | 2026-10-10
+ nse_bhavcopy          | PARTIAL          |    2 | 2026-09-14 | 2026-10-03
+ nse_corporate_actions | COMPLETE         |  185 | 2019-01-01 | 2026-10-11
+ nse_corporate_actions | EMPTY_UNVERIFIED |    3 | 2019-01-01 | 2020-06-01
+ nse_listings          | COMPLETE         |    3 | 2026-10-10 | 2026-10-11
+ nse_results_xbrl      | COMPLETE         | 2363 | 2021-01-01 | 2024-12-01
+ nse_results_xbrl      | EMPTY_UNVERIFIED |  703 | 2021-01-01 | 2024-12-01
+(12 rows)
+
+== 6. results figures
+    scope     | period_type | companies | filings |    min     |    max     
+--------------+-------------+-----------+---------+------------+------------
+ CONSOLIDATED | ANNUAL      |       912 |     914 | 2021-03-31 | 2021-03-31
+ CONSOLIDATED | HALF_YEAR   |         1 |       1 | 2021-03-31 | 2021-03-31
+ CONSOLIDATED | NINE_MONTHS |         1 |       1 | 2021-03-31 | 2021-03-31
+ CONSOLIDATED | QUARTER     |       923 |     925 | 2021-03-31 | 2021-03-31
+ STANDALONE   | ANNUAL      |      1195 |    1197 | 2021-03-31 | 2021-03-31
+ STANDALONE   | HALF_YEAR   |         1 |       1 | 2021-03-31 | 2021-03-31
+ STANDALONE   | NINE_MONTHS |         4 |       4 | 2021-03-31 | 2021-03-31
+ STANDALONE   | QUARTER     |      1217 |    1219 | 2021-03-31 | 2021-03-31
+(8 rows)
+
+== 7. route scans
+   route    |      status      | count 
+------------+------------------+-------
+ commercial | SCANNED          |   456
+ commercial | SKIPPED_CATEGORY |   143
+(2 rows)
+
+== 8. events and candidate evaluations
+ events | event_versions 
+--------+----------------
+     54 |             60
+(1 row)
+
+   route    | priority_class | queue_allocation | evaluations | companies |   first    |    last    
+------------+----------------+------------------+-------------+-----------+------------+------------
+ COMMERCIAL | P2             | RANKED           |          15 |        15 | 2026-10-08 | 2026-10-08
+ COMMERCIAL | P3             | NONE             |          10 |        10 | 2026-10-08 | 2026-10-08
+(2 rows)
+
+== 9. companies per week by best class (what a weekly shortlist would face), last 12 weeks
+    week    | u0_p1_p2 | p3 | d 
+------------+----------+----+---
+ 2026-10-05 |       15 | 10 | 0
+(1 row)
+
