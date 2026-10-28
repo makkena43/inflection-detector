@@ -23,7 +23,7 @@ from typing import Iterable, Optional
 
 from ..asof import IST
 
-POLICY_VERSION = "replay-1"
+POLICY_VERSION = "replay-2"
 POLICY = dict(
     entry_lag_days=7,           # entry at the first close on or after cutoff + this: the week triage takes
     entry_window_days=10,       # no close that soon after the target: NO_PRICE
@@ -37,7 +37,7 @@ POLICY = dict(
 )
 SHORTLISTED = ("UPDATE", "RANKED", "EXPLORATION", "AUDIT")
 UNVERIFYING = ("RIGHTS", "MERGER", "DELISTING", "DEMERGER")
-MEASURED = ("VERIFIED", "UNVERIFIED", "STOPPED_TRADING")   # a stopped stock still counts
+MEASURED = ("VERIFIED", "STOPPED_TRADING")   # retain stopped stocks; separate unverified sensitivity
 TWO = Decimal("0.0001")
 
 
@@ -107,16 +107,21 @@ def outcome(series: list[tuple], actions: list[dict], target: date, horizon_days
         status = "STOPPED_TRADING"
         notes.append(f"last close {exit_[0].isoformat()}, before the horizon ends {exit_target.isoformat()}")
     inside = [a for a in actions if entry[0] < a["ex_date"] <= exit_[0]]
+    post_quote = [a for a in actions if exit_[0] < a['ex_date'] <= exit_target
+                  and a['kind'] in ('SPLIT','BONUS',*UNVERIFYING)]
+    if post_quote:
+        status = 'UNVERIFIED'
+        notes.append('corporate action after the last quote: a stale price cannot establish the horizon value')
     adjusting = [a for a in inside if a["kind"] in ("SPLIT", "BONUS")]
-    if any(a.get("multiplier") is None for a in adjusting):
+    if any(a.get("multiplier") is None or Decimal(a['multiplier']) <= 0 for a in adjusting):
         return Outcome("UNVERIFIED", entry[0], entry[1], exit_[0], exit_[1],
                        notes=notes + ["a split or bonus in the window has no known price multiplier"])
-    if status == "VERIFIED" and any(not a.get("reconciled") for a in adjusting):
+    if any(not a.get("reconciled") for a in adjusting):
         status = "UNVERIFIED"
         notes.append("a split or bonus in the window is not reconciled with the exchange's prices")
     for a in inside:
         if a["kind"] in UNVERIFYING:
-            status = "UNVERIFIED" if status == "VERIFIED" else status
+            status = "UNVERIFIED"
             notes.append(f"{a['kind'].lower()} on {a['ex_date'].isoformat()}: price return alone is not the "
                          "shareholder's return")
     dividends = sum(1 for a in inside if a["kind"] == "DIVIDEND")
@@ -175,9 +180,15 @@ def stats(rows: Iterable[dict], p: dict) -> dict:
     dd = [Decimal(r["max_drawdown"]) for r in measured if r.get("max_drawdown") is not None]
     big = Decimal(p["big_move"])
     out = dict(items=len(rows), by_status=dict(sorted(by.items())), measured=len(measured),
-               unverified=sum(1 for r in measured if r["status"] == "UNVERIFIED"),
+               unverified=by.get('UNVERIFIED', 0),
                stopped_trading=sum(1 for r in measured if r["status"] == "STOPPED_TRADING"),
                companies=len({r["issuer_id"] for r in measured}))
+    uncertain = [Decimal(r['price_return']) for r in rows
+                 if r['status'] == 'UNVERIFIED' and r.get('price_return') is not None]
+    all_returns = rets + uncertain
+    out['sensitivity_including_unverified'] = dict(
+        measured=len(all_returns), median_return_pct=_pct(median(all_returns)) if all_returns else None)
+    out['measurement_basis'] = 'verified prices plus stopped-trading marks; uncertain actions excluded'
     if not measured:
         return out
     out.update(

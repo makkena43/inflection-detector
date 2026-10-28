@@ -24,9 +24,10 @@ from typing import Optional
 
 from ..asof import IST
 from ..units import Money, Scale, growth
+from ..periods import consecutive_quarters
 from . import rules as R
 
-PACKET_VERSION = ("triage-packet-4" if R.WITH_SOURCES else "triage-packet-3") if R.WITH_VALUATION else "triage-packet-2"            # 2: carries the triage decision rule (rules.py)
+PACKET_VERSION = "triage-packet-6" if R.WITH_VALUATION else "triage-packet-2"
 SCHEMA_VERSION = "1"
 TOKEN_BUDGET = 12_000                 # spec 5.3: initial packet target
 CHARS_PER_TOKEN = 4                   # rough estimate for English and figures; stated in the packet
@@ -129,8 +130,7 @@ def financial_snapshot(facts: list[dict]) -> dict:
 
     def ttm(metric: str) -> dict:
         last = quarters[-4:]
-        months = [q.year * 12 + q.month for q in last]
-        if len(last) < 4 or any(b - a != 3 for a, b in zip(months, months[1:])):
+        if not consecutive_quarters(last):
             return dict(value=None, why="four consecutive quarters not available")
         vals = [money(metric, "QUARTER", q) for q in last]
         if any(v is None for v in vals):
@@ -159,15 +159,21 @@ def _shares(mine: list[dict], at: dict) -> dict:
     periods = ("QUARTER", "ANNUAL")
     counts = {}
     for end in sorted({f["period_end"] for f in mine if f["metric"] == "paid_up_capital"}):
-        cap = next((at[("paid_up_capital", p, end)] for p in periods if ("paid_up_capital", p, end) in at), None)
-        fv = next((at[("face_value", p, end)] for p in periods if ("face_value", p, end) in at), None)
-        if cap and fv and cap["value"] is not None and cap["scale"] and fv["value"]:
-            counts[end] = Money(Decimal(cap["value"]), cap["currency"] or "INR", Scale(cap["scale"])).to_base() \
-                / Decimal(fv["value"])
+        for ptype in periods:
+            cap, fv = (at.get((m, ptype, end)) for m in ('paid_up_capital', 'face_value'))
+            if (not cap or not fv or not cap.get('publication_id')
+                    or cap.get('publication_id') != fv.get('publication_id')):
+                continue
+            if (cap['value'] is None or fv['value'] is None or not cap.get('scale')
+                    or cap['value'] <= 0 or fv['value'] <= 0
+                    or cap.get('currency') != fv.get('currency')):
+                continue
+            counts[end] = Money(Decimal(cap['value']), cap['currency'] or 'INR', Scale(cap['scale'])).to_base() / Decimal(fv['value'])
+            break
     if not counts:
         return dict(value=None, why="paid-up capital or face value not filed")
     end = max(counts)
-    prior = [e for e in counts if (end - e).days >= 330]
+    prior = [e for e in counts if 330 <= (end - e).days <= 400]
     out = dict(value=_fmt(counts[end] / Decimal(10) ** 7, 3), unit="crore shares", period_end=end.isoformat(),
                base=counts[end])
     if prior:
@@ -252,29 +258,35 @@ def valuation(fin: dict, price: dict) -> dict:
         return dict(status="MISSING", reason="no financial snapshot")
     def num(v):
         try:
-            return Decimal(str(v).replace(",", "")) if v not in (None, "", "–", "-") else None
+            value = Decimal(str(v).replace(",", "")) if v not in (None, "", "–", "-") else None
+            return value if value is not None and value.is_finite() else None
         except InvalidOperation:
             return None
 
     def col(metric):
         return [num(c.get("value")) for c in fin["rows"].get(metric, [])]
     rev, pbt, fc, dep, oi = (col(m) for m in ("revenue", "pbt", "finance_cost", "depreciation", "other_income"))
+    ends = [date.fromisoformat(q) for q in fin.get('quarters', [])]
     def ttm_opm(sl):
+        if not consecutive_quarters(ends[sl]):
+            return None, None
+        revenues = rev[sl]
+        r = sum(revenues) if len(revenues) == 4 and all(v is not None for v in revenues) else None
         q = list(zip(*(x[sl] for x in (rev, pbt, fc, dep))))
         o = oi[sl]
-        if len(q) < 4 or any(None in t for t in q): return None, None
-        r = sum(t[0] for t in q)
+        if len(q) < 4 or any(None in t for t in q) or len(o) != 4 or any(x is None for x in o):
+            return None, r
         op = sum(t[1] + t[2] + t[3] for t in q) - sum(x or 0 for x in o)
         return (op / r if r else None), r
     now, r_now = ttm_opm(slice(-4, None))
-    before, r_before = ttm_opm(slice(-8, -4)) if len(rev) >= 8 else (None, None)
+    before, r_before = ttm_opm(slice(-8, -4)) if consecutive_quarters(ends[-8:], 8) else (None, None)
     mcap = num(price.get("market_cap_cr"))
     return dict(status="FOUND",
                 price_to_sales=_fmt(mcap / r_now, 2) if mcap and r_now else None,
                 market_cap_cr=_fmt(mcap, 0) if mcap else None, ttm_revenue_cr=_fmt(r_now, 2) if r_now else None,
                 opm_ttm_pct=_fmt(now * 100, 1) if now is not None else None,
                 opm_change_pts=_fmt((now - before) * 100, 1) if now is not None and before is not None else None,
-                revenue_growth_ttm_pct=_fmt((r_now / r_before - 1) * 100, 1) if r_now and r_before else None,
+                revenue_growth_ttm_pct=_fmt((r_now / r_before - 1) * 100, 1) if r_now is not None and r_before is not None and r_before > 0 else None,
                 note="computed from the financial snapshot and the last close; operating margin = PBT + finance cost "
                      "+ depreciation - other income, over revenue")
 

@@ -17,6 +17,13 @@ from .states import PeriodType, StatementScope
 from .units import Money, Scale, same_currency
 
 
+def consecutive_quarters(ends: list[date], count: int = 4) -> bool:
+    """Exactly this many distinct quarter ends, in order, three months apart."""
+    return (len(ends) == count and len(set(ends)) == count and
+            all((b.year * 12 + b.month) - (a.year * 12 + a.month) == 3
+                and abs(b.day - a.day) <= 3 for a, b in zip(ends, ends[1:])))
+
+
 @dataclass(frozen=True)
 class Period:
     start: date

@@ -139,8 +139,30 @@ _ROUTINE_351 = _ROUTINE_34 + """
 RULES_3_5 = RULES_3_5_0.replace(_ROUTINE_34, _ROUTINE_351)
 assert _ROUTINE_351 in RULES_3_5
 
+_AUDIT_36 = """
+
+### Evidence audit safeguards
+
+- Establish related-party status relative to THIS issuer. A customer's description as a named third-party
+  group company (for example, a Tata Group company) is not evidence that it belongs to the issuer's group.
+  Read the explicit related-party and promoter-interest answers in the order annexure. If prose and annexure
+  conflict, use WATCH_MILESTONE for source verification; never reject every event because one event is related.
+- Keep individual awards, quarterly intake, annual intake, backlog, capacity and capex separate. Period totals
+  cannot populate size_pct_of_revenue for a single award. Cite the reporting duration and source for comparisons.
+- A routine individual order can coexist with a changing business cycle. If comparable, dated backlog or intake
+  is rising AND disclosed revenue or operating margin is improving, retain a WATCH_MILESTONE for cycle research
+  even if no individual award qualifies. State the next operating confirmation needed. This does not establish
+  a firm new contract, justify an invented order size, or automatically qualify for DEEP_RESEARCH.
+- Check the selected event's publication and completion dates. A completed or cancelled award is not a fresh
+  trigger. Do not reuse an old award after its stated completion date without a dated execution update.
+- Review every viable external event separately. An internal or cancelled event cannot veto another eligible
+  external award. State which event supports the decision and which evidence is excluded.
+"""
+RULES_3_6 = RULES_3_5 + _AUDIT_36
+
 VERSIONS = {"3.3": ("triage-rules-3.3", RULES_3_3), "3.4": ("triage-rules-3.4", RULES_3_4),
-            "3.5.0": ("triage-rules-3.5", RULES_3_5_0), "3.5": ("triage-rules-3.5.1", RULES_3_5)}
+            "3.5.0": ("triage-rules-3.5", RULES_3_5_0), "3.5": ("triage-rules-3.5.1", RULES_3_5),
+            "3.6": ("triage-rules-3.6", RULES_3_6)}
 ACTIVE = os.environ.get("INFLECTION_TRIAGE_RULES", "3.4")
 if ACTIVE not in VERSIONS:
     raise ValueError(f"INFLECTION_TRIAGE_RULES must be one of {sorted(VERSIONS)}, not {ACTIVE!r}")

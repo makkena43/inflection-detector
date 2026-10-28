@@ -17,7 +17,7 @@ from __future__ import annotations
 import hashlib
 import re
 
-RULES_VERSION = "commercial-15"
+RULES_VERSION = "commercial-17"
 
 I = re.I
 
@@ -87,7 +87,10 @@ ORDER_BOOK = re.compile(r"\border\s*(?:book|backlog|inflows?|intake|pipeline|pos
 # across many orders, not one order: its value must not be sized as a single award
 PERIOD_INFLOW = re.compile(r"\b(?:secured|received|booked|bagged|won)\s+(?:new\s+)?orders\b[^.]{0,80}\b(?:during|in|for)\s+"
                            r"the\s+(?:quarter|year|period|nine months|half[- ]year|first half)\b|"
-                           r"\bsegment\b[^.]{0,40}\b(?:secured|received|booked)\s+orders\b", I)
+                           r"\bsegment\b[^.]{0,40}\b(?:secured|received|booked)\s+orders\b|"
+                           r"\b(?:in|during|for)\s+(?:the\s+)?(?:(?:first|second|third|fourth)\s+)?"
+                           r"(?:quarter|year|period|half[- ]year|Q[1-4]|FY\s*\d{2,4})\b[^.]{0,100}"
+                           r"\b(?:secured|received|booked|won|bagged)\s+(?:new\s+)?orders\b", I)
 
 # ---------------------------------------------------------------- order family (ported from MakroGraph)
 
@@ -165,7 +168,7 @@ CAPITALISED_STOPWORDS = {"The", "This", "We", "Our", "It", "In", "For", "During"
                          "Its", "Their", "These", "Such", "Exchange", "Exchanges", "Regulation", "Regulations",
                          "SEBI", "Listing", "Rs", "INR", "Ministry", "Crore", "Lakh"}
 RELATED = re.compile(r"\b(?:its|our|the company'?s|the company’s)\s+(?:wholly[- ]owned\s+|step[- ]down\s+|material\s+)?"
-                     r"subsidiar(?:y|ies)\b|\bgroup compan(?:y|ies)\b|\bpromoter group (?:entity|company)\b|"
+                     r"subsidiar(?:y|ies)\b|\b(?:its|our|the company'?s|the company’s|a|the)\s+group compan(?:y|ies)\b|\bpromoter group (?:entity|company)\b|"
                      r"\bjoint venture of the company\b|\b(?:is|are|being) (?:a )?related part(?:y|ies)\b", I)
 ASSERT_RELATED = re.compile(r"(?:awarded by|whether)[^.\n]{0,80}related part(?:y|ies)[^.\n]{0,120}?[:\-–?]\s*yes\b", I)
 ASSERT_UNRELATED = re.compile(
@@ -173,6 +176,19 @@ ASSERT_UNRELATED = re.compile(
     r"\bnot (?:a )?related part(?:y|ies)\b|"
     r"promoter(?:s)?(?:\s*/\s*|\s+or\s+)promoter group (?:have|has|do not have|does not have) (?:no|any) interest|"
     r"\bdoes not (?:belong|fall) (?:to|within) (?:the )?promoter", I)
+# A named customer's group ("a Tata Group company") is not the issuer's group.
+# Negative annexure declarations must be interpreted before generic relationship words.
+NO_GROUP_INTEREST = re.compile(
+    r"\bnone of (?:the )?(?:promoters?|promoter group|group companies)[^.]{0,140}"
+    r"\b(?:interest|related)\b|\b(?:promoters?|promoter group)[^.]{0,80}"
+    r"\b(?:have no|has no|do not have|does not have)\s+(?:any\s+)?interest\b", I)
+RELATED_ANSWER = re.compile(
+    r"\bwhether\b[^?\n]{0,180}?\brelated party transactions?\b"
+    r"(?:[^?\n]{0,80}\?)?(?:\s*if yes[^?\n]{0,120}\?)?\s*[:\-–]?\s*"
+    r"(?P<answer>no|yes|not applicable|n\.?a\.?)\b", I)
+RELATED_TABLE_ANSWER = re.compile(
+    r"\bwhether\s+the\s+order[^?]{0,100}?\bwithin\s+(?P<answer>no|yes)\s+"
+    r"related party transactions?\b", I)
 # "XYZ Ltd, a wholly owned subsidiary of the Company, has received ..." : the recipient, not the customer
 SUBSIDIARY_RECIPIENT = re.compile(r"\b(?:(?:its|our|the company'?s|the company’s)\s+(?:wholly[- ]owned\s+|step[- ]down\s+|"
                                   r"material\s+)?subsidiar(?:y|ies)|(?:a\s+)?(?:wholly[- ]owned\s+|step[- ]down\s+|"

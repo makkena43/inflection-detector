@@ -4,9 +4,8 @@ NSE's results XBRL covers NSE-listed companies only.  BSE's ``GetReportNewFor_Re
 the latest five quarters and five financial years of the main income-statement lines (crore).  It has no filing
 dates and no history beyond those windows, so:
 
-* ``available_at`` is the regulatory deadline, not the real dissemination time: quarter end + 45 days, and
-  31 March + 60 days for the fourth quarter and the full year.  Real filings are usually earlier, so the facts are
-  never used before they could have been public (conservative for backtests);
+* ``available_at`` is when this snapshot was observed, never an inferred filing deadline. A current restated
+  snapshot cannot prove what was public historically;
 * figures are BSE's latest presentation (restated if the company restated);
 * only companies with no NSE symbol are loaded, and an existing (issuer, metric, period, scope, provider) fact is
   never written twice.
@@ -33,7 +32,7 @@ from .sources.http import HttpClient
 
 URL = "https://api.bseindia.com/BseIndiaAPI/api/GetReportNewFor_Result/w"
 PROVIDER = "bse_results_snapshot"
-PROVIDER_VERSION = "bse-results-snapshot-1"
+PROVIDER_VERSION = "bse-results-snapshot-2"
 CREATED_BY = "inflection.bse_results"
 IST = timezone(timedelta(hours=5, minutes=30))
 CRORE = Decimal(10_000_000)
@@ -55,7 +54,8 @@ def _num(s: str) -> Optional[Decimal]:
     s = s.replace(",", "").strip()
     if s in ("", "--", "-"): return None
     try:
-        return Decimal(s)
+        value = Decimal(s)
+        return value if value.is_finite() else None
     except InvalidOperation:
         return None
 
@@ -106,9 +106,12 @@ def parse_table(html: str, annual: bool) -> list[dict]:
     return out
 
 
-def available_at(period_type: str, end: date) -> datetime:
-    days = 60 if (period_type == "ANNUAL" or end.month == 3) else 45
-    return datetime.combine(end + timedelta(days=days), datetime.min.time(), IST).replace(hour=23, minute=59)
+def available_at(period_type: str, end: date, observed_at: Optional[datetime] = None) -> datetime:
+    """No dissemination time is supplied: only observation-time availability is defensible."""
+    observed_at = observed_at or datetime.now(timezone.utc)
+    if observed_at.tzinfo is None:
+        raise ValueError("snapshot observation time must be timezone-aware")
+    return observed_at
 
 
 def fetch(client: HttpClient, scrip: str) -> tuple[WindowStatus, list[dict]]:
@@ -132,21 +135,24 @@ def load(conn, client: HttpClient, scrips: Optional[list[str]] = None, limit: Op
     out = {"scrips": 0, "facts": 0, "empty": 0, "blocked": 0}
     for n, (scrip, issuer) in enumerate(bse_only_scrips(conn, scrips)[:limit], 1):
         status, facts = fetch(client, scrip)
+        observed_at = datetime.now(timezone.utc)
         out["scrips"] += 1
         if status == WindowStatus.BLOCKED: out["blocked"] += 1
         if not facts:
             out["empty"] += 1
             continue
-        have = {(m, pe, sc) for m, pe, sc in conn.execute(
-            "SELECT metric, period_end, scope FROM financial_facts WHERE issuer_id=%s AND provider=%s", (issuer, PROVIDER)).fetchall()}
+        have = {r[0] for r in conn.execute(
+            "SELECT content_hash FROM financial_facts WHERE issuer_id=%s AND provider=%s AND provider_version=%s",
+            (issuer, PROVIDER, PROVIDER_VERSION)).fetchall()}
         rows = []
         for f in facts:
-            if (f["metric"], f["period_end"], f["scope"]) in have: continue
-            h = hashlib.sha256("|".join(map(str, (PROVIDER, scrip, f["metric"], f["period_type"], f["period_end"], f["scope"],
+            h = hashlib.sha256("|".join(map(str, (PROVIDER, PROVIDER_VERSION, scrip, f["metric"], f["period_type"], f["period_end"], f["scope"],
                                                   f["original_text"]))).encode()).hexdigest()
+            if h in have: continue
+            have.add(h)
             rows.append((issuer, f["metric"], f["period_start"], f["period_end"], f["scope"], f["value"], f["value_kind"],
                          "UNITS" if f["value_kind"] == "MONEY" else None, f["original_text"], f["period_type"],
-                         available_at(f["period_type"], f["period_end"]), PROVIDER, PROVIDER_VERSION, h, CREATED_BY))
+                         available_at(f["period_type"], f["period_end"], observed_at), PROVIDER, PROVIDER_VERSION, h, CREATED_BY))
         if rows:
             with conn.transaction(), conn.cursor() as cur:
                 cur.executemany("""INSERT INTO financial_facts (issuer_id, metric, period_start, period_end, scope, segment, value,

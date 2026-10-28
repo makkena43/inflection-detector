@@ -61,11 +61,11 @@ def current_symbols(conn, symbols: Optional[Iterable[str]] = None) -> list[tuple
 
 
 def listed_symbols(conn, start: date, end: date) -> set[str]:
-    """Symbols whose listing for this window already came back COMPLETE or EMPTY_UNVERIFIED."""
+    """Only proven-complete listings are cached; uncertain empty responses must be retried."""
     rows = conn.execute(
         """SELECT DISTINCT r.reconciliation_result->>'symbol'
              FROM ingestion_runs r JOIN sources s USING (source_id)
-            WHERE s.name = %s AND r.coverage_status IN ('COMPLETE', 'EMPTY_UNVERIFIED')
+            WHERE s.name = %s AND r.coverage_status = 'COMPLETE'
               AND r.reconciliation_result->>'from' = %s AND r.reconciliation_result->>'to' = %s""",
         (SOURCE, start.isoformat(), end.isoformat())).fetchall()
     return {r[0] for r in rows}

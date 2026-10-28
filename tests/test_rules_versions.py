@@ -23,12 +23,16 @@ def test_switch_back_to_33():
     assert out.stdout.split() == ["triage-rules-3.3", "False", "triage-packet-2"]
 
 
+def _ends(n=8):
+    return ["2024-03-31","2024-06-30","2024-09-30","2024-12-31", "2025-03-31","2025-06-30","2025-09-30","2025-12-31"][-n:]
+
+
 def _q(v):
     return [dict(value=str(x)) for x in v]
 
 
 def test_valuation_section():
-    fin = dict(status="FOUND", rows=dict(revenue=_q([100] * 4 + [125] * 4), pbt=_q([5] * 4 + [10] * 4),
+    fin = dict(status="FOUND", quarters=_ends(), rows=dict(revenue=_q([100] * 4 + [125] * 4), pbt=_q([5] * 4 + [10] * 4),
                                          finance_cost=_q([1] * 8), depreciation=_q([2] * 8), other_income=_q([0] * 8)))
     v = C.valuation(fin, dict(market_cap_cr="400"))
     assert v["price_to_sales"] == "0.80" and v["opm_ttm_pct"] == "10.4" and v["opm_change_pts"] == "2.4"
@@ -37,11 +41,11 @@ def test_valuation_section():
 
 
 def test_valuation_tolerates_formatted_or_missing_cells():
-    fin = dict(status="FOUND", rows=dict(revenue=_q(["1,000"] * 4), pbt=_q([50] * 4), finance_cost=_q([0] * 4),
+    fin = dict(status="FOUND", quarters=_ends(4), rows=dict(revenue=_q(["1,000"] * 4), pbt=_q([50] * 4), finance_cost=_q([0] * 4),
                                          depreciation=[dict(value="–")] * 4, other_income=_q([0] * 4)))
     v = C.valuation(fin, dict(market_cap_cr="400"))
-    assert v["status"] == "FOUND" and v["opm_ttm_pct"] is None and v["ttm_revenue_cr"] is None
+    assert v["status"] == "FOUND" and v["opm_ttm_pct"] is None and v["ttm_revenue_cr"] == "4,000.00"
 
-    assert C.valuation(dict(status="FOUND", rows=dict(revenue=_q([100] * 4), pbt=_q([5] * 4), finance_cost=_q([1] * 4),
+    assert C.valuation(dict(status="FOUND", quarters=_ends(4), rows=dict(revenue=_q([100] * 4), pbt=_q([5] * 4), finance_cost=_q([1] * 4),
                                                        depreciation=_q([2] * 4), other_income=_q([0] * 4))),
                        dict(market_cap_cr="1,200"))["price_to_sales"] == "3.00"

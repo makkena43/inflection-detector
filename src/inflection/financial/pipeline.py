@@ -54,28 +54,32 @@ def _facts(conn, publication_id) -> list[tuple]:
     return conn.execute(
         """SELECT metric, period_type, period_end, cumulative, scope, segment, value, missing_reason,
                   available_at, issuer_id
-             FROM financial_facts
-            WHERE publication_id = %s AND value_kind = 'MONEY' AND scope IN ('CONSOLIDATED','STANDALONE')""",
+             FROM financial_facts_asof
+            WHERE publication_id = %s AND value_kind = 'MONEY' AND scope IN ('CONSOLIDATED','STANDALONE')
+            ORDER BY available_at, recorded_at, fact_id""",
         (publication_id,)).fetchall()
 
 
 def _main_period(facts: list[tuple]) -> Optional[tuple[str, date, str]]:
     """(period type, period end, scope) of the filing's shortest company-level, non-cumulative period."""
-    company = [f for f in facts if f[5] is None and not f[3]]
+    company = [f for f in facts if f[5] is None and (not f[3] or f[1] == 'ANNUAL')]
     if not company:
         return None
-    f = min(company, key=lambda f: (_LENGTH[f[1]], -f[2].toordinal()))
+    f = min(company, key=lambda f: (_LENGTH[f[1]], -f[2].toordinal(), f[4] != 'CONSOLIDATED'))
     return f[1], f[2], f[4]
 
 
-def _period(facts: list[tuple], ptype: str, end: date) -> R.Period:
+def _period(facts: list[tuple], ptype: str, end: date, scope: Optional[str] = None) -> R.Period:
+    scopes = {f[4] for f in facts if f[1] == ptype and f[2] == end}
+    if scope is None and len(scopes) > 1:
+        raise ValueError('financial period needs an explicit scope when both statements are present')
     p = R.Period(end)
-    for metric, pt, pe, cumulative, _, segment, value, _, _, _ in facts:
-        if pt != ptype or pe != end:
+    for metric, pt, pe, cumulative, fact_scope, segment, value, _, _, _ in facts:
+        if pt != ptype or pe != end or (scope is not None and fact_scope != scope):
             continue
         v = Decimal(value) if value is not None else None
         if segment is None:
-            if not cumulative:
+            if not cumulative or ptype == 'ANNUAL':
                 p.values[metric] = v
         elif metric == "segment_result":
             p.segments[segment] = v
@@ -86,8 +90,8 @@ def _comparable(conn, issuer_id, scope: str, ptype: str, end: date, at: datetime
     """The latest filing public by ``at`` that reports the year-earlier period: (publication, period end)."""
     lo, hi = R.comparable_window(end)
     return conn.execute(
-        """SELECT publication_id, period_end FROM financial_facts
-            WHERE issuer_id = %s AND scope = %s AND period_type = %s AND NOT cumulative AND segment IS NULL
+        """SELECT publication_id, period_end FROM financial_facts_asof
+            WHERE issuer_id = %s AND scope = %s AND period_type = %s AND (NOT cumulative OR period_type='ANNUAL') AND segment IS NULL
               AND metric = 'revenue' AND period_end BETWEEN %s AND %s
               AND available_at IS NOT NULL AND available_at <= %s AND publication_id IS DISTINCT FROM %s
             ORDER BY available_at DESC, recorded_at DESC LIMIT 1""",
@@ -103,8 +107,12 @@ def _mechanisms(conn, issuer_id, at: datetime) -> list[R.Mechanism]:
              FROM events e JOIN event_versions v USING (event_id)
             WHERE e.issuer_id = %s AND e.event_type IS NOT NULL AND e.first_public_at BETWEEN %s AND %s
               AND coalesce(v.published_at, e.first_public_at) <= %s
-              AND e.rules_version = %s                -- the commercial route's current reading only
-            ORDER BY e.event_id, v.version_no DESC""", (issuer_id, lo, at, at, CV.RULES_VERSION)).fetchall()
+              AND e.rules_version = coalesce((
+                  SELECT cs.rules_version FROM evidence_links l
+                  JOIN commercial_scans cs ON cs.text_artifact_id=l.text_artifact_id
+                  WHERE l.event_version_id=v.event_version_id
+                  ORDER BY (cs.rules_version=%s) DESC, cs.scanned_at DESC, cs.rules_version DESC LIMIT 1), %s)
+            ORDER BY e.event_id, v.version_no DESC""", (issuer_id, lo, at, at, CV.RULES_VERSION, CV.RULES_VERSION)).fetchall()
     from ..commercial.vocabulary import STAGE_RANK
     return sorted((R.Mechanism(str(eid), str(vid), etype, stage or "UNKNOWN", STAGE_RANK.get(stage or "", 0),
                                obs or "OBSERVED", first, details or {})
@@ -177,8 +185,8 @@ def scan(conn, start: Optional[date] = None, end: Optional[date] = None, limit: 
                                  AND f.rules_version = %(rv)s AND f.status <> 'NO_ISSUER'
                                  -- read again once the company's figures grew after a "no comparable"
                                  -- read (a backfill that loads the earlier year later)
-                                 AND NOT (f.status = 'NO_COMPARABLE' AND EXISTS (
-                                     SELECT 1 FROM financial_facts ff WHERE ff.issuer_id = p.issuer_id
+                                 AND NOT (f.status IN ('NO_COMPARABLE','NO_FIGURES','NO_TIMESTAMP') AND EXISTS (
+                                     SELECT 1 FROM financial_facts_asof ff WHERE ff.issuer_id = p.issuer_id
                                         AND ff.recorded_at > f.scanned_at)))
               AND (%(lo)s::timestamptz IS NULL OR p.published_at >= %(lo)s)
               AND (%(hi)s::timestamptz IS NULL OR p.published_at < %(hi)s)
@@ -207,7 +215,7 @@ def _scan_one(conn, pid, issuer_id, run_id, now: datetime, out: Counter) -> str:
         return "NO_TIMESTAMP"
     ptype, end, scope = period
     if scope == "STANDALONE" and conn.execute(
-            """SELECT 1 FROM financial_facts WHERE issuer_id = %s AND scope = 'CONSOLIDATED'
+            """SELECT 1 FROM financial_facts_asof WHERE issuer_id = %s AND scope = 'CONSOLIDATED'
                   AND available_at <= %s LIMIT 1""", (issuer_id, at)).fetchone():
         _record(conn, pid, "SKIPPED_STANDALONE", issuer_id, at, period)
         return "SKIPPED_STANDALONE"
@@ -215,7 +223,7 @@ def _scan_one(conn, pid, issuer_id, run_id, now: datetime, out: Counter) -> str:
     if comp is None:
         _record(conn, pid, "NO_COMPARABLE", issuer_id, at, period)
         return "NO_COMPARABLE"
-    cur, prior = _period(facts, ptype, end), _period(_facts(conn, comp[0]), ptype, comp[1])
+    cur, prior = _period(facts, ptype, end, scope), _period(_facts(conn, comp[0]), ptype, comp[1], scope)
     checks = R.run_checks(cur, prior)
     for c in checks:
         out[f"{c.name}:{c.status}"] += 1

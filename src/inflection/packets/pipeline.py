@@ -111,7 +111,9 @@ def _events(conn, it: dict) -> list[dict]:
                         previous_stage=r[18], counterparty=r[5], relationship=(r[15] or {}).get("relationship"),
                         amount=f"{r[6]:f} {r[7]} {r[8]}" if r[6] is not None else None, amount_basis=r[9],
                         observation_status=r[10], ownership_scope=r[11], contradiction_status=r[12],
-                        deadline=r[13].isoformat() if r[13] else None, novelty=r[14], published_at=C.ist(r[16])))
+                        deadline=r[13].isoformat() if r[13] else None, novelty=r[14], published_at=C.ist(r[16]),
+                        details={k: v for k, v in (r[15] or {}).items()
+                                 if k in ('relationship_conflict', 'relationship_source', 'deadline')}))
     return out
 
 
@@ -197,8 +199,9 @@ def _facts(conn, it: dict) -> list[dict]:
     rows = conn.execute(
         """SELECT metric, period_type, period_end, scope, value, currency, scale, value_kind, missing_reason,
                   available_at, recorded_at, publication_id
-             FROM financial_facts
+             FROM financial_facts_asof
             WHERE issuer_id = %s AND segment IS NULL AND scope IN ('CONSOLIDATED', 'STANDALONE')
+              AND (NOT cumulative OR period_type='ANNUAL')
               AND period_type IN ('QUARTER', 'ANNUAL') AND metric = ANY(%s)
               AND available_at IS NOT NULL AND available_at <= %s
             ORDER BY available_at, recorded_at, fact_id""",

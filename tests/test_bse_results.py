@@ -1,5 +1,5 @@
 """BSE results snapshot: table parsing, periods, signs, scope and the deadline-based availability."""
-from datetime import date
+from datetime import date, datetime, timezone
 from decimal import Decimal
 
 from inflection.bse_results import available_at, parse_table
@@ -25,9 +25,9 @@ def test_quarter_table():
     assert not any(x["period_end"].year == 2025 and x["period_type"] == "QUARTER" for x in f.values())  # FY column skipped
 
 
-def test_annual_table_and_availability():
+def test_annual_table_and_observation_time_availability():
     f = parse_table(A, annual=True)
     assert {(x["period_start"], x["period_end"]) for x in f} == {(date(2025, 4, 1), date(2026, 3, 31)), (date(2024, 4, 1), date(2025, 3, 31))}
-    assert available_at("ANNUAL", date(2026, 3, 31)).date() == date(2026, 5, 30)
-    assert available_at("QUARTER", date(2026, 6, 30)).date() == date(2026, 8, 14)
-    assert available_at("QUARTER", date(2026, 3, 31)).date() == date(2026, 5, 30)
+    observed=datetime(2026,10,28,12,tzinfo=timezone.utc)
+    for kind,end in [('ANNUAL',date(2026,3,31)),('QUARTER',date(2026,6,30))]:
+        assert available_at(kind,end,observed)==observed
