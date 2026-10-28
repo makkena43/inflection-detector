@@ -341,3 +341,16 @@ shows an explicit sensitivity including them. Stopped-trading marks remain visib
 coverage reports missing exits instead of silently presenting the surviving intersection as the
 whole entry universe. The effective review view uses the latest outcome recomputation rather than
 the highest one. These changes improve measurement; they do not validate an investment strategy.
+
+
+Daily BSE coverage repair is resumable and retains every listing attempt:
+`python -m inflection.coverage_repair --from 2026-08-01 --to 2026-10-28`.
+It saves each verified day and displays repair progress in **Data & process**. It stops on blocked
+or failed sources, and a rerun skips already verified days. Listing repair never implies that
+attachments or downstream analysis are complete. The health gate also checks announcement
+attachments still awaiting download, OCR or complete text, including deliberate fast-mode deferrals.
+
+Results parser failures can be retried explicitly with `python -m inflection.financials load
+--archive ~/inflection-archive --reparse-failed`. Verified archived bytes are reused; publication
+times are preserved, and a changed document version receives a new ingestion time. Both results
+loading and announcement download/extraction accept date bounds for repairing a specific period.

@@ -267,3 +267,52 @@ def test_invalid_adjustment_is_unknown_instead_of_a_division_error():
     action=dict(kind='SPLIT',ex_date=date(2025,6,1),multiplier=0,reconciled=False)
     out=R.outcome(series,[action],date(2025,1,1),364,date(2026,1,2),R.policy())
     assert out.status=='UNVERIFIED' and out.price_return is None
+
+
+@pytest.mark.parametrize('complete_members',[True,False])
+def test_zip_text_handoff_requires_every_pdf_member(db,complete_members):
+    from inflection.process_health import collect
+    iss,src=_seed(db)
+    art=_filing(db,iss,src,950,datetime(2026,1,5,tzinfo=IST),['Member text'])
+    ver=db.execute('SELECT document_version_id FROM text_artifacts WHERE text_artifact_id=%s',(art,)).fetchone()[0]
+    doc=db.execute('SELECT document_id FROM document_versions WHERE document_version_id=%s',(ver,)).fetchone()[0]
+    root=db.execute("INSERT INTO document_versions(document_id,sha256,storage_key,byte_size,media_type) VALUES(%s,%s,'root',1,'application/zip') RETURNING document_version_id",(doc,'a'*64)).fetchone()[0]
+    db.execute('UPDATE document_publications SET document_version_id=%s WHERE document_version_id=%s',(root,ver))
+    if not complete_members:
+        db.execute("INSERT INTO document_versions(document_id,sha256,storage_key,byte_size,media_type) VALUES(%s,%s,'missing',1,'application/pdf')",(doc,'b'*64))
+    checks={x['key']:x for x in collect(db,date(2026,1,1),date(2026,1,7))['checks']}
+    assert checks['text_handoff']['affected']==(0 if complete_members else 1)
+    assert checks['commercial_backlog']['affected']==1
+
+
+@pytest.mark.parametrize('gap',[False,True])
+def test_complete_child_windows_supersede_partial_only_without_gaps(db,gap):
+    from inflection.process_health import collect
+    _,src=_seed(db)
+    for start,end,status in [('2026-01-01','2026-01-04','PARTIAL'),
+        ('2026-01-01','2026-01-02','COMPLETE'),
+        ('2026-01-03' if gap else '2026-01-02','2026-01-04','COMPLETE')]:
+        db.execute("INSERT INTO ingestion_runs(source_id,segment,window_start,window_end,coverage_status,finished_at) VALUES(%s,'equities',%s,%s,%s,now())",(src,start,end,status))
+    checks={x['key']:x for x in collect(db,date(2026,1,1),date(2026,1,4))['checks']}
+    assert checks['source_coverage']['affected']==int(gap)
+    assert checks['source_coverage']['status']!='ERROR'
+
+
+def test_source_coverage_clips_boundary_windows_and_keeps_streams_separate(db):
+    from inflection.process_health import collect
+    _,src=_seed(db)
+    for segment,start,end,status in [('equities','2025-12-30','2026-01-03','PARTIAL'),
+        ('equities','2026-01-01','2026-01-03','COMPLETE'),
+        ('sme','2026-01-01','2026-01-03','FAILED')]:
+        db.execute("INSERT INTO ingestion_runs(source_id,segment,window_start,window_end,coverage_status,finished_at) VALUES(%s,%s,%s,%s,%s,now())",(src,segment,start,end,status))
+    checks={x['key']:x for x in collect(db,date(2026,1,1),date(2026,1,2))['checks']}
+    assert checks['source_coverage']['affected']==1
+    assert checks['source_coverage']['details'][0]['coverage_status']=='FAILED'
+
+
+def test_unread_announcement_is_a_completion_blocker(db):
+    from inflection.process_health import collect
+    _,src=_seed(db)
+    db.execute("INSERT INTO document_publications(source_id,external_id,source_url,attachment_url,published_at,publication_basis) VALUES(%s,'unread','https://x/p.pdf','https://x/p.pdf','2026-01-02','EXCHANGE_TIMESTAMP')",(src,))
+    checks={x['key']:x for x in collect(db,date(2026,1,1),date(2026,1,7))['checks']}
+    assert checks['announcement_backlog']['affected']==1 and checks['announcement_backlog']['blocking']

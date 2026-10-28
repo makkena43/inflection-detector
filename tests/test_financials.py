@@ -262,3 +262,35 @@ def test_parallel_load_stores_each_filing_once(db, tmp_path):
     assert financials.load_pending(db, Archive(tmp_path / "parallel"), download_client(),
                                   workers=2, client_factory=download_client) == {}
     assert db.execute("SELECT count(*) FROM financial_facts").fetchone()[0] == count
+
+
+def test_large_integrated_results_and_late_entity_declarations():
+    body=filing().replace(b'</xbrli:xbrl>', b'<!--'+b'x'*7_000_000+b'--></xbrli:xbrl>')
+    assert len(parse_results_xbrl(body).figures)==len(parse_results_xbrl(filing()).figures)
+    attack=b'<?xml version="1.0"?>'+b' '*6000+b'<!DOCTYPE x [<!ENTITY a "b">]><x/>'
+    assert 'DTD' in parse_results_xbrl(attack).issues[0]
+    assert 'DTD' in parse_results_xbrl(attack.decode().encode('utf-16')).issues[0]
+    from inflection.sources.xbrl import MAX_BYTES
+    assert 'resource limit' in parse_results_xbrl(b'x'*(MAX_BYTES+1)).issues[0]
+
+
+def test_explicit_reparse_uses_verified_archive_and_keeps_first_ingestion(db,tmp_path,monkeypatch):
+    _company(db)
+    listing,_=client({'period=Quarterly':[(200,[entry(1)])],
+        'corporates-financial-results':[(200,[])],'nseindia.com':[(200,b'')]})
+    financials.list_results(db,listing,date(2021,1,1),date(2024,11,30))
+    archive=Archive(tmp_path/'a')
+    real=financials.parse_results_xbrl
+    from inflection.sources.xbrl import ParsedFiling
+    monkeypatch.setattr(financials,'parse_results_xbrl',lambda *a:ParsedFiling([],['old parser limit']))
+    dl,_=client({'INDAS_1.xml':[(200,filing())]})
+    assert financials.load_pending(db,archive,dl)['NO_FIGURES']==1
+    before=db.execute('SELECT ingested_at FROM document_publications').fetchone()[0]
+    monkeypatch.setattr(financials,'parse_results_xbrl',real)
+    offline,t=client({})
+    assert financials.load_pending(db,archive,offline,reparse_failed=True)['LOADED']==1
+    assert not t.calls
+    assert db.execute('SELECT ingested_at FROM document_publications').fetchone()[0]==before
+    n=db.execute('SELECT count(*) FROM financial_facts').fetchone()[0]
+    assert financials.load_pending(db,archive,offline,reparse_failed=True)=={}
+    assert db.execute('SELECT count(*) FROM financial_facts').fetchone()[0]==n

@@ -41,7 +41,7 @@ INTEGRATED_URL = f"{NSE_BASE}/api/integrated-filing-results"
 INTEGRATED_REFERER = f"{NSE_BASE}/companies-listing/corporate-integrated-filing"
 ARCHIVES_PREFIX = "https://nsearchives.nseindia.com/"
 PERIODS = ("Quarterly", "Half-Yearly", "Annual")
-MAX_BYTES = 5_000_000          # results XBRL files are ~50-150 KB
+MAX_BYTES = 32_000_000         # integrated filings can include several MB of narrative disclosures
 
 # company-level tags -> metric
 MONEY_TAGS = {
@@ -274,8 +274,15 @@ def parse_results_xbrl(body: bytes, listed: Optional[tuple[Optional[date], Optio
     ``listed`` is the (from, to) period the exchange's results listing shows for the filing; it is used
     only to date the current-period group when the file itself leaves it undated."""
     issues_pre: list[str] = []
-    if not body or len(body) > MAX_BYTES or b"<!ENTITY" in body[:5000]:
-        return ParsedFiling([], ["not a results XBRL file (empty, oversized or declares entities)"])
+    if not body:
+        return ParsedFiling([], ["empty XBRL file"])
+    if len(body) > MAX_BYTES:
+        return ParsedFiling([], [f"XBRL exceeds {MAX_BYTES} byte resource limit"])
+    # Check the entire bounded input, including UTF-16 declarations. DTDs are unnecessary
+    # for exchange instance documents and must never enable entity expansion.
+    declarations = body.replace(b"\x00", b"").upper()
+    if b"<!ENTITY" in declarations or b"<!DOCTYPE" in declarations:
+        return ParsedFiling([], ["XBRL declares a DTD or entities"])
     try:
         root = ET.fromstring(body)
     except ET.ParseError as e:

@@ -26,11 +26,11 @@ from psycopg.types.json import Jsonb
 from .sources import bse, nse
 from .sources.common import IST, Announcement, WindowResult
 from .sources.download import Archive, DownloadResult, DownloadStatus, StoredFile, download
-from .sources.http import HttpClient
+from .sources.http import HttpClient, curl_cffi_transport
 from .states import CoverageStatus, PipelineState, PublicationBasis
-from .text_extraction import ExtractionStatus, extract_pdf
+from .text_extraction import EXTRACTION_METHOD, ExtractionStatus, extract_pdf, extraction_version
 
-ADAPTER_VERSION = "exchange-announcements-1"
+ADAPTER_VERSION = "exchange-announcements-2"
 CREATED_BY = "inflection.ingest"
 
 SOURCES = {
@@ -164,17 +164,22 @@ def _apply_download(conn, publication_id, revision: int, d: DownloadResult) -> b
 
 
 def download_pending(conn, archive: Archive, client: HttpClient, exchange: Optional[str] = None,
-                     limit: int = 100, retry_failed: bool = False) -> Counter:
+                     limit: int = 100, retry_failed: bool = False,
+                     start: Optional[date] = None, end: Optional[date] = None) -> Counter:
     """Download attachments of DISCOVERED publications (and retryable failures when asked), oldest first."""
     states = ["DISCOVERED"] + (["FAILED"] if retry_failed else [])
     rows = conn.execute(
         """SELECT p.publication_id, p.revision, p.attachment_url, s.name, p.pipeline_state, p.failure_reason
              FROM document_publications p JOIN sources s USING (source_id)
             WHERE p.attachment_url IS NOT NULL AND p.pipeline_state = ANY(%s)
-              AND (%s::text IS NULL OR s.name = %s)
+              AND s.name = ANY(%s) AND (%s::text IS NULL OR s.name = %s)
+              AND (p.pipeline_state='DISCOVERED' OR p.failure_reason LIKE 'BLOCKED%%' OR p.failure_reason LIKE 'FAILED%%')
+              AND (%s::date IS NULL OR coalesce(p.published_at,p.published_date::timestamp AT TIME ZONE 'Asia/Kolkata') >= (%s::date::timestamp AT TIME ZONE 'Asia/Kolkata'))
+              AND (%s::date IS NULL OR coalesce(p.published_at,p.published_date::timestamp AT TIME ZONE 'Asia/Kolkata') < ((%s::date+1)::timestamp AT TIME ZONE 'Asia/Kolkata'))
             ORDER BY p.published_at NULLS LAST, p.first_seen_at
             LIMIT %s""",
-        (states, exchange and SOURCES[exchange]["name"], exchange and SOURCES[exchange]["name"], limit)).fetchall()
+        (states, [s['name'] for s in SOURCES.values()], exchange and SOURCES[exchange]["name"],
+         exchange and SOURCES[exchange]["name"], start,start,end,end,limit)).fetchall()
     referers = {spec["name"]: spec["referer"] for spec in SOURCES.values()}
     outcome: Counter = Counter()
     for pid, rev, url, source_name, state, reason in rows:
@@ -189,11 +194,11 @@ def download_pending(conn, archive: Archive, client: HttpClient, exchange: Optio
 
 def _artifact(conn, version_id, path: Path) -> ExtractionStatus:
     """Extract one PDF version once per extractor version; reuse the stored result on reruns."""
-    ex = extract_pdf(path)
     row = conn.execute("SELECT status FROM text_artifacts WHERE document_version_id = %s AND extraction_method = %s "
-                       "AND extraction_version = %s", (version_id, ex.method, ex.extraction_version)).fetchone()
+                       "AND extraction_version = %s", (version_id, EXTRACTION_METHOD, extraction_version())).fetchone()
     if row:
         return ExtractionStatus(row[0])
+    ex = extract_pdf(path)
     pages = [p.replace("\x00", "") for p in ex.pages]
     missing = [i + 1 for i, p in enumerate(pages) if not p.strip()]
     if ex.pages_expected and len(pages) < ex.pages_expected:
@@ -224,23 +229,35 @@ def _publication_state(statuses: list[ExtractionStatus]) -> tuple[PipelineState,
     return PipelineState.FAILED, "TEXT: " + ", ".join(sorted({s.value for s in statuses}))
 
 
-def extract_pending(conn, archive: Archive, limit: int = 100) -> Counter:
+def extract_pending(conn, archive: Archive, limit: int = 100,
+                    start: Optional[date] = None, end: Optional[date] = None) -> Counter:
     rows = conn.execute(
         """SELECT p.publication_id, p.revision, v.document_id
              FROM document_publications p JOIN document_versions v USING (document_version_id)
             WHERE p.pipeline_state = 'DOWNLOADED'
-            ORDER BY p.published_at NULLS LAST LIMIT %s""", (limit,)).fetchall()
+              AND (%s::date IS NULL OR coalesce(p.published_at,p.published_date::timestamp AT TIME ZONE 'Asia/Kolkata') >= (%s::date::timestamp AT TIME ZONE 'Asia/Kolkata'))
+              AND (%s::date IS NULL OR coalesce(p.published_at,p.published_date::timestamp AT TIME ZONE 'Asia/Kolkata') < ((%s::date+1)::timestamp AT TIME ZONE 'Asia/Kolkata'))
+            ORDER BY p.published_at NULLS LAST LIMIT %s""", (start,start,end,end,limit)).fetchall()
     outcome: Counter = Counter()
     for pid, rev, document_id in rows:
-        with conn.transaction():
-            versions = conn.execute(
-                "SELECT document_version_id, sha256 FROM document_versions WHERE document_id = %s "
-                "AND media_type = 'application/pdf' ORDER BY created_at", (document_id,)).fetchall()
-            statuses = [_artifact(conn, vid, archive.root / _storage_key(sha)) for vid, sha in versions]
-            state, reason = _publication_state(statuses)
-            conn.execute("""UPDATE document_publications SET pipeline_state = %s, failure_reason = %s,
-                                   revision = revision + 1 WHERE publication_id = %s AND revision = %s""",
-                         (state.value, reason, pid, rev))
+        try:
+            with conn.transaction():
+                versions = conn.execute(
+                    "SELECT document_version_id, sha256 FROM document_versions WHERE document_id = %s "
+                    "AND media_type = 'application/pdf' ORDER BY created_at", (document_id,)).fetchall()
+                statuses = [_artifact(conn, vid, archive.root / _storage_key(sha)) for vid, sha in versions]
+                state, reason = _publication_state(statuses)
+                conn.execute("""UPDATE document_publications SET pipeline_state = %s, failure_reason = %s,
+                                       revision = revision + 1 WHERE publication_id = %s AND revision = %s""",
+                             (state.value, reason, pid, rev))
+        except OSError as exc:
+            # A purged or unreadable blob is recoverable by downloading again. Do not
+            # let one missing file roll back or starve unrelated publications.
+            with conn.transaction():
+                conn.execute("""UPDATE document_publications SET pipeline_state='FAILED',failure_reason=%s,
+                    revision=revision+1 WHERE publication_id=%s AND revision=%s""",
+                    (f"FAILED: archived PDF unavailable ({type(exc).__name__}); download required",pid,rev))
+            state = PipelineState.FAILED
         outcome[state.value] += 1
     return outcome
 
@@ -302,20 +319,26 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     with psycopg.connect(os.environ["INFLECTION_DSN"], autocommit=True) as conn:
         if a.command != "report":
-            client = HttpClient(min_interval=a.interval)
+            transport = None
+            if a.command == 'bse':
+                try:
+                    transport = curl_cffi_transport()
+                except ImportError:
+                    pass
+            client = HttpClient(min_interval=a.interval, transport=transport)
             if a.command == "nse":
                 windows = nse.NSEAnnouncements(client).list_range(a.start, end, a.segment)
             else:
-                windows = bse.BSEAnnouncements(client).list_range(a.start, end)
+                windows = bse.BSEAnnouncements(client).iter_range(a.start, end)
             for w in windows:
                 r = record_window(conn, w)
                 print(f"{w.exchange} {w.segment} {w.from_date}..{w.to_date}: {r.coverage_status.value}, "
                       f"{r.received} listed, {r.inserted} new")
             if a.download:
                 print("downloads:", dict(download_pending(conn, Archive(a.archive), client, a.command.upper(),
-                                                          a.download, a.retry_failed)))
+                                                          a.download, a.retry_failed, a.start, end)))
             if a.extract:
-                print("text:", dict(extract_pending(conn, Archive(a.archive), a.extract)))
+                print("text:", dict(extract_pending(conn, Archive(a.archive), a.extract, a.start, end)))
             if a.archive and a.max_archive_gb:
                 from .purge import GB, purge_archive
                 r = purge_archive(conn, Archive(a.archive), int(a.max_archive_gb * GB))

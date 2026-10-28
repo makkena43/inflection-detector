@@ -5,6 +5,7 @@ python -m inflection.process_health --from 2026-10-01 --to 2026-10-28
 """
 from __future__ import annotations
 import argparse
+from collections import Counter, defaultdict
 from datetime import date, datetime, timedelta, timezone
 import json
 import os
@@ -15,8 +16,37 @@ from .asof import IST
 from .commercial.vocabulary import RULES_VERSION as COMMERCIAL
 from .financial.rules import RULES_VERSION as FINANCIAL
 
-VERSION = 'process-health-1'
+VERSION = 'process-health-2'
 DEFAULT_REPORT = Path(__file__).resolve().parents[2] / 'output/process_health/report.json'
+
+
+def _unresolved_windows(conn, lo, hi):
+    rows = conn.execute("""SELECT DISTINCT ON (r.source_id,r.segment,r.window_start,r.window_end)
+        r.source_id,r.segment,r.window_start,r.window_end,s.name,r.coverage_status,r.finished_at
+        FROM ingestion_runs r JOIN sources s USING(source_id)
+        WHERE s.name IN ('nse_announcements','bse_announcements') AND r.window_start<%s AND r.window_end>%s
+        ORDER BY r.source_id,r.segment,r.window_start,r.window_end,r.started_at DESC,r.run_id DESC""", (hi,lo)).fetchall()
+    complete = defaultdict(list)
+    for source, segment, start, end, name, status, finished in rows:
+        if status == 'COMPLETE' and finished is not None:
+            complete[(source,segment)].append((max(start,lo),min(end,hi)))
+    merged = {}
+    for key, intervals in complete.items():
+        spans = []
+        for start, end in sorted(intervals):
+            if spans and start <= spans[-1][1]:
+                spans[-1] = (spans[-1][0],max(spans[-1][1],end))
+            else:
+                spans.append((start,end))
+        merged[key] = spans
+    counts = Counter()
+    for source, segment, start, end, name, status, finished in rows:
+        if status == 'COMPLETE' and finished is not None:
+            continue
+        start,end = max(start,lo),min(end,hi)
+        if not any(a<=start and b>=end for a,b in merged.get((source,segment),[])):
+            counts[(name,status)] += 1
+    return [dict(name=name,coverage_status=status,affected=n) for (name,status),n in sorted(counts.items())]
 
 
 def collect(conn, first: date, last: date):
@@ -29,8 +59,11 @@ def collect(conn, first: date, last: date):
     def check(key, title, sql, args=(), severity='WARNING', blocking=False, description=''):
         try:
             with conn.transaction():
-                cur=conn.execute(sql,args)
-                rows=[dict(zip([d.name for d in cur.description],r)) for r in cur.fetchall()]
+                if callable(sql):
+                    rows=sql(conn,*args)
+                else:
+                    cur=conn.execute(sql,args)
+                    rows=[dict(zip([d.name for d in cur.description],r)) for r in cur.fetchall()]
             affected=sum(int(r.get('affected') or 0) for r in rows)
             checks.append(dict(key=key,title=title,status=severity if affected else 'OK',
                 affected=affected,blocking=blocking and affected>0,description=description,details=rows))
@@ -57,13 +90,8 @@ def collect(conn, first: date, last: date):
            AND published_at >= %s AND published_at < %s''',(lo,hi),
         description='Unlinked filings cannot reach issuer-level analysis; identity repair is separate from a negative company assessment.')
     check('source_coverage','Unresolved announcement-listing windows',
-        '''WITH latest AS (SELECT DISTINCT ON (r.source_id,r.segment,r.window_start,r.window_end)
-             s.name,r.coverage_status,r.received_count,r.finished_at FROM ingestion_runs r JOIN sources s USING(source_id)
-             WHERE s.name IN ('nse_announcements','bse_announcements') AND r.window_start < %s AND r.window_end > %s
-             ORDER BY r.source_id,r.segment,r.window_start,r.window_end,r.started_at DESC,r.run_id DESC)
-           SELECT name,coverage_status,count(*) affected FROM latest
-           WHERE coverage_status<>'COMPLETE' OR finished_at IS NULL GROUP BY 1,2''',(hi,lo),
-        blocking=True,description='A later successful retry of the same window replaces its older failure. An unverified empty response is not proof of complete coverage.')
+        _unresolved_windows,(lo,hi),
+        blocking=True,description='Successful retries or complete child windows can cover an older failure in the same stream. Unverified empty responses and gaps remain incomplete.')
     check('results_discovery','Incomplete results discovery in the requested window',
         '''WITH latest AS (SELECT DISTINCT ON (r.reconciliation_result->>'symbol')
            r.coverage_status FROM ingestion_runs r JOIN sources s USING(source_id)
@@ -91,12 +119,32 @@ def collect(conn, first: date, last: date):
     check('text_handoff','Text-ready filings without usable extracted text',
         '''SELECT count(*) affected FROM document_publications p JOIN sources s USING(source_id)
            WHERE s.name IN ('nse_announcements','bse_announcements') AND p.published_at >= %s AND p.published_at < %s
-           AND p.pipeline_state='TEXT_READY' AND NOT EXISTS(SELECT 1 FROM text_artifacts a
-             WHERE a.document_version_id=p.document_version_id AND a.status IN ('COMPLETE','PARTIAL'))''',(lo,hi),blocking=True)
+           AND p.pipeline_state='TEXT_READY' AND NOT EXISTS(SELECT 1 FROM document_versions root
+             WHERE root.document_version_id=p.document_version_id AND
+               ((root.media_type<>'application/zip' AND EXISTS(SELECT 1 FROM text_artifacts a
+                 WHERE a.document_version_id=root.document_version_id AND a.status='COMPLETE')) OR
+                (root.media_type='application/zip' AND EXISTS(SELECT 1 FROM document_versions member
+                   WHERE member.document_id=root.document_id AND member.media_type='application/pdf')
+                 AND NOT EXISTS(SELECT 1 FROM document_versions member
+                   WHERE member.document_id=root.document_id AND member.media_type='application/pdf'
+                   AND NOT EXISTS(SELECT 1 FROM text_artifacts a WHERE a.document_version_id=member.document_version_id
+                     AND a.status='COMPLETE')))))''',(lo,hi),blocking=True,
+        description='ZIP containers are ready only when every PDF member has complete extracted text. Native results use their own parsing check.')
+    check('announcement_backlog','Announcement attachments awaiting complete text',
+        '''SELECT s.name,p.pipeline_state,count(*) affected FROM document_publications p
+           JOIN sources s USING(source_id)
+           WHERE s.name IN ('nse_announcements','bse_announcements')
+           AND coalesce(p.published_at,p.published_date::timestamp AT TIME ZONE 'Asia/Kolkata') >= %s
+           AND coalesce(p.published_at,p.published_date::timestamp AT TIME ZONE 'Asia/Kolkata') < %s
+           AND p.attachment_url IS NOT NULL AND p.pipeline_state NOT IN ('TEXT_READY','SUPERSEDED')
+           GROUP BY s.name,p.pipeline_state''',(lo,hi),blocking=True,
+        description='Includes undispatched downloads, partial text and OCR. Download-policy exclusions remain visible; analysis of available text alone does not prove full filing coverage.')
     check('commercial_backlog','Extracted filings not scanned under the active rules',
         '''SELECT count(*) affected FROM text_artifacts a
            WHERE a.status IN ('COMPLETE','PARTIAL') AND EXISTS(SELECT 1 FROM document_publications p
-             WHERE p.document_version_id=a.document_version_id AND p.published_at >= %s AND p.published_at < %s)
+             JOIN document_versions root ON root.document_version_id=p.document_version_id
+             JOIN document_versions member ON member.document_id=root.document_id
+             WHERE member.document_version_id=a.document_version_id AND p.published_at >= %s AND p.published_at < %s)
            AND NOT EXISTS(SELECT 1 FROM text_artifacts newer WHERE newer.document_version_id=a.document_version_id
              AND newer.status IN ('COMPLETE','PARTIAL') AND newer.created_at>a.created_at)
            AND NOT EXISTS(SELECT 1 FROM commercial_scans s WHERE s.text_artifact_id=a.text_artifact_id
@@ -163,7 +211,14 @@ def save(report,output):
 def load_report(path=DEFAULT_REPORT):
     if not Path(path).exists():
         return dict(summary={},checks=[],message='No process-health report has been generated yet.')
-    return json.loads(Path(path).read_text())
+    report = json.loads(Path(path).read_text())
+    progress_path = Path(path).with_name('coverage_repair.json')
+    if progress_path.exists():
+        try:
+            report['coverage_repair'] = json.loads(progress_path.read_text())
+        except (OSError, ValueError):
+            report['coverage_repair'] = {'state':'STATUS_UNAVAILABLE'}
+    return report
 
 
 def main(argv=None):

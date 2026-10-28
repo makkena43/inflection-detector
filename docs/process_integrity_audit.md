@@ -22,11 +22,11 @@ This pass audits system behavior across companies. No stock-specific admission r
 
 ## Operational visibility
 
-The application now exposes a **Data & process** tab with 18 checks. It separates completion blockers, data limitations and contextual counts. Its read-only report covers 1 August–28 October 2026 for processing checks; financial provenance checks examine the full stored financial dataset.
+The application now exposes a **Data & process** tab with 19 checks. It separates completion blockers, data limitations and contextual counts. Its read-only report covers 1 August–28 October 2026 for processing checks; financial provenance checks examine the full stored financial dataset.
 
-The report currently identifies six incomplete stage categories, including 16 partial BSE listing windows, 13 unattempted stream-days, 10 announcement text handoffs, three failed native-results downloads and active-version reread backlogs. The 22,906 commercial and 3,643 financial reread counts include work created by the new rule versions; they must not be presented as proof that the old system never processed those filings. Native XML results are not incorrectly counted as missing PDF text.
+The initial report identified six incomplete stage categories, including 16 partial BSE listing windows, 13 unattempted stream-days, 10 announcement text handoffs, three failed native-results downloads and active-version reread backlogs. The 22,906 commercial and 3,643 financial reread counts include work created by the new rule versions; they must not be presented as proof that the old system never processed those filings. Native XML results are not incorrectly counted as missing PDF text.
 
-These data gaps have not been silently repaired, fabricated or marked complete. Current code can process future data with the new invariants, and the report identifies the work required to rebuild historical calculations honestly. No bulk source download or paid research run was started in this pass.
+The initial pass left these gaps visible. The follow-up below records actual repairs and newly exposed work; no gap is marked complete without supporting data.
 
 ## Verification and deployment
 
@@ -44,3 +44,41 @@ These data gaps have not been silently repaired, fabricated or marked complete. 
 3. Extend comparable financial evidence to cash flow and balance sheets, including receivables, inventory, cash conversion, debt funding and dilution. Current income-statement signals cannot prove cash conversion.
 4. Introduce source-supported business-model contracts for lenders, insurers, cyclicals, project businesses and young companies; a manufacturing-margin formula is not a universal business model.
 5. Freeze process versions and evaluate chronologically on fresh prospective observations, with disclosure timing, corporate actions, trading gaps and sample coverage explicit. Keep exploratory historical research separate from validated predictive claims.
+
+
+## Follow-up: completing stage handoffs
+
+The follow-up reprocessed the full 1 August–28 October window without company admission exceptions.
+
+| Process area | Confirmed cause | Repair and current result |
+|---|---|---|
+| BSE source coverage | All-category requests across multiple dates returned empty results, whereas daily queries returned hundreds or thousands of filings. Category fallback therefore supplied only partial proof. | Query and commit each calendar day independently. A source-locked, resumable repair is running across all 89 days; progress is visible in the application. Completed child windows cover older partial parent windows only without gaps and only within the same stream. |
+| Missing stream dates | Mainboard/SME/BSE listing attempts had not reached the audit endpoint. | The 13 missing stream-days now have recorded attempts. Coverage quality is checked separately; an attempt alone does not prove completeness. |
+| ZIP text handoff | Health checks demanded PDF text directly on ZIP container versions and missed their extracted member PDFs. | Check all PDF members in the same document lineage. All 10 initial warnings clear, while a ZIP with any unread member still blocks completion. Commercial backlog checks follow that same lineage. |
+| Larger financial filings | A 5 MB parser ceiling rejected valid 5.7–7.1 MB integrated filings; ordinary download retries deliberately skipped parser failures. | A bounded 32 MB ceiling accepts modern integrated filings. DTD/entity declarations are refused across the entire input, including UTF-16. Explicit archive-based reparsing recovered 50 historical filings and 2,309 figures, including all three failures in the audit period. One malformed 2025 document remains failed outside this period. |
+| Commercial reread | Current-version work was pending across the window. | Processed 22,920 documents as scanned or category-skipped; locally checked 11,329 passages and resolved them. Nine current-version scans still lack issuer identity. Their source rows lack ISINs and are absent from the current issuer master; identities were not guessed. |
+| Financial reread | 3,643 ready results required the current rule version; repaired filings added three more. | All 3,646 were processed, including 340 explicit NO_COMPARABLE outcomes. Native-results parsing and financial reread backlogs are now zero in the window. |
+| Hidden attachment work | The original health gate checked available text but did not count undispatched downloads, partial PDFs or OCR. Fast-mode and BSE-only download policies can defer entire categories or dual-listed issuers. | A new completion check exposes over 132,000 attachments still awaiting complete text. These include deliberate policy deferrals; they are not silently treated as analysed evidence. The full window remains incomplete. |
+| Retry starvation | Terminal failures were filtered after LIMIT, allowing old non-retryable records to consume the whole batch. Announcement download selection could also include native-results sources. | Filter retry eligibility and source before LIMIT. Apply date bounds to download, extraction and results loading. Default results discovery now ends today, rather than November 2024. |
+| Archive reuse | PDF extraction ran before looking for existing text, even when the bytes had already been purged after successful processing. | Reuse the matching extractor-version artifact first. A missing uncached blob records a retryable failure and does not stop unrelated extraction. All 55 stored DOWNLOADED publications in the window were handled: 49 text-ready, five partial and one requiring OCR. |
+| Final completion marker | The range processing marker preceded the final review-coverage guard. | Move the marker after that guard, with a failure-injection regression test. Runtime script and dashboard changes retain backups ending `.bak-process-completion-20261028`. |
+
+The live **Data & process** page now shows the coverage-repair checkpoint and refreshes that
+progress while the page is open. Listing completion is explicitly separate from downloads and
+analysis. `python -m inflection.coverage_repair --from ... --to ...` resumes verified daily work,
+stops on unavailable sources and rebuilds the final health snapshot when listing repair ends.
+
+Broader unresolved data limitations remain: original disclosure provenance for legacy snapshots,
+missing identities, incomplete results-universe classification, missing comparable periods, and
+unreconciled corporate actions. Current NSE trading lists are not a complete historical identity
+universe: NSE describes them as [securities available for trading](https://www.nseindia.com/static/market-data/securities-available-for-trading).
+Suspended/delisted identity recovery needs dated exchange evidence and must preserve trading status;
+a current-name guess is not sufficient to rewrite historical identities.
+
+
+Follow-up validation: **477 tests passed**, including disposable PostgreSQL integration and injected
+source/guard failures. The live dashboard was checked after deployment; completion blockers are
+shown first and the table wraps within the page width. Installed dashboard and range-job files
+match their maintained sources. At the final check, the coverage repair remained RUNNING with
+19 of 89 days verified and no source gaps encountered in those processed days. This checkpoint is
+an observation of an ongoing repair, not a claim that the full period is complete.

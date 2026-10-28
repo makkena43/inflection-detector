@@ -111,3 +111,31 @@ def test_extract_text_states(db, tmp_path):
     assert hit and all(p == (1,) for p in hit)
     rep = {(r["state"]): r["count"] for r in ingest.coverage_report(db, DAY, DAY)["publications"]}
     assert rep == {"TEXT_READY": 2, "PARTIAL_TEXT": 1, "FAILED": 1}
+
+
+def test_download_retry_limit_excludes_terminal_failures_and_honors_dates(db,tmp_path):
+    from inflection import financials
+    old=nse_row(1,'https://h/terminal.pdf');new=nse_row(2,'https://h/current.pdf')
+    ingest.record_window(db,nse_window([old,new]))
+    db.execute("UPDATE document_publications SET pipeline_state='FAILED',failure_reason='NOT_FOUND: HTTP 404' WHERE external_id='1'")
+    pdf=make_pdf(tmp_path/'current.pdf',['Useful text']).read_bytes()
+    dl,t=client({'current.pdf':[(200,pdf)]})
+    out=ingest.download_pending(db,Archive(tmp_path/'archive'),dl,limit=1,retry_failed=True,start=DAY,end=DAY)
+    assert out=={'OK':1} and len(t.calls)==1
+    # No results-source publication may enter the announcement downloader.
+    src=financials.ensure_source(db)
+    db.execute("INSERT INTO document_publications(source_id,external_id,source_url,attachment_url,published_at,publication_basis) VALUES(%s,'native','https://h/native.xml','https://h/native.xml',%s,'EXCHANGE_TIMESTAMP')",(src,datetime(2026,10,8,15,tzinfo=IST)))
+    assert ingest.download_pending(db,Archive(tmp_path/'archive'),dl)=={}
+    assert ingest.extract_pending(db,Archive(tmp_path/'archive'),start=date(2026,10,9),end=date(2026,10,9))=={}
+    assert ingest.extract_pending(db,Archive(tmp_path/'archive'),start=DAY,end=DAY)=={'TEXT_READY':1}
+
+
+def test_cached_text_survives_a_purged_archive(db,tmp_path,monkeypatch):
+    from inflection.text_extraction import extraction_version
+    import inflection.ingest as I
+    doc=db.execute('INSERT INTO documents DEFAULT VALUES RETURNING document_id').fetchone()[0]
+    vid=db.execute("INSERT INTO document_versions(document_id,sha256,storage_key,byte_size,media_type) VALUES(%s,%s,'purged',1,'application/pdf') RETURNING document_version_id",(doc,'c'*64)).fetchone()[0]
+    db.execute("INSERT INTO text_artifacts(document_version_id,extraction_method,extraction_version,status) VALUES(%s,'pdfplumber',%s,'COMPLETE')",(vid,extraction_version()))
+    def unexpected(*args):raise AssertionError('cached PDF was parsed again')
+    monkeypatch.setattr(I,'extract_pdf',unexpected)
+    assert I._artifact(db,vid,tmp_path/'missing.pdf').value=='COMPLETE'

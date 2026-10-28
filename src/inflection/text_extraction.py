@@ -76,10 +76,15 @@ def classify_pages(pages: list[str], pages_expected: Optional[int]) -> tuple[Ext
     return status, issues
 
 
+def extraction_version(max_pages: int = 500) -> str:
+    import pdfplumber
+    return f"{EXTRACTION_METHOD}-{pdfplumber.__version__}/max{max_pages}"
+
+
 def extract_pdf(path: Path, max_bytes: int = 50 * 1024 * 1024, max_pages: int = 500) -> Extraction:
     import pdfplumber
 
-    version = f"{EXTRACTION_METHOD}-{pdfplumber.__version__}/max{max_pages}"
+    version = extraction_version(max_pages)
 
     def fail(status: ExtractionStatus, reason: str) -> Extraction:
         return Extraction(status, EXTRACTION_METHOD, version, failure_reason=reason)

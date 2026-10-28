@@ -7,9 +7,10 @@ import pytest
 SCRIPT=Path(__file__).resolve().parents[1]/'ops/run_range_2026.sh'
 
 
-@pytest.mark.parametrize('failure',['inflection.financial scan','inflection.process_health','xbrl',''])
+@pytest.mark.parametrize('failure',['inflection.financial scan','inflection.process_health','coverage_guard.py','xbrl',''])
 def test_range_checkpoint_is_written_only_after_successful_stages(tmp_path,failure):
     jobs=tmp_path/'jobs';(jobs/'logs').mkdir(parents=True);(jobs/'triage').mkdir()
+    (jobs/'triage/2026-01-05').mkdir()
     stages=tmp_path/'stages.txt'
     fake=tmp_path/'fake-python'
     fake.write_text('''#!/bin/zsh
