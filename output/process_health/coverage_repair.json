@@ -1,0 +1,15 @@
+{
+  "scope": "BSE announcement listings",
+  "first": "2026-08-01",
+  "last": "2026-10-28",
+  "state": "RUNNING",
+  "total_days": 89,
+  "complete_days": 74,
+  "attempted_days": 64,
+  "received": 75684,
+  "inserted": 887,
+  "gaps": [],
+  "last_checked_day": "2026-10-13",
+  "current_day": "2026-10-14",
+  "updated_at": "2026-10-28T16:28:58.226065+00:00"
+}

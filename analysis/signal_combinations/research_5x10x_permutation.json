@@ -1,0 +1,306 @@
+{
+  "method": "First original shortlist observation per issuer; 3-year terminal 5x labels shuffled within entry year; maximum standardized lift across eligible rules. Exploratory diagnostic: cannot undo earlier searches, sector dependence or data quality. Includes MBECL unchanged as the original-outcome diagnostic; headline performance separately excludes it.",
+  "permutations": 5000,
+  "eligible_rules": 33,
+  "baseline_n": 101,
+  "baseline_five": 21,
+  "results": [
+    {
+      "rule": "Market cap <\u20b92000cr",
+      "n": 58,
+      "five": 18,
+      "ten": 6,
+      "expected_five_by_year": 13.075630252100842,
+      "z": 2.6759129079550528,
+      "search_adjusted_permutation_p": 0.07218556288742252
+    },
+    {
+      "rule": "P/S <1.5 + Market cap <\u20b92000cr + Technicals \u22652",
+      "n": 23,
+      "five": 11,
+      "ten": 3,
+      "expected_five_by_year": 6.991596638655462,
+      "z": 2.3105291528502394,
+      "search_adjusted_permutation_p": 0.17416516696660667
+    },
+    {
+      "rule": "P/S <1.5 + Market cap <\u20b92000cr",
+      "n": 38,
+      "five": 14,
+      "ten": 5,
+      "expected_five_by_year": 9.823529411764707,
+      "z": 2.210776223539632,
+      "search_adjusted_permutation_p": 0.236752649470106
+    },
+    {
+      "rule": "Order/mcap \u226525% + Margin 0\u201310% + Technicals \u22652",
+      "n": 13,
+      "five": 6,
+      "ten": 1,
+      "expected_five_by_year": 3.46218487394958,
+      "z": 1.8131144650900288,
+      "search_adjusted_permutation_p": 0.41871625674865026
+    },
+    {
+      "rule": "Order/mcap \u226525% + Technicals \u22652",
+      "n": 20,
+      "five": 7,
+      "ten": 1,
+      "expected_five_by_year": 4.873949579831933,
+      "z": 1.347604334152588,
+      "search_adjusted_permutation_p": 0.73125374925015
+    },
+    {
+      "rule": "Order/mcap \u226525% + Margin 0\u201310% + Market cap <\u20b92000cr",
+      "n": 19,
+      "five": 7,
+      "ten": 2,
+      "expected_five_by_year": 4.949579831932773,
+      "z": 1.2649749773443582,
+      "search_adjusted_permutation_p": 0.7754449110177964
+    },
+    {
+      "rule": "Margin 0\u201310% + P/S <1 + Technicals \u22652",
+      "n": 14,
+      "five": 6,
+      "ten": 2,
+      "expected_five_by_year": 4.168067226890757,
+      "z": 1.2233722950303112,
+      "search_adjusted_permutation_p": 0.7968406318736253
+    },
+    {
+      "rule": "Score \u22654",
+      "n": 34,
+      "five": 10,
+      "ten": 3,
+      "expected_five_by_year": 7.77310924369748,
+      "z": 1.2218652022675014,
+      "search_adjusted_permutation_p": 0.8028394321135773
+    },
+    {
+      "rule": "Order/mcap \u226550%",
+      "n": 25,
+      "five": 7,
+      "ten": 1,
+      "expected_five_by_year": 5.025210084033613,
+      "z": 1.213923299440248,
+      "search_adjusted_permutation_p": 0.8128374325134973
+    },
+    {
+      "rule": "P/S <1.5",
+      "n": 50,
+      "five": 15,
+      "ten": 5,
+      "expected_five_by_year": 12.932773109243698,
+      "z": 1.1253718240912591,
+      "search_adjusted_permutation_p": 0.8340331933613278
+    },
+    {
+      "rule": "Order/mcap \u226525% + Market cap <\u20b92000cr",
+      "n": 28,
+      "five": 8,
+      "ten": 2,
+      "expected_five_by_year": 6.151260504201681,
+      "z": 1.0642783264938402,
+      "search_adjusted_permutation_p": 0.8662267546490702
+    },
+    {
+      "rule": "P/S <1.5 + Technicals \u22652",
+      "n": 30,
+      "five": 11,
+      "ten": 3,
+      "expected_five_by_year": 9.109243697478993,
+      "z": 1.0567154190570838,
+      "search_adjusted_permutation_p": 0.8686262747450509
+    },
+    {
+      "rule": "Margin 0\u201310% + P/S <1.5 + Technicals \u22652",
+      "n": 21,
+      "five": 8,
+      "ten": 2,
+      "expected_five_by_year": 6.285714285714286,
+      "z": 1.0114434748483474,
+      "search_adjusted_permutation_p": 0.8986202759448111
+    },
+    {
+      "rule": "Margin 10\u201325% + P/S <1.5",
+      "n": 11,
+      "five": 4,
+      "ten": 1,
+      "expected_five_by_year": 2.7563025210084033,
+      "z": 0.9713318817963461,
+      "search_adjusted_permutation_p": 0.9312137572485503
+    },
+    {
+      "rule": "Order/mcap \u226525%",
+      "n": 37,
+      "five": 10,
+      "ten": 2,
+      "expected_five_by_year": 8.201680672268909,
+      "z": 0.965587572537958,
+      "search_adjusted_permutation_p": 0.9330133973205359
+    },
+    {
+      "rule": "P/S <1 + Market cap <\u20b92000cr",
+      "n": 27,
+      "five": 8,
+      "ten": 3,
+      "expected_five_by_year": 6.3613445378151265,
+      "z": 0.9386636366431209,
+      "search_adjusted_permutation_p": 0.9394121175764847
+    },
+    {
+      "rule": "Margin 0\u201310% + P/S <1",
+      "n": 22,
+      "five": 7,
+      "ten": 3,
+      "expected_five_by_year": 5.65546218487395,
+      "z": 0.795633609494239,
+      "search_adjusted_permutation_p": 0.9550089982003599
+    },
+    {
+      "rule": "Order/mcap \u226525% + Margin 0\u201310% + P/S <1",
+      "n": 16,
+      "five": 5,
+      "ten": 2,
+      "expected_five_by_year": 3.890756302521009,
+      "z": 0.7450966108356574,
+      "search_adjusted_permutation_p": 0.9596080783843232
+    },
+    {
+      "rule": "Order/mcap \u226525% + P/S <1.5",
+      "n": 33,
+      "five": 9,
+      "ten": 2,
+      "expected_five_by_year": 7.84873949579832,
+      "z": 0.6230991833968957,
+      "search_adjusted_permutation_p": 0.9664067186562687
+    },
+    {
+      "rule": "Order/mcap \u226525% + Margin 0\u201310%",
+      "n": 23,
+      "five": 7,
+      "ten": 2,
+      "expected_five_by_year": 6.008403361344539,
+      "z": 0.5767210404992429,
+      "search_adjusted_permutation_p": 0.9852029594081184
+    },
+    {
+      "rule": "Order/mcap \u226525% + Margin 0\u201310% + P/S <1.5",
+      "n": 23,
+      "five": 7,
+      "ten": 2,
+      "expected_five_by_year": 6.008403361344539,
+      "z": 0.5767210404992429,
+      "search_adjusted_permutation_p": 0.9852029594081184
+    },
+    {
+      "rule": "Runup 6m >60%",
+      "n": 31,
+      "five": 9,
+      "ten": 3,
+      "expected_five_by_year": 7.983193277310924,
+      "z": 0.5602572393606952,
+      "search_adjusted_permutation_p": 0.9898020395920816
+    },
+    {
+      "rule": "P/S <1",
+      "n": 31,
+      "five": 8,
+      "ten": 3,
+      "expected_five_by_year": 7.2100840336134455,
+      "z": 0.4372191392757191,
+      "search_adjusted_permutation_p": 0.99500099980004
+    },
+    {
+      "rule": "Order/mcap \u226550% + Margin 0\u201310% + P/S <1",
+      "n": 11,
+      "five": 3,
+      "ten": 1,
+      "expected_five_by_year": 2.4789915966386555,
+      "z": 0.41979761110852076,
+      "search_adjusted_permutation_p": 0.996000799840032
+    },
+    {
+      "rule": "Technicals \u22652",
+      "n": 65,
+      "five": 16,
+      "ten": 4,
+      "expected_five_by_year": 15.403361344537817,
+      "z": 0.3650745096716853,
+      "search_adjusted_permutation_p": 0.9976004799040192
+    },
+    {
+      "rule": "Revenue growth >20%",
+      "n": 14,
+      "five": 2,
+      "ten": 1,
+      "expected_five_by_year": 1.6302521008403361,
+      "z": 0.35677541693784126,
+      "search_adjusted_permutation_p": 0.9978004399120176
+    },
+    {
+      "rule": "Order/mcap \u226525% + P/S <1",
+      "n": 24,
+      "five": 6,
+      "ten": 2,
+      "expected_five_by_year": 5.445378151260504,
+      "z": 0.33101562443844584,
+      "search_adjusted_permutation_p": 0.998000399920016
+    },
+    {
+      "rule": "Margin 10\u201325%",
+      "n": 30,
+      "five": 6,
+      "ten": 1,
+      "expected_five_by_year": 5.588235294117648,
+      "z": 0.24363785217819459,
+      "search_adjusted_permutation_p": 0.9986002799440112
+    },
+    {
+      "rule": "Margin 0\u201310% + P/S <1.5",
+      "n": 32,
+      "five": 9,
+      "ten": 3,
+      "expected_five_by_year": 8.831932773109244,
+      "z": 0.09073125198010791,
+      "search_adjusted_permutation_p": 0.9994001199760048
+    },
+    {
+      "rule": "Margin 0\u201310%",
+      "n": 42,
+      "five": 10,
+      "ten": 4,
+      "expected_five_by_year": 10.529411764705882,
+      "z": -0.28059858365000667,
+      "search_adjusted_permutation_p": 1.0
+    },
+    {
+      "rule": "Margin up \u22652pp",
+      "n": 13,
+      "five": 1,
+      "ten": 0,
+      "expected_five_by_year": 1.4201680672268906,
+      "z": -0.4339689209669924,
+      "search_adjusted_permutation_p": 1.0
+    },
+    {
+      "rule": "Order/mcap \u226525% + Margin 0\u201310% + Finance/revenue <3%",
+      "n": 14,
+      "five": 3,
+      "ten": 0,
+      "expected_five_by_year": 3.6722689075630255,
+      "z": -0.47594770764235506,
+      "search_adjusted_permutation_p": 1.0
+    },
+    {
+      "rule": "Finance/revenue <3%",
+      "n": 56,
+      "five": 7,
+      "ten": 1,
+      "expected_five_by_year": 10.042016806722689,
+      "z": -1.595943088806338,
+      "search_adjusted_permutation_p": 1.0
+    }
+  ]
+}

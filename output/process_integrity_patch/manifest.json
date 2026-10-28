@@ -1,0 +1,30 @@
+{
+  "app.py": {
+    "target": "/Users/makkenasrinivas/inflection-jobs/ui/app.py",
+    "original_sha256": "2c3db0213fffb55318209b24636ac08fcf0e7a106aa3b3db0d3bcdc3cf52877a"
+  },
+  "index.html": {
+    "target": "/Users/makkenasrinivas/inflection-jobs/ui/index.html",
+    "original_sha256": "57f8cd0ae0ecdc4d24636d0bb1dcbfa77009d588dac6ff95077b49fa27497cc4"
+  },
+  "combo_flags.py": {
+    "target": "/Users/makkenasrinivas/inflection-jobs/ui/combo_flags.py",
+    "original_sha256": "1765e869ce7844c96dc90c66935f8d7b238bb3d33a09dba25f9870d2201f16ea"
+  },
+  "run_week_2026.sh": {
+    "target": "/Users/makkenasrinivas/inflection-jobs/run_week_2026.sh",
+    "original_sha256": "ae2acf18322ae78a74785667c754c18a0ca6c158979f6817a08d4c0de84986a2"
+  },
+  "run_range_2026.sh": {
+    "target": "/Users/makkenasrinivas/inflection-jobs/run_range_2026.sh",
+    "original_sha256": "8472aa685b9b117b5831a3d5d8c233eaaabbd3e6919e52b0263b42fd108ece71"
+  },
+  "xbrl_for.sh": {
+    "target": "/Users/makkenasrinivas/inflection-jobs/xbrl_for.sh",
+    "original_sha256": "95723762d7b200027933d5264a54aeb5a378e5b71f105c863996f3833e341f77"
+  },
+  "triage_record_engine.sh": {
+    "target": "/Users/makkenasrinivas/inflection-jobs/triage_record_engine.sh",
+    "original_sha256": "28d319725c2d16f9f63e6b8dac2c2f1b0a2c6274a85507ac1b877a2001e753bb"
+  }
+}

@@ -1,0 +1,4820 @@
+{
+  "prices": [
+    {
+      "last_date": "2026-10-09"
+    }
+  ],
+  "duplicates": [
+    {
+      "groups": 0
+    }
+  ],
+  "outcomes": [
+    {
+      "review_id": "00c0085f-20fd-48d6-af72-0c3283a73d81",
+      "horizon_days": 182,
+      "entry_date": "2022-04-11",
+      "stock_return": "-0.0777385159010601",
+      "market_median": "-0.0615942028985507",
+      "excess_return": "-0.0161443130025093",
+      "computed_at": "2026-10-17 11:26:05.101059+05:30"
+    },
+    {
+      "review_id": "00c0085f-20fd-48d6-af72-0c3283a73d81",
+      "horizon_days": 365,
+      "entry_date": "2022-04-11",
+      "stock_return": "0.166077738515901",
+      "market_median": "-0.128197840270544",
+      "excess_return": "0.294275578786445",
+      "computed_at": "2026-10-17 11:26:05.306440+05:30"
+    },
+    {
+      "review_id": "00c0085f-20fd-48d6-af72-0c3283a73d81",
+      "horizon_days": 730,
+      "entry_date": "2022-04-11",
+      "stock_return": "1.49469964664311",
+      "market_median": "0.396584659913169",
+      "excess_return": "1.09811498672994",
+      "computed_at": "2026-10-17 11:26:05.470196+05:30"
+    },
+    {
+      "review_id": "01b81457-8d4a-42cc-93e9-39891f376a2d",
+      "horizon_days": 182,
+      "entry_date": "2022-01-17",
+      "stock_return": "-0.141210374639769",
+      "market_median": "-0.183193683669066",
+      "excess_return": "0.0419833090292969",
+      "computed_at": "2026-10-17 11:25:54.691708+05:30"
+    },
+    {
+      "review_id": "01b81457-8d4a-42cc-93e9-39891f376a2d",
+      "horizon_days": 365,
+      "entry_date": "2022-01-17",
+      "stock_return": "1.07492795389049",
+      "market_median": "-0.0999918180330552",
+      "excess_return": "1.17491977192355",
+      "computed_at": "2026-10-17 11:25:54.692308+05:30"
+    },
+    {
+      "review_id": "01b81457-8d4a-42cc-93e9-39891f376a2d",
+      "horizon_days": 730,
+      "entry_date": "2022-01-17",
+      "stock_return": "6.56484149855908",
+      "market_median": "0.305933250927071",
+      "excess_return": "6.25890824763201",
+      "computed_at": "2026-10-17 11:25:54.692689+05:30"
+    },
+    {
+      "review_id": "032b1a2d-df13-459c-93e0-fdfd00130e8e",
+      "horizon_days": 182,
+      "entry_date": "2023-09-11",
+      "stock_return": "-0.241463414634146",
+      "market_median": "0.118188407832447",
+      "excess_return": "-0.359651822466593",
+      "computed_at": "2026-10-17 17:22:54.588222+05:30"
+    },
+    {
+      "review_id": "032b1a2d-df13-459c-93e0-fdfd00130e8e",
+      "horizon_days": 365,
+      "entry_date": "2023-09-11",
+      "stock_return": "-0.418536585365854",
+      "market_median": "0.348306997742664",
+      "excess_return": "-0.766843583108517",
+      "computed_at": "2026-10-17 17:22:54.593533+05:30"
+    },
+    {
+      "review_id": "032b1a2d-df13-459c-93e0-fdfd00130e8e",
+      "horizon_days": 730,
+      "entry_date": "2023-09-11",
+      "stock_return": "-0.450174216027875",
+      "market_median": "0.155105305251933",
+      "excess_return": "-0.605279521279807",
+      "computed_at": "2026-10-17 17:22:54.596223+05:30"
+    },
+    {
+      "review_id": "07a0cae8-a5a9-41a3-991a-0f618bf4c4bb",
+      "horizon_days": 182,
+      "entry_date": "2025-06-30",
+      "stock_return": "0.143871164707678",
+      "market_median": "-0.119013263867915",
+      "excess_return": "0.262884428575593",
+      "computed_at": "2026-10-19 13:34:05.759038+05:30"
+    },
+    {
+      "review_id": "07a0cae8-a5a9-41a3-991a-0f618bf4c4bb",
+      "horizon_days": 365,
+      "entry_date": "2025-06-30",
+      "stock_return": "0.520531216608151",
+      "market_median": "-0.140399737876802",
+      "excess_return": "0.660930954484954",
+      "computed_at": "2026-10-19 13:34:05.759479+05:30"
+    },
+    {
+      "review_id": "07a0cae8-a5a9-41a3-991a-0f618bf4c4bb",
+      "horizon_days": 730,
+      "entry_date": "2025-06-30",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:05.759847+05:30"
+    },
+    {
+      "review_id": "0a23b1d5-7040-4df5-ae32-d1392a0d92e9",
+      "horizon_days": 182,
+      "entry_date": "2021-04-12",
+      "stock_return": "0.903391039356805",
+      "market_median": "0.449241554989434",
+      "excess_return": "0.454149484367371",
+      "computed_at": "2026-10-17 11:25:03.671837+05:30"
+    },
+    {
+      "review_id": "0a23b1d5-7040-4df5-ae32-d1392a0d92e9",
+      "horizon_days": 365,
+      "entry_date": "2021-04-12",
+      "stock_return": "0.464987356545419",
+      "market_median": "0.516735324407827",
+      "excess_return": "-0.051747967862408",
+      "computed_at": "2026-10-17 11:25:03.672303+05:30"
+    },
+    {
+      "review_id": "0a23b1d5-7040-4df5-ae32-d1392a0d92e9",
+      "horizon_days": 730,
+      "entry_date": "2021-04-12",
+      "stock_return": "-0.0000324191143097341",
+      "market_median": "0.456406058125256",
+      "excess_return": "-0.456438477239566",
+      "computed_at": "2026-10-17 11:25:03.672775+05:30"
+    },
+    {
+      "review_id": "0a644993-5059-4ed9-84b9-dc4be22ad954",
+      "horizon_days": 182,
+      "entry_date": "2024-08-19",
+      "stock_return": "-0.223438318681958",
+      "market_median": "-0.214545779715333",
+      "excess_return": "-0.00889253896662517",
+      "computed_at": "2026-10-19 02:28:15.808823+05:30"
+    },
+    {
+      "review_id": "0a644993-5059-4ed9-84b9-dc4be22ad954",
+      "horizon_days": 365,
+      "entry_date": "2024-08-19",
+      "stock_return": "-0.357687605519008",
+      "market_median": "-0.154864291299006",
+      "excess_return": "-0.202823314220002",
+      "computed_at": "2026-10-19 02:28:15.809230+05:30"
+    },
+    {
+      "review_id": "0a644993-5059-4ed9-84b9-dc4be22ad954",
+      "horizon_days": 730,
+      "entry_date": "2024-08-19",
+      "stock_return": "-0.54014088606858",
+      "market_median": "-0.215872878103719",
+      "excess_return": "-0.324268007964861",
+      "computed_at": "2026-10-19 02:28:15.809563+05:30"
+    },
+    {
+      "review_id": "0bee8b4b-7cb8-4d93-8308-54936ae9cc7f",
+      "horizon_days": 182,
+      "entry_date": "2024-08-05",
+      "stock_return": "-0.262550315181894",
+      "market_median": "-0.106887259005043",
+      "excess_return": "-0.155663056176851",
+      "computed_at": "2026-10-19 02:28:13.400579+05:30"
+    },
+    {
+      "review_id": "0bee8b4b-7cb8-4d93-8308-54936ae9cc7f",
+      "horizon_days": 365,
+      "entry_date": "2024-08-05",
+      "stock_return": "-0.3208779524569",
+      "market_median": "-0.117004946273239",
+      "excess_return": "-0.203873006183661",
+      "computed_at": "2026-10-19 02:28:13.401203+05:30"
+    },
+    {
+      "review_id": "0bee8b4b-7cb8-4d93-8308-54936ae9cc7f",
+      "horizon_days": 730,
+      "entry_date": "2024-08-05",
+      "stock_return": "0.237335763651553",
+      "market_median": "-0.187663002725337",
+      "excess_return": "0.424998766376891",
+      "computed_at": "2026-10-19 02:28:13.401713+05:30"
+    },
+    {
+      "review_id": "0c8e3526-e2ac-40b7-b868-720d143259d8",
+      "horizon_days": 182,
+      "entry_date": "2022-05-02",
+      "stock_return": "-0.102667478066839",
+      "market_median": "-0.0274444406373493",
+      "excess_return": "-0.0752230374294898",
+      "computed_at": "2026-10-17 11:26:07.670115+05:30"
+    },
+    {
+      "review_id": "0c8e3526-e2ac-40b7-b868-720d143259d8",
+      "horizon_days": 365,
+      "entry_date": "2022-05-02",
+      "stock_return": "-0.0350169886911101",
+      "market_median": "-0.0489217080420216",
+      "excess_return": "0.0139047193509115",
+      "computed_at": "2026-10-17 11:26:07.670420+05:30"
+    },
+    {
+      "review_id": "0c8e3526-e2ac-40b7-b868-720d143259d8",
+      "horizon_days": 730,
+      "entry_date": "2022-05-02",
+      "stock_return": "0.172384502256707",
+      "market_median": "0.495765000927264",
+      "excess_return": "-0.323380498670558",
+      "computed_at": "2026-10-17 11:26:07.670897+05:30"
+    },
+    {
+      "review_id": "0daad818-4f9b-4a66-b216-e43cca29d4cd",
+      "horizon_days": 182,
+      "entry_date": "2022-02-21",
+      "stock_return": "1.30875420875421",
+      "market_median": "-0.0169802350064525",
+      "excess_return": "1.32573444376066",
+      "computed_at": "2026-10-17 11:25:45.368878+05:30"
+    },
+    {
+      "review_id": "0daad818-4f9b-4a66-b216-e43cca29d4cd",
+      "horizon_days": 365,
+      "entry_date": "2022-02-21",
+      "stock_return": "1.84848484848485",
+      "market_median": "-0.0226901250339558",
+      "excess_return": "1.8711749735188",
+      "computed_at": "2026-10-17 11:25:45.370597+05:30"
+    },
+    {
+      "review_id": "0daad818-4f9b-4a66-b216-e43cca29d4cd",
+      "horizon_days": 730,
+      "entry_date": "2022-02-21",
+      "stock_return": "5.72996632996633",
+      "market_median": "0.568936409679235",
+      "excess_return": "5.1610299202871",
+      "computed_at": "2026-10-17 11:25:45.372631+05:30"
+    },
+    {
+      "review_id": "0df4c93e-39f7-4b97-9a71-0041981bc946",
+      "horizon_days": 182,
+      "entry_date": "2021-03-15",
+      "stock_return": "0.513544018058691",
+      "market_median": "0.290373275504664",
+      "excess_return": "0.223170742554027",
+      "computed_at": "2026-10-17 11:25:02.040573+05:30"
+    },
+    {
+      "review_id": "0df4c93e-39f7-4b97-9a71-0041981bc946",
+      "horizon_days": 365,
+      "entry_date": "2021-03-15",
+      "stock_return": "0.616252821670429",
+      "market_median": "0.326478069320827",
+      "excess_return": "0.289774752349602",
+      "computed_at": "2026-10-17 11:25:02.040884+05:30"
+    },
+    {
+      "review_id": "0df4c93e-39f7-4b97-9a71-0041981bc946",
+      "horizon_days": 730,
+      "entry_date": "2021-03-15",
+      "stock_return": "-0.0293453724604965",
+      "market_median": "0.333403961244848",
+      "excess_return": "-0.362749333705345",
+      "computed_at": "2026-10-17 11:25:02.041138+05:30"
+    },
+    {
+      "review_id": "0e120be1-da5b-42e2-88f3-8873c856da61",
+      "horizon_days": 182,
+      "entry_date": "2023-04-03",
+      "stock_return": "0.50584429137967",
+      "market_median": "0.33051355491907",
+      "excess_return": "0.1753307364606",
+      "computed_at": "2026-10-17 17:22:29.156823+05:30"
+    },
+    {
+      "review_id": "0e120be1-da5b-42e2-88f3-8873c856da61",
+      "horizon_days": 365,
+      "entry_date": "2023-04-03",
+      "stock_return": "0.401586307660196",
+      "market_median": "0.550764902409003",
+      "excess_return": "-0.149178594748807",
+      "computed_at": "2026-10-17 17:22:29.157622+05:30"
+    },
+    {
+      "review_id": "0e120be1-da5b-42e2-88f3-8873c856da61",
+      "horizon_days": 730,
+      "entry_date": "2023-04-03",
+      "stock_return": "1.06366103109998",
+      "market_median": "0.474382688336177",
+      "excess_return": "0.589278342763803",
+      "computed_at": "2026-10-17 17:22:29.158135+05:30"
+    },
+    {
+      "review_id": "11260c21-2980-4a24-b6d4-e612d5b2c882",
+      "horizon_days": 182,
+      "entry_date": "2021-07-05",
+      "stock_return": "-0.0861889927310487",
+      "market_median": "0.0899048994468842",
+      "excess_return": "-0.176093892177933",
+      "computed_at": "2026-10-17 11:25:14.547011+05:30"
+    },
+    {
+      "review_id": "11260c21-2980-4a24-b6d4-e612d5b2c882",
+      "horizon_days": 365,
+      "entry_date": "2021-07-05",
+      "stock_return": "-0.0934579439252337",
+      "market_median": "-0.0528846153846154",
+      "excess_return": "-0.0405733285406183",
+      "computed_at": "2026-10-17 11:25:14.548407+05:30"
+    },
+    {
+      "review_id": "11260c21-2980-4a24-b6d4-e612d5b2c882",
+      "horizon_days": 730,
+      "entry_date": "2021-07-05",
+      "stock_return": "1.24818276220145",
+      "market_median": "0.198050517929755",
+      "excess_return": "1.0501322442717",
+      "computed_at": "2026-10-17 11:25:14.548964+05:30"
+    },
+    {
+      "review_id": "12bd45dd-c845-4569-94b8-0684ea3f3066",
+      "horizon_days": 182,
+      "entry_date": "2021-03-29",
+      "stock_return": "0.391601831926282",
+      "market_median": "0.353737770774325",
+      "excess_return": "0.0378640611519569",
+      "computed_at": "2026-10-17 11:25:03.168442+05:30"
+    },
+    {
+      "review_id": "12bd45dd-c845-4569-94b8-0684ea3f3066",
+      "horizon_days": 365,
+      "entry_date": "2021-03-29",
+      "stock_return": "0.486490463315492",
+      "market_median": "0.382353794230871",
+      "excess_return": "0.104136669084622",
+      "computed_at": "2026-10-17 11:25:03.168922+05:30"
+    },
+    {
+      "review_id": "12bd45dd-c845-4569-94b8-0684ea3f3066",
+      "horizon_days": 730,
+      "entry_date": "2021-03-29",
+      "stock_return": "0.544225569718038",
+      "market_median": "0.321646746347942",
+      "excess_return": "0.222578823370096",
+      "computed_at": "2026-10-17 11:25:03.169426+05:30"
+    },
+    {
+      "review_id": "1346fab9-e83a-46d6-89ab-a723a2cac580",
+      "horizon_days": 182,
+      "entry_date": "2022-11-21",
+      "stock_return": "0.0992816946515991",
+      "market_median": "-0.00122964384509185",
+      "excess_return": "0.100511338496691",
+      "computed_at": "2026-10-17 11:25:22.542850+05:30"
+    },
+    {
+      "review_id": "1346fab9-e83a-46d6-89ab-a723a2cac580",
+      "horizon_days": 365,
+      "entry_date": "2022-11-21",
+      "stock_return": "-0.100288237178021",
+      "market_median": "0.286596664607783",
+      "excess_return": "-0.386884901785803",
+      "computed_at": "2026-10-17 11:25:22.543272+05:30"
+    },
+    {
+      "review_id": "1346fab9-e83a-46d6-89ab-a723a2cac580",
+      "horizon_days": 730,
+      "entry_date": "2022-11-21",
+      "stock_return": "-0.31033536166903",
+      "market_median": "0.56178586847286",
+      "excess_return": "-0.87212123014189",
+      "computed_at": "2026-10-17 11:25:22.543789+05:30"
+    },
+    {
+      "review_id": "13cad72b-c882-4876-bd5c-fd288345b03f",
+      "horizon_days": 182,
+      "entry_date": "2023-02-13",
+      "stock_return": "0.139607843137255",
+      "market_median": "0.15465698600285",
+      "excess_return": "-0.0150491428655948",
+      "computed_at": "2026-10-17 17:22:12.717794+05:30"
+    },
+    {
+      "review_id": "13cad72b-c882-4876-bd5c-fd288345b03f",
+      "horizon_days": 365,
+      "entry_date": "2023-02-13",
+      "stock_return": "0.531764705882353",
+      "market_median": "0.48834421111975",
+      "excess_return": "0.0434204947626036",
+      "computed_at": "2026-10-17 17:22:12.724798+05:30"
+    },
+    {
+      "review_id": "13cad72b-c882-4876-bd5c-fd288345b03f",
+      "horizon_days": 730,
+      "entry_date": "2023-02-13",
+      "stock_return": "0.0992156862745099",
+      "market_median": "0.447246004478701",
+      "excess_return": "-0.348030318204191",
+      "computed_at": "2026-10-17 17:22:12.725812+05:30"
+    },
+    {
+      "review_id": "14853446-f88a-4dab-ab5a-dd3a650ef1bc",
+      "horizon_days": 182,
+      "entry_date": "2022-01-03",
+      "stock_return": "-0.155311045281422",
+      "market_median": "-0.158116544276231",
+      "excess_return": "0.00280549899480931",
+      "computed_at": "2026-10-17 11:25:50.786717+05:30"
+    },
+    {
+      "review_id": "14853446-f88a-4dab-ab5a-dd3a650ef1bc",
+      "horizon_days": 365,
+      "entry_date": "2022-01-03",
+      "stock_return": "-0.109606432501058",
+      "market_median": "-0.0262948374120013",
+      "excess_return": "-0.0833115950890566",
+      "computed_at": "2026-10-17 11:25:50.787342+05:30"
+    },
+    {
+      "review_id": "14853446-f88a-4dab-ab5a-dd3a650ef1bc",
+      "horizon_days": 730,
+      "entry_date": "2022-01-03",
+      "stock_return": "1.63901819720694",
+      "market_median": "0.372240147799274",
+      "excess_return": "1.26677804940767",
+      "computed_at": "2026-10-17 11:25:50.787928+05:30"
+    },
+    {
+      "review_id": "14a397b7-eff4-4815-b513-6135a08c7673",
+      "horizon_days": 182,
+      "entry_date": "2021-07-12",
+      "stock_return": "0.158884762890363",
+      "market_median": "0.110392839383391",
+      "excess_return": "0.0484919235069721",
+      "computed_at": "2026-10-17 11:25:14.688613+05:30"
+    },
+    {
+      "review_id": "14a397b7-eff4-4815-b513-6135a08c7673",
+      "horizon_days": 365,
+      "entry_date": "2021-07-12",
+      "stock_return": "0.102270651975406",
+      "market_median": "-0.0345424443106562",
+      "excess_return": "0.136813096286063",
+      "computed_at": "2026-10-17 11:25:14.689211+05:30"
+    },
+    {
+      "review_id": "14a397b7-eff4-4815-b513-6135a08c7673",
+      "horizon_days": 730,
+      "entry_date": "2021-07-12",
+      "stock_return": "3.64966214159615",
+      "market_median": "0.19244054651546",
+      "excess_return": "3.45722159508069",
+      "computed_at": "2026-10-17 11:25:14.689628+05:30"
+    },
+    {
+      "review_id": "14a5f19b-4f7c-4d65-8673-f63908917796",
+      "horizon_days": 182,
+      "entry_date": "2023-02-13",
+      "stock_return": "0.622991347342398",
+      "market_median": "0.15465698600285",
+      "excess_return": "0.468334361339548",
+      "computed_at": "2026-10-17 17:22:12.676816+05:30"
+    },
+    {
+      "review_id": "14a5f19b-4f7c-4d65-8673-f63908917796",
+      "horizon_days": 365,
+      "entry_date": "2023-02-13",
+      "stock_return": "1.71001236093943",
+      "market_median": "0.48834421111975",
+      "excess_return": "1.22166814981968",
+      "computed_at": "2026-10-17 17:22:12.682329+05:30"
+    },
+    {
+      "review_id": "14a5f19b-4f7c-4d65-8673-f63908917796",
+      "horizon_days": 730,
+      "entry_date": "2023-02-13",
+      "stock_return": "2.84449938195303",
+      "market_median": "0.447246004478701",
+      "excess_return": "2.39725337747433",
+      "computed_at": "2026-10-17 17:22:12.683872+05:30"
+    },
+    {
+      "review_id": "14c4b1b0-7915-45e6-b72d-b17ac57b34f2",
+      "horizon_days": 182,
+      "entry_date": "2024-03-11",
+      "stock_return": "0.772640911969601",
+      "market_median": "0.179720519588982",
+      "excess_return": "0.592920392380619",
+      "computed_at": "2026-10-19 02:27:53.132495+05:30"
+    },
+    {
+      "review_id": "14c4b1b0-7915-45e6-b72d-b17ac57b34f2",
+      "horizon_days": 365,
+      "entry_date": "2024-03-11",
+      "stock_return": "0.35196326789107",
+      "market_median": "-0.100773926313495",
+      "excess_return": "0.452737194204565",
+      "computed_at": "2026-10-19 02:27:53.132906+05:30"
+    },
+    {
+      "review_id": "14c4b1b0-7915-45e6-b72d-b17ac57b34f2",
+      "horizon_days": 730,
+      "entry_date": "2024-03-11",
+      "stock_return": "0.522324255858138",
+      "market_median": "-0.169283276450512",
+      "excess_return": "0.69160753230865",
+      "computed_at": "2026-10-19 02:27:53.133224+05:30"
+    },
+    {
+      "review_id": "15296329-4900-4d82-a1c2-a5065c8978ee",
+      "horizon_days": 182,
+      "entry_date": "2024-10-21",
+      "stock_return": "-0.261686325906509",
+      "market_median": "-0.183465937170754",
+      "excess_return": "-0.0782203887357559",
+      "computed_at": "2026-10-19 02:28:21.585558+05:30"
+    },
+    {
+      "review_id": "15296329-4900-4d82-a1c2-a5065c8978ee",
+      "horizon_days": 365,
+      "entry_date": "2024-10-21",
+      "stock_return": "-0.342682394058541",
+      "market_median": "-0.168189316413763",
+      "excess_return": "-0.174493077644778",
+      "computed_at": "2026-10-19 02:28:21.833024+05:30"
+    },
+    {
+      "review_id": "15296329-4900-4d82-a1c2-a5065c8978ee",
+      "horizon_days": 730,
+      "entry_date": "2024-10-21",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 02:28:21.965157+05:30"
+    },
+    {
+      "review_id": "17054dcc-3752-4cfa-ac0c-ec8db7aabca3",
+      "horizon_days": 182,
+      "entry_date": "2022-02-28",
+      "stock_return": "0.137868126140214",
+      "market_median": "0.0322873112279159",
+      "excess_return": "0.105580814912298",
+      "computed_at": "2026-10-17 11:26:00.721028+05:30"
+    },
+    {
+      "review_id": "17054dcc-3752-4cfa-ac0c-ec8db7aabca3",
+      "horizon_days": 365,
+      "entry_date": "2022-02-28",
+      "stock_return": "0.200026062027626",
+      "market_median": "-0.027062426735336",
+      "excess_return": "0.227088488762962",
+      "computed_at": "2026-10-17 11:26:00.721441+05:30"
+    },
+    {
+      "review_id": "17054dcc-3752-4cfa-ac0c-ec8db7aabca3",
+      "horizon_days": 730,
+      "entry_date": "2022-02-28",
+      "stock_return": "2.05655459994788",
+      "market_median": "0.584117147009625",
+      "excess_return": "1.47243745293825",
+      "computed_at": "2026-10-17 11:26:00.721865+05:30"
+    },
+    {
+      "review_id": "170dd6ba-2550-4563-8239-3e04c5339c52",
+      "horizon_days": 182,
+      "entry_date": "2024-03-11",
+      "stock_return": "-0.0484975541579316",
+      "market_median": "0.179720519588982",
+      "excess_return": "-0.228218073746913",
+      "computed_at": "2026-10-19 02:27:53.933330+05:30"
+    },
+    {
+      "review_id": "170dd6ba-2550-4563-8239-3e04c5339c52",
+      "horizon_days": 365,
+      "entry_date": "2024-03-11",
+      "stock_return": "-0.144654088050314",
+      "market_median": "-0.100773926313495",
+      "excess_return": "-0.0438801617368198",
+      "computed_at": "2026-10-19 02:27:53.933926+05:30"
+    },
+    {
+      "review_id": "170dd6ba-2550-4563-8239-3e04c5339c52",
+      "horizon_days": 730,
+      "entry_date": "2024-03-11",
+      "stock_return": "-0.111390635918938",
+      "market_median": "-0.169283276450512",
+      "excess_return": "0.0578926405315741",
+      "computed_at": "2026-10-19 02:27:53.934459+05:30"
+    },
+    {
+      "review_id": "17cd8e6e-1237-40cf-a7f8-3f9db6cc3d6b",
+      "horizon_days": 182,
+      "entry_date": "2023-08-21",
+      "stock_return": "0.517977093703184",
+      "market_median": "0.285293109221353",
+      "excess_return": "0.232683984481831",
+      "computed_at": "2026-10-17 17:22:49.670116+05:30"
+    },
+    {
+      "review_id": "17cd8e6e-1237-40cf-a7f8-3f9db6cc3d6b",
+      "horizon_days": 365,
+      "entry_date": "2023-08-21",
+      "stock_return": "0.821340549944426",
+      "market_median": "0.417400419287212",
+      "excess_return": "0.403940130657214",
+      "computed_at": "2026-10-17 17:22:49.670500+05:30"
+    },
+    {
+      "review_id": "17cd8e6e-1237-40cf-a7f8-3f9db6cc3d6b",
+      "horizon_days": 730,
+      "entry_date": "2023-08-21",
+      "stock_return": "0.976610447977577",
+      "market_median": "0.251730545876887",
+      "excess_return": "0.724879902100689",
+      "computed_at": "2026-10-17 17:22:49.670981+05:30"
+    },
+    {
+      "review_id": "1c88aa5b-5772-4c9b-9ead-e471a3588f28",
+      "horizon_days": 182,
+      "entry_date": "2021-07-12",
+      "stock_return": "-0.0687442713107242",
+      "market_median": "0.110392839383391",
+      "excess_return": "-0.179137110694116",
+      "computed_at": "2026-10-17 11:25:08.936116+05:30"
+    },
+    {
+      "review_id": "1c88aa5b-5772-4c9b-9ead-e471a3588f28",
+      "horizon_days": 365,
+      "entry_date": "2021-07-12",
+      "stock_return": "-0.425297891842346",
+      "market_median": "-0.0345424443106562",
+      "excess_return": "-0.39075544753169",
+      "computed_at": "2026-10-17 11:25:09.151775+05:30"
+    },
+    {
+      "review_id": "1c88aa5b-5772-4c9b-9ead-e471a3588f28",
+      "horizon_days": 730,
+      "entry_date": "2021-07-12",
+      "stock_return": "-0.253895508707608",
+      "market_median": "0.19244054651546",
+      "excess_return": "-0.446336055223068",
+      "computed_at": "2026-10-17 11:25:09.376772+05:30"
+    },
+    {
+      "review_id": "1df48dab-904e-428a-9370-75c8ad817674",
+      "horizon_days": 182,
+      "entry_date": "2021-04-26",
+      "stock_return": "0.137361205233801",
+      "market_median": "0.34273127753304",
+      "excess_return": "-0.205370072299239",
+      "computed_at": "2026-10-17 11:25:04.569385+05:30"
+    },
+    {
+      "review_id": "1df48dab-904e-428a-9370-75c8ad817674",
+      "horizon_days": 365,
+      "entry_date": "2021-04-26",
+      "stock_return": "0.216024605119116",
+      "market_median": "0.46849199663016",
+      "excess_return": "-0.252467391511044",
+      "computed_at": "2026-10-17 11:25:04.744385+05:30"
+    },
+    {
+      "review_id": "1df48dab-904e-428a-9370-75c8ad817674",
+      "horizon_days": 730,
+      "entry_date": "2021-04-26",
+      "stock_return": "0.690051086815357",
+      "market_median": "0.42741935483871",
+      "excess_return": "0.262631731976647",
+      "computed_at": "2026-10-17 11:25:04.905283+05:30"
+    },
+    {
+      "review_id": "20d6b1e1-df15-4a6f-9894-0144ba066b0d",
+      "horizon_days": 182,
+      "entry_date": "2023-11-20",
+      "stock_return": "0.447230929989551",
+      "market_median": "0.122337352182119",
+      "excess_return": "0.324893577807431",
+      "computed_at": "2026-10-17 17:23:13.070972+05:30"
+    },
+    {
+      "review_id": "20d6b1e1-df15-4a6f-9894-0144ba066b0d",
+      "horizon_days": 365,
+      "entry_date": "2023-11-20",
+      "stock_return": "0.752455590386625",
+      "market_median": "0.196453239415931",
+      "excess_return": "0.556002350970693",
+      "computed_at": "2026-10-17 17:23:13.071553+05:30"
+    },
+    {
+      "review_id": "20d6b1e1-df15-4a6f-9894-0144ba066b0d",
+      "horizon_days": 730,
+      "entry_date": "2023-11-20",
+      "stock_return": "0.456635318704284",
+      "market_median": "0.0765072765072765",
+      "excess_return": "0.380128042197008",
+      "computed_at": "2026-10-17 17:23:13.071991+05:30"
+    },
+    {
+      "review_id": "214d0ec5-0a2a-4024-9745-8fca6095b127",
+      "horizon_days": 182,
+      "entry_date": "2021-02-15",
+      "stock_return": "-0.129463235640024",
+      "market_median": "0.339757676020435",
+      "excess_return": "-0.469220911660459",
+      "computed_at": "2026-10-17 11:24:57.731831+05:30"
+    },
+    {
+      "review_id": "214d0ec5-0a2a-4024-9745-8fca6095b127",
+      "horizon_days": 365,
+      "entry_date": "2021-02-15",
+      "stock_return": "0.777767323705133",
+      "market_median": "0.433781890026075",
+      "excess_return": "0.343985433679058",
+      "computed_at": "2026-10-17 11:24:57.732082+05:30"
+    },
+    {
+      "review_id": "214d0ec5-0a2a-4024-9745-8fca6095b127",
+      "horizon_days": 730,
+      "entry_date": "2021-02-15",
+      "stock_return": "-0.415721879851343",
+      "market_median": "0.462118917183111",
+      "excess_return": "-0.877840797034454",
+      "computed_at": "2026-10-17 11:24:57.732289+05:30"
+    },
+    {
+      "review_id": "216a8b83-12cc-4ec6-975c-6320549c15af",
+      "horizon_days": 182,
+      "entry_date": "2024-08-12",
+      "stock_return": "-0.589403973509934",
+      "market_median": "-0.134596974918629",
+      "excess_return": "-0.454806998591305",
+      "computed_at": "2026-10-19 02:28:15.584715+05:30"
+    },
+    {
+      "review_id": "216a8b83-12cc-4ec6-975c-6320549c15af",
+      "horizon_days": 365,
+      "entry_date": "2024-08-12",
+      "stock_return": "-0.609271523178808",
+      "market_median": "-0.15690841577053",
+      "excess_return": "-0.452363107408278",
+      "computed_at": "2026-10-19 02:28:15.585040+05:30"
+    },
+    {
+      "review_id": "216a8b83-12cc-4ec6-975c-6320549c15af",
+      "horizon_days": 730,
+      "entry_date": "2024-08-12",
+      "stock_return": "-0.880794701986755",
+      "market_median": "-0.209476541867352",
+      "excess_return": "-0.671318160119403",
+      "computed_at": "2026-10-19 02:28:15.585332+05:30"
+    },
+    {
+      "review_id": "22efc103-ab23-4a9f-812f-d1b1e638b92d",
+      "horizon_days": 182,
+      "entry_date": "2023-02-27",
+      "stock_return": "0.295242065146192",
+      "market_median": "0.262462866005945",
+      "excess_return": "0.0327791991402471",
+      "computed_at": "2026-10-17 17:22:19.901306+05:30"
+    },
+    {
+      "review_id": "22efc103-ab23-4a9f-812f-d1b1e638b92d",
+      "horizon_days": 365,
+      "entry_date": "2023-02-27",
+      "stock_return": "0.407550765199786",
+      "market_median": "0.62368362709234",
+      "excess_return": "-0.216132861892554",
+      "computed_at": "2026-10-17 17:22:19.902085+05:30"
+    },
+    {
+      "review_id": "22efc103-ab23-4a9f-812f-d1b1e638b92d",
+      "horizon_days": 730,
+      "entry_date": "2023-02-27",
+      "stock_return": "0.402221163580063",
+      "market_median": "0.43244027036889",
+      "excess_return": "-0.030219106788827",
+      "computed_at": "2026-10-17 17:22:19.902726+05:30"
+    },
+    {
+      "review_id": "27b3b6da-0953-4b0c-8221-cb9592a71588",
+      "horizon_days": 182,
+      "entry_date": "2024-08-19",
+      "stock_return": "0.468660416828078",
+      "market_median": "-0.214545779715333",
+      "excess_return": "0.683206196543411",
+      "computed_at": "2026-10-19 02:28:16.235185+05:30"
+    },
+    {
+      "review_id": "27b3b6da-0953-4b0c-8221-cb9592a71588",
+      "horizon_days": 365,
+      "entry_date": "2024-08-19",
+      "stock_return": "0.19077503163658",
+      "market_median": "-0.154864291299006",
+      "excess_return": "0.345639322935586",
+      "computed_at": "2026-10-19 02:28:16.235662+05:30"
+    },
+    {
+      "review_id": "27b3b6da-0953-4b0c-8221-cb9592a71588",
+      "horizon_days": 730,
+      "entry_date": "2024-08-19",
+      "stock_return": "-0.0677926706438366",
+      "market_median": "-0.215872878103719",
+      "excess_return": "0.148080207459883",
+      "computed_at": "2026-10-19 02:28:16.236008+05:30"
+    },
+    {
+      "review_id": "28deb975-5cbd-4b47-a904-bf2a6e042e11",
+      "horizon_days": 182,
+      "entry_date": "2023-08-21",
+      "stock_return": "0.136980830670926",
+      "market_median": "0.285293109221353",
+      "excess_return": "-0.148312278550427",
+      "computed_at": "2026-10-17 17:22:49.723595+05:30"
+    },
+    {
+      "review_id": "28deb975-5cbd-4b47-a904-bf2a6e042e11",
+      "horizon_days": 365,
+      "entry_date": "2023-08-21",
+      "stock_return": "0.0618210862619808",
+      "market_median": "0.417400419287212",
+      "excess_return": "-0.355579333025231",
+      "computed_at": "2026-10-17 17:22:49.724178+05:30"
+    },
+    {
+      "review_id": "28deb975-5cbd-4b47-a904-bf2a6e042e11",
+      "horizon_days": 730,
+      "entry_date": "2023-08-21",
+      "stock_return": "0.451277955271565",
+      "market_median": "0.251730545876887",
+      "excess_return": "0.199547409394678",
+      "computed_at": "2026-10-17 17:22:49.724543+05:30"
+    },
+    {
+      "review_id": "28ef6f08-50a4-4ee2-ac31-4aa16d0fba16",
+      "horizon_days": 182,
+      "entry_date": "2021-03-01",
+      "stock_return": "0.0400636773680021",
+      "market_median": "0.273865227954262",
+      "excess_return": "-0.23380155058626",
+      "computed_at": "2026-10-17 11:25:00.739189+05:30"
+    },
+    {
+      "review_id": "28ef6f08-50a4-4ee2-ac31-4aa16d0fba16",
+      "horizon_days": 365,
+      "entry_date": "2021-03-01",
+      "stock_return": "-0.143274078004776",
+      "market_median": "0.313671483760195",
+      "excess_return": "-0.45694556176497",
+      "computed_at": "2026-10-17 11:25:00.739410+05:30"
+    },
+    {
+      "review_id": "28ef6f08-50a4-4ee2-ac31-4aa16d0fba16",
+      "horizon_days": 730,
+      "entry_date": "2021-03-01",
+      "stock_return": "0.370655346245689",
+      "market_median": "0.384390243902439",
+      "excess_return": "-0.0137348976567502",
+      "computed_at": "2026-10-17 11:25:00.739711+05:30"
+    },
+    {
+      "review_id": "2940dd9d-c317-4d07-b5af-d4a7f9bd4ade",
+      "horizon_days": 182,
+      "entry_date": "2025-09-01",
+      "stock_return": "0.301228323699422",
+      "market_median": "-0.171416193318571",
+      "excess_return": "0.472644517017993",
+      "computed_at": "2026-10-19 13:34:09.705261+05:30"
+    },
+    {
+      "review_id": "2940dd9d-c317-4d07-b5af-d4a7f9bd4ade",
+      "horizon_days": 365,
+      "entry_date": "2025-09-01",
+      "stock_return": "0.644147398843931",
+      "market_median": "-0.104166666666667",
+      "excess_return": "0.748314065510597",
+      "computed_at": "2026-10-19 13:34:09.705773+05:30"
+    },
+    {
+      "review_id": "2940dd9d-c317-4d07-b5af-d4a7f9bd4ade",
+      "horizon_days": 730,
+      "entry_date": "2025-09-01",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:09.706154+05:30"
+    },
+    {
+      "review_id": "2cc6a90a-6d55-42d4-88ae-3c0b75cf7eb0",
+      "horizon_days": 182,
+      "entry_date": "2021-03-15",
+      "stock_return": "0.572277963582311",
+      "market_median": "0.290373275504664",
+      "excess_return": "0.281904688077647",
+      "computed_at": "2026-10-17 11:25:02.052976+05:30"
+    },
+    {
+      "review_id": "2cc6a90a-6d55-42d4-88ae-3c0b75cf7eb0",
+      "horizon_days": 365,
+      "entry_date": "2021-03-15",
+      "stock_return": "0.366034931252323",
+      "market_median": "0.326478069320827",
+      "excess_return": "0.0395568619314958",
+      "computed_at": "2026-10-17 11:25:02.053536+05:30"
+    },
+    {
+      "review_id": "2cc6a90a-6d55-42d4-88ae-3c0b75cf7eb0",
+      "horizon_days": 730,
+      "entry_date": "2021-03-15",
+      "stock_return": "0.552582683017466",
+      "market_median": "0.333403961244848",
+      "excess_return": "0.219178721772617",
+      "computed_at": "2026-10-17 11:25:02.054051+05:30"
+    },
+    {
+      "review_id": "2d9d053c-bee3-4780-b535-e2ee504d86ae",
+      "horizon_days": 182,
+      "entry_date": "2021-02-15",
+      "stock_return": "0.262034323984931",
+      "market_median": "0.339757676020435",
+      "excess_return": "-0.077723352035504",
+      "computed_at": "2026-10-17 11:24:57.564344+05:30"
+    },
+    {
+      "review_id": "2d9d053c-bee3-4780-b535-e2ee504d86ae",
+      "horizon_days": 365,
+      "entry_date": "2021-02-15",
+      "stock_return": "1.07806613645877",
+      "market_median": "0.433781890026075",
+      "excess_return": "0.644284246432695",
+      "computed_at": "2026-10-17 11:24:57.564813+05:30"
+    },
+    {
+      "review_id": "2d9d053c-bee3-4780-b535-e2ee504d86ae",
+      "horizon_days": 730,
+      "entry_date": "2021-02-15",
+      "stock_return": "0.946839681875262",
+      "market_median": "0.462118917183111",
+      "excess_return": "0.48472076469215",
+      "computed_at": "2026-10-17 11:24:57.565113+05:30"
+    },
+    {
+      "review_id": "2e033342-047f-4f8e-9478-285f3c4ab018",
+      "horizon_days": 182,
+      "entry_date": "2025-09-08",
+      "stock_return": "-0.225302419354839",
+      "market_median": "-0.215083798882682",
+      "excess_return": "-0.0102186204721572",
+      "computed_at": "2026-10-19 13:34:10.746958+05:30"
+    },
+    {
+      "review_id": "2e033342-047f-4f8e-9478-285f3c4ab018",
+      "horizon_days": 365,
+      "entry_date": "2025-09-08",
+      "stock_return": "-0.111055107526882",
+      "market_median": "-0.117565430039876",
+      "excess_return": "0.00651032251299449",
+      "computed_at": "2026-10-19 13:34:10.747809+05:30"
+    },
+    {
+      "review_id": "2e033342-047f-4f8e-9478-285f3c4ab018",
+      "horizon_days": 730,
+      "entry_date": "2025-09-08",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:10.748069+05:30"
+    },
+    {
+      "review_id": "2e3cce74-1031-4907-bb91-9bf3ad0ba54e",
+      "horizon_days": 182,
+      "entry_date": "2021-01-25",
+      "stock_return": "0.271333333333333",
+      "market_median": "0.451784981534674",
+      "excess_return": "-0.180451648201341",
+      "computed_at": "2026-10-17 11:24:53.943039+05:30"
+    },
+    {
+      "review_id": "2e3cce74-1031-4907-bb91-9bf3ad0ba54e",
+      "horizon_days": 365,
+      "entry_date": "2021-01-25",
+      "stock_return": "2.97053333333333",
+      "market_median": "0.556840077071291",
+      "excess_return": "2.41369325626204",
+      "computed_at": "2026-10-17 11:24:54.109304+05:30"
+    },
+    {
+      "review_id": "2e3cce74-1031-4907-bb91-9bf3ad0ba54e",
+      "horizon_days": 730,
+      "entry_date": "2021-01-25",
+      "stock_return": "2.56333333333333",
+      "market_median": "0.59751707926247",
+      "excess_return": "1.96581625407086",
+      "computed_at": "2026-10-17 11:24:54.259175+05:30"
+    },
+    {
+      "review_id": "30695585-326e-4b19-83c7-e1c4e0294e1c",
+      "horizon_days": 182,
+      "entry_date": "2025-12-15",
+      "stock_return": "-0.00658436213991775",
+      "market_median": "-0.0567153652970655",
+      "excess_return": "0.0501310031571477",
+      "computed_at": "2026-10-19 13:34:14.500505+05:30"
+    },
+    {
+      "review_id": "30695585-326e-4b19-83c7-e1c4e0294e1c",
+      "horizon_days": 365,
+      "entry_date": "2025-12-15",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:14.500859+05:30"
+    },
+    {
+      "review_id": "30695585-326e-4b19-83c7-e1c4e0294e1c",
+      "horizon_days": 730,
+      "entry_date": "2025-12-15",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:14.501193+05:30"
+    },
+    {
+      "review_id": "351010a1-ced6-4520-b1d9-e961e9245257",
+      "horizon_days": 182,
+      "entry_date": "2023-07-31",
+      "stock_return": "0.333333333333333",
+      "market_median": "0.279529125075367",
+      "excess_return": "0.0538042082579667",
+      "computed_at": "2026-10-17 17:22:46.042323+05:30"
+    },
+    {
+      "review_id": "351010a1-ced6-4520-b1d9-e961e9245257",
+      "horizon_days": 365,
+      "entry_date": "2023-07-31",
+      "stock_return": "0.59047619047619",
+      "market_median": "0.46018691588785",
+      "excess_return": "0.13028927458834",
+      "computed_at": "2026-10-17 17:22:46.042999+05:30"
+    },
+    {
+      "review_id": "351010a1-ced6-4520-b1d9-e961e9245257",
+      "horizon_days": 730,
+      "entry_date": "2023-07-31",
+      "stock_return": "0.212698412698413",
+      "market_median": "0.288929592566119",
+      "excess_return": "-0.0762311798677061",
+      "computed_at": "2026-10-17 17:22:46.043532+05:30"
+    },
+    {
+      "review_id": "3663861e-629a-40ad-b5f4-8b92ef611bbb",
+      "horizon_days": 182,
+      "entry_date": "2024-03-11",
+      "stock_return": "0.378567582121702",
+      "market_median": "0.179720519588982",
+      "excess_return": "0.19884706253272",
+      "computed_at": "2026-10-19 02:27:52.211887+05:30"
+    },
+    {
+      "review_id": "3663861e-629a-40ad-b5f4-8b92ef611bbb",
+      "horizon_days": 365,
+      "entry_date": "2024-03-11",
+      "stock_return": "0.333717978306024",
+      "market_median": "-0.100773926313495",
+      "excess_return": "0.434491904619518",
+      "computed_at": "2026-10-19 02:27:52.460134+05:30"
+    },
+    {
+      "review_id": "3663861e-629a-40ad-b5f4-8b92ef611bbb",
+      "horizon_days": 730,
+      "entry_date": "2024-03-11",
+      "stock_return": "1.20524655742749",
+      "market_median": "-0.169283276450512",
+      "excess_return": "1.37452983387801",
+      "computed_at": "2026-10-19 02:27:52.708566+05:30"
+    },
+    {
+      "review_id": "38065f01-8c96-41df-a647-5f810ae5a4d5",
+      "horizon_days": 182,
+      "entry_date": "2023-03-06",
+      "stock_return": "0.0573770491803278",
+      "market_median": "0.266188730355183",
+      "excess_return": "-0.208811681174855",
+      "computed_at": "2026-10-17 17:22:21.481973+05:30"
+    },
+    {
+      "review_id": "38065f01-8c96-41df-a647-5f810ae5a4d5",
+      "horizon_days": 365,
+      "entry_date": "2023-03-06",
+      "stock_return": "1.33970856102004",
+      "market_median": "0.539948892674617",
+      "excess_return": "0.799759668345419",
+      "computed_at": "2026-10-17 17:22:21.482780+05:30"
+    },
+    {
+      "review_id": "38065f01-8c96-41df-a647-5f810ae5a4d5",
+      "horizon_days": 730,
+      "entry_date": "2023-03-06",
+      "stock_return": "0.533151183970856",
+      "market_median": "0.375497156481544",
+      "excess_return": "0.157654027489312",
+      "computed_at": "2026-10-17 17:22:21.483463+05:30"
+    },
+    {
+      "review_id": "3ac50ee5-3f44-4ce2-9ee7-74bfb67599e8",
+      "horizon_days": 182,
+      "entry_date": "2023-03-13",
+      "stock_return": "-0.189741976085588",
+      "market_median": "0.328884652049571",
+      "excess_return": "-0.518626628135159",
+      "computed_at": "2026-10-17 17:22:22.825792+05:30"
+    },
+    {
+      "review_id": "3ac50ee5-3f44-4ce2-9ee7-74bfb67599e8",
+      "horizon_days": 365,
+      "entry_date": "2023-03-13",
+      "stock_return": "-0.0846444304594085",
+      "market_median": "0.470582348231526",
+      "excess_return": "-0.555226778690935",
+      "computed_at": "2026-10-17 17:22:22.826869+05:30"
+    },
+    {
+      "review_id": "3ac50ee5-3f44-4ce2-9ee7-74bfb67599e8",
+      "horizon_days": 730,
+      "entry_date": "2023-03-13",
+      "stock_return": "-0.18942731277533",
+      "market_median": "0.382266833960686",
+      "excess_return": "-0.571694146736016",
+      "computed_at": "2026-10-17 17:22:22.827654+05:30"
+    },
+    {
+      "review_id": "3d3863b1-d87a-40c2-9158-c387253d7cd1",
+      "horizon_days": 182,
+      "entry_date": "2021-08-30",
+      "stock_return": "0.621311475409836",
+      "market_median": "0.0126050420168067",
+      "excess_return": "0.608706433393029",
+      "computed_at": "2026-10-17 11:25:15.886912+05:30"
+    },
+    {
+      "review_id": "3d3863b1-d87a-40c2-9158-c387253d7cd1",
+      "horizon_days": 365,
+      "entry_date": "2021-08-30",
+      "stock_return": "0.852459016393443",
+      "market_median": "0.0855421686746988",
+      "excess_return": "0.766916847718744",
+      "computed_at": "2026-10-17 11:25:16.060201+05:30"
+    },
+    {
+      "review_id": "3d3863b1-d87a-40c2-9158-c387253d7cd1",
+      "horizon_days": 730,
+      "entry_date": "2021-08-30",
+      "stock_return": "1.66680327868852",
+      "market_median": "0.323782961460446",
+      "excess_return": "1.34302031722808",
+      "computed_at": "2026-10-17 11:25:16.245369+05:30"
+    },
+    {
+      "review_id": "3f381492-d053-4c1e-874a-6bc031ed8041",
+      "horizon_days": 182,
+      "entry_date": "2024-03-04",
+      "stock_return": "-0.203268510441788",
+      "market_median": "0.129591836734694",
+      "excess_return": "-0.332860347176482",
+      "computed_at": "2026-10-19 02:27:52.920894+05:30"
+    },
+    {
+      "review_id": "3f381492-d053-4c1e-874a-6bc031ed8041",
+      "horizon_days": 365,
+      "entry_date": "2024-03-04",
+      "stock_return": "-0.455179845040792",
+      "market_median": "-0.165537094614694",
+      "excess_return": "-0.289642750426098",
+      "computed_at": "2026-10-19 02:27:52.921237+05:30"
+    },
+    {
+      "review_id": "3f381492-d053-4c1e-874a-6bc031ed8041",
+      "horizon_days": 730,
+      "entry_date": "2024-03-04",
+      "stock_return": "-0.534968443737493",
+      "market_median": "-0.209555189456343",
+      "excess_return": "-0.32541325428115",
+      "computed_at": "2026-10-19 02:27:52.921552+05:30"
+    },
+    {
+      "review_id": "4101991c-19e0-4a5e-a5f2-489e196472bc",
+      "horizon_days": 182,
+      "entry_date": "2021-02-22",
+      "stock_return": "0.214922480620155",
+      "market_median": "0.258211032334984",
+      "excess_return": "-0.0432885517148287",
+      "computed_at": "2026-10-17 11:24:58.800698+05:30"
+    },
+    {
+      "review_id": "4101991c-19e0-4a5e-a5f2-489e196472bc",
+      "horizon_days": 365,
+      "entry_date": "2021-02-22",
+      "stock_return": "0.156589147286822",
+      "market_median": "0.358742562128744",
+      "excess_return": "-0.202153414841923",
+      "computed_at": "2026-10-17 11:24:58.801235+05:30"
+    },
+    {
+      "review_id": "4101991c-19e0-4a5e-a5f2-489e196472bc",
+      "horizon_days": 730,
+      "entry_date": "2021-02-22",
+      "stock_return": "0.211821705426356",
+      "market_median": "0.425531914893617",
+      "excess_return": "-0.213710209467261",
+      "computed_at": "2026-10-17 11:24:58.801652+05:30"
+    },
+    {
+      "review_id": "42619670-2a0e-42f8-9415-a25b7914e273",
+      "horizon_days": 182,
+      "entry_date": "2021-03-22",
+      "stock_return": "0.955794504181601",
+      "market_median": "0.316279196681947",
+      "excess_return": "0.639515307499654",
+      "computed_at": "2026-10-17 11:25:03.049767+05:30"
+    },
+    {
+      "review_id": "42619670-2a0e-42f8-9415-a25b7914e273",
+      "horizon_days": 365,
+      "entry_date": "2021-03-22",
+      "stock_return": "2.87634408582769",
+      "market_median": "0.393954459580392",
+      "excess_return": "2.4823896262473",
+      "computed_at": "2026-10-17 11:25:03.051216+05:30"
+    },
+    {
+      "review_id": "42619670-2a0e-42f8-9415-a25b7914e273",
+      "horizon_days": 730,
+      "entry_date": "2021-03-22",
+      "stock_return": "1.58602150524704",
+      "market_median": "0.362903225806452",
+      "excess_return": "1.22311827944059",
+      "computed_at": "2026-10-17 11:25:03.052435+05:30"
+    },
+    {
+      "review_id": "43606771-412e-42b8-93fc-5bd94ef9b4f2",
+      "horizon_days": 182,
+      "entry_date": "2023-10-23",
+      "stock_return": "-0.0240842388260334",
+      "market_median": "0.188828658198086",
+      "excess_return": "-0.21291289702412",
+      "computed_at": "2026-10-17 17:23:06.915316+05:30"
+    },
+    {
+      "review_id": "43606771-412e-42b8-93fc-5bd94ef9b4f2",
+      "horizon_days": 365,
+      "entry_date": "2023-10-23",
+      "stock_return": "0.277360815503529",
+      "market_median": "0.301382971529046",
+      "excess_return": "-0.0240221560255173",
+      "computed_at": "2026-10-17 17:23:06.915910+05:30"
+    },
+    {
+      "review_id": "43606771-412e-42b8-93fc-5bd94ef9b4f2",
+      "horizon_days": 730,
+      "entry_date": "2023-10-23",
+      "stock_return": "0.893805309734513",
+      "market_median": "0.184828862164662",
+      "excess_return": "0.708976447569851",
+      "computed_at": "2026-10-17 17:23:06.916403+05:30"
+    },
+    {
+      "review_id": "453f11e3-2a35-4564-8872-a2bb584d3669",
+      "horizon_days": 182,
+      "entry_date": "2024-12-02",
+      "stock_return": "-0.408259359320726",
+      "market_median": "-0.126947872536379",
+      "excess_return": "-0.281311486784347",
+      "computed_at": "2026-10-19 02:28:30.496738+05:30"
+    },
+    {
+      "review_id": "453f11e3-2a35-4564-8872-a2bb584d3669",
+      "horizon_days": 365,
+      "entry_date": "2024-12-02",
+      "stock_return": "-0.391277499035122",
+      "market_median": "-0.193611927293168",
+      "excess_return": "-0.197665571741954",
+      "computed_at": "2026-10-19 02:28:30.497358+05:30"
+    },
+    {
+      "review_id": "453f11e3-2a35-4564-8872-a2bb584d3669",
+      "horizon_days": 730,
+      "entry_date": "2024-12-02",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 02:28:30.497813+05:30"
+    },
+    {
+      "review_id": "460b0eb7-c283-4323-8898-5cc401f4e202",
+      "horizon_days": 182,
+      "entry_date": "2023-05-15",
+      "stock_return": "0.0949456778460087",
+      "market_median": "0.234038308060654",
+      "excess_return": "-0.139092630214646",
+      "computed_at": "2026-10-17 17:22:34.772446+05:30"
+    },
+    {
+      "review_id": "460b0eb7-c283-4323-8898-5cc401f4e202",
+      "horizon_days": 365,
+      "entry_date": "2023-05-15",
+      "stock_return": "0.17855455833727",
+      "market_median": "0.422004132231405",
+      "excess_return": "-0.243449573894135",
+      "computed_at": "2026-10-17 17:22:34.772978+05:30"
+    },
+    {
+      "review_id": "460b0eb7-c283-4323-8898-5cc401f4e202",
+      "horizon_days": 730,
+      "entry_date": "2023-05-15",
+      "stock_return": "-0.367406707605102",
+      "market_median": "0.407155963302752",
+      "excess_return": "-0.774562670907854",
+      "computed_at": "2026-10-17 17:22:34.773477+05:30"
+    },
+    {
+      "review_id": "460ebfbf-3b2d-4a35-8353-327380884a5d",
+      "horizon_days": 182,
+      "entry_date": "2021-01-18",
+      "stock_return": "0.395452590840679",
+      "market_median": "0.434238243808511",
+      "excess_return": "-0.038785652967832",
+      "computed_at": "2026-10-17 11:24:53.770169+05:30"
+    },
+    {
+      "review_id": "460ebfbf-3b2d-4a35-8353-327380884a5d",
+      "horizon_days": 365,
+      "entry_date": "2021-01-18",
+      "stock_return": "0.963986239518383",
+      "market_median": "0.611431805658705",
+      "excess_return": "0.352554433859678",
+      "computed_at": "2026-10-17 11:24:53.770667+05:30"
+    },
+    {
+      "review_id": "460ebfbf-3b2d-4a35-8353-327380884a5d",
+      "horizon_days": 730,
+      "entry_date": "2021-01-18",
+      "stock_return": "0.624919372178026",
+      "market_median": "0.608115416536279",
+      "excess_return": "0.0168039556417467",
+      "computed_at": "2026-10-17 11:24:53.771125+05:30"
+    },
+    {
+      "review_id": "4632db5f-a733-4491-9371-a96d6724f045",
+      "horizon_days": 182,
+      "entry_date": "2021-07-26",
+      "stock_return": "0.14462683834747",
+      "market_median": "0.0502379693283977",
+      "excess_return": "0.0943888690190728",
+      "computed_at": "2026-10-17 11:25:15.058907+05:30"
+    },
+    {
+      "review_id": "4632db5f-a733-4491-9371-a96d6724f045",
+      "horizon_days": 365,
+      "entry_date": "2021-07-26",
+      "stock_return": "0.0737169707695122",
+      "market_median": "-0.0355704697986577",
+      "excess_return": "0.10928744056817",
+      "computed_at": "2026-10-17 11:25:15.059221+05:30"
+    },
+    {
+      "review_id": "4632db5f-a733-4491-9371-a96d6724f045",
+      "horizon_days": 730,
+      "entry_date": "2021-07-26",
+      "stock_return": "2.42527613352047",
+      "market_median": "0.187230708969839",
+      "excess_return": "2.23804542455063",
+      "computed_at": "2026-10-17 11:25:15.059506+05:30"
+    },
+    {
+      "review_id": "471c0ad0-5354-4796-8b7b-3531ef008c1c",
+      "horizon_days": 182,
+      "entry_date": "2025-09-01",
+      "stock_return": "0.00369901684026086",
+      "market_median": "-0.171416193318571",
+      "excess_return": "0.175115210158832",
+      "computed_at": "2026-10-19 13:34:09.007231+05:30"
+    },
+    {
+      "review_id": "471c0ad0-5354-4796-8b7b-3531ef008c1c",
+      "horizon_days": 365,
+      "entry_date": "2025-09-01",
+      "stock_return": "0.292611700574321",
+      "market_median": "-0.104166666666667",
+      "excess_return": "0.396778367240988",
+      "computed_at": "2026-10-19 13:34:09.115072+05:30"
+    },
+    {
+      "review_id": "471c0ad0-5354-4796-8b7b-3531ef008c1c",
+      "horizon_days": 730,
+      "entry_date": "2025-09-01",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:09.169822+05:30"
+    },
+    {
+      "review_id": "4a2b43a0-82ba-4d24-860f-78d55ef20a31",
+      "horizon_days": 182,
+      "entry_date": "2023-04-17",
+      "stock_return": "0.342001697661857",
+      "market_median": "0.295494389901823",
+      "excess_return": "0.0465073077600332",
+      "computed_at": "2026-10-17 17:22:31.242885+05:30"
+    },
+    {
+      "review_id": "4a2b43a0-82ba-4d24-860f-78d55ef20a31",
+      "horizon_days": 365,
+      "entry_date": "2023-04-17",
+      "stock_return": "0.225711860483062",
+      "market_median": "0.495210146747262",
+      "excess_return": "-0.2694982862642",
+      "computed_at": "2026-10-17 17:22:31.243688+05:30"
+    },
+    {
+      "review_id": "4a2b43a0-82ba-4d24-860f-78d55ef20a31",
+      "horizon_days": 730,
+      "entry_date": "2023-04-17",
+      "stock_return": "0.332278725210279",
+      "market_median": "0.439254289857613",
+      "excess_return": "-0.106975564647334",
+      "computed_at": "2026-10-17 17:22:31.244293+05:30"
+    },
+    {
+      "review_id": "4af629da-311d-47cf-b2df-cce14f513a78",
+      "horizon_days": 182,
+      "entry_date": "2021-10-18",
+      "stock_return": "-0.133100069979006",
+      "market_median": "0.0164614704213542",
+      "excess_return": "-0.149561540400361",
+      "computed_at": "2026-10-17 11:25:27.117571+05:30"
+    },
+    {
+      "review_id": "4af629da-311d-47cf-b2df-cce14f513a78",
+      "horizon_days": 365,
+      "entry_date": "2021-10-18",
+      "stock_return": "-0.243946815955213",
+      "market_median": "-0.0176991150442478",
+      "excess_return": "-0.226247700910966",
+      "computed_at": "2026-10-17 11:25:27.295435+05:30"
+    },
+    {
+      "review_id": "4af629da-311d-47cf-b2df-cce14f513a78",
+      "horizon_days": 730,
+      "entry_date": "2021-10-18",
+      "stock_return": "0.652624212736179",
+      "market_median": "0.26197458455523",
+      "excess_return": "0.390649628180949",
+      "computed_at": "2026-10-17 11:25:27.476485+05:30"
+    },
+    {
+      "review_id": "4b1a917c-99cd-4ae4-8ce7-d4ccadaf109b",
+      "horizon_days": 182,
+      "entry_date": "2021-02-22",
+      "stock_return": "0.64171322160149",
+      "market_median": "0.258211032334984",
+      "excess_return": "0.383502189266506",
+      "computed_at": "2026-10-17 11:24:57.834105+05:30"
+    },
+    {
+      "review_id": "4b1a917c-99cd-4ae4-8ce7-d4ccadaf109b",
+      "horizon_days": 365,
+      "entry_date": "2021-02-22",
+      "stock_return": "1.01787709497207",
+      "market_median": "0.358742562128744",
+      "excess_return": "0.659134532843323",
+      "computed_at": "2026-10-17 11:24:57.834587+05:30"
+    },
+    {
+      "review_id": "4b1a917c-99cd-4ae4-8ce7-d4ccadaf109b",
+      "horizon_days": 730,
+      "entry_date": "2021-02-22",
+      "stock_return": "1.6536312849162",
+      "market_median": "0.425531914893617",
+      "excess_return": "1.22809937002258",
+      "computed_at": "2026-10-17 11:24:57.835014+05:30"
+    },
+    {
+      "review_id": "4bf3737e-2f31-4433-b87c-bfbcf19fd79a",
+      "horizon_days": 182,
+      "entry_date": "2021-02-22",
+      "stock_return": "0.761116856256463",
+      "market_median": "0.258211032334984",
+      "excess_return": "0.50290582392148",
+      "computed_at": "2026-10-17 11:24:58.240026+05:30"
+    },
+    {
+      "review_id": "4bf3737e-2f31-4433-b87c-bfbcf19fd79a",
+      "horizon_days": 365,
+      "entry_date": "2021-02-22",
+      "stock_return": "0.840744570837642",
+      "market_median": "0.358742562128744",
+      "excess_return": "0.482002008708898",
+      "computed_at": "2026-10-17 11:24:58.240289+05:30"
+    },
+    {
+      "review_id": "4bf3737e-2f31-4433-b87c-bfbcf19fd79a",
+      "horizon_days": 730,
+      "entry_date": "2021-02-22",
+      "stock_return": "3.26990692864529",
+      "market_median": "0.425531914893617",
+      "excess_return": "2.84437501375168",
+      "computed_at": "2026-10-17 11:24:58.240533+05:30"
+    },
+    {
+      "review_id": "53a8f42c-6d54-443f-98c9-ca5e655593cd",
+      "horizon_days": 182,
+      "entry_date": "2024-02-05",
+      "stock_return": "0.366424655504519",
+      "market_median": "0.0534372813236988",
+      "excess_return": "0.31298737418082",
+      "computed_at": "2026-10-19 02:27:47.600532+05:30"
+    },
+    {
+      "review_id": "53a8f42c-6d54-443f-98c9-ca5e655593cd",
+      "horizon_days": 365,
+      "entry_date": "2024-02-05",
+      "stock_return": "0.178100459327308",
+      "market_median": "-0.0240035202593708",
+      "excess_return": "0.202103979586679",
+      "computed_at": "2026-10-19 02:27:47.601099+05:30"
+    },
+    {
+      "review_id": "53a8f42c-6d54-443f-98c9-ca5e655593cd",
+      "horizon_days": 730,
+      "entry_date": "2024-02-05",
+      "stock_return": "-0.350244480663802",
+      "market_median": "-0.154929577464789",
+      "excess_return": "-0.195314903199013",
+      "computed_at": "2026-10-19 02:27:47.601444+05:30"
+    },
+    {
+      "review_id": "54c83fe6-37dd-43ec-9a2e-1a47327cb1da",
+      "horizon_days": 182,
+      "entry_date": "2023-08-21",
+      "stock_return": "0.593220338983051",
+      "market_median": "0.285293109221353",
+      "excess_return": "0.307927229761698",
+      "computed_at": "2026-10-17 17:22:49.665241+05:30"
+    },
+    {
+      "review_id": "54c83fe6-37dd-43ec-9a2e-1a47327cb1da",
+      "horizon_days": 365,
+      "entry_date": "2023-08-21",
+      "stock_return": "0.294915254237288",
+      "market_median": "0.417400419287212",
+      "excess_return": "-0.122485165049924",
+      "computed_at": "2026-10-17 17:22:49.665781+05:30"
+    },
+    {
+      "review_id": "54c83fe6-37dd-43ec-9a2e-1a47327cb1da",
+      "horizon_days": 730,
+      "entry_date": "2023-08-21",
+      "stock_return": "-0.271186440677966",
+      "market_median": "0.251730545876887",
+      "excess_return": "-0.522916986554854",
+      "computed_at": "2026-10-17 17:22:49.666245+05:30"
+    },
+    {
+      "review_id": "56cff22a-76b9-4f82-8da9-aaa0917c66bd",
+      "horizon_days": 182,
+      "entry_date": "2024-11-18",
+      "stock_return": "0.208909929594562",
+      "market_median": "-0.0856213402732596",
+      "excess_return": "0.294531269867821",
+      "computed_at": "2026-10-19 02:28:29.081858+05:30"
+    },
+    {
+      "review_id": "56cff22a-76b9-4f82-8da9-aaa0917c66bd",
+      "horizon_days": 365,
+      "entry_date": "2024-11-18",
+      "stock_return": "0.859796067006555",
+      "market_median": "-0.129940711462451",
+      "excess_return": "0.989736778469006",
+      "computed_at": "2026-10-19 02:28:29.082343+05:30"
+    },
+    {
+      "review_id": "56cff22a-76b9-4f82-8da9-aaa0917c66bd",
+      "horizon_days": 730,
+      "entry_date": "2024-11-18",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 02:28:29.082580+05:30"
+    },
+    {
+      "review_id": "57868328-7c26-4672-8705-1e89c04aba15",
+      "horizon_days": 182,
+      "entry_date": "2022-03-14",
+      "stock_return": "0.214331550802139",
+      "market_median": "0.0668523676880223",
+      "excess_return": "0.147479183114117",
+      "computed_at": "2026-10-17 11:26:02.344838+05:30"
+    },
+    {
+      "review_id": "57868328-7c26-4672-8705-1e89c04aba15",
+      "horizon_days": 365,
+      "entry_date": "2022-03-14",
+      "stock_return": "0.421818181818182",
+      "market_median": "-0.070051507270148",
+      "excess_return": "0.49186968908833",
+      "computed_at": "2026-10-17 11:26:02.346053+05:30"
+    },
+    {
+      "review_id": "57868328-7c26-4672-8705-1e89c04aba15",
+      "horizon_days": 730,
+      "entry_date": "2022-03-14",
+      "stock_return": "2.0331550802139",
+      "market_median": "0.366219257817675",
+      "excess_return": "1.66693582239623",
+      "computed_at": "2026-10-17 11:26:02.346776+05:30"
+    },
+    {
+      "review_id": "5c191dea-8df9-46c0-bfe1-80d2aa49e1ca",
+      "horizon_days": 182,
+      "entry_date": "2024-06-10",
+      "stock_return": "0.403105253655895",
+      "market_median": "0.0982225750240545",
+      "excess_return": "0.30488267863184",
+      "computed_at": "2026-10-19 02:28:06.693477+05:30"
+    },
+    {
+      "review_id": "5c191dea-8df9-46c0-bfe1-80d2aa49e1ca",
+      "horizon_days": 365,
+      "entry_date": "2024-06-10",
+      "stock_return": "0.661021845098393",
+      "market_median": "-0.0209808900173727",
+      "excess_return": "0.682002735115766",
+      "computed_at": "2026-10-19 02:28:06.693767+05:30"
+    },
+    {
+      "review_id": "5c191dea-8df9-46c0-bfe1-80d2aa49e1ca",
+      "horizon_days": 730,
+      "entry_date": "2024-06-10",
+      "stock_return": "2.51399169525185",
+      "market_median": "-0.15934912083806",
+      "excess_return": "2.67334081608991",
+      "computed_at": "2026-10-19 02:28:06.693987+05:30"
+    },
+    {
+      "review_id": "5d0b2378-3732-4a04-9543-b3fc867568c5",
+      "horizon_days": 182,
+      "entry_date": "2021-02-22",
+      "stock_return": "0.195194169229017",
+      "market_median": "0.258211032334984",
+      "excess_return": "-0.0630168631059667",
+      "computed_at": "2026-10-17 11:24:58.091465+05:30"
+    },
+    {
+      "review_id": "5d0b2378-3732-4a04-9543-b3fc867568c5",
+      "horizon_days": 365,
+      "entry_date": "2021-02-22",
+      "stock_return": "0.535246555062066",
+      "market_median": "0.358742562128744",
+      "excess_return": "0.176503992933321",
+      "computed_at": "2026-10-17 11:24:58.091885+05:30"
+    },
+    {
+      "review_id": "5d0b2378-3732-4a04-9543-b3fc867568c5",
+      "horizon_days": 730,
+      "entry_date": "2021-02-22",
+      "stock_return": "-0.037125612117071",
+      "market_median": "0.425531914893617",
+      "excess_return": "-0.462657527010688",
+      "computed_at": "2026-10-17 11:24:58.092299+05:30"
+    },
+    {
+      "review_id": "5d884405-f29c-43a2-a197-8ef25ad2959d",
+      "horizon_days": 182,
+      "entry_date": "2024-01-22",
+      "stock_return": "0.362178517397882",
+      "market_median": "0.0961343746401487",
+      "excess_return": "0.266044142757733",
+      "computed_at": "2026-10-19 02:27:45.454023+05:30"
+    },
+    {
+      "review_id": "5d884405-f29c-43a2-a197-8ef25ad2959d",
+      "horizon_days": 365,
+      "entry_date": "2024-01-22",
+      "stock_return": "1.33555219364599",
+      "market_median": "0.0550026752273943",
+      "excess_return": "1.2805495184186",
+      "computed_at": "2026-10-19 02:27:45.454719+05:30"
+    },
+    {
+      "review_id": "5d884405-f29c-43a2-a197-8ef25ad2959d",
+      "horizon_days": 730,
+      "entry_date": "2024-01-22",
+      "stock_return": "0.600302571860817",
+      "market_median": "-0.148962745467224",
+      "excess_return": "0.749265317328041",
+      "computed_at": "2026-10-19 02:27:45.455057+05:30"
+    },
+    {
+      "review_id": "5d885a3d-0624-4630-8e8d-e73c5ca5fc1b",
+      "horizon_days": 182,
+      "entry_date": "2021-05-31",
+      "stock_return": "0.0705537126818068",
+      "market_median": "0.118079673135853",
+      "excess_return": "-0.0475259604540461",
+      "computed_at": "2026-10-17 11:25:07.874048+05:30"
+    },
+    {
+      "review_id": "5d885a3d-0624-4630-8e8d-e73c5ca5fc1b",
+      "horizon_days": 365,
+      "entry_date": "2021-05-31",
+      "stock_return": "0.81047461087012",
+      "market_median": "0.127657469590378",
+      "excess_return": "0.682817141279742",
+      "computed_at": "2026-10-17 11:25:07.874681+05:30"
+    },
+    {
+      "review_id": "5d885a3d-0624-4630-8e8d-e73c5ca5fc1b",
+      "horizon_days": 730,
+      "entry_date": "2021-05-31",
+      "stock_return": "0.42587394743557",
+      "market_median": "0.280991297725907",
+      "excess_return": "0.144882649709663",
+      "computed_at": "2026-10-17 11:25:07.875101+05:30"
+    },
+    {
+      "review_id": "5debbfbe-9f55-4aa3-9c59-6201e620a844",
+      "horizon_days": 182,
+      "entry_date": "2025-02-17",
+      "stock_return": "-0.175480059084195",
+      "market_median": "0.053491567039841",
+      "excess_return": "-0.228971626124036",
+      "computed_at": "2026-10-19 13:33:57.636181+05:30"
+    },
+    {
+      "review_id": "5debbfbe-9f55-4aa3-9c59-6201e620a844",
+      "horizon_days": 365,
+      "entry_date": "2025-02-17",
+      "stock_return": "-0.405435745937962",
+      "market_median": "-0.0662753585303764",
+      "excess_return": "-0.339160387407585",
+      "computed_at": "2026-10-19 13:33:57.745262+05:30"
+    },
+    {
+      "review_id": "5debbfbe-9f55-4aa3-9c59-6201e620a844",
+      "horizon_days": 730,
+      "entry_date": "2025-02-17",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:33:57.799575+05:30"
+    },
+    {
+      "review_id": "5e3262e3-ca44-46ad-ad42-a0b4b81f9d5b",
+      "horizon_days": 182,
+      "entry_date": "2024-02-05",
+      "stock_return": "0.242513211978861",
+      "market_median": "0.0534372813236988",
+      "excess_return": "0.189075930655162",
+      "computed_at": "2026-10-19 02:27:47.567056+05:30"
+    },
+    {
+      "review_id": "5e3262e3-ca44-46ad-ad42-a0b4b81f9d5b",
+      "horizon_days": 365,
+      "entry_date": "2024-02-05",
+      "stock_return": "-0.0714034057545507",
+      "market_median": "-0.0240035202593708",
+      "excess_return": "-0.0473998854951799",
+      "computed_at": "2026-10-19 02:27:47.567699+05:30"
+    },
+    {
+      "review_id": "5e3262e3-ca44-46ad-ad42-a0b4b81f9d5b",
+      "horizon_days": 730,
+      "entry_date": "2024-02-05",
+      "stock_return": "-0.0582501467997651",
+      "market_median": "-0.154929577464789",
+      "excess_return": "0.0966794306650236",
+      "computed_at": "2026-10-19 02:27:47.568218+05:30"
+    },
+    {
+      "review_id": "5fa96545-8d90-4531-b661-9264b67efe17",
+      "horizon_days": 182,
+      "entry_date": "2021-01-25",
+      "stock_return": "1.45315161839864",
+      "market_median": "0.451784981534674",
+      "excess_return": "1.00136663686396",
+      "computed_at": "2026-10-17 11:24:54.885469+05:30"
+    },
+    {
+      "review_id": "5fa96545-8d90-4531-b661-9264b67efe17",
+      "horizon_days": 365,
+      "entry_date": "2021-01-25",
+      "stock_return": "1.7870528109029",
+      "market_median": "0.556840077071291",
+      "excess_return": "1.23021273383161",
+      "computed_at": "2026-10-17 11:24:54.885842+05:30"
+    },
+    {
+      "review_id": "5fa96545-8d90-4531-b661-9264b67efe17",
+      "horizon_days": 730,
+      "entry_date": "2021-01-25",
+      "stock_return": "1.40204429301533",
+      "market_median": "0.59751707926247",
+      "excess_return": "0.804527213752862",
+      "computed_at": "2026-10-17 11:24:54.886260+05:30"
+    },
+    {
+      "review_id": "5fae157a-1666-4f26-8ad5-355fe0444288",
+      "horizon_days": 182,
+      "entry_date": "2022-03-14",
+      "stock_return": "2.82352941176471",
+      "market_median": "0.0668523676880223",
+      "excess_return": "2.75667704407668",
+      "computed_at": "2026-10-17 11:26:01.907086+05:30"
+    },
+    {
+      "review_id": "5fae157a-1666-4f26-8ad5-355fe0444288",
+      "horizon_days": 365,
+      "entry_date": "2022-03-14",
+      "stock_return": "3.17647058823529",
+      "market_median": "-0.070051507270148",
+      "excess_return": "3.24652209550544",
+      "computed_at": "2026-10-17 11:26:02.140168+05:30"
+    },
+    {
+      "review_id": "5fae157a-1666-4f26-8ad5-355fe0444288",
+      "horizon_days": 730,
+      "entry_date": "2022-03-14",
+      "stock_return": "3.70588235294118",
+      "market_median": "0.366219257817675",
+      "excess_return": "3.3396630951235",
+      "computed_at": "2026-10-17 11:26:02.341918+05:30"
+    },
+    {
+      "review_id": "6339c0d1-d213-4915-93fd-b185f53cfc49",
+      "horizon_days": 182,
+      "entry_date": "2025-11-24",
+      "stock_return": "-0.0644917495906286",
+      "market_median": "-0.0753597389111408",
+      "excess_return": "0.0108679893205121",
+      "computed_at": "2026-10-19 13:34:13.734825+05:30"
+    },
+    {
+      "review_id": "6339c0d1-d213-4915-93fd-b185f53cfc49",
+      "horizon_days": 365,
+      "entry_date": "2025-11-24",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:13.735201+05:30"
+    },
+    {
+      "review_id": "6339c0d1-d213-4915-93fd-b185f53cfc49",
+      "horizon_days": 730,
+      "entry_date": "2025-11-24",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:13.735561+05:30"
+    },
+    {
+      "review_id": "6422a42d-d87a-4ff4-bd38-57fe30046479",
+      "horizon_days": 182,
+      "entry_date": "2025-02-24",
+      "stock_return": "0.284253237729976",
+      "market_median": "0.0615745279995171",
+      "excess_return": "0.222678709730459",
+      "computed_at": "2026-10-19 13:33:58.824641+05:30"
+    },
+    {
+      "review_id": "6422a42d-d87a-4ff4-bd38-57fe30046479",
+      "horizon_days": 365,
+      "entry_date": "2025-02-24",
+      "stock_return": "0.216497137457618",
+      "market_median": "-0.0954849051562917",
+      "excess_return": "0.31198204261391",
+      "computed_at": "2026-10-19 13:33:58.825217+05:30"
+    },
+    {
+      "review_id": "6422a42d-d87a-4ff4-bd38-57fe30046479",
+      "horizon_days": 730,
+      "entry_date": "2025-02-24",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:33:58.825587+05:30"
+    },
+    {
+      "review_id": "64706e8a-a14b-4fe8-85f8-2f0eb50eaaa9",
+      "horizon_days": 182,
+      "entry_date": "2023-09-18",
+      "stock_return": "0.766917293233083",
+      "market_median": "0.0855342872748066",
+      "excess_return": "0.681383005958276",
+      "computed_at": "2026-10-17 17:22:59.651956+05:30"
+    },
+    {
+      "review_id": "64706e8a-a14b-4fe8-85f8-2f0eb50eaaa9",
+      "horizon_days": 365,
+      "entry_date": "2023-09-18",
+      "stock_return": "1",
+      "market_median": "0.387045148247978",
+      "excess_return": "0.612954851752022",
+      "computed_at": "2026-10-17 17:22:59.652861+05:30"
+    },
+    {
+      "review_id": "64706e8a-a14b-4fe8-85f8-2f0eb50eaaa9",
+      "horizon_days": 730,
+      "entry_date": "2023-09-18",
+      "stock_return": "0.256390977443609",
+      "market_median": "0.196349483290833",
+      "excess_return": "0.0600414941527757",
+      "computed_at": "2026-10-17 17:22:59.653758+05:30"
+    },
+    {
+      "review_id": "64a1fe53-2b12-4a59-9be4-42c1ebaf9ca2",
+      "horizon_days": 182,
+      "entry_date": "2023-04-24",
+      "stock_return": "0.538210320052253",
+      "market_median": "0.238481118566743",
+      "excess_return": "0.299729201485511",
+      "computed_at": "2026-10-17 17:22:32.070420+05:30"
+    },
+    {
+      "review_id": "64a1fe53-2b12-4a59-9be4-42c1ebaf9ca2",
+      "horizon_days": 365,
+      "entry_date": "2023-04-24",
+      "stock_return": "2.39843239712606",
+      "market_median": "0.515844135573757",
+      "excess_return": "1.8825882615523",
+      "computed_at": "2026-10-17 17:22:32.070852+05:30"
+    },
+    {
+      "review_id": "64a1fe53-2b12-4a59-9be4-42c1ebaf9ca2",
+      "horizon_days": 730,
+      "entry_date": "2023-04-24",
+      "stock_return": "2.01149575440888",
+      "market_median": "0.465498938428875",
+      "excess_return": "1.54599681598001",
+      "computed_at": "2026-10-17 17:22:32.071209+05:30"
+    },
+    {
+      "review_id": "64fb6f76-75d2-4dca-94bd-226f48286ab3",
+      "horizon_days": 182,
+      "entry_date": "2025-03-03",
+      "stock_return": "0.0438382854359474",
+      "market_median": "0.125",
+      "excess_return": "-0.0811617145640526",
+      "computed_at": "2026-10-19 13:33:54.739143+05:30"
+    },
+    {
+      "review_id": "64fb6f76-75d2-4dca-94bd-226f48286ab3",
+      "horizon_days": 365,
+      "entry_date": "2025-03-03",
+      "stock_return": "-0.169410618606917",
+      "market_median": "-0.06366661843438",
+      "excess_return": "-0.105744000172537",
+      "computed_at": "2026-10-19 13:33:54.739984+05:30"
+    },
+    {
+      "review_id": "64fb6f76-75d2-4dca-94bd-226f48286ab3",
+      "horizon_days": 730,
+      "entry_date": "2025-03-03",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:33:54.740362+05:30"
+    },
+    {
+      "review_id": "651cb01a-7e23-45af-80e4-3d8eb3e406c8",
+      "horizon_days": 182,
+      "entry_date": "2023-03-06",
+      "stock_return": "0.250849798172934",
+      "market_median": "0.266188730355183",
+      "excess_return": "-0.0153389321822491",
+      "computed_at": "2026-10-17 17:22:21.511371+05:30"
+    },
+    {
+      "review_id": "651cb01a-7e23-45af-80e4-3d8eb3e406c8",
+      "horizon_days": 365,
+      "entry_date": "2023-03-06",
+      "stock_return": "0.905619290418526",
+      "market_median": "0.539948892674617",
+      "excess_return": "0.365670397743909",
+      "computed_at": "2026-10-17 17:22:21.512053+05:30"
+    },
+    {
+      "review_id": "651cb01a-7e23-45af-80e4-3d8eb3e406c8",
+      "horizon_days": 730,
+      "entry_date": "2023-03-06",
+      "stock_return": "1.25940089228808",
+      "market_median": "0.375497156481544",
+      "excess_return": "0.883903735806537",
+      "computed_at": "2026-10-17 17:22:21.512494+05:30"
+    },
+    {
+      "review_id": "66e57bfc-e08a-40a6-bb6c-dd3cb051a44b",
+      "horizon_days": 182,
+      "entry_date": "2021-01-25",
+      "stock_return": "1.44435627851617",
+      "market_median": "0.451784981534674",
+      "excess_return": "0.992571296981494",
+      "computed_at": "2026-10-17 11:24:54.892769+05:30"
+    },
+    {
+      "review_id": "66e57bfc-e08a-40a6-bb6c-dd3cb051a44b",
+      "horizon_days": 365,
+      "entry_date": "2021-01-25",
+      "stock_return": "1.27494544733188",
+      "market_median": "0.556840077071291",
+      "excess_return": "0.718105370260588",
+      "computed_at": "2026-10-17 11:24:54.893232+05:30"
+    },
+    {
+      "review_id": "66e57bfc-e08a-40a6-bb6c-dd3cb051a44b",
+      "horizon_days": 730,
+      "entry_date": "2021-01-25",
+      "stock_return": "2.73219599285856",
+      "market_median": "0.59751707926247",
+      "excess_return": "2.13467891359609",
+      "computed_at": "2026-10-17 11:24:54.893643+05:30"
+    },
+    {
+      "review_id": "670b7640-8ceb-4cd8-8fea-fba8dd8b4aef",
+      "horizon_days": 182,
+      "entry_date": "2025-06-02",
+      "stock_return": "-0.197155252896919",
+      "market_median": "-0.0677593781683001",
+      "excess_return": "-0.129395874728619",
+      "computed_at": "2026-10-19 13:34:04.335588+05:30"
+    },
+    {
+      "review_id": "670b7640-8ceb-4cd8-8fea-fba8dd8b4aef",
+      "horizon_days": 365,
+      "entry_date": "2025-06-02",
+      "stock_return": "-0.293700917128892",
+      "market_median": "-0.136882129277567",
+      "excess_return": "-0.156818787851326",
+      "computed_at": "2026-10-19 13:34:04.336159+05:30"
+    },
+    {
+      "review_id": "670b7640-8ceb-4cd8-8fea-fba8dd8b4aef",
+      "horizon_days": 730,
+      "entry_date": "2025-06-02",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:04.336487+05:30"
+    },
+    {
+      "review_id": "67ec3fbb-44b6-4f52-92c0-6d8b92b6893c",
+      "horizon_days": 182,
+      "entry_date": "2023-06-12",
+      "stock_return": "0.242614379084967",
+      "market_median": "0.25132000298241",
+      "excess_return": "-0.00870562389744223",
+      "computed_at": "2026-10-17 17:22:41.506117+05:30"
+    },
+    {
+      "review_id": "67ec3fbb-44b6-4f52-92c0-6d8b92b6893c",
+      "horizon_days": 365,
+      "entry_date": "2023-06-12",
+      "stock_return": "0.207895424836601",
+      "market_median": "0.408779569367753",
+      "excess_return": "-0.200884144531152",
+      "computed_at": "2026-10-17 17:22:41.506642+05:30"
+    },
+    {
+      "review_id": "67ec3fbb-44b6-4f52-92c0-6d8b92b6893c",
+      "horizon_days": 730,
+      "entry_date": "2023-06-12",
+      "stock_return": "0.0604444444444445",
+      "market_median": "0.446630761284434",
+      "excess_return": "-0.386186316839989",
+      "computed_at": "2026-10-17 17:22:41.507125+05:30"
+    },
+    {
+      "review_id": "6893a5cd-d5f5-4de0-90ea-1e2e079bc09f",
+      "horizon_days": 182,
+      "entry_date": "2025-08-18",
+      "stock_return": "-0.107115648331556",
+      "market_median": "-0.126773455377574",
+      "excess_return": "0.0196578070460187",
+      "computed_at": "2026-10-19 13:34:08.493424+05:30"
+    },
+    {
+      "review_id": "6893a5cd-d5f5-4de0-90ea-1e2e079bc09f",
+      "horizon_days": 365,
+      "entry_date": "2025-08-18",
+      "stock_return": "0.929072070699376",
+      "market_median": "-0.10269991199823",
+      "excess_return": "1.03177198269761",
+      "computed_at": "2026-10-19 13:34:08.493774+05:30"
+    },
+    {
+      "review_id": "6893a5cd-d5f5-4de0-90ea-1e2e079bc09f",
+      "horizon_days": 730,
+      "entry_date": "2025-08-18",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:08.494111+05:30"
+    },
+    {
+      "review_id": "6dd6cc80-423e-42ec-a380-2ccb4a870f3f",
+      "horizon_days": 182,
+      "entry_date": "2021-07-05",
+      "stock_return": "-0.25195855446045",
+      "market_median": "0.0899048994468842",
+      "excess_return": "-0.341863453907334",
+      "computed_at": "2026-10-17 11:25:14.469216+05:30"
+    },
+    {
+      "review_id": "6dd6cc80-423e-42ec-a380-2ccb4a870f3f",
+      "horizon_days": 365,
+      "entry_date": "2021-07-05",
+      "stock_return": "0.0953584365259879",
+      "market_median": "-0.0528846153846154",
+      "excess_return": "0.148243051910603",
+      "computed_at": "2026-10-17 11:25:14.469834+05:30"
+    },
+    {
+      "review_id": "6dd6cc80-423e-42ec-a380-2ccb4a870f3f",
+      "horizon_days": 730,
+      "entry_date": "2021-07-05",
+      "stock_return": "1.03142111026872",
+      "market_median": "0.198050517929755",
+      "excess_return": "0.833370592338967",
+      "computed_at": "2026-10-17 11:25:14.470493+05:30"
+    },
+    {
+      "review_id": "6f450f39-8882-4b61-b559-b05823547456",
+      "horizon_days": 182,
+      "entry_date": "2025-02-24",
+      "stock_return": "-0.00682839173405203",
+      "market_median": "0.0615745279995171",
+      "excess_return": "-0.0684029197335691",
+      "computed_at": "2026-10-19 13:33:58.863484+05:30"
+    },
+    {
+      "review_id": "6f450f39-8882-4b61-b559-b05823547456",
+      "horizon_days": 365,
+      "entry_date": "2025-02-24",
+      "stock_return": "-0.201509433962264",
+      "market_median": "-0.0954849051562917",
+      "excess_return": "-0.106024528805972",
+      "computed_at": "2026-10-19 13:33:58.864026+05:30"
+    },
+    {
+      "review_id": "6f450f39-8882-4b61-b559-b05823547456",
+      "horizon_days": 730,
+      "entry_date": "2025-02-24",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:33:58.864393+05:30"
+    },
+    {
+      "review_id": "7033630e-4554-476a-8725-9fdbb0a39044",
+      "horizon_days": 182,
+      "entry_date": "2023-05-22",
+      "stock_return": "-0.0857215967246674",
+      "market_median": "0.250908739841439",
+      "excess_return": "-0.336630336566107",
+      "computed_at": "2026-10-17 17:22:36.556384+05:30"
+    },
+    {
+      "review_id": "7033630e-4554-476a-8725-9fdbb0a39044",
+      "horizon_days": 365,
+      "entry_date": "2023-05-22",
+      "stock_return": "-0.0862333674513818",
+      "market_median": "0.456989247311828",
+      "excess_return": "-0.54322261476321",
+      "computed_at": "2026-10-17 17:22:36.557006+05:30"
+    },
+    {
+      "review_id": "7033630e-4554-476a-8725-9fdbb0a39044",
+      "horizon_days": 730,
+      "entry_date": "2023-05-22",
+      "stock_return": "-0.125076765609007",
+      "market_median": "0.44964713789627",
+      "excess_return": "-0.574723903505277",
+      "computed_at": "2026-10-17 17:22:36.557544+05:30"
+    },
+    {
+      "review_id": "703476b4-b566-49d2-bea5-798786c19294",
+      "horizon_days": 182,
+      "entry_date": "2022-08-29",
+      "stock_return": "0.421301650720219",
+      "market_median": "-0.0784762239915541",
+      "excess_return": "0.499777874711773",
+      "computed_at": "2026-10-17 11:26:22.127360+05:30"
+    },
+    {
+      "review_id": "703476b4-b566-49d2-bea5-798786c19294",
+      "horizon_days": 365,
+      "entry_date": "2022-08-29",
+      "stock_return": "1.8474398065398",
+      "market_median": "0.174049298021095",
+      "excess_return": "1.6733905085187",
+      "computed_at": "2026-10-17 11:26:22.127951+05:30"
+    },
+    {
+      "review_id": "703476b4-b566-49d2-bea5-798786c19294",
+      "horizon_days": 730,
+      "entry_date": "2022-08-29",
+      "stock_return": "3.743840465426",
+      "market_median": "0.723059791332263",
+      "excess_return": "3.02078067409373",
+      "computed_at": "2026-10-17 11:26:22.128466+05:30"
+    },
+    {
+      "review_id": "71716e75-425e-4bb5-85e1-c3f7cfaee920",
+      "horizon_days": 182,
+      "entry_date": "2025-11-24",
+      "stock_return": "0.207151925518409",
+      "market_median": "-0.0753597389111408",
+      "excess_return": "0.28251166442955",
+      "computed_at": "2026-10-19 13:34:10.624152+05:30"
+    },
+    {
+      "review_id": "71716e75-425e-4bb5-85e1-c3f7cfaee920",
+      "horizon_days": 365,
+      "entry_date": "2025-11-24",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:10.675843+05:30"
+    },
+    {
+      "review_id": "71716e75-425e-4bb5-85e1-c3f7cfaee920",
+      "horizon_days": 730,
+      "entry_date": "2025-11-24",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:10.727631+05:30"
+    },
+    {
+      "review_id": "722e2e91-7060-4568-8499-98135f720173",
+      "horizon_days": 182,
+      "entry_date": "2021-11-01",
+      "stock_return": "-0.0506748957621728",
+      "market_median": "0.0260000392441234",
+      "excess_return": "-0.0766749350062962",
+      "computed_at": "2026-10-17 11:25:28.281472+05:30"
+    },
+    {
+      "review_id": "722e2e91-7060-4568-8499-98135f720173",
+      "horizon_days": 365,
+      "entry_date": "2021-11-01",
+      "stock_return": "-0.0373253869166804",
+      "market_median": "0.0315639683413587",
+      "excess_return": "-0.0688893552580391",
+      "computed_at": "2026-10-17 11:25:28.282064+05:30"
+    },
+    {
+      "review_id": "722e2e91-7060-4568-8499-98135f720173",
+      "horizon_days": 730,
+      "entry_date": "2021-11-01",
+      "stock_return": "-0.154129466914796",
+      "market_median": "0.256457083224628",
+      "excess_return": "-0.410586550139424",
+      "computed_at": "2026-10-17 11:25:28.282534+05:30"
+    },
+    {
+      "review_id": "73d31ca2-ecca-4e8f-afd8-b4f5b568f876",
+      "horizon_days": 182,
+      "entry_date": "2022-02-21",
+      "stock_return": "-0.239146234173584",
+      "market_median": "-0.0169802350064525",
+      "excess_return": "-0.222165999167131",
+      "computed_at": "2026-10-17 11:26:00.232691+05:30"
+    },
+    {
+      "review_id": "73d31ca2-ecca-4e8f-afd8-b4f5b568f876",
+      "horizon_days": 365,
+      "entry_date": "2022-02-21",
+      "stock_return": "-0.368435145163141",
+      "market_median": "-0.0226901250339558",
+      "excess_return": "-0.345745020129185",
+      "computed_at": "2026-10-17 11:26:00.233442+05:30"
+    },
+    {
+      "review_id": "73d31ca2-ecca-4e8f-afd8-b4f5b568f876",
+      "horizon_days": 730,
+      "entry_date": "2022-02-21",
+      "stock_return": "0.145067513292277",
+      "market_median": "0.568936409679235",
+      "excess_return": "-0.423868896386957",
+      "computed_at": "2026-10-17 11:26:00.235150+05:30"
+    },
+    {
+      "review_id": "74fa1811-9326-4f70-9b17-5d09f4e7ef60",
+      "horizon_days": 182,
+      "entry_date": "2025-11-24",
+      "stock_return": "-0.222626501946184",
+      "market_median": "-0.0753597389111408",
+      "excess_return": "-0.147266763035043",
+      "computed_at": "2026-10-19 13:34:13.864779+05:30"
+    },
+    {
+      "review_id": "74fa1811-9326-4f70-9b17-5d09f4e7ef60",
+      "horizon_days": 365,
+      "entry_date": "2025-11-24",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:13.865156+05:30"
+    },
+    {
+      "review_id": "74fa1811-9326-4f70-9b17-5d09f4e7ef60",
+      "horizon_days": 730,
+      "entry_date": "2025-11-24",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:13.865512+05:30"
+    },
+    {
+      "review_id": "75358a13-9a42-4491-945d-3a007caade51",
+      "horizon_days": 182,
+      "entry_date": "2024-10-14",
+      "stock_return": "0.318075665576833",
+      "market_median": "-0.225672610959578",
+      "excess_return": "0.543748276536411",
+      "computed_at": "2026-10-19 02:28:20.188497+05:30"
+    },
+    {
+      "review_id": "75358a13-9a42-4491-945d-3a007caade51",
+      "horizon_days": 365,
+      "entry_date": "2024-10-14",
+      "stock_return": "1.45119103222793",
+      "market_median": "-0.200695170066338",
+      "excess_return": "1.65188620229427",
+      "computed_at": "2026-10-19 02:28:20.419030+05:30"
+    },
+    {
+      "review_id": "75358a13-9a42-4491-945d-3a007caade51",
+      "horizon_days": 730,
+      "entry_date": "2024-10-14",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 02:28:20.558681+05:30"
+    },
+    {
+      "review_id": "7afb77a6-09d6-4c48-ad19-17daea739f3b",
+      "horizon_days": 182,
+      "entry_date": "2022-01-17",
+      "stock_return": "-0.24812030075188",
+      "market_median": "-0.183193683669066",
+      "excess_return": "-0.0649266170828133",
+      "computed_at": "2026-10-17 11:25:54.696993+05:30"
+    },
+    {
+      "review_id": "7afb77a6-09d6-4c48-ad19-17daea739f3b",
+      "horizon_days": 365,
+      "entry_date": "2022-01-17",
+      "stock_return": "-0.323308270676692",
+      "market_median": "-0.0999918180330552",
+      "excess_return": "-0.223316452643637",
+      "computed_at": "2026-10-17 11:25:54.697675+05:30"
+    },
+    {
+      "review_id": "7afb77a6-09d6-4c48-ad19-17daea739f3b",
+      "horizon_days": 730,
+      "entry_date": "2022-01-17",
+      "stock_return": "-0.00751879699248126",
+      "market_median": "0.305933250927071",
+      "excess_return": "-0.313452047919552",
+      "computed_at": "2026-10-17 11:25:54.698371+05:30"
+    },
+    {
+      "review_id": "7f0a4191-aee2-4713-852d-747560d96d14",
+      "horizon_days": 182,
+      "entry_date": "2024-01-29",
+      "stock_return": "0.773307235029723",
+      "market_median": "0.114053614773163",
+      "excess_return": "0.65925362025656",
+      "computed_at": "2026-10-19 02:27:44.522842+05:30"
+    },
+    {
+      "review_id": "7f0a4191-aee2-4713-852d-747560d96d14",
+      "horizon_days": 365,
+      "entry_date": "2024-01-29",
+      "stock_return": "0.224372915760475",
+      "market_median": "-0.0405161648397391",
+      "excess_return": "0.264889080600215",
+      "computed_at": "2026-10-19 02:27:44.523981+05:30"
+    },
+    {
+      "review_id": "7f0a4191-aee2-4713-852d-747560d96d14",
+      "horizon_days": 730,
+      "entry_date": "2024-01-29",
+      "stock_return": "0.614035087719298",
+      "market_median": "-0.168314087726548",
+      "excess_return": "0.782349175445846",
+      "computed_at": "2026-10-19 02:27:44.524664+05:30"
+    },
+    {
+      "review_id": "7f6b49e8-fcdc-4670-bb5c-a8f45881b4b1",
+      "horizon_days": 182,
+      "entry_date": "2023-07-31",
+      "stock_return": "0.259559300064809",
+      "market_median": "0.279529125075367",
+      "excess_return": "-0.0199698250105579",
+      "computed_at": "2026-10-17 17:22:46.011900+05:30"
+    },
+    {
+      "review_id": "7f6b49e8-fcdc-4670-bb5c-a8f45881b4b1",
+      "horizon_days": 365,
+      "entry_date": "2023-07-31",
+      "stock_return": "0.755346727154893",
+      "market_median": "0.46018691588785",
+      "excess_return": "0.295159811267043",
+      "computed_at": "2026-10-17 17:22:46.012447+05:30"
+    },
+    {
+      "review_id": "7f6b49e8-fcdc-4670-bb5c-a8f45881b4b1",
+      "horizon_days": 730,
+      "entry_date": "2023-07-31",
+      "stock_return": "0.677468135666451",
+      "market_median": "0.288929592566119",
+      "excess_return": "0.388538543100332",
+      "computed_at": "2026-10-17 17:22:46.012919+05:30"
+    },
+    {
+      "review_id": "81a69ff4-0f3e-465e-b67c-a2f71fe42533",
+      "horizon_days": 182,
+      "entry_date": "2023-10-23",
+      "stock_return": "1.23611111111111",
+      "market_median": "0.188828658198086",
+      "excess_return": "1.04728245291302",
+      "computed_at": "2026-10-17 17:23:07.019291+05:30"
+    },
+    {
+      "review_id": "81a69ff4-0f3e-465e-b67c-a2f71fe42533",
+      "horizon_days": 365,
+      "entry_date": "2023-10-23",
+      "stock_return": "0.991013071895425",
+      "market_median": "0.301382971529046",
+      "excess_return": "0.689630100366379",
+      "computed_at": "2026-10-17 17:23:07.020006+05:30"
+    },
+    {
+      "review_id": "81a69ff4-0f3e-465e-b67c-a2f71fe42533",
+      "horizon_days": 730,
+      "entry_date": "2023-10-23",
+      "stock_return": "0.486274509803921",
+      "market_median": "0.184828862164662",
+      "excess_return": "0.301445647639259",
+      "computed_at": "2026-10-17 17:23:07.020976+05:30"
+    },
+    {
+      "review_id": "821c6fdc-4812-4318-ba38-b1fdb5f8758f",
+      "horizon_days": 182,
+      "entry_date": "2022-01-10",
+      "stock_return": "1.14312383322962",
+      "market_median": "-0.165765765765766",
+      "excess_return": "1.30888959899539",
+      "computed_at": "2026-10-17 11:25:52.950043+05:30"
+    },
+    {
+      "review_id": "821c6fdc-4812-4318-ba38-b1fdb5f8758f",
+      "horizon_days": 365,
+      "entry_date": "2022-01-10",
+      "stock_return": "1.27162414436839",
+      "market_median": "-0.0712323612417686",
+      "excess_return": "1.34285650561016",
+      "computed_at": "2026-10-17 11:25:52.950636+05:30"
+    },
+    {
+      "review_id": "821c6fdc-4812-4318-ba38-b1fdb5f8758f",
+      "horizon_days": 730,
+      "entry_date": "2022-01-10",
+      "stock_return": "3.26633478531425",
+      "market_median": "0.349048800661704",
+      "excess_return": "2.91728598465255",
+      "computed_at": "2026-10-17 11:25:52.951309+05:30"
+    },
+    {
+      "review_id": "8220c232-238f-4f7d-8392-88e2aef65952",
+      "horizon_days": 182,
+      "entry_date": "2025-05-12",
+      "stock_return": "-0.103207288156745",
+      "market_median": "0.0176175844580111",
+      "excess_return": "-0.120824872614756",
+      "computed_at": "2026-10-19 13:34:02.792761+05:30"
+    },
+    {
+      "review_id": "8220c232-238f-4f7d-8392-88e2aef65952",
+      "horizon_days": 365,
+      "entry_date": "2025-05-12",
+      "stock_return": "-0.362411081991763",
+      "market_median": "-0.0791304347826087",
+      "excess_return": "-0.283280647209155",
+      "computed_at": "2026-10-19 13:34:02.793405+05:30"
+    },
+    {
+      "review_id": "8220c232-238f-4f7d-8392-88e2aef65952",
+      "horizon_days": 730,
+      "entry_date": "2025-05-12",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:02.793768+05:30"
+    },
+    {
+      "review_id": "85aaf0c0-f1ae-4701-9baa-9f829a164fff",
+      "horizon_days": 182,
+      "entry_date": "2025-11-24",
+      "stock_return": "-0.0309813753581663",
+      "market_median": "-0.0753597389111408",
+      "excess_return": "0.0443783635529745",
+      "computed_at": "2026-10-19 13:34:13.445293+05:30"
+    },
+    {
+      "review_id": "85aaf0c0-f1ae-4701-9baa-9f829a164fff",
+      "horizon_days": 365,
+      "entry_date": "2025-11-24",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:13.445569+05:30"
+    },
+    {
+      "review_id": "85aaf0c0-f1ae-4701-9baa-9f829a164fff",
+      "horizon_days": 730,
+      "entry_date": "2025-11-24",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:13.445814+05:30"
+    },
+    {
+      "review_id": "8602b554-c945-4c46-a54d-964ac8e83081",
+      "horizon_days": 182,
+      "entry_date": "2023-06-19",
+      "stock_return": "0.306134259259259",
+      "market_median": "0.263219430194476",
+      "excess_return": "0.0429148290647834",
+      "computed_at": "2026-10-17 17:22:41.746804+05:30"
+    },
+    {
+      "review_id": "8602b554-c945-4c46-a54d-964ac8e83081",
+      "horizon_days": 365,
+      "entry_date": "2023-06-19",
+      "stock_return": "0.443402777777778",
+      "market_median": "0.429395535781074",
+      "excess_return": "0.0140072419967031",
+      "computed_at": "2026-10-17 17:22:41.747270+05:30"
+    },
+    {
+      "review_id": "8602b554-c945-4c46-a54d-964ac8e83081",
+      "horizon_days": 730,
+      "entry_date": "2023-06-19",
+      "stock_return": "0.112037037037037",
+      "market_median": "0.376246218597922",
+      "excess_return": "-0.264209181560885",
+      "computed_at": "2026-10-17 17:22:41.747651+05:30"
+    },
+    {
+      "review_id": "8c7a510b-3779-410b-a233-998a72685375",
+      "horizon_days": 182,
+      "entry_date": "2023-05-29",
+      "stock_return": "0.154930575233777",
+      "market_median": "0.248747913188648",
+      "excess_return": "-0.0938173379548704",
+      "computed_at": "2026-10-17 17:22:36.009040+05:30"
+    },
+    {
+      "review_id": "8c7a510b-3779-410b-a233-998a72685375",
+      "horizon_days": 365,
+      "entry_date": "2023-05-29",
+      "stock_return": "0.537085576650609",
+      "market_median": "0.424190800681431",
+      "excess_return": "0.112894775969178",
+      "computed_at": "2026-10-17 17:22:36.270060+05:30"
+    },
+    {
+      "review_id": "8c7a510b-3779-410b-a233-998a72685375",
+      "horizon_days": 730,
+      "entry_date": "2023-05-29",
+      "stock_return": "0.715500141683196",
+      "market_median": "0.444328238133548",
+      "excess_return": "0.271171903549648",
+      "computed_at": "2026-10-17 17:22:36.500594+05:30"
+    },
+    {
+      "review_id": "8ce6d0b8-b610-41cd-a3d6-d95bdea7d487",
+      "horizon_days": 182,
+      "entry_date": "2024-04-29",
+      "stock_return": "0.232238486378133",
+      "market_median": "0.0354719309068476",
+      "excess_return": "0.196766555471285",
+      "computed_at": "2026-10-19 02:28:01.066448+05:30"
+    },
+    {
+      "review_id": "8ce6d0b8-b610-41cd-a3d6-d95bdea7d487",
+      "horizon_days": 365,
+      "entry_date": "2024-04-29",
+      "stock_return": "0.346733309666983",
+      "market_median": "-0.10219387755102",
+      "excess_return": "0.448927187218004",
+      "computed_at": "2026-10-19 02:28:01.066679+05:30"
+    },
+    {
+      "review_id": "8ce6d0b8-b610-41cd-a3d6-d95bdea7d487",
+      "horizon_days": 730,
+      "entry_date": "2024-04-29",
+      "stock_return": "-0.0199928595949661",
+      "market_median": "-0.150040551500406",
+      "excess_return": "0.130047691905439",
+      "computed_at": "2026-10-19 02:28:01.066848+05:30"
+    },
+    {
+      "review_id": "8ceb3b48-3873-41ca-b98c-50fe73c150b8",
+      "horizon_days": 182,
+      "entry_date": "2021-06-14",
+      "stock_return": "0.182448036951501",
+      "market_median": "0.122922367797371",
+      "excess_return": "0.0595256691541305",
+      "computed_at": "2026-10-17 11:25:10.846975+05:30"
+    },
+    {
+      "review_id": "8ceb3b48-3873-41ca-b98c-50fe73c150b8",
+      "horizon_days": 365,
+      "entry_date": "2021-06-14",
+      "stock_return": "0.0138568129330254",
+      "market_median": "0.00828641295413447",
+      "excess_return": "0.00557039997889096",
+      "computed_at": "2026-10-17 11:25:10.848815+05:30"
+    },
+    {
+      "review_id": "8ceb3b48-3873-41ca-b98c-50fe73c150b8",
+      "horizon_days": 730,
+      "entry_date": "2021-06-14",
+      "stock_return": "0.960739030023095",
+      "market_median": "0.251988832178836",
+      "excess_return": "0.708750197844259",
+      "computed_at": "2026-10-17 11:25:10.849439+05:30"
+    },
+    {
+      "review_id": "8df8920c-205d-4290-8f3e-a40d9073230c",
+      "horizon_days": 182,
+      "entry_date": "2022-08-15",
+      "stock_return": "0.455670103092783",
+      "market_median": "-0.0271896755584541",
+      "excess_return": "0.482859778651238",
+      "computed_at": "2026-10-17 11:26:20.253629+05:30"
+    },
+    {
+      "review_id": "8df8920c-205d-4290-8f3e-a40d9073230c",
+      "horizon_days": 365,
+      "entry_date": "2022-08-15",
+      "stock_return": "1.02551546391753",
+      "market_median": "0.164506332864232",
+      "excess_return": "0.861009131053293",
+      "computed_at": "2026-10-17 11:26:20.254079+05:30"
+    },
+    {
+      "review_id": "8df8920c-205d-4290-8f3e-a40d9073230c",
+      "horizon_days": 730,
+      "entry_date": "2022-08-15",
+      "stock_return": "3.11340206185567",
+      "market_median": "0.661656228253306",
+      "excess_return": "2.45174583360236",
+      "computed_at": "2026-10-17 11:26:20.254499+05:30"
+    },
+    {
+      "review_id": "8f5a64b3-9501-4d79-95bc-28229b8b4657",
+      "horizon_days": 182,
+      "entry_date": "2024-06-10",
+      "stock_return": "0.231848064280497",
+      "market_median": "0.0982225750240545",
+      "excess_return": "0.133625489256442",
+      "computed_at": "2026-10-19 02:28:06.767445+05:30"
+    },
+    {
+      "review_id": "8f5a64b3-9501-4d79-95bc-28229b8b4657",
+      "horizon_days": 365,
+      "entry_date": "2024-06-10",
+      "stock_return": "-0.0705624543462381",
+      "market_median": "-0.0209808900173727",
+      "excess_return": "-0.0495815643288654",
+      "computed_at": "2026-10-19 02:28:06.767666+05:30"
+    },
+    {
+      "review_id": "8f5a64b3-9501-4d79-95bc-28229b8b4657",
+      "horizon_days": 730,
+      "entry_date": "2024-06-10",
+      "stock_return": "0.54609203798393",
+      "market_median": "-0.15934912083806",
+      "excess_return": "0.70544115882199",
+      "computed_at": "2026-10-19 02:28:06.767840+05:30"
+    },
+    {
+      "review_id": "8ff2c545-5638-4196-a548-cb1a9559dcb3",
+      "horizon_days": 182,
+      "entry_date": "2021-03-01",
+      "stock_return": "0.608777093925609",
+      "market_median": "0.273865227954262",
+      "excess_return": "0.334911865971347",
+      "computed_at": "2026-10-17 11:24:58.932873+05:30"
+    },
+    {
+      "review_id": "8ff2c545-5638-4196-a548-cb1a9559dcb3",
+      "horizon_days": 365,
+      "entry_date": "2021-03-01",
+      "stock_return": "0.33984479529034",
+      "market_median": "0.313671483760195",
+      "excess_return": "0.026173311530145",
+      "computed_at": "2026-10-17 11:24:58.933377+05:30"
+    },
+    {
+      "review_id": "8ff2c545-5638-4196-a548-cb1a9559dcb3",
+      "horizon_days": 730,
+      "entry_date": "2021-03-01",
+      "stock_return": "1.29060743912229",
+      "market_median": "0.384390243902439",
+      "excess_return": "0.906217195219852",
+      "computed_at": "2026-10-17 11:24:58.933856+05:30"
+    },
+    {
+      "review_id": "941c86f0-6adc-45ff-98d2-7a84d5b12bf5",
+      "horizon_days": 182,
+      "entry_date": "2023-07-03",
+      "stock_return": "0.879079354173823",
+      "market_median": "0.268130405854957",
+      "excess_return": "0.610948948318867",
+      "computed_at": "2026-10-17 17:22:43.534058+05:30"
+    },
+    {
+      "review_id": "941c86f0-6adc-45ff-98d2-7a84d5b12bf5",
+      "horizon_days": 365,
+      "entry_date": "2023-07-03",
+      "stock_return": "1.22397801442803",
+      "market_median": "0.459437157101993",
+      "excess_return": "0.764540857326038",
+      "computed_at": "2026-10-17 17:22:43.534792+05:30"
+    },
+    {
+      "review_id": "941c86f0-6adc-45ff-98d2-7a84d5b12bf5",
+      "horizon_days": 730,
+      "entry_date": "2023-07-03",
+      "stock_return": "0.999656475437994",
+      "market_median": "0.384830517955028",
+      "excess_return": "0.614825957482965",
+      "computed_at": "2026-10-17 17:22:43.535197+05:30"
+    },
+    {
+      "review_id": "95b029f1-2650-46ca-b45c-902ed91c56d7",
+      "horizon_days": 182,
+      "entry_date": "2024-01-08",
+      "stock_return": "0.895887459603321",
+      "market_median": "0.117395029991431",
+      "excess_return": "0.77849242961189",
+      "computed_at": "2026-10-17 17:23:19.753901+05:30"
+    },
+    {
+      "review_id": "95b029f1-2650-46ca-b45c-902ed91c56d7",
+      "horizon_days": 365,
+      "entry_date": "2024-01-08",
+      "stock_return": "1.00728724415436",
+      "market_median": "0.114393870570057",
+      "excess_return": "0.892893373584306",
+      "computed_at": "2026-10-17 17:23:19.754511+05:30"
+    },
+    {
+      "review_id": "95b029f1-2650-46ca-b45c-902ed91c56d7",
+      "horizon_days": 730,
+      "entry_date": "2024-01-08",
+      "stock_return": "0.345922311640581",
+      "market_median": "-0.0617825354787447",
+      "excess_return": "0.407704847119325",
+      "computed_at": "2026-10-17 17:23:19.755238+05:30"
+    },
+    {
+      "review_id": "9660d5a4-9fd3-49c2-97ed-0373c49d334b",
+      "horizon_days": 182,
+      "entry_date": "2022-06-06",
+      "stock_return": "0.32244008714597",
+      "market_median": "0.104343220338983",
+      "excess_return": "0.218096866806987",
+      "computed_at": "2026-10-17 11:26:11.461857+05:30"
+    },
+    {
+      "review_id": "9660d5a4-9fd3-49c2-97ed-0373c49d334b",
+      "horizon_days": 365,
+      "entry_date": "2022-06-06",
+      "stock_return": "0.314814814814815",
+      "market_median": "0.0973571357335195",
+      "excess_return": "0.217457679081295",
+      "computed_at": "2026-10-17 11:26:11.462839+05:30"
+    },
+    {
+      "review_id": "9660d5a4-9fd3-49c2-97ed-0373c49d334b",
+      "horizon_days": 730,
+      "entry_date": "2022-06-06",
+      "stock_return": "2.78976034858388",
+      "market_median": "0.559166729872752",
+      "excess_return": "2.23059361871113",
+      "computed_at": "2026-10-17 11:26:11.463434+05:30"
+    },
+    {
+      "review_id": "96c32099-3ecf-4a2d-abc8-49e5c8e82feb",
+      "horizon_days": 182,
+      "entry_date": "2025-11-24",
+      "stock_return": "-0.137960674760933",
+      "market_median": "-0.0753597389111408",
+      "excess_return": "-0.062600935849792",
+      "computed_at": "2026-10-19 13:34:13.761966+05:30"
+    },
+    {
+      "review_id": "96c32099-3ecf-4a2d-abc8-49e5c8e82feb",
+      "horizon_days": 365,
+      "entry_date": "2025-11-24",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:13.762359+05:30"
+    },
+    {
+      "review_id": "96c32099-3ecf-4a2d-abc8-49e5c8e82feb",
+      "horizon_days": 730,
+      "entry_date": "2025-11-24",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:13.762691+05:30"
+    },
+    {
+      "review_id": "979a2d33-57a9-495e-8750-5ccb83ed7f6a",
+      "horizon_days": 182,
+      "entry_date": "2022-01-17",
+      "stock_return": "-0.309238949817215",
+      "market_median": "-0.183193683669066",
+      "excess_return": "-0.126045266148149",
+      "computed_at": "2026-10-17 11:25:54.716801+05:30"
+    },
+    {
+      "review_id": "979a2d33-57a9-495e-8750-5ccb83ed7f6a",
+      "horizon_days": 365,
+      "entry_date": "2022-01-17",
+      "stock_return": "-0.274786750858536",
+      "market_median": "-0.0999918180330552",
+      "excess_return": "-0.17479493282548",
+      "computed_at": "2026-10-17 11:25:54.717281+05:30"
+    },
+    {
+      "review_id": "979a2d33-57a9-495e-8750-5ccb83ed7f6a",
+      "horizon_days": 730,
+      "entry_date": "2022-01-17",
+      "stock_return": "-0.113105129057273",
+      "market_median": "0.305933250927071",
+      "excess_return": "-0.419038379984343",
+      "computed_at": "2026-10-17 11:25:54.717843+05:30"
+    },
+    {
+      "review_id": "981332be-3495-4c38-b0ec-62ae3baa6d27",
+      "horizon_days": 182,
+      "entry_date": "2021-06-28",
+      "stock_return": "-0.0410764872521248",
+      "market_median": "0.0725883476599809",
+      "excess_return": "-0.113664834912106",
+      "computed_at": "2026-10-17 11:25:12.304517+05:30"
+    },
+    {
+      "review_id": "981332be-3495-4c38-b0ec-62ae3baa6d27",
+      "horizon_days": 365,
+      "entry_date": "2021-06-28",
+      "stock_return": "-0.309254013220019",
+      "market_median": "-0.0195121951219512",
+      "excess_return": "-0.289741818098068",
+      "computed_at": "2026-10-17 11:25:12.304820+05:30"
+    },
+    {
+      "review_id": "981332be-3495-4c38-b0ec-62ae3baa6d27",
+      "horizon_days": 730,
+      "entry_date": "2021-06-28",
+      "stock_return": "-0.240793201133145",
+      "market_median": "0.227958709424256",
+      "excess_return": "-0.4687519105574",
+      "computed_at": "2026-10-17 11:25:12.305113+05:30"
+    },
+    {
+      "review_id": "999746da-55a4-491c-bcec-8f232f0297aa",
+      "horizon_days": 182,
+      "entry_date": "2023-10-30",
+      "stock_return": "0.201203491821341",
+      "market_median": "0.206185567010309",
+      "excess_return": "-0.00498207518896873",
+      "computed_at": "2026-10-17 17:23:03.785091+05:30"
+    },
+    {
+      "review_id": "999746da-55a4-491c-bcec-8f232f0297aa",
+      "horizon_days": 365,
+      "entry_date": "2023-10-30",
+      "stock_return": "-0.068141367912535",
+      "market_median": "0.287404522989366",
+      "excess_return": "-0.355545890901901",
+      "computed_at": "2026-10-17 17:23:03.786436+05:30"
+    },
+    {
+      "review_id": "999746da-55a4-491c-bcec-8f232f0297aa",
+      "horizon_days": 730,
+      "entry_date": "2023-10-30",
+      "stock_return": "-0.243918976184422",
+      "market_median": "0.182638533980405",
+      "excess_return": "-0.426557510164827",
+      "computed_at": "2026-10-17 17:23:03.787401+05:30"
+    },
+    {
+      "review_id": "9a171260-5881-474e-80ab-f727f2d36a6f",
+      "horizon_days": 182,
+      "entry_date": "2022-06-06",
+      "stock_return": "0.0598039215686275",
+      "market_median": "0.104343220338983",
+      "excess_return": "-0.0445392987703556",
+      "computed_at": "2026-10-17 11:25:20.096713+05:30"
+    },
+    {
+      "review_id": "9a171260-5881-474e-80ab-f727f2d36a6f",
+      "horizon_days": 365,
+      "entry_date": "2022-06-06",
+      "stock_return": "-0.182516339869281",
+      "market_median": "0.0973571357335195",
+      "excess_return": "-0.279873475602801",
+      "computed_at": "2026-10-17 11:25:20.450421+05:30"
+    },
+    {
+      "review_id": "9a171260-5881-474e-80ab-f727f2d36a6f",
+      "horizon_days": 730,
+      "entry_date": "2022-06-06",
+      "stock_return": "0.340686274509804",
+      "market_median": "0.559166729872752",
+      "excess_return": "-0.218480455362948",
+      "computed_at": "2026-10-17 11:25:20.749672+05:30"
+    },
+    {
+      "review_id": "9a72ac4d-63b3-413e-8349-460b0ce513d7",
+      "horizon_days": 182,
+      "entry_date": "2023-02-27",
+      "stock_return": "0.234466588511137",
+      "market_median": "0.262462866005945",
+      "excess_return": "-0.0279962774948075",
+      "computed_at": "2026-10-17 17:22:19.876114+05:30"
+    },
+    {
+      "review_id": "9a72ac4d-63b3-413e-8349-460b0ce513d7",
+      "horizon_days": 365,
+      "entry_date": "2023-02-27",
+      "stock_return": "2.07737397420868",
+      "market_median": "0.62368362709234",
+      "excess_return": "1.45369034711634",
+      "computed_at": "2026-10-17 17:22:19.876778+05:30"
+    },
+    {
+      "review_id": "9a72ac4d-63b3-413e-8349-460b0ce513d7",
+      "horizon_days": 730,
+      "entry_date": "2023-02-27",
+      "stock_return": "0.0961313012895664",
+      "market_median": "0.43244027036889",
+      "excess_return": "-0.336308969079324",
+      "computed_at": "2026-10-17 17:22:19.877574+05:30"
+    },
+    {
+      "review_id": "9abd3521-dae5-40f8-bb8c-bab8547bd361",
+      "horizon_days": 182,
+      "entry_date": "2021-02-15",
+      "stock_return": "-0.0906903765690377",
+      "market_median": "0.339757676020435",
+      "excess_return": "-0.430448052589472",
+      "computed_at": "2026-10-17 11:24:57.585469+05:30"
+    },
+    {
+      "review_id": "9abd3521-dae5-40f8-bb8c-bab8547bd361",
+      "horizon_days": 365,
+      "entry_date": "2021-02-15",
+      "stock_return": "0.142050209205021",
+      "market_median": "0.433781890026075",
+      "excess_return": "-0.291731680821054",
+      "computed_at": "2026-10-17 11:24:57.585826+05:30"
+    },
+    {
+      "review_id": "9abd3521-dae5-40f8-bb8c-bab8547bd361",
+      "horizon_days": 730,
+      "entry_date": "2021-02-15",
+      "stock_return": "0.410669456066945",
+      "market_median": "0.462118917183111",
+      "excess_return": "-0.0514494611161657",
+      "computed_at": "2026-10-17 11:24:57.586256+05:30"
+    },
+    {
+      "review_id": "9ca5779a-f874-4639-8225-883b39fa30d8",
+      "horizon_days": 182,
+      "entry_date": "2023-07-24",
+      "stock_return": "0.324593602517042",
+      "market_median": "0.272787477423239",
+      "excess_return": "0.0518061250938034",
+      "computed_at": "2026-10-17 17:22:45.160764+05:30"
+    },
+    {
+      "review_id": "9ca5779a-f874-4639-8225-883b39fa30d8",
+      "horizon_days": 365,
+      "entry_date": "2023-07-24",
+      "stock_return": "0.862961020800559",
+      "market_median": "0.417731343283582",
+      "excess_return": "0.445229677516977",
+      "computed_at": "2026-10-17 17:22:45.161663+05:30"
+    },
+    {
+      "review_id": "9ca5779a-f874-4639-8225-883b39fa30d8",
+      "horizon_days": 730,
+      "entry_date": "2023-07-24",
+      "stock_return": "-0.0723649711588883",
+      "market_median": "0.353030192494086",
+      "excess_return": "-0.425395163652974",
+      "computed_at": "2026-10-17 17:22:45.162610+05:30"
+    },
+    {
+      "review_id": "9f705926-d8aa-4eb3-b91d-304acc360e25",
+      "horizon_days": 182,
+      "entry_date": "2025-09-15",
+      "stock_return": "0.119220229629887",
+      "market_median": "-0.234588163547267",
+      "excess_return": "0.353808393177153",
+      "computed_at": "2026-10-19 13:34:11.121141+05:30"
+    },
+    {
+      "review_id": "9f705926-d8aa-4eb3-b91d-304acc360e25",
+      "horizon_days": 365,
+      "entry_date": "2025-09-15",
+      "stock_return": "0.600471747199001",
+      "market_median": "-0.143156525509467",
+      "excess_return": "0.743628272708468",
+      "computed_at": "2026-10-19 13:34:11.121558+05:30"
+    },
+    {
+      "review_id": "9f705926-d8aa-4eb3-b91d-304acc360e25",
+      "horizon_days": 730,
+      "entry_date": "2025-09-15",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:11.121915+05:30"
+    },
+    {
+      "review_id": "a027c6b3-d2a2-4121-840a-fd18a82fbb6d",
+      "horizon_days": 182,
+      "entry_date": "2025-03-24",
+      "stock_return": "0.511111111111111",
+      "market_median": "0.0754091462235718",
+      "excess_return": "0.435701964887539",
+      "computed_at": "2026-10-19 13:34:00.583574+05:30"
+    },
+    {
+      "review_id": "a027c6b3-d2a2-4121-840a-fd18a82fbb6d",
+      "horizon_days": 365,
+      "entry_date": "2025-03-24",
+      "stock_return": "-0.0537606837606839",
+      "market_median": "-0.187569000648458",
+      "excess_return": "0.133808316887775",
+      "computed_at": "2026-10-19 13:34:00.584131+05:30"
+    },
+    {
+      "review_id": "a027c6b3-d2a2-4121-840a-fd18a82fbb6d",
+      "horizon_days": 730,
+      "entry_date": "2025-03-24",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:00.584560+05:30"
+    },
+    {
+      "review_id": "a0e86b5e-7a51-4555-ac3d-f613137abde1",
+      "horizon_days": 182,
+      "entry_date": "2023-08-14",
+      "stock_return": "0.051948051948052",
+      "market_median": "0.250470809792844",
+      "excess_return": "-0.198522757844792",
+      "computed_at": "2026-10-17 17:22:48.479585+05:30"
+    },
+    {
+      "review_id": "a0e86b5e-7a51-4555-ac3d-f613137abde1",
+      "horizon_days": 365,
+      "entry_date": "2023-08-14",
+      "stock_return": "-0.0344553405777895",
+      "market_median": "0.38801964446289",
+      "excess_return": "-0.422474985040679",
+      "computed_at": "2026-10-17 17:22:48.480381+05:30"
+    },
+    {
+      "review_id": "a0e86b5e-7a51-4555-ac3d-f613137abde1",
+      "horizon_days": 730,
+      "entry_date": "2023-08-14",
+      "stock_return": "-0.128597932679565",
+      "market_median": "0.225972927030203",
+      "excess_return": "-0.354570859709768",
+      "computed_at": "2026-10-17 17:22:48.480822+05:30"
+    },
+    {
+      "review_id": "a13deda6-5790-4d1d-bb2d-0c2386163dd9",
+      "horizon_days": 182,
+      "entry_date": "2023-06-05",
+      "stock_return": "1.52667893284269",
+      "market_median": "0.24755306601878",
+      "excess_return": "1.27912586682391",
+      "computed_at": "2026-10-17 17:22:38.342226+05:30"
+    },
+    {
+      "review_id": "a13deda6-5790-4d1d-bb2d-0c2386163dd9",
+      "horizon_days": 365,
+      "entry_date": "2023-06-05",
+      "stock_return": "1.52713891444342",
+      "market_median": "0.300893629287979",
+      "excess_return": "1.22624528515544",
+      "computed_at": "2026-10-17 17:22:38.579649+05:30"
+    },
+    {
+      "review_id": "a13deda6-5790-4d1d-bb2d-0c2386163dd9",
+      "horizon_days": 730,
+      "entry_date": "2023-06-05",
+      "stock_return": "2.03817847286109",
+      "market_median": "0.411100658513641",
+      "excess_return": "1.62707781434745",
+      "computed_at": "2026-10-17 17:22:38.790152+05:30"
+    },
+    {
+      "review_id": "a824d4ba-a76f-4c89-b87b-362ab43c147d",
+      "horizon_days": 182,
+      "entry_date": "2024-11-25",
+      "stock_return": "-0.482222727617315",
+      "market_median": "-0.0951211700651222",
+      "excess_return": "-0.387101557552193",
+      "computed_at": "2026-10-19 02:28:30.414171+05:30"
+    },
+    {
+      "review_id": "a824d4ba-a76f-4c89-b87b-362ab43c147d",
+      "horizon_days": 365,
+      "entry_date": "2024-11-25",
+      "stock_return": "-0.641573800318399",
+      "market_median": "-0.164128349177021",
+      "excess_return": "-0.477445451141378",
+      "computed_at": "2026-10-19 02:28:30.414435+05:30"
+    },
+    {
+      "review_id": "a824d4ba-a76f-4c89-b87b-362ab43c147d",
+      "horizon_days": 730,
+      "entry_date": "2024-11-25",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 02:28:30.414640+05:30"
+    },
+    {
+      "review_id": "a9a1ea4d-5a90-41c0-823a-70489eb1ceff",
+      "horizon_days": 182,
+      "entry_date": "2025-05-26",
+      "stock_return": "-0.13664061939924",
+      "market_median": "-0.0728034048601358",
+      "excess_return": "-0.0638372145391043",
+      "computed_at": "2026-10-19 13:33:54.862712+05:30"
+    },
+    {
+      "review_id": "a9a1ea4d-5a90-41c0-823a-70489eb1ceff",
+      "horizon_days": 365,
+      "entry_date": "2025-05-26",
+      "stock_return": "-0.328840777116639",
+      "market_median": "-0.12041759642971",
+      "excess_return": "-0.208423180686929",
+      "computed_at": "2026-10-19 13:33:54.969961+05:30"
+    },
+    {
+      "review_id": "a9a1ea4d-5a90-41c0-823a-70489eb1ceff",
+      "horizon_days": 730,
+      "entry_date": "2025-05-26",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:33:54.976796+05:30"
+    },
+    {
+      "review_id": "ab872f78-84b6-4672-8fbf-c2613c054079",
+      "horizon_days": 182,
+      "entry_date": "2024-03-25",
+      "stock_return": "0.319734271199688",
+      "market_median": "0.248528900641903",
+      "excess_return": "0.0712053705577847",
+      "computed_at": "2026-10-19 02:27:55.846713+05:30"
+    },
+    {
+      "review_id": "ab872f78-84b6-4672-8fbf-c2613c054079",
+      "horizon_days": 365,
+      "entry_date": "2024-03-25",
+      "stock_return": "0.434701055099648",
+      "market_median": "-0.0444444444444444",
+      "excess_return": "0.479145499544093",
+      "computed_at": "2026-10-19 02:27:55.847371+05:30"
+    },
+    {
+      "review_id": "ab872f78-84b6-4672-8fbf-c2613c054079",
+      "horizon_days": 730,
+      "entry_date": "2024-03-25",
+      "stock_return": "-0.23220007815553",
+      "market_median": "-0.167207040296434",
+      "excess_return": "-0.064993037859096",
+      "computed_at": "2026-10-19 02:27:55.847821+05:30"
+    },
+    {
+      "review_id": "ac61ab86-aa29-4340-bba5-fc032a95d141",
+      "horizon_days": 182,
+      "entry_date": "2024-11-25",
+      "stock_return": "0.0976582472645464",
+      "market_median": "-0.0951211700651222",
+      "excess_return": "0.192779417329669",
+      "computed_at": "2026-10-19 02:28:29.829382+05:30"
+    },
+    {
+      "review_id": "ac61ab86-aa29-4340-bba5-fc032a95d141",
+      "horizon_days": 365,
+      "entry_date": "2024-11-25",
+      "stock_return": "0.141476633602618",
+      "market_median": "-0.164128349177021",
+      "excess_return": "0.305604982779638",
+      "computed_at": "2026-10-19 02:28:29.829885+05:30"
+    },
+    {
+      "review_id": "ac61ab86-aa29-4340-bba5-fc032a95d141",
+      "horizon_days": 730,
+      "entry_date": "2024-11-25",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 02:28:29.830095+05:30"
+    },
+    {
+      "review_id": "adf6d8d7-c02d-4f7b-9b32-2fe4f9929d90",
+      "horizon_days": 182,
+      "entry_date": "2021-10-18",
+      "stock_return": "0.119155938437712",
+      "market_median": "0.0164614704213542",
+      "excess_return": "0.102694468016358",
+      "computed_at": "2026-10-17 11:25:27.508409+05:30"
+    },
+    {
+      "review_id": "adf6d8d7-c02d-4f7b-9b32-2fe4f9929d90",
+      "horizon_days": 365,
+      "entry_date": "2021-10-18",
+      "stock_return": "0.57022553479818",
+      "market_median": "-0.0176991150442478",
+      "excess_return": "0.587924649842428",
+      "computed_at": "2026-10-17 11:25:27.508928+05:30"
+    },
+    {
+      "review_id": "adf6d8d7-c02d-4f7b-9b32-2fe4f9929d90",
+      "horizon_days": 730,
+      "entry_date": "2021-10-18",
+      "stock_return": "1.63691801374504",
+      "market_median": "0.26197458455523",
+      "excess_return": "1.37494342918981",
+      "computed_at": "2026-10-17 11:25:27.509416+05:30"
+    },
+    {
+      "review_id": "af8824d1-f46a-4079-9838-bdc571f77e8e",
+      "horizon_days": 182,
+      "entry_date": "2025-03-10",
+      "stock_return": "-0.338930348258706",
+      "market_median": "0.100137414550773",
+      "excess_return": "-0.439067762809479",
+      "computed_at": "2026-10-19 13:34:00.184514+05:30"
+    },
+    {
+      "review_id": "af8824d1-f46a-4079-9838-bdc571f77e8e",
+      "horizon_days": 365,
+      "entry_date": "2025-03-10",
+      "stock_return": "-0.391791044776119",
+      "market_median": "-0.1008120083957",
+      "excess_return": "-0.290979036380419",
+      "computed_at": "2026-10-19 13:34:00.184908+05:30"
+    },
+    {
+      "review_id": "af8824d1-f46a-4079-9838-bdc571f77e8e",
+      "horizon_days": 730,
+      "entry_date": "2025-03-10",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:00.185339+05:30"
+    },
+    {
+      "review_id": "b013ccf5-565a-4b49-be6a-b32d107b0cc3",
+      "horizon_days": 182,
+      "entry_date": "2023-02-13",
+      "stock_return": "0.675984959947687",
+      "market_median": "0.15465698600285",
+      "excess_return": "0.521327973944837",
+      "computed_at": "2026-10-17 17:22:13.132666+05:30"
+    },
+    {
+      "review_id": "b013ccf5-565a-4b49-be6a-b32d107b0cc3",
+      "horizon_days": 365,
+      "entry_date": "2023-02-13",
+      "stock_return": "0.62252738270394",
+      "market_median": "0.48834421111975",
+      "excess_return": "0.13418317158419",
+      "computed_at": "2026-10-17 17:22:13.135089+05:30"
+    },
+    {
+      "review_id": "b013ccf5-565a-4b49-be6a-b32d107b0cc3",
+      "horizon_days": 730,
+      "entry_date": "2023-02-13",
+      "stock_return": "0.745953898970083",
+      "market_median": "0.447246004478701",
+      "excess_return": "0.298707894491382",
+      "computed_at": "2026-10-17 17:22:13.136386+05:30"
+    },
+    {
+      "review_id": "b0b26f79-5645-4341-84b6-14ee736d5a3e",
+      "horizon_days": 182,
+      "entry_date": "2021-05-31",
+      "stock_return": "0.873198847262248",
+      "market_median": "0.118079673135853",
+      "excess_return": "0.755119174126395",
+      "computed_at": "2026-10-17 11:25:08.549714+05:30"
+    },
+    {
+      "review_id": "b0b26f79-5645-4341-84b6-14ee736d5a3e",
+      "horizon_days": 365,
+      "entry_date": "2021-05-31",
+      "stock_return": "1.59173871277618",
+      "market_median": "0.127657469590378",
+      "excess_return": "1.4640812431858",
+      "computed_at": "2026-10-17 11:25:08.550102+05:30"
+    },
+    {
+      "review_id": "b0b26f79-5645-4341-84b6-14ee736d5a3e",
+      "horizon_days": 730,
+      "entry_date": "2021-05-31",
+      "stock_return": "4.90922190201729",
+      "market_median": "0.280991297725907",
+      "excess_return": "4.62823060429138",
+      "computed_at": "2026-10-17 11:25:08.550585+05:30"
+    },
+    {
+      "review_id": "b0f270b9-c365-40f8-8844-cb1c6781e71e",
+      "horizon_days": 182,
+      "entry_date": "2021-06-28",
+      "stock_return": "-0.119078436448356",
+      "market_median": "0.0725883476599809",
+      "excess_return": "-0.191666784108337",
+      "computed_at": "2026-10-17 11:25:12.419084+05:30"
+    },
+    {
+      "review_id": "b0f270b9-c365-40f8-8844-cb1c6781e71e",
+      "horizon_days": 365,
+      "entry_date": "2021-06-28",
+      "stock_return": "-0.425058244887393",
+      "market_median": "-0.0195121951219512",
+      "excess_return": "-0.405546049765442",
+      "computed_at": "2026-10-17 11:25:12.419516+05:30"
+    },
+    {
+      "review_id": "b0f270b9-c365-40f8-8844-cb1c6781e71e",
+      "horizon_days": 730,
+      "entry_date": "2021-06-28",
+      "stock_return": "0.0590214858917939",
+      "market_median": "0.227958709424256",
+      "excess_return": "-0.168937223532462",
+      "computed_at": "2026-10-17 11:25:12.419924+05:30"
+    },
+    {
+      "review_id": "b15f8ebe-211d-4bc2-9de4-06b31f44ea3a",
+      "horizon_days": 182,
+      "entry_date": "2024-01-22",
+      "stock_return": "0.466232227488152",
+      "market_median": "0.0961343746401487",
+      "excess_return": "0.370097852848003",
+      "computed_at": "2026-10-19 02:27:45.481491+05:30"
+    },
+    {
+      "review_id": "b15f8ebe-211d-4bc2-9de4-06b31f44ea3a",
+      "horizon_days": 365,
+      "entry_date": "2024-01-22",
+      "stock_return": "0.549407582938389",
+      "market_median": "0.0550026752273943",
+      "excess_return": "0.494404907710994",
+      "computed_at": "2026-10-19 02:27:45.482151+05:30"
+    },
+    {
+      "review_id": "b15f8ebe-211d-4bc2-9de4-06b31f44ea3a",
+      "horizon_days": 730,
+      "entry_date": "2024-01-22",
+      "stock_return": "0.324526066350711",
+      "market_median": "-0.148962745467224",
+      "excess_return": "0.473488811817935",
+      "computed_at": "2026-10-19 02:27:45.482670+05:30"
+    },
+    {
+      "review_id": "b1ebd787-65a2-4d57-bc90-9d8f00bba5bb",
+      "horizon_days": 182,
+      "entry_date": "2021-02-01",
+      "stock_return": "0.436708860759494",
+      "market_median": "0.480859465234465",
+      "excess_return": "-0.0441506044749717",
+      "computed_at": "2026-10-17 11:24:56.110910+05:30"
+    },
+    {
+      "review_id": "b1ebd787-65a2-4d57-bc90-9d8f00bba5bb",
+      "horizon_days": 365,
+      "entry_date": "2021-02-01",
+      "stock_return": "0.932489451476793",
+      "market_median": "0.55864694684434",
+      "excess_return": "0.373842504632453",
+      "computed_at": "2026-10-17 11:24:56.111412+05:30"
+    },
+    {
+      "review_id": "b1ebd787-65a2-4d57-bc90-9d8f00bba5bb",
+      "horizon_days": 730,
+      "entry_date": "2021-02-01",
+      "stock_return": "0.757383966244726",
+      "market_median": "0.550455077426032",
+      "excess_return": "0.206928888818694",
+      "computed_at": "2026-10-17 11:24:56.111833+05:30"
+    },
+    {
+      "review_id": "b21e0e54-6faf-4482-9173-48a8e4baec0e",
+      "horizon_days": 182,
+      "entry_date": "2021-05-24",
+      "stock_return": "0.0673746871406347",
+      "market_median": "0.156324000557181",
+      "excess_return": "-0.088949313416546",
+      "computed_at": "2026-10-17 11:25:07.049685+05:30"
+    },
+    {
+      "review_id": "b21e0e54-6faf-4482-9173-48a8e4baec0e",
+      "horizon_days": 365,
+      "entry_date": "2021-05-24",
+      "stock_return": "-0.154907664208889",
+      "market_median": "0.14444688805806",
+      "excess_return": "-0.299354552266949",
+      "computed_at": "2026-10-17 11:25:07.050295+05:30"
+    },
+    {
+      "review_id": "b21e0e54-6faf-4482-9173-48a8e4baec0e",
+      "horizon_days": 730,
+      "entry_date": "2021-05-24",
+      "stock_return": "-0.214435500236758",
+      "market_median": "0.293450372383046",
+      "excess_return": "-0.507885872619804",
+      "computed_at": "2026-10-17 11:25:07.050805+05:30"
+    },
+    {
+      "review_id": "b29991a6-b64b-4d25-908d-52ad6a3325d1",
+      "horizon_days": 182,
+      "entry_date": "2022-02-21",
+      "stock_return": "-0.425196850393701",
+      "market_median": "-0.0169802350064525",
+      "excess_return": "-0.408216615387248",
+      "computed_at": "2026-10-17 11:25:58.983683+05:30"
+    },
+    {
+      "review_id": "b29991a6-b64b-4d25-908d-52ad6a3325d1",
+      "horizon_days": 365,
+      "entry_date": "2022-02-21",
+      "stock_return": "-0.385826771653543",
+      "market_median": "-0.0226901250339558",
+      "excess_return": "-0.363136646619587",
+      "computed_at": "2026-10-17 11:25:58.984215+05:30"
+    },
+    {
+      "review_id": "b29991a6-b64b-4d25-908d-52ad6a3325d1",
+      "horizon_days": 730,
+      "entry_date": "2022-02-21",
+      "stock_return": "-0.165354330708661",
+      "market_median": "0.568936409679235",
+      "excess_return": "-0.734290740387896",
+      "computed_at": "2026-10-17 11:25:58.984738+05:30"
+    },
+    {
+      "review_id": "b62e9a7f-00fe-4147-baf1-ce60ffd99163",
+      "horizon_days": 182,
+      "entry_date": "2022-02-28",
+      "stock_return": "0.12826040094848",
+      "market_median": "0.0322873112279159",
+      "excess_return": "0.0959730897205643",
+      "computed_at": "2026-10-17 11:26:00.738514+05:30"
+    },
+    {
+      "review_id": "b62e9a7f-00fe-4147-baf1-ce60ffd99163",
+      "horizon_days": 365,
+      "entry_date": "2022-02-28",
+      "stock_return": "-0.156068118128907",
+      "market_median": "-0.027062426735336",
+      "excess_return": "-0.129005691393571",
+      "computed_at": "2026-10-17 11:26:00.739035+05:30"
+    },
+    {
+      "review_id": "b62e9a7f-00fe-4147-baf1-ce60ffd99163",
+      "horizon_days": 730,
+      "entry_date": "2022-02-28",
+      "stock_return": "0.594740245742617",
+      "market_median": "0.584117147009625",
+      "excess_return": "0.0106230987329918",
+      "computed_at": "2026-10-17 11:26:00.739515+05:30"
+    },
+    {
+      "review_id": "b69f237b-1f13-4d12-894c-f892d5bab232",
+      "horizon_days": 182,
+      "entry_date": "2022-11-21",
+      "stock_return": "0.439393939393939",
+      "market_median": "-0.00122964384509185",
+      "excess_return": "0.440623583239031",
+      "computed_at": "2026-10-17 11:25:22.072837+05:30"
+    },
+    {
+      "review_id": "b69f237b-1f13-4d12-894c-f892d5bab232",
+      "horizon_days": 365,
+      "entry_date": "2022-11-21",
+      "stock_return": "3.28030303030303",
+      "market_median": "0.286596664607783",
+      "excess_return": "2.99370636569525",
+      "computed_at": "2026-10-17 11:25:22.292496+05:30"
+    },
+    {
+      "review_id": "b69f237b-1f13-4d12-894c-f892d5bab232",
+      "horizon_days": 730,
+      "entry_date": "2022-11-21",
+      "stock_return": "4.38888888888889",
+      "market_median": "0.56178586847286",
+      "excess_return": "3.82710302041603",
+      "computed_at": "2026-10-17 11:25:22.455156+05:30"
+    },
+    {
+      "review_id": "b83b2f3f-09e5-4398-b77e-0c7a703f8d06",
+      "horizon_days": 182,
+      "entry_date": "2021-04-05",
+      "stock_return": "0.415929203539823",
+      "market_median": "0.383100414078675",
+      "excess_return": "0.0328287894611483",
+      "computed_at": "2026-10-17 11:25:03.657310+05:30"
+    },
+    {
+      "review_id": "b83b2f3f-09e5-4398-b77e-0c7a703f8d06",
+      "horizon_days": 365,
+      "entry_date": "2021-04-05",
+      "stock_return": "0.287610619469027",
+      "market_median": "0.459121085293693",
+      "excess_return": "-0.171510465824666",
+      "computed_at": "2026-10-17 11:25:03.657631+05:30"
+    },
+    {
+      "review_id": "b83b2f3f-09e5-4398-b77e-0c7a703f8d06",
+      "horizon_days": 730,
+      "entry_date": "2021-04-05",
+      "stock_return": "0.177623261694058",
+      "market_median": "0.383374862733414",
+      "excess_return": "-0.205751601039356",
+      "computed_at": "2026-10-17 11:25:03.657931+05:30"
+    },
+    {
+      "review_id": "b95c7ee0-a6f5-4a21-a922-3fd707a2b668",
+      "horizon_days": 182,
+      "entry_date": "2021-03-01",
+      "stock_return": "0.0578199052132702",
+      "market_median": "0.273865227954262",
+      "excess_return": "-0.216045322740991",
+      "computed_at": "2026-10-17 11:25:00.611547+05:30"
+    },
+    {
+      "review_id": "b95c7ee0-a6f5-4a21-a922-3fd707a2b668",
+      "horizon_days": 365,
+      "entry_date": "2021-03-01",
+      "stock_return": "0.695734597156398",
+      "market_median": "0.313671483760195",
+      "excess_return": "0.382063113396204",
+      "computed_at": "2026-10-17 11:25:00.611844+05:30"
+    },
+    {
+      "review_id": "b95c7ee0-a6f5-4a21-a922-3fd707a2b668",
+      "horizon_days": 730,
+      "entry_date": "2021-03-01",
+      "stock_return": "1.12985781990521",
+      "market_median": "0.384390243902439",
+      "excess_return": "0.745467576002774",
+      "computed_at": "2026-10-17 11:25:00.612122+05:30"
+    },
+    {
+      "review_id": "bb0fa087-4f84-4573-9c33-3dd8574abd6e",
+      "horizon_days": 182,
+      "entry_date": "2023-05-22",
+      "stock_return": "1.69806094182825",
+      "market_median": "0.250908739841439",
+      "excess_return": "1.44715220198682",
+      "computed_at": "2026-10-17 17:22:35.747341+05:30"
+    },
+    {
+      "review_id": "bb0fa087-4f84-4573-9c33-3dd8574abd6e",
+      "horizon_days": 365,
+      "entry_date": "2023-05-22",
+      "stock_return": "2.67036011080332",
+      "market_median": "0.456989247311828",
+      "excess_return": "2.2133708634915",
+      "computed_at": "2026-10-17 17:22:35.748101+05:30"
+    },
+    {
+      "review_id": "bb0fa087-4f84-4573-9c33-3dd8574abd6e",
+      "horizon_days": 730,
+      "entry_date": "2023-05-22",
+      "stock_return": "1.90600184672207",
+      "market_median": "0.44964713789627",
+      "excess_return": "1.4563547088258",
+      "computed_at": "2026-10-17 17:22:35.748846+05:30"
+    },
+    {
+      "review_id": "bdeae8d2-e668-4bbc-a3cc-74c7cb42aa4c",
+      "horizon_days": 182,
+      "entry_date": "2025-03-03",
+      "stock_return": "1.42359318533815",
+      "market_median": "0.125",
+      "excess_return": "1.29859318533815",
+      "computed_at": "2026-10-19 13:33:54.742418+05:30"
+    },
+    {
+      "review_id": "bdeae8d2-e668-4bbc-a3cc-74c7cb42aa4c",
+      "horizon_days": 365,
+      "entry_date": "2025-03-03",
+      "stock_return": "1.2535708139735",
+      "market_median": "-0.06366661843438",
+      "excess_return": "1.31723743240788",
+      "computed_at": "2026-10-19 13:33:54.743327+05:30"
+    },
+    {
+      "review_id": "bdeae8d2-e668-4bbc-a3cc-74c7cb42aa4c",
+      "horizon_days": 730,
+      "entry_date": "2025-03-03",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:33:54.743694+05:30"
+    },
+    {
+      "review_id": "c216181e-abea-4c0e-a0c0-9318d842d7bd",
+      "horizon_days": 182,
+      "entry_date": "2021-03-01",
+      "stock_return": "0.131777108433735",
+      "market_median": "0.273865227954262",
+      "excess_return": "-0.142088119520527",
+      "computed_at": "2026-10-17 11:25:00.677883+05:30"
+    },
+    {
+      "review_id": "c216181e-abea-4c0e-a0c0-9318d842d7bd",
+      "horizon_days": 365,
+      "entry_date": "2021-03-01",
+      "stock_return": "-0.28539156626506",
+      "market_median": "0.313671483760195",
+      "excess_return": "-0.599063050025255",
+      "computed_at": "2026-10-17 11:25:00.678284+05:30"
+    },
+    {
+      "review_id": "c216181e-abea-4c0e-a0c0-9318d842d7bd",
+      "horizon_days": 730,
+      "entry_date": "2021-03-01",
+      "stock_return": "-0.369728915662651",
+      "market_median": "0.384390243902439",
+      "excess_return": "-0.75411915956509",
+      "computed_at": "2026-10-17 11:25:00.678690+05:30"
+    },
+    {
+      "review_id": "c25a5aa0-ceff-4fec-8047-e5c553b99c4d",
+      "horizon_days": 182,
+      "entry_date": "2021-01-18",
+      "stock_return": "-0.109951546775997",
+      "market_median": "0.434238243808511",
+      "excess_return": "-0.544189790584508",
+      "computed_at": "2026-10-17 11:24:54.807807+05:30"
+    },
+    {
+      "review_id": "c25a5aa0-ceff-4fec-8047-e5c553b99c4d",
+      "horizon_days": 365,
+      "entry_date": "2021-01-18",
+      "stock_return": "0.164740961610138",
+      "market_median": "0.611431805658705",
+      "excess_return": "-0.446690844048567",
+      "computed_at": "2026-10-17 11:24:54.808568+05:30"
+    },
+    {
+      "review_id": "c25a5aa0-ceff-4fec-8047-e5c553b99c4d",
+      "horizon_days": 730,
+      "entry_date": "2021-01-18",
+      "stock_return": "1.54677599701826",
+      "market_median": "0.608115416536279",
+      "excess_return": "0.938660580481984",
+      "computed_at": "2026-10-17 11:24:54.809287+05:30"
+    },
+    {
+      "review_id": "c41b4f71-18c2-4ed5-b363-dc60025e1338",
+      "horizon_days": 182,
+      "entry_date": "2023-06-05",
+      "stock_return": "0.107027808822563",
+      "market_median": "0.24755306601878",
+      "excess_return": "-0.140525257196218",
+      "computed_at": "2026-10-17 17:22:38.842776+05:30"
+    },
+    {
+      "review_id": "c41b4f71-18c2-4ed5-b363-dc60025e1338",
+      "horizon_days": 365,
+      "entry_date": "2023-06-05",
+      "stock_return": "0.307606337518901",
+      "market_median": "0.300893629287979",
+      "excess_return": "0.00671270823092168",
+      "computed_at": "2026-10-17 17:22:38.843509+05:30"
+    },
+    {
+      "review_id": "c41b4f71-18c2-4ed5-b363-dc60025e1338",
+      "horizon_days": 730,
+      "entry_date": "2023-06-05",
+      "stock_return": "0.19439879034909",
+      "market_median": "0.411100658513641",
+      "excess_return": "-0.216701868164551",
+      "computed_at": "2026-10-17 17:22:38.844118+05:30"
+    },
+    {
+      "review_id": "c45539ef-5f74-4187-96e6-171114049a0d",
+      "horizon_days": 182,
+      "entry_date": "2025-05-19",
+      "stock_return": "-0.115768463073852",
+      "market_median": "-0.0393089685053345",
+      "excess_return": "-0.0764594945685179",
+      "computed_at": "2026-10-19 13:34:03.206011+05:30"
+    },
+    {
+      "review_id": "c45539ef-5f74-4187-96e6-171114049a0d",
+      "horizon_days": 365,
+      "entry_date": "2025-05-19",
+      "stock_return": "-0.142473673342969",
+      "market_median": "-0.135996600084998",
+      "excess_return": "-0.00647707325797137",
+      "computed_at": "2026-10-19 13:34:03.206764+05:30"
+    },
+    {
+      "review_id": "c45539ef-5f74-4187-96e6-171114049a0d",
+      "horizon_days": 730,
+      "entry_date": "2025-05-19",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:03.207184+05:30"
+    },
+    {
+      "review_id": "c6cfa342-1115-4ea8-ad15-d8628ce63914",
+      "horizon_days": 182,
+      "entry_date": "2021-02-22",
+      "stock_return": "0.14702154626109",
+      "market_median": "0.258211032334984",
+      "excess_return": "-0.111189486073894",
+      "computed_at": "2026-10-17 11:24:58.822552+05:30"
+    },
+    {
+      "review_id": "c6cfa342-1115-4ea8-ad15-d8628ce63914",
+      "horizon_days": 365,
+      "entry_date": "2021-02-22",
+      "stock_return": "0.162230671736375",
+      "market_median": "0.358742562128744",
+      "excess_return": "-0.196511890392369",
+      "computed_at": "2026-10-17 11:24:58.822829+05:30"
+    },
+    {
+      "review_id": "c6cfa342-1115-4ea8-ad15-d8628ce63914",
+      "horizon_days": 730,
+      "entry_date": "2021-02-22",
+      "stock_return": "0.5",
+      "market_median": "0.425531914893617",
+      "excess_return": "0.0744680851063828",
+      "computed_at": "2026-10-17 11:24:58.823120+05:30"
+    },
+    {
+      "review_id": "c84277a0-c9f6-4b23-8156-440d1663ef43",
+      "horizon_days": 182,
+      "entry_date": "2024-07-29",
+      "stock_return": "-0.31561666324646",
+      "market_median": "-0.151040756424906",
+      "excess_return": "-0.164575906821554",
+      "computed_at": "2026-10-19 02:28:12.430753+05:30"
+    },
+    {
+      "review_id": "c84277a0-c9f6-4b23-8156-440d1663ef43",
+      "horizon_days": 365,
+      "entry_date": "2024-07-29",
+      "stock_return": "-0.203160270880361",
+      "market_median": "-0.143304110961097",
+      "excess_return": "-0.0598561599192638",
+      "computed_at": "2026-10-19 02:28:12.431412+05:30"
+    },
+    {
+      "review_id": "c84277a0-c9f6-4b23-8156-440d1663ef43",
+      "horizon_days": 730,
+      "entry_date": "2024-07-29",
+      "stock_return": "-0.493741021957726",
+      "market_median": "-0.237779511180447",
+      "excess_return": "-0.255961510777279",
+      "computed_at": "2026-10-19 02:28:12.431638+05:30"
+    },
+    {
+      "review_id": "c85cc58c-4ed2-482c-ad78-e4c00bd0601b",
+      "horizon_days": 182,
+      "entry_date": "2023-08-21",
+      "stock_return": "0.629171099719509",
+      "market_median": "0.285293109221353",
+      "excess_return": "0.343877990498155",
+      "computed_at": "2026-10-17 17:22:49.690233+05:30"
+    },
+    {
+      "review_id": "c85cc58c-4ed2-482c-ad78-e4c00bd0601b",
+      "horizon_days": 365,
+      "entry_date": "2023-08-21",
+      "stock_return": "0.202534094206403",
+      "market_median": "0.417400419287212",
+      "excess_return": "-0.214866325080809",
+      "computed_at": "2026-10-17 17:22:49.690641+05:30"
+    },
+    {
+      "review_id": "c85cc58c-4ed2-482c-ad78-e4c00bd0601b",
+      "horizon_days": 730,
+      "entry_date": "2023-08-21",
+      "stock_return": "-0.279717574233485",
+      "market_median": "0.251730545876887",
+      "excess_return": "-0.531448120110372",
+      "computed_at": "2026-10-17 17:22:49.690963+05:30"
+    },
+    {
+      "review_id": "c8b4c359-02b8-4a47-8287-0126fe629bf9",
+      "horizon_days": 182,
+      "entry_date": "2025-03-10",
+      "stock_return": "0.137017627441639",
+      "market_median": "0.100137414550773",
+      "excess_return": "0.0368802128908663",
+      "computed_at": "2026-10-19 13:34:00.172729+05:30"
+    },
+    {
+      "review_id": "c8b4c359-02b8-4a47-8287-0126fe629bf9",
+      "horizon_days": 365,
+      "entry_date": "2025-03-10",
+      "stock_return": "-0.0991900905192949",
+      "market_median": "-0.1008120083957",
+      "excess_return": "0.00162191787640543",
+      "computed_at": "2026-10-19 13:34:00.173122+05:30"
+    },
+    {
+      "review_id": "c8b4c359-02b8-4a47-8287-0126fe629bf9",
+      "horizon_days": 730,
+      "entry_date": "2025-03-10",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:00.173478+05:30"
+    },
+    {
+      "review_id": "c8cdffba-7abf-4fba-b560-c806ee469fb2",
+      "horizon_days": 182,
+      "entry_date": "2025-06-02",
+      "stock_return": "-0.0624952113395481",
+      "market_median": "-0.0677593781683001",
+      "excess_return": "0.00526416682875205",
+      "computed_at": "2026-10-19 13:34:04.114972+05:30"
+    },
+    {
+      "review_id": "c8cdffba-7abf-4fba-b560-c806ee469fb2",
+      "horizon_days": 365,
+      "entry_date": "2025-06-02",
+      "stock_return": "-0.399259353850083",
+      "market_median": "-0.136882129277567",
+      "excess_return": "-0.262377224572516",
+      "computed_at": "2026-10-19 13:34:04.115545+05:30"
+    },
+    {
+      "review_id": "c8cdffba-7abf-4fba-b560-c806ee469fb2",
+      "horizon_days": 730,
+      "entry_date": "2025-06-02",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:04.115890+05:30"
+    },
+    {
+      "review_id": "c9f2ff8c-61ea-4284-9217-40744eb74c31",
+      "horizon_days": 182,
+      "entry_date": "2022-06-13",
+      "stock_return": "0.167993297025555",
+      "market_median": "0.142570281124498",
+      "excess_return": "0.0254230159010571",
+      "computed_at": "2026-10-17 11:26:12.726676+05:30"
+    },
+    {
+      "review_id": "c9f2ff8c-61ea-4284-9217-40744eb74c31",
+      "horizon_days": 365,
+      "entry_date": "2022-06-13",
+      "stock_return": "0.502723083368245",
+      "market_median": "0.169218372280419",
+      "excess_return": "0.333504711087826",
+      "computed_at": "2026-10-17 11:26:12.727140+05:30"
+    },
+    {
+      "review_id": "c9f2ff8c-61ea-4284-9217-40744eb74c31",
+      "horizon_days": 730,
+      "entry_date": "2022-06-13",
+      "stock_return": "0.560745705906996",
+      "market_median": "0.736388862483466",
+      "excess_return": "-0.175643156576469",
+      "computed_at": "2026-10-17 11:26:12.727731+05:30"
+    },
+    {
+      "review_id": "ca664bf8-312c-441c-8017-759aa7f58767",
+      "horizon_days": 182,
+      "entry_date": "2023-01-30",
+      "stock_return": "0.365420544728407",
+      "market_median": "0.153332186660027",
+      "excess_return": "0.21208835806838",
+      "computed_at": "2026-10-17 17:22:03.850753+05:30"
+    },
+    {
+      "review_id": "ca664bf8-312c-441c-8017-759aa7f58767",
+      "horizon_days": 365,
+      "entry_date": "2023-01-30",
+      "stock_return": "0.420459025385235",
+      "market_median": "0.504717400979083",
+      "excess_return": "-0.0842583755938481",
+      "computed_at": "2026-10-17 17:22:03.852005+05:30"
+    },
+    {
+      "review_id": "ca664bf8-312c-441c-8017-759aa7f58767",
+      "horizon_days": 730,
+      "entry_date": "2023-01-30",
+      "stock_return": "0.996726144563857",
+      "market_median": "0.498987119876576",
+      "excess_return": "0.497739024687281",
+      "computed_at": "2026-10-17 17:22:03.852889+05:30"
+    },
+    {
+      "review_id": "ccedaa4e-8045-4a49-9d44-4582b21602a9",
+      "horizon_days": 182,
+      "entry_date": "2022-06-13",
+      "stock_return": "0.358453908686538",
+      "market_median": "0.142570281124498",
+      "excess_return": "0.21588362756204",
+      "computed_at": "2026-10-17 11:26:12.870813+05:30"
+    },
+    {
+      "review_id": "ccedaa4e-8045-4a49-9d44-4582b21602a9",
+      "horizon_days": 365,
+      "entry_date": "2022-06-13",
+      "stock_return": "0.106293777800501",
+      "market_median": "0.169218372280419",
+      "excess_return": "-0.0629245944799179",
+      "computed_at": "2026-10-17 11:26:12.872391+05:30"
+    },
+    {
+      "review_id": "ccedaa4e-8045-4a49-9d44-4582b21602a9",
+      "horizon_days": 730,
+      "entry_date": "2022-06-13",
+      "stock_return": "-0.151797126642466",
+      "market_median": "0.736388862483466",
+      "excess_return": "-0.888185989125932",
+      "computed_at": "2026-10-17 11:26:12.873353+05:30"
+    },
+    {
+      "review_id": "d0461017-e4e7-45d6-99da-8eadf6903860",
+      "horizon_days": 182,
+      "entry_date": "2022-02-07",
+      "stock_return": "0.422068283028204",
+      "market_median": "-0.115306667001269",
+      "excess_return": "0.537374950029473",
+      "computed_at": "2026-10-17 11:25:57.558226+05:30"
+    },
+    {
+      "review_id": "d0461017-e4e7-45d6-99da-8eadf6903860",
+      "horizon_days": 365,
+      "entry_date": "2022-02-07",
+      "stock_return": "0.402028698804231",
+      "market_median": "-0.0913551727425399",
+      "excess_return": "0.49338387154677",
+      "computed_at": "2026-10-17 11:25:57.559376+05:30"
+    },
+    {
+      "review_id": "d0461017-e4e7-45d6-99da-8eadf6903860",
+      "horizon_days": 730,
+      "entry_date": "2022-02-07",
+      "stock_return": "1.69717961432217",
+      "market_median": "0.465411802080851",
+      "excess_return": "1.23176781224132",
+      "computed_at": "2026-10-17 11:25:57.559974+05:30"
+    },
+    {
+      "review_id": "d110284f-df3d-4b35-87a6-d4407a6f489b",
+      "horizon_days": 182,
+      "entry_date": "2025-08-11",
+      "stock_return": "-0.047480620155039",
+      "market_median": "-0.0993507178512053",
+      "excess_return": "0.0518700976961664",
+      "computed_at": "2026-10-19 13:34:07.792942+05:30"
+    },
+    {
+      "review_id": "d110284f-df3d-4b35-87a6-d4407a6f489b",
+      "horizon_days": 365,
+      "entry_date": "2025-08-11",
+      "stock_return": "0.247981266149871",
+      "market_median": "-0.0900238312626742",
+      "excess_return": "0.338005097412545",
+      "computed_at": "2026-10-19 13:34:07.793389+05:30"
+    },
+    {
+      "review_id": "d110284f-df3d-4b35-87a6-d4407a6f489b",
+      "horizon_days": 730,
+      "entry_date": "2025-08-11",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:07.793800+05:30"
+    },
+    {
+      "review_id": "d253122d-2310-4775-9186-ec4e65cba8a7",
+      "horizon_days": 182,
+      "entry_date": "2021-01-18",
+      "stock_return": "2.08072487644152",
+      "market_median": "0.434238243808511",
+      "excess_return": "1.646486632633",
+      "computed_at": "2026-10-17 11:24:53.728553+05:30"
+    },
+    {
+      "review_id": "d253122d-2310-4775-9186-ec4e65cba8a7",
+      "horizon_days": 365,
+      "entry_date": "2021-01-18",
+      "stock_return": "2.43822075782537",
+      "market_median": "0.611431805658705",
+      "excess_return": "1.82678895216667",
+      "computed_at": "2026-10-17 11:24:53.729384+05:30"
+    },
+    {
+      "review_id": "d253122d-2310-4775-9186-ec4e65cba8a7",
+      "horizon_days": 730,
+      "entry_date": "2021-01-18",
+      "stock_return": "1.91392092257002",
+      "market_median": "0.608115416536279",
+      "excess_return": "1.30580550603374",
+      "computed_at": "2026-10-17 11:24:53.729944+05:30"
+    },
+    {
+      "review_id": "d25894b0-56a9-402c-83fe-1752a4fc7f01",
+      "horizon_days": 182,
+      "entry_date": "2024-02-26",
+      "stock_return": "1.26895628902765",
+      "market_median": "0.105501426787529",
+      "excess_return": "1.16345486224012",
+      "computed_at": "2026-10-19 02:27:50.727213+05:30"
+    },
+    {
+      "review_id": "d25894b0-56a9-402c-83fe-1752a4fc7f01",
+      "horizon_days": 365,
+      "entry_date": "2024-02-26",
+      "stock_return": "0.45771632471008",
+      "market_median": "-0.130658144655905",
+      "excess_return": "0.588374469365985",
+      "computed_at": "2026-10-19 02:27:50.727454+05:30"
+    },
+    {
+      "review_id": "d25894b0-56a9-402c-83fe-1752a4fc7f01",
+      "horizon_days": 730,
+      "entry_date": "2024-02-26",
+      "stock_return": "0.657716324710081",
+      "market_median": "-0.179977100329183",
+      "excess_return": "0.837693425039263",
+      "computed_at": "2026-10-19 02:27:50.727619+05:30"
+    },
+    {
+      "review_id": "d3f7bcce-c169-4fff-9d2f-6acc25047ab6",
+      "horizon_days": 182,
+      "entry_date": "2021-09-13",
+      "stock_return": "-0.116391184573003",
+      "market_median": "0.0102408769652387",
+      "excess_return": "-0.126632061538241",
+      "computed_at": "2026-10-17 11:25:24.612900+05:30"
+    },
+    {
+      "review_id": "d3f7bcce-c169-4fff-9d2f-6acc25047ab6",
+      "horizon_days": 365,
+      "entry_date": "2021-09-13",
+      "stock_return": "-0.0275482093663912",
+      "market_median": "0.100213219616205",
+      "excess_return": "-0.127761428982596",
+      "computed_at": "2026-10-17 11:25:24.613453+05:30"
+    },
+    {
+      "review_id": "d3f7bcce-c169-4fff-9d2f-6acc25047ab6",
+      "horizon_days": 730,
+      "entry_date": "2021-09-13",
+      "stock_return": "1.01721763085399",
+      "market_median": "0.30750307503075",
+      "excess_return": "0.709714555823244",
+      "computed_at": "2026-10-17 11:25:24.614992+05:30"
+    },
+    {
+      "review_id": "d4aae51c-6894-4019-b7b1-aa6e22b5a33d",
+      "horizon_days": 182,
+      "entry_date": "2024-02-05",
+      "stock_return": "0.0578741441147701",
+      "market_median": "0.0534372813236988",
+      "excess_return": "0.00443686279107125",
+      "computed_at": "2026-10-19 02:27:47.510685+05:30"
+    },
+    {
+      "review_id": "d4aae51c-6894-4019-b7b1-aa6e22b5a33d",
+      "horizon_days": 365,
+      "entry_date": "2024-02-05",
+      "stock_return": "0.23759373981089",
+      "market_median": "-0.0240035202593708",
+      "excess_return": "0.261597260070261",
+      "computed_at": "2026-10-19 02:27:47.511091+05:30"
+    },
+    {
+      "review_id": "d4aae51c-6894-4019-b7b1-aa6e22b5a33d",
+      "horizon_days": 730,
+      "entry_date": "2024-02-05",
+      "stock_return": "-0.173589827192696",
+      "market_median": "-0.154929577464789",
+      "excess_return": "-0.0186602497279077",
+      "computed_at": "2026-10-19 02:27:47.511436+05:30"
+    },
+    {
+      "review_id": "d5db3c68-2e80-422f-8506-6c78eb120f1e",
+      "horizon_days": 182,
+      "entry_date": "2023-08-07",
+      "stock_return": "0.404924760601915",
+      "market_median": "0.280686500484192",
+      "excess_return": "0.124238260117723",
+      "computed_at": "2026-10-17 17:22:46.866743+05:30"
+    },
+    {
+      "review_id": "d5db3c68-2e80-422f-8506-6c78eb120f1e",
+      "horizon_days": 365,
+      "entry_date": "2023-08-07",
+      "stock_return": "0.214774281805746",
+      "market_median": "0.368487107891304",
+      "excess_return": "-0.153712826085558",
+      "computed_at": "2026-10-17 17:22:46.867283+05:30"
+    },
+    {
+      "review_id": "d5db3c68-2e80-422f-8506-6c78eb120f1e",
+      "horizon_days": 730,
+      "entry_date": "2023-08-07",
+      "stock_return": "0.0995896032831736",
+      "market_median": "0.235924932975871",
+      "excess_return": "-0.136335329692698",
+      "computed_at": "2026-10-17 17:22:46.867802+05:30"
+    },
+    {
+      "review_id": "d669f81c-6aa8-42af-a999-38e5fd34334d",
+      "horizon_days": 182,
+      "entry_date": "2024-06-03",
+      "stock_return": "0.0727214988885361",
+      "market_median": "0.0872659924819664",
+      "excess_return": "-0.0145444935934303",
+      "computed_at": "2026-10-19 02:28:05.026671+05:30"
+    },
+    {
+      "review_id": "d669f81c-6aa8-42af-a999-38e5fd34334d",
+      "horizon_days": 365,
+      "entry_date": "2024-06-03",
+      "stock_return": "-0.0147665925690694",
+      "market_median": "-0.0232416831231961",
+      "excess_return": "0.00847509055412669",
+      "computed_at": "2026-10-19 02:28:05.026917+05:30"
+    },
+    {
+      "review_id": "d669f81c-6aa8-42af-a999-38e5fd34334d",
+      "horizon_days": 730,
+      "entry_date": "2024-06-03",
+      "stock_return": "-0.371165449349",
+      "market_median": "-0.133480206182266",
+      "excess_return": "-0.237685243166733",
+      "computed_at": "2026-10-19 02:28:05.027134+05:30"
+    },
+    {
+      "review_id": "d7ba5bf9-0912-478b-9302-fe8aa17b3409",
+      "horizon_days": 182,
+      "entry_date": "2025-05-26",
+      "stock_return": "-0.214708857101575",
+      "market_median": "-0.0728034048601358",
+      "excess_return": "-0.141905452241439",
+      "computed_at": "2026-10-19 13:34:03.467213+05:30"
+    },
+    {
+      "review_id": "d7ba5bf9-0912-478b-9302-fe8aa17b3409",
+      "horizon_days": 365,
+      "entry_date": "2025-05-26",
+      "stock_return": "-0.18414968935125",
+      "market_median": "-0.12041759642971",
+      "excess_return": "-0.0637320929215397",
+      "computed_at": "2026-10-19 13:34:03.467625+05:30"
+    },
+    {
+      "review_id": "d7ba5bf9-0912-478b-9302-fe8aa17b3409",
+      "horizon_days": 730,
+      "entry_date": "2025-05-26",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:03.467980+05:30"
+    },
+    {
+      "review_id": "d9b1b133-c815-4d6c-9cd0-8cef6c951647",
+      "horizon_days": 182,
+      "entry_date": "2021-03-01",
+      "stock_return": "0.289979267449896",
+      "market_median": "0.273865227954262",
+      "excess_return": "0.0161140394956348",
+      "computed_at": "2026-10-17 11:25:00.692532+05:30"
+    },
+    {
+      "review_id": "d9b1b133-c815-4d6c-9cd0-8cef6c951647",
+      "horizon_days": 365,
+      "entry_date": "2021-03-01",
+      "stock_return": "0.281179451739231",
+      "market_median": "0.313671483760195",
+      "excess_return": "-0.0324920320209638",
+      "computed_at": "2026-10-17 11:25:00.692910+05:30"
+    },
+    {
+      "review_id": "d9b1b133-c815-4d6c-9cd0-8cef6c951647",
+      "horizon_days": 730,
+      "entry_date": "2021-03-01",
+      "stock_return": "1.47339322736697",
+      "market_median": "0.384390243902439",
+      "excess_return": "1.08900298346453",
+      "computed_at": "2026-10-17 11:25:00.693264+05:30"
+    },
+    {
+      "review_id": "d9cb4af1-eaaa-4420-8806-c27f697bc98b",
+      "horizon_days": 182,
+      "entry_date": "2021-09-20",
+      "stock_return": "0.0754189944134078",
+      "market_median": "0.0365939047108662",
+      "excess_return": "0.0388250897025417",
+      "computed_at": "2026-10-17 11:25:25.255975+05:30"
+    },
+    {
+      "review_id": "d9cb4af1-eaaa-4420-8806-c27f697bc98b",
+      "horizon_days": 365,
+      "entry_date": "2021-09-20",
+      "stock_return": "0.208034051609471",
+      "market_median": "0.0908142155012036",
+      "excess_return": "0.117219836108267",
+      "computed_at": "2026-10-17 11:25:25.256651+05:30"
+    },
+    {
+      "review_id": "d9cb4af1-eaaa-4420-8806-c27f697bc98b",
+      "horizon_days": 730,
+      "entry_date": "2021-09-20",
+      "stock_return": "0.897579143389199",
+      "market_median": "0.322775900900901",
+      "excess_return": "0.574803242488298",
+      "computed_at": "2026-10-17 11:25:25.257211+05:30"
+    },
+    {
+      "review_id": "db0c3522-398e-46f6-b700-fce485fa1a85",
+      "horizon_days": 182,
+      "entry_date": "2021-02-08",
+      "stock_return": "0.695835678109173",
+      "market_median": "0.386420369445831",
+      "excess_return": "0.309415308663342",
+      "computed_at": "2026-10-17 11:24:56.268431+05:30"
+    },
+    {
+      "review_id": "db0c3522-398e-46f6-b700-fce485fa1a85",
+      "horizon_days": 365,
+      "entry_date": "2021-02-08",
+      "stock_return": "3.48086662915025",
+      "market_median": "0.487044046098165",
+      "excess_return": "2.99382258305209",
+      "computed_at": "2026-10-17 11:24:56.268838+05:30"
+    },
+    {
+      "review_id": "db0c3522-398e-46f6-b700-fce485fa1a85",
+      "horizon_days": 730,
+      "entry_date": "2021-02-08",
+      "stock_return": "1.6221159257175",
+      "market_median": "0.488010502507961",
+      "excess_return": "1.13410542320954",
+      "computed_at": "2026-10-17 11:24:56.269214+05:30"
+    },
+    {
+      "review_id": "e1577d8f-889d-43b0-a122-de5c076d9766",
+      "horizon_days": 182,
+      "entry_date": "2024-06-24",
+      "stock_return": "-0.261798636601993",
+      "market_median": "-0.00405542412977357",
+      "excess_return": "-0.257743212472219",
+      "computed_at": "2026-10-19 02:28:08.541628+05:30"
+    },
+    {
+      "review_id": "e1577d8f-889d-43b0-a122-de5c076d9766",
+      "horizon_days": 365,
+      "entry_date": "2024-06-24",
+      "stock_return": "-0.387257472469848",
+      "market_median": "-0.0994359387590653",
+      "excess_return": "-0.287821533710783",
+      "computed_at": "2026-10-19 02:28:08.542075+05:30"
+    },
+    {
+      "review_id": "e1577d8f-889d-43b0-a122-de5c076d9766",
+      "horizon_days": 730,
+      "entry_date": "2024-06-24",
+      "stock_return": "0.0119734312183186",
+      "market_median": "-0.180630101585494",
+      "excess_return": "0.192603532803813",
+      "computed_at": "2026-10-19 02:28:08.542481+05:30"
+    },
+    {
+      "review_id": "e238c070-61af-438d-9dc2-056f2185ef08",
+      "horizon_days": 182,
+      "entry_date": "2024-07-15",
+      "stock_return": "0.539851466197075",
+      "market_median": "-0.111624326404927",
+      "excess_return": "0.651475792602002",
+      "computed_at": "2026-10-19 02:28:10.480287+05:30"
+    },
+    {
+      "review_id": "e238c070-61af-438d-9dc2-056f2185ef08",
+      "horizon_days": 365,
+      "entry_date": "2024-07-15",
+      "stock_return": "1.46122042722609",
+      "market_median": "-0.104689878234399",
+      "excess_return": "1.56591030546049",
+      "computed_at": "2026-10-19 02:28:10.480871+05:30"
+    },
+    {
+      "review_id": "e238c070-61af-438d-9dc2-056f2185ef08",
+      "horizon_days": 730,
+      "entry_date": "2024-07-15",
+      "stock_return": "1.46259857591302",
+      "market_median": "-0.214666502932079",
+      "excess_return": "1.6772650788451",
+      "computed_at": "2026-10-19 02:28:10.481304+05:30"
+    },
+    {
+      "review_id": "e4ce83c7-f41e-4f02-aa84-21ae678addcb",
+      "horizon_days": 182,
+      "entry_date": "2021-02-01",
+      "stock_return": "0.938467074487226",
+      "market_median": "0.480859465234465",
+      "excess_return": "0.457607609252761",
+      "computed_at": "2026-10-17 11:24:55.534191+05:30"
+    },
+    {
+      "review_id": "e4ce83c7-f41e-4f02-aa84-21ae678addcb",
+      "horizon_days": 365,
+      "entry_date": "2021-02-01",
+      "stock_return": "2.06477150053976",
+      "market_median": "0.55864694684434",
+      "excess_return": "1.50612455369542",
+      "computed_at": "2026-10-17 11:24:55.534523+05:30"
+    },
+    {
+      "review_id": "e4ce83c7-f41e-4f02-aa84-21ae678addcb",
+      "horizon_days": 730,
+      "entry_date": "2021-02-01",
+      "stock_return": "2.92587261604894",
+      "market_median": "0.550455077426032",
+      "excess_return": "2.37541753862291",
+      "computed_at": "2026-10-17 11:24:55.534973+05:30"
+    },
+    {
+      "review_id": "e7993afa-97a7-4ff2-8192-557bcfc13f68",
+      "horizon_days": 182,
+      "entry_date": "2021-07-05",
+      "stock_return": "-0.208339697571407",
+      "market_median": "0.0899048994468842",
+      "excess_return": "-0.298244597018291",
+      "computed_at": "2026-10-17 11:25:14.460493+05:30"
+    },
+    {
+      "review_id": "e7993afa-97a7-4ff2-8192-557bcfc13f68",
+      "horizon_days": 365,
+      "entry_date": "2021-07-05",
+      "stock_return": "-0.436535817931877",
+      "market_median": "-0.0528846153846154",
+      "excess_return": "-0.383651202547262",
+      "computed_at": "2026-10-17 11:25:14.460941+05:30"
+    },
+    {
+      "review_id": "e7993afa-97a7-4ff2-8192-557bcfc13f68",
+      "horizon_days": 730,
+      "entry_date": "2021-07-05",
+      "stock_return": "-0.330991293722316",
+      "market_median": "0.198050517929755",
+      "excess_return": "-0.529041811652071",
+      "computed_at": "2026-10-17 11:25:14.461420+05:30"
+    },
+    {
+      "review_id": "e8b507d4-e6f2-4968-b548-07401b9d9db2",
+      "horizon_days": 182,
+      "entry_date": "2021-05-31",
+      "stock_return": "0.0719626168224299",
+      "market_median": "0.118079673135853",
+      "excess_return": "-0.046117056313423",
+      "computed_at": "2026-10-17 11:25:07.878649+05:30"
+    },
+    {
+      "review_id": "e8b507d4-e6f2-4968-b548-07401b9d9db2",
+      "horizon_days": 365,
+      "entry_date": "2021-05-31",
+      "stock_return": "0.166355140186916",
+      "market_median": "0.127657469590378",
+      "excess_return": "0.038697670596538",
+      "computed_at": "2026-10-17 11:25:07.879158+05:30"
+    },
+    {
+      "review_id": "e8b507d4-e6f2-4968-b548-07401b9d9db2",
+      "horizon_days": 730,
+      "entry_date": "2021-05-31",
+      "stock_return": "0.745794392523365",
+      "market_median": "0.280991297725907",
+      "excess_return": "0.464803094797457",
+      "computed_at": "2026-10-17 11:25:07.879635+05:30"
+    },
+    {
+      "review_id": "eb319249-eb51-4ffc-be01-1d1c7de0ce82",
+      "horizon_days": 182,
+      "entry_date": "2025-06-09",
+      "stock_return": "-0.27431421446384",
+      "market_median": "-0.122715749730313",
+      "excess_return": "-0.151598464733527",
+      "computed_at": "2026-10-19 13:33:55.265404+05:30"
+    },
+    {
+      "review_id": "eb319249-eb51-4ffc-be01-1d1c7de0ce82",
+      "horizon_days": 365,
+      "entry_date": "2025-06-09",
+      "stock_return": "-0.163341645885287",
+      "market_median": "-0.160418387237223",
+      "excess_return": "-0.00292325864806425",
+      "computed_at": "2026-10-19 13:33:55.266230+05:30"
+    },
+    {
+      "review_id": "eb319249-eb51-4ffc-be01-1d1c7de0ce82",
+      "horizon_days": 730,
+      "entry_date": "2025-06-09",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:33:55.266632+05:30"
+    },
+    {
+      "review_id": "eca5402b-0054-433f-91b2-263e01e3f4db",
+      "horizon_days": 182,
+      "entry_date": "2023-01-30",
+      "stock_return": "0.282713237155151",
+      "market_median": "0.153332186660027",
+      "excess_return": "0.129381050495124",
+      "computed_at": "2026-10-17 17:22:01.382030+05:30"
+    },
+    {
+      "review_id": "eca5402b-0054-433f-91b2-263e01e3f4db",
+      "horizon_days": 365,
+      "entry_date": "2023-01-30",
+      "stock_return": "0.234725385978233",
+      "market_median": "0.504717400979083",
+      "excess_return": "-0.26999201500085",
+      "computed_at": "2026-10-17 17:22:01.384521+05:30"
+    },
+    {
+      "review_id": "eca5402b-0054-433f-91b2-263e01e3f4db",
+      "horizon_days": 730,
+      "entry_date": "2023-01-30",
+      "stock_return": "0.00931409769678559",
+      "market_median": "0.498987119876576",
+      "excess_return": "-0.48967302217979",
+      "computed_at": "2026-10-17 17:22:01.385728+05:30"
+    },
+    {
+      "review_id": "ecbe6a9f-8ff6-4518-ade8-d605c20b0401",
+      "horizon_days": 182,
+      "entry_date": "2025-06-16",
+      "stock_return": "-0.236583694907513",
+      "market_median": "-0.101931330472103",
+      "excess_return": "-0.13465236443541",
+      "computed_at": "2026-10-19 13:34:04.933415+05:30"
+    },
+    {
+      "review_id": "ecbe6a9f-8ff6-4518-ade8-d605c20b0401",
+      "horizon_days": 365,
+      "entry_date": "2025-06-16",
+      "stock_return": "-0.0886960493263301",
+      "market_median": "-0.133720163523671",
+      "excess_return": "0.0450241141973412",
+      "computed_at": "2026-10-19 13:34:04.933944+05:30"
+    },
+    {
+      "review_id": "ecbe6a9f-8ff6-4518-ade8-d605c20b0401",
+      "horizon_days": 730,
+      "entry_date": "2025-06-16",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:04.934296+05:30"
+    },
+    {
+      "review_id": "ed4ccb1c-7822-4748-ac69-8211ab44acb4",
+      "horizon_days": 182,
+      "entry_date": "2025-08-25",
+      "stock_return": "-0.35178501755755",
+      "market_median": "-0.147918136908963",
+      "excess_return": "-0.203866880648587",
+      "computed_at": "2026-10-19 13:34:09.383272+05:30"
+    },
+    {
+      "review_id": "ed4ccb1c-7822-4748-ac69-8211ab44acb4",
+      "horizon_days": 365,
+      "entry_date": "2025-08-25",
+      "stock_return": "-0.0922259071400703",
+      "market_median": "-0.105740777273624",
+      "excess_return": "0.0135148701335537",
+      "computed_at": "2026-10-19 13:34:09.383723+05:30"
+    },
+    {
+      "review_id": "ed4ccb1c-7822-4748-ac69-8211ab44acb4",
+      "horizon_days": 730,
+      "entry_date": "2025-08-25",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:09.384071+05:30"
+    },
+    {
+      "review_id": "f07f16cc-16f7-466d-ab40-c34b52f7d8a1",
+      "horizon_days": 182,
+      "entry_date": "2022-05-16",
+      "stock_return": "0.00485436893203883",
+      "market_median": "0.08366935408517",
+      "excess_return": "-0.0788149851531311",
+      "computed_at": "2026-10-17 11:26:08.790040+05:30"
+    },
+    {
+      "review_id": "f07f16cc-16f7-466d-ab40-c34b52f7d8a1",
+      "horizon_days": 365,
+      "entry_date": "2022-05-16",
+      "stock_return": "-0.0672992056487202",
+      "market_median": "0.0831987075928918",
+      "excess_return": "-0.150497913241612",
+      "computed_at": "2026-10-17 11:26:09.032100+05:30"
+    },
+    {
+      "review_id": "f07f16cc-16f7-466d-ab40-c34b52f7d8a1",
+      "horizon_days": 730,
+      "entry_date": "2022-05-16",
+      "stock_return": "0.903353927625772",
+      "market_median": "0.631026830744402",
+      "excess_return": "0.272327096881371",
+      "computed_at": "2026-10-17 11:26:09.260362+05:30"
+    },
+    {
+      "review_id": "f324e115-1ea1-48f6-8432-9a578bc7e56c",
+      "horizon_days": 182,
+      "entry_date": "2022-04-11",
+      "stock_return": "0.440841967369298",
+      "market_median": "-0.0615942028985507",
+      "excess_return": "0.502436170267849",
+      "computed_at": "2026-10-17 11:26:05.488302+05:30"
+    },
+    {
+      "review_id": "f324e115-1ea1-48f6-8432-9a578bc7e56c",
+      "horizon_days": 365,
+      "entry_date": "2022-04-11",
+      "stock_return": "0.681880433488151",
+      "market_median": "-0.128197840270544",
+      "excess_return": "0.810078273758695",
+      "computed_at": "2026-10-17 11:26:05.489047+05:30"
+    },
+    {
+      "review_id": "f324e115-1ea1-48f6-8432-9a578bc7e56c",
+      "horizon_days": 730,
+      "entry_date": "2022-04-11",
+      "stock_return": "3.24604025247112",
+      "market_median": "0.396584659913169",
+      "excess_return": "2.84945559255795",
+      "computed_at": "2026-10-17 11:26:05.489690+05:30"
+    },
+    {
+      "review_id": "f35c5640-6285-4808-9d0c-e172ca3e2f96",
+      "horizon_days": 182,
+      "entry_date": "2022-02-21",
+      "stock_return": "0.0793237971391416",
+      "market_median": "-0.0169802350064525",
+      "excess_return": "0.0963040321455941",
+      "computed_at": "2026-10-17 11:25:58.974577+05:30"
+    },
+    {
+      "review_id": "f35c5640-6285-4808-9d0c-e172ca3e2f96",
+      "horizon_days": 365,
+      "entry_date": "2022-02-21",
+      "stock_return": "0.593953185955787",
+      "market_median": "-0.0226901250339558",
+      "excess_return": "0.616643310989742",
+      "computed_at": "2026-10-17 11:25:58.974986+05:30"
+    },
+    {
+      "review_id": "f35c5640-6285-4808-9d0c-e172ca3e2f96",
+      "horizon_days": 730,
+      "entry_date": "2022-02-21",
+      "stock_return": "4.40214564369311",
+      "market_median": "0.568936409679235",
+      "excess_return": "3.83320923401387",
+      "computed_at": "2026-10-17 11:25:58.975360+05:30"
+    },
+    {
+      "review_id": "f3b00b10-4062-4add-87ee-e7ace57e65a8",
+      "horizon_days": 182,
+      "entry_date": "2023-03-27",
+      "stock_return": "0.064030131826742",
+      "market_median": "0.366333980786038",
+      "excess_return": "-0.302303848959296",
+      "computed_at": "2026-10-17 17:22:26.556093+05:30"
+    },
+    {
+      "review_id": "f3b00b10-4062-4add-87ee-e7ace57e65a8",
+      "horizon_days": 365,
+      "entry_date": "2023-03-27",
+      "stock_return": "0.337828807484357",
+      "market_median": "0.528406833531982",
+      "excess_return": "-0.190578026047626",
+      "computed_at": "2026-10-17 17:22:26.557722+05:30"
+    },
+    {
+      "review_id": "f3b00b10-4062-4add-87ee-e7ace57e65a8",
+      "horizon_days": 730,
+      "entry_date": "2023-03-27",
+      "stock_return": "0.735799769151328",
+      "market_median": "0.498313121181727",
+      "excess_return": "0.237486647969601",
+      "computed_at": "2026-10-17 17:22:26.558734+05:30"
+    },
+    {
+      "review_id": "f46f3ad5-c016-405e-a272-cd7386a98f7f",
+      "horizon_days": 182,
+      "entry_date": "2023-11-27",
+      "stock_return": "0",
+      "market_median": "0.0936689588974053",
+      "excess_return": "-0.0936689588974053",
+      "computed_at": "2026-10-17 17:23:14.546122+05:30"
+    },
+    {
+      "review_id": "f46f3ad5-c016-405e-a272-cd7386a98f7f",
+      "horizon_days": 365,
+      "entry_date": "2023-11-27",
+      "stock_return": "-0.15049504950495",
+      "market_median": "0.207941740884712",
+      "excess_return": "-0.358436790389662",
+      "computed_at": "2026-10-17 17:23:14.546757+05:30"
+    },
+    {
+      "review_id": "f46f3ad5-c016-405e-a272-cd7386a98f7f",
+      "horizon_days": 730,
+      "entry_date": "2023-11-27",
+      "stock_return": "-0.615841584158416",
+      "market_median": "0.0402979159028549",
+      "excess_return": "-0.656139500061271",
+      "computed_at": "2026-10-17 17:23:14.547280+05:30"
+    },
+    {
+      "review_id": "f4fd3cfe-cfac-49c1-90ea-47c117d4239e",
+      "horizon_days": 182,
+      "entry_date": "2022-10-24",
+      "stock_return": "-0.458646616541353",
+      "market_median": "-0.056038718958124",
+      "excess_return": "-0.402607897583229",
+      "computed_at": "2026-10-17 11:25:21.162406+05:30"
+    },
+    {
+      "review_id": "f4fd3cfe-cfac-49c1-90ea-47c117d4239e",
+      "horizon_days": 365,
+      "entry_date": "2022-10-24",
+      "stock_return": "-0.433372588096748",
+      "market_median": "0.172132644272179",
+      "excess_return": "-0.605505232368927",
+      "computed_at": "2026-10-17 11:25:21.326939+05:30"
+    },
+    {
+      "review_id": "f4fd3cfe-cfac-49c1-90ea-47c117d4239e",
+      "horizon_days": 730,
+      "entry_date": "2022-10-24",
+      "stock_return": "0.282543708669263",
+      "market_median": "0.579114476683537",
+      "excess_return": "-0.296570768014274",
+      "computed_at": "2026-10-17 11:25:21.699946+05:30"
+    },
+    {
+      "review_id": "f5f7326e-431d-4d74-8039-c2a42b8576f1",
+      "horizon_days": 182,
+      "entry_date": "2024-03-25",
+      "stock_return": "0.43502253287961",
+      "market_median": "0.248528900641903",
+      "excess_return": "0.186493632237707",
+      "computed_at": "2026-10-19 02:27:55.908781+05:30"
+    },
+    {
+      "review_id": "f5f7326e-431d-4d74-8039-c2a42b8576f1",
+      "horizon_days": 365,
+      "entry_date": "2024-03-25",
+      "stock_return": "0.387105674606824",
+      "market_median": "-0.0444444444444444",
+      "excess_return": "0.431550119051269",
+      "computed_at": "2026-10-19 02:27:55.908988+05:30"
+    },
+    {
+      "review_id": "f5f7326e-431d-4d74-8039-c2a42b8576f1",
+      "horizon_days": 730,
+      "entry_date": "2024-03-25",
+      "stock_return": "-0.555596431527637",
+      "market_median": "-0.167207040296434",
+      "excess_return": "-0.388389391231204",
+      "computed_at": "2026-10-19 02:27:55.909338+05:30"
+    },
+    {
+      "review_id": "f7b05023-ecf5-4890-8dc2-27d3b3cfae6c",
+      "horizon_days": 182,
+      "entry_date": "2021-02-22",
+      "stock_return": "0.0754716981132075",
+      "market_median": "0.258211032334984",
+      "excess_return": "-0.182739334221776",
+      "computed_at": "2026-10-17 11:24:58.773550+05:30"
+    },
+    {
+      "review_id": "f7b05023-ecf5-4890-8dc2-27d3b3cfae6c",
+      "horizon_days": 365,
+      "entry_date": "2021-02-22",
+      "stock_return": "0.226415094339623",
+      "market_median": "0.358742562128744",
+      "excess_return": "-0.132327467789122",
+      "computed_at": "2026-10-17 11:24:58.773959+05:30"
+    },
+    {
+      "review_id": "f7b05023-ecf5-4890-8dc2-27d3b3cfae6c",
+      "horizon_days": 730,
+      "entry_date": "2021-02-22",
+      "stock_return": "0.10377358490566",
+      "market_median": "0.425531914893617",
+      "excess_return": "-0.321758329987957",
+      "computed_at": "2026-10-17 11:24:58.774382+05:30"
+    },
+    {
+      "review_id": "feeb53a1-076a-4a32-b374-db034494f235",
+      "horizon_days": 182,
+      "entry_date": "2025-08-18",
+      "stock_return": "0.178234657597774",
+      "market_median": "-0.126773455377574",
+      "excess_return": "0.305008112975348",
+      "computed_at": "2026-10-19 13:34:08.626248+05:30"
+    },
+    {
+      "review_id": "feeb53a1-076a-4a32-b374-db034494f235",
+      "horizon_days": 365,
+      "entry_date": "2025-08-18",
+      "stock_return": "0.946204977585407",
+      "market_median": "-0.10269991199823",
+      "excess_return": "1.04890488958364",
+      "computed_at": "2026-10-19 13:34:08.627131+05:30"
+    },
+    {
+      "review_id": "feeb53a1-076a-4a32-b374-db034494f235",
+      "horizon_days": 730,
+      "entry_date": "2025-08-18",
+      "stock_return": null,
+      "market_median": null,
+      "excess_return": null,
+      "computed_at": "2026-10-19 13:34:08.627516+05:30"
+    },
+    {
+      "review_id": "ff1abae9-d626-4909-993f-9cb49ed8235a",
+      "horizon_days": 182,
+      "entry_date": "2022-05-02",
+      "stock_return": "-0.417783735478105",
+      "market_median": "-0.0274444406373493",
+      "excess_return": "-0.390339294840756",
+      "computed_at": "2026-10-17 11:26:07.638497+05:30"
+    },
+    {
+      "review_id": "ff1abae9-d626-4909-993f-9cb49ed8235a",
+      "horizon_days": 365,
+      "entry_date": "2022-05-02",
+      "stock_return": "-0.405272564789991",
+      "market_median": "-0.0489217080420216",
+      "excess_return": "-0.356350856747969",
+      "computed_at": "2026-10-17 11:26:07.639103+05:30"
+    },
+    {
+      "review_id": "ff1abae9-d626-4909-993f-9cb49ed8235a",
+      "horizon_days": 730,
+      "entry_date": "2022-05-02",
+      "stock_return": "-0.464924039320822",
+      "market_median": "0.495765000927264",
+      "excess_return": "-0.960689040248087",
+      "computed_at": "2026-10-17 11:26:07.639570+05:30"
+    }
+  ]
+}

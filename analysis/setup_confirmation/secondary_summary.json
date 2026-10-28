@@ -1,0 +1,26 @@
+{
+  "screened_positive_keys": [
+    "SHAH|2023-07-17",
+    "JYOTISTRUC|2023-09-04",
+    "HIRECT|2024-02-26"
+  ],
+  "n24": 3,
+  "doubles24": 1,
+  "members": [
+    {
+      "label": "SHAH",
+      "week": "2023-07-17",
+      "return24": 0.212698412698413
+    },
+    {
+      "label": "JYOTISTRUC",
+      "week": "2023-09-04",
+      "return24": 0.256390977443609
+    },
+    {
+      "label": "HIRECT",
+      "week": "2024-02-26",
+      "return24": 1.20524655742749
+    }
+  ]
+}

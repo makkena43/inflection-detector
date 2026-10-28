@@ -1,0 +1,4345 @@
+{
+  "shortlist": {
+    "review_id": "227adef4-79de-47d9-980b-8804e7f69b1e",
+    "issuer_id": "1319c80c-56b2-4598-a713-051a0edf9bfe",
+    "week_start": "2026-05-25",
+    "label": "ANONDITA",
+    "legal_name": "Anondita Medicare Limited",
+    "triage_action": "DEEP_RESEARCH",
+    "is_pick": true,
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "rules_version": "triage-rules-3.5.1",
+    "size_pct_of_revenue": 31.4,
+    "size_basis": "STATED",
+    "firm": true,
+    "routine": false,
+    "disqualifier": null,
+    "confidence": "MEDIUM",
+    "rationale": "The Rs 43.14 crore first export PO is firm and equals 31.4% of FY26 revenue of Rs 137.42 crore. It is not routine: it is the company's first export order and opens South Africa after vendor qualification in April 2026, while earlier Indian tender awards were L1 or qualified with no stated value. No disqualifier is shown, but whether the allocation recurs under the transversal contract and the delivery schedule are not stated.",
+    "excess_6m": null,
+    "excess_12m": null,
+    "excess_24m": null,
+    "return_12m": null,
+    "return_24m": null,
+    "holding_period": null,
+    "holding_previous_period": null,
+    "promoter_holding_pct": null,
+    "fii_holding_pct": null,
+    "promoter_change_pp": null,
+    "fii_change_pp": null,
+    "return_36m": null,
+    "benchmark_36m": null,
+    "excess_36m": null,
+    "benchmark_12m": null,
+    "benchmark_24m": null,
+    "runup_6m": 0.6437753488691824,
+    "margin_ttm": null,
+    "category": "B: order \u226525% + run-up >60%",
+    "order_cr": null,
+    "mcap_cr": 2163.784924,
+    "orders_12m_pct": null,
+    "order_to_mcap": null,
+    "mgmt_target_x": null,
+    "promoter_net_cr": 0.0,
+    "inst_net_cr": 0.0,
+    "tech": null,
+    "order_book": {
+      "quarter_end": "2026-03-31",
+      "order_book_cr": 137.0,
+      "order_inflow_cr": null,
+      "book_doubtful": false,
+      "inflow_doubtful": false,
+      "book_yoy_pct": null,
+      "inflow_yoy_pct": null
+    },
+    "score": 0,
+    "ps": null,
+    "opm": null,
+    "signals": [],
+    "holding_year_ago_period": null,
+    "promoter_yoy_pp": null,
+    "fii_yoy_pp": null,
+    "return_6m": null,
+    "benchmark_6m": null,
+    "promoter_yoy_relative": null,
+    "fii_yoy_relative": null,
+    "combos": [
+      "C2"
+    ],
+    "combo_checks": {
+      "up": false,
+      "hi": true,
+      "rs": true,
+      "n": 2,
+      "runup6": 0.6437753488691824,
+      "liq": 1.885875
+    },
+    "security_id": "399a23a9-4304-4035-bf80-a9ded627182a"
+  },
+  "asof": "2026-10-27",
+  "reviews": [
+    {
+      "week_start": "2026-08-31",
+      "triage_action": "REJECT_WITH_REASON",
+      "is_final": true,
+      "result": {
+        "firm": false,
+        "as_of": "2026-09-06T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": null,
+        "event_ids": [
+          "45de3a1d-aa9c-4433-ae80-b2e164c2fbdb",
+          "856012dc-b966-45d0-9d8c-75dc806bbe84"
+        ],
+        "issuer_id": "1319c80c-56b2-4598-a713-051a0edf9bfe",
+        "mechanism": "",
+        "rationale": "ORDER QUALIFIED no value; firm=False; routine=None; disq=None",
+        "confidence": "LOW",
+        "size_basis": "UNKNOWN",
+        "packet_hash": "eab523bf822dc697c76d4b7e344819fb495235ae8a116e9559bdcff50ca22fb9",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "",
+        "evidence_refs": [],
+        "triage_action": "REJECT_WITH_REASON",
+        "contradictions": [],
+        "funding_status": "",
+        "next_milestone": null,
+        "commercial_stage": "UNKNOWN",
+        "materiality_status": "MATERIALITY_UNKNOWN",
+        "missing_information": [],
+        "size_pct_of_revenue": null,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "ORDER QUALIFIED no value; firm=False; routine=None; disq=None",
+      "decided_by": "local engine rules-3.5+qwen2.5-3b"
+    },
+    {
+      "week_start": "2026-08-24",
+      "triage_action": "REJECT_WITH_REASON",
+      "is_final": true,
+      "result": {
+        "firm": true,
+        "as_of": "2026-08-30T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": true,
+        "event_ids": [
+          "088b1134-d359-4327-bd58-58821bb30e44",
+          "131a86c2-2a5f-496e-ab86-e8baa30f11dc",
+          "3f1916bc-2487-48a1-857c-f6738a3b5864",
+          "b82f15a7-7d7b-4d4c-995d-5317c4433fc4"
+        ],
+        "issuer_id": "1319c80c-56b2-4598-a713-051a0edf9bfe",
+        "mechanism": "",
+        "rationale": "ORDER BINDING_DEMAND 48.50 INR CRORE = 35.3% of revenue; firm=True; routine=True; disq=None",
+        "confidence": "LOW",
+        "size_basis": "STATED",
+        "packet_hash": "d6d66d89437e6f3f7411d07b1191617584bf45f3caf0183c8ca8784010e47a72",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "",
+        "evidence_refs": [],
+        "triage_action": "REJECT_WITH_REASON",
+        "contradictions": [],
+        "funding_status": "",
+        "next_milestone": null,
+        "commercial_stage": "UNKNOWN",
+        "materiality_status": "MATERIAL_POTENTIAL",
+        "missing_information": [],
+        "size_pct_of_revenue": 35.3,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "ORDER BINDING_DEMAND 48.50 INR CRORE = 35.3% of revenue; firm=True; routine=True; disq=None",
+      "decided_by": "local engine rules-3.5+qwen2.5-3b"
+    },
+    {
+      "week_start": "2026-07-06",
+      "triage_action": "DEEP_RESEARCH",
+      "is_final": true,
+      "result": {
+        "firm": true,
+        "as_of": "2026-07-12T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": false,
+        "event_ids": [
+          "147561e9-8ca6-42a0-8a56-42b6578e0b4f",
+          "23068016-1697-459b-b7a3-bcc29509038a",
+          "476cdc0a-4da4-4630-b263-df4a55a8c548",
+          "517f6ca6-4a60-4f13-996d-a9968a5bd56e",
+          "53e9eef9-340e-4dae-b2c3-d5685bf086ba",
+          "650094dc-d05d-411b-ba52-f624d20b73a8",
+          "8230f2c5-9613-4ff8-8512-b902b125f1aa",
+          "8253031d-4a07-4dd1-90a3-27714e5b8108",
+          "ae23e8f0-044d-432f-9736-f5e2d7d787a3",
+          "b9bdf1ba-abc6-4a74-a405-d99212c70146",
+          "bcad05dd-eea7-446b-a576-42c0989f28ee",
+          "c5eabe0a-5022-48ca-a7e3-173204b7973e",
+          "d6996d00-2af8-470d-b3df-38a891f88461",
+          "eb9fd8db-962d-4fe8-ac7e-0ef66fb33038",
+          "ef5463f8-839d-4777-8edb-590a7ff137a8",
+          "fad6c901-02fd-43bc-9bf7-be6ca30b8d6d"
+        ],
+        "issuer_id": "1319c80c-56b2-4598-a713-051a0edf9bfe",
+        "mechanism": "",
+        "rationale": "ORDER BINDING_DEMAND 43.14 INR CRORE = 31.4% of revenue; firm=True; routine=False; disq=None",
+        "confidence": "LOW",
+        "size_basis": "STATED",
+        "packet_hash": "a757b4b37da43ac1056986e9171bbb4c0a30c46c9b981c9541597ab9f3948b5c",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "",
+        "evidence_refs": [],
+        "triage_action": "DEEP_RESEARCH",
+        "contradictions": [],
+        "funding_status": "",
+        "next_milestone": null,
+        "commercial_stage": "UNKNOWN",
+        "materiality_status": "MATERIAL_POTENTIAL",
+        "missing_information": [],
+        "size_pct_of_revenue": 31.4,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "ORDER BINDING_DEMAND 43.14 INR CRORE = 31.4% of revenue; firm=True; routine=False; disq=None",
+      "decided_by": "local engine rules-3.5+qwen2.5-3b"
+    },
+    {
+      "week_start": "2026-06-01",
+      "triage_action": "WATCH_MILESTONE",
+      "is_final": true,
+      "result": {
+        "firm": true,
+        "as_of": "2026-06-07T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": null,
+        "event_ids": [
+          "bcad05dd-eea7-446b-a576-42c0989f28ee"
+        ],
+        "issuer_id": "1319c80c-56b2-4598-a713-051a0edf9bfe",
+        "mechanism": "",
+        "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+        "confidence": "LOW",
+        "size_basis": "UNKNOWN",
+        "packet_hash": "19dd46c1af1838d1a7d3cf48084f1fa34a2b5ef3bdc387830498415dc55161ec",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "",
+        "evidence_refs": [],
+        "triage_action": "WATCH_MILESTONE",
+        "contradictions": [],
+        "funding_status": "",
+        "next_milestone": null,
+        "commercial_stage": "UNKNOWN",
+        "materiality_status": "MATERIALITY_UNKNOWN",
+        "missing_information": [],
+        "size_pct_of_revenue": null,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "decided_by": "local engine rules-3.5+qwen2.5-3b"
+    },
+    {
+      "week_start": "2026-05-25",
+      "triage_action": "DEEP_RESEARCH",
+      "is_final": true,
+      "result": {
+        "firm": true,
+        "as_of": "2026-05-31T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": false,
+        "event_ids": [
+          "147561e9-8ca6-42a0-8a56-42b6578e0b4f",
+          "23068016-1697-459b-b7a3-bcc29509038a",
+          "53e9eef9-340e-4dae-b2c3-d5685bf086ba",
+          "8253031d-4a07-4dd1-90a3-27714e5b8108",
+          "d6996d00-2af8-470d-b3df-38a891f88461",
+          "ef5463f8-839d-4777-8edb-590a7ff137a8",
+          "fad6c901-02fd-43bc-9bf7-be6ca30b8d6d"
+        ],
+        "issuer_id": "1319c80c-56b2-4598-a713-051a0edf9bfe",
+        "mechanism": "First export purchase order under the South African government condom procurement tender (transversal contract RT75-2025), placed through Supra Healthcare Johannesburg, opening a new export market for a domestic condom manufacturer (COBRA brand).",
+        "rationale": "The Rs 43.14 crore first export PO is firm and equals 31.4% of FY26 revenue of Rs 137.42 crore. It is not routine: it is the company's first export order and opens South Africa after vendor qualification in April 2026, while earlier Indian tender awards were L1 or qualified with no stated value. No disqualifier is shown, but whether the allocation recurs under the transversal contract and the delivery schedule are not stated.",
+        "confidence": "MEDIUM",
+        "size_basis": "STATED",
+        "packet_hash": "cb85866026caaa6035dcb58255558e3250863ac30eafc9cde3f79ef97ba8ee29",
+        "reviewed_by": "haiku",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "On 30 May 2026 the company disclosed its first export PO of about Rs 43.14 crore, equal to 31.4% of FY26 revenue of Rs 137.42 crore, after South African vendor qualification in April 2026. Other items in the window are small or not firm: a Rs 7.18 crore PO (5.2% of revenue, 25 May), a Rs 5.16 lakh Nepal order, and a CMSS item that is a qualified tender with no value.",
+        "evidence_refs": [
+          "1c8ee994-d67f-42e7-b6ea-6dbe018f0d5e",
+          "f35c0b48-ba54-481b-a34b-131612a30421",
+          "7575f3fd-c335-4e76-9751-da609842d81d",
+          "389f9a10-4012-4d94-914d-472700f159fe",
+          "98f72d01-7eb0-4d3d-88de-7fc0460966b4",
+          "82fd3fff-c3c4-4dd5-8256-01a4e2f34a42",
+          "b69ef080-1c8c-4950-b430-876fb245759c",
+          "7b9dd6a5-00a3-418e-ad39-a21ed6f98e02"
+        ],
+        "triage_action": "DEEP_RESEARCH",
+        "contradictions": [
+          "The Rs 43.14 crore is described as a first export order, while earlier Indian tender awards (CMSS, 2025-26) were L1 or qualified with no stated value and are not firm",
+          "Recurrence is not stated: a government tender allocation may be one-off, and the delivery period is not given"
+        ],
+        "funding_status": "FUNDED",
+        "next_milestone": "Dispatch and delivery against the South African PO, and any follow-on allocation or extension under the RT75-2025 transversal contract",
+        "commercial_stage": "BINDING_DEMAND",
+        "order_book_check": {
+          "as_of": null,
+          "source": "No investor presentation or results text artifact is listed in the packet with a text id; packet states no order book figure; no page read",
+          "order_book_cr": null,
+          "matches_packet": null,
+          "order_inflow_quarter_cr": null
+        },
+        "materiality_status": "MATERIAL_POTENTIAL",
+        "missing_information": [
+          "Delivery schedule and contract period under the South African PO and transversal contract RT75-2025",
+          "Whether the South African allocation recurs or is a single procurement",
+          "Promoter or group interest declaration for the South African order is not shown in the packet",
+          "Company-total order book and quarterly order inflow not disclosed in the packet",
+          "Quarterly financials and TTM revenue not in packet; FY26 revenue of Rs 137.42 crore used as base; FY26 EPS of 20.77 implies a high profit margin but PAT is not stated",
+          "The Rs 7.18 crore PO (7,18,36,178 rupees) is misread in the packet as 71.8 crore; the correct value is 7.18 crore, 5.2% of revenue"
+        ],
+        "size_pct_of_revenue": 31.4,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "The Rs 43.14 crore first export PO is firm and equals 31.4% of FY26 revenue of Rs 137.42 crore. It is not routine: it is the company's first export order and opens South Africa after vendor qualification in April 2026, while earlier Indian tender awards were L1 or qualified with no stated value. No disqualifier is shown, but whether the allocation recurs under the transversal contract and the delivery schedule are not stated.",
+      "decided_by": "claude-haiku-5-5 (second opinion on local engine)"
+    },
+    {
+      "week_start": "2026-04-27",
+      "triage_action": "REJECT_WITH_REASON",
+      "is_final": true,
+      "result": {
+        "firm": false,
+        "as_of": "2026-05-03T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": null,
+        "event_ids": [
+          "517f6ca6-4a60-4f13-996d-a9968a5bd56e",
+          "8230f2c5-9613-4ff8-8512-b902b125f1aa",
+          "eb9fd8db-962d-4fe8-ac7e-0ef66fb33038"
+        ],
+        "issuer_id": "1319c80c-56b2-4598-a713-051a0edf9bfe",
+        "mechanism": "",
+        "rationale": "No order, commercial start, capacity or approval event; a financial change alone is not an inflection.",
+        "confidence": "LOW",
+        "size_basis": "UNKNOWN",
+        "packet_hash": "bd327cc26d5b34f36c97ab24215f1c29414aa143311061a33313032646fd531d",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "",
+        "evidence_refs": [],
+        "triage_action": "REJECT_WITH_REASON",
+        "contradictions": [],
+        "funding_status": "",
+        "next_milestone": null,
+        "commercial_stage": "UNKNOWN",
+        "materiality_status": "MATERIALITY_UNKNOWN",
+        "missing_information": [],
+        "size_pct_of_revenue": null,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "No order, commercial start, capacity or approval event; a financial change alone is not an inflection.",
+      "decided_by": "local engine rules-3.5+qwen2.5-3b"
+    },
+    {
+      "week_start": "2026-04-06",
+      "triage_action": "WATCH_MILESTONE",
+      "is_final": true,
+      "result": {
+        "firm": true,
+        "as_of": "2026-04-12T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": null,
+        "event_ids": [
+          "476cdc0a-4da4-4630-b263-df4a55a8c548",
+          "650094dc-d05d-411b-ba52-f624d20b73a8",
+          "8230f2c5-9613-4ff8-8512-b902b125f1aa",
+          "ae23e8f0-044d-432f-9736-f5e2d7d787a3",
+          "b9bdf1ba-abc6-4a74-a405-d99212c70146",
+          "c5eabe0a-5022-48ca-a7e3-173204b7973e"
+        ],
+        "issuer_id": "1319c80c-56b2-4598-a713-051a0edf9bfe",
+        "mechanism": "",
+        "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+        "confidence": "LOW",
+        "size_basis": "UNKNOWN",
+        "packet_hash": "add1fa7b5f3ec5ebb7ce32d7d64b8b399622dd403fba8646a68090d74e076cbf",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "",
+        "evidence_refs": [],
+        "triage_action": "WATCH_MILESTONE",
+        "contradictions": [],
+        "funding_status": "",
+        "next_milestone": null,
+        "commercial_stage": "UNKNOWN",
+        "materiality_status": "MATERIALITY_UNKNOWN",
+        "missing_information": [],
+        "size_pct_of_revenue": null,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "decided_by": "local engine rules-3.5+qwen2.5-3b"
+    },
+    {
+      "week_start": "2026-03-02",
+      "triage_action": "WATCH_MILESTONE",
+      "is_final": true,
+      "result": {
+        "firm": true,
+        "as_of": "2026-03-08T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": null,
+        "event_ids": [
+          "650094dc-d05d-411b-ba52-f624d20b73a8",
+          "8230f2c5-9613-4ff8-8512-b902b125f1aa",
+          "ae23e8f0-044d-432f-9736-f5e2d7d787a3",
+          "c5eabe0a-5022-48ca-a7e3-173204b7973e"
+        ],
+        "issuer_id": "1319c80c-56b2-4598-a713-051a0edf9bfe",
+        "mechanism": "",
+        "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+        "confidence": "LOW",
+        "size_basis": "UNKNOWN",
+        "packet_hash": "dd32aa9c10314b1750ffe53c4a9162d402820a75bbf985c09ce66da7efa60762",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "",
+        "evidence_refs": [],
+        "triage_action": "WATCH_MILESTONE",
+        "contradictions": [],
+        "funding_status": "",
+        "next_milestone": null,
+        "commercial_stage": "UNKNOWN",
+        "materiality_status": "MATERIALITY_UNKNOWN",
+        "missing_information": [],
+        "size_pct_of_revenue": null,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "decided_by": "local engine rules-3.5+qwen2.5-3b"
+    },
+    {
+      "week_start": "2026-01-05",
+      "triage_action": "REJECT_WITH_REASON",
+      "is_final": true,
+      "result": {
+        "firm": false,
+        "as_of": "2026-01-11T18:30:00+00:00",
+        "engine": "rules-3.5+qwen2.5-3b",
+        "routine": null,
+        "event_ids": [
+          "476cdc0a-4da4-4630-b263-df4a55a8c548",
+          "b9bdf1ba-abc6-4a74-a405-d99212c70146"
+        ],
+        "issuer_id": "1319c80c-56b2-4598-a713-051a0edf9bfe",
+        "mechanism": "",
+        "rationale": "ORDER QUALIFIED no value; firm=False; routine=None; disq=None",
+        "confidence": "LOW",
+        "size_basis": "UNKNOWN",
+        "packet_hash": "b593c7b31d8f505da0caef92e852642987e3421453ead094405767be36fdf325",
+        "disqualifier": null,
+        "pass_through": false,
+        "what_changed": "",
+        "evidence_refs": [],
+        "triage_action": "REJECT_WITH_REASON",
+        "contradictions": [],
+        "funding_status": "",
+        "next_milestone": null,
+        "commercial_stage": "UNKNOWN",
+        "materiality_status": "MATERIALITY_UNKNOWN",
+        "missing_information": [],
+        "size_pct_of_revenue": null,
+        "triage_rules_version": "triage-rules-3.5.1"
+      },
+      "rationale": "ORDER QUALIFIED no value; firm=False; routine=None; disq=None",
+      "decided_by": "local engine rules-3.5+qwen2.5-3b"
+    }
+  ],
+  "financials": [
+    {
+      "metric": "cost_of_materials",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 522113000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 522113000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": 235322000.0,
+      "available_at": "2026-03-09T18:28:28+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 235322000.0,
+      "available_at": "2026-03-09T17:43:43+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 286791000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 286791000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 83285000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 66299000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": 34810000.0,
+      "available_at": "2026-03-09T18:28:28+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 27106000.0,
+      "available_at": "2026-03-09T17:43:43+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 48475000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 39193000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 20.77,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 16.65,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": 9.12,
+      "available_at": "2026-03-09T18:28:28+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 8.14,
+      "available_at": "2026-03-09T17:43:43+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 11.38,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 8.49,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 20.77,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 16.65,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": 9.12,
+      "available_at": "2026-03-09T18:28:28+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 8.14,
+      "available_at": "2026-03-09T17:43:43+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 11.38,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 8.49,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 10.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 10.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": 10.0,
+      "available_at": "2026-03-09T18:28:28+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 10.0,
+      "available_at": "2026-03-09T17:43:43+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 10.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 10.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 35380000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 34827000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": 18235000.0,
+      "available_at": "2026-03-09T18:28:28+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 18132000.0,
+      "available_at": "2026-03-09T17:43:43+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 17145000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 16695000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": -57951000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": -34319000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": -7918000.0,
+      "available_at": "2026-03-09T18:28:28+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": -18694000.0,
+      "available_at": "2026-03-09T17:43:43+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": -50033000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": -15625000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 183595000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 169784000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": 70249000.0,
+      "available_at": "2026-03-09T18:28:28+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 64922000.0,
+      "available_at": "2026-03-09T17:43:43+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 113347000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 104862000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 8424000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 17591000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": 4078000.0,
+      "available_at": "2026-03-09T18:28:28+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 7556000.0,
+      "available_at": "2026-03-09T17:43:43+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 4346000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 10035000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 180866000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 180866000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": 180879000.0,
+      "available_at": "2026-03-09T18:28:28+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 180866000.0,
+      "available_at": "2026-03-09T17:43:43+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 180866000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 180866000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 468896000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 365137000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": 173770000.0,
+      "available_at": "2026-03-09T18:28:28+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 153271000.0,
+      "available_at": "2026-03-09T17:43:43+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 295126000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 211866000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 136454000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 0.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": 16493000.0,
+      "available_at": "2026-03-09T18:28:28+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 0.0,
+      "available_at": "2026-03-09T17:43:43+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 119961000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 0.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 1374157000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 1116962000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": 540970000.0,
+      "available_at": "2026-03-09T18:28:28+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 476506000.0,
+      "available_at": "2026-03-09T17:43:43+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 833187000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 640456000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 125931000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 96936000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": 43591000.0,
+      "available_at": "2026-03-09T18:28:28+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 38614000.0,
+      "available_at": "2026-03-09T17:43:43+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 82340000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 58322000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 913685000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 769416000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": 371278000.0,
+      "available_at": "2026-03-09T18:28:28+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 330791000.0,
+      "available_at": "2026-03-09T17:43:43+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 542407000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 438625000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 1382581000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 1134553000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": 545048000.0,
+      "available_at": "2026-03-09T18:28:28+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": 484062000.0,
+      "available_at": "2026-03-09T17:43:43+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": 837533000.0,
+      "available_at": "2026-05-29T19:21:39+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": 650491000.0,
+      "available_at": "2026-05-22T23:34:22+05:30"
+    }
+  ],
+  "holdings": [],
+  "events": [
+    {
+      "published_at": "2026-09-24T22:30:38+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "by NSE, being the designated stock exchange for the Rights Issue, the Board of Directors of the Company, at",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_24092026222748_Anondita_Outcome_of_Board_Meeting_Allotment_Reg30_sd.pdf",
+      "page_no": 1,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-09-24T22:30:38+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "Accordingly, we wish to inform you that the Rights Issue opened on Wednesday, September 09, 2026, and closed",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_24092026222748_Anondita_Outcome_of_Board_Meeting_Allotment_Reg30_sd.pdf",
+      "page_no": 1,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-09-24T22:30:38+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "Pursuant to the communication received from National Stock Exchange of India Limited (\"NSE\") on the Basis of Allotment of the Rights Issue, and in supersession of the Company's earlier communication in this regard, the Company has revised the Basis of Allotment of the Rights Issue and made allotment on the basis of the Issue Size as revised by the said Corrigendum.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_24092026222748_Anondita_Outcome_of_Board_Meeting_Allotment_Reg30_sd.pdf",
+      "page_no": 1,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-09-24T22:30:38+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": 9102.58,
+      "scale": "LAKH",
+      "quote": "Dear Sir/Madam, This refers to our earlier disclosure dated August 27, 2026, regarding the Rights Issue of up to 9,58,166 (Nine Lakhs Fifty-Eight Thousand One Hundred Sixty-Six) fully paid-up equity shares of face value \u20b910 each of the Company for an amount aggregating up to \u20b99,102.58 Lakhs (the \"Rights Issue\"), as revised by the Corrigendum to the Letter of Offer dated September 07, 2026.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_24092026222748_Anondita_Outcome_of_Board_Meeting_Allotment_Reg30_sd.pdf",
+      "page_no": 1,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "FIRM"
+    },
+    {
+      "published_at": "2026-09-08T16:21:06+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "September 07, 2026, in connection with the Rights Issue of Anondita Medicare Limited",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_08092026161857_Anondita_Intimation_Nullifying_Corrigendum_sd.pdf",
+      "page_no": 1,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-09-07T22:44:30+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "(\u201cCompany\u201d) in connection with its Rights Issue, the Company hereby issues this Corrigendum to revise the total number",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_07092026224322_Anondita_Corrigendum_to_Letter_of_Offer_sd.pdf",
+      "page_no": 1,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-09-07T22:44:30+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "Subject: Corrigendum to the Letter of Offer dated August 27, 2026 in connection with the Rights Issue of Anondita",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_07092026224322_Anondita_Corrigendum_to_Letter_of_Offer_sd.pdf",
+      "page_no": 1,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-09-07T17:35:32+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "Date: September 07, 2026 To, The Manager \u2013 Listing Compliance, National Stock Exchange of India Limited, Exchange Plaza, C-1, Block G, Bandra Kurla Complex, Bandra (East), Mumbai \u2013 400 051 Symbol: ANONDITA ISIN: INE0VTV01012 Subject: Intimation Regarding Arrangements for Disposal of Odd Lots \u2013 Rights Issue of Anondita Medicare Limited Dear Sir/Madam, With reference to the above, we hereby confirm and intimate the following in connection with the arrangements for disposal of odd lots pursuant to the Rights Issue of Anondita Medicare Limited (\"Company\").",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_07092026173030_Anondita_Intimation_Odd_Lots_NSE_sd.pdf",
+      "page_no": 1,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-09-02T12:26:40+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "Management Commentary Commenting on the development, Mr. Anupam Ghosh, Managing Director, Anondita Medicare Limited, said: \u201cBeing declared the L1 bidder by the Central Medical Services Society for a tender of this scale is an important development for Anondita Medicare.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_02092026122518_Intimation_of_Press_Release_L1_Bidder_02-09-2026.pdf",
+      "page_no": 2,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-09-02T12:26:40+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "\u2022 Status: L1 Bidder under Schedule 1",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_02092026122518_Intimation_of_Press_Release_L1_Bidder_02-09-2026.pdf",
+      "page_no": 2,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-09-02T12:26:40+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "manufacturer of condoms and sexual wellness products, has been declared the L1 bidder under",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_02092026122518_Intimation_of_Press_Release_L1_Bidder_02-09-2026.pdf",
+      "page_no": 2,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-09-02T12:26:40+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "Anondita Medicare Declared L1 Bidder by Central Medical Services",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_02092026122518_Intimation_of_Press_Release_L1_Bidder_02-09-2026.pdf",
+      "page_no": 2,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-09-02T12:26:40+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "\u201cAnondita Medicare Declared L1 Bidder by Central Medical Services Society for Supply of",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_02092026122518_Intimation_of_Press_Release_L1_Bidder_02-09-2026.pdf",
+      "page_no": 1,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-09-02T12:26:40+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "Sub: Intimation of Press Release - Anondita Medicare Declared L1 Bidder by Central Medical",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_02092026122518_Intimation_of_Press_Release_L1_Bidder_02-09-2026.pdf",
+      "page_no": 1,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-31T18:32:02+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "Company\u201d) has been declared as the L1 bidder under Schedule 1 by the Central Medical Services",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_31082026183016_Update_on_declaration_of_L1_Bidder_signed.pdf",
+      "page_no": 1,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-31T18:32:02+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "Sub: Declaration of the Company as L1 Bidder under Schedule 1 by Central Medical Services",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_31082026183016_Update_on_declaration_of_L1_Bidder_signed.pdf",
+      "page_no": 1,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "However, our Board or the Rights Issue Committee will have the right to extend the Issue Period as it may determine from time to time but not exceeding 30 days from the Issue Opening Date (inclusive of the Issue Opening Date and Issue Closing Date).",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 94,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "mentioned on the Application Form and superscribed \u201cAnondita Medicare Limited\u2013 Rights Issue\u201d on the",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 93,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "* Our Board or the Rights Issue Committee will have the right to extend the Issue Period as it may determine from",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 89,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "In case of Equity Shares held by joint holders, the Application submitted in physical mode to the Designated Branch of the SCSBs would be required to be signed by all the joint holders (in the same order as appearing in the records of the Depository) to be considered as valid for allotment of Equity Shares offered in this Issue.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 87,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "account (namely, \u201cANONDITA MEDICARE LIMITED RIGHTS ISSUE SUSPENSE ESCROW DEMAT",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 83,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "The Application by such Specific Investor(s) shall be made along with their Application Money before the finalisation of Basis of Allotment for undersubscribed portion of the Rights Issue in co-ordination with our Company and Registrar.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 81,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "In case of allotment of any undersubscribed portion of the Rights Issue to Specific Investor Our Company may allot any undersubscribed portion (if any) of the Rights Issue to one of more Specific Investor(s) and the names of such Specific Investor(s) shall be disclosed by our Company in the public advertisement at least two days prior to the Issue Opening Date.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 81,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "Investors are advised to consult their legal counsel prior to applying for the Rights Entitlement and Equity Shares or accepting any provisional allotment of Equity Shares, or making any offer, sale, resale, pledge or other transfer of the Equity Shares or Rights Entitlement.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 69,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "CAPACITY",
+      "family": "CAPACITY",
+      "amount": null,
+      "scale": null,
+      "quote": "1. Established manufacturer of male condoms under the flagship brand \"COBRA,\" with a certified installed manufacturing capacity of 869 million pieces per annum following the capacity enhancement commissioned in February 2026, among the larger domestic manufacturers in this segment;",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 63,
+      "commercial_stage": "FUNDED_PLAN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "STATEMENT OF POSSIBLE SPECIAL TAX BENEFITS Date: August 01, 2026 To, The Board of Directors Anondita Medicare Limited Flat No. 704, Narmada Block, N6, Sector-D, Pocket-6, Vasant Kunj, New Delhi - 110070, India Dear Sirs, Re: Proposed rights issue of equity shares of face value of \u20b910 each (\u201cEquity Shares\u201d) of Anondita Medicare Limited (\u201cCompany\u201d and such offering, the \u201cIssue\u201d).",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 56,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "COMMERCIAL_START",
+      "family": "COMMERCIAL_START",
+      "amount": null,
+      "scale": null,
+      "quote": "Commercial production from this expansion is expected to commence within the next 2\u20133 months.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 53,
+      "commercial_stage": "AMBITION",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "CAPACITY",
+      "family": "CAPACITY",
+      "amount": null,
+      "scale": null,
+      "quote": "In February 2026, the Company successfully commissioned an additional capacity of 307 million pieces per annum, increasing the total installed capacity to 869 million pieces per annum.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 52,
+      "commercial_stage": "FUNDED_PLAN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "Consequently, the Company now executes almost the full quantity of Government orders awarded to it while gradually reducing dependence on low-margin contract manufacturing for third-party brands.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 52,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "Being an MSME, the Company was eligible to receive up to 25% of the tender quantity by matching the L1 (lowest bidder) price.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 52,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "The terms of the Issue, including the Record Date and the Rights Entitlement ratio, have been approved by a resolution passed by our Board of Rights Issue Committee at its meeting held on August 27, 2026.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 42,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "The terms and conditions of the Issue including the Rights Entitlement, Issue Price, Record Date, timing of the Issue and other related matters, have been approved by a resolution passed by our Board / Rights Issue Committee at its meeting held on August 27, 2026.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 37,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "Our Company has opened a demat suspense escrow account, namely \"ANONDITA MEDICARE LIMITED RIGHTS ISSUE SUSPENSE ESCROW DEMAT ACCOUNT,\" to which Rights Entitlements will be credited for Eligible Equity Shareholders holding Equity Shares in physical form as on the Record Date, and in certain other circumstances (frozen demat accounts, unclaimed suspense accounts, disputed ownership, etc.).",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 34,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "We have received export orders from customers in South Africa and anticipate further export orders, primarily for male condoms.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 31,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "Following completion of this Issue, our Company may, in the future, undertake further issuances of Equity Shares, convertible securities, or securities linked to our Equity Shares, whether by way of preferential allotment, further rights issue, or otherwise.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 29,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "Given that our Promoters are not subscribing to this Issue, the relative impact of public shareholder participation on the ultimate post-Issue shareholding pattern is more significant than would ordinarily be the case, and shareholders who do not exercise or renounce their Rights Entitlements should be aware that their proportional ownership may accordingly be diluted to a greater extent than in a rights issue where promoters subscribe fully.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 28,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "\u2022 The Company has planned to undertake capital expenditure for establishing a female condom manufacturing facility through the proceeds of the proposed Rights Issue.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 53,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": 48.5,
+      "scale": "CRORE",
+      "quote": "Our Company has, during the current financial year, commenced international business operations and received export orders aggregating approximately \u20b948.50 crore from customers in South Africa, with deliveries scheduled to be completed by September 2026, and anticipates further export orders aggregating approximately \u20b950.00 crore over the following six months, primarily for the supply of female condoms.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 26,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "CAPACITY",
+      "family": "CAPACITY",
+      "amount": null,
+      "scale": null,
+      "quote": "These projections are driven by a combination of factors, including anticipated growth in orders from Government procurement agencies and AIDS Control Societies, continued growth in sales under our own brands, our recently commissioned additional manufacturing capacity for male condoms, and the anticipated commissioning and scale- up of our proposed female condom manufacturing facility.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 25,
+      "commercial_stage": "FUNDED_PLAN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "In a typical rights issue, promoter subscription to the full extent of their entitlement provides a significant, and often decisive, contribution towards achieving minimum subscription.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 24,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "The completion of this Issue is subject to, among other things, receipt of in-principle and final approvals from NSE and other requisite regulatory approvals, and the rights issue process itself, from Board approval to listing, involves a Page 19 of 103",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 23,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "Minimum Public Shareholding Our Company is currently in compliance with the minimum public shareholding requirements under Regulation 38 of the SEBI LODR Regulations and Rule 19A of the SCRR, and shall ensure continued compliance post completion of the Rights Issue.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 20,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "SEBI Rights Issue Circular The SEBI circular bearing number SEBI/HO/CFD/CFD-PoD-1/P/CIR/2025/31 dated March 11, 2025.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 12,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "read with the SEBI Rights Issue Circular.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 12,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "In this regard, please find enclosed the soft copy of the Letter of Offer dated August 27, 2026, for the Rights Issue of Anondita Medicare Limited.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 1,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "Dated: August 28, 2026 To, Corporate Service Department National Stock Exchange of India Limited Exchange Plaza, Bandra Kurla Complex, Bandra (East), Mumbai \u2013 400051 Symbol: ANONDITA ISIN: INE0VTV01012 Subject: Proposed Rights Issue of the Fully Paid-up Equity Shares of Anondita Medicare Limited (\u201cthe Company\u201d).",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf",
+      "page_no": 1,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-06-22T22:02:25+05:30",
+      "event_type": "PRODUCT_LAUNCH",
+      "family": "PRODUCT_LAUNCH",
+      "amount": null,
+      "scale": null,
+      "quote": "\u2022 With a strong focus on innovation and excellence, the targeted export launch by the end of the current Company aims to broaden its product portfolio, expand financial year or the first quarter of the next. its footprint in domestic and global markets, and establish itself as a trusted name in global healthcare.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_22062026215826_Intimation_of_Investor_Presentation_.pdf",
+      "page_no": 42,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-06-22T22:02:25+05:30",
+      "event_type": "CUSTOMER_QUALIFICATION",
+      "family": "QUALIFICATION",
+      "amount": null,
+      "scale": null,
+      "quote": "\u2022 Vendor registration in Kenya, Cuba & UAE.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_22062026215826_Intimation_of_Investor_Presentation_.pdf",
+      "page_no": 17,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-06-22T22:02:25+05:30",
+      "event_type": "CUSTOMER_QUALIFICATION",
+      "family": "QUALIFICATION",
+      "amount": null,
+      "scale": null,
+      "quote": "\u2022 We got certification from WHO GMP company vide Business Takeover Agreement",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_22062026215826_Intimation_of_Investor_Presentation_.pdf",
+      "page_no": 8,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-06-02T11:49:54+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "This year, it is a rate, a single rate contract.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_02062026114644_Intimation_to_STX_H2__FY26_Earnings_Call_Transcript.pdf",
+      "page_no": 8,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-06-02T11:49:54+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "This year again, we are successfully got a rate contract.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_02062026114644_Intimation_to_STX_H2__FY26_Earnings_Call_Transcript.pdf",
+      "page_no": 8,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-06-02T11:49:54+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "We were the only suppliers and we were the only L1 suppliers.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_02062026114644_Intimation_to_STX_H2__FY26_Earnings_Call_Transcript.pdf",
+      "page_no": 8,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-06-02T11:49:54+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "Anupam Ghosh: See, my brother, we already have bagged and we've been bagging this government orders for last -- last year onwards.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_02062026114644_Intimation_to_STX_H2__FY26_Earnings_Call_Transcript.pdf",
+      "page_no": 8,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-06-02T11:49:54+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "Here again, I think we will -- we have already in fact bagged orders.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_02062026114644_Intimation_to_STX_H2__FY26_Earnings_Call_Transcript.pdf",
+      "page_no": 5,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-05-30T17:33:39+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "Sub: Intimation of Press Release - Anondita Medicare Limited Secures First Export Order",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30052026173213_Intimation_of_Press_Release_.pdf",
+      "page_no": 1,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-05-30T17:33:39+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": 43.14,
+      "scale": "CRORE",
+      "quote": "\u201cAnondita Medicare Limited Secures First Export Order Worth \u20b943.14 Crore Under South",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30052026173213_Intimation_of_Press_Release_.pdf",
+      "page_no": 1,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM"
+    },
+    {
+      "published_at": "2026-05-30T17:33:39+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": 43.14,
+      "scale": "CRORE",
+      "quote": "www.anonditamedicare.com www.cobrastore.in Anondita Medicare Limited Secures First Export Order Worth \u20b943.14 Crore Under South African Government Condom Tender Program Mumbai, May 30, 2026: Anondita Medicare Limited (NSE - SME: ANONDITA) a leading manufacturer of condoms and sexual wellness products operating under its flagship brand \u201cCOBRA\u201d, has secured its first export purchase order worth approximately \u20b943.14 Crore under the South African Government condom procurement program.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30052026173213_Intimation_of_Press_Release_.pdf",
+      "page_no": 2,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM"
+    },
+    {
+      "published_at": "2026-05-30T17:33:39+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": 43.14,
+      "scale": "CRORE",
+      "quote": "Order Details Anondita Medicare has received its first export purchase order worth approximately \u20b943.14 Crore from Supra Healthcare Johannesburg (Pty) Ltd., South Africa, for the supply and delivery of male condoms under the South African Government condom procurement program.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30052026173213_Intimation_of_Press_Release_.pdf",
+      "page_no": 2,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM"
+    },
+    {
+      "published_at": "2026-05-30T17:33:39+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": 43.14,
+      "scale": "CRORE",
+      "quote": "Management Commentary Commenting on the development, Mr. Anupam Ghosh, Managing Director, Anondita Medicare Limited, said: \u201cSecuring our first export purchase order worth approximately \u20b943.14 Crore under the South African Government tender program marks a significant milestone for Anondita Medicare.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30052026173213_Intimation_of_Press_Release_.pdf",
+      "page_no": 2,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM"
+    },
+    {
+      "published_at": "2026-05-30T12:49:13+05:30",
+      "event_type": "CUSTOMER_QUALIFICATION",
+      "family": "QUALIFICATION",
+      "amount": null,
+      "scale": null,
+      "quote": "Company's qualification and inclusion as a manufacturer/supplier pursuant to the successful",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30052026124712_Bagging_of_Order_Supra_South_Africa_sd.pdf",
+      "page_no": 1,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-05-30T12:49:13+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": 43.14,
+      "scale": "CRORE",
+      "quote": "In this regard, the Company, Anondita Medicare Ltd. has received its first export purchase order under the South African Government tender program vide email dated May 29, 2026, from M/s. Supra Healthcare Johannesburg (Pty) Ltd., South Africa, aggregating to approximately Rs. 43.14 Crore (Rupees Forty-Three Crore Fourteen Lakh Only) for the supply and delivery of male condoms.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30052026124712_Bagging_of_Order_Supra_South_Africa_sd.pdf",
+      "page_no": 1,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM"
+    },
+    {
+      "published_at": "2026-05-29T20:55:01+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "Medicare Limited (\u201cthe Company\u201d) has received purchase orders bearing PO Order No : 031/2026 on",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_29052026205445_Bagging_of_Order_29_May_2026.pdf",
+      "page_no": 1,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-05-27T18:30:04+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": 516024.0,
+      "scale": "UNITS",
+      "quote": "Annexure A Details as required under SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015 read with and SEBI Master Circular No. HO/49/14/14(7)2025CFD-POD2/I/3762/2026 dated 30th January 2026 Name of the entity awarding the Lotus Pharmaceuticals Pvt Ltd order(s)/contract(s) is received Significant terms and conditions of Supply of Condoms order(s)/contract(s) awarded in brief; Payment terms: 50% advance with order and balance 50% prior to dispatch and material readiness.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27052026182914_Bagging_of_Order_sd.pdf",
+      "page_no": 2,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM"
+    },
+    {
+      "published_at": "2026-05-27T14:09:15+05:30",
+      "event_type": "CUSTOMER_QUALIFICATION",
+      "family": "QUALIFICATION",
+      "amount": null,
+      "scale": null,
+      "quote": "\u2022 We got certification from WHO GMP company vide Business Takeover Agreement",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27052026140858_AML_Intimation_of_Investor_Presentation_H2FY26.pdf",
+      "page_no": 8,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-05-27T14:09:15+05:30",
+      "event_type": "CUSTOMER_QUALIFICATION",
+      "family": "QUALIFICATION",
+      "amount": null,
+      "scale": null,
+      "quote": "\u2022 Vendor registration in Kenya, Cuba & UAE.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27052026140858_AML_Intimation_of_Investor_Presentation_H2FY26.pdf",
+      "page_no": 17,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-05-27T14:09:15+05:30",
+      "event_type": "PRODUCT_LAUNCH",
+      "family": "PRODUCT_LAUNCH",
+      "amount": null,
+      "scale": null,
+      "quote": "\u2022 With a strong focus on innovation and excellence, the targeted export launch by the end of the current Company aims to broaden its product portfolio, expand financial year or the first quarter of the next. its footprint in domestic and global markets, and establish itself as a trusted name in global healthcare.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27052026140858_AML_Intimation_of_Investor_Presentation_H2FY26.pdf",
+      "page_no": 42,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-05-25T22:21:41+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": 71836178.0,
+      "scale": "UNITS",
+      "quote": "inform that Anondita Medicare Limited, (\u201cthe Company\u201d) has received a purchase order (PO No :",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_25052026222126_Bagging_of_Order_Sd.pdf",
+      "page_no": 1,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM"
+    },
+    {
+      "published_at": "2026-05-25T22:21:41+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "We would like to clarify that the present disclosure is being made after obtaining necessary clarifications from CMSS regarding the final quantity accepted under the tender and the applicability of the Rate Contract, which were subsequently clarified through verbal communications with CMSS officials.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_25052026222126_Bagging_of_Order_Sd.pdf",
+      "page_no": 1,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-04-30T23:56:46+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "preferential issue which will be in accordance with provisions of section 42, 62(1)(c) of the",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30042026235523_Signed_Outcome_of_Board_Meeting_Revised.pdf",
+      "page_no": 1,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-04-30T23:56:46+05:30",
+      "event_type": "EQUITY_FINANCING",
+      "family": "FINANCING",
+      "amount": null,
+      "scale": null,
+      "quote": "the Warrant holder at the time of allotment of Equity Shares pursuant",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30042026235523_Signed_Outcome_of_Board_Meeting_Revised.pdf",
+      "page_no": 5,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-04-29T07:30:44+05:30",
+      "event_type": "CUSTOMER_QUALIFICATION",
+      "family": "QUALIFICATION",
+      "amount": null,
+      "scale": null,
+      "quote": "Anondita Medicare Limited- Update on Qualification as Vendor under South Africa Government Tender (RT75-2025) Mumbai, April 28, 2026: Anondita Medicare Limited (NSE - SME: ANONDITA) has been qualified as a vendor (supplier) by local entities in South Africa (\u201cSouth African Local Entities\u201d) under the Transversal Contract RT75-2025 (\u201cTender\u201d), issued by the National Treasury, Republic of South Africa.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_29042026072907_AML_Qualified_as_Vendor_for_Supply_to_Government_of_South_Africa.pdf",
+      "page_no": 2,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-04-29T07:30:44+05:30",
+      "event_type": "CUSTOMER_QUALIFICATION",
+      "family": "QUALIFICATION",
+      "amount": null,
+      "scale": null,
+      "quote": "This vendor qualification follows the successful completion of due diligence, audit processes, and regulatory approvals.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_29042026072907_AML_Qualified_as_Vendor_for_Supply_to_Government_of_South_Africa.pdf",
+      "page_no": 2,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-04-29T07:30:44+05:30",
+      "event_type": "CUSTOMER_QUALIFICATION",
+      "family": "QUALIFICATION",
+      "amount": null,
+      "scale": null,
+      "quote": "Management Commentary Commenting on the development, Mr. Anupam Ghosh, Managing Director, Anondita Medicare Limited, said: \u201cBeing qualified as a vendor under the Transversal Contract RT75-2025 marks an important development for Anondita Medicare Limited.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_29042026072907_AML_Qualified_as_Vendor_for_Supply_to_Government_of_South_Africa.pdf",
+      "page_no": 2,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-04-28T16:27:24+05:30",
+      "event_type": "PRODUCT_LAUNCH",
+      "family": "PRODUCT_LAUNCH",
+      "amount": null,
+      "scale": null,
+      "quote": "Anondita Medicare Ltd., through its Subsidiary Anondita Healthcare & Rubber Products India Ltd., Re-Launches \u201cCOBRA\u00ae Shubh Samachar\u2122\u201d Pregnancy Test Kit Mumbai, April 28, 2026: Anondita Medicare Limited (NSE - SME: ANONDITA) has announced the strategic re-launch of its pregnancy test kit under its flagship brand \u201cCOBRA\u00ae Shubh Samachar\u2122\u201d, through its subsidiary Anondita Healthcare & Rubber Products India Ltd., with enhanced formulation, optimized cost structure, and improved scalability.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28042026162627_Intimation_of_Press_Release_Re-launch_of_its_pregnancy_test_kit_sd.pdf",
+      "page_no": 2,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-04-27T16:54:55+05:30",
+      "event_type": "CUSTOMER_QUALIFICATION",
+      "family": "QUALIFICATION",
+      "amount": null,
+      "scale": null,
+      "quote": "\u201cCompany\u201d) has been qualified as a vendor (Supplier) by local entities in South Africa (the \u201cSouth African",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27042026164442_Intimation-update_on_Supply_to_Government_of_South_Africa.pdf",
+      "page_no": 1,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-03-07T12:10:42+05:30",
+      "event_type": "CUSTOMER_QUALIFICATION",
+      "family": "QUALIFICATION",
+      "amount": null,
+      "scale": null,
+      "quote": "\u2022 We got certification from WHO GMP company vide Business Takeover Agreement",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_07032026120943_Regulation_30_Investor_Presentation.pdf",
+      "page_no": 7,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-03-07T12:10:42+05:30",
+      "event_type": "PRODUCT_LAUNCH",
+      "family": "PRODUCT_LAUNCH",
+      "amount": null,
+      "scale": null,
+      "quote": "\u2022 With a strong focus on innovation and excellence, the targeted export launch by the end of the current Company aims to broaden its product portfolio, expand financial year or the first quarter of the next. its footprint in domestic and global markets, and establish itself as a trusted name in global healthcare.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_07032026120943_Regulation_30_Investor_Presentation.pdf",
+      "page_no": 33,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-03-03T17:25:56+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "Annexure A Details as required under SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015 read with and SEBI Master Circular No. HO/49/14/14(7)2025CFD-POD2/I/3762/2026 dated 30th January 2026 Name of the entity awarding the Central Medical Services Society (CMSS), order(s)/contract(s) is received Ministry of Health and Family Welfare, Significant terms and conditions of Contract for supply of Condoms (Deluxe Nirodh) order(s)/contract(s) awarded in brief; under Family Planning Programme (Q1) vide Contract No GEMC-511687703550470 and GEMC-511687786323919.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_03032026172532_Signed_AML_Regulation_30_Bagging_of_Order_CMSS.pdf",
+      "page_no": 2,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-01-30T17:59:22+05:30",
+      "event_type": "CAPACITY",
+      "family": "CAPACITY",
+      "amount": null,
+      "scale": null,
+      "quote": "Anondita Medicare Limited Announces Major Capacity Expansion of Approximately 1,360 Million Pieces Per Annum at Noida Facility (Additional Noida Unit) Mumbai, January 30, 2026: Anondita Medicare Limited (NSE \u2013 SME: ANONDITA), currently operating with an installed manufacturing capacity of 562 million pieces per annum, has approved a significant capacity expansion of approximately 1,360 million pieces per annum at its upcoming manufacturing facility in Noida.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30012026175400_AML_Regulation_30_Intimation_of_Press_release.pdf",
+      "page_no": 2,
+      "commercial_stage": "AMBITION",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2026-01-30T17:59:22+05:30",
+      "event_type": "CAPACITY",
+      "family": "CAPACITY",
+      "amount": null,
+      "scale": null,
+      "quote": "Management Commentary Commenting on the development, Mr. Anupam Ghosh, Managing Director, Anondita Medicare Management Commentary Limited, said: \u201cThe capacity addition at our Noida facility is a strategic and well-planned step, driven Manbayg esmuestnati nCeodm mgreonwttahr yin customer demand and anticipating huge orders both domestic and international in future.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30012026175400_AML_Regulation_30_Intimation_of_Press_release.pdf",
+      "page_no": 2,
+      "commercial_stage": "AMBITION",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2025-10-08T19:04:22+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "We hereby disclose that the Company has been awarded (L1, Lowest One) the tender, in compliance with Part B of sub-regulation (4) of regulation (30) of the Securities and Exchange Board of India (Listing Obligations and Disclosure Requirements) Regulations, 2015.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_08102025190231_Movement_price_Anondita_15933.pdf",
+      "page_no": 2,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    },
+    {
+      "published_at": "2025-09-20T16:25:54+05:30",
+      "event_type": "ORDER",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "quote": "We hereby disclose that the Company has been awarded (L1, Lowest One) the tender, in compliance with Part B of sub-regulation (4) of regulation (30) of the Securities and Exchange Board of India (Listing Obligations and Disclosure Requirements) Regulations, 2015.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_20092025162529_GeM-Bidding-8047852_Disclouser_NSE.pdf",
+      "page_no": 1,
+      "commercial_stage": "QUALIFIED",
+      "amount_basis": "UNQUANTIFIED"
+    }
+  ],
+  "documents": [
+    {
+      "publication_id": "f3157e77-1585-4036-9287-28b0d2f166fb",
+      "published_at": "2026-10-09T17:46:14+05:30",
+      "title": "Submission of Certificate in relation to Non- Applicability of Compliance Report on the Corporate Governance under Regulation 27 (2) of the SEBI (Listing Obligations and Disclosures Requirements) Regulations, 2015, for the Quarter ended September 30, 2026",
+      "category": "Quarterly Compliance Report on Corporate governance - within 21 days from the end of the quarter",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_09102026174518_Non-Applicability_of_Corporate_Governance_Certificate_signed.pdf"
+    },
+    {
+      "publication_id": "01572f76-b013-484c-9901-b3aae7b48728",
+      "published_at": "2026-10-09T17:42:38+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "category": "Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_09102026174228_Signed_Compliance_Certificate_under_Regulation_74_5__of_SEBI_DP.pdf"
+    },
+    {
+      "publication_id": "4beffa2d-849a-4f15-b5a6-1ed6b8ea88df",
+      "published_at": "2026-10-01T17:21:48+05:30",
+      "title": "Anondita Medicare Limited has submitted the Exchange a copy Srutinizers report of  Annual General Meeting held on September 29, 2026. Further, the company has informed the Exchange regarding voting results.",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_01102026171819_Scruitinizer_Report_and_VR_signed.pdf"
+    },
+    {
+      "publication_id": "7f345ecf-f66f-4a6e-b9c0-81b9bf01dd8d",
+      "published_at": "2026-09-29T19:18:46+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding Proceedings of Annual General Meeting held on September 29, 2026",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_29092026191814_Anondita_Proceeding_AGM_signed.pdf"
+    },
+    {
+      "publication_id": "b7d52c73-f049-44e0-b221-a70b5c8df7ea",
+      "published_at": "2026-09-29T18:16:23+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Copy of Newspaper Publication regarding Basis of Allotment of Right Issue",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_29092026181520_Intimation_of_Advertisement__Basis_of_Allot_RI_signed.pdf"
+    },
+    {
+      "publication_id": "b0a3cae3-98d5-4e24-882f-51fe3fe5a9e2",
+      "published_at": "2026-09-25T18:22:08+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding the Trading Window closure pursuant to SEBI (Prohibition of Insider Trading) Regulations, 2015",
+      "category": "Trading Window",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_25092026182140_Intimation_Trading_Window_signed.pdf"
+    },
+    {
+      "publication_id": "b8546047-7a53-4547-8b18-3f6d04504e72",
+      "published_at": "2026-09-24T22:34:58+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding allotment of 958166 fully paid up equity shares pursuant to Rights Issue at its meeting held on September 24, 2026",
+      "category": "Allotment of Securities",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_24092026223428_Anondita_Outcome_of_Board_Meeting_Allotment_Reg30_sd.pdf"
+    },
+    {
+      "publication_id": "c55399ca-c701-4cf6-9376-404c0bde826f",
+      "published_at": "2026-09-24T22:30:38+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding Outcome of Board Meeting held on September 24, 2026.",
+      "category": "Outcome of Board Meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_24092026222748_Anondita_Outcome_of_Board_Meeting_Allotment_Reg30_sd.pdf"
+    },
+    {
+      "publication_id": "01f8e9bd-df29-4882-b07c-c2405f077bd5",
+      "published_at": "2026-09-24T20:29:37+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Withdrawal of Nullification Letter and confirmation of allotment of 9,58,166 Rights Equity Shares as per the Corrigendum to the Letter of Offer dated September 07, 2026   Rights Issue of Anondita Medicare Limited ( the Company )'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_24092026202828_Anondita_Withdrawal_of_Nullification_Letter_NSE_signed.pdf"
+    },
+    {
+      "publication_id": "6b1fbd1f-35d0-44e0-aa96-f3e67c37f4f1",
+      "published_at": "2026-09-11T11:49:11+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange that the Record Date is September 22, 2026 and the Book Closure period for the purpose of the 3rd Annual General Meeting (AGM) for the financial year 2025 26 will be from Tuesday, September 22, 2026, to Tuesday, September 29, 2026 (both days inclusive).",
+      "category": "Record Date",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_11092026114532_AML_Book_Closure_Stock_Exchange_signed.pdf"
+    },
+    {
+      "publication_id": "a77a2e8d-35cf-4c85-8d79-3732a909feda",
+      "published_at": "2026-09-09T14:27:28+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Copy of Newspaper Publication  relating to arrangements for disposal of odd lots in respect of Right Issue",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_09092026142618_Intimation_of_Newspaper_Advertisement_Right_Issue_sd.pdf"
+    },
+    {
+      "publication_id": "4aed6d65-0dbf-4b31-a8bf-de42a89b5bf9",
+      "published_at": "2026-09-08T16:21:06+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'INTIMATION REGARDING PARTIAL NULLIFICATION OF CORRIGENDUM TO THE LETTER OF OFFER DATED AUGUST 27, 2026'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_08092026161857_Anondita_Intimation_Nullifying_Corrigendum_sd.pdf"
+    },
+    {
+      "publication_id": "52e53be1-5227-489e-af0f-3043a238318a",
+      "published_at": "2026-09-07T22:44:30+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'CORRIGENDUM TO THE LETTER OF OFFER DATED AUGUST 27, 2026'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_07092026224322_Anondita_Corrigendum_to_Letter_of_Offer_sd.pdf"
+    },
+    {
+      "publication_id": "44d26379-e70a-4227-95f8-69aa035e1b8c",
+      "published_at": "2026-09-07T17:35:32+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Intimation Regarding Arrangements for Disposal of Odd Lots   Rights Issue of Anondita Medicare Limited '.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_07092026173030_Anondita_Intimation_Odd_Lots_NSE_sd.pdf"
+    },
+    {
+      "publication_id": "db5db88f-90f4-4860-b927-081774692763",
+      "published_at": "2026-09-07T16:29:53+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Copy of Newspaper Publication relating to right issue",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_07092026162854_Intimation_of_Newspaper_pubication_in_relation_to_the_right_issue.pdf"
+    },
+    {
+      "publication_id": "e7536fa1-0b31-4ccf-83bd-ba17f594eac2",
+      "published_at": "2026-09-06T19:39:21+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Copy of Newspaper Publication pertaining to Dispatch of Notice of 03rd AGM and information relating to E- voting",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_06092026193904_Intimation_of_Newspaper_Publication_for_dispatch_of_Notice_of_03rd_AGM.pdf"
+    },
+    {
+      "publication_id": "22d681c2-d4c0-4343-889d-b36d3c94fc41",
+      "published_at": "2026-09-05T20:49:25+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Notice of 03rd Annual General Meeting of the Company",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_05092026204630_Intimation_of_Notice_of_03rd_AGM.pdf"
+    },
+    {
+      "publication_id": "b4eecec0-09b8-4080-b2b9-bc9282c8d0c9",
+      "published_at": "2026-09-02T12:59:45+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Copy of Newspaper Publication",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_02092026125846_Intimation_of_Newspaper_Advertisement_signed.pdf"
+    },
+    {
+      "publication_id": "7d23f6cc-9a8a-43e5-834c-124d19a55ebd",
+      "published_at": "2026-09-02T12:26:40+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding a press release dated September 02, 2026, titled \"Anondita Medicare Declared L1 Bidder by Central Medical Services Society for Supply of Over 8 Crore Condoms\".",
+      "category": "Press Release",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_02092026122518_Intimation_of_Press_Release_L1_Bidder_02-09-2026.pdf"
+    },
+    {
+      "publication_id": "35d54fd4-1371-4d03-8a6c-81280055f96d",
+      "published_at": "2026-08-31T18:32:02+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Declaration of the Company as L1 Bidder under Schedule 1 by Central Medical Services Society (CMSS)'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_31082026183016_Update_on_declaration_of_L1_Bidder_signed.pdf"
+    },
+    {
+      "publication_id": "7e3974ba-74ca-49ed-85e8-d3e2a65e7ca8",
+      "published_at": "2026-08-28T19:10:52+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Final Letter of Offer'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28082026190941_Intimation_of_Final_Letter_of_Offer_Anondita.pdf"
+    },
+    {
+      "publication_id": "08941a28-b06c-4a6a-8dc0-4114b47811d0",
+      "published_at": "2026-08-27T17:19:21+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding Appointment of M/s Bahadur Murao & Co. as the Cost Auditor of the Company for the financial year 2026-2027",
+      "category": "Appointment",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27082026171530_Disclosure_of_Appointment_of_Cost_Auditor.pdf"
+    },
+    {
+      "publication_id": "9c48dd0d-61ca-4496-8a37-dcb39972e457",
+      "published_at": "2026-08-27T17:13:27+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding Appointment of Mr GARG PIYUSH & ASSOCIATES as the Internal Auditor of the Company for the financial year 2026-2027",
+      "category": "Appointment",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27082026171032_Disclosure_of_Appointment_of_Internal_Auditor.pdf"
+    },
+    {
+      "publication_id": "0a32857b-b83d-4cca-852b-4a2495ecf061",
+      "published_at": "2026-08-27T17:07:55+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding Appointment of M/s Mohit Singhal & Associates as Secretarial Auditor of the Company for the Financial year 2026-27",
+      "category": "Appointment",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27082026170719_Disclosure_of_Appointment_of_Secretarial_Auditor.pdf"
+    },
+    {
+      "publication_id": "f3d2998c-f707-4bd5-adca-d63836a5fe6f",
+      "published_at": "2026-08-27T17:03:24+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding Outcome of Board Meeting held on August 27, 2026.",
+      "category": "Outcome of Board Meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27082026170234_Outcome_of_Board_Meeting_27_August_2026_with_Annexures.pdf"
+    },
+    {
+      "publication_id": "0261c1fc-deec-4884-a858-177d65265898",
+      "published_at": "2026-08-27T16:28:41+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange that Record date for the purpose of Rights  is 02-Sep-2026.",
+      "category": "Record Date",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27082026162415_Intimation_of_Record_date_of_Right_Issue.pdf"
+    },
+    {
+      "publication_id": "9521676c-743a-49dc-be09-27e5b193b1ac",
+      "published_at": "2026-08-27T16:17:43+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange that Board of Directors at its meeting held on August 27, 2026, has decided to issue equity shares on rights basis in the ratio of 958000 : 18086618, i.e 958000 Equity Shares for every 18086618 Equity Shares held. Issue Price is Rs. 950 per share.",
+      "category": "Rights Issue",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27082026161313_Outcome_of_Board_Meeting_27_August_2026_with_Annexures.pdf"
+    },
+    {
+      "publication_id": "a2e2253b-c6d5-43ea-8cd7-2fc9235bf17c",
+      "published_at": "2026-08-26T11:18:22+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Granting/withdrawal/surrender/cancellation/suspension of key licenses/ regulatory approvals",
+      "category": "Granting/withdrawal/surrender/cancellation/suspension of key licenses/ regulatory approvals",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_26082026111442_Inprincipal_Approval_Intimation_Final_sd.pdf"
+    },
+    {
+      "publication_id": "dc8b2306-28d6-4441-9f2f-496c10e214a8",
+      "published_at": "2026-08-14T23:20:59+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Cancellation of Participation in ET Immersions   Japan Edition'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_14082026231753_Intimation_for_Cancellation_participation_in_Japan_Edition_sd.pdf"
+    },
+    {
+      "publication_id": "5d612998-1200-47e0-a350-3c53cf9da905",
+      "published_at": "2026-08-11T16:58:16+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Participation in ET Immersions   Japan Edition'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_11082026165737_Intimation_for_participation_in_Japan_Edition_sd.pdf"
+    },
+    {
+      "publication_id": "92b2754b-2571-48fb-b3f4-6fd779ecb00a",
+      "published_at": "2026-08-01T14:08:13+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding Outcome of Board Meeting held on August 01, 2026.",
+      "category": "Outcome of Board Meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_01082026140513_Outcome_of_Board_Meeting_August_01_2026.pdf"
+    },
+    {
+      "publication_id": "21c08091-cd2b-4d8e-b71e-8b3fc5f9a998",
+      "published_at": "2026-07-21T16:28:17+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Issuance of Corporate Guarantee",
+      "category": "Giving guarantees/indemnity/ becoming a surety for third party",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_21072026162741_Signed_Intimation_of_Corporate_Guarantee_to_AHRPIL.pdf"
+    },
+    {
+      "publication_id": "f6f42f42-f52e-4520-8ed3-0b64f4f24162",
+      "published_at": "2026-07-13T23:16:50+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Outcome of Group Investor Meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_13072026231535_Signed_Outcome_of_Investor_Meeting.pdf"
+    },
+    {
+      "publication_id": "853ce951-fb5f-4f83-8f2c-9d90931a8f52",
+      "published_at": "2026-07-09T16:35:26+05:30",
+      "title": "The Exchange had sought clarification from Anondita Medicare Limited for the quarter ended 31-Mar-2026 with respect to Regulation 33 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015. On basis of above the Company was required to clarify the following: -1. Financial results submitted in XBRL with discrepancies. -2. Financial results submitted is not as per format prescribed by SEBI. -3. Machine Readable Form / Legible copy of Financial Results not submitted. The response of the Company is enclosed.",
+      "category": "Reply to Clarification- Financial results",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_26062026135229_AML_NSE_reply_on_Query_for_Finanical_Result_FY26.pdf"
+    },
+    {
+      "publication_id": "69e99dcf-ce87-460c-aa36-aaf17a5dc8c9",
+      "published_at": "2026-07-08T16:10:10+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Schedule of meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_08072026160944_Signed_Intimation_of_Investor_Group_Meet_11_July_2026.pdf"
+    },
+    {
+      "publication_id": "be1ec448-d3d5-4ba7-82ad-2cc6b4343e55",
+      "published_at": "2026-07-08T13:35:40+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding allotment of 285000 Convertible Warrants on Preferential basis at its meeting held on July 08, 2026",
+      "category": "Allotment of Securities",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_08072026133432_Disclosure_under_section_30.pdf"
+    },
+    {
+      "publication_id": "b14b7780-b146-4137-85e9-d6cca261c845",
+      "published_at": "2026-07-08T13:27:35+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding Outcome of Board Meeting held on July 08, 2026 with respect to Allotment of Convertible Warrants.",
+      "category": "Outcome of Board Meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_08072026132447_Outcome_of_Board_Meeting.pdf"
+    },
+    {
+      "publication_id": "c45c56b1-33fc-4ca1-837d-78a34aabb9f4",
+      "published_at": "2026-07-06T17:50:34+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "category": "Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_06072026174649_Compliance_Certificate_under_Regulation_74_5__signed.pdf"
+    },
+    {
+      "publication_id": "70ef53fc-3ea5-4cb2-8947-689a2c2a24f9",
+      "published_at": "2026-07-06T17:44:11+05:30",
+      "title": "Anondita Medicare Limited has informed regarding Submission of the Compliance Report on Corporate Governance for the Quarter ended June 30, 2026",
+      "category": "Quarterly Compliance Report on Corporate governance - within 21 days from the end of the quarter",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_06072026173902_Non-Applicability_of_Corporate_Governance_Certificate_sd.pdf"
+    },
+    {
+      "publication_id": "be07343f-b42d-4daa-b179-41af6de2ea98",
+      "published_at": "2026-06-29T22:12:38+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about for In principal approval for Issuance of 2,85,000 Convertible Equity Share Warrants on preferential basis.",
+      "category": "Granting/withdrawal/surrender/cancellation/suspension of key licenses/ regulatory approvals",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_29062026221224_Intimation_In-principle_receipt_for_share_warrant_25-June_2026_signed.pdf"
+    },
+    {
+      "publication_id": "5e599143-7a76-4f12-a887-b216e2c19589",
+      "published_at": "2026-06-29T22:10:50+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about In-Principle Approval from the National Stock Exchange of India Limited for Issuance of 2,85,000 Convertible Equity Share Warrants on preferential basis.",
+      "category": "Giving guarantees/indemnity/ becoming a surety for third party",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_29062026220924_Intimation_In-principle_receipt_for_share_warrant_25-June_2026_signed.pdf"
+    },
+    {
+      "publication_id": "56537615-c1b1-41dd-aaa2-9fbfbc6e4123",
+      "published_at": "2026-06-25T16:56:12+05:30",
+      "title": "The Exchange had sought clarification from Anondita Medicare Limited for the quarter ended 30-Sep-2025 with respect to Regulation 33 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015. On basis of above the Company was required to clarify the following:   The response of the Company is enclosed.",
+      "category": "Reply to Clarification- Financial results",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27012026135337_AML_Clarification_on_NSE_Query_19_Jan_2026_with_Annexures_of_FR_Final.pdf"
+    },
+    {
+      "publication_id": "e8fb0dad-6870-4cbf-8d68-1772048ba20c",
+      "published_at": "2026-06-25T14:06:42+05:30",
+      "title": "The Exchange has sought clarification from Anondita Medicare Limited for the quarter ended 31-Mar-2026 with respect to Regulation 33 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015. On basis of above the Company is required to clarify the following: -1. Financial results submitted in XBRL with discrepancies. -2. Financial results submitted is not as per format prescribed by SEBI. -3. Machine Readable Form / Legible copy of Financial Results not submitted. The response of the Company is awaited.",
+      "category": "Clarification - Financial Results",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/-"
+    },
+    {
+      "publication_id": "9469e210-3eee-4874-9bea-b19dc10202e3",
+      "published_at": "2026-06-24T17:50:07+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Submission of Machine Readable/Legible Copy of Audited Standalone and Consolidated Financial Results along with Auditors' Report for the Half Year and Year Ended March 31, 2026'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_24062026174439_Intimation_of_Submission_of_Financial_Result_in_machine_readable_Format.pdf"
+    },
+    {
+      "publication_id": "723f99d1-f72a-4565-ad84-2a94953967ba",
+      "published_at": "2026-06-23T21:39:07+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Outcome of investor Conference",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_23062026213840_AML_Intimation_of_Outcome_of_Investor_meet_dated_June_23_2026.pdf"
+    },
+    {
+      "publication_id": "e2594966-b29d-4706-9bd0-1bf1ec32893d",
+      "published_at": "2026-06-23T18:00:03+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+      "category": "Bagging/Receiving of orders/contracts",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_23062026175601_AML_Bagging_of_Order_One_Stop_South_Africa.pdf"
+    },
+    {
+      "publication_id": "8c3676cc-dced-404d-a974-af134a5dd24a",
+      "published_at": "2026-06-22T22:02:25+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Investor Presentation",
+      "category": "Investor Presentation",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_22062026215826_Intimation_of_Investor_Presentation_.pdf"
+    },
+    {
+      "publication_id": "7b204d48-9c0f-4715-970f-744c25ea473f",
+      "published_at": "2026-06-22T20:07:48+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Clarification regarding Voluntary Valuation Report obtained by the Company'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_22062026200437_Disclosure_regarding_Valuation_Report.pdf"
+    },
+    {
+      "publication_id": "01975d0a-9d84-48c3-a1c8-7038aa3718f6",
+      "published_at": "2026-06-18T17:22:18+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding a press release dated Jun 18, 2026, titled \"Anondita Medicare MD Anupam Ghosh puts India on global stage at UN Human Rights Council Session in Geneva\".",
+      "category": "Press Release",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_18062026171920_Intimation_of_Press_Release_Announcement.pdf"
+    },
+    {
+      "publication_id": "5c2da8f3-6cf5-44d3-a203-c7b1e3c7a8b2",
+      "published_at": "2026-06-17T17:56:40+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding a press release dated Jun 17, 2026, titled \"Anondita Medicare sponsors promising soft tennis player Shanish Mani Misra at international tournament in Korea\".",
+      "category": "Press Release",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_17062026175338_Intimation_of_Press_Release_.pdf"
+    },
+    {
+      "publication_id": "8b80270d-400d-43b1-a17f-7d260a5f0f5a",
+      "published_at": "2026-06-17T14:10:01+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Schedule of meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_17062026140427_Intimation_of_Investor_Meet_23_June.pdf"
+    },
+    {
+      "publication_id": "92b1ea5b-983a-443b-bb77-f648c71bbd83",
+      "published_at": "2026-06-16T20:50:31+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+      "category": "Bagging/Receiving of orders/contracts",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_16062026205014_AML_Intimation_of_Bagging__of_Order_CMSS.pdf"
+    },
+    {
+      "publication_id": "3d09242d-2aed-4861-91aa-ba7f50988a92",
+      "published_at": "2026-06-02T11:49:54+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Transcript of the H2 and FY26 Earnings Conference Call",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_02062026114644_Intimation_to_STX_H2__FY26_Earnings_Call_Transcript.pdf"
+    },
+    {
+      "publication_id": "c2249459-c7ed-43de-8f58-87cd062445c2",
+      "published_at": "2026-06-01T14:16:31+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding the Amendment to AOA/MOA of the company.",
+      "category": "Amendment to AOA/MOA",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_01062026141540_Signed_Reg_30_Disclosure_Amendments_to_the_MOA_.pdf"
+    },
+    {
+      "publication_id": "a3ed7261-50cc-4929-b393-af36ef98e699",
+      "published_at": "2026-06-01T13:45:16+05:30",
+      "title": "Anondita Medicare Limited has submitted the Exchange a copy Srutinizers report of  Extraordinary General Meeting held on May 28, 2026. Further, the company has informed the Exchange regarding voting results.",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_01062026134428_AML_Scrutinizer_Report_and_Voting_Result_Signed.pdf"
+    },
+    {
+      "publication_id": "2427cac8-1b76-4df3-b018-8f6d0e3eb6c6",
+      "published_at": "2026-05-30T17:33:39+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding a press release dated May 30, 2026, titled \"Anondita Medicare Limited Secures First Export Order Worth &#8377;43.14 Crore Under South African Government Condom Tender Program\".",
+      "category": "Press Release",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30052026173213_Intimation_of_Press_Release_.pdf"
+    },
+    {
+      "publication_id": "c3c21e8e-b616-4f0a-ad57-1af10c85fd87",
+      "published_at": "2026-05-30T12:49:13+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+      "category": "Bagging/Receiving of orders/contracts",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30052026124712_Bagging_of_Order_Supra_South_Africa_sd.pdf"
+    },
+    {
+      "publication_id": "362e2000-e930-4e7f-9cc2-6e9f4df3ace7",
+      "published_at": "2026-05-29T20:55:01+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+      "category": "Bagging/Receiving of orders/contracts",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_29052026205445_Bagging_of_Order_29_May_2026.pdf"
+    },
+    {
+      "publication_id": "cd95bdea-32b4-4d98-9824-ce7936b53a6a",
+      "published_at": "2026-05-29T20:37:44+05:30",
+      "title": "Integrated filing (Financial) for the Half Year and Financial Year ended on March 31, 2026",
+      "category": "Integrated Filing- Financial",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_29052026203706_Final_Integrated_Filings_in_pdf.pdf"
+    },
+    {
+      "publication_id": "ca7d1773-26f4-4615-bd74-b9bb27b0ad96",
+      "published_at": "2026-05-29T19:21:39+05:30",
+      "title": "Consolidated results 2026-01-01 to 2026-03-31",
+      "category": "Financial results XBRL (Integrated)",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NONINDAS_1676473_29052026072138_WEB.xml"
+    },
+    {
+      "publication_id": "217f9cc6-7003-4651-bd7d-9347744deaba",
+      "published_at": "2026-05-29T18:33:40+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Resubmission of Audited Revised Consolidated Financial Results along with Auditors Audited Report thereon for the Half Year and Year ended March 31, 2026'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_29052026183227_Final_Resubmission_of_Consolidated_Financial_Result.pdf"
+    },
+    {
+      "publication_id": "72aa4a09-e8fe-4b63-884d-ac2d8d7217cb",
+      "published_at": "2026-05-29T18:21:25+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Resubmission of Audited Revised Consolidated Financial Results along with Auditors Audited Report thereon for the Half Year and Year ended March 31, 2026'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_29052026181533_Resubmission_of_Consolidated_Financial_Result_Final.pdf"
+    },
+    {
+      "publication_id": "52e6e587-a50d-4d6a-ae4e-079133e833db",
+      "published_at": "2026-05-28T18:25:14+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about proceedings of Shareholders meeting",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28052026181853_Proceeding_of_General_Meeting_sd.pdf"
+    },
+    {
+      "publication_id": "1be6cd88-b647-4645-b642-dedef11ddbd0",
+      "published_at": "2026-05-28T11:13:10+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Updation of Recording Link of H2 and FY 2025-2026 of Outcome of Earning Conference Call held on May 27 2026, at 4:00 P.M",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28052026111236_Recording_Link_of_Conference_Call_sd.pdf"
+    },
+    {
+      "publication_id": "8724e6ee-9e26-4a8f-b860-2a42eef420a5",
+      "published_at": "2026-05-27T18:30:04+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Bagging/Receiving of orders/contracts from Nepal Entity",
+      "category": "Bagging/Receiving of orders/contracts",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27052026182914_Bagging_of_Order_sd.pdf"
+    },
+    {
+      "publication_id": "49fde28b-4b57-48f5-b8fb-0757233376b7",
+      "published_at": "2026-05-27T18:23:42+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Link of Recording and Outcome of Earning Call",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27052026181653_Intimation_of_Outcome_of_Earning_Call_sd.pdf"
+    },
+    {
+      "publication_id": "b96257fc-84fd-4077-963b-28b66d54902e",
+      "published_at": "2026-05-27T14:19:24+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Credit Rating- New",
+      "category": "Credit Rating- New",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27052026141905_Intimation_of_Credit_Rating_sd.pdf"
+    },
+    {
+      "publication_id": "ad5539e5-6df2-409f-adb6-53bc34c31348",
+      "published_at": "2026-05-27T14:09:15+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Investor Presentation",
+      "category": "Investor Presentation",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27052026140858_AML_Intimation_of_Investor_Presentation_H2FY26.pdf"
+    },
+    {
+      "publication_id": "399dd305-6cad-4d0b-85e8-d57ee7e1ea42",
+      "published_at": "2026-05-26T14:50:38+05:30",
+      "title": "Anondita Medicare Limited\u00a0has Submitted to the Exchange a copy of Disclosure under Regulation 31(4) of the Securities and Exchange Board of India (Substantial Acquisition of Shares and Takeovers) Regulations, 2011.",
+      "category": "Disclosure under SEBI Takeover Regulations",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/team_bbodade_05052026163636_ANONDITA1.zip"
+    },
+    {
+      "publication_id": "c8f46b2d-688e-4da1-9e61-3a1f41f5b500",
+      "published_at": "2026-05-25T22:21:41+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+      "category": "Bagging/Receiving of orders/contracts",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_25052026222126_Bagging_of_Order_Sd.pdf"
+    },
+    {
+      "publication_id": "ed4f8109-9f20-4d25-aef2-b35830a16d85",
+      "published_at": "2026-05-25T12:54:31+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding a press release dated May 25, 2026, titled \"Intimation of Press Release -  Anondita Medicare Limited Reports FY26 Revenue of &#8377;13,741.57 Lakhs & 108% PAT Growth in FY26; H2 FY26 PAT Jumps 103%\".",
+      "category": "Press Release",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_25052026125024_Anondita_Press_Release_Financials_H_26.pdf"
+    },
+    {
+      "publication_id": "0861bbc4-7a3e-4956-acd4-67ccbc613983",
+      "published_at": "2026-05-23T14:55:03+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding Second Corrigendum to Notice of Extra Ordinary General Meeting to be held on May 28, 2026",
+      "category": "Corrigendum",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_23052026145252_Intimation_of_Second_Corrigendum_of_Notice_of_EGM.pdf"
+    },
+    {
+      "publication_id": "22d9a98b-699d-4fde-9bc1-f33820536f80",
+      "published_at": "2026-05-22T23:51:11+05:30",
+      "title": "Integrated filing (Financial) for the Half Year and Financial Year ended on March 31, 2026",
+      "category": "Integrated Filing- Financial",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_22052026235059_Submissio_of_Integrated_Filings_2.pdf"
+    },
+    {
+      "publication_id": "9028c6c3-77eb-433b-92e0-8d21dfcf0fed",
+      "published_at": "2026-05-22T23:46:29+05:30",
+      "title": "Consolidated results 2026-01-01 to 2026-03-31",
+      "category": "Financial results XBRL (Integrated)",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NONINDAS_1671858_22052026114629_WEB.xml"
+    },
+    {
+      "publication_id": "214e5871-bcf5-4280-bcca-b4cbda9a291d",
+      "published_at": "2026-05-22T23:34:22+05:30",
+      "title": "Standalone results 2026-01-01 to 2026-03-31",
+      "category": "Financial results XBRL (Integrated)",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NONINDAS_1671847_22052026113422_WEB.xml"
+    },
+    {
+      "publication_id": "87293d18-2cdb-4e83-aa3d-211aa7415513",
+      "published_at": "2026-05-22T21:31:19+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about statement of deviation(s) or variation(s) under Reg. 32",
+      "category": "Statement of deviation(s) or variation(s) under Reg. 32",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_22052026213110_Statement_of_Deviation__Final.pdf"
+    },
+    {
+      "publication_id": "d2f2c433-a9a4-41fa-8c06-9591a419862f",
+      "published_at": "2026-05-22T21:29:41+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Anondita Medicare Limited has informed the Exchange regarding 'Filing of Financial Results under Regulation 33 of SEBI (Listing Obligations and Disclosure Requirements) Regulation, 2015'.'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_22052026212927_Submission_of_Financial_Result.pdf"
+    },
+    {
+      "publication_id": "0aa818dc-d96c-41ad-8112-6e1d263e6b2c",
+      "published_at": "2026-05-22T21:25:24+05:30",
+      "title": "Anondita Medicare Limited has submitted to the Exchange, the financial results for the period ended March 31, 2026.",
+      "category": "Outcome of Board Meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_22052026212134_Outcome_of_BM_merged.pdf"
+    },
+    {
+      "publication_id": "1a019793-332f-40ac-8f48-a40b356e1200",
+      "published_at": "2026-05-21T17:21:23+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Schedule of meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_21052026172054_Intimation_of__Investor_Meet_Final.pdf"
+    },
+    {
+      "publication_id": "8b0daef3-5a45-432c-bb4c-fbbbed504cdd",
+      "published_at": "2026-05-20T17:23:12+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Submission of Newspaper Publication(s) - Corrigendum to the Notice of 01/2026-27 Extra-Ordinary General Meeting ( EGM ) of the Company",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_20052026172134_Intimation_to_the_Stockexchange_Newspaper_Advertisement_Final.pdf"
+    },
+    {
+      "publication_id": "a435b24f-e813-4a30-bd26-361f4cb252bd",
+      "published_at": "2026-05-18T20:25:10+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding Corrigendum to Notice of 01/2026-27 Extra Ordinary General Meeting",
+      "category": "Corrigendum",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_18052026202320_Intimation_of_Corrigendum_of_Notice_of_EGM_Final.pdf"
+    },
+    {
+      "publication_id": "a07d924c-668a-4c2c-bd51-32b3855e3762",
+      "published_at": "2026-05-13T18:45:29+05:30",
+      "title": "Monitoring Agency Report",
+      "category": "Monitoring Agency Report",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_13052026184414_AML_Monitoring_agency_NSE_Compliance_Final.pdf"
+    },
+    {
+      "publication_id": "2edcc078-a0aa-426e-bcc9-a2706a9bd822",
+      "published_at": "2026-05-11T17:54:48+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding a press release dated May 11, 2026, titled \"Anondita Medicare Limited to Participate in Pharma Eurasia 2026, Uzbekistan\".",
+      "category": "Press Release",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_11052026174545_Press_Release.pdf"
+    },
+    {
+      "publication_id": "a3df8dc7-fc54-40cf-afef-b372e3ce894c",
+      "published_at": "2026-05-11T16:37:44+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange Intimation regarding participation in  Pharma Eurasia 2026, Uzbekistan  under Regulation 30 of SEBI (LODR) Regulations, 2015\"",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_11052026163535_Signed_Intimation_participation_in_Pharma_Eurasia_2026_Uzbekistan.pdf"
+    },
+    {
+      "publication_id": "d66bbf97-47d8-476c-87c8-aca36078d659",
+      "published_at": "2026-05-07T13:50:28+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Submission of Newspaper Publication(s) - Notice of 01/2026-27 Extra-Ordinary General Meeting ( EGM ) of the Company",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_07052026134936_Signed_Intimation_of_Newspaper_Advertisemtent_7_May_2026.pdf"
+    },
+    {
+      "publication_id": "9e61c510-34b1-4720-b290-8d4f3d5219af",
+      "published_at": "2026-05-06T18:17:54+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding Notice of Extraordinary General Meeting to be held on May 28, 2026",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_06052026181703_AML_Notice_of_EGM_with_Cover_letter.pdf"
+    },
+    {
+      "publication_id": "863011a7-7073-46c8-8a97-5a4e71b4daf4",
+      "published_at": "2026-05-04T13:46:55+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about prior newspaper advertisement published by the Company intimating that the 01/2026-27 Extra-Ordinary General Meeting ( EGM ) of the Company, scheduled to be held on Thursday, May 28, 2026",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_04052026134640_Intimation_of_prior_Newspaper_Advertisement_Final.pdf"
+    },
+    {
+      "publication_id": "ed93ef49-1e03-4f55-a9c3-3f7e4c689252",
+      "published_at": "2026-04-30T23:56:46+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding Outcome of Board Meeting held on April 30, 2026.",
+      "category": "Outcome of Board Meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30042026235523_Signed_Outcome_of_Board_Meeting_Revised.pdf"
+    },
+    {
+      "publication_id": "08fca8e5-18cc-48e5-98c8-d63d669ab44f",
+      "published_at": "2026-04-30T23:47:00+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Issuance of Warrants, Convertible into Equity Shares to Person(S) Belonging to the Promoter Category on preferential basis.",
+      "category": "Preferential issue",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30042026234334_Reg_30_Disclosure_Issuance_Warrant_Revision.pdf"
+    },
+    {
+      "publication_id": "a5eb7564-76a8-4553-b9e3-f307c7578091",
+      "published_at": "2026-04-30T23:35:28+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about issue of Securities",
+      "category": "Issue of Securities",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30042026233308_Reg_30_Disclosure_Issuance_Warrant_Revision.pdf"
+    },
+    {
+      "publication_id": "f10b4abd-83e5-4e7f-af5a-3289950d06bf",
+      "published_at": "2026-04-30T18:21:36+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding the Amendment to AOA/MOA of the company.",
+      "category": "Amendment to AOA/MOA",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30042026181909_Reg_30_Disclosure_Amendments_to_MOA_Final_sd.pdf"
+    },
+    {
+      "publication_id": "e6129acd-037d-4b49-a1e1-ba5e16feaa25",
+      "published_at": "2026-04-30T18:09:02+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about the Issuance of Warrants, Convertible into Equity Shares to Person(S) Belonging to the Promoter Category on preferential basis.",
+      "category": "Preferential issue",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30042026180713_Reg_30_Disclosure_Issuance_Warrant_sd_Final.pdf"
+    },
+    {
+      "publication_id": "132b7d4b-abe5-43be-bfbd-ba9307fa10ca",
+      "published_at": "2026-04-30T17:26:04+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding Outcome of Board Meeting held on April 30, 2026.",
+      "category": "Outcome of Board Meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30042026172542_Outcome_of_Board_Meeting_sd.pdf"
+    },
+    {
+      "publication_id": "6ea90380-057d-417a-8dfc-ba6df5d1f5ef",
+      "published_at": "2026-04-29T07:30:44+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding a press release dated April 29, 2026, titled \"- Update on Qualification as Vendor under South Africa Government Tender (RT75-2025)\".",
+      "category": "Press Release",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_29042026072907_AML_Qualified_as_Vendor_for_Supply_to_Government_of_South_Africa.pdf"
+    },
+    {
+      "publication_id": "1ecea271-3ddb-4d27-b3c9-ba3611ae2a5d",
+      "published_at": "2026-04-28T16:27:24+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding a press release dated April 28, 2026, titled \"Anondita Medicare Ltd., through its Subsidiary Anondita Healthcare & Rubber Products India Ltd., Re-Launches  COBRA\u00ae Shubh Samachar   Pregnancy Test Kit\".",
+      "category": "Press Release",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_28042026162627_Intimation_of_Press_Release_Re-launch_of_its_pregnancy_test_kit_sd.pdf"
+    },
+    {
+      "publication_id": "29d83cc4-eb62-4449-928b-be921736efda",
+      "published_at": "2026-04-27T16:54:55+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Update on  Supply to Government of South Africa and Audit by SABS for inclusion as Manufacturer/Supplier'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27042026164442_Intimation-update_on_Supply_to_Government_of_South_Africa.pdf"
+    },
+    {
+      "publication_id": "41e44171-4955-446b-a9d5-000de8845b5a",
+      "published_at": "2026-04-22T16:11:32+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Strategic Expansion Update   Strengthening Retail Reach Across Key Markets'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_22042026160955_Signed_Intimation_of_Strategic_Expansion_Update.pdf"
+    },
+    {
+      "publication_id": "40cb6a54-8aa7-4eb9-923c-cd81fa30a55c",
+      "published_at": "2026-04-21T15:31:56+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'participation in  Nepal Medical Show 2026 (9th Edition)'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_21042026152539_Intimation_regarding__Nepal_Medical_Show_2026.pdf"
+    },
+    {
+      "publication_id": "dc2b5d5b-4446-4e8a-b10b-2b463f159439",
+      "published_at": "2026-04-13T15:28:46+05:30",
+      "title": "Anondita Medicare Limited has informed regarding the Submission of Certificate in relation to Non- Applicability of Compliance Report on the Corporate Governance pursuant to Regulation 27 of the Securities Exchange Board of India (Listing Obligations and Disclosures Requirem\u00e8nts) Regulations, 2015, for the quarter ended March 31, 2026",
+      "category": "Quarterly Compliance Report on Corporate governance - within 21 days from the end of the quarter",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_13042026152753_Non-Applicability_of_Corporate_Governance_Certificate_sd.pdf"
+    },
+    {
+      "publication_id": "a281ace1-8f35-4ccf-b631-dabcf826f36f",
+      "published_at": "2026-04-13T15:23:12+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange, that the Company is hereby submitting the confirmation certificate as provided by the RTA of the Company for confirming the compliance with the provisions of Regulation 74(5) of the SEBI (DP) Regulations, 2018",
+      "category": "Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_13042026152245_Compliance_Certificate_under_Regulation_74__5__sd.pdf"
+    },
+    {
+      "publication_id": "147ced2b-69ff-465a-ac7a-dada6d14eb2c",
+      "published_at": "2026-04-06T17:29:49+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Disclosure under Regulation 31 (4) and (5) of SEBI (Substantial Acquisition of Shares and Takeovers) Regulations, 2011'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_06042026172615_Final_Signed_Disclosure_under_R_31_of_SAST.pdf"
+    },
+    {
+      "publication_id": "55ecb3c4-cc41-4998-b9dd-1ed5462ca8d6",
+      "published_at": "2026-03-27T18:13:56+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding the Trading Window closure pursuant to SEBI (Prohibition of Insider Trading) Regulations, 2015",
+      "category": "Trading Window",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_27032026181329_Signed_Intimation_of_Trading_Window_March_27_2026.pdf"
+    },
+    {
+      "publication_id": "d16af612-8422-468c-be7b-e57d7ad0ae8a",
+      "published_at": "2026-03-20T15:49:55+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Update'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_20032026154917_Form_C_disclosures_AG_20_March_2026_sd.pdf"
+    },
+    {
+      "publication_id": "736e619d-db05-4940-bc02-6dc54d13e4b3",
+      "published_at": "2026-03-13T17:16:28+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Resubmission of Financial Results for the half year ended September 30, 2025'.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_13032026171419_Clarification_on_Resubmision_of_Financial_Result.pdf"
+    },
+    {
+      "publication_id": "41f2a1f7-08c8-4e27-9f46-41b7659e7a26",
+      "published_at": "2026-03-09T22:51:31+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Outcome of Participation in Arihant Capital  BHARAT CONNECT CONFERENCE-RISING STARS 2026  '.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_09032026225100_Outcome_of_participation_in_investor_meet_signed.pdf"
+    },
+    {
+      "publication_id": "b6c268ca-50a0-4b5e-97bf-0d9e49064feb",
+      "published_at": "2026-03-09T18:28:28+05:30",
+      "title": "Consolidated results 2025-07-01 to 2025-09-30",
+      "category": "Financial results XBRL (Integrated)",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NONINDAS_1633984_09032026062827_WEB.xml"
+    },
+    {
+      "publication_id": "1026a11f-47a4-4780-bb87-ade0570aa84a",
+      "published_at": "2026-03-09T17:43:43+05:30",
+      "title": "Standalone results 2025-07-01 to 2025-09-30",
+      "category": "Financial results XBRL (Integrated)",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NONINDAS_1633939_09032026054342_WEB.xml"
+    },
+    {
+      "publication_id": "55c87ee0-77a2-4600-8144-da3d778b0e67",
+      "published_at": "2026-03-07T19:11:26+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange that Mr. Anupam Ghosh, Managing Director of the Company, has been honored with a Leadership Award.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_07032026191059_Intimation_to_stock_exchange_Award_sd.pdf"
+    },
+    {
+      "publication_id": "b3f2e91b-b83e-4d08-94c8-67dac660172e",
+      "published_at": "2026-03-07T12:10:42+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding the Investor presentation to be made at the Bharat Connect Conference- Rising Stars 2026, organized by Arihant Capital''.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_07032026120943_Regulation_30_Investor_Presentation.pdf"
+    },
+    {
+      "publication_id": "4003e5ca-2b15-4bc6-8562-6a793febfcbb",
+      "published_at": "2026-03-05T14:18:49+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding 'Participation in Arihant Capital  BHARAT CONNECT CONFERENCE RISING STARS 2026 '.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_05032026141205_Signed_Intimation_of_Participation_inBHARAT_CONNECT_CONFERENCE.pdf"
+    },
+    {
+      "publication_id": "0cfbc558-8525-4226-a1f4-17c07fb17eba",
+      "published_at": "2026-03-03T21:21:34+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Certification of Capacity Enhancement in continuation of our disclosure dated January 27, 2026, regarding intimation of Capacity Addition",
+      "category": "Capacity addition",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_03032026212024_AML_Regulation_30_capacity_utilization.pdf"
+    },
+    {
+      "publication_id": "472a575c-3043-4bdf-b2f7-25139ba42ee9",
+      "published_at": "2026-03-03T17:53:17+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Retirement of Mr Amartya Ghosh",
+      "category": "Retirement",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_03032026175200_Regulation_30_Cessation_of_Amartya_Ghosh.pdf"
+    },
+    {
+      "publication_id": "de2f93ef-a598-4fa1-b1e0-456951b0d7e8",
+      "published_at": "2026-03-03T17:25:56+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+      "category": "Bagging/Receiving of orders/contracts",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_03032026172532_Signed_AML_Regulation_30_Bagging_of_Order_CMSS.pdf"
+    },
+    {
+      "publication_id": "7c56eda9-91e7-4f78-93c6-d9c2fbb15cc1",
+      "published_at": "2026-02-12T19:35:18+05:30",
+      "title": "Anondita Medicare Limited has submitted the Exchange a copy Srutinizers report of  Extraordinary General Meeting held on February 12, 2026",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_12022026193311_Scrutinizer_report_and_voting_result_FINAL_Signed.pdf"
+    },
+    {
+      "publication_id": "10815f0b-f091-4526-8cad-bbc84e5297e7",
+      "published_at": "2026-02-12T16:36:13+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding Proceedings of Extraordinary General Meeting held on February 12, 2026",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_12022026163322_Anondita_Proceeding_EGM_12_Feb_final__signed.pdf"
+    },
+    {
+      "publication_id": "52bef57a-3690-4e2a-b382-dc9a6104590b",
+      "published_at": "2026-02-11T18:45:33+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange about Grant of  70951   MDSAP   Medical Devices   Certification of Good Manufacturing Practices for Medical Devices from the Industry International Except Mercosur , with Brazil (ANVISA   National Health Surveillance Agency) in scope.",
+      "category": "Granting/withdrawal/surrender/cancellation/suspension of key licenses/ regulatory approvals",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_11022026184315_Signed_AML_Regulation_30_MDSAP_in_Brazil.pdf"
+    },
+    {
+      "publication_id": "539957e3-6975-444a-b239-ba98fe7fb525",
+      "published_at": "2026-02-06T18:00:59+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding participation in  WORLD HEALTH EXPO (WHX) ''.",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_06022026175845_Intimation_for_participation_in_WHX_Dubai_SD.pdf"
+    },
+    {
+      "publication_id": "f3f165f5-aad1-4e64-a1fe-3135d1ad6cf3",
+      "published_at": "2026-02-04T21:43:27+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding ''MDSAP Certificate Representation Ceremony\".",
+      "category": "Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_04022026213837_AML_REGULATION_30_Ceremony_Intimation.pdf"
+    },
+    {
+      "publication_id": "287f95c5-a5a1-45a1-a505-dc73d217b065",
+      "published_at": "2026-02-03T14:30:56+05:30",
+      "title": "Anondita Medicare Limited (the  Company ) has entered into a Distribution Agreement ( Agreement ) with M/s Renocin Agencies Ltd (the  Distributor )",
+      "category": "Agreements",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_03022026142732_AML_REGULATION_30_DISTRIBUTION_AGREEMENT.pdf"
+    },
+    {
+      "publication_id": "9656b8c0-3a84-4dd5-af89-48ac1fd84524",
+      "published_at": "2026-01-30T17:59:22+05:30",
+      "title": "Anondita Medicare Limited has informed the Exchange regarding a press release dated January 30, 2026, titled \"Anondita Medicare Announces Major Capacity Expansion of Approximately 1,360 Million Pieces Per Annum at Noida Facility (Additional Noida Unit)\".",
+      "category": "Press Release",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/ANONDITA_30012026175400_AML_Regulation_30_Intimation_of_Press_release.pdf"
+    }
+  ],
+  "latest_prices": [
+    {
+      "trade_date": "2026-10-09",
+      "close": 1048.1,
+      "volume": 22400.0
+    },
+    {
+      "trade_date": "2026-10-08",
+      "close": 1055.0,
+      "volume": 31800.0
+    },
+    {
+      "trade_date": "2026-10-07",
+      "close": 1070.8,
+      "volume": 56000.0
+    },
+    {
+      "trade_date": "2026-10-06",
+      "close": 1075.3,
+      "volume": 91600.0
+    },
+    {
+      "trade_date": "2026-10-05",
+      "close": 1031.0,
+      "volume": 94400.0
+    },
+    {
+      "trade_date": "2026-10-01",
+      "close": 1078.7,
+      "volume": 116200.0
+    },
+    {
+      "trade_date": "2026-09-30",
+      "close": 1084.6,
+      "volume": 60600.0
+    },
+    {
+      "trade_date": "2026-09-29",
+      "close": 1094.75,
+      "volume": 68600.0
+    },
+    {
+      "trade_date": "2026-09-28",
+      "close": 1103.35,
+      "volume": 112000.0
+    },
+    {
+      "trade_date": "2026-09-25",
+      "close": 1150.25,
+      "volume": 120000.0
+    },
+    {
+      "trade_date": "2026-09-24",
+      "close": 1089.7,
+      "volume": 92000.0
+    },
+    {
+      "trade_date": "2026-09-23",
+      "close": 1094.6,
+      "volume": 65600.0
+    },
+    {
+      "trade_date": "2026-09-22",
+      "close": 1084.6,
+      "volume": 83600.0
+    },
+    {
+      "trade_date": "2026-09-21",
+      "close": 1083.7,
+      "volume": 53000.0
+    },
+    {
+      "trade_date": "2026-09-18",
+      "close": 1090.55,
+      "volume": 82200.0
+    },
+    {
+      "trade_date": "2026-09-17",
+      "close": 1124.0,
+      "volume": 105800.0
+    },
+    {
+      "trade_date": "2026-09-16",
+      "close": 1158.05,
+      "volume": 65800.0
+    },
+    {
+      "trade_date": "2026-09-15",
+      "close": 1140.9,
+      "volume": 58400.0
+    },
+    {
+      "trade_date": "2026-09-11",
+      "close": 1129.55,
+      "volume": 52800.0
+    },
+    {
+      "trade_date": "2026-09-10",
+      "close": 1128.4,
+      "volume": 108600.0
+    },
+    {
+      "trade_date": "2026-09-09",
+      "close": 1144.35,
+      "volume": 59400.0
+    },
+    {
+      "trade_date": "2026-09-08",
+      "close": 1178.6,
+      "volume": 89400.0
+    },
+    {
+      "trade_date": "2026-09-07",
+      "close": 1147.9,
+      "volume": 68800.0
+    },
+    {
+      "trade_date": "2026-09-04",
+      "close": 1109.55,
+      "volume": 71200.0
+    },
+    {
+      "trade_date": "2026-09-03",
+      "close": 1099.9,
+      "volume": 51200.0
+    },
+    {
+      "trade_date": "2026-09-02",
+      "close": 1060.85,
+      "volume": 109200.0
+    },
+    {
+      "trade_date": "2026-09-01",
+      "close": 1051.95,
+      "volume": 147800.0
+    },
+    {
+      "trade_date": "2026-08-31",
+      "close": 1075.5,
+      "volume": 535800.0
+    },
+    {
+      "trade_date": "2026-08-28",
+      "close": 1060.9,
+      "volume": 55400.0
+    },
+    {
+      "trade_date": "2026-08-27",
+      "close": 1023.8,
+      "volume": 27400.0
+    },
+    {
+      "trade_date": "2026-08-26",
+      "close": 1043.7,
+      "volume": 19400.0
+    },
+    {
+      "trade_date": "2026-08-25",
+      "close": 1064.7,
+      "volume": 52000.0
+    },
+    {
+      "trade_date": "2026-08-24",
+      "close": 1062.35,
+      "volume": 33400.0
+    },
+    {
+      "trade_date": "2026-08-21",
+      "close": 1054.6,
+      "volume": 60600.0
+    },
+    {
+      "trade_date": "2026-08-20",
+      "close": 1075.0,
+      "volume": 7600.0
+    },
+    {
+      "trade_date": "2026-08-19",
+      "close": 1067.75,
+      "volume": 14600.0
+    },
+    {
+      "trade_date": "2026-08-18",
+      "close": 1074.6,
+      "volume": 5400.0
+    },
+    {
+      "trade_date": "2026-08-17",
+      "close": 1086.65,
+      "volume": 46000.0
+    },
+    {
+      "trade_date": "2026-08-14",
+      "close": 1117.85,
+      "volume": 34200.0
+    },
+    {
+      "trade_date": "2026-08-13",
+      "close": 1066.95,
+      "volume": 7400.0
+    },
+    {
+      "trade_date": "2026-08-12",
+      "close": 1075.4,
+      "volume": 14200.0
+    },
+    {
+      "trade_date": "2026-08-11",
+      "close": 1068.85,
+      "volume": 30600.0
+    },
+    {
+      "trade_date": "2026-08-10",
+      "close": 1093.35,
+      "volume": 37800.0
+    },
+    {
+      "trade_date": "2026-08-07",
+      "close": 1040.7,
+      "volume": 18400.0
+    },
+    {
+      "trade_date": "2026-08-06",
+      "close": 1027.4,
+      "volume": 16200.0
+    },
+    {
+      "trade_date": "2026-08-05",
+      "close": 1052.65,
+      "volume": 41800.0
+    },
+    {
+      "trade_date": "2026-08-04",
+      "close": 1021.7,
+      "volume": 41600.0
+    },
+    {
+      "trade_date": "2026-08-03",
+      "close": 1050.45,
+      "volume": 21600.0
+    },
+    {
+      "trade_date": "2026-07-31",
+      "close": 1088.75,
+      "volume": 18600.0
+    },
+    {
+      "trade_date": "2026-07-30",
+      "close": 1062.9,
+      "volume": 47600.0
+    },
+    {
+      "trade_date": "2026-07-29",
+      "close": 1086.8,
+      "volume": 21000.0
+    },
+    {
+      "trade_date": "2026-07-28",
+      "close": 1115.95,
+      "volume": 21800.0
+    },
+    {
+      "trade_date": "2026-07-27",
+      "close": 1121.2,
+      "volume": 9600.0
+    },
+    {
+      "trade_date": "2026-07-24",
+      "close": 1128.7,
+      "volume": 18200.0
+    },
+    {
+      "trade_date": "2026-07-23",
+      "close": 1117.5,
+      "volume": 18400.0
+    },
+    {
+      "trade_date": "2026-07-22",
+      "close": 1119.25,
+      "volume": 12600.0
+    },
+    {
+      "trade_date": "2026-07-21",
+      "close": 1112.5,
+      "volume": 90000.0
+    },
+    {
+      "trade_date": "2026-07-20",
+      "close": 1113.5,
+      "volume": 16000.0
+    },
+    {
+      "trade_date": "2026-07-17",
+      "close": 1130.15,
+      "volume": 50400.0
+    },
+    {
+      "trade_date": "2026-07-16",
+      "close": 1168.95,
+      "volume": 14600.0
+    },
+    {
+      "trade_date": "2026-07-15",
+      "close": 1182.65,
+      "volume": 95000.0
+    },
+    {
+      "trade_date": "2026-07-14",
+      "close": 1183.35,
+      "volume": 63800.0
+    },
+    {
+      "trade_date": "2026-07-13",
+      "close": 1089.25,
+      "volume": 58400.0
+    },
+    {
+      "trade_date": "2026-07-10",
+      "close": 1160.6,
+      "volume": 39600.0
+    },
+    {
+      "trade_date": "2026-07-09",
+      "close": 1188.2,
+      "volume": 18600.0
+    },
+    {
+      "trade_date": "2026-07-08",
+      "close": 1155.8,
+      "volume": 45600.0
+    },
+    {
+      "trade_date": "2026-07-07",
+      "close": 1179.45,
+      "volume": 43800.0
+    },
+    {
+      "trade_date": "2026-07-06",
+      "close": 1174.85,
+      "volume": 27200.0
+    },
+    {
+      "trade_date": "2026-07-03",
+      "close": 1197.9,
+      "volume": 44400.0
+    },
+    {
+      "trade_date": "2026-07-02",
+      "close": 1188.8,
+      "volume": 27600.0
+    },
+    {
+      "trade_date": "2026-07-01",
+      "close": 1169.65,
+      "volume": 31800.0
+    },
+    {
+      "trade_date": "2026-06-30",
+      "close": 1148.65,
+      "volume": 70200.0
+    },
+    {
+      "trade_date": "2026-06-29",
+      "close": 1166.25,
+      "volume": 19600.0
+    },
+    {
+      "trade_date": "2026-06-25",
+      "close": 1177.15,
+      "volume": 44200.0
+    },
+    {
+      "trade_date": "2026-06-24",
+      "close": 1233.15,
+      "volume": 83400.0
+    },
+    {
+      "trade_date": "2026-06-23",
+      "close": 1192.35,
+      "volume": 22200.0
+    },
+    {
+      "trade_date": "2026-06-22",
+      "close": 1172.25,
+      "volume": 34400.0
+    },
+    {
+      "trade_date": "2026-06-19",
+      "close": 1193.0,
+      "volume": 23800.0
+    },
+    {
+      "trade_date": "2026-06-18",
+      "close": 1172.3,
+      "volume": 46200.0
+    },
+    {
+      "trade_date": "2026-06-17",
+      "close": 1214.75,
+      "volume": 24200.0
+    },
+    {
+      "trade_date": "2026-06-16",
+      "close": 1196.95,
+      "volume": 26800.0
+    },
+    {
+      "trade_date": "2026-06-15",
+      "close": 1192.55,
+      "volume": 21000.0
+    },
+    {
+      "trade_date": "2026-06-12",
+      "close": 1184.7,
+      "volume": 26200.0
+    },
+    {
+      "trade_date": "2026-06-11",
+      "close": 1134.0,
+      "volume": 18600.0
+    },
+    {
+      "trade_date": "2026-06-10",
+      "close": 1148.05,
+      "volume": 52800.0
+    },
+    {
+      "trade_date": "2026-06-09",
+      "close": 1183.45,
+      "volume": 22200.0
+    },
+    {
+      "trade_date": "2026-06-08",
+      "close": 1195.6,
+      "volume": 26200.0
+    },
+    {
+      "trade_date": "2026-06-05",
+      "close": 1219.9,
+      "volume": 59600.0
+    },
+    {
+      "trade_date": "2026-06-04",
+      "close": 1185.55,
+      "volume": 136200.0
+    },
+    {
+      "trade_date": "2026-06-03",
+      "close": 1117.35,
+      "volume": 65000.0
+    },
+    {
+      "trade_date": "2026-06-02",
+      "close": 1097.6,
+      "volume": 18000.0
+    },
+    {
+      "trade_date": "2026-06-01",
+      "close": 1062.6,
+      "volume": 37600.0
+    },
+    {
+      "trade_date": "2026-05-29",
+      "close": 1061.95,
+      "volume": 25200.0
+    },
+    {
+      "trade_date": "2026-05-27",
+      "close": 1013.25,
+      "volume": 14800.0
+    },
+    {
+      "trade_date": "2026-05-26",
+      "close": 1045.35,
+      "volume": 37600.0
+    },
+    {
+      "trade_date": "2026-05-25",
+      "close": 1042.65,
+      "volume": 49600.0
+    },
+    {
+      "trade_date": "2026-05-22",
+      "close": 1103.05,
+      "volume": 38400.0
+    },
+    {
+      "trade_date": "2026-05-21",
+      "close": 1066.15,
+      "volume": 21000.0
+    },
+    {
+      "trade_date": "2026-05-20",
+      "close": 1000.05,
+      "volume": 67000.0
+    },
+    {
+      "trade_date": "2026-05-19",
+      "close": 993.0,
+      "volume": 35600.0
+    },
+    {
+      "trade_date": "2026-05-18",
+      "close": 953.55,
+      "volume": 13200.0
+    },
+    {
+      "trade_date": "2026-05-15",
+      "close": 929.65,
+      "volume": 6200.0
+    },
+    {
+      "trade_date": "2026-05-14",
+      "close": 935.75,
+      "volume": 1800.0
+    },
+    {
+      "trade_date": "2026-05-13",
+      "close": 938.15,
+      "volume": 13200.0
+    },
+    {
+      "trade_date": "2026-05-12",
+      "close": 961.5,
+      "volume": 4800.0
+    },
+    {
+      "trade_date": "2026-05-11",
+      "close": 986.25,
+      "volume": 5400.0
+    },
+    {
+      "trade_date": "2026-05-08",
+      "close": 957.85,
+      "volume": 6600.0
+    },
+    {
+      "trade_date": "2026-05-07",
+      "close": 979.45,
+      "volume": 21800.0
+    },
+    {
+      "trade_date": "2026-05-06",
+      "close": 991.7,
+      "volume": 9800.0
+    },
+    {
+      "trade_date": "2026-05-05",
+      "close": 1010.5,
+      "volume": 4600.0
+    },
+    {
+      "trade_date": "2026-05-04",
+      "close": 1000.15,
+      "volume": 34800.0
+    },
+    {
+      "trade_date": "2026-04-30",
+      "close": 999.2,
+      "volume": 58200.0
+    },
+    {
+      "trade_date": "2026-04-29",
+      "close": 1020.3,
+      "volume": 74000.0
+    },
+    {
+      "trade_date": "2026-04-28",
+      "close": 1074.0,
+      "volume": 48000.0
+    },
+    {
+      "trade_date": "2026-04-27",
+      "close": 1130.45,
+      "volume": 19000.0
+    },
+    {
+      "trade_date": "2026-04-24",
+      "close": 1189.9,
+      "volume": 15000.0
+    },
+    {
+      "trade_date": "2026-04-23",
+      "close": 1200.0,
+      "volume": 12000.0
+    },
+    {
+      "trade_date": "2026-04-22",
+      "close": 1186.8,
+      "volume": 65000.0
+    },
+    {
+      "trade_date": "2026-04-21",
+      "close": 1048.0,
+      "volume": 27000.0
+    },
+    {
+      "trade_date": "2026-04-20",
+      "close": 980.0,
+      "volume": 17000.0
+    },
+    {
+      "trade_date": "2026-04-17",
+      "close": 937.85,
+      "volume": 44000.0
+    },
+    {
+      "trade_date": "2026-04-16",
+      "close": 875.25,
+      "volume": 22000.0
+    },
+    {
+      "trade_date": "2026-04-15",
+      "close": 867.0,
+      "volume": 6000.0
+    },
+    {
+      "trade_date": "2026-04-13",
+      "close": 832.0,
+      "volume": 8000.0
+    },
+    {
+      "trade_date": "2026-04-10",
+      "close": 820.0,
+      "volume": 6000.0
+    },
+    {
+      "trade_date": "2026-04-09",
+      "close": 848.0,
+      "volume": 8000.0
+    },
+    {
+      "trade_date": "2026-04-08",
+      "close": 828.25,
+      "volume": 59000.0
+    },
+    {
+      "trade_date": "2026-04-07",
+      "close": 780.0,
+      "volume": 6000.0
+    },
+    {
+      "trade_date": "2026-04-06",
+      "close": 786.35,
+      "volume": 31000.0
+    },
+    {
+      "trade_date": "2026-04-02",
+      "close": 785.0,
+      "volume": 7000.0
+    },
+    {
+      "trade_date": "2026-04-01",
+      "close": 735.0,
+      "volume": 24000.0
+    },
+    {
+      "trade_date": "2026-03-30",
+      "close": 658.75,
+      "volume": 34000.0
+    },
+    {
+      "trade_date": "2026-03-27",
+      "close": 704.45,
+      "volume": 139000.0
+    },
+    {
+      "trade_date": "2026-03-25",
+      "close": 719.05,
+      "volume": 27000.0
+    },
+    {
+      "trade_date": "2026-03-24",
+      "close": 690.0,
+      "volume": 7000.0
+    },
+    {
+      "trade_date": "2026-03-23",
+      "close": 657.0,
+      "volume": 61000.0
+    },
+    {
+      "trade_date": "2026-03-20",
+      "close": 680.85,
+      "volume": 18000.0
+    },
+    {
+      "trade_date": "2026-03-19",
+      "close": 695.0,
+      "volume": 20000.0
+    },
+    {
+      "trade_date": "2026-03-18",
+      "close": 700.25,
+      "volume": 17000.0
+    },
+    {
+      "trade_date": "2026-03-17",
+      "close": 713.0,
+      "volume": 138000.0
+    },
+    {
+      "trade_date": "2026-03-16",
+      "close": 706.15,
+      "volume": 20000.0
+    },
+    {
+      "trade_date": "2026-03-13",
+      "close": 722.1,
+      "volume": 20000.0
+    },
+    {
+      "trade_date": "2026-03-12",
+      "close": 725.0,
+      "volume": 10000.0
+    },
+    {
+      "trade_date": "2026-03-11",
+      "close": 750.0,
+      "volume": 1000.0
+    },
+    {
+      "trade_date": "2026-03-10",
+      "close": 759.9,
+      "volume": 25000.0
+    },
+    {
+      "trade_date": "2026-03-09",
+      "close": 720.0,
+      "volume": 26000.0
+    },
+    {
+      "trade_date": "2026-03-06",
+      "close": 714.0,
+      "volume": 19000.0
+    },
+    {
+      "trade_date": "2026-03-05",
+      "close": 730.75,
+      "volume": 9000.0
+    },
+    {
+      "trade_date": "2026-03-04",
+      "close": 719.0,
+      "volume": 36000.0
+    },
+    {
+      "trade_date": "2026-03-02",
+      "close": 750.0,
+      "volume": 1000.0
+    },
+    {
+      "trade_date": "2026-02-27",
+      "close": 750.0,
+      "volume": 16000.0
+    },
+    {
+      "trade_date": "2026-02-26",
+      "close": 730.0,
+      "volume": 10000.0
+    },
+    {
+      "trade_date": "2026-02-25",
+      "close": 726.1,
+      "volume": 29000.0
+    },
+    {
+      "trade_date": "2026-02-24",
+      "close": 717.65,
+      "volume": 58000.0
+    },
+    {
+      "trade_date": "2026-02-23",
+      "close": 721.55,
+      "volume": 45000.0
+    },
+    {
+      "trade_date": "2026-02-20",
+      "close": 711.0,
+      "volume": 131000.0
+    },
+    {
+      "trade_date": "2026-02-19",
+      "close": 748.3,
+      "volume": 109000.0
+    },
+    {
+      "trade_date": "2026-02-18",
+      "close": 787.65,
+      "volume": 56000.0
+    },
+    {
+      "trade_date": "2026-02-17",
+      "close": 825.0,
+      "volume": 58000.0
+    },
+    {
+      "trade_date": "2026-02-16",
+      "close": 843.0,
+      "volume": 63000.0
+    },
+    {
+      "trade_date": "2026-02-13",
+      "close": 821.25,
+      "volume": 4000.0
+    },
+    {
+      "trade_date": "2026-02-12",
+      "close": 842.85,
+      "volume": 43000.0
+    },
+    {
+      "trade_date": "2026-02-11",
+      "close": 825.1,
+      "volume": 272000.0
+    },
+    {
+      "trade_date": "2026-02-10",
+      "close": 860.7,
+      "volume": 1000.0
+    },
+    {
+      "trade_date": "2026-02-09",
+      "close": 906.0,
+      "volume": 2000.0
+    },
+    {
+      "trade_date": "2026-01-16",
+      "close": 952.85,
+      "volume": 1000.0
+    },
+    {
+      "trade_date": "2026-01-09",
+      "close": 972.25,
+      "volume": 1000.0
+    },
+    {
+      "trade_date": "2026-01-05",
+      "close": 992.05,
+      "volume": 1000.0
+    },
+    {
+      "trade_date": "2026-01-02",
+      "close": 1012.25,
+      "volume": 17000.0
+    },
+    {
+      "trade_date": "2026-01-01",
+      "close": 1032.9,
+      "volume": 18000.0
+    },
+    {
+      "trade_date": "2025-12-31",
+      "close": 1017.15,
+      "volume": 53000.0
+    },
+    {
+      "trade_date": "2025-12-30",
+      "close": 968.75,
+      "volume": 9000.0
+    },
+    {
+      "trade_date": "2025-12-29",
+      "close": 942.35,
+      "volume": 176000.0
+    },
+    {
+      "trade_date": "2025-12-26",
+      "close": 910.35,
+      "volume": 77000.0
+    },
+    {
+      "trade_date": "2025-12-24",
+      "close": 867.0,
+      "volume": 21000.0
+    },
+    {
+      "trade_date": "2025-12-23",
+      "close": 825.75,
+      "volume": 27000.0
+    },
+    {
+      "trade_date": "2025-12-22",
+      "close": 786.45,
+      "volume": 60000.0
+    },
+    {
+      "trade_date": "2025-12-19",
+      "close": 749.0,
+      "volume": 7000.0
+    },
+    {
+      "trade_date": "2025-12-18",
+      "close": 734.4,
+      "volume": 10000.0
+    },
+    {
+      "trade_date": "2025-12-17",
+      "close": 720.0,
+      "volume": 12000.0
+    },
+    {
+      "trade_date": "2025-12-16",
+      "close": 705.9,
+      "volume": 3000.0
+    },
+    {
+      "trade_date": "2025-12-15",
+      "close": 720.3,
+      "volume": 12000.0
+    },
+    {
+      "trade_date": "2025-12-12",
+      "close": 720.3,
+      "volume": 29000.0
+    },
+    {
+      "trade_date": "2025-12-11",
+      "close": 735.0,
+      "volume": 1000.0
+    },
+    {
+      "trade_date": "2025-12-09",
+      "close": 739.0,
+      "volume": 38000.0
+    },
+    {
+      "trade_date": "2025-12-08",
+      "close": 727.35,
+      "volume": 50000.0
+    },
+    {
+      "trade_date": "2025-12-05",
+      "close": 713.1,
+      "volume": 28000.0
+    },
+    {
+      "trade_date": "2025-12-04",
+      "close": 699.15,
+      "volume": 1000.0
+    },
+    {
+      "trade_date": "2025-12-03",
+      "close": 685.45,
+      "volume": 41000.0
+    },
+    {
+      "trade_date": "2025-12-02",
+      "close": 672.05,
+      "volume": 8000.0
+    },
+    {
+      "trade_date": "2025-12-01",
+      "close": 658.9,
+      "volume": 14000.0
+    },
+    {
+      "trade_date": "2025-11-28",
+      "close": 646.0,
+      "volume": 5000.0
+    },
+    {
+      "trade_date": "2025-11-27",
+      "close": 633.95,
+      "volume": 1000.0
+    },
+    {
+      "trade_date": "2025-11-26",
+      "close": 621.55,
+      "volume": 41000.0
+    },
+    {
+      "trade_date": "2025-11-25",
+      "close": 609.4,
+      "volume": 42000.0
+    },
+    {
+      "trade_date": "2025-11-21",
+      "close": 621.8,
+      "volume": 17000.0
+    },
+    {
+      "trade_date": "2025-11-20",
+      "close": 634.45,
+      "volume": 4000.0
+    },
+    {
+      "trade_date": "2025-11-19",
+      "close": 647.4,
+      "volume": 4000.0
+    },
+    {
+      "trade_date": "2025-11-18",
+      "close": 660.6,
+      "volume": 3000.0
+    },
+    {
+      "trade_date": "2025-11-17",
+      "close": 674.05,
+      "volume": 51000.0
+    },
+    {
+      "trade_date": "2025-11-14",
+      "close": 643.65,
+      "volume": 41000.0
+    },
+    {
+      "trade_date": "2025-11-13",
+      "close": 613.0,
+      "volume": 14000.0
+    },
+    {
+      "trade_date": "2025-11-12",
+      "close": 605.0,
+      "volume": 82000.0
+    },
+    {
+      "trade_date": "2025-11-11",
+      "close": 607.55,
+      "volume": 38000.0
+    },
+    {
+      "trade_date": "2025-11-10",
+      "close": 639.5,
+      "volume": 56000.0
+    },
+    {
+      "trade_date": "2025-11-07",
+      "close": 638.0,
+      "volume": 17000.0
+    },
+    {
+      "trade_date": "2025-11-06",
+      "close": 607.65,
+      "volume": 114000.0
+    },
+    {
+      "trade_date": "2025-11-04",
+      "close": 600.2,
+      "volume": 151000.0
+    },
+    {
+      "trade_date": "2025-11-03",
+      "close": 625.35,
+      "volume": 120000.0
+    },
+    {
+      "trade_date": "2025-10-31",
+      "close": 595.7,
+      "volume": 3000.0
+    },
+    {
+      "trade_date": "2025-10-30",
+      "close": 567.35,
+      "volume": 115000.0
+    },
+    {
+      "trade_date": "2025-10-29",
+      "close": 540.35,
+      "volume": 14000.0
+    },
+    {
+      "trade_date": "2025-10-28",
+      "close": 514.65,
+      "volume": 6000.0
+    },
+    {
+      "trade_date": "2025-10-27",
+      "close": 490.15,
+      "volume": 22000.0
+    },
+    {
+      "trade_date": "2025-10-24",
+      "close": 466.85,
+      "volume": 65000.0
+    },
+    {
+      "trade_date": "2025-10-23",
+      "close": 447.25,
+      "volume": 20000.0
+    },
+    {
+      "trade_date": "2025-10-21",
+      "close": 460.0,
+      "volume": 12000.0
+    },
+    {
+      "trade_date": "2025-10-20",
+      "close": 452.1,
+      "volume": 9000.0
+    },
+    {
+      "trade_date": "2025-10-17",
+      "close": 460.0,
+      "volume": 14000.0
+    },
+    {
+      "trade_date": "2025-10-16",
+      "close": 455.0,
+      "volume": 75000.0
+    },
+    {
+      "trade_date": "2025-10-15",
+      "close": 448.25,
+      "volume": 106000.0
+    },
+    {
+      "trade_date": "2025-10-14",
+      "close": 446.0,
+      "volume": 43000.0
+    },
+    {
+      "trade_date": "2025-10-13",
+      "close": 454.0,
+      "volume": 36000.0
+    },
+    {
+      "trade_date": "2025-10-10",
+      "close": 441.8,
+      "volume": 25000.0
+    },
+    {
+      "trade_date": "2025-10-09",
+      "close": 430.05,
+      "volume": 185000.0
+    },
+    {
+      "trade_date": "2025-10-08",
+      "close": 434.05,
+      "volume": 71000.0
+    },
+    {
+      "trade_date": "2025-10-07",
+      "close": 454.35,
+      "volume": 265000.0
+    },
+    {
+      "trade_date": "2025-10-06",
+      "close": 429.35,
+      "volume": 217000.0
+    },
+    {
+      "trade_date": "2025-10-03",
+      "close": 388.45,
+      "volume": 123000.0
+    },
+    {
+      "trade_date": "2025-10-01",
+      "close": 374.0,
+      "volume": 37000.0
+    },
+    {
+      "trade_date": "2025-09-30",
+      "close": 354.65,
+      "volume": 241000.0
+    },
+    {
+      "trade_date": "2025-09-29",
+      "close": 370.15,
+      "volume": 162000.0
+    },
+    {
+      "trade_date": "2025-09-26",
+      "close": 342.05,
+      "volume": 137000.0
+    },
+    {
+      "trade_date": "2025-09-25",
+      "close": 365.0,
+      "volume": 90000.0
+    },
+    {
+      "trade_date": "2025-09-24",
+      "close": 372.75,
+      "volume": 50000.0
+    },
+    {
+      "trade_date": "2025-09-23",
+      "close": 390.2,
+      "volume": 118000.0
+    },
+    {
+      "trade_date": "2025-09-22",
+      "close": 373.3,
+      "volume": 168000.0
+    },
+    {
+      "trade_date": "2025-09-19",
+      "close": 351.2,
+      "volume": 134000.0
+    },
+    {
+      "trade_date": "2025-09-18",
+      "close": 356.5,
+      "volume": 121000.0
+    },
+    {
+      "trade_date": "2025-09-17",
+      "close": 351.8,
+      "volume": 340000.0
+    },
+    {
+      "trade_date": "2025-09-16",
+      "close": 371.2,
+      "volume": 209000.0
+    },
+    {
+      "trade_date": "2025-09-15",
+      "close": 386.3,
+      "volume": 596000.0
+    },
+    {
+      "trade_date": "2025-09-12",
+      "close": 359.8,
+      "volume": 172000.0
+    },
+    {
+      "trade_date": "2025-09-11",
+      "close": 342.7,
+      "volume": 229000.0
+    },
+    {
+      "trade_date": "2025-09-10",
+      "close": 340.85,
+      "volume": 236000.0
+    },
+    {
+      "trade_date": "2025-09-09",
+      "close": 349.75,
+      "volume": 94000.0
+    },
+    {
+      "trade_date": "2025-09-08",
+      "close": 337.8,
+      "volume": 105000.0
+    },
+    {
+      "trade_date": "2025-09-05",
+      "close": 340.8,
+      "volume": 360000.0
+    },
+    {
+      "trade_date": "2025-09-04",
+      "close": 334.75,
+      "volume": 833000.0
+    },
+    {
+      "trade_date": "2025-09-03",
+      "close": 318.85,
+      "volume": 73000.0
+    },
+    {
+      "trade_date": "2025-09-02",
+      "close": 303.7,
+      "volume": 82000.0
+    },
+    {
+      "trade_date": "2025-09-01",
+      "close": 289.25,
+      "volume": 2952000.0
+    }
+  ],
+  "entry_price": {
+    "trade_date": "2026-06-08",
+    "close": 1195.6
+  },
+  "latest_features": {
+    "opm": null,
+    "margin_change": null,
+    "revenue_growth": null,
+    "liquidity_cr": 7.147067117647059,
+    "mcap_cr": 1895.656546,
+    "ttm_rev_cr": null,
+    "ps": null
+  },
+  "orderbook": [
+    {
+      "quarter_end": "2026-03-31",
+      "order_book_cr": 137.0,
+      "order_inflow_cr": null,
+      "book_doubtful": false,
+      "inflow_doubtful": false,
+      "book_yoy_pct": null,
+      "inflow_yoy_pct": null
+    }
+  ]
+}

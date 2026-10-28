@@ -1,0 +1,158 @@
+{
+  "counts": {
+    "identifiers_unchanged": 3633,
+    "old_symbols_without_start": 52
+  },
+  "conflicts": []
+}
+{
+  "counts": {
+    "nse_by_isin": 1462,
+    "bse_by_isin": 0,
+    "by_code": 2905,
+    "issuers_created": 2,
+    "securities_created": 2
+  },
+  "filings": [
+    {
+      "source": "bse_announcements",
+      "linked": 1714735,
+      "unlinked": 120988
+    },
+    {
+      "source": "nse_announcements",
+      "linked": 983941,
+      "unlinked": 11660
+    },
+    {
+      "source": "nse_results_xbrl",
+      "linked": 87277,
+      "unlinked": 0
+    }
+  ],
+  "top_unlinked": [
+    {
+      "source": "bse_announcements",
+      "symbol": "570001",
+      "name": "Tata Motors  Ltd - DVR",
+      "filings": 1185
+    },
+    {
+      "source": "nse_announcements",
+      "symbol": "TATAMTRDVR",
+      "name": "Tata Motors Limited",
+      "filings": 1109
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "500302",
+      "name": "Piramal Enterprises Ltd",
+      "filings": 1101
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "530011",
+      "name": "Mangalore Chemicals & Fertilizers Ltd",
+      "filings": 751
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "500010",
+      "name": "Housing Development Finance Corporation Ltd",
+      "filings": 721
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "532345",
+      "name": "Allcargo Gati Ltd",
+      "filings": 680
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "541179",
+      "name": "ICICI Securities Ltd",
+      "filings": 566
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "532532",
+      "name": "Jaiprakash Associates Ltd",
+      "filings": 534
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "526521",
+      "name": "Sanghi Industries Ltd",
+      "filings": 525
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "539277",
+      "name": "Alstone Textiles (India) Ltd",
+      "filings": 487
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "534758",
+      "name": "Cigniti Technologies Ltd",
+      "filings": 475
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "542724",
+      "name": "Murae Organisor Ltd",
+      "filings": 463
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "500111",
+      "name": "Reliance Capital Ltd",
+      "filings": 462
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "540614",
+      "name": "G G Engineering Ltd",
+      "filings": 460
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "539574",
+      "name": "Sunshine Capital Ltd",
+      "filings": 455
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "538875",
+      "name": "Sellwin Traders Ltd",
+      "filings": 451
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "533163",
+      "name": "ARSS Infrastructure Projects Ltd",
+      "filings": 442
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "500211",
+      "name": "Insilco Ltd",
+      "filings": 429
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "512091",
+      "name": "Global Defence Industries Ltd",
+      "filings": 428
+    },
+    {
+      "source": "bse_announcements",
+      "symbol": "504966",
+      "name": "Tinplate Company of India Ltd",
+      "filings": 413
+    }
+  ]
+}
+{
+  "duplicates": {}
+}

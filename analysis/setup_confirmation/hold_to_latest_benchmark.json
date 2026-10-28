@@ -1,0 +1,38 @@
+{
+  "once_per_company": {
+    "n": 35,
+    "invested": 3500000,
+    "stock_value": 19518147.074750535,
+    "benchmark_value": 6556239.434599559,
+    "stock_return_pct": 457.66134499287244,
+    "benchmark_return_pct": 87.32112670284454,
+    "excess_pp": 370.3402182900279,
+    "extra_value": 12961907.640150975,
+    "relative_wealth_pct": 197.70339032687664,
+    "date_mismatches": 0
+  },
+  "each_selection": {
+    "n": 40,
+    "invested": 4000000,
+    "stock_value": 20415100.706928216,
+    "benchmark_value": 7448792.087276682,
+    "stock_return_pct": 410.3775176732054,
+    "benchmark_return_pct": 86.21980218191705,
+    "excess_pp": 324.15771549128834,
+    "extra_value": 12966308.619651534,
+    "relative_wealth_pct": 174.07263443155233,
+    "date_mismatches": 0
+  },
+  "evidence_pass_each": {
+    "n": 23,
+    "invested": 2300000,
+    "stock_value": 9859213.469248312,
+    "benchmark_value": 4165919.2002844648,
+    "stock_return_pct": 328.66145518470915,
+    "benchmark_return_pct": 81.12692175149847,
+    "excess_pp": 247.53453343321075,
+    "extra_value": 5693294.268963847,
+    "relative_wealth_pct": 136.66357879852993,
+    "date_mismatches": 0
+  }
+}

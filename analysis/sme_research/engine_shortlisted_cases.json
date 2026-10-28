@@ -1,0 +1,2864 @@
+[
+  {
+    "issuer_id": "17330f91-a0b5-4bb0-b00e-0d130ad24b08",
+    "week_start": "2024-05-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 102 INR CRORE = 121.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-05-15T18:31:02+05:30",
+      "751129020f724a4e"
+    ]
+  },
+  {
+    "issuer_id": "b6d20745-4409-4369-a0f0-d7a09819be32",
+    "week_start": "2024-07-01",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 78.12 INR CRORE = 76.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2023-07-18T15:28:10+05:30",
+      "947ad12b6876655f"
+    ]
+  },
+  {
+    "issuer_id": "e7308d8d-db1e-4e99-91e3-7059cb9afbe8",
+    "week_start": "2024-07-01",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "commercial start: commercial shipment; not a revenue commitment; magnitude needs research",
+    "triage_note": "ORDER BINDING_DEMAND 36 INR CRORE = 41.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -5,
+      -1,
+      "2023-10-17T13:16:25+05:30",
+      "c837502c85d01410"
+    ]
+  },
+  {
+    "issuer_id": "0defad03-3a4f-478b-b279-85cba2c93c1f",
+    "week_start": "2024-07-01",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 90.2 INR CRORE = 83.0% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-05-16T12:39:58+05:30",
+      "169775f163d10e85"
+    ]
+  },
+  {
+    "issuer_id": "17330f91-a0b5-4bb0-b00e-0d130ad24b08",
+    "week_start": "2024-07-01",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 102 INR CRORE = 121.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-05-15T18:31:02+05:30",
+      "751129020f724a4e"
+    ]
+  },
+  {
+    "issuer_id": "3a541ef6-1606-4edb-96ce-0381863cbe9e",
+    "week_start": "2024-07-01",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 43.5 INR CRORE = 13.7% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2023-12-04T21:11:08+05:30",
+      "3bd8cc5c881d3057"
+    ]
+  },
+  {
+    "issuer_id": "26101c80-34ca-4249-932e-14e601a16a7f",
+    "week_start": "2024-07-01",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 21.77 INR CRORE = 13.8% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2021-03-11T17:02:46+05:30",
+      "037b000598dca9f9"
+    ]
+  },
+  {
+    "issuer_id": "0defad03-3a4f-478b-b279-85cba2c93c1f",
+    "week_start": "2024-07-08",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 90.2 INR CRORE = 83.0% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-05-16T12:39:58+05:30",
+      "169775f163d10e85"
+    ]
+  },
+  {
+    "issuer_id": "7001a931-25d1-48a7-9f45-3bb2bc1f75ba",
+    "week_start": "2024-07-08",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 5.05 INR CRORE = 15.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-02-07T12:18:12+05:30",
+      "c55d8836217b9b5c"
+    ]
+  },
+  {
+    "issuer_id": "26101c80-34ca-4249-932e-14e601a16a7f",
+    "week_start": "2024-07-08",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 21.77 INR CRORE = 13.8% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2021-03-11T17:02:46+05:30",
+      "037b000598dca9f9"
+    ]
+  },
+  {
+    "issuer_id": "e7308d8d-db1e-4e99-91e3-7059cb9afbe8",
+    "week_start": "2024-07-08",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "commercial start: commercial shipment; not a revenue commitment; magnitude needs research",
+    "triage_note": "ORDER BINDING_DEMAND 36 INR CRORE = 41.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -5,
+      -1,
+      "2023-10-17T13:16:25+05:30",
+      "c837502c85d01410"
+    ]
+  },
+  {
+    "issuer_id": "b6d20745-4409-4369-a0f0-d7a09819be32",
+    "week_start": "2024-07-08",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 78.12 INR CRORE = 76.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2023-07-18T15:28:10+05:30",
+      "947ad12b6876655f"
+    ]
+  },
+  {
+    "issuer_id": "3a541ef6-1606-4edb-96ce-0381863cbe9e",
+    "week_start": "2024-07-08",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 43.5 INR CRORE = 13.7% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2023-12-04T21:11:08+05:30",
+      "3bd8cc5c881d3057"
+    ]
+  },
+  {
+    "issuer_id": "17330f91-a0b5-4bb0-b00e-0d130ad24b08",
+    "week_start": "2024-07-08",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 102 INR CRORE = 121.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-05-15T18:31:02+05:30",
+      "751129020f724a4e"
+    ]
+  },
+  {
+    "issuer_id": "4dae95c1-3ac6-41a1-9425-e8c08daccd2b",
+    "week_start": "2024-07-15",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND no value = 45.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2023-10-07T09:33:43+05:30",
+      "ef014af1591406a2"
+    ]
+  },
+  {
+    "issuer_id": "e7308d8d-db1e-4e99-91e3-7059cb9afbe8",
+    "week_start": "2024-07-15",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "commercial start: commercial shipment; not a revenue commitment; magnitude needs research",
+    "triage_note": "ORDER BINDING_DEMAND 36 INR CRORE = 41.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -5,
+      -1,
+      "2023-10-17T13:16:25+05:30",
+      "c837502c85d01410"
+    ]
+  },
+  {
+    "issuer_id": "0defad03-3a4f-478b-b279-85cba2c93c1f",
+    "week_start": "2024-07-15",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 90.2 INR CRORE = 83.0% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-05-16T12:39:58+05:30",
+      "169775f163d10e85"
+    ]
+  },
+  {
+    "issuer_id": "17330f91-a0b5-4bb0-b00e-0d130ad24b08",
+    "week_start": "2024-07-15",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 102 INR CRORE = 121.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-05-15T18:31:02+05:30",
+      "751129020f724a4e"
+    ]
+  },
+  {
+    "issuer_id": "7001a931-25d1-48a7-9f45-3bb2bc1f75ba",
+    "week_start": "2024-07-15",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 5.05 INR CRORE = 15.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-02-07T12:18:12+05:30",
+      "c55d8836217b9b5c"
+    ]
+  },
+  {
+    "issuer_id": "3a541ef6-1606-4edb-96ce-0381863cbe9e",
+    "week_start": "2024-07-15",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 43.5 INR CRORE = 13.7% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2023-12-04T21:11:08+05:30",
+      "3bd8cc5c881d3057"
+    ]
+  },
+  {
+    "issuer_id": "51064931-9103-493e-91a3-dcbf23098f9d",
+    "week_start": "2024-07-15",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND no value = 15.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2023-09-29T11:52:41+05:30",
+      "88891053e95cabfd"
+    ]
+  },
+  {
+    "issuer_id": "b6d20745-4409-4369-a0f0-d7a09819be32",
+    "week_start": "2024-07-15",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 78.12 INR CRORE = 76.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2023-07-18T15:28:10+05:30",
+      "947ad12b6876655f"
+    ]
+  },
+  {
+    "issuer_id": "26101c80-34ca-4249-932e-14e601a16a7f",
+    "week_start": "2024-07-15",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 21.77 INR CRORE = 13.8% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2021-03-11T17:02:46+05:30",
+      "037b000598dca9f9"
+    ]
+  },
+  {
+    "issuer_id": "ac9d14ea-1dc5-4eaa-a73d-01b9921dc7f3",
+    "week_start": "2025-05-19",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 25 INR CRORE = 18.6% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-11-15T13:11:07+05:30",
+      "3b84815606ed03c7"
+    ]
+  },
+  {
+    "issuer_id": "0c69f31d-3c9d-497e-b311-8315ad84c7a2",
+    "week_start": "2025-05-19",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 22.26 INR CRORE = 15.0% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-10-26T14:37:50+05:30",
+      "9277ee690866b42c"
+    ]
+  },
+  {
+    "issuer_id": "e7308d8d-db1e-4e99-91e3-7059cb9afbe8",
+    "week_start": "2025-05-19",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "commercial start: commercial shipment; not a revenue commitment; magnitude needs research",
+    "triage_note": "COMMERCIAL_START COMMERCIAL_SHIPMENT 50 INR CRORE = 42.6% of revenue; firm=True; routine=None; disq=None",
+    "ranking": [
+      2,
+      1,
+      -5,
+      -1,
+      "2025-05-19T18:11:26+05:30",
+      "c837502c85d01410"
+    ]
+  },
+  {
+    "issuer_id": "f3fdfe16-ca2d-48b9-b83f-c7d8322d7a70",
+    "week_start": "2025-05-19",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 758.52 INR CRORE = 97.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-05-23T12:54:22+05:30",
+      "126fbc339eed197a"
+    ]
+  },
+  {
+    "issuer_id": "5b8cf162-0f16-4900-9b85-ff3949d411ac",
+    "week_start": "2025-05-26",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND no value = 70.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2024-11-14T17:09:42+05:30",
+      "91c7bf1c2dad3926"
+    ]
+  },
+  {
+    "issuer_id": "0c69f31d-3c9d-497e-b311-8315ad84c7a2",
+    "week_start": "2025-05-26",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 60.90 INR CRORE = 40.9% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2025-05-27T10:59:56+05:30",
+      "9277ee690866b42c"
+    ]
+  },
+  {
+    "issuer_id": "7465915c-2326-476a-8bb8-97d0a7fe23f7",
+    "week_start": "2025-05-26",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 60 INR MILLION = 12.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2025-05-28T15:22:17+05:30",
+      "4f1c10983c8c860e"
+    ]
+  },
+  {
+    "issuer_id": "1a67d2af-789c-4977-841c-88cb13444348",
+    "week_start": "2025-05-26",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 51 INR CRORE = 75.8% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-05-26T19:58:40+05:30",
+      "1c85038cf70ed25e"
+    ]
+  },
+  {
+    "issuer_id": "12979ade-0eea-4797-885d-1541cc44df72",
+    "week_start": "2025-05-26",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 350 INR CRORE = 194.6% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-05-28T20:49:36+05:30",
+      "40526be149433bac"
+    ]
+  },
+  {
+    "issuer_id": "191ceba3-9c3b-470f-9489-ff1ecbcd0bd7",
+    "week_start": "2025-05-26",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND no value = 1570.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-05-29T21:03:51+05:30",
+      "9c5142b548789cbc"
+    ]
+  },
+  {
+    "issuer_id": "3d60cbb1-6aaf-4ed1-8b8e-7eae9511a0a1",
+    "week_start": "2025-05-26",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 5.05 INR CRORE = 20.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-05-30T09:51:11+05:30",
+      "492aa2bf3716de86"
+    ]
+  },
+  {
+    "issuer_id": "3a4faf3f-db25-4b28-9d33-587ab0348fad",
+    "week_start": "2025-05-26",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 19.5 INR CRORE = 13.7% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-05-21T14:56:02+05:30",
+      "17aa5d038f689521"
+    ]
+  },
+  {
+    "issuer_id": "eb8871fc-a866-48a0-b703-228ebafd0c3e",
+    "week_start": "2025-05-26",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 40 INR CRORE = 21.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-11-14T11:15:40+05:30",
+      "eb7c9ef940a7f9aa"
+    ]
+  },
+  {
+    "issuer_id": "5cee465d-f134-4c5f-abac-2d03e9043ccd",
+    "week_start": "2025-05-26",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 11451 INR LAKH = 35.6% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-05-30T14:22:47+05:30",
+      "ed9f2696ceb4ff1a"
+    ]
+  },
+  {
+    "issuer_id": "f84efb12-3f83-421b-a8ee-359a9ee9ce57",
+    "week_start": "2025-05-26",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: commercial shipment; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER COMMERCIAL_SHIPMENT 720 INR CRORE = 371.7% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -5,
+      -1,
+      "2025-05-30T19:03:58+05:30",
+      "2039b5d18563bdf8"
+    ]
+  },
+  {
+    "issuer_id": "135b1405-577f-4922-9cbd-04855b83f83f",
+    "week_start": "2025-05-26",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 50.79 INR CRORE = 34.0% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-11-14T11:43:50+05:30",
+      "309bccad181ddea1"
+    ]
+  },
+  {
+    "issuer_id": "a2c7c356-216b-46bb-9b23-540bab3e62a2",
+    "week_start": "2025-05-26",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 126.53 INR CRORE = 103.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-05-31T16:02:56+05:30",
+      "5d11a5f82c81452d"
+    ]
+  },
+  {
+    "issuer_id": "b680132b-1213-4a56-821d-e49580a6d295",
+    "week_start": "2025-05-26",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 11.18 INR CRORE = 39.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-05-31T22:49:17+05:30",
+      "8b3b0a6ceb9e0d8e"
+    ]
+  },
+  {
+    "issuer_id": "b7b4bbd8-6595-4c20-80d9-879f90882853",
+    "week_start": "2025-05-26",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 300 INR CRORE = 121.7% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-05-26T13:15:26+05:30",
+      "2cb9449c32a89c33"
+    ]
+  },
+  {
+    "issuer_id": "3a4faf3f-db25-4b28-9d33-587ab0348fad",
+    "week_start": "2025-06-02",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 160 INR CRORE = 112.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-06-06T11:52:55+05:30",
+      "17aa5d038f689521"
+    ]
+  },
+  {
+    "issuer_id": "fb684e10-8c45-4630-9587-06d9af3fd6bf",
+    "week_start": "2025-06-02",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 448 INR CRORE = 171.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2025-06-02T21:44:16+05:30",
+      "46b63fda4d03b918"
+    ]
+  },
+  {
+    "issuer_id": "5a6dc1e2-8c7e-4dbf-bb23-51bc02d56846",
+    "week_start": "2025-06-02",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "commercial start: commercial shipment; not a revenue commitment; magnitude needs research",
+    "triage_note": "COMMERCIAL_START COMMERCIAL_SHIPMENT no value = 12.3% of revenue; firm=True; routine=None; disq=None",
+    "ranking": [
+      2,
+      1,
+      -5,
+      -1,
+      "2025-06-02T19:11:26+05:30",
+      "07db340632069fe7"
+    ]
+  },
+  {
+    "issuer_id": "6b8f2979-1913-4701-9b39-7e3e647462ef",
+    "week_start": "2025-06-02",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 45.99 INR CRORE = 58.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-06-05T12:41:26+05:30",
+      "f25d6cb3e07307f3"
+    ]
+  },
+  {
+    "issuer_id": "eb8871fc-a866-48a0-b703-228ebafd0c3e",
+    "week_start": "2025-06-02",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 40 INR CRORE = 21.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-06-02T15:22:14+05:30",
+      "eb7c9ef940a7f9aa"
+    ]
+  },
+  {
+    "issuer_id": "d8a605f0-3ad2-4bea-a987-96bd49988e46",
+    "week_start": "2025-06-02",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 22 INR CRORE = 13.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-06-03T11:45:09+05:30",
+      "aac23dced2b48216"
+    ]
+  },
+  {
+    "issuer_id": "296dee1e-e075-4a63-9e5c-a37e959f882a",
+    "week_start": "2025-06-02",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND no value = 485.6% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-06-03T13:18:42+05:30",
+      "c5d7f77c526b6cb3"
+    ]
+  },
+  {
+    "issuer_id": "60d4b8e8-838c-4095-b3b9-89b4e16a83a9",
+    "week_start": "2025-06-09",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 7.50 INR CRORE = 23.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-06-10T12:20:33+05:30",
+      "6c8203a41021a469"
+    ]
+  },
+  {
+    "issuer_id": "0539c146-cf42-4e59-ac93-f25390316091",
+    "week_start": "2025-06-09",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND no value = 432.7% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-06-09T16:39:15+05:30",
+      "98f6e0a0cd142652"
+    ]
+  },
+  {
+    "issuer_id": "c22a6702-4fa8-4f1f-8800-2f74178eb2ce",
+    "week_start": "2025-06-09",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 16 INR CRORE = 44.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-06-09T17:46:50+05:30",
+      "5243f917983340f8"
+    ]
+  },
+  {
+    "issuer_id": "f84efb12-3f83-421b-a8ee-359a9ee9ce57",
+    "week_start": "2025-06-16",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 720 INR CRORE = 371.7% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-06-19T19:42:21+05:30",
+      "2039b5d18563bdf8"
+    ]
+  },
+  {
+    "issuer_id": "4b83b346-1fae-4f0f-82e2-607f6af7eefa",
+    "week_start": "2025-06-16",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 33.34 INR CRORE = 11.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-06-21T19:56:17+05:30",
+      "ba2cce2c23a2110d"
+    ]
+  },
+  {
+    "issuer_id": "dac84efa-4860-4b93-a3de-bbcb2be0d3bd",
+    "week_start": "2025-06-16",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 30 INR CRORE = 118.6% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-06-16T17:18:35+05:30",
+      "695419d5ee16c8e7"
+    ]
+  },
+  {
+    "issuer_id": "97a42311-54cd-463f-aa97-deb6ecb2ae1b",
+    "week_start": "2025-06-16",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 296.85 INR LAKH = 11.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-06-18T12:15:59+05:30",
+      "b52ad9ffd2a3bbce"
+    ]
+  },
+  {
+    "issuer_id": "51989769-10d0-41d7-81e0-ae360be7aa90",
+    "week_start": "2025-06-23",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 5.05 INR CRORE = 16.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-06-23T11:53:11+05:30",
+      "5d72f2b49652dbb8"
+    ]
+  },
+  {
+    "issuer_id": "4b83b346-1fae-4f0f-82e2-607f6af7eefa",
+    "week_start": "2025-06-23",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 33.34 INR CRORE = 11.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-06-23T20:04:40+05:30",
+      "ba2cce2c23a2110d"
+    ]
+  },
+  {
+    "issuer_id": "474cd5d2-219b-453d-9692-c2b37b03d06c",
+    "week_start": "2025-06-30",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND no value = 16.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-07-02T13:29:52+05:30",
+      "1e85b87c42f31a10"
+    ]
+  },
+  {
+    "issuer_id": "3a541ef6-1606-4edb-96ce-0381863cbe9e",
+    "week_start": "2025-07-07",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 160 INR CRORE = 40.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-06-01T19:44:36+05:30",
+      "3bd8cc5c881d3057"
+    ]
+  },
+  {
+    "issuer_id": "60d4b8e8-838c-4095-b3b9-89b4e16a83a9",
+    "week_start": "2025-07-14",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 8.76 INR CRORE = 26.9% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-07-18T11:01:12+05:30",
+      "6c8203a41021a469"
+    ]
+  },
+  {
+    "issuer_id": "6381aa84-204b-4edc-9c39-e5e322bb7bd4",
+    "week_start": "2025-07-14",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 59.65 INR CRORE = 11.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-07-17T22:09:27+05:30",
+      "889ebd1cc1251bbf"
+    ]
+  },
+  {
+    "issuer_id": "f6ad9482-1a49-4566-a479-0d6ba887cf68",
+    "week_start": "2025-07-14",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 103.07 INR CRORE = 38.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-07-18T13:04:59+05:30",
+      "9cb97b67e8ada56d"
+    ]
+  },
+  {
+    "issuer_id": "755304ed-6de5-421c-90ac-187826ef98f9",
+    "week_start": "2025-07-21",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 25.53 INR CRORE = 35.6% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2025-07-24T14:55:48+05:30",
+      "66c88abe3a027bb8"
+    ]
+  },
+  {
+    "issuer_id": "6381aa84-204b-4edc-9c39-e5e322bb7bd4",
+    "week_start": "2025-07-21",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 206 INR CRORE = 38.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2025-07-21T21:03:45+05:30",
+      "889ebd1cc1251bbf"
+    ]
+  },
+  {
+    "issuer_id": "a0ae766e-842e-48ce-8cf4-c97b4df84886",
+    "week_start": "2025-07-28",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 354000000 INR UNITS = 94.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-07-31T19:09:43+05:30",
+      "2697e683deac25fe"
+    ]
+  },
+  {
+    "issuer_id": "03d2aaec-b984-4523-8ebb-2207d6af2c3b",
+    "week_start": "2025-07-28",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 26.70 INR CRORE = 38.0% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-08-02T16:04:51+05:30",
+      "704b9dd1f41db34c"
+    ]
+  },
+  {
+    "issuer_id": "3a541ef6-1606-4edb-96ce-0381863cbe9e",
+    "week_start": "2025-07-28",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 55.64 INR CRORE = 14.0% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-08-01T15:37:45+05:30",
+      "3bd8cc5c881d3057"
+    ]
+  },
+  {
+    "issuer_id": "0defad03-3a4f-478b-b279-85cba2c93c1f",
+    "week_start": "2025-07-28",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 28.50 INR CRORE = 19.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-07-31T12:32:39+05:30",
+      "169775f163d10e85"
+    ]
+  },
+  {
+    "issuer_id": "af057e24-83d7-46d7-93c3-cb540ddbfd06",
+    "week_start": "2025-08-04",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 150 INR CRORE = 49.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-08-08T15:18:01+05:30",
+      "ed088e23a36d3088"
+    ]
+  },
+  {
+    "issuer_id": "70babc53-af74-4cb7-a130-e3388c38e527",
+    "week_start": "2025-08-18",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 1201.59 INR CRORE = 300.9% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-08-18T10:06:48+05:30",
+      "c636367758deb4eb"
+    ]
+  },
+  {
+    "issuer_id": "af057e24-83d7-46d7-93c3-cb540ddbfd06",
+    "week_start": "2025-08-18",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 150 INR CRORE = 49.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-08-20T11:53:04+05:30",
+      "ed088e23a36d3088"
+    ]
+  },
+  {
+    "issuer_id": "d2d9af16-1479-4599-99f7-d4506195765d",
+    "week_start": "2025-08-25",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 950.41 INR LAKH = 11.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-08-26T14:10:24+05:30",
+      "5816809270dfb1a1"
+    ]
+  },
+  {
+    "issuer_id": "f6ad9482-1a49-4566-a479-0d6ba887cf68",
+    "week_start": "2025-08-25",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND no value = 819.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-08-28T09:02:06+05:30",
+      "9cb97b67e8ada56d"
+    ]
+  },
+  {
+    "issuer_id": "32408c07-cb42-4989-8a1d-cb70a09c3e80",
+    "week_start": "2025-09-01",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 94.86 INR CRORE = 25.8% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-09-04T13:12:16+05:30",
+      "a8c4626b37d808fe"
+    ]
+  },
+  {
+    "issuer_id": "5f38b201-cc1d-4741-bd40-cf74502df25f",
+    "week_start": "2025-09-01",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 95.00 INR CRORE = 24.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-09-01T18:52:23+05:30",
+      "8643d76057fb0cf8"
+    ]
+  },
+  {
+    "issuer_id": "a1642624-2325-4333-aa3f-1d9a8f682875",
+    "week_start": "2025-09-08",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 9.04 INR CRORE = 20.9% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2025-09-13T14:05:13+05:30",
+      "9b5bd86c04737014"
+    ]
+  },
+  {
+    "issuer_id": "f7cb9f30-51f1-450b-b2f4-90fd74a53cee",
+    "week_start": "2025-09-08",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 36.97 INR CRORE = 12.8% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-09-10T13:25:22+05:30",
+      "7574f4b9831fd14e"
+    ]
+  },
+  {
+    "issuer_id": "c451ef3f-40c5-43c9-8cf4-2668180de026",
+    "week_start": "2025-09-08",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 48.85 INR CRORE = 61.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2025-09-08T18:44:56+05:30",
+      "e6437dcc5db0fed0"
+    ]
+  },
+  {
+    "issuer_id": "e7308d8d-db1e-4e99-91e3-7059cb9afbe8",
+    "week_start": "2025-09-08",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "commercial start: commercial shipment; not a revenue commitment; magnitude needs research",
+    "triage_note": "ORDER BINDING_DEMAND 70 INR CRORE = 53.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -5,
+      -1,
+      "2025-08-22T09:04:29+05:30",
+      "c837502c85d01410"
+    ]
+  },
+  {
+    "issuer_id": "98e015a4-27f3-4fde-a2d9-9db57d6e67d0",
+    "week_start": "2025-09-08",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 35.40 INR CRORE = 21.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-09-10T15:01:35+05:30",
+      "975fff8cb27276d3"
+    ]
+  },
+  {
+    "issuer_id": "32408c07-cb42-4989-8a1d-cb70a09c3e80",
+    "week_start": "2025-09-15",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 172.63 INR CRORE = 47.0% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-09-15T14:58:05+05:30",
+      "a8c4626b37d808fe"
+    ]
+  },
+  {
+    "issuer_id": "97c29add-ab2e-4d43-a3c8-eb4abde83b73",
+    "week_start": "2025-10-06",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 1 USD MILLION = 23.9% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-10-07T11:32:34+05:30",
+      "a8d2af8a861f4cd7"
+    ]
+  },
+  {
+    "issuer_id": "465f4556-28cf-4e71-b0d6-59bd44e1e01e",
+    "week_start": "2025-10-06",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 51.68 INR CRORE = 49.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-10-10T13:09:21+05:30",
+      "373633dd77ae0e9b"
+    ]
+  },
+  {
+    "issuer_id": "37fe53be-8092-4a70-9fd1-b37866464d6f",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND no value = 203.7% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-08-12T11:30:48+05:30",
+      "9b8c9d69bdc92a58"
+    ]
+  },
+  {
+    "issuer_id": "e7308d8d-db1e-4e99-91e3-7059cb9afbe8",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "commercial start: commercial shipment; not a revenue commitment; magnitude needs research",
+    "triage_note": "ORDER BINDING_DEMAND 70 INR CRORE = 53.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -5,
+      -1,
+      "2025-08-22T09:04:29+05:30",
+      "c837502c85d01410"
+    ]
+  },
+  {
+    "issuer_id": "465f4556-28cf-4e71-b0d6-59bd44e1e01e",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 51.68 INR CRORE = 49.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-10-10T13:09:21+05:30",
+      "373633dd77ae0e9b"
+    ]
+  },
+  {
+    "issuer_id": "97c29add-ab2e-4d43-a3c8-eb4abde83b73",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 1 USD MILLION = 23.9% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-09-22T12:36:28+05:30",
+      "a8d2af8a861f4cd7"
+    ]
+  },
+  {
+    "issuer_id": "d897cfa5-a864-4a16-9fdd-d243a264cfc9",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND no value = 29.8% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-09-10T18:38:51+05:30",
+      "4a46026472c80c88"
+    ]
+  },
+  {
+    "issuer_id": "f7cb9f30-51f1-450b-b2f4-90fd74a53cee",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 36.97 INR CRORE = 12.8% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-09-10T13:25:22+05:30",
+      "7574f4b9831fd14e"
+    ]
+  },
+  {
+    "issuer_id": "32408c07-cb42-4989-8a1d-cb70a09c3e80",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 172.63 INR CRORE = 47.0% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-09-04T13:12:16+05:30",
+      "a8c4626b37d808fe"
+    ]
+  },
+  {
+    "issuer_id": "f6ad9482-1a49-4566-a479-0d6ba887cf68",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND no value = 819.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-08-28T09:02:06+05:30",
+      "9cb97b67e8ada56d"
+    ]
+  },
+  {
+    "issuer_id": "d2d9af16-1479-4599-99f7-d4506195765d",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 950.41 INR LAKH = 11.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-08-26T14:10:24+05:30",
+      "5816809270dfb1a1"
+    ]
+  },
+  {
+    "issuer_id": "5f38b201-cc1d-4741-bd40-cf74502df25f",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 95.00 INR CRORE = 24.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-08-26T13:36:28+05:30",
+      "8643d76057fb0cf8"
+    ]
+  },
+  {
+    "issuer_id": "c451ef3f-40c5-43c9-8cf4-2668180de026",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 48.85 INR CRORE = 61.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2025-08-01T16:16:54+05:30",
+      "e6437dcc5db0fed0"
+    ]
+  },
+  {
+    "issuer_id": "0defad03-3a4f-478b-b279-85cba2c93c1f",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 28.50 INR CRORE = 19.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-07-31T12:32:39+05:30",
+      "169775f163d10e85"
+    ]
+  },
+  {
+    "issuer_id": "3a541ef6-1606-4edb-96ce-0381863cbe9e",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 55.64 INR CRORE = 14.0% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-08-01T15:37:45+05:30",
+      "3bd8cc5c881d3057"
+    ]
+  },
+  {
+    "issuer_id": "af057e24-83d7-46d7-93c3-cb540ddbfd06",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 150 INR CRORE = 49.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-08-08T15:18:01+05:30",
+      "ed088e23a36d3088"
+    ]
+  },
+  {
+    "issuer_id": "98e015a4-27f3-4fde-a2d9-9db57d6e67d0",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 35.40 INR CRORE = 21.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-07-21T19:20:28+05:30",
+      "975fff8cb27276d3"
+    ]
+  },
+  {
+    "issuer_id": "a0ae766e-842e-48ce-8cf4-c97b4df84886",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 354000000 INR UNITS = 94.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-07-31T19:09:43+05:30",
+      "2697e683deac25fe"
+    ]
+  },
+  {
+    "issuer_id": "03d2aaec-b984-4523-8ebb-2207d6af2c3b",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 26.70 INR CRORE = 38.0% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-08-02T16:04:51+05:30",
+      "704b9dd1f41db34c"
+    ]
+  },
+  {
+    "issuer_id": "a1642624-2325-4333-aa3f-1d9a8f682875",
+    "week_start": "2025-10-13",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 9.04 INR CRORE = 20.9% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2025-09-13T14:05:13+05:30",
+      "9b5bd86c04737014"
+    ]
+  },
+  {
+    "issuer_id": "bb178008-f4e1-4e53-956b-3052e831b4c1",
+    "week_start": "2025-10-20",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 78.36 INR CRORE = 60.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-10-20T10:05:39+05:30",
+      "7bf80f69a893f43c"
+    ]
+  },
+  {
+    "issuer_id": "d91db7c1-2a97-4a69-9b52-36cd0c58b768",
+    "week_start": "2025-10-27",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "commercial start: commercial shipment; not a revenue commitment; magnitude needs research",
+    "triage_note": "COMMERCIAL_START COMMERCIAL_SHIPMENT no value = 31.9% of revenue; firm=True; routine=None; disq=None",
+    "ranking": [
+      2,
+      1,
+      -5,
+      -1,
+      "2025-10-30T11:58:41+05:30",
+      "97e0bde429080ddf"
+    ]
+  },
+  {
+    "issuer_id": "3d60cbb1-6aaf-4ed1-8b8e-7eae9511a0a1",
+    "week_start": "2025-10-27",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND no value = 14.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-10-27T15:18:37+05:30",
+      "492aa2bf3716de86"
+    ]
+  },
+  {
+    "issuer_id": "4b83b346-1fae-4f0f-82e2-607f6af7eefa",
+    "week_start": "2025-11-03",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND no value = 26.9% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-11-06T10:33:33+05:30",
+      "ba2cce2c23a2110d"
+    ]
+  },
+  {
+    "issuer_id": "a8badd5a-cc81-4aa4-ba33-1c49cc1e7e1f",
+    "week_start": "2025-11-03",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 975.5 INR MILLION = 61.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2025-11-04T12:06:48+05:30",
+      "f3050b781e9d8b11"
+    ]
+  },
+  {
+    "issuer_id": "c5eb6a5d-a4f9-4c42-afcd-4106029d20d4",
+    "week_start": "2025-11-10",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 41.7 INR CRORE = 36.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-11-15T16:05:20+05:30",
+      "b11eca59d0a3f8e3"
+    ]
+  },
+  {
+    "issuer_id": "6152b78f-4356-4290-814e-7f9aad8a49f5",
+    "week_start": "2025-11-10",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 71.73 INR CRORE = 93.7% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-11-13T12:10:27+05:30",
+      "824c4b3fdef21c36"
+    ]
+  },
+  {
+    "issuer_id": "a2c7c356-216b-46bb-9b23-540bab3e62a2",
+    "week_start": "2025-11-10",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 126.53 INR CRORE = 103.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-11-13T12:46:55+05:30",
+      "5d11a5f82c81452d"
+    ]
+  },
+  {
+    "issuer_id": "c639d301-1212-42f5-a0cb-eee8b6b54621",
+    "week_start": "2025-11-10",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "commercial start: commercial shipment; not a revenue commitment; magnitude needs research",
+    "triage_note": "COMMERCIAL_START COMMERCIAL_SHIPMENT 1000 INR CRORE = 234.4% of revenue; firm=True; routine=None; disq=None",
+    "ranking": [
+      2,
+      1,
+      -5,
+      -1,
+      "2025-11-10T23:35:55+05:30",
+      "ddeccbeb1f21b5da"
+    ]
+  },
+  {
+    "issuer_id": "34c840f1-a8fc-498e-ad30-812f88f30f5f",
+    "week_start": "2025-11-17",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 400 INR CRORE = 216.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-11-19T19:41:05+05:30",
+      "69bd2a0f5ccdcb11"
+    ]
+  },
+  {
+    "issuer_id": "fd1001c5-c2d8-4e49-a7f4-d05ffbfc117f",
+    "week_start": "2025-11-17",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 24.05 INR CRORE = 15.8% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-11-18T13:59:36+05:30",
+      "9a6d27030b235167"
+    ]
+  },
+  {
+    "issuer_id": "c639d301-1212-42f5-a0cb-eee8b6b54621",
+    "week_start": "2025-11-17",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 99.72 INR CRORE = 23.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-11-18T17:58:04+05:30",
+      "ddeccbeb1f21b5da"
+    ]
+  },
+  {
+    "issuer_id": "a2c7c356-216b-46bb-9b23-540bab3e62a2",
+    "week_start": "2025-11-17",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 126.53 INR CRORE = 103.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-11-18T22:16:02+05:30",
+      "5d11a5f82c81452d"
+    ]
+  },
+  {
+    "issuer_id": "6381aa84-204b-4edc-9c39-e5e322bb7bd4",
+    "week_start": "2025-11-17",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 708 INR CRORE = 131.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-11-22T13:04:06+05:30",
+      "889ebd1cc1251bbf"
+    ]
+  },
+  {
+    "issuer_id": "e2584527-96b2-4897-be0d-66bb48ac06a7",
+    "week_start": "2025-11-17",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 62.8 INR CRORE = 19.0% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-11-12T15:09:55+05:30",
+      "8e7624d0aff124f7"
+    ]
+  },
+  {
+    "issuer_id": "5b8cf162-0f16-4900-9b85-ff3949d411ac",
+    "week_start": "2025-11-24",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; value in USD; no FX conversion",
+    "triage_note": "ORDER BINDING_DEMAND 17 USD MILLION = 121.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-06-09T16:42:48+05:30",
+      "91c7bf1c2dad3926"
+    ]
+  },
+  {
+    "issuer_id": "a101e1af-2a8b-4e52-8028-c51e3d038920",
+    "week_start": "2025-12-01",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 47.74 INR CRORE = 42.6% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-12-04T14:12:51+05:30",
+      "72501c79efcac425"
+    ]
+  },
+  {
+    "issuer_id": "a1642624-2325-4333-aa3f-1d9a8f682875",
+    "week_start": "2025-12-01",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 8.76 INR CRORE = 20.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-12-05T22:04:01+05:30",
+      "9b5bd86c04737014"
+    ]
+  },
+  {
+    "issuer_id": "a101e1af-2a8b-4e52-8028-c51e3d038920",
+    "week_start": "2025-12-08",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 47.74 INR CRORE = 42.6% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-12-04T14:12:51+05:30",
+      "72501c79efcac425"
+    ]
+  },
+  {
+    "issuer_id": "a1642624-2325-4333-aa3f-1d9a8f682875",
+    "week_start": "2025-12-08",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 8.76 INR CRORE = 20.2% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-12-05T22:04:01+05:30",
+      "9b5bd86c04737014"
+    ]
+  },
+  {
+    "issuer_id": "693469fb-e9dd-4a85-acd2-5dd3d9e94099",
+    "week_start": "2025-12-15",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 421215737 INR UNITS = 34.8% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-12-17T14:01:36+05:30",
+      "11ec0a26ac2034cf"
+    ]
+  },
+  {
+    "issuer_id": "659b4751-77db-4a9a-a58c-fd798ee6146a",
+    "week_start": "2025-12-15",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; order is 57.4% of annual revenue; execution period not stated",
+    "triage_note": "ORDER BINDING_DEMAND 65.48 INR CRORE = 69.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -2,
+      "2025-12-17T10:26:11+05:30",
+      "202d692c30f3d913"
+    ]
+  },
+  {
+    "issuer_id": "c639d301-1212-42f5-a0cb-eee8b6b54621",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "commercial start: commercial shipment; not a revenue commitment; magnitude needs research",
+    "triage_note": "COMMERCIAL_START COMMERCIAL_SHIPMENT 1000 INR CRORE = 234.4% of revenue; firm=True; routine=None; disq=None",
+    "ranking": [
+      2,
+      1,
+      -5,
+      -1,
+      "2025-11-07T19:30:18+05:30",
+      "ddeccbeb1f21b5da"
+    ]
+  },
+  {
+    "issuer_id": "659b4751-77db-4a9a-a58c-fd798ee6146a",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; order is 57.4% of annual revenue; execution period not stated",
+    "triage_note": "ORDER BINDING_DEMAND 65.48 INR CRORE = 69.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -2,
+      "2025-05-28T11:09:46+05:30",
+      "202d692c30f3d913"
+    ]
+  },
+  {
+    "issuer_id": "3a541ef6-1606-4edb-96ce-0381863cbe9e",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 160 INR CRORE = 40.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2023-12-04T21:11:08+05:30",
+      "3bd8cc5c881d3057"
+    ]
+  },
+  {
+    "issuer_id": "6b8f2979-1913-4701-9b39-7e3e647462ef",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 45.99 INR CRORE = 58.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-03-17T11:58:16+05:30",
+      "f25d6cb3e07307f3"
+    ]
+  },
+  {
+    "issuer_id": "be8e6d2d-7a04-42ad-89b7-594eadaeb943",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 497 INR CRORE = 418.0% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-04-12T12:40:33+05:30",
+      "2df939e6d23c84f1"
+    ]
+  },
+  {
+    "issuer_id": "17330f91-a0b5-4bb0-b00e-0d130ad24b08",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 102 INR CRORE = 105.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-05-15T18:31:02+05:30",
+      "751129020f724a4e"
+    ]
+  },
+  {
+    "issuer_id": "37fe53be-8092-4a70-9fd1-b37866464d6f",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 40 INR CRORE = 108.6% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-12-30T19:11:23+05:30",
+      "9b8c9d69bdc92a58"
+    ]
+  },
+  {
+    "issuer_id": "0defad03-3a4f-478b-b279-85cba2c93c1f",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.4 (rerun)",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 262 INR CRORE = 178.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2025-12-04T12:36:06+05:30",
+      "169775f163d10e85"
+    ]
+  },
+  {
+    "issuer_id": "0defad03-3a4f-478b-b279-85cba2c93c1f",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 262 INR CRORE = 178.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-05-16T12:39:58+05:30",
+      "169775f163d10e85"
+    ]
+  },
+  {
+    "issuer_id": "ac9d14ea-1dc5-4eaa-a73d-01b9921dc7f3",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: commercial shipment; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 25 INR CRORE = 18.6% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -5,
+      -1,
+      "2023-09-18T13:35:39+05:30",
+      "3b84815606ed03c7"
+    ]
+  },
+  {
+    "issuer_id": "b7b4bbd8-6595-4c20-80d9-879f90882853",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "commercial start: commercial shipment; not a revenue commitment; magnitude needs research",
+    "triage_note": "ORDER BINDING_DEMAND 300 INR CRORE = 121.7% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -5,
+      -1,
+      "2025-05-26T13:15:26+05:30",
+      "2cb9449c32a89c33"
+    ]
+  },
+  {
+    "issuer_id": "5b8cf162-0f16-4900-9b85-ff3949d411ac",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 17 USD MILLION = 121.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2023-02-14T13:09:01+05:30",
+      "91c7bf1c2dad3926"
+    ]
+  },
+  {
+    "issuer_id": "a949a01d-f11e-4b89-a39b-91d2b0d10936",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 80 INR CRORE = 473.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2023-08-11T12:54:22+05:30",
+      "03080639e4ddf999"
+    ]
+  },
+  {
+    "issuer_id": "97a42311-54cd-463f-aa97-deb6ecb2ae1b",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 12.75 INR CRORE = 48.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2021-06-21T15:36:28+05:30",
+      "b52ad9ffd2a3bbce"
+    ]
+  },
+  {
+    "issuer_id": "78d003f7-afa2-4cf0-9789-73f4619da529",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 20.59 INR CRORE = 12.0% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2023-01-25T18:21:03+05:30",
+      "0f275c1560bfdcf3"
+    ]
+  },
+  {
+    "issuer_id": "400b156f-f228-4504-9037-5672e6539715",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 800 INR MILLION = 36.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2023-05-28T19:12:41+05:30",
+      "4a45cdefbe14c952"
+    ]
+  },
+  {
+    "issuer_id": "8f7af610-175b-4335-a0fe-822baf624d6e",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 70 INR CRORE = 13.9% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2024-02-02T12:19:23+05:30",
+      "b59c094574c72198"
+    ]
+  },
+  {
+    "issuer_id": "6381aa84-204b-4edc-9c39-e5e322bb7bd4",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 708 INR CRORE = 131.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2025-07-17T22:09:27+05:30",
+      "889ebd1cc1251bbf"
+    ]
+  },
+  {
+    "issuer_id": "e3356c6e-230b-4b0f-9627-1d879d95210b",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 47.35 INR CRORE = 27.8% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2023-09-22T09:27:37+05:30",
+      "c08417f8ce186e25"
+    ]
+  },
+  {
+    "issuer_id": "6152b78f-4356-4290-814e-7f9aad8a49f5",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 71.73 INR CRORE = 93.7% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2024-02-27T12:42:17+05:30",
+      "824c4b3fdef21c36"
+    ]
+  },
+  {
+    "issuer_id": "6ec27797-112c-4243-8fb1-7d69db51fbc3",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 47.97 INR CRORE = 15.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2024-05-17T16:25:23+05:30",
+      "e1760ebe7f63f15a"
+    ]
+  },
+  {
+    "issuer_id": "b6d20745-4409-4369-a0f0-d7a09819be32",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 78.12 INR CRORE = 55.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2023-07-18T15:28:10+05:30",
+      "947ad12b6876655f"
+    ]
+  },
+  {
+    "issuer_id": "d36fb8c7-f5ef-4343-9c04-8b5bc0a26c23",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 35.80 INR CRORE = 10.9% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -4,
+      -1,
+      "2023-08-21T14:15:43+05:30",
+      "ca28e989d484f195"
+    ]
+  },
+  {
+    "issuer_id": "4dc6ed91-7f9f-4e75-a23e-6ccd41595491",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 20 INR CRORE = 32.7% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2023-08-28T14:24:56+05:30",
+      "89aa7886c38b3816"
+    ]
+  },
+  {
+    "issuer_id": "7465915c-2326-476a-8bb8-97d0a7fe23f7",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 60 INR MILLION = 12.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2023-09-27T22:48:57+05:30",
+      "4f1c10983c8c860e"
+    ]
+  },
+  {
+    "issuer_id": "fb684e10-8c45-4630-9587-06d9af3fd6bf",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 448 INR CRORE = 171.4% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2023-10-09T17:19:42+05:30",
+      "46b63fda4d03b918"
+    ]
+  },
+  {
+    "issuer_id": "eb8871fc-a866-48a0-b703-228ebafd0c3e",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 40 INR CRORE = 21.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2023-12-26T15:17:54+05:30",
+      "eb7c9ef940a7f9aa"
+    ]
+  },
+  {
+    "issuer_id": "755304ed-6de5-421c-90ac-187826ef98f9",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 30 INR CRORE = 41.8% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2024-01-12T17:21:51+05:30",
+      "66c88abe3a027bb8"
+    ]
+  },
+  {
+    "issuer_id": "e7308d8d-db1e-4e99-91e3-7059cb9afbe8",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "commercial start: commercial shipment; not a revenue commitment; magnitude needs research",
+    "triage_note": "ORDER BINDING_DEMAND 70 INR CRORE = 49.9% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -5,
+      -1,
+      "2023-10-17T13:16:25+05:30",
+      "c837502c85d01410"
+    ]
+  },
+  {
+    "issuer_id": "3a4faf3f-db25-4b28-9d33-587ab0348fad",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 160 INR CRORE = 112.1% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2025-05-21T14:56:02+05:30",
+      "17aa5d038f689521"
+    ]
+  },
+  {
+    "issuer_id": "c451ef3f-40c5-43c9-8cf4-2668180de026",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 48.85 INR CRORE = 61.5% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2025-05-24T16:40:20+05:30",
+      "e6437dcc5db0fed0"
+    ]
+  },
+  {
+    "issuer_id": "a8badd5a-cc81-4aa4-ba33-1c49cc1e7e1f",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 975.5 INR MILLION = 61.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2025-08-29T15:35:07+05:30",
+      "f3050b781e9d8b11"
+    ]
+  },
+  {
+    "issuer_id": "a1642624-2325-4333-aa3f-1d9a8f682875",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: binding demand; no comparable annual revenue on record by this date",
+    "triage_note": "ORDER BINDING_DEMAND 9.04 INR CRORE = 20.9% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      0,
+      -4,
+      -1,
+      "2025-09-13T14:05:13+05:30",
+      "9b5bd86c04737014"
+    ]
+  },
+  {
+    "issuer_id": "3d60cbb1-6aaf-4ed1-8b8e-7eae9511a0a1",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: commercial shipment; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 5.05 INR CRORE = 20.3% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -5,
+      -1,
+      "2023-07-22T14:37:17+05:30",
+      "492aa2bf3716de86"
+    ]
+  },
+  {
+    "issuer_id": "37fe53be-8092-4a70-9fd1-b37866464d6f",
+    "week_start": "2025-12-29",
+    "slot": "RANKED",
+    "priority_class": "P2",
+    "triage_action": "DEEP_RESEARCH",
+    "triaged_by": "local engine rules-3.3",
+    "reason": "order: commercial shipment; order value not disclosed",
+    "triage_note": "ORDER BINDING_DEMAND 40 INR CRORE = 108.6% of revenue; firm=True; routine=False; disq=None",
+    "ranking": [
+      2,
+      1,
+      -5,
+      -1,
+      "2024-02-16T18:09:17+05:30",
+      "9b8c9d69bdc92a58"
+    ]
+  }
+]

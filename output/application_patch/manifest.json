@@ -1,0 +1,22 @@
+{
+  "app.py": {
+    "target": "/Users/makkenasrinivas/inflection-jobs/ui/app.py",
+    "original_sha256": "21ff11c229a52d89ba94f0a2bb31f3c939eaa8f5e3a91f3a159b81e8c3072797"
+  },
+  "index.html": {
+    "target": "/Users/makkenasrinivas/inflection-jobs/ui/index.html",
+    "original_sha256": "b649f29f55601c3f356b0e1de5a0d3b51508671358220aa9c4a65a995f150a35"
+  },
+  "engine.py": {
+    "target": "/Users/makkenasrinivas/inflection-jobs/engine/engine.py",
+    "original_sha256": "c93cefd9d3a5193325f29762df5c1b49f9ae6c1d54ba7fed0ec2761b6a1891c3"
+  },
+  "week_engine.py": {
+    "target": "/Users/makkenasrinivas/inflection-jobs/engine/week_engine.py",
+    "original_sha256": "f6114dea123070e79dcdb0c7da9d2ebc5c2bf2f1be1589ffc5c7a8595eec5a28"
+  },
+  "run_week_2026.sh": {
+    "target": "/Users/makkenasrinivas/inflection-jobs/run_week_2026.sh",
+    "original_sha256": "1585b8525563f7f97ce416d1b25b534626960d055f98b3d161b69ae62112106b"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "UNIPARTS": {
+    "priority": "First source-review priority among the six reviewed matches",
+    "thesis": "Q1 FY27 revenue ~\u20b9347cr (+27%), PAT ~\u20b957cr (+64%), operating cash ~\u20b944cr; net cash ~\u20b9190cr. Management reports >\u20b9225cr trailing new business wins. Current quantitative TTM growth and P/E also match the screen.",
+    "risks": "OEM/agricultural/construction cycles, tariff effects, 139 working-capital days and whether new business wins convert to shipped recurring revenue.",
+    "next_evidence": "Next-quarter order conversion, operating cash generation, stable working-capital days and preservation of net cash.",
+    "source": "https://nsearchives.nseindia.com/corporate/Earth_2018_12082026114646_Q126EarningsCallTranscript.pdf",
+    "source_date": "2026-08-12"
+  },
+  "KERNEX": {
+    "priority": "High-upside execution watch; not high-confidence",
+    "thesis": "Real Kavach exposure with major railway awards, including the company-disclosed \u20b92041.4cr CLW order; quantitative revenue/PAT growth is very strong.",
+    "risks": "FY26 consolidated operating cash flow approximately \u2212\u20b999.74cr and borrowings ~\u20b9162.11cr in the annual report. Government concentration, collections, execution and certification obligations matter more than backlog size alone.",
+    "next_evidence": "Collection of receivables, cash generation from deliveries, declining funding strain, and completion of the stated RDSO/ISA milestones.",
+    "source": "https://www.kernex.in/wp-content/uploads/2026/10/Revised_34th-Annual-Report-1.pdf",
+    "source_date": "2026-10-02"
+  },
+  "GOLDIAM": {
+    "priority": "Conditional watch: normalize earnings and reconcile price adjustment",
+    "thesis": "Lab-grown diamond business, >\u20b9225cr June order book and ~\u20b9456.7cr reported cash/investments. Company reports a growing domestic ORIGEM footprint.",
+    "risks": "Q1 FY27 other income includes a tariff refund; reported EBITDA is not fully recurring. July 1:3 bonus requires 4/3 shares versus the June capital base. The historical-price adjustment is unreconciled, so the trend flag needs verification. US demand/tariffs and retail expansion costs remain material.",
+    "next_evidence": "Recurring margins and PAT excluding refund effects, cash conversion, sell-through of customer-held inventory, and reconciled bonus-adjusted price history.",
+    "source": "https://nsearchives.nseindia.com/corporate/GOLDIAM_12082026162602_Intimation_of_Earning_call_transcript-12-08-2026.pdf",
+    "source_date": "2026-08-12"
+  },
+  "RPTECH": {
+    "priority": "Cash-conversion watch",
+    "thesis": "Q1 FY27 presentation reports revenue ~\u20b95102cr and PAT ~\u20b9105cr; new enterprise demand and operating leverage support the growth case.",
+    "risks": "Distribution margins are thin. Presentation shows FY26 operating cash flow \u2212\u20b9299.2cr despite PAT ~\u20b9282.3cr. Working capital and financing can absorb reported profit.",
+    "next_evidence": "Positive operating cash over a full reporting period, inventory/receivable discipline, and profit growth persisting after product-price increases normalise.",
+    "source": "https://nsearchives.nseindia.com/corporate/RASHI2024_04082026200742_Investor_Presentation.pdf",
+    "source_date": "2026-08-04"
+  },
+  "SOTL": {
+    "priority": "Deprioritise until normalised-profit analysis",
+    "thesis": "Quantitative growth/value screen matches.",
+    "risks": "September presentation explicitly attributes part of quarter performance to inventory gains; reported growth/P/E can overstate durable earnings power.",
+    "next_evidence": "Volume and unit-margin growth excluding inventory holding gains.",
+    "source": "https://nsearchives.nseindia.com/corporate/SOTL_01092026115501_investorpresentation.pdf",
+    "source_date": "2026-09-01"
+  },
+  "VADILALIND": {
+    "priority": "Source review incomplete",
+    "thesis": "Quantitative screen match only.",
+    "risks": "Latest governance updates lacked archived text in the inspected source selection; no source-verified qualitative ranking is claimed.",
+    "next_evidence": "Review annual cash flow, governance updates and seasonally comparable operating performance.",
+    "source": "",
+    "source_date": ""
+  }
+}

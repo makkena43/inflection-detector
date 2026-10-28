@@ -1,0 +1,12 @@
+setup,n24,doubles24,rate24,triples24,losses24,median_smallcap_excess24,later_n24,later_doubles24,new_n24,new_doubles24,missing_mature24
+Eligible operating-company baseline,2762,596,0.21578566256335988,233,1056,-0.14789819224081335,1674,273,389,42,3
+"Cheap profitable: P/S <1, PAT positive",576,180,0.3125,93,192,-0.04731819987376995,331,75,85,10,0
+"Cheap low-margin: P/S <1, margin 0–10%, PAT positive",308,93,0.30194805194805197,59,113,-0.08492893740897384,194,42,49,6,0
+"Value + improving operations: P/S <1.5, revenue growth >0%, margin up >2pp, PAT positive",135,38,0.2814814814814815,19,49,-0.17318352776591805,82,17,16,4,0
+"Profitable growth: revenue growth >20%, margin ≥10%, finance ratio <3%",316,58,0.18354430379746836,22,115,-0.20989389302731848,194,28,33,4,0
+Profitable growth + uptrend,195,37,0.18974358974358974,18,78,-0.12519309744278884,118,17,28,3,0
+"Value + growth + uptrend: P/S <1.5, revenue growth >0%, PAT positive",261,73,0.2796934865900383,33,93,-0.028508136292522357,190,44,35,5,0
+"Operating acceleration + uptrend: revenue growth >20%, margin up >2pp, PAT positive",188,47,0.25,23,71,-0.09503272115056144,110,18,25,2,0
+"Profitable recovery + uptrend: prior TTM loss, current profit, revenue growth >0%, finance ratio <3%",41,11,0.2682926829268293,5,15,-0.05491922068927457,28,6,6,0,0
+"Earnings growth + uptrend: revenue growth >20%, PAT growth >25%",256,68,0.265625,33,95,-0.08446097940777669,157,35,34,5,0
+"Growth at P/E <25 + uptrend: revenue growth >20%, PAT growth >25%",111,38,0.34234234234234234,19,36,0.05889357643463966,59,18,18,3,0

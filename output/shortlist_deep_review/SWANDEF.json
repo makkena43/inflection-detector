@@ -1,0 +1,6373 @@
+{
+  "symbol": "SWANDEF",
+  "issuer_id": "f0595b5b-4e26-4d59-a5b2-bd54cc0b28a3",
+  "asof": "2026-10-28",
+  "prices": [
+    {
+      "trade_date": "2026-10-27",
+      "close": "2651.70",
+      "volume": "4109.0000000000000000"
+    },
+    {
+      "trade_date": "2026-10-26",
+      "close": "2696.70",
+      "volume": "13719.0000000000000000"
+    },
+    {
+      "trade_date": "2026-10-23",
+      "close": "2711.90",
+      "volume": "18854.0000000000000000"
+    },
+    {
+      "trade_date": "2026-10-22",
+      "close": "2854.60",
+      "volume": "7036.0000000000000000"
+    },
+    {
+      "trade_date": "2026-10-21",
+      "close": "2941.50",
+      "volume": "38158.000000000000"
+    },
+    {
+      "trade_date": "2026-10-19",
+      "close": "2930.60",
+      "volume": "18207.0000000000000000"
+    },
+    {
+      "trade_date": "2026-10-16",
+      "close": "2944.70",
+      "volume": "10977.0000000000000000"
+    },
+    {
+      "trade_date": "2026-10-15",
+      "close": "2944.80",
+      "volume": "18019.0000000000000000"
+    },
+    {
+      "trade_date": "2026-10-14",
+      "close": "2939.20",
+      "volume": "20768.000000000000"
+    },
+    {
+      "trade_date": "2026-10-13",
+      "close": "2968.20",
+      "volume": "29379.000000000000"
+    },
+    {
+      "trade_date": "2026-10-12",
+      "close": "2931.10",
+      "volume": "34275.000000000000"
+    },
+    {
+      "trade_date": "2026-10-09",
+      "close": "2816.80",
+      "volume": "34005.000000000000"
+    },
+    {
+      "trade_date": "2026-10-08",
+      "close": "2785.10",
+      "volume": "24580.000000000000"
+    },
+    {
+      "trade_date": "2026-10-07",
+      "close": "2759.40",
+      "volume": "15248.0000000000000000"
+    },
+    {
+      "trade_date": "2026-10-06",
+      "close": "2760.20",
+      "volume": "23194.000000000000"
+    },
+    {
+      "trade_date": "2026-10-05",
+      "close": "2728.80",
+      "volume": "13839.0000000000000000"
+    },
+    {
+      "trade_date": "2026-10-01",
+      "close": "2718.20",
+      "volume": "22327.000000000000"
+    },
+    {
+      "trade_date": "2026-09-30",
+      "close": "2756.60",
+      "volume": "19651.0000000000000000"
+    },
+    {
+      "trade_date": "2026-09-29",
+      "close": "2704.40",
+      "volume": "9537.0000000000000000"
+    },
+    {
+      "trade_date": "2026-09-28",
+      "close": "2631.30",
+      "volume": "6744.0000000000000000"
+    },
+    {
+      "trade_date": "2026-09-25",
+      "close": "2679.70",
+      "volume": "12520.0000000000000000"
+    },
+    {
+      "trade_date": "2026-09-24",
+      "close": "2716.60",
+      "volume": "15105.0000000000000000"
+    },
+    {
+      "trade_date": "2026-09-23",
+      "close": "2776.20",
+      "volume": "36316.000000000000"
+    },
+    {
+      "trade_date": "2026-09-22",
+      "close": "2722.00",
+      "volume": "26576.000000000000"
+    },
+    {
+      "trade_date": "2026-09-21",
+      "close": "2713.40",
+      "volume": "9627.0000000000000000"
+    },
+    {
+      "trade_date": "2026-09-18",
+      "close": "2746.40",
+      "volume": "30702.000000000000"
+    },
+    {
+      "trade_date": "2026-09-17",
+      "close": "2720.80",
+      "volume": "20103.000000000000"
+    },
+    {
+      "trade_date": "2026-09-16",
+      "close": "2687.20",
+      "volume": "17649.0000000000000000"
+    },
+    {
+      "trade_date": "2026-09-15",
+      "close": "2650.50",
+      "volume": "21102.000000000000"
+    },
+    {
+      "trade_date": "2026-09-11",
+      "close": "2727.90",
+      "volume": "20275.000000000000"
+    },
+    {
+      "trade_date": "2026-09-10",
+      "close": "2662.80",
+      "volume": "22304.000000000000"
+    },
+    {
+      "trade_date": "2026-09-09",
+      "close": "2584.50",
+      "volume": "24701.000000000000"
+    },
+    {
+      "trade_date": "2026-09-08",
+      "close": "2484.00",
+      "volume": "11440.0000000000000000"
+    },
+    {
+      "trade_date": "2026-09-07",
+      "close": "2496.00",
+      "volume": "25333.000000000000"
+    },
+    {
+      "trade_date": "2026-09-04",
+      "close": "2520.20",
+      "volume": "18892.0000000000000000"
+    },
+    {
+      "trade_date": "2026-09-03",
+      "close": "2490.00",
+      "volume": "143233.000000000000"
+    },
+    {
+      "trade_date": "2026-09-02",
+      "close": "2444.70",
+      "volume": "20462.000000000000"
+    },
+    {
+      "trade_date": "2026-09-01",
+      "close": "2413.80",
+      "volume": "11350.0000000000000000"
+    },
+    {
+      "trade_date": "2026-08-31",
+      "close": "2448.00",
+      "volume": "6341.0000000000000000"
+    },
+    {
+      "trade_date": "2026-08-28",
+      "close": "2455.10",
+      "volume": "6471.0000000000000000"
+    },
+    {
+      "trade_date": "2026-08-27",
+      "close": "2372.10",
+      "volume": "17506.0000000000000000"
+    },
+    {
+      "trade_date": "2026-08-26",
+      "close": "2407.80",
+      "volume": "15579.0000000000000000"
+    },
+    {
+      "trade_date": "2026-08-25",
+      "close": "2333.80",
+      "volume": "106478.000000000000"
+    },
+    {
+      "trade_date": "2026-08-24",
+      "close": "2330.70",
+      "volume": "9174.0000000000000000"
+    },
+    {
+      "trade_date": "2026-08-21",
+      "close": "2346.40",
+      "volume": "10468.0000000000000000"
+    },
+    {
+      "trade_date": "2026-08-20",
+      "close": "2361.90",
+      "volume": "2782.0000000000000000"
+    },
+    {
+      "trade_date": "2026-08-19",
+      "close": "2348.20",
+      "volume": "6736.0000000000000000"
+    },
+    {
+      "trade_date": "2026-08-18",
+      "close": "2379.20",
+      "volume": "15930.0000000000000000"
+    },
+    {
+      "trade_date": "2026-08-17",
+      "close": "2390.50",
+      "volume": "13952.0000000000000000"
+    },
+    {
+      "trade_date": "2026-08-14",
+      "close": "2421.00",
+      "volume": "8093.0000000000000000"
+    },
+    {
+      "trade_date": "2026-08-13",
+      "close": "2460.60",
+      "volume": "13254.0000000000000000"
+    },
+    {
+      "trade_date": "2026-08-12",
+      "close": "2465.10",
+      "volume": "38191.000000000000"
+    },
+    {
+      "trade_date": "2026-08-11",
+      "close": "2573.80",
+      "volume": "21643.000000000000"
+    },
+    {
+      "trade_date": "2026-08-10",
+      "close": "2622.50",
+      "volume": "6871.0000000000000000"
+    },
+    {
+      "trade_date": "2026-08-07",
+      "close": "2694.90",
+      "volume": "20021.000000000000"
+    },
+    {
+      "trade_date": "2026-08-06",
+      "close": "2649.00",
+      "volume": "23484.000000000000"
+    },
+    {
+      "trade_date": "2026-08-05",
+      "close": "2551.50",
+      "volume": "26179.000000000000"
+    },
+    {
+      "trade_date": "2026-08-04",
+      "close": "2528.80",
+      "volume": "12860.0000000000000000"
+    },
+    {
+      "trade_date": "2026-08-03",
+      "close": "2527.20",
+      "volume": "23400.000000000000"
+    },
+    {
+      "trade_date": "2026-07-31",
+      "close": "2473.70",
+      "volume": "43249.000000000000"
+    },
+    {
+      "trade_date": "2026-07-30",
+      "close": "2435.00",
+      "volume": "70824.000000000000"
+    },
+    {
+      "trade_date": "2026-07-29",
+      "close": "2334.10",
+      "volume": "12844.0000000000000000"
+    },
+    {
+      "trade_date": "2026-07-28",
+      "close": "2408.30",
+      "volume": "9971.0000000000000000"
+    },
+    {
+      "trade_date": "2026-07-27",
+      "close": "2430.70",
+      "volume": "14027.0000000000000000"
+    },
+    {
+      "trade_date": "2026-07-24",
+      "close": "2427.70",
+      "volume": "9428.0000000000000000"
+    },
+    {
+      "trade_date": "2026-07-23",
+      "close": "2428.30",
+      "volume": "15494.0000000000000000"
+    },
+    {
+      "trade_date": "2026-07-22",
+      "close": "2399.60",
+      "volume": "19552.0000000000000000"
+    },
+    {
+      "trade_date": "2026-07-21",
+      "close": "2321.70",
+      "volume": "34491.000000000000"
+    },
+    {
+      "trade_date": "2026-07-20",
+      "close": "2261.90",
+      "volume": "16691.0000000000000000"
+    },
+    {
+      "trade_date": "2026-07-17",
+      "close": "2229.60",
+      "volume": "6050.0000000000000000"
+    },
+    {
+      "trade_date": "2026-07-16",
+      "close": "2222.40",
+      "volume": "16615.0000000000000000"
+    },
+    {
+      "trade_date": "2026-07-15",
+      "close": "2243.50",
+      "volume": "5070.0000000000000000"
+    },
+    {
+      "trade_date": "2026-07-14",
+      "close": "2207.60",
+      "volume": "5918.0000000000000000"
+    },
+    {
+      "trade_date": "2026-07-13",
+      "close": "2254.60",
+      "volume": "38108.000000000000"
+    },
+    {
+      "trade_date": "2026-07-10",
+      "close": "2233.00",
+      "volume": "67109.000000000000"
+    },
+    {
+      "trade_date": "2026-07-09",
+      "close": "2161.50",
+      "volume": "16754.0000000000000000"
+    },
+    {
+      "trade_date": "2026-07-08",
+      "close": "2231.90",
+      "volume": "8968.0000000000000000"
+    },
+    {
+      "trade_date": "2026-07-07",
+      "close": "2303.50",
+      "volume": "8948.0000000000000000"
+    },
+    {
+      "trade_date": "2026-07-06",
+      "close": "2294.50",
+      "volume": "8104.0000000000000000"
+    },
+    {
+      "trade_date": "2026-07-03",
+      "close": "2339.80",
+      "volume": "34934.000000000000"
+    },
+    {
+      "trade_date": "2026-07-02",
+      "close": "2343.80",
+      "volume": "34129.000000000000"
+    },
+    {
+      "trade_date": "2026-07-01",
+      "close": "2255.40",
+      "volume": "10451.0000000000000000"
+    },
+    {
+      "trade_date": "2026-06-30",
+      "close": "2197.10",
+      "volume": "7258.0000000000000000"
+    },
+    {
+      "trade_date": "2026-06-29",
+      "close": "2203.80",
+      "volume": "8825.0000000000000000"
+    },
+    {
+      "trade_date": "2026-06-25",
+      "close": "2215.60",
+      "volume": "20675.000000000000"
+    },
+    {
+      "trade_date": "2026-06-24",
+      "close": "2143.10",
+      "volume": "7496.0000000000000000"
+    },
+    {
+      "trade_date": "2026-06-23",
+      "close": "2149.70",
+      "volume": "21669.000000000000"
+    },
+    {
+      "trade_date": "2026-06-22",
+      "close": "2102.80",
+      "volume": "36448.000000000000"
+    },
+    {
+      "trade_date": "2026-06-19",
+      "close": "2026.70",
+      "volume": "6378.0000000000000000"
+    },
+    {
+      "trade_date": "2026-06-18",
+      "close": "2035.10",
+      "volume": "9200.0000000000000000"
+    },
+    {
+      "trade_date": "2026-06-17",
+      "close": "2055.20",
+      "volume": "16039.0000000000000000"
+    },
+    {
+      "trade_date": "2026-06-16",
+      "close": "1992.90",
+      "volume": "15929.0000000000000000"
+    },
+    {
+      "trade_date": "2026-06-15",
+      "close": "1998.20",
+      "volume": "120838.000000000000"
+    },
+    {
+      "trade_date": "2026-06-12",
+      "close": "1977.90",
+      "volume": "5474.0000000000000000"
+    },
+    {
+      "trade_date": "2026-06-11",
+      "close": "1973.30",
+      "volume": "13050.0000000000000000"
+    },
+    {
+      "trade_date": "2026-06-10",
+      "close": "1997.90",
+      "volume": "4092.0000000000000000"
+    },
+    {
+      "trade_date": "2026-06-09",
+      "close": "1996.80",
+      "volume": "6168.0000000000000000"
+    },
+    {
+      "trade_date": "2026-06-08",
+      "close": "2022.90",
+      "volume": "11111.0000000000000000"
+    },
+    {
+      "trade_date": "2026-06-05",
+      "close": "1971.60",
+      "volume": "5834.0000000000000000"
+    },
+    {
+      "trade_date": "2026-06-04",
+      "close": "1981.50",
+      "volume": "7204.0000000000000000"
+    },
+    {
+      "trade_date": "2026-06-03",
+      "close": "1978.80",
+      "volume": "14644.0000000000000000"
+    },
+    {
+      "trade_date": "2026-06-02",
+      "close": "2038.30",
+      "volume": "26355.000000000000"
+    },
+    {
+      "trade_date": "2026-06-01",
+      "close": "2135.30",
+      "volume": "45691.000000000000"
+    },
+    {
+      "trade_date": "2026-05-29",
+      "close": "2060.20",
+      "volume": "22578.000000000000"
+    },
+    {
+      "trade_date": "2026-05-27",
+      "close": "1962.10",
+      "volume": "15798.0000000000000000"
+    },
+    {
+      "trade_date": "2026-05-26",
+      "close": "1914.50",
+      "volume": "3939.0000000000000000"
+    },
+    {
+      "trade_date": "2026-05-25",
+      "close": "1921.80",
+      "volume": "10556.0000000000000000"
+    },
+    {
+      "trade_date": "2026-05-22",
+      "close": "1923.20",
+      "volume": "15863.0000000000000000"
+    },
+    {
+      "trade_date": "2026-05-21",
+      "close": "1910.40",
+      "volume": "8303.0000000000000000"
+    },
+    {
+      "trade_date": "2026-05-20",
+      "close": "1920.30",
+      "volume": "14694.0000000000000000"
+    },
+    {
+      "trade_date": "2026-05-19",
+      "close": "1893.30",
+      "volume": "11815.0000000000000000"
+    },
+    {
+      "trade_date": "2026-05-18",
+      "close": "1889.40",
+      "volume": "10399.0000000000000000"
+    },
+    {
+      "trade_date": "2026-05-15",
+      "close": "1917.90",
+      "volume": "5824.0000000000000000"
+    },
+    {
+      "trade_date": "2026-05-14",
+      "close": "1911.30",
+      "volume": "6273.0000000000000000"
+    },
+    {
+      "trade_date": "2026-05-13",
+      "close": "1895.00",
+      "volume": "6412.0000000000000000"
+    },
+    {
+      "trade_date": "2026-05-12",
+      "close": "1908.10",
+      "volume": "11832.0000000000000000"
+    },
+    {
+      "trade_date": "2026-05-11",
+      "close": "1925.90",
+      "volume": "32195.000000000000"
+    },
+    {
+      "trade_date": "2026-05-08",
+      "close": "1865.70",
+      "volume": "9049.0000000000000000"
+    },
+    {
+      "trade_date": "2026-05-07",
+      "close": "1867.30",
+      "volume": "174660.000000000000"
+    },
+    {
+      "trade_date": "2026-05-06",
+      "close": "1855.00",
+      "volume": "20740.000000000000"
+    },
+    {
+      "trade_date": "2026-05-05",
+      "close": "1852.60",
+      "volume": "11382.0000000000000000"
+    },
+    {
+      "trade_date": "2026-05-04",
+      "close": "1806.80",
+      "volume": "8710.0000000000000000"
+    },
+    {
+      "trade_date": "2026-04-30",
+      "close": "1837.60",
+      "volume": "3089.0000000000000000"
+    },
+    {
+      "trade_date": "2026-04-29",
+      "close": "1860.00",
+      "volume": "8702.0000000000000000"
+    },
+    {
+      "trade_date": "2026-04-28",
+      "close": "1878.20",
+      "volume": "5800.0000000000000000"
+    },
+    {
+      "trade_date": "2026-04-27",
+      "close": "1858.20",
+      "volume": "7776.0000000000000000"
+    },
+    {
+      "trade_date": "2026-04-24",
+      "close": "1819.20",
+      "volume": "8483.0000000000000000"
+    },
+    {
+      "trade_date": "2026-04-23",
+      "close": "1819.20",
+      "volume": "8161.0000000000000000"
+    },
+    {
+      "trade_date": "2026-04-22",
+      "close": "1867.10",
+      "volume": "10109.0000000000000000"
+    },
+    {
+      "trade_date": "2026-04-21",
+      "close": "1880.70",
+      "volume": "25893.000000000000"
+    },
+    {
+      "trade_date": "2026-04-20",
+      "close": "1836.50",
+      "volume": "14320.0000000000000000"
+    },
+    {
+      "trade_date": "2026-04-17",
+      "close": "1899.50",
+      "volume": "18217.0000000000000000"
+    },
+    {
+      "trade_date": "2026-04-16",
+      "close": "1941.50",
+      "volume": "42242.000000000000"
+    },
+    {
+      "trade_date": "2026-04-15",
+      "close": "1896.00",
+      "volume": "19168.0000000000000000"
+    },
+    {
+      "trade_date": "2026-04-13",
+      "close": "1805.80",
+      "volume": "13123.0000000000000000"
+    },
+    {
+      "trade_date": "2026-04-10",
+      "close": "1851.30",
+      "volume": "36360.000000000000"
+    },
+    {
+      "trade_date": "2026-04-09",
+      "close": "1772.20",
+      "volume": "15265.0000000000000000"
+    },
+    {
+      "trade_date": "2026-04-08",
+      "close": "1814.40",
+      "volume": "31163.000000000000"
+    },
+    {
+      "trade_date": "2026-04-07",
+      "close": "1776.40",
+      "volume": "85802.000000000000"
+    },
+    {
+      "trade_date": "2026-04-06",
+      "close": "1706.10",
+      "volume": "37580.000000000000"
+    },
+    {
+      "trade_date": "2026-04-02",
+      "close": "1625.60",
+      "volume": "67334.000000000000"
+    },
+    {
+      "trade_date": "2026-04-01",
+      "close": "1584.60",
+      "volume": "19340.0000000000000000"
+    },
+    {
+      "trade_date": "2026-03-30",
+      "close": "1592.80",
+      "volume": "111398.000000000000"
+    },
+    {
+      "trade_date": "2026-03-27",
+      "close": "1676.60",
+      "volume": "161293.000000000000"
+    },
+    {
+      "trade_date": "2026-03-25",
+      "close": "1763.80",
+      "volume": "4980.0000000000000000"
+    },
+    {
+      "trade_date": "2026-03-24",
+      "close": "1856.60",
+      "volume": "3738.0000000000000000"
+    },
+    {
+      "trade_date": "2026-03-23",
+      "close": "1954.30",
+      "volume": "2468.0000000000000000"
+    },
+    {
+      "trade_date": "2026-03-20",
+      "close": "2057.10",
+      "volume": "1405.0000000000000000"
+    },
+    {
+      "trade_date": "2026-03-19",
+      "close": "2165.30",
+      "volume": "3489.0000000000000000"
+    },
+    {
+      "trade_date": "2026-03-18",
+      "close": "2279.20",
+      "volume": "6299.0000000000000000"
+    },
+    {
+      "trade_date": "2026-03-17",
+      "close": "2399.10",
+      "volume": "25236.000000000000"
+    },
+    {
+      "trade_date": "2026-03-16",
+      "close": "2387.20",
+      "volume": "16599.0000000000000000"
+    },
+    {
+      "trade_date": "2026-03-13",
+      "close": "2394.60",
+      "volume": "22792.000000000000"
+    },
+    {
+      "trade_date": "2026-03-12",
+      "close": "2280.60",
+      "volume": "14182.0000000000000000"
+    },
+    {
+      "trade_date": "2026-03-11",
+      "close": "2172.20",
+      "volume": "19266.0000000000000000"
+    },
+    {
+      "trade_date": "2026-03-10",
+      "close": "2081.70",
+      "volume": "48584.000000000000"
+    },
+    {
+      "trade_date": "2026-03-09",
+      "close": "2020.80",
+      "volume": "14871.0000000000000000"
+    },
+    {
+      "trade_date": "2026-03-06",
+      "close": "2022.50",
+      "volume": "19305.0000000000000000"
+    },
+    {
+      "trade_date": "2026-03-05",
+      "close": "1937.20",
+      "volume": "25181.000000000000"
+    },
+    {
+      "trade_date": "2026-03-04",
+      "close": "1870.00",
+      "volume": "21628.000000000000"
+    },
+    {
+      "trade_date": "2026-03-02",
+      "close": "1781.40",
+      "volume": "49907.000000000000"
+    },
+    {
+      "trade_date": "2026-02-23",
+      "close": "1700.50",
+      "volume": "9339.0000000000000000"
+    },
+    {
+      "trade_date": "2026-02-16",
+      "close": "1789.80",
+      "volume": "11520.0000000000000000"
+    },
+    {
+      "trade_date": "2026-02-09",
+      "close": "1854.20",
+      "volume": "27305.000000000000"
+    },
+    {
+      "trade_date": "2026-02-02",
+      "close": "1793.20",
+      "volume": "31918.000000000000"
+    },
+    {
+      "trade_date": "2026-01-27",
+      "close": "1818.60",
+      "volume": "77086.000000000000"
+    },
+    {
+      "trade_date": "2026-01-19",
+      "close": "1748.50",
+      "volume": "22295.000000000000"
+    },
+    {
+      "trade_date": "2026-01-12",
+      "close": "1840.50",
+      "volume": "93592.000000000000"
+    },
+    {
+      "trade_date": "2026-01-08",
+      "close": "1860.00",
+      "volume": "1376.0000000000000000"
+    },
+    {
+      "trade_date": "2026-01-07",
+      "close": "1771.50",
+      "volume": "1691.0000000000000000"
+    },
+    {
+      "trade_date": "2026-01-06",
+      "close": "1687.20",
+      "volume": "6471.0000000000000000"
+    },
+    {
+      "trade_date": "2026-01-05",
+      "close": "1606.90",
+      "volume": "2635.0000000000000000"
+    },
+    {
+      "trade_date": "2026-01-02",
+      "close": "1530.40",
+      "volume": "1858.0000000000000000"
+    },
+    {
+      "trade_date": "2026-01-01",
+      "close": "1457.60",
+      "volume": "1938.0000000000000000"
+    },
+    {
+      "trade_date": "2025-12-29",
+      "close": "1388.20",
+      "volume": "2551.0000000000000000"
+    },
+    {
+      "trade_date": "2025-12-22",
+      "close": "1322.10",
+      "volume": "12688.0000000000000000"
+    },
+    {
+      "trade_date": "2025-12-15",
+      "close": "1259.20",
+      "volume": "3129.0000000000000000"
+    },
+    {
+      "trade_date": "2025-12-08",
+      "close": "1199.30",
+      "volume": "4300.0000000000000000"
+    },
+    {
+      "trade_date": "2025-12-01",
+      "close": "1142.20",
+      "volume": "2104.0000000000000000"
+    },
+    {
+      "trade_date": "2025-11-24",
+      "close": "1087.85",
+      "volume": "5907.0000000000000000"
+    },
+    {
+      "trade_date": "2025-11-17",
+      "close": "1036.05",
+      "volume": "5168.0000000000000000"
+    },
+    {
+      "trade_date": "2025-11-11",
+      "close": "986.75",
+      "volume": "2232.0000000000000000"
+    },
+    {
+      "trade_date": "2025-11-10",
+      "close": "939.80",
+      "volume": "3490.0000000000000000"
+    },
+    {
+      "trade_date": "2025-11-07",
+      "close": "895.05",
+      "volume": "1845.0000000000000000"
+    },
+    {
+      "trade_date": "2025-11-06",
+      "close": "852.45",
+      "volume": "1134.0000000000000000"
+    },
+    {
+      "trade_date": "2025-11-04",
+      "close": "811.90",
+      "volume": "2582.0000000000000000"
+    },
+    {
+      "trade_date": "2025-11-03",
+      "close": "773.25",
+      "volume": "6619.0000000000000000"
+    },
+    {
+      "trade_date": "2025-10-27",
+      "close": "736.45",
+      "volume": "1886.0000000000000000"
+    },
+    {
+      "trade_date": "2025-10-20",
+      "close": "701.40",
+      "volume": "5099.0000000000000000"
+    },
+    {
+      "trade_date": "2025-10-13",
+      "close": "668.00",
+      "volume": "3682.0000000000000000"
+    },
+    {
+      "trade_date": "2025-10-06",
+      "close": "636.20",
+      "volume": "2923.0000000000000000"
+    },
+    {
+      "trade_date": "2025-09-29",
+      "close": "605.95",
+      "volume": "1810.0000000000000000"
+    },
+    {
+      "trade_date": "2025-09-22",
+      "close": "577.10",
+      "volume": "1392.0000000000000000"
+    },
+    {
+      "trade_date": "2025-09-15",
+      "close": "549.65",
+      "volume": "731.0000000000000000"
+    },
+    {
+      "trade_date": "2025-09-08",
+      "close": "523.50",
+      "volume": "649.0000000000000000"
+    },
+    {
+      "trade_date": "2025-09-05",
+      "close": "498.60",
+      "volume": "252.0000000000000000"
+    },
+    {
+      "trade_date": "2025-09-04",
+      "close": "474.90",
+      "volume": "361.0000000000000000"
+    },
+    {
+      "trade_date": "2025-09-03",
+      "close": "452.30",
+      "volume": "836.0000000000000000"
+    },
+    {
+      "trade_date": "2025-09-02",
+      "close": "430.80",
+      "volume": "582.0000000000000000"
+    },
+    {
+      "trade_date": "2025-09-01",
+      "close": "410.30",
+      "volume": "319.0000000000000000"
+    },
+    {
+      "trade_date": "2025-08-25",
+      "close": "390.80",
+      "volume": "4644.0000000000000000"
+    },
+    {
+      "trade_date": "2025-08-18",
+      "close": "372.20",
+      "volume": "950.0000000000000000"
+    },
+    {
+      "trade_date": "2025-08-11",
+      "close": "354.50",
+      "volume": "446.0000000000000000"
+    },
+    {
+      "trade_date": "2025-08-04",
+      "close": "337.65",
+      "volume": "884.0000000000000000"
+    },
+    {
+      "trade_date": "2025-07-28",
+      "close": "321.56",
+      "volume": "466.0000000000000000"
+    },
+    {
+      "trade_date": "2025-07-21",
+      "close": "306.25",
+      "volume": "537.0000000000000000"
+    },
+    {
+      "trade_date": "2025-07-14",
+      "close": "291.67",
+      "volume": "395.0000000000000000"
+    },
+    {
+      "trade_date": "2025-07-08",
+      "close": "277.79",
+      "volume": "564.0000000000000000"
+    },
+    {
+      "trade_date": "2025-07-07",
+      "close": "264.57",
+      "volume": "247.0000000000000000"
+    },
+    {
+      "trade_date": "2025-07-04",
+      "close": "251.98",
+      "volume": "212.0000000000000000"
+    },
+    {
+      "trade_date": "2025-07-03",
+      "close": "239.99",
+      "volume": "276.0000000000000000"
+    },
+    {
+      "trade_date": "2025-07-02",
+      "close": "228.57",
+      "volume": "311.0000000000000000"
+    },
+    {
+      "trade_date": "2025-07-01",
+      "close": "217.69",
+      "volume": "132.0000000000000000"
+    },
+    {
+      "trade_date": "2025-06-30",
+      "close": "207.33",
+      "volume": "372.0000000000000000"
+    },
+    {
+      "trade_date": "2025-06-23",
+      "close": "197.46",
+      "volume": "614.0000000000000000"
+    },
+    {
+      "trade_date": "2025-06-16",
+      "close": "188.06",
+      "volume": "234.0000000000000000"
+    },
+    {
+      "trade_date": "2025-06-09",
+      "close": "179.11",
+      "volume": "952.0000000000000000"
+    },
+    {
+      "trade_date": "2025-06-02",
+      "close": "170.59",
+      "volume": "527.0000000000000000"
+    },
+    {
+      "trade_date": "2025-05-26",
+      "close": "162.47",
+      "volume": "273.0000000000000000"
+    },
+    {
+      "trade_date": "2025-05-19",
+      "close": "154.74",
+      "volume": "193.0000000000000000"
+    },
+    {
+      "trade_date": "2025-05-09",
+      "close": "147.38",
+      "volume": "213.0000000000000000"
+    },
+    {
+      "trade_date": "2025-05-08",
+      "close": "140.37",
+      "volume": "599.0000000000000000"
+    },
+    {
+      "trade_date": "2025-05-07",
+      "close": "133.69",
+      "volume": "258.0000000000000000"
+    },
+    {
+      "trade_date": "2025-05-06",
+      "close": "127.33",
+      "volume": "318.0000000000000000"
+    },
+    {
+      "trade_date": "2025-05-05",
+      "close": "121.27",
+      "volume": "540.0000000000000000"
+    },
+    {
+      "trade_date": "2025-05-02",
+      "close": "115.50",
+      "volume": "266.0000000000000000"
+    },
+    {
+      "trade_date": "2025-04-28",
+      "close": "110.00",
+      "volume": "961.0000000000000000"
+    },
+    {
+      "trade_date": "2025-04-21",
+      "close": "104.77",
+      "volume": "373.0000000000000000"
+    },
+    {
+      "trade_date": "2025-04-15",
+      "close": "99.79",
+      "volume": "555.0000000000000000"
+    },
+    {
+      "trade_date": "2025-04-07",
+      "close": "95.04",
+      "volume": "566.0000000000000000"
+    },
+    {
+      "trade_date": "2025-04-01",
+      "close": "90.52",
+      "volume": "130.0000000000000000"
+    },
+    {
+      "trade_date": "2025-03-24",
+      "close": "86.21",
+      "volume": "695.0000000000000000"
+    },
+    {
+      "trade_date": "2025-03-17",
+      "close": "82.11",
+      "volume": "373.0000000000000000"
+    },
+    {
+      "trade_date": "2025-03-10",
+      "close": "78.20",
+      "volume": "984.0000000000000000"
+    },
+    {
+      "trade_date": "2025-03-07",
+      "close": "74.48",
+      "volume": "122.0000000000000000"
+    },
+    {
+      "trade_date": "2025-03-06",
+      "close": "70.94",
+      "volume": "220.0000000000000000"
+    },
+    {
+      "trade_date": "2025-03-05",
+      "close": "67.57",
+      "volume": "164.0000000000000000"
+    },
+    {
+      "trade_date": "2025-03-04",
+      "close": "64.36",
+      "volume": "563.0000000000000000"
+    },
+    {
+      "trade_date": "2025-03-03",
+      "close": "61.30",
+      "volume": "718.0000000000000000"
+    },
+    {
+      "trade_date": "2025-02-24",
+      "close": "58.39",
+      "volume": "393.0000000000000000"
+    },
+    {
+      "trade_date": "2025-02-17",
+      "close": "55.61",
+      "volume": "347.0000000000000000"
+    },
+    {
+      "trade_date": "2025-02-10",
+      "close": "52.97",
+      "volume": "1584.0000000000000000"
+    },
+    {
+      "trade_date": "2025-02-03",
+      "close": "50.45",
+      "volume": "539.0000000000000000"
+    },
+    {
+      "trade_date": "2025-01-28",
+      "close": "48.05",
+      "volume": "1172.0000000000000000"
+    },
+    {
+      "trade_date": "2025-01-27",
+      "close": "45.80",
+      "volume": "349.0000000000000000"
+    },
+    {
+      "trade_date": "2025-01-24",
+      "close": "43.65",
+      "volume": "1802.0000000000000000"
+    },
+    {
+      "trade_date": "2025-01-23",
+      "close": "41.60",
+      "volume": "472.0000000000000000"
+    },
+    {
+      "trade_date": "2025-01-22",
+      "close": "39.65",
+      "volume": "1046.0000000000000000"
+    },
+    {
+      "trade_date": "2025-01-21",
+      "close": "37.80",
+      "volume": "7098.0000000000000000"
+    }
+  ],
+  "holdings": [
+    {
+      "issuer_id": "f0595b5b-4e26-4d59-a5b2-bd54cc0b28a3",
+      "exchange": "NSE",
+      "symbol": "SWANDEF",
+      "period_end": "2026-09-30",
+      "broadcast_at": "2026-10-16 16:22:26+05:30",
+      "promoter_pct": "89.9",
+      "public_pct": "10.1",
+      "mf_pct": "1.6700",
+      "fii_pct": "0.7100",
+      "dii_pct": "1.7300",
+      "retail_pct": "2.6800",
+      "promoter_pledged_pct": null,
+      "xbrl_url": "https://nsearchives.nseindia.com/corporate/xbrl/SHP_1739991_16102026042221_WEB.xml",
+      "detail_status": "OK",
+      "source": "nse_shp",
+      "source_ref": "nse_shp:SWANDEF:2026-09-30:214959",
+      "recorded_at": "2026-10-21 16:14:01.640492+05:30"
+    },
+    {
+      "issuer_id": "f0595b5b-4e26-4d59-a5b2-bd54cc0b28a3",
+      "exchange": "NSE",
+      "symbol": "SWANDEF",
+      "period_end": "2026-06-30",
+      "broadcast_at": "2026-07-17 13:14:16+05:30",
+      "promoter_pct": "89.9",
+      "public_pct": "10.1",
+      "mf_pct": "1.6600",
+      "fii_pct": "0.6800",
+      "dii_pct": "1.9300",
+      "retail_pct": "2.7100",
+      "promoter_pledged_pct": null,
+      "xbrl_url": "https://nsearchives.nseindia.com/corporate/xbrl/SHP_1694953_17072026011411_WEB.xml",
+      "detail_status": "OK",
+      "source": "nse_shp",
+      "source_ref": "nse_shp:SWANDEF:2026-06-30:211647",
+      "recorded_at": "2026-10-21 16:14:01.644596+05:30"
+    },
+    {
+      "issuer_id": "f0595b5b-4e26-4d59-a5b2-bd54cc0b28a3",
+      "exchange": "NSE",
+      "symbol": "SWANDEF",
+      "period_end": "2026-03-31",
+      "broadcast_at": "2026-04-13 10:43:25+05:30",
+      "promoter_pct": "89.9",
+      "public_pct": "10.1",
+      "mf_pct": "1.6600",
+      "fii_pct": "0.6100",
+      "dii_pct": "2.0600",
+      "retail_pct": "2.7800",
+      "promoter_pledged_pct": null,
+      "xbrl_url": "https://nsearchives.nseindia.com/corporate/xbrl/SHP_1649490_13042026104321_WEB.xml",
+      "detail_status": "OK",
+      "source": "nse_shp",
+      "source_ref": "nse_shp:SWANDEF:2026-03-31:208042",
+      "recorded_at": "2026-10-21 16:14:01.647964+05:30"
+    },
+    {
+      "issuer_id": "f0595b5b-4e26-4d59-a5b2-bd54cc0b28a3",
+      "exchange": "NSE",
+      "symbol": "SWANDEF",
+      "period_end": "2026-03-19",
+      "broadcast_at": "2026-03-23 11:09:44+05:30",
+      "promoter_pct": "89.9",
+      "public_pct": "10.1",
+      "mf_pct": "1.6600",
+      "fii_pct": "0.6100",
+      "dii_pct": "2.0600",
+      "retail_pct": "2.7000",
+      "promoter_pledged_pct": null,
+      "xbrl_url": "https://nsearchives.nseindia.com/corporate/xbrl/SHP_1638468_23032026110937_WEB.xml",
+      "detail_status": "OK",
+      "source": "nse_shp",
+      "source_ref": "nse_shp:SWANDEF:2026-03-19:207343",
+      "recorded_at": "2026-10-21 16:14:01.651736+05:30"
+    },
+    {
+      "issuer_id": "f0595b5b-4e26-4d59-a5b2-bd54cc0b28a3",
+      "exchange": "NSE",
+      "symbol": "SWANDEF",
+      "period_end": "2025-12-31",
+      "broadcast_at": "2026-01-20 13:01:23+05:30",
+      "promoter_pct": "94.91",
+      "public_pct": "5.09",
+      "mf_pct": null,
+      "fii_pct": "0.0100",
+      "dii_pct": "0.3800",
+      "retail_pct": "2.8300",
+      "promoter_pledged_pct": null,
+      "xbrl_url": "https://nsearchives.nseindia.com/corporate/xbrl/SHP_1605242_20012026010119_WEB.xml",
+      "detail_status": "OK",
+      "source": "nse_shp",
+      "source_ref": "nse_shp:SWANDEF:2025-12-31:206394",
+      "recorded_at": "2026-10-21 16:14:01.657123+05:30"
+    }
+  ],
+  "facts": [
+    {
+      "metric": "cost_of_materials",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "205647000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "205647000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "6900000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "6900000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "86434000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "86434000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "181800000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "181800000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "182680000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "182680000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "81914000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "81914000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "4520000",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "4520000",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "22967000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "22967000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "832000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "832000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "181800000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "181800000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-26500000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "cost_of_materials",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "-26500000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "632674000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "632674000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "608800000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "608800000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "317294000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "317294000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "302300000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "302300000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "457566000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "457566000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "165447000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "165447000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "151834000",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "151834000",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "175108000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "175108000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "155310000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "155310000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "150800000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "150800000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "151500000",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "151500000",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "159200000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "159200000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "360710000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "360710000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "218900000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "218900000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "289957000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "289957000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "163800000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "163800000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "260436000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "260436000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "166216000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "166216000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "123551000",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "123551000",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "100274000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "100274000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "96607000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "96607000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "92100000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "92100000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "71700000",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "71700000",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "61800000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "employee_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "61800000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-42.88",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "-43.19",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-51.51",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "-51.64",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "99.61",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "99.75",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-9.61",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "-9.77",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "15.9",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "-16.11",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "107.52",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "107.65",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "-7.91",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "-7.9",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-26.98",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "-27.07",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "6.28",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "-6.34",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-3.77",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "-3.86",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "-5.84",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "-5.92",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-4.32",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "-4.34",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-42.88",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "-43.19",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-51.51",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "-51.64",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "99.61",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "99.75",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-9.61",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "-9.77",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "15.9",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "-16.11",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "107.52",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "107.65",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "-7.91",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "-7.9",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-26.98",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "-27.07",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "6.28",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "-6.34",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-3.77",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "-3.86",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "-5.84",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "-5.92",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-4.32",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "eps_diluted",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "-4.34",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-22300000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "-22300000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-22300000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "exceptional_items",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "-22300000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "10",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "10",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "10",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "10",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "10",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "10",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "10",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "10",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "10",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "10",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "10",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "10",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "10",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "10",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "10",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "10",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "10",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "10",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "10",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "10",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "10",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "10",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "10",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "face_value",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "10",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "123200000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "123200000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "209400000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "209400000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "362696000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "362696000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "46300000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "46300000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "75408000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "75408000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "193210000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "193210000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "164800000",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "164800000",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "47792000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "47792000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "29078000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "29078000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "22800000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "22800000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "23500000",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "23500000",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "24600000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "24600000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "4496944000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "4496944000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "24000000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "24000000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-5123000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "-5123000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "142600000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "142600000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "142557000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "142557000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-5123000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "-5123000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "4354387000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "4354387000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "142600000",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "142600000",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "24000000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "inventory_change",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "24000000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "855736000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "855736000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "900100000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "900100000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "1003650000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "1003650000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "304800000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "304800000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "466542000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "466541000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "615654000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "615654000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "387413000",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "387413000",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "389195000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "389195000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "161717000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "161716000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "198700000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "198700000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "106100000",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "106100000",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "84200000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "other_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "84200000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "1578427000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "1578427000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "105000000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "105100000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "684097000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "684097000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "226800000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "226800000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "277761000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "277761000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "568380000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "568380000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "110004000",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "110004000",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "1300666000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "1300666000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "50957000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "50957000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "47300000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "47300000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "179500000",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "179500000",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "71600000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "71600000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "526822000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "526822000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "526822000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "526822000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "526822000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "526822000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "526822000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "526822000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "526822000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "526822000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "526822000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "526822000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "526822000",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "526822000",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "526822000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "526822000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "526822000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "526822000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "526822000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "526822000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "526822000",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "526822000",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "526822000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "526822000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-2259091000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "-2275097000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-1810500000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "-1815000000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "5247794000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "5255284000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-506500000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "-514900000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "-837595000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "-848819000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "5664376000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "5671044000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "-416822000",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "-416000000",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-1421497000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "-1426278000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "-331080000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "-333868000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-198600000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "-203200000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "-307900000",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "-311700000",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-227700000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "-228900000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-2275097000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "-2275097000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-1815100000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "-1815000000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "5255284000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "5255284000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-514900000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "-514900000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "-848820000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "-848819000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "5671044000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "5671044000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "-416000000",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "-416000000",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-1426278000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "-1426278000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "-333869000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "-333868000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-203200000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "-203200000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "-311700000",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "-311700000",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-228900000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "pat_continuing",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "-228900000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "pat_discontinued",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "pat_non_controlling",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "pat_non_controlling",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "pat_non_controlling",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "pat_owners",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "5247794000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "pat_owners",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "5664376000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "pat_owners",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "-416822000",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-2275097000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "-2275097000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-1815100000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "-1815000000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-376232000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "-376232000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-514900000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "-514900000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "-848820000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "-848819000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "39527000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "39527000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "-416000000",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "-416000000",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-1426278000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "-1426278000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "-333869000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "-333868000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-203200000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "-203200000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "-311700000",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "-311700000",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-228900000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "-228900000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-2275097000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "-2275097000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-1792800000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "-1792700000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-376232000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "-376232000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-514900000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "-514900000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "-848820000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "-848819000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "39527000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "39527000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "-416000000",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "-416000000",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-1426278000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "-1426278000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "-333869000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "-333868000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-203200000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "-203200000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "-311700000",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "-311700000",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "-206600000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "pbt_before_exceptional",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "-206600000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "purchases_stock_in_trade",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "2821387000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "2821387000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "70300000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "70300000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "994579000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "994579000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "399900000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "399900000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "458608000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "458608000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "688465000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "688465000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "306114000",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "306114000",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "2362779000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "2362779000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "58718000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "58718000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "395700000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "395700000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "4200000",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "4200000",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "49100000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "49100000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "16006000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "4600000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-7490000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "8400000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "11225000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-6668000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "-822000",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "4781000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "2789000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "4600000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "3800000",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "1200000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "share_of_associates",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-5631516000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "-5631516000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "-5631517000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "-5631517000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "0",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "0",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "6674911000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "6674911000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "1968100000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "1968100000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "2054908000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "2054908000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "1141600000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "1141600000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "1585189000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "1585188000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "1217318000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "1217318000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "832118000",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "832118000",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "5089723000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "5089723000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "443544000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "443543000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "646200000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "646200000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "495400000",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "495400000",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "327300000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "total_expenses",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "327300000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "4399814000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "4399814000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "175300000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "175400000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "1678676000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "1678676000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "626700000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "HALF_YEAR",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "626700000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "736369000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "NINE_MONTHS",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "736369000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "1256845000",
+      "available_at": "2026-10-12 20:52:28+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-09-30",
+      "scope": "STANDALONE",
+      "value": "1256845000",
+      "available_at": "2026-10-12 20:51:54+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "416118000",
+      "available_at": "2026-08-11 18:10:04+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "416118000",
+      "available_at": "2026-08-11 18:09:35+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "3663445000",
+      "available_at": "2026-05-27 21:01:14+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "3663445000",
+      "available_at": "2026-05-27 21:00:43+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "CONSOLIDATED",
+      "value": "109675000",
+      "available_at": "2026-02-04 20:46:20+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "109675000",
+      "available_at": "2026-02-04 20:45:10+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "CONSOLIDATED",
+      "value": "443000000",
+      "available_at": "2025-11-12 19:06:03+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "443000000",
+      "available_at": "2025-11-12 19:05:39+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "CONSOLIDATED",
+      "value": "183700000",
+      "available_at": "2025-08-01 20:08:49+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "183700000",
+      "available_at": "2025-08-01 20:08:28+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "CONSOLIDATED",
+      "value": "120700000",
+      "available_at": "2025-05-23 18:27:36+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "120700000",
+      "available_at": "2025-05-23 18:27:11+05:30"
+    }
+  ],
+  "documents": [
+    {
+      "published_at": "2026-10-15 16:36:07.727000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement Under Regulation 30 (LODR) - Corporate Presentation",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/86632e33-6e51-4ed0-bbcf-2670ac96dc05.pdf"
+    },
+    {
+      "published_at": "2026-10-15 16:33:11+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has submitted the Corporate Presentation of the Company.",
+      "category": "General Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_15102026163258_SDHI_Presentation_15102026.pdf"
+    },
+    {
+      "published_at": "2026-10-14 11:38:47.647000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/95a3ccd5-5366-4dae-9699-7f8f8b287390.pdf"
+    },
+    {
+      "published_at": "2026-10-14 11:35:48+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Copy of Newspaper Publication",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_14102026113532_SDHI_Newspaper_Ad_30092026.pdf"
+    },
+    {
+      "published_at": "2026-10-12 21:22:45.090000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement Under Regulation 30 (LODR) - Corporate Presentation",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b79ff7b3-8571-4f63-acac-53f63ec88873.pdf"
+    },
+    {
+      "published_at": "2026-10-12 21:20:34.910000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6df6c50e-6b97-4c8f-a433-822ddfc058ca.pdf"
+    },
+    {
+      "published_at": "2026-10-12 21:17:27+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has submitted the Corporate Presentation on the Unaudited Financial Results for the quarter and half year ended September 30, 2026",
+      "category": "General Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_12102026211708_SDHI_Corp_Presentation.pdf"
+    },
+    {
+      "published_at": "2026-10-12 21:12:34+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange regarding press release and presentation on the Unaudited Financial Results for the Quarter and Half Year ended 30th September, 2026",
+      "category": "Press Release",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_12102026211130_SDH_Press_Release_and_Presentation.pdf"
+    },
+    {
+      "published_at": "2026-10-12 20:52:28+05:30",
+      "title": "Consolidated results 2026-07-01 to 2026-09-30",
+      "category": "Financial results XBRL (Integrated)",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1736478_12102026085227_WEB.xml"
+    },
+    {
+      "published_at": "2026-10-12 20:51:54+05:30",
+      "title": "Standalone results 2026-07-01 to 2026-09-30",
+      "category": "Financial results XBRL (Integrated)",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1736477_12102026085154_WEB.xml"
+    },
+    {
+      "published_at": "2026-10-12 18:09:06.250000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Results - Financial Results For September 30, 2026",
+      "category": "Result",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2865950b-77dd-41f1-8542-f97d6d123fc6.pdf"
+    },
+    {
+      "published_at": "2026-10-12 18:04:17.993000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Board Meeting Outcome for Outcome Of The Board Meeting Dated 12Th October, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/638679e0-04a1-424c-9c69-02ae3bc07992.pdf"
+    },
+    {
+      "published_at": "2026-10-12 18:00:33+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has submitted to the Exchange, the financial results for the period ended September 30, 2026.",
+      "category": "Outcome of Board Meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_12102026175926_SDHIL_Outcome_12102026.pdf"
+    },
+    {
+      "published_at": "2026-10-09 17:38:30.773000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c9db3cbc-6a71-472e-bf88-e9a01045b725.pdf"
+    },
+    {
+      "published_at": "2026-10-09 17:35:45+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "category": "Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_09102026173509_SDHIL_Reg_74_5.pdf"
+    },
+    {
+      "published_at": "2026-10-08 11:26:10.120000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3066d987-dce4-4951-9759-c1de8b6dad48.pdf"
+    },
+    {
+      "published_at": "2026-10-08 11:22:00+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Schedule of Investor meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_08102026112137_Investor_Meet_13102026.pdf"
+    },
+    {
+      "published_at": "2026-10-06 18:09:56.183000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Board Meeting Intimation for The Unaudited Financial Results For The Quarter And Half Year Ended 30Th September, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9f829d50-c2ea-4990-af7f-64d054c5f824.pdf"
+    },
+    {
+      "published_at": "2026-10-01 17:00:45.753000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Change in Management",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/66bf73f1-d39c-4b8f-accf-a45f76facf5e.pdf"
+    },
+    {
+      "published_at": "2026-10-01 16:57:08+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange regarding Appointment of Mr Venu Avadhanula as Chief Operating Officer (Senior Management Personnel)  of the company w.e.f. October 01, 2026.",
+      "category": "Appointment",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_01102026165654_Reg_30_COO.pdf"
+    },
+    {
+      "published_at": "2026-09-28 12:18:52.380000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Closure of Trading Window",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/bdeacda9-2202-4580-ae7c-bf6b8ba3bcb6.pdf"
+    },
+    {
+      "published_at": "2026-09-28 12:15:59+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange regarding the Trading Window closure pursuant to SEBI (Prohibition of Insider Trading) Regulations, 2015",
+      "category": "Trading Window",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_28092026121548_SDHI_Closure_of_Trading_Window_30092026.pdf"
+    },
+    {
+      "published_at": "2026-09-17 17:32:46.437000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Scheme of Arrangement",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4cf66833-b5b2-49a6-8a69-0a078e111a26.pdf"
+    },
+    {
+      "published_at": "2026-09-17 17:28:10+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about the effective date of the Scheme of Amalgamation Triumph Offshore Private Limited (\"Transferor Company\") and Swan Defence and Heavy Industries Limited (\"Transferee Company\") and their respective shareholders and creditors ( Scheme ) being 17th September, 2026.",
+      "category": "Amalgamation/Merger",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_17092026172758_Merger_Update.pdf"
+    },
+    {
+      "published_at": "2026-09-16 16:46:01.507000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d3e98448-1605-4681-8395-f1bcfb32d982.pdf"
+    },
+    {
+      "published_at": "2026-09-16 16:42:24+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Schedule of Investors' meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_16092026164144_Investor_Meet_16092026.pdf"
+    },
+    {
+      "published_at": "2026-09-12 12:24:04.780000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4845e1a5-f1f2-489b-b82d-94dbab30a8a9.pdf"
+    },
+    {
+      "published_at": "2026-09-12 12:19:02+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Schedule of Investors meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_12092026121851_SDHI_Investor_Meet_12092026.pdf"
+    },
+    {
+      "published_at": "2026-09-02 21:20:52.990000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Shareholder Meeting - Proceedings Of The AGM",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/54c016df-c861-4151-a18a-5effd98920fc.pdf"
+    },
+    {
+      "published_at": "2026-09-02 21:19:09.490000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Shareholder Meeting / Postal Ballot-Scrutinizer''s Report",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3547df75-9533-460f-8221-1901b1e8b955.pdf"
+    },
+    {
+      "published_at": "2026-09-02 21:15:53.403000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Shareholder Meeting / Postal Ballot-Outcome of AGM",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/048075fd-bc51-4a86-9140-680879a61da9.pdf"
+    },
+    {
+      "published_at": "2026-09-02 21:08:41+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange regarding Proceedings of Annual General Meeting held on September 02, 2026. Further, the company has submitted the Exchange a copy of Srutinizers report along with voting results.",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_02092026210833_AGM_Results_FInal.pdf"
+    },
+    {
+      "published_at": "2026-08-26 16:25:44.037000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Scheme of Arrangement",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3b6cda8b-c903-4353-9122-bdba6ad36085.pdf"
+    },
+    {
+      "published_at": "2026-08-26 16:20:24+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about the receipt of the certified true copy of the Order obtained from the Hon ble National Company Law Tribunal, Ahmedabad Bench in the matter of Scheme of Arrangement and Amalgamation between Triumph Offshore Private Limited (\"Transferor Company\") and Swan Defence and Heavy Industries Limited (\"Transferee Company\") and their respective shareholders and creditors.",
+      "category": "Amalgamation/Merger",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_26082026162000_NCLT_Order_Reg_30_26082026.pdf"
+    },
+    {
+      "published_at": "2026-08-20 17:18:59.123000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d7601fcc-6032-4a88-b601-1f3ab5a1866a.pdf"
+    },
+    {
+      "published_at": "2026-08-20 17:16:35+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Copy of Newspaper Publication",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_20082026171628_Newspaper_Ad_20082026.pdf"
+    },
+    {
+      "published_at": "2026-08-12 16:10:14.980000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/14596a4b-cda6-4e47-9662-d13fa98e9bc7.pdf"
+    },
+    {
+      "published_at": "2026-08-12 16:06:47+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Copy of Newspaper Publication regarding the Notice of the 29th Annual General Meeting of the Company.",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_12082026160633_Newspaper_Final_12082026.pdf"
+    },
+    {
+      "published_at": "2026-08-12 12:05:09.147000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3264828f-8d72-4d14-8655-9df0b1b73eda.pdf"
+    },
+    {
+      "published_at": "2026-08-12 12:01:00+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Copy of Newspaper Publication",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_12082026115951_SDHI_Newspaper_30082026.pdf"
+    },
+    {
+      "published_at": "2026-08-11 18:10:04+05:30",
+      "title": "Consolidated results 2026-04-01 to 2026-06-30",
+      "category": "Financial results XBRL (Integrated)",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1711921_11082026061004_WEB.xml"
+    },
+    {
+      "published_at": "2026-08-11 18:09:35+05:30",
+      "title": "Standalone results 2026-04-01 to 2026-06-30",
+      "category": "Financial results XBRL (Integrated)",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1711918_11082026060935_WEB.xml"
+    },
+    {
+      "published_at": "2026-08-11 18:00:46.320000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Results - Financial Results For June 30, 2026",
+      "category": "Result",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/cd328196-f26b-4150-80ab-2b85a8d97573.pdf"
+    },
+    {
+      "published_at": "2026-08-11 17:55:43.520000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Board Meeting Outcome for Outcome Of The Board Meeting Dated 11Th August, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fe08b3a1-5b0d-4ff2-93cc-a9933e7e2419.pdf"
+    },
+    {
+      "published_at": "2026-08-11 17:51:16+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has submitted to the Exchange, the financial results for the period ended Jun 30, 2026.",
+      "category": "Outcome of Board Meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_11082026174926_SDHI_Results_Final.pdf"
+    },
+    {
+      "published_at": "2026-08-11 17:31:47.370000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9a667a76-4288-4563-941e-15565cd5e058.pdf"
+    },
+    {
+      "published_at": "2026-08-11 17:28:54+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Copy of Newspaper Publication regarding the Notice of the 29th Annual General Meeting of the Company.",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_11082026172837_AGM_Notice_Newspaper_SDHI.pdf"
+    },
+    {
+      "published_at": "2026-08-10 20:46:31.527000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Shareholder Meeting - AGM On September 02, 2026",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/05c97f76-3ddc-4b0d-9dd4-32714cdce141.pdf"
+    },
+    {
+      "published_at": "2026-08-10 20:43:59.127000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Reg. 34 (1) Annual Report.",
+      "category": "Others",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7491dcce-95f1-4b91-a572-abb69cd8de48.pdf"
+    },
+    {
+      "published_at": "2026-08-10 20:35:37+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange regarding Notice of Annual General Meeting to be held on September 02, 2026",
+      "category": "Shareholders meeting",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_10082026203526_SDHI_Notice_2026.pdf"
+    },
+    {
+      "published_at": "2026-08-07 12:02:54.030000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6ef823b1-2b67-4082-be37-411c64bb11f8.pdf"
+    },
+    {
+      "published_at": "2026-08-07 11:59:14+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Copy of Newspaper Publication regarding Publication of Notice of the 29th Annual General Meeting of the Company",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_07082026115904_SDHIL_Newspaper_AGM_Pre.pdf"
+    },
+    {
+      "published_at": "2026-08-07 11:56:35+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Copy of Newspaper Publication regarding Notice of the 29th Annual General Meeting of the Company.",
+      "category": "Copy of Newspaper Publication",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_07082026115536_SDHIL_Newspaper_AGM_Pre.pdf"
+    },
+    {
+      "published_at": "2026-08-06 19:40:23.250000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - General Updates",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b0290a11-7fd0-4a0f-866a-ba4d80b83f57.pdf"
+    },
+    {
+      "published_at": "2026-08-06 19:36:43+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about intimation regarding sanction of the Scheme of Arrangement and Amalgamation between Triumph Offshore Private Limited and Swan Defence and Heavy Industries Limited and their respective shareholders and creditors by the Hon ble National Company Law Tribunal, Ahmedabad Bench.",
+      "category": "General Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_06082026193629_Merger_Order.pdf"
+    },
+    {
+      "published_at": "2026-08-06 11:11:03.957000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - General Business Updates",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6be24b55-b8a9-4b9a-8808-2284ebcf00de.pdf"
+    },
+    {
+      "published_at": "2026-08-06 11:06:34+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about General Updates",
+      "category": "General Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_06082026110619_Reg_30_Update.pdf"
+    },
+    {
+      "published_at": "2026-08-06 07:58:30.380000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dac56e9e-97a0-4102-a894-9f5c10d500ef.pdf"
+    },
+    {
+      "published_at": "2026-08-06 07:44:52+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange regarding a press release dated August 06, 2026, titled \"SDHI Wins Order from Svitzer to Build four TRAnsverse 3200 Tugs\".",
+      "category": "Press Release",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_06082026074432_SDHI_Press_Release.pdf"
+    },
+    {
+      "published_at": "2026-08-04 15:37:41.387000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Board Meeting Intimation for Consideration Of The Unaudited Financial Results For The Quarter Ended 30Th June, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fec40a7a-a1f1-4b8d-8839-510349ad8a2a.pdf"
+    },
+    {
+      "published_at": "2026-07-22 18:09:26.737000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Credit Rating",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8893fbb4-5828-45ed-a6a3-7483f74a9ebc.pdf"
+    },
+    {
+      "published_at": "2026-07-22 18:06:36+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Credit Rating- New",
+      "category": "Credit Rating- New",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_22072026180621_Credit_Rating_22072026.pdf"
+    },
+    {
+      "published_at": "2026-07-10 18:06:29.913000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5d59bf5b-a2ba-45ef-8e96-f29913cc9508.pdf"
+    },
+    {
+      "published_at": "2026-07-10 18:04:28.190000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/73cd3120-d68b-4f99-a915-c864037cd266.pdf"
+    },
+    {
+      "published_at": "2026-07-10 18:02:17.930000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/54ecdc66-d504-4cef-ab6b-a73669d68d63.pdf"
+    },
+    {
+      "published_at": "2026-07-10 17:56:36+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Schedule of Investor Meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_10072026175623_Investor_Meet_17072026.pdf"
+    },
+    {
+      "published_at": "2026-07-10 17:54:58+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Schedule of Investor Meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_10072026175449_Investor_Meet_16072026.pdf"
+    },
+    {
+      "published_at": "2026-07-10 17:53:01+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Schedule of Investor Meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_10072026175241_Investor_Meet_15072026.pdf"
+    },
+    {
+      "published_at": "2026-07-10 09:57:00.307000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/02c9df87-7ac7-49bd-9ea4-1fc920700b7f.pdf"
+    },
+    {
+      "published_at": "2026-07-10 09:53:33+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "category": "Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_10072026095258_SDHIL_Reg_74_5.pdf"
+    },
+    {
+      "published_at": "2026-07-08 20:02:47.983000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Credit Rating",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8d28bccb-3ea1-4ac1-aca5-7fbbf7d91138.pdf"
+    },
+    {
+      "published_at": "2026-07-08 19:59:13+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Intimation of Withdrawal of Credit Rating assigned to Bank Facilities of Reliance Naval and Engineering Limited by Brickwork Ratings India Private Limited",
+      "category": "Credit Rating- Others",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_08072026195906_Withdrawal_of_Credit_Rating.pdf"
+    },
+    {
+      "published_at": "2026-07-08 17:56:37.567000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f9a041dd-42dd-4baa-a05b-afbf33d3c1bf.pdf"
+    },
+    {
+      "published_at": "2026-07-08 17:53:17+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Schedule of Investor Meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_08072026175233_Investor_Meet.pdf"
+    },
+    {
+      "published_at": "2026-07-06 10:30:50.317000+05:30",
+      "title": "Swan Defence And Heavy Industries Ltd - 533107 - Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0cbd0783-bcf2-4a0a-8b64-a12ede0d713c.pdf"
+    },
+    {
+      "published_at": "2026-07-06 10:26:15+05:30",
+      "title": "Swan Defence and Heavy Industries Limited has informed the Exchange about Schedule of Investor Meet",
+      "category": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "attachment_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_06072026102607_Investor_Meet.pdf"
+    }
+  ],
+  "events": [
+    {
+      "published_at": "2026-10-12 21:12:34+05:30",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "quote": "KEY EVENTS IN H1FY27 BUILDING SHIPBUILDING TALENT OTHER UPDATES Project SWAVALAMBAN 1st DNV MOU in India Wins Maritime Skilling & Workforce Partnership with one of the leading Development Initiative of the Year classification societies",
+      "source_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_12102026211130_SDH_Press_Release_and_Presentation.pdf",
+      "page_no": 14
+    },
+    {
+      "published_at": "2026-10-12 21:12:34+05:30",
+      "family": "DEBT_REDUCTION",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "quote": "APPROVED PROJECT COST CAPITAL ASSISTANCE LOWER COST OF BORROWING",
+      "source_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_12102026211130_SDH_Press_Release_and_Presentation.pdf",
+      "page_no": 12
+    },
+    {
+      "published_at": "2026-10-12 21:12:34+05:30",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "quote": "CLEAN SLATE \u2013 A FRESH RESTART EARLY CIRP CLOSURE: PREPAID COC OBLIGATIONS SDHI has completed the resolution-plan, cleared out of CIRP thereby creating a stronger base for scale-up 01 RESOLUTION PLAN CLOSED 1 2 3 \u2192 \u2192 CIRP Prepayment Scale-up Secured orders and fully Resolution framework CoC obligations settled operational closed Outcome: A clean operating platform, with the all CoC settled.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_12102026211130_SDH_Press_Release_and_Presentation.pdf",
+      "page_no": 8
+    },
+    {
+      "published_at": "2026-10-12 21:12:34+05:30",
+      "family": "ORDER",
+      "amount": "6500",
+      "scale": "CRORE",
+      "currency": "INR",
+      "quote": "A new management of SDHI Physical possession of Ship repair operations Received 1stExport Order Order book ~ \u20b9 6,500 Cr",
+      "source_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_12102026211130_SDH_Press_Release_and_Presentation.pdf",
+      "page_no": 6
+    },
+    {
+      "published_at": "2026-10-12 21:12:34+05:30",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "quote": "Partnership: SDHI has signed a strategic MoU with DNV, the first such partnership with an Indian shipyard to strengthen capabilities across seven key areas including design certification, repair projects, R&D, supplier ecosystem, next-generation maritime technologies, digital adoption and cybersecurity.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_12102026211130_SDH_Press_Release_and_Presentation.pdf",
+      "page_no": 2
+    },
+    {
+      "published_at": "2026-10-12 21:12:34+05:30",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "quote": "The shipyard also secured an order from the A.P. Moller \u2013 Maersk backed Svitzer, for four TRAnsverse 3200 harbour tugs, with deliveries scheduled from early 2028.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_12102026211130_SDH_Press_Release_and_Presentation.pdf",
+      "page_no": 2
+    },
+    {
+      "published_at": "2026-10-12 21:12:34+05:30",
+      "family": "ORDER",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "quote": "Business Highlights Newbuilds: SDHI secured an order from Energy ONE Limited for four 92,500 DWT ammonia dual-fuel bulk carriers, the first of its kind for an Indian shipyard, with deliveries expected from FY30.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_12102026211130_SDH_Press_Release_and_Presentation.pdf",
+      "page_no": 2
+    },
+    {
+      "published_at": "2026-08-06 19:36:43+05:30",
+      "family": "DEBT_REDUCTION",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "quote": "Further, in the month of March 2026, Transferee Company has repaid all the existing secured lenders and has obtained secured loan from one new lender [i.e. National Bank for Financing Infrastructure and CP(CAA)/ 28(AHM)2026 in CA(CAA)/ 1 7(AHM)2026 Triumph Offshore Private Limited & Anr.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_06082026193629_Merger_Order.pdf",
+      "page_no": 27
+    },
+    {
+      "published_at": "2026-08-06 07:44:52+05:30",
+      "family": "ORDER",
+      "amount": "3000",
+      "scale": "CRORE",
+      "currency": "INR",
+      "quote": "SDHI Wins Order from Svitzer to Build four TRAnsverse 3200 Tugs Mumbai, August 06, 2026: Swan Defence and Heavy Industries Limited (SDHI), India\u2019s largest shipbuilding and heavy engineering company, has secured a contract from Denmark-based towage operator Svitzer A/S to construct four advanced TRAnsverse 3200 tugs.",
+      "source_url": "https://nsearchives.nseindia.com/corporate/SWANRNEL_06082026074432_SDHI_Press_Release.pdf",
+      "page_no": 2
+    }
+  ],
+  "market_snapshot": {
+    "date": "2026-10-27",
+    "close": 2651.7,
+    "sma50": 2640.144,
+    "sma200": 2030.79625,
+    "from_high": -0.10663028097837068,
+    "median_turnover_60_cr": 5.057680700000001
+  }
+}

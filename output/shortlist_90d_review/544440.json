@@ -1,0 +1,3466 @@
+{
+  "signal": {
+    "review_id": "3660732b-4ac5-42a5-b74b-0c07bcdafb6a",
+    "issuer_id": "b6af94e1-c4b8-4f8e-a88f-ab6697ebc88c",
+    "week_start": "2026-09-14",
+    "label": "544440",
+    "legal_name": "CRYOGENIC OGS LIMITED",
+    "triage_action": "DEEP_RESEARCH",
+    "is_pick": true,
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "rules_version": "triage-rules-3.5.1",
+    "size_pct_of_revenue": 47.4,
+    "size_basis": "STATED",
+    "firm": true,
+    "routine": false,
+    "disqualifier": null,
+    "confidence": "MEDIUM",
+    "rationale": "The purchase order of about INR 19.36 crore (USD 2.02m) is stated and equals 47.4% of FY2026 revenue of INR 40.82 crore (size STATED), with 12-20 week execution. It is firm (purchase order received from an external EPC company) and non-routine: it is the company's first independent export order in the piping-spools vertical, bigger than any earlier order disclosed in the packet. The company was profitable in FY2026 (PAT INR 10.18 crore) so no stress disqualifier applies, but piping-spool margins and funding for the order are open questions.",
+    "excess_6m": null,
+    "excess_12m": null,
+    "excess_24m": null,
+    "return_12m": null,
+    "return_24m": null,
+    "holding_period": null,
+    "holding_previous_period": null,
+    "promoter_holding_pct": null,
+    "fii_holding_pct": null,
+    "promoter_change_pp": null,
+    "fii_change_pp": null,
+    "holding_year_ago_period": null,
+    "promoter_yoy_pp": null,
+    "fii_yoy_pp": null,
+    "return_36m": null,
+    "benchmark_36m": null,
+    "excess_36m": null,
+    "benchmark_12m": null,
+    "benchmark_24m": null,
+    "runup_6m": null,
+    "margin_ttm": null,
+    "category": "Other pick",
+    "order_cr_derived": null,
+    "order_cr": 19.36,
+    "order_cr_basis": "review amount",
+    "mcap_cr": null,
+    "orders_12m_pct": null,
+    "orders_y1_pct": null,
+    "orders_12m_incl_big_pct": null,
+    "order_to_mcap": null,
+    "mgmt_target_x": null,
+    "promoter_net_cr": 0.0,
+    "inst_net_cr": 0.0,
+    "tech": {
+      "up": true,
+      "hi": true,
+      "rs": true,
+      "n": 3,
+      "runup6": 1.7024999999999997,
+      "liq": 0.386986875,
+      "exchange": "BSE",
+      "below_falling_200": false,
+      "price_date": "2026-09-28",
+      "history_days": 301,
+      "near_high_threshold": 0.8
+    },
+    "tech_score": 3,
+    "price_date": "2026-09-28",
+    "exchange": "BSE",
+    "order_book": {},
+    "score": 1,
+    "score_inputs": {
+      "order_mcap_25": null,
+      "mcap_lt_2000": null,
+      "ps_lt_1_5": null,
+      "opm_up_1pp": null,
+      "opm_lt_10": null,
+      "mgmt_target_1_5x": null,
+      "tech_2_of_3": true,
+      "revenue_growing": null,
+      "order_book_growing": null,
+      "illiquid_penalty": null,
+      "expensive_penalty": null
+    },
+    "score_known": 1,
+    "score_n": 9,
+    "ps": null,
+    "opm": null,
+    "signals": [
+      "Technicals 3/3",
+      "Data 1/9 known"
+    ],
+    "combos": [
+      "C2"
+    ],
+    "combo_checks": {
+      "up": true,
+      "hi": true,
+      "rs": true,
+      "n": 3,
+      "runup6": 1.7024999999999997,
+      "liq": 0.386986875,
+      "exchange": "BSE",
+      "below_falling_200": false,
+      "price_date": "2026-09-28",
+      "history_days": 301,
+      "near_high_threshold": 0.8
+    }
+  },
+  "identifiers": [
+    {
+      "security_id": "4f452c85-c108-423e-a98b-628794cfe1b2",
+      "exchange": "BSE",
+      "kind": "SCRIP_CODE",
+      "value": "544440"
+    },
+    {
+      "security_id": "4f452c85-c108-423e-a98b-628794cfe1b2",
+      "exchange": "BSE",
+      "kind": "SYMBOL",
+      "value": "CRYOGENIC"
+    }
+  ],
+  "exchange": "BSE",
+  "security_id": "4f452c85-c108-423e-a98b-628794cfe1b2",
+  "prices": [
+    {
+      "trade_date": "2026-10-27",
+      "close": "356.50",
+      "volume": "49500"
+    },
+    {
+      "trade_date": "2026-10-26",
+      "close": "339.55",
+      "volume": "24000"
+    },
+    {
+      "trade_date": "2026-10-23",
+      "close": "357.40",
+      "volume": "28500"
+    },
+    {
+      "trade_date": "2026-10-22",
+      "close": "376.20",
+      "volume": "26250"
+    },
+    {
+      "trade_date": "2026-10-21",
+      "close": "396.00",
+      "volume": "24750"
+    },
+    {
+      "trade_date": "2026-10-19",
+      "close": "412.00",
+      "volume": "8250"
+    },
+    {
+      "trade_date": "2026-10-16",
+      "close": "417.65",
+      "volume": "19500"
+    },
+    {
+      "trade_date": "2026-10-15",
+      "close": "402.80",
+      "volume": "18750"
+    },
+    {
+      "trade_date": "2026-10-14",
+      "close": "424.00",
+      "volume": "7500"
+    },
+    {
+      "trade_date": "2026-10-13",
+      "close": "419.35",
+      "volume": "14250"
+    },
+    {
+      "trade_date": "2026-10-12",
+      "close": "426.00",
+      "volume": "15000"
+    },
+    {
+      "trade_date": "2026-10-09",
+      "close": "430.00",
+      "volume": "10500"
+    },
+    {
+      "trade_date": "2026-10-08",
+      "close": "439.00",
+      "volume": "26250"
+    },
+    {
+      "trade_date": "2026-10-07",
+      "close": "443.25",
+      "volume": "18000"
+    },
+    {
+      "trade_date": "2026-10-06",
+      "close": "430.20",
+      "volume": "24000"
+    },
+    {
+      "trade_date": "2026-10-05",
+      "close": "452.00",
+      "volume": "13500"
+    },
+    {
+      "trade_date": "2026-10-01",
+      "close": "443.00",
+      "volume": "51750"
+    },
+    {
+      "trade_date": "2026-09-30",
+      "close": "422.05",
+      "volume": "31500"
+    },
+    {
+      "trade_date": "2026-09-29",
+      "close": "412.35",
+      "volume": "30750"
+    },
+    {
+      "trade_date": "2026-09-28",
+      "close": "432.40",
+      "volume": "38250"
+    },
+    {
+      "trade_date": "2026-09-25",
+      "close": "414.95",
+      "volume": "9000"
+    },
+    {
+      "trade_date": "2026-09-24",
+      "close": "410.00",
+      "volume": "6000"
+    },
+    {
+      "trade_date": "2026-09-23",
+      "close": "402.10",
+      "volume": "17250"
+    },
+    {
+      "trade_date": "2026-09-22",
+      "close": "410.30",
+      "volume": "7500"
+    },
+    {
+      "trade_date": "2026-09-21",
+      "close": "402.30",
+      "volume": "28500"
+    },
+    {
+      "trade_date": "2026-09-18",
+      "close": "394.45",
+      "volume": "24750"
+    },
+    {
+      "trade_date": "2026-09-17",
+      "close": "386.75",
+      "volume": "11250"
+    },
+    {
+      "trade_date": "2026-09-16",
+      "close": "379.20",
+      "volume": "1500"
+    },
+    {
+      "trade_date": "2026-09-15",
+      "close": "386.90",
+      "volume": "30750"
+    },
+    {
+      "trade_date": "2026-09-11",
+      "close": "394.75",
+      "volume": "63000"
+    },
+    {
+      "trade_date": "2026-09-10",
+      "close": "387.05",
+      "volume": "3750"
+    },
+    {
+      "trade_date": "2026-09-09",
+      "close": "379.50",
+      "volume": "3000"
+    },
+    {
+      "trade_date": "2026-09-08",
+      "close": "372.10",
+      "volume": "11250"
+    },
+    {
+      "trade_date": "2026-09-07",
+      "close": "364.85",
+      "volume": "24750"
+    },
+    {
+      "trade_date": "2026-09-04",
+      "close": "357.70",
+      "volume": "12750"
+    },
+    {
+      "trade_date": "2026-09-03",
+      "close": "365.00",
+      "volume": "10500"
+    },
+    {
+      "trade_date": "2026-09-02",
+      "close": "370.10",
+      "volume": "10500"
+    },
+    {
+      "trade_date": "2026-09-01",
+      "close": "362.85",
+      "volume": "31500"
+    },
+    {
+      "trade_date": "2026-08-31",
+      "close": "355.75",
+      "volume": "2250"
+    },
+    {
+      "trade_date": "2026-08-28",
+      "close": "363.00",
+      "volume": "3000"
+    },
+    {
+      "trade_date": "2026-08-27",
+      "close": "369.35",
+      "volume": "4500"
+    },
+    {
+      "trade_date": "2026-08-26",
+      "close": "376.85",
+      "volume": "12000"
+    },
+    {
+      "trade_date": "2026-08-25",
+      "close": "384.50",
+      "volume": "2250"
+    },
+    {
+      "trade_date": "2026-08-24",
+      "close": "392.30",
+      "volume": "1500"
+    },
+    {
+      "trade_date": "2026-08-21",
+      "close": "400.30",
+      "volume": "14250"
+    },
+    {
+      "trade_date": "2026-08-20",
+      "close": "408.45",
+      "volume": "24000"
+    },
+    {
+      "trade_date": "2026-08-19",
+      "close": "389.00",
+      "volume": "12750"
+    },
+    {
+      "trade_date": "2026-08-18",
+      "close": "384.55",
+      "volume": "18000"
+    },
+    {
+      "trade_date": "2026-08-17",
+      "close": "366.25",
+      "volume": "22500"
+    },
+    {
+      "trade_date": "2026-08-14",
+      "close": "348.85",
+      "volume": "3750"
+    },
+    {
+      "trade_date": "2026-08-13",
+      "close": "348.85",
+      "volume": "9750"
+    },
+    {
+      "trade_date": "2026-08-12",
+      "close": "354.00",
+      "volume": "9000"
+    },
+    {
+      "trade_date": "2026-08-11",
+      "close": "342.00",
+      "volume": "6000"
+    },
+    {
+      "trade_date": "2026-08-10",
+      "close": "350.00",
+      "volume": "16500"
+    },
+    {
+      "trade_date": "2026-08-07",
+      "close": "339.00",
+      "volume": "11250"
+    },
+    {
+      "trade_date": "2026-08-06",
+      "close": "340.00",
+      "volume": "9000"
+    },
+    {
+      "trade_date": "2026-08-05",
+      "close": "345.00",
+      "volume": "15750"
+    },
+    {
+      "trade_date": "2026-08-04",
+      "close": "340.70",
+      "volume": "44250"
+    },
+    {
+      "trade_date": "2026-08-03",
+      "close": "324.50",
+      "volume": "8250"
+    },
+    {
+      "trade_date": "2026-07-31",
+      "close": "319.00",
+      "volume": "35250"
+    },
+    {
+      "trade_date": "2026-07-30",
+      "close": "305.00",
+      "volume": "5250"
+    },
+    {
+      "trade_date": "2026-07-29",
+      "close": "303.75",
+      "volume": "7500"
+    },
+    {
+      "trade_date": "2026-07-28",
+      "close": "298.00",
+      "volume": "10500"
+    },
+    {
+      "trade_date": "2026-07-27",
+      "close": "292.05",
+      "volume": "4500"
+    },
+    {
+      "trade_date": "2026-07-24",
+      "close": "296.55",
+      "volume": "16500"
+    },
+    {
+      "trade_date": "2026-07-23",
+      "close": "288.50",
+      "volume": "9750"
+    },
+    {
+      "trade_date": "2026-07-22",
+      "close": "288.20",
+      "volume": "26250"
+    },
+    {
+      "trade_date": "2026-07-21",
+      "close": "292.15",
+      "volume": "13500"
+    },
+    {
+      "trade_date": "2026-07-20",
+      "close": "300.00",
+      "volume": "9000"
+    },
+    {
+      "trade_date": "2026-07-17",
+      "close": "297.00",
+      "volume": "8250"
+    },
+    {
+      "trade_date": "2026-07-16",
+      "close": "302.00",
+      "volume": "6000"
+    },
+    {
+      "trade_date": "2026-07-15",
+      "close": "298.00",
+      "volume": "8250"
+    },
+    {
+      "trade_date": "2026-07-14",
+      "close": "302.25",
+      "volume": "12750"
+    },
+    {
+      "trade_date": "2026-07-13",
+      "close": "295.95",
+      "volume": "23250"
+    },
+    {
+      "trade_date": "2026-07-10",
+      "close": "283.10",
+      "volume": "11250"
+    },
+    {
+      "trade_date": "2026-07-09",
+      "close": "286.55",
+      "volume": "33000"
+    },
+    {
+      "trade_date": "2026-07-08",
+      "close": "291.75",
+      "volume": "25500"
+    },
+    {
+      "trade_date": "2026-07-07",
+      "close": "303.00",
+      "volume": "53250"
+    },
+    {
+      "trade_date": "2026-07-06",
+      "close": "288.70",
+      "volume": "33000"
+    },
+    {
+      "trade_date": "2026-07-03",
+      "close": "275.00",
+      "volume": "32250"
+    },
+    {
+      "trade_date": "2026-07-02",
+      "close": "281.80",
+      "volume": "9000"
+    },
+    {
+      "trade_date": "2026-07-01",
+      "close": "276.00",
+      "volume": "6000"
+    },
+    {
+      "trade_date": "2026-06-30",
+      "close": "278.00",
+      "volume": "12000"
+    },
+    {
+      "trade_date": "2026-06-29",
+      "close": "268.00",
+      "volume": "13500"
+    },
+    {
+      "trade_date": "2026-06-25",
+      "close": "279.35",
+      "volume": "9750"
+    },
+    {
+      "trade_date": "2026-06-24",
+      "close": "273.75",
+      "volume": "14250"
+    },
+    {
+      "trade_date": "2026-06-23",
+      "close": "284.70",
+      "volume": "13500"
+    },
+    {
+      "trade_date": "2026-06-22",
+      "close": "284.85",
+      "volume": "30750"
+    },
+    {
+      "trade_date": "2026-06-19",
+      "close": "274.00",
+      "volume": "13500"
+    },
+    {
+      "trade_date": "2026-06-18",
+      "close": "272.00",
+      "volume": "27000"
+    },
+    {
+      "trade_date": "2026-06-17",
+      "close": "259.05",
+      "volume": "21000"
+    },
+    {
+      "trade_date": "2026-06-16",
+      "close": "272.65",
+      "volume": "93750"
+    },
+    {
+      "trade_date": "2026-06-15",
+      "close": "284.05",
+      "volume": "156750"
+    },
+    {
+      "trade_date": "2026-06-12",
+      "close": "274.60",
+      "volume": "40500"
+    },
+    {
+      "trade_date": "2026-06-11",
+      "close": "261.55",
+      "volume": "161250"
+    },
+    {
+      "trade_date": "2026-06-10",
+      "close": "252.85",
+      "volume": "108750"
+    },
+    {
+      "trade_date": "2026-06-09",
+      "close": "240.85",
+      "volume": "31500"
+    },
+    {
+      "trade_date": "2026-06-08",
+      "close": "229.40",
+      "volume": "67500"
+    },
+    {
+      "trade_date": "2026-06-05",
+      "close": "231.00",
+      "volume": "24000"
+    },
+    {
+      "trade_date": "2026-06-04",
+      "close": "231.20",
+      "volume": "61500"
+    },
+    {
+      "trade_date": "2026-06-03",
+      "close": "222.60",
+      "volume": "33000"
+    },
+    {
+      "trade_date": "2026-06-02",
+      "close": "212.00",
+      "volume": "24000"
+    },
+    {
+      "trade_date": "2026-06-01",
+      "close": "213.40",
+      "volume": "30000"
+    },
+    {
+      "trade_date": "2026-05-29",
+      "close": "211.35",
+      "volume": "27000"
+    },
+    {
+      "trade_date": "2026-05-27",
+      "close": "215.10",
+      "volume": "111000"
+    },
+    {
+      "trade_date": "2026-05-26",
+      "close": "222.95",
+      "volume": "88500"
+    },
+    {
+      "trade_date": "2026-05-25",
+      "close": "212.35",
+      "volume": "29250"
+    },
+    {
+      "trade_date": "2026-05-22",
+      "close": "202.25",
+      "volume": "26250"
+    },
+    {
+      "trade_date": "2026-05-21",
+      "close": "198.50",
+      "volume": "10500"
+    },
+    {
+      "trade_date": "2026-05-20",
+      "close": "194.30",
+      "volume": "24750"
+    },
+    {
+      "trade_date": "2026-05-19",
+      "close": "199.50",
+      "volume": "15750"
+    },
+    {
+      "trade_date": "2026-05-18",
+      "close": "204.10",
+      "volume": "42750"
+    },
+    {
+      "trade_date": "2026-05-15",
+      "close": "213.40",
+      "volume": "14250"
+    },
+    {
+      "trade_date": "2026-05-14",
+      "close": "214.55",
+      "volume": "30000"
+    },
+    {
+      "trade_date": "2026-05-13",
+      "close": "207.40",
+      "volume": "63750"
+    },
+    {
+      "trade_date": "2026-05-12",
+      "close": "201.85",
+      "volume": "189000"
+    },
+    {
+      "trade_date": "2026-05-11",
+      "close": "204.10",
+      "volume": "36750"
+    },
+    {
+      "trade_date": "2026-05-08",
+      "close": "194.40",
+      "volume": "51750"
+    },
+    {
+      "trade_date": "2026-05-07",
+      "close": "185.15",
+      "volume": "95250"
+    },
+    {
+      "trade_date": "2026-05-06",
+      "close": "190.60",
+      "volume": "61500"
+    },
+    {
+      "trade_date": "2026-05-05",
+      "close": "196.95",
+      "volume": "135750"
+    },
+    {
+      "trade_date": "2026-05-04",
+      "close": "208.50",
+      "volume": "141000"
+    },
+    {
+      "trade_date": "2026-04-30",
+      "close": "231.65",
+      "volume": "423750"
+    },
+    {
+      "trade_date": "2026-04-29",
+      "close": "248.30",
+      "volume": "332250"
+    },
+    {
+      "trade_date": "2026-04-28",
+      "close": "211.20",
+      "volume": "132000"
+    },
+    {
+      "trade_date": "2026-04-27",
+      "close": "206.45",
+      "volume": "219750"
+    },
+    {
+      "trade_date": "2026-04-24",
+      "close": "172.05",
+      "volume": "15000"
+    },
+    {
+      "trade_date": "2026-04-23",
+      "close": "176.45",
+      "volume": "24000"
+    },
+    {
+      "trade_date": "2026-04-22",
+      "close": "175.00",
+      "volume": "17250"
+    },
+    {
+      "trade_date": "2026-04-21",
+      "close": "174.35",
+      "volume": "63000"
+    },
+    {
+      "trade_date": "2026-04-20",
+      "close": "173.00",
+      "volume": "20250"
+    },
+    {
+      "trade_date": "2026-04-17",
+      "close": "170.50",
+      "volume": "38250"
+    },
+    {
+      "trade_date": "2026-04-16",
+      "close": "164.65",
+      "volume": "14250"
+    },
+    {
+      "trade_date": "2026-04-15",
+      "close": "164.50",
+      "volume": "18000"
+    },
+    {
+      "trade_date": "2026-04-13",
+      "close": "163.00",
+      "volume": "11250"
+    },
+    {
+      "trade_date": "2026-04-10",
+      "close": "159.90",
+      "volume": "114750"
+    },
+    {
+      "trade_date": "2026-04-09",
+      "close": "167.20",
+      "volume": "4500"
+    },
+    {
+      "trade_date": "2026-04-08",
+      "close": "167.30",
+      "volume": "15750"
+    },
+    {
+      "trade_date": "2026-04-07",
+      "close": "167.50",
+      "volume": "9000"
+    },
+    {
+      "trade_date": "2026-04-06",
+      "close": "167.00",
+      "volume": "11250"
+    },
+    {
+      "trade_date": "2026-04-02",
+      "close": "169.00",
+      "volume": "4500"
+    },
+    {
+      "trade_date": "2026-04-01",
+      "close": "169.00",
+      "volume": "14250"
+    },
+    {
+      "trade_date": "2026-03-30",
+      "close": "160.00",
+      "volume": "24750"
+    },
+    {
+      "trade_date": "2026-03-27",
+      "close": "161.45",
+      "volume": "51750"
+    },
+    {
+      "trade_date": "2026-03-25",
+      "close": "164.00",
+      "volume": "14250"
+    },
+    {
+      "trade_date": "2026-03-24",
+      "close": "164.00",
+      "volume": "10500"
+    },
+    {
+      "trade_date": "2026-03-23",
+      "close": "157.55",
+      "volume": "56250"
+    },
+    {
+      "trade_date": "2026-03-20",
+      "close": "163.50",
+      "volume": "24000"
+    },
+    {
+      "trade_date": "2026-03-19",
+      "close": "163.05",
+      "volume": "18000"
+    },
+    {
+      "trade_date": "2026-03-18",
+      "close": "170.65",
+      "volume": "12000"
+    },
+    {
+      "trade_date": "2026-03-17",
+      "close": "171.05",
+      "volume": "2250"
+    },
+    {
+      "trade_date": "2026-03-16",
+      "close": "172.30",
+      "volume": "8250"
+    },
+    {
+      "trade_date": "2026-03-13",
+      "close": "177.10",
+      "volume": "33000"
+    },
+    {
+      "trade_date": "2026-03-12",
+      "close": "177.85",
+      "volume": "2250"
+    },
+    {
+      "trade_date": "2026-03-11",
+      "close": "174.65",
+      "volume": "13500"
+    },
+    {
+      "trade_date": "2026-03-10",
+      "close": "171.20",
+      "volume": "29250"
+    },
+    {
+      "trade_date": "2026-03-09",
+      "close": "175.45",
+      "volume": "68250"
+    },
+    {
+      "trade_date": "2026-03-06",
+      "close": "165.15",
+      "volume": "43500"
+    },
+    {
+      "trade_date": "2026-03-05",
+      "close": "161.95",
+      "volume": "12000"
+    },
+    {
+      "trade_date": "2026-03-04",
+      "close": "164.20",
+      "volume": "16500"
+    },
+    {
+      "trade_date": "2026-03-02",
+      "close": "161.60",
+      "volume": "38250"
+    },
+    {
+      "trade_date": "2026-02-27",
+      "close": "163.05",
+      "volume": "23250"
+    },
+    {
+      "trade_date": "2026-02-26",
+      "close": "156.00",
+      "volume": "35250"
+    },
+    {
+      "trade_date": "2026-02-25",
+      "close": "156.10",
+      "volume": "10500"
+    },
+    {
+      "trade_date": "2026-02-24",
+      "close": "157.75",
+      "volume": "23250"
+    },
+    {
+      "trade_date": "2026-02-23",
+      "close": "161.30",
+      "volume": "6750"
+    },
+    {
+      "trade_date": "2026-02-20",
+      "close": "160.00",
+      "volume": "2250"
+    },
+    {
+      "trade_date": "2026-02-19",
+      "close": "161.65",
+      "volume": "2250"
+    },
+    {
+      "trade_date": "2026-02-18",
+      "close": "161.45",
+      "volume": "13500"
+    },
+    {
+      "trade_date": "2026-02-17",
+      "close": "165.00",
+      "volume": "3750"
+    },
+    {
+      "trade_date": "2026-02-16",
+      "close": "167.60",
+      "volume": "6750"
+    },
+    {
+      "trade_date": "2026-02-13",
+      "close": "166.00",
+      "volume": "12000"
+    },
+    {
+      "trade_date": "2026-02-12",
+      "close": "170.00",
+      "volume": "1500"
+    },
+    {
+      "trade_date": "2026-02-11",
+      "close": "170.00",
+      "volume": "7500"
+    },
+    {
+      "trade_date": "2026-02-10",
+      "close": "171.30",
+      "volume": "1500"
+    },
+    {
+      "trade_date": "2026-02-09",
+      "close": "172.15",
+      "volume": "7500"
+    },
+    {
+      "trade_date": "2026-02-06",
+      "close": "172.05",
+      "volume": "18000"
+    },
+    {
+      "trade_date": "2026-02-05",
+      "close": "166.70",
+      "volume": "22500"
+    },
+    {
+      "trade_date": "2026-02-04",
+      "close": "170.10",
+      "volume": "5250"
+    },
+    {
+      "trade_date": "2026-02-03",
+      "close": "171.90",
+      "volume": "23250"
+    },
+    {
+      "trade_date": "2026-02-02",
+      "close": "174.55",
+      "volume": "4500"
+    },
+    {
+      "trade_date": "2026-01-30",
+      "close": "175.75",
+      "volume": "9750"
+    },
+    {
+      "trade_date": "2026-01-29",
+      "close": "170.50",
+      "volume": "27750"
+    },
+    {
+      "trade_date": "2026-01-28",
+      "close": "165.10",
+      "volume": "11250"
+    },
+    {
+      "trade_date": "2026-01-27",
+      "close": "169.35",
+      "volume": "12000"
+    },
+    {
+      "trade_date": "2026-01-23",
+      "close": "169.35",
+      "volume": "36000"
+    },
+    {
+      "trade_date": "2026-01-22",
+      "close": "161.70",
+      "volume": "23250"
+    },
+    {
+      "trade_date": "2026-01-21",
+      "close": "163.85",
+      "volume": "51750"
+    },
+    {
+      "trade_date": "2026-01-20",
+      "close": "159.75",
+      "volume": "46500"
+    },
+    {
+      "trade_date": "2026-01-19",
+      "close": "159.65",
+      "volume": "22500"
+    },
+    {
+      "trade_date": "2026-01-16",
+      "close": "163.40",
+      "volume": "4500"
+    },
+    {
+      "trade_date": "2026-01-14",
+      "close": "163.80",
+      "volume": "19500"
+    },
+    {
+      "trade_date": "2026-01-13",
+      "close": "160.15",
+      "volume": "11250"
+    },
+    {
+      "trade_date": "2026-01-12",
+      "close": "165.10",
+      "volume": "28500"
+    },
+    {
+      "trade_date": "2026-01-09",
+      "close": "167.15",
+      "volume": "9750"
+    },
+    {
+      "trade_date": "2026-01-08",
+      "close": "169.00",
+      "volume": "33000"
+    },
+    {
+      "trade_date": "2026-01-07",
+      "close": "175.50",
+      "volume": "14250"
+    },
+    {
+      "trade_date": "2026-01-06",
+      "close": "178.00",
+      "volume": "6750"
+    },
+    {
+      "trade_date": "2026-01-05",
+      "close": "177.50",
+      "volume": "13500"
+    },
+    {
+      "trade_date": "2026-01-02",
+      "close": "172.00",
+      "volume": "15750"
+    },
+    {
+      "trade_date": "2026-01-01",
+      "close": "164.95",
+      "volume": "27000"
+    },
+    {
+      "trade_date": "2025-12-31",
+      "close": "163.00",
+      "volume": "32250"
+    },
+    {
+      "trade_date": "2025-12-30",
+      "close": "162.60",
+      "volume": "27750"
+    },
+    {
+      "trade_date": "2025-12-29",
+      "close": "165.50",
+      "volume": "15000"
+    },
+    {
+      "trade_date": "2025-12-26",
+      "close": "169.00",
+      "volume": "19500"
+    },
+    {
+      "trade_date": "2025-12-24",
+      "close": "167.90",
+      "volume": "24000"
+    },
+    {
+      "trade_date": "2025-12-23",
+      "close": "170.00",
+      "volume": "11250"
+    },
+    {
+      "trade_date": "2025-12-22",
+      "close": "171.45",
+      "volume": "31500"
+    },
+    {
+      "trade_date": "2025-12-19",
+      "close": "172.70",
+      "volume": "33750"
+    },
+    {
+      "trade_date": "2025-12-18",
+      "close": "174.00",
+      "volume": "20250"
+    },
+    {
+      "trade_date": "2025-12-17",
+      "close": "175.90",
+      "volume": "15750"
+    },
+    {
+      "trade_date": "2025-12-16",
+      "close": "178.60",
+      "volume": "12000"
+    },
+    {
+      "trade_date": "2025-12-15",
+      "close": "184.25",
+      "volume": "12000"
+    },
+    {
+      "trade_date": "2025-12-12",
+      "close": "192.00",
+      "volume": "36750"
+    },
+    {
+      "trade_date": "2025-12-11",
+      "close": "196.00",
+      "volume": "12750"
+    },
+    {
+      "trade_date": "2025-12-10",
+      "close": "196.00",
+      "volume": "24750"
+    },
+    {
+      "trade_date": "2025-12-09",
+      "close": "201.15",
+      "volume": "57000"
+    },
+    {
+      "trade_date": "2025-12-08",
+      "close": "191.60",
+      "volume": "24000"
+    },
+    {
+      "trade_date": "2025-12-05",
+      "close": "184.50",
+      "volume": "41250"
+    },
+    {
+      "trade_date": "2025-12-04",
+      "close": "175.75",
+      "volume": "25500"
+    },
+    {
+      "trade_date": "2025-12-03",
+      "close": "185.00",
+      "volume": "11250"
+    },
+    {
+      "trade_date": "2025-12-02",
+      "close": "188.00",
+      "volume": "32250"
+    },
+    {
+      "trade_date": "2025-12-01",
+      "close": "184.40",
+      "volume": "15750"
+    },
+    {
+      "trade_date": "2025-11-28",
+      "close": "177.60",
+      "volume": "21750"
+    },
+    {
+      "trade_date": "2025-11-27",
+      "close": "185.05",
+      "volume": "51750"
+    },
+    {
+      "trade_date": "2025-11-26",
+      "close": "192.90",
+      "volume": "42000"
+    },
+    {
+      "trade_date": "2025-11-25",
+      "close": "195.00",
+      "volume": "40500"
+    },
+    {
+      "trade_date": "2025-11-24",
+      "close": "190.00",
+      "volume": "41250"
+    },
+    {
+      "trade_date": "2025-11-21",
+      "close": "199.95",
+      "volume": "13500"
+    },
+    {
+      "trade_date": "2025-11-20",
+      "close": "201.55",
+      "volume": "17250"
+    },
+    {
+      "trade_date": "2025-11-19",
+      "close": "206.95",
+      "volume": "15750"
+    },
+    {
+      "trade_date": "2025-11-18",
+      "close": "206.50",
+      "volume": "12750"
+    },
+    {
+      "trade_date": "2025-11-17",
+      "close": "204.75",
+      "volume": "24750"
+    },
+    {
+      "trade_date": "2025-11-14",
+      "close": "208.65",
+      "volume": "11250"
+    },
+    {
+      "trade_date": "2025-11-13",
+      "close": "211.35",
+      "volume": "23250"
+    },
+    {
+      "trade_date": "2025-11-12",
+      "close": "217.95",
+      "volume": "20250"
+    },
+    {
+      "trade_date": "2025-11-11",
+      "close": "218.05",
+      "volume": "26250"
+    },
+    {
+      "trade_date": "2025-11-10",
+      "close": "218.80",
+      "volume": "41250"
+    },
+    {
+      "trade_date": "2025-11-07",
+      "close": "213.00",
+      "volume": "24000"
+    },
+    {
+      "trade_date": "2025-11-06",
+      "close": "206.15",
+      "volume": "45000"
+    },
+    {
+      "trade_date": "2025-11-04",
+      "close": "217.00",
+      "volume": "21000"
+    },
+    {
+      "trade_date": "2025-11-03",
+      "close": "213.00",
+      "volume": "72000"
+    },
+    {
+      "trade_date": "2025-10-31",
+      "close": "207.60",
+      "volume": "78000"
+    },
+    {
+      "trade_date": "2025-10-30",
+      "close": "218.50",
+      "volume": "51000"
+    },
+    {
+      "trade_date": "2025-10-29",
+      "close": "224.50",
+      "volume": "114000"
+    },
+    {
+      "trade_date": "2025-10-28",
+      "close": "213.85",
+      "volume": "135000"
+    },
+    {
+      "trade_date": "2025-10-27",
+      "close": "203.70",
+      "volume": "30000"
+    },
+    {
+      "trade_date": "2025-10-24",
+      "close": "194.00",
+      "volume": "153000"
+    },
+    {
+      "trade_date": "2025-10-23",
+      "close": "199.55",
+      "volume": "318000"
+    },
+    {
+      "trade_date": "2025-10-21",
+      "close": "201.75",
+      "volume": "15000"
+    },
+    {
+      "trade_date": "2025-10-20",
+      "close": "192.15",
+      "volume": "18000"
+    },
+    {
+      "trade_date": "2025-10-17",
+      "close": "183.00",
+      "volume": "3000"
+    },
+    {
+      "trade_date": "2025-10-16",
+      "close": "174.30",
+      "volume": "36000"
+    },
+    {
+      "trade_date": "2025-10-15",
+      "close": "166.00",
+      "volume": "54000"
+    },
+    {
+      "trade_date": "2025-10-14",
+      "close": "159.95",
+      "volume": "51000"
+    },
+    {
+      "trade_date": "2025-10-13",
+      "close": "164.10",
+      "volume": "78000"
+    },
+    {
+      "trade_date": "2025-10-10",
+      "close": "156.30",
+      "volume": "54000"
+    },
+    {
+      "trade_date": "2025-10-09",
+      "close": "161.80",
+      "volume": "87000"
+    },
+    {
+      "trade_date": "2025-10-08",
+      "close": "164.75",
+      "volume": "33000"
+    },
+    {
+      "trade_date": "2025-10-07",
+      "close": "166.30",
+      "volume": "54000"
+    },
+    {
+      "trade_date": "2025-10-06",
+      "close": "168.00",
+      "volume": "42000"
+    },
+    {
+      "trade_date": "2025-10-03",
+      "close": "168.00",
+      "volume": "39000"
+    },
+    {
+      "trade_date": "2025-10-01",
+      "close": "164.50",
+      "volume": "111000"
+    },
+    {
+      "trade_date": "2025-09-30",
+      "close": "170.10",
+      "volume": "90000"
+    },
+    {
+      "trade_date": "2025-09-29",
+      "close": "174.80",
+      "volume": "99000"
+    },
+    {
+      "trade_date": "2025-09-26",
+      "close": "184.00",
+      "volume": "168000"
+    },
+    {
+      "trade_date": "2025-09-25",
+      "close": "175.25",
+      "volume": "60000"
+    },
+    {
+      "trade_date": "2025-09-24",
+      "close": "166.95",
+      "volume": "81000"
+    },
+    {
+      "trade_date": "2025-09-23",
+      "close": "159.00",
+      "volume": "30000"
+    },
+    {
+      "trade_date": "2025-09-22",
+      "close": "155.00",
+      "volume": "15000"
+    },
+    {
+      "trade_date": "2025-09-19",
+      "close": "150.15",
+      "volume": "36000"
+    },
+    {
+      "trade_date": "2025-09-18",
+      "close": "143.00",
+      "volume": "63000"
+    },
+    {
+      "trade_date": "2025-09-17",
+      "close": "148.80",
+      "volume": "63000"
+    },
+    {
+      "trade_date": "2025-09-16",
+      "close": "156.60",
+      "volume": "33000"
+    },
+    {
+      "trade_date": "2025-09-15",
+      "close": "164.00",
+      "volume": "60000"
+    },
+    {
+      "trade_date": "2025-09-12",
+      "close": "159.80",
+      "volume": "42000"
+    },
+    {
+      "trade_date": "2025-09-11",
+      "close": "158.00",
+      "volume": "45000"
+    },
+    {
+      "trade_date": "2025-09-10",
+      "close": "158.50",
+      "volume": "135000"
+    },
+    {
+      "trade_date": "2025-09-09",
+      "close": "153.75",
+      "volume": "183000"
+    },
+    {
+      "trade_date": "2025-09-08",
+      "close": "161.80",
+      "volume": "189000"
+    },
+    {
+      "trade_date": "2025-09-05",
+      "close": "154.10",
+      "volume": "240000"
+    },
+    {
+      "trade_date": "2025-09-04",
+      "close": "146.80",
+      "volume": "987000"
+    },
+    {
+      "trade_date": "2025-09-03",
+      "close": "141.20",
+      "volume": "42000"
+    },
+    {
+      "trade_date": "2025-09-02",
+      "close": "134.50",
+      "volume": "162000"
+    },
+    {
+      "trade_date": "2025-09-01",
+      "close": "122.30",
+      "volume": "180000"
+    },
+    {
+      "trade_date": "2025-08-29",
+      "close": "111.20",
+      "volume": "63000"
+    },
+    {
+      "trade_date": "2025-08-28",
+      "close": "109.55",
+      "volume": "48000"
+    },
+    {
+      "trade_date": "2025-08-26",
+      "close": "110.75",
+      "volume": "174000"
+    },
+    {
+      "trade_date": "2025-08-25",
+      "close": "107.45",
+      "volume": "78000"
+    },
+    {
+      "trade_date": "2025-08-22",
+      "close": "107.65",
+      "volume": "117000"
+    },
+    {
+      "trade_date": "2025-08-21",
+      "close": "108.00",
+      "volume": "84000"
+    },
+    {
+      "trade_date": "2025-08-20",
+      "close": "107.90",
+      "volume": "171000"
+    },
+    {
+      "trade_date": "2025-08-19",
+      "close": "111.25",
+      "volume": "84000"
+    },
+    {
+      "trade_date": "2025-08-18",
+      "close": "110.20",
+      "volume": "117000"
+    },
+    {
+      "trade_date": "2025-08-14",
+      "close": "111.50",
+      "volume": "192000"
+    },
+    {
+      "trade_date": "2025-08-13",
+      "close": "113.50",
+      "volume": "111000"
+    },
+    {
+      "trade_date": "2025-08-12",
+      "close": "114.50",
+      "volume": "99000"
+    },
+    {
+      "trade_date": "2025-08-11",
+      "close": "112.45",
+      "volume": "342000"
+    },
+    {
+      "trade_date": "2025-08-08",
+      "close": "120.95",
+      "volume": "231000"
+    },
+    {
+      "trade_date": "2025-08-07",
+      "close": "117.75",
+      "volume": "162000"
+    }
+  ],
+  "adjusted_prices": [
+    {
+      "trade_date": "2026-10-27",
+      "close": "356.50"
+    },
+    {
+      "trade_date": "2026-10-26",
+      "close": "339.55"
+    },
+    {
+      "trade_date": "2026-10-23",
+      "close": "357.40"
+    },
+    {
+      "trade_date": "2026-10-22",
+      "close": "376.20"
+    },
+    {
+      "trade_date": "2026-10-21",
+      "close": "396.00"
+    },
+    {
+      "trade_date": "2026-10-19",
+      "close": "412.00"
+    },
+    {
+      "trade_date": "2026-10-16",
+      "close": "417.65"
+    },
+    {
+      "trade_date": "2026-10-15",
+      "close": "402.80"
+    },
+    {
+      "trade_date": "2026-10-14",
+      "close": "424.00"
+    },
+    {
+      "trade_date": "2026-10-13",
+      "close": "419.35"
+    },
+    {
+      "trade_date": "2026-10-12",
+      "close": "426.00"
+    },
+    {
+      "trade_date": "2026-10-09",
+      "close": "430.00"
+    },
+    {
+      "trade_date": "2026-10-08",
+      "close": "439.00"
+    },
+    {
+      "trade_date": "2026-10-07",
+      "close": "443.25"
+    },
+    {
+      "trade_date": "2026-10-06",
+      "close": "430.20"
+    },
+    {
+      "trade_date": "2026-10-05",
+      "close": "452.00"
+    },
+    {
+      "trade_date": "2026-10-01",
+      "close": "443.00"
+    },
+    {
+      "trade_date": "2026-09-30",
+      "close": "422.05"
+    },
+    {
+      "trade_date": "2026-09-29",
+      "close": "412.35"
+    },
+    {
+      "trade_date": "2026-09-28",
+      "close": "432.40"
+    },
+    {
+      "trade_date": "2026-09-25",
+      "close": "414.95"
+    },
+    {
+      "trade_date": "2026-09-24",
+      "close": "410.00"
+    },
+    {
+      "trade_date": "2026-09-23",
+      "close": "402.10"
+    },
+    {
+      "trade_date": "2026-09-22",
+      "close": "410.30"
+    },
+    {
+      "trade_date": "2026-09-21",
+      "close": "402.30"
+    },
+    {
+      "trade_date": "2026-09-18",
+      "close": "394.45"
+    },
+    {
+      "trade_date": "2026-09-17",
+      "close": "386.75"
+    },
+    {
+      "trade_date": "2026-09-16",
+      "close": "379.20"
+    },
+    {
+      "trade_date": "2026-09-15",
+      "close": "386.90"
+    },
+    {
+      "trade_date": "2026-09-11",
+      "close": "394.75"
+    },
+    {
+      "trade_date": "2026-09-10",
+      "close": "387.05"
+    },
+    {
+      "trade_date": "2026-09-09",
+      "close": "379.50"
+    },
+    {
+      "trade_date": "2026-09-08",
+      "close": "372.10"
+    },
+    {
+      "trade_date": "2026-09-07",
+      "close": "364.85"
+    },
+    {
+      "trade_date": "2026-09-04",
+      "close": "357.70"
+    },
+    {
+      "trade_date": "2026-09-03",
+      "close": "365.00"
+    },
+    {
+      "trade_date": "2026-09-02",
+      "close": "370.10"
+    },
+    {
+      "trade_date": "2026-09-01",
+      "close": "362.85"
+    },
+    {
+      "trade_date": "2026-08-31",
+      "close": "355.75"
+    },
+    {
+      "trade_date": "2026-08-28",
+      "close": "363.00"
+    },
+    {
+      "trade_date": "2026-08-27",
+      "close": "369.35"
+    },
+    {
+      "trade_date": "2026-08-26",
+      "close": "376.85"
+    },
+    {
+      "trade_date": "2026-08-25",
+      "close": "384.50"
+    },
+    {
+      "trade_date": "2026-08-24",
+      "close": "392.30"
+    },
+    {
+      "trade_date": "2026-08-21",
+      "close": "400.30"
+    },
+    {
+      "trade_date": "2026-08-20",
+      "close": "408.45"
+    },
+    {
+      "trade_date": "2026-08-19",
+      "close": "389.00"
+    },
+    {
+      "trade_date": "2026-08-18",
+      "close": "384.55"
+    },
+    {
+      "trade_date": "2026-08-17",
+      "close": "366.25"
+    },
+    {
+      "trade_date": "2026-08-14",
+      "close": "348.85"
+    },
+    {
+      "trade_date": "2026-08-13",
+      "close": "348.85"
+    },
+    {
+      "trade_date": "2026-08-12",
+      "close": "354.00"
+    },
+    {
+      "trade_date": "2026-08-11",
+      "close": "342.00"
+    },
+    {
+      "trade_date": "2026-08-10",
+      "close": "350.00"
+    },
+    {
+      "trade_date": "2026-08-07",
+      "close": "339.00"
+    },
+    {
+      "trade_date": "2026-08-06",
+      "close": "340.00"
+    },
+    {
+      "trade_date": "2026-08-05",
+      "close": "345.00"
+    },
+    {
+      "trade_date": "2026-08-04",
+      "close": "340.70"
+    },
+    {
+      "trade_date": "2026-08-03",
+      "close": "324.50"
+    },
+    {
+      "trade_date": "2026-07-31",
+      "close": "319.00"
+    },
+    {
+      "trade_date": "2026-07-30",
+      "close": "305.00"
+    },
+    {
+      "trade_date": "2026-07-29",
+      "close": "303.75"
+    },
+    {
+      "trade_date": "2026-07-28",
+      "close": "298.00"
+    },
+    {
+      "trade_date": "2026-07-27",
+      "close": "292.05"
+    },
+    {
+      "trade_date": "2026-07-24",
+      "close": "296.55"
+    },
+    {
+      "trade_date": "2026-07-23",
+      "close": "288.50"
+    },
+    {
+      "trade_date": "2026-07-22",
+      "close": "288.20"
+    },
+    {
+      "trade_date": "2026-07-21",
+      "close": "292.15"
+    },
+    {
+      "trade_date": "2026-07-20",
+      "close": "300.00"
+    },
+    {
+      "trade_date": "2026-07-17",
+      "close": "297.00"
+    },
+    {
+      "trade_date": "2026-07-16",
+      "close": "302.00"
+    },
+    {
+      "trade_date": "2026-07-15",
+      "close": "298.00"
+    },
+    {
+      "trade_date": "2026-07-14",
+      "close": "302.25"
+    },
+    {
+      "trade_date": "2026-07-13",
+      "close": "295.95"
+    },
+    {
+      "trade_date": "2026-07-10",
+      "close": "283.10"
+    },
+    {
+      "trade_date": "2026-07-09",
+      "close": "286.55"
+    },
+    {
+      "trade_date": "2026-07-08",
+      "close": "291.75"
+    },
+    {
+      "trade_date": "2026-07-07",
+      "close": "303.00"
+    },
+    {
+      "trade_date": "2026-07-06",
+      "close": "288.70"
+    },
+    {
+      "trade_date": "2026-07-03",
+      "close": "275.00"
+    },
+    {
+      "trade_date": "2026-07-02",
+      "close": "281.80"
+    },
+    {
+      "trade_date": "2026-07-01",
+      "close": "276.00"
+    },
+    {
+      "trade_date": "2026-06-30",
+      "close": "278.00"
+    },
+    {
+      "trade_date": "2026-06-29",
+      "close": "268.00"
+    },
+    {
+      "trade_date": "2026-06-25",
+      "close": "279.35"
+    },
+    {
+      "trade_date": "2026-06-24",
+      "close": "273.75"
+    },
+    {
+      "trade_date": "2026-06-23",
+      "close": "284.70"
+    },
+    {
+      "trade_date": "2026-06-22",
+      "close": "284.85"
+    },
+    {
+      "trade_date": "2026-06-19",
+      "close": "274.00"
+    },
+    {
+      "trade_date": "2026-06-18",
+      "close": "272.00"
+    },
+    {
+      "trade_date": "2026-06-17",
+      "close": "259.05"
+    },
+    {
+      "trade_date": "2026-06-16",
+      "close": "272.65"
+    },
+    {
+      "trade_date": "2026-06-15",
+      "close": "284.05"
+    },
+    {
+      "trade_date": "2026-06-12",
+      "close": "274.60"
+    },
+    {
+      "trade_date": "2026-06-11",
+      "close": "261.55"
+    },
+    {
+      "trade_date": "2026-06-10",
+      "close": "252.85"
+    },
+    {
+      "trade_date": "2026-06-09",
+      "close": "240.85"
+    },
+    {
+      "trade_date": "2026-06-08",
+      "close": "229.40"
+    },
+    {
+      "trade_date": "2026-06-05",
+      "close": "231.00"
+    },
+    {
+      "trade_date": "2026-06-04",
+      "close": "231.20"
+    },
+    {
+      "trade_date": "2026-06-03",
+      "close": "222.60"
+    },
+    {
+      "trade_date": "2026-06-02",
+      "close": "212.00"
+    },
+    {
+      "trade_date": "2026-06-01",
+      "close": "213.40"
+    },
+    {
+      "trade_date": "2026-05-29",
+      "close": "211.35"
+    },
+    {
+      "trade_date": "2026-05-27",
+      "close": "215.10"
+    },
+    {
+      "trade_date": "2026-05-26",
+      "close": "222.95"
+    },
+    {
+      "trade_date": "2026-05-25",
+      "close": "212.35"
+    },
+    {
+      "trade_date": "2026-05-22",
+      "close": "202.25"
+    },
+    {
+      "trade_date": "2026-05-21",
+      "close": "198.50"
+    },
+    {
+      "trade_date": "2026-05-20",
+      "close": "194.30"
+    },
+    {
+      "trade_date": "2026-05-19",
+      "close": "199.50"
+    },
+    {
+      "trade_date": "2026-05-18",
+      "close": "204.10"
+    },
+    {
+      "trade_date": "2026-05-15",
+      "close": "213.40"
+    },
+    {
+      "trade_date": "2026-05-14",
+      "close": "214.55"
+    },
+    {
+      "trade_date": "2026-05-13",
+      "close": "207.40"
+    },
+    {
+      "trade_date": "2026-05-12",
+      "close": "201.85"
+    },
+    {
+      "trade_date": "2026-05-11",
+      "close": "204.10"
+    },
+    {
+      "trade_date": "2026-05-08",
+      "close": "194.40"
+    },
+    {
+      "trade_date": "2026-05-07",
+      "close": "185.15"
+    },
+    {
+      "trade_date": "2026-05-06",
+      "close": "190.60"
+    },
+    {
+      "trade_date": "2026-05-05",
+      "close": "196.95"
+    },
+    {
+      "trade_date": "2026-05-04",
+      "close": "208.50"
+    },
+    {
+      "trade_date": "2026-04-30",
+      "close": "231.65"
+    },
+    {
+      "trade_date": "2026-04-29",
+      "close": "248.30"
+    },
+    {
+      "trade_date": "2026-04-28",
+      "close": "211.20"
+    },
+    {
+      "trade_date": "2026-04-27",
+      "close": "206.45"
+    },
+    {
+      "trade_date": "2026-04-24",
+      "close": "172.05"
+    },
+    {
+      "trade_date": "2026-04-23",
+      "close": "176.45"
+    },
+    {
+      "trade_date": "2026-04-22",
+      "close": "175.00"
+    },
+    {
+      "trade_date": "2026-04-21",
+      "close": "174.35"
+    },
+    {
+      "trade_date": "2026-04-20",
+      "close": "173.00"
+    },
+    {
+      "trade_date": "2026-04-17",
+      "close": "170.50"
+    },
+    {
+      "trade_date": "2026-04-16",
+      "close": "164.65"
+    },
+    {
+      "trade_date": "2026-04-15",
+      "close": "164.50"
+    },
+    {
+      "trade_date": "2026-04-13",
+      "close": "163.00"
+    },
+    {
+      "trade_date": "2026-04-10",
+      "close": "159.90"
+    },
+    {
+      "trade_date": "2026-04-09",
+      "close": "167.20"
+    },
+    {
+      "trade_date": "2026-04-08",
+      "close": "167.30"
+    },
+    {
+      "trade_date": "2026-04-07",
+      "close": "167.50"
+    },
+    {
+      "trade_date": "2026-04-06",
+      "close": "167.00"
+    },
+    {
+      "trade_date": "2026-04-02",
+      "close": "169.00"
+    },
+    {
+      "trade_date": "2026-04-01",
+      "close": "169.00"
+    },
+    {
+      "trade_date": "2026-03-30",
+      "close": "160.00"
+    },
+    {
+      "trade_date": "2026-03-27",
+      "close": "161.45"
+    },
+    {
+      "trade_date": "2026-03-25",
+      "close": "164.00"
+    },
+    {
+      "trade_date": "2026-03-24",
+      "close": "164.00"
+    },
+    {
+      "trade_date": "2026-03-23",
+      "close": "157.55"
+    },
+    {
+      "trade_date": "2026-03-20",
+      "close": "163.50"
+    },
+    {
+      "trade_date": "2026-03-19",
+      "close": "163.05"
+    },
+    {
+      "trade_date": "2026-03-18",
+      "close": "170.65"
+    },
+    {
+      "trade_date": "2026-03-17",
+      "close": "171.05"
+    },
+    {
+      "trade_date": "2026-03-16",
+      "close": "172.30"
+    },
+    {
+      "trade_date": "2026-03-13",
+      "close": "177.10"
+    },
+    {
+      "trade_date": "2026-03-12",
+      "close": "177.85"
+    },
+    {
+      "trade_date": "2026-03-11",
+      "close": "174.65"
+    },
+    {
+      "trade_date": "2026-03-10",
+      "close": "171.20"
+    },
+    {
+      "trade_date": "2026-03-09",
+      "close": "175.45"
+    },
+    {
+      "trade_date": "2026-03-06",
+      "close": "165.15"
+    },
+    {
+      "trade_date": "2026-03-05",
+      "close": "161.95"
+    },
+    {
+      "trade_date": "2026-03-04",
+      "close": "164.20"
+    },
+    {
+      "trade_date": "2026-03-02",
+      "close": "161.60"
+    },
+    {
+      "trade_date": "2026-02-27",
+      "close": "163.05"
+    },
+    {
+      "trade_date": "2026-02-26",
+      "close": "156.00"
+    },
+    {
+      "trade_date": "2026-02-25",
+      "close": "156.10"
+    },
+    {
+      "trade_date": "2026-02-24",
+      "close": "157.75"
+    },
+    {
+      "trade_date": "2026-02-23",
+      "close": "161.30"
+    },
+    {
+      "trade_date": "2026-02-20",
+      "close": "160.00"
+    },
+    {
+      "trade_date": "2026-02-19",
+      "close": "161.65"
+    },
+    {
+      "trade_date": "2026-02-18",
+      "close": "161.45"
+    },
+    {
+      "trade_date": "2026-02-17",
+      "close": "165.00"
+    },
+    {
+      "trade_date": "2026-02-16",
+      "close": "167.60"
+    },
+    {
+      "trade_date": "2026-02-13",
+      "close": "166.00"
+    },
+    {
+      "trade_date": "2026-02-12",
+      "close": "170.00"
+    },
+    {
+      "trade_date": "2026-02-11",
+      "close": "170.00"
+    },
+    {
+      "trade_date": "2026-02-10",
+      "close": "171.30"
+    },
+    {
+      "trade_date": "2026-02-09",
+      "close": "172.15"
+    },
+    {
+      "trade_date": "2026-02-06",
+      "close": "172.05"
+    },
+    {
+      "trade_date": "2026-02-05",
+      "close": "166.70"
+    },
+    {
+      "trade_date": "2026-02-04",
+      "close": "170.10"
+    },
+    {
+      "trade_date": "2026-02-03",
+      "close": "171.90"
+    },
+    {
+      "trade_date": "2026-02-02",
+      "close": "174.55"
+    },
+    {
+      "trade_date": "2026-01-30",
+      "close": "175.75"
+    },
+    {
+      "trade_date": "2026-01-29",
+      "close": "170.50"
+    },
+    {
+      "trade_date": "2026-01-28",
+      "close": "165.10"
+    },
+    {
+      "trade_date": "2026-01-27",
+      "close": "169.35"
+    },
+    {
+      "trade_date": "2026-01-23",
+      "close": "169.35"
+    },
+    {
+      "trade_date": "2026-01-22",
+      "close": "161.70"
+    },
+    {
+      "trade_date": "2026-01-21",
+      "close": "163.85"
+    },
+    {
+      "trade_date": "2026-01-20",
+      "close": "159.75"
+    },
+    {
+      "trade_date": "2026-01-19",
+      "close": "159.65"
+    },
+    {
+      "trade_date": "2026-01-16",
+      "close": "163.40"
+    },
+    {
+      "trade_date": "2026-01-14",
+      "close": "163.80"
+    },
+    {
+      "trade_date": "2026-01-13",
+      "close": "160.15"
+    },
+    {
+      "trade_date": "2026-01-12",
+      "close": "165.10"
+    },
+    {
+      "trade_date": "2026-01-09",
+      "close": "167.15"
+    },
+    {
+      "trade_date": "2026-01-08",
+      "close": "169.00"
+    },
+    {
+      "trade_date": "2026-01-07",
+      "close": "175.50"
+    },
+    {
+      "trade_date": "2026-01-06",
+      "close": "178.00"
+    },
+    {
+      "trade_date": "2026-01-05",
+      "close": "177.50"
+    },
+    {
+      "trade_date": "2026-01-02",
+      "close": "172.00"
+    },
+    {
+      "trade_date": "2026-01-01",
+      "close": "164.95"
+    },
+    {
+      "trade_date": "2025-12-31",
+      "close": "163.00"
+    },
+    {
+      "trade_date": "2025-12-30",
+      "close": "162.60"
+    },
+    {
+      "trade_date": "2025-12-29",
+      "close": "165.50"
+    },
+    {
+      "trade_date": "2025-12-26",
+      "close": "169.00"
+    },
+    {
+      "trade_date": "2025-12-24",
+      "close": "167.90"
+    },
+    {
+      "trade_date": "2025-12-23",
+      "close": "170.00"
+    },
+    {
+      "trade_date": "2025-12-22",
+      "close": "171.45"
+    },
+    {
+      "trade_date": "2025-12-19",
+      "close": "172.70"
+    },
+    {
+      "trade_date": "2025-12-18",
+      "close": "174.00"
+    },
+    {
+      "trade_date": "2025-12-17",
+      "close": "175.90"
+    },
+    {
+      "trade_date": "2025-12-16",
+      "close": "178.60"
+    },
+    {
+      "trade_date": "2025-12-15",
+      "close": "184.25"
+    },
+    {
+      "trade_date": "2025-12-12",
+      "close": "192.00"
+    },
+    {
+      "trade_date": "2025-12-11",
+      "close": "196.00"
+    },
+    {
+      "trade_date": "2025-12-10",
+      "close": "196.00"
+    },
+    {
+      "trade_date": "2025-12-09",
+      "close": "201.15"
+    },
+    {
+      "trade_date": "2025-12-08",
+      "close": "191.60"
+    },
+    {
+      "trade_date": "2025-12-05",
+      "close": "184.50"
+    },
+    {
+      "trade_date": "2025-12-04",
+      "close": "175.75"
+    },
+    {
+      "trade_date": "2025-12-03",
+      "close": "185.00"
+    },
+    {
+      "trade_date": "2025-12-02",
+      "close": "188.00"
+    },
+    {
+      "trade_date": "2025-12-01",
+      "close": "184.40"
+    },
+    {
+      "trade_date": "2025-11-28",
+      "close": "177.60"
+    },
+    {
+      "trade_date": "2025-11-27",
+      "close": "185.05"
+    },
+    {
+      "trade_date": "2025-11-26",
+      "close": "192.90"
+    },
+    {
+      "trade_date": "2025-11-25",
+      "close": "195.00"
+    },
+    {
+      "trade_date": "2025-11-24",
+      "close": "190.00"
+    },
+    {
+      "trade_date": "2025-11-21",
+      "close": "199.95"
+    },
+    {
+      "trade_date": "2025-11-20",
+      "close": "201.55"
+    },
+    {
+      "trade_date": "2025-11-19",
+      "close": "206.95"
+    },
+    {
+      "trade_date": "2025-11-18",
+      "close": "206.50"
+    },
+    {
+      "trade_date": "2025-11-17",
+      "close": "204.75"
+    },
+    {
+      "trade_date": "2025-11-14",
+      "close": "208.65"
+    },
+    {
+      "trade_date": "2025-11-13",
+      "close": "211.35"
+    },
+    {
+      "trade_date": "2025-11-12",
+      "close": "217.95"
+    },
+    {
+      "trade_date": "2025-11-11",
+      "close": "218.05"
+    },
+    {
+      "trade_date": "2025-11-10",
+      "close": "218.80"
+    },
+    {
+      "trade_date": "2025-11-07",
+      "close": "213.00"
+    },
+    {
+      "trade_date": "2025-11-06",
+      "close": "206.15"
+    },
+    {
+      "trade_date": "2025-11-04",
+      "close": "217.00"
+    },
+    {
+      "trade_date": "2025-11-03",
+      "close": "213.00"
+    },
+    {
+      "trade_date": "2025-10-31",
+      "close": "207.60"
+    },
+    {
+      "trade_date": "2025-10-30",
+      "close": "218.50"
+    },
+    {
+      "trade_date": "2025-10-29",
+      "close": "224.50"
+    },
+    {
+      "trade_date": "2025-10-28",
+      "close": "213.85"
+    },
+    {
+      "trade_date": "2025-10-27",
+      "close": "203.70"
+    },
+    {
+      "trade_date": "2025-10-24",
+      "close": "194.00"
+    },
+    {
+      "trade_date": "2025-10-23",
+      "close": "199.55"
+    },
+    {
+      "trade_date": "2025-10-21",
+      "close": "201.75"
+    },
+    {
+      "trade_date": "2025-10-20",
+      "close": "192.15"
+    },
+    {
+      "trade_date": "2025-10-17",
+      "close": "183.00"
+    },
+    {
+      "trade_date": "2025-10-16",
+      "close": "174.30"
+    },
+    {
+      "trade_date": "2025-10-15",
+      "close": "166.00"
+    },
+    {
+      "trade_date": "2025-10-14",
+      "close": "159.95"
+    },
+    {
+      "trade_date": "2025-10-13",
+      "close": "164.10"
+    },
+    {
+      "trade_date": "2025-10-10",
+      "close": "156.30"
+    },
+    {
+      "trade_date": "2025-10-09",
+      "close": "161.80"
+    },
+    {
+      "trade_date": "2025-10-08",
+      "close": "164.75"
+    },
+    {
+      "trade_date": "2025-10-07",
+      "close": "166.30"
+    },
+    {
+      "trade_date": "2025-10-06",
+      "close": "168.00"
+    },
+    {
+      "trade_date": "2025-10-03",
+      "close": "168.00"
+    },
+    {
+      "trade_date": "2025-10-01",
+      "close": "164.50"
+    },
+    {
+      "trade_date": "2025-09-30",
+      "close": "170.10"
+    },
+    {
+      "trade_date": "2025-09-29",
+      "close": "174.80"
+    },
+    {
+      "trade_date": "2025-09-26",
+      "close": "184.00"
+    },
+    {
+      "trade_date": "2025-09-25",
+      "close": "175.25"
+    },
+    {
+      "trade_date": "2025-09-24",
+      "close": "166.95"
+    },
+    {
+      "trade_date": "2025-09-23",
+      "close": "159.00"
+    },
+    {
+      "trade_date": "2025-09-22",
+      "close": "155.00"
+    },
+    {
+      "trade_date": "2025-09-19",
+      "close": "150.15"
+    },
+    {
+      "trade_date": "2025-09-18",
+      "close": "143.00"
+    },
+    {
+      "trade_date": "2025-09-17",
+      "close": "148.80"
+    },
+    {
+      "trade_date": "2025-09-16",
+      "close": "156.60"
+    },
+    {
+      "trade_date": "2025-09-15",
+      "close": "164.00"
+    },
+    {
+      "trade_date": "2025-09-12",
+      "close": "159.80"
+    },
+    {
+      "trade_date": "2025-09-11",
+      "close": "158.00"
+    },
+    {
+      "trade_date": "2025-09-10",
+      "close": "158.50"
+    },
+    {
+      "trade_date": "2025-09-09",
+      "close": "153.75"
+    },
+    {
+      "trade_date": "2025-09-08",
+      "close": "161.80"
+    },
+    {
+      "trade_date": "2025-09-05",
+      "close": "154.10"
+    },
+    {
+      "trade_date": "2025-09-04",
+      "close": "146.80"
+    },
+    {
+      "trade_date": "2025-09-03",
+      "close": "141.20"
+    },
+    {
+      "trade_date": "2025-09-02",
+      "close": "134.50"
+    },
+    {
+      "trade_date": "2025-09-01",
+      "close": "122.30"
+    },
+    {
+      "trade_date": "2025-08-29",
+      "close": "111.20"
+    },
+    {
+      "trade_date": "2025-08-28",
+      "close": "109.55"
+    },
+    {
+      "trade_date": "2025-08-26",
+      "close": "110.75"
+    },
+    {
+      "trade_date": "2025-08-25",
+      "close": "107.45"
+    },
+    {
+      "trade_date": "2025-08-22",
+      "close": "107.65"
+    },
+    {
+      "trade_date": "2025-08-21",
+      "close": "108.00"
+    },
+    {
+      "trade_date": "2025-08-20",
+      "close": "107.90"
+    },
+    {
+      "trade_date": "2025-08-19",
+      "close": "111.25"
+    },
+    {
+      "trade_date": "2025-08-18",
+      "close": "110.20"
+    },
+    {
+      "trade_date": "2025-08-14",
+      "close": "111.50"
+    },
+    {
+      "trade_date": "2025-08-13",
+      "close": "113.50"
+    },
+    {
+      "trade_date": "2025-08-12",
+      "close": "114.50"
+    },
+    {
+      "trade_date": "2025-08-11",
+      "close": "112.45"
+    },
+    {
+      "trade_date": "2025-08-08",
+      "close": "120.95"
+    },
+    {
+      "trade_date": "2025-08-07",
+      "close": "117.75"
+    }
+  ],
+  "market": {
+    "date": "2026-10-27",
+    "close": 356.5,
+    "sma50": 394.234,
+    "sma200": 260.56575,
+    "from_high": -0.21128318584070793,
+    "history_sessions": 300,
+    "raw_turnover_median_60_cr": 0.57396375
+  },
+  "facts": [
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "5800000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "3300000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "2500000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "7.69",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "3.17",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "4.52",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "1100000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "900000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "200000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "16100000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "9700000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "6500000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "142800000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "142800000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "14280000000000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "101800000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "44700000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "55200000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "134900000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "62100000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "72800000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "408200000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "197600000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "210700000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "33100000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "17400000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "17600000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "424400000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "207200000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "217100000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    }
+  ],
+  "holdings": [],
+  "documents": [
+    {
+      "publication_id": "51ad65e7-b6e4-40b2-8e16-bc3dfe714c19",
+      "published_at": "2026-10-24 17:26:36.603000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Board Meeting Intimation for Considering And Approving Un-Audited Financial Results For The Half-Year Ended On 30Th September, 2026.",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/bfd698c1-e35f-4722-be79-905af4a731f1.pdf"
+    },
+    {
+      "publication_id": "f157853c-3ca8-4629-951c-b2f27237093b",
+      "published_at": "2026-10-17 15:34:02.980000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e215151f-fd6b-40f8-916b-24361e6c7985.pdf"
+    },
+    {
+      "publication_id": "b02bb9aa-5c58-46cc-a855-5b48425ba353",
+      "published_at": "2026-10-08 16:53:57.737000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Intimation Of Approval For Manufacturing Of Piping Spools And Basket Strainer Under IBR - 1950 Code",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f93aad04-ff11-406c-b4fd-0c0ae11dfbbd.pdf"
+    },
+    {
+      "publication_id": "fd659f67-9d36-40ac-adf0-5aca875062c9",
+      "published_at": "2026-10-08 13:32:55.917000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Intimation For Enlistment Approval Under Regulation 30 Of SEBI LODR",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/bc00defa-785e-4048-b899-19ff5f4ec987.pdf"
+    },
+    {
+      "publication_id": "3b6d82fc-6f73-44ed-a7e2-63df114ab12c",
+      "published_at": "2026-09-30 18:18:49.110000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9dbcd4ce-ef06-4986-9331-0b3abdf2dc9f.pdf"
+    },
+    {
+      "publication_id": "c9b71b7b-f720-4b8d-a358-78e2d41833df",
+      "published_at": "2026-09-28 14:48:52.057000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Closure of Trading Window",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/34571fd4-dfc7-4fd0-a97e-907a9f713f18.pdf"
+    },
+    {
+      "publication_id": "29fddbd9-1913-44e1-9589-06fa7f9aede0",
+      "published_at": "2026-09-18 11:38:00.583000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/05b732a3-c741-4353-a19e-1f4f6c5afa8b.pdf"
+    },
+    {
+      "publication_id": "2425374b-da43-45ba-a248-eda59dfdaba1",
+      "published_at": "2026-09-07 11:25:43.320000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Outcome",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b7c08402-9265-4abd-8ac1-ab188cdb4ea2.pdf"
+    },
+    {
+      "publication_id": "2596f92d-71ff-4bf5-b622-926e3a90593f",
+      "published_at": "2026-08-25 13:58:07.567000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/41b90d79-444b-4dd9-8adb-5483507db64f.pdf"
+    },
+    {
+      "publication_id": "b6b7fa10-f056-485d-bef6-768a72f759c5",
+      "published_at": "2026-08-20 17:25:58.850000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Shareholder Meeting / Postal Ballot-Outcome of AGM",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dc8ac58e-4f75-4995-8537-8bcfe46a81d9.pdf"
+    },
+    {
+      "publication_id": "26e9e7c6-7929-4da3-8168-eac20b8d0fa5",
+      "published_at": "2026-08-20 17:21:43.943000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Shareholder Meeting / Postal Ballot-Scrutinizer''s Report",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c7a0cade-0e7a-448c-a2f9-1aab197211a4.pdf"
+    },
+    {
+      "publication_id": "c84f9da2-f545-44f6-bf91-6f8f1b7ae8b4",
+      "published_at": "2026-08-20 15:40:23.583000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Shareholder Meeting / Postal Ballot-Outcome of AGM",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/370cbdbc-02e6-4967-9a53-5b9e030b635e.pdf"
+    },
+    {
+      "publication_id": "504a93fe-6b81-4408-b944-8c5e80cd55c8",
+      "published_at": "2026-08-20 13:48:08.463000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3bec0afc-6a1d-41e1-aa12-63288b573cbd.pdf"
+    },
+    {
+      "publication_id": "74b100cd-8306-46f3-aa18-801c5a9ee7a8",
+      "published_at": "2026-07-31 14:48:04.113000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Intimation - Publication Of Notice In Newspaper",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8fe027b6-0f77-48be-bc1a-1af129e15617.pdf"
+    },
+    {
+      "publication_id": "ad12b873-34cd-4bff-bd5c-0eb7a0607213",
+      "published_at": "2026-07-29 14:47:32.597000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Intimation For Cut Off Date And Details Of E-Voting For AGM On 20-08-2026",
+      "category": "Corp. Action",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/240eb97e-3ecc-4a45-b084-ccaeeb940fbe.pdf"
+    },
+    {
+      "publication_id": "58fddcf1-3bfc-44d1-ba15-05329e56bad0",
+      "published_at": "2026-07-29 14:43:26.933000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Reg. 34 (1) Annual Report.",
+      "category": "Others",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ab346720-06f9-41b8-a0aa-c64a7c848ebf.pdf"
+    },
+    {
+      "publication_id": "6c7fb61c-94f3-47c2-a8c2-37e7da8f3ed5",
+      "published_at": "2026-07-29 14:37:03.693000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Shareholder Meeting - AGM On 20/08/2026",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3e97d136-f2f1-4845-93ac-194a8b21ef66.pdf"
+    },
+    {
+      "publication_id": "697a3c70-59dc-4f68-8145-f13847f5977b",
+      "published_at": "2026-07-13 17:55:50.890000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/feab8193-90bf-4cae-bb3e-33e1e7a349fe.pdf"
+    },
+    {
+      "publication_id": "5086df62-1be4-4a32-b75f-1a54a5ca696a",
+      "published_at": "2026-07-08 12:32:49.487000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/73344b82-e8c7-4e63-8f9b-9c76d03f7381.pdf"
+    },
+    {
+      "publication_id": "4feacbac-dd3a-4dbb-bd05-5874478be078",
+      "published_at": "2026-06-05 13:51:20.003000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Shareholder Meeting / Postal Ballot-Outcome of Postal_Ballot",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/85c92273-10cb-4470-b96f-b46d688bb3f2.pdf"
+    },
+    {
+      "publication_id": "e30ddf81-dfbe-4364-b630-a170965192cf",
+      "published_at": "2026-06-05 13:45:41.817000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 -  Shareholder Meeting / Postal Ballot-Scrutinizer\"s Report",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b925ccd6-3d68-4317-ac6c-7dc014dbb8ac.pdf"
+    },
+    {
+      "publication_id": "ca31d4d7-ea34-4d3e-a5fd-884836679f27",
+      "published_at": "2026-06-03 13:21:13.880000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ea1f0a46-6329-40a9-aa3f-6b8f91a776bb.pdf"
+    },
+    {
+      "publication_id": "874261b4-9e1d-4c13-84fa-73a02618ec1b",
+      "published_at": "2026-05-25 14:25:31.870000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Intimation For Enlistment Approval Under Regulation 30 Of SEBI LODR",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/78990344-6c3f-4fcc-b3ed-b0e51e835a10.pdf"
+    },
+    {
+      "publication_id": "d43f36e4-a94a-40d3-8b09-e2b935deb246",
+      "published_at": "2026-05-21 11:10:07.743000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d3f3c689-a23b-4665-b0f2-b208a4457a40.pdf"
+    },
+    {
+      "publication_id": "f40ce0be-d2bb-48d6-ba1f-8bc99c3bfd84",
+      "published_at": "2026-05-14 12:42:21.197000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Disclosure In Terms Of Regulation 30 Of The SEBI (Listing Obligations And Disclosure Requirements) Regulations, 2015",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fedb87c8-7094-49e2-bcd4-1c625be8f044.pdf"
+    },
+    {
+      "publication_id": "71b6a2d5-7e53-4f2c-bcbe-9576b9f53e42",
+      "published_at": "2026-05-07 16:02:57.903000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Announcement under Regulation 30 (LODR)-Investor Presentation",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fb012c25-ef44-46b8-b163-b3ca2a786838.pdf"
+    },
+    {
+      "publication_id": "31e31c8b-b1e8-436a-a8a0-6fd71af3dddb",
+      "published_at": "2026-05-04 17:46:34+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Announcement under Regulation 30 (LODR)-Updates on Acquisition",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/73150fcb-6fb1-4437-ad52-d45a9121d123.pdf"
+    },
+    {
+      "publication_id": "bfdd6c31-bf18-4fbc-9e0f-fb297e29af2d",
+      "published_at": "2026-05-04 17:26:17.603000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Shareholder Meeting / Postal Ballot-Notice of Postal Ballot",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d8e12633-cd2e-499b-abee-5b10bbffbfa9.pdf"
+    },
+    {
+      "publication_id": "429986d6-087a-49c7-bea5-51fd128d208a",
+      "published_at": "2026-05-01 16:47:46.467000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Revised Audited Financial Result For The Half-Year/Year Ended 31St March, 2026.",
+      "category": "Result",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/726d2694-c4ea-45d3-a63e-03de7722f32d.pdf"
+    },
+    {
+      "publication_id": "92f4e8cd-23f2-41ef-a500-e7c5d8c60e7d",
+      "published_at": "2026-04-30 13:19:24.943000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Statement Of Deviation Or Variation In Utilization Of Funds For The Half-Year/Year Ended On 31St March, 2026",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b8a22666-455b-42ec-b097-cd390fcedaa2.pdf"
+    },
+    {
+      "publication_id": "b06815ce-815b-4d3a-ade2-b65ef34580e2",
+      "published_at": "2026-04-30 13:14:41.193000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Board Meeting Outcome for Audited Financial Results For The Year Ended 31St March, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f131daa9-26e3-496d-a17c-616bcba8fd77.pdf"
+    },
+    {
+      "publication_id": "05f6453a-779d-4316-b384-c1c2e573834a",
+      "published_at": "2026-04-30 13:10:00.987000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Audited Financial Results For The Year Ended 31St March, 2026",
+      "category": "Result",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/064b8cce-7fb4-4ea0-a414-eb6378566da9.pdf"
+    },
+    {
+      "publication_id": "cd62598f-671d-42d1-9635-e89884e303de",
+      "published_at": "2026-04-25 11:55:42.847000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Board Meeting Intimation for Considering And Approving Audited Financial Results For The Half-Year/ Financial Year Ended 31St March, 2026.",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/cd65bfda-30ed-4b5e-869b-7c0e4d649fab.pdf"
+    },
+    {
+      "publication_id": "f24ef645-2ffb-4355-a84c-9dd25e2bb60c",
+      "published_at": "2026-04-24 16:59:23.827000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Announcement under Regulation 30 (LODR)-Acquisition",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/15f0d572-ec56-4a05-af79-55908c948a09.pdf"
+    },
+    {
+      "publication_id": "2f3c71c2-7882-4ef2-ac9b-87933fb64090",
+      "published_at": "2026-04-17 14:21:39.777000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9ced0e96-f655-4a00-bff2-655492cd88ce.pdf"
+    },
+    {
+      "publication_id": "353b2e2c-9704-491e-9f18-f6c9686994a4",
+      "published_at": "2026-04-13 15:49:25.687000+05:30",
+      "title": "Cryogenic Ogs Ltd - 544440 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/bf318282-e7f6-43dc-bd2f-ea6c74acc249.pdf"
+    }
+  ],
+  "events": [
+    {
+      "published_at": "2026-09-30 18:18:49.110000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": "50754947",
+      "scale": "UNITS",
+      "currency": "INR",
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM",
+      "quote": "inform you that Cryogenic OGS Limited has received a Purchase Order from a International MNC specialising in",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9dbcd4ce-ef06-4986-9331-0b3abdf2dc9f.pdf",
+      "page_no": 1
+    },
+    {
+      "published_at": "2026-09-18 11:38:00.583000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": "19.36",
+      "scale": "CRORE",
+      "currency": "INR",
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "NON_BINDING",
+      "quote": "The order, valued at USD 2,022,816 (Two Million Twenty-Two Thousand Eight Hundred Sixteen US Dollars i.e. approximately Rs. 19.36 Crores.), has been placed by a Global EPC Company that specializes in bulk liquid storage terminals, refineries, and oil and gas process plants.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/05b732a3-c741-4353-a19e-1f4f6c5afa8b.pdf",
+      "page_no": 3
+    },
+    {
+      "published_at": "2026-09-18 11:38:00.583000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED",
+      "quote": "Vadodara, Gujarat, India \u2014 18th Sept, 2026: Cryogenic OGS Limited (\"Cryogenic OGS\" or \"the Company\"), a Vadodara-based manufacturer of cryogenic, metering, filtration and gauge equipment listed on the BSE SME platform (Scrip Code: 544440), today announced that it has received its first export order, secured independently, in the Piping Spools category, a landmark achievement for the Company's newest business vertical.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/05b732a3-c741-4353-a19e-1f4f6c5afa8b.pdf",
+      "page_no": 3
+    },
+    {
+      "published_at": "2026-09-18 11:38:00.583000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED",
+      "quote": "PRESS RELEASE Cryogenic OGS Limited Secures Its First Independent Export Order in the Piping Spools Segment, Marking Breakthrough Entry into New Business Vertical Milestone order validates the Company's strategic investment in prestigious approvals and certifications built over the past period, and marks the conversion of its Piping Spools vertical from capability to commercial reality.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/05b732a3-c741-4353-a19e-1f4f6c5afa8b.pdf",
+      "page_no": 3
+    },
+    {
+      "published_at": "2026-09-18 11:38:00.583000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED",
+      "quote": "A copy of the press release titled \u201cCryogenic OGS Limited Secures Its First Independent Export Order in the Piping Spools Segment, Marking Breakthrough Entry into New Business Vertical\u201d is enclosed for your information and records.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/05b732a3-c741-4353-a19e-1f4f6c5afa8b.pdf",
+      "page_no": 1
+    },
+    {
+      "published_at": "2026-09-18 11:38:00.583000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED",
+      "quote": "are pleased to inform you that Cryogenic OGS Limited has received a Purchase Order from a Global EPC",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/05b732a3-c741-4353-a19e-1f4f6c5afa8b.pdf",
+      "page_no": 1
+    },
+    {
+      "published_at": "2026-08-20 13:48:08.463000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": "46020000",
+      "scale": "UNITS",
+      "currency": "INR",
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM",
+      "quote": "inform you that Cryogenic OGS Limited has received two Purchase Orders from a specialized Industrial",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3bec0afc-6a1d-41e1-aa12-63288b573cbd.pdf",
+      "page_no": 1
+    },
+    {
+      "published_at": "2026-07-08 12:32:49.487000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": "52700451",
+      "scale": "UNITS",
+      "currency": "INR",
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM",
+      "quote": "Scrip Code: 544440 Subject: Press Release - Receipt of Order by Subsidiary Sir/Madam, Pursuant to Regulation 30 read with Schedule III of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015, we are pleased to inform that our subsidiary, Infravolt Engineering Private Limited, has been awarded an order by Fimer India Private Limited for the supply of Busbar Kits, aggregating to Rs. 5,27,00,451.53/- (Rupees Five Crore Twenty-Seven Lakhs Four Hundred Fifty-one and Fifty-Three paise Only Including GST).",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/73344b82-e8c7-4e63-8f9b-9c76d03f7381.pdf",
+      "page_no": 1
+    }
+  ],
+  "statement_pages": [
+    {
+      "published_at": "2026-05-07 16:02:57.903000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fb012c25-ef44-46b8-b163-b3ca2a786838.pdf",
+      "page_no": 20,
+      "body": "Balance Sheet\nOil and Gas Solutions\n(\u20b9 in Lakhs)\nAs At 30th\nAs At 31st As At 31st\nParticulars September,\nMarch, 2026 March, 2025\n2025\nShare Capital 1428.00 1428.00 1050.00\nReserves and Surplus 4037.18 3571.74 1848.60\nTrade Payables 251.68 168.01 295.95\nOther Liabiities 954.88 186.35 190.86\nTotal Liabilities 6671.75 5354.10 3385.41\nFixed Assets 1562.14 732.49 660.61\nLOANS & ADVANCES 93.33 121.69 91.03\nTrade Receivables 479.52 1099.79 662.35\nOther Assets 4536.76 3400.13 1971.42\nTotal Assets 6671.75 5354.10 3385.41\n19"
+    },
+    {
+      "published_at": "2026-05-01 16:47:46.467000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/726d2694-c4ea-45d3-a63e-03de7722f32d.pdf",
+      "page_no": 4,
+      "body": "Cryogenic\n[) OGS Limited\nOil and Gas Solutions\nFormerly Known as Cryogenic Liquide Pv. Ld\nFluid Metering and Filtering Equipment OEM\nCryogenic OGS Limited\n(Formerly known as Cryogenic Liquide Private Limited)\nCIN No. L25121GJ1997PLC0329552\n60, 61, 62, 63 POR INDUSTRIAL PARK, BEHIND SAHYOG HOTEL, POR, Vadodara - 391243, Gujarat\nCash Flow Statement for the period year ended on 31st March, 2026\ne, Factioulars Siet earsh, 3526 | 3108 s 035\n1) |Cash Flow from Operating Activities\nProfit before taxation\n1349.18] 826.79)\nAdjustment for:\n(Profit) /Loss on sale of Fixed Assets\nInterest on Lease Liability\n8.92\nDepreciation\n57.71 52.06\nGain/ Loss on Sale of Asset -123.95 -2.64\nDividend Received\n-1.17\nInterest Received\n-1261 -16.00\nInterest and finance charges\n11.20 5.98\nOperating profit before working capital changes 1289.28 866.18\n(Increase)/Decrease in\nInventories\n-219.71 -185.52\nTrade Receivables\n182.83 -128.05\nShort Term Loans and Advances -19.51 -45.86\nOther current assets\n0.12 -19.69\nLong Term loans and Advances 17.21 -32.85\nIncrease/ (Decrease) in\nLong Term Provisions 6.08] 0.02\nTrade payables\n-44.27 -131.88\nOther current liabilities\n-70.00 102.33\nShort-term provisions 6.91 -2.01\nCash generated from operations 1148.95 422.66/\nIncome taxes and other taxes (net of refunds) -350.37 -229.12\n[Net cash from Operating Activities - A 798.59 193.55\n2) [Cash flow from Investment Activities\nPurchase of fixed assets including C-WIP -296.22 -27.31\nSale of Fixed Assets 127.11 5.74\nInvestment in FD -1892.37 -100.99\nPurchase/ Sale of Investments (net) - -29.64\nDividend from Current Investments 1.17 -\nInterest received 12.61 16.00]\nLease rent on leaschold land -878\nNet cash from Investment Activity - B =08 -2056.49 -136.20\n9 Plot No. 60, 61, 62,63 Por Industrial Park, Behind Sahyog Hotel, Por , Vadodara, Gujarat , India; 5 @ +91 98988 67136\ninfo@cryogenicogs.com PAN : AABCM28458 GST : 24AABCM2845B120 CIN :L251216J1997PLC032955"
+    },
+    {
+      "published_at": "2026-04-30 13:14:41.193000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f131daa9-26e3-496d-a17c-616bcba8fd77.pdf",
+      "page_no": 5,
+      "body": "Cryogenic\n[) OGS Limited\nOil and Gas Solutions\nFormerly Known as Cryogenic Liquide Pv. Ld\nFluid Metering and Filtering Equipment OEM\nCryogenic OGS Limited\n(Formerly known as Cryogenic Liquide Private Limited)\nCIN No. L25121GJ1997PLC0329552\n60, 61, 62, 63 POR INDUSTRIAL PARK, BEHIND SAHYOG HOTEL, POR, Vadodara - 391243, Gujarat\nCash Flow Statement for the period year ended on 31st March, 2026\ne, Factioulars Siet earsh, 3526 | 3108 s 035\n1) |Cash Flow from Operating Activities\nProfit before taxation\n1349.18] 826.79)\nAdjustment for:\n(Profit) /Loss on sale of Fixed Assets\nInterest on Lease Liability\n8.92\nDepreciation\n57.71 52.06\nGain/ Loss on Sale of Asset -123.95 -2.64\nDividend Received\n-1.17\nInterest Received\n-1261 -16.00\nInterest and finance charges\n11.20 5.98\nOperating profit before working capital changes 1289.28 866.18\n(Increase)/Decrease in\nInventories\n-219.71 -185.52\nTrade Receivables\n182.83 -128.05\nShort Term Loans and Advances -19.51 -45.86\nOther current assets\n0.12 -19.69\nLong Term loans and Advances 17.21 -32.85\nIncrease/ (Decrease) in\nLong Term Provisions 6.08] 0.02\nTrade payables\n-44.27 -131.88\nOther current liabilities\n-70.00 102.33\nShort-term provisions 6.91 -2.01\nCash generated from operations 1148.95 422.66/\nIncome taxes and other taxes (net of refunds) -350.37 -229.12\n[Net cash from Operating Activities - A 798.59 193.55\n2) [Cash flow from Investment Activities\nPurchase of fixed assets including C-WIP -296.22 -27.31\nSale of Fixed Assets 127.11 5.74\nInvestment in FD -1892.37 -100.99\nPurchase/ Sale of Investments (net) - -29.64\nDividend from Current Investments 1.17 -\nInterest received 12.61 16.00]\nLease rent on leaschold land -878\nNet cash from Investment Activity - B =08 -2056.49 -136.20\n9 Plot No. 60, 61, 62,63 Por Industrial Park, Behind Sahyog Hotel, Por , Vadodara, Gujarat , India; 5 @ +91 98988 67136\ninfo@cryogenicogs.com PAN : AABCM28458 GST : 24AABCM2845B120 CIN :L251216J1997PLC032955"
+    },
+    {
+      "published_at": "2026-04-30 13:10:00.987000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/064b8cce-7fb4-4ea0-a414-eb6378566da9.pdf",
+      "page_no": 5,
+      "body": "Cryogenic\n[) OGS Limited\nOil and Gas Solutions\nFormerly Known as Cryogenic Liquide Pv. Ld\nFluid Metering and Filtering Equipment OEM\nCryogenic OGS Limited\n(Formerly known as Cryogenic Liquide Private Limited)\nCIN No. L25121GJ1997PLC0329552\n60, 61, 62, 63 POR INDUSTRIAL PARK, BEHIND SAHYOG HOTEL, POR, Vadodara - 391243, Gujarat\nCash Flow Statement for the period year ended on 31st March, 2026\ne, Factioulars Siet earsh, 3526 | 3108 s 035\n1) |Cash Flow from Operating Activities\nProfit before taxation\n1349.18] 826.79)\nAdjustment for:\n(Profit) /Loss on sale of Fixed Assets\nInterest on Lease Liability\n8.92\nDepreciation\n57.71 52.06\nGain/ Loss on Sale of Asset -123.95 -2.64\nDividend Received\n-1.17\nInterest Received\n-1261 -16.00\nInterest and finance charges\n11.20 5.98\nOperating profit before working capital changes 1289.28 866.18\n(Increase)/Decrease in\nInventories\n-219.71 -185.52\nTrade Receivables\n182.83 -128.05\nShort Term Loans and Advances -19.51 -45.86\nOther current assets\n0.12 -19.69\nLong Term loans and Advances 17.21 -32.85\nIncrease/ (Decrease) in\nLong Term Provisions 6.08] 0.02\nTrade payables\n-44.27 -131.88\nOther current liabilities\n-70.00 102.33\nShort-term provisions 6.91 -2.01\nCash generated from operations 1148.95 422.66/\nIncome taxes and other taxes (net of refunds) -350.37 -229.12\n[Net cash from Operating Activities - A 798.59 193.55\n2) [Cash flow from Investment Activities\nPurchase of fixed assets including C-WIP -296.22 -27.31\nSale of Fixed Assets 127.11 5.74\nInvestment in FD -1892.37 -100.99\nPurchase/ Sale of Investments (net) - -29.64\nDividend from Current Investments 1.17 -\nInterest received 12.61 16.00]\nLease rent on leaschold land -878\nNet cash from Investment Activity - B =08 -2056.49 -136.20\n9 Plot No. 60, 61, 62,63 Por Industrial Park, Behind Sahyog Hotel, Por , Vadodara, Gujarat , India; 5 @ +91 98988 67136\ninfo@cryogenicogs.com PAN : AABCM28458 GST : 24AABCM2845B120 CIN :L251216J1997PLC032955"
+    }
+  ]
+}

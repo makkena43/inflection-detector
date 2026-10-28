@@ -1,0 +1,2519 @@
+{
+  "signal": {
+    "review_id": "83a6765e-4148-49d5-bfb7-7c1c4964e2b7",
+    "issuer_id": "0e23d8be-1b84-494e-bc62-5f062613dd30",
+    "week_start": "2026-08-03",
+    "label": "511144",
+    "legal_name": "AXIS SOLUTIONS LIMITED",
+    "triage_action": "DEEP_RESEARCH",
+    "is_pick": true,
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "rules_version": "triage-rules-3.5.1",
+    "size_pct_of_revenue": 167.8,
+    "size_basis": "STATED",
+    "firm": true,
+    "routine": false,
+    "disqualifier": null,
+    "confidence": "MEDIUM",
+    "rationale": "The 5 Aug 2026 filing states a firm order from NKG Primus JV with total size INR 400 crore, equal to 167.8% of TTM revenue of INR 238.38 crore; the period runs to March 2027 or March 2028, so annual revenue is lower than the total. Prior disclosed orders were far smaller (largest INR 94.73 crore), so the order is not routine. The awarding entity is a domestic JV, not a group entity, and no disqualifier applies; PAT was INR 29 crore in FY26 and the company is not stressed.",
+    "excess_6m": null,
+    "excess_12m": null,
+    "excess_24m": null,
+    "return_12m": null,
+    "return_24m": null,
+    "holding_period": null,
+    "holding_previous_period": null,
+    "promoter_holding_pct": null,
+    "fii_holding_pct": null,
+    "promoter_change_pp": null,
+    "fii_change_pp": null,
+    "holding_year_ago_period": null,
+    "promoter_yoy_pp": null,
+    "fii_yoy_pp": null,
+    "return_36m": null,
+    "benchmark_36m": null,
+    "excess_36m": null,
+    "benchmark_12m": null,
+    "benchmark_24m": null,
+    "runup_6m": null,
+    "margin_ttm": 0.12144475207651649,
+    "category": "A: order \u2265100% of revenue",
+    "order_cr_derived": 400.00164,
+    "order_cr": 400.0,
+    "order_cr_basis": "review amount",
+    "mcap_cr": null,
+    "orders_12m_pct": 209.3,
+    "orders_y1_pct": 173.6,
+    "orders_12m_incl_big_pct": 209.3,
+    "order_to_mcap": null,
+    "mgmt_target_x": null,
+    "promoter_net_cr": 0.0,
+    "inst_net_cr": 0.0,
+    "tech": {
+      "up": false,
+      "hi": true,
+      "rs": true,
+      "n": 2,
+      "runup6": 2.8328493062278155,
+      "liq": 0.11505631,
+      "exchange": "BSE",
+      "below_falling_200": false,
+      "price_date": "2026-08-17",
+      "history_days": 89,
+      "near_high_threshold": 0.8
+    },
+    "tech_score": 2,
+    "price_date": "2026-08-17",
+    "exchange": "BSE",
+    "order_book": {},
+    "score": 1,
+    "score_inputs": {
+      "order_mcap_25": null,
+      "mcap_lt_2000": null,
+      "ps_lt_1_5": null,
+      "opm_up_1pp": null,
+      "opm_lt_10": false,
+      "mgmt_target_1_5x": false,
+      "tech_2_of_3": true,
+      "revenue_growing": null,
+      "order_book_growing": null,
+      "illiquid_penalty": null,
+      "expensive_penalty": null
+    },
+    "score_known": 3,
+    "score_n": 9,
+    "ps": null,
+    "opm": 0.18864837654165617,
+    "signals": [
+      "Technicals 2/3",
+      "Data 3/9 known"
+    ],
+    "combos": [
+      "C2"
+    ],
+    "combo_checks": {
+      "up": false,
+      "hi": true,
+      "rs": true,
+      "n": 2,
+      "runup6": 2.8328493062278155,
+      "liq": 0.11505631,
+      "exchange": "BSE",
+      "below_falling_200": false,
+      "price_date": "2026-08-17",
+      "history_days": 89,
+      "near_high_threshold": 0.8
+    }
+  },
+  "identifiers": [
+    {
+      "security_id": "c5529b91-bdc5-4cf5-955e-35c78b4d4a32",
+      "exchange": "BSE",
+      "kind": "SCRIP_CODE",
+      "value": "511144"
+    },
+    {
+      "security_id": "c5529b91-bdc5-4cf5-955e-35c78b4d4a32",
+      "exchange": "BSE",
+      "kind": "SYMBOL",
+      "value": "AXISOL"
+    }
+  ],
+  "exchange": "BSE",
+  "security_id": "c5529b91-bdc5-4cf5-955e-35c78b4d4a32",
+  "prices": [
+    {
+      "trade_date": "2026-10-27",
+      "close": "553.00",
+      "volume": "6515"
+    },
+    {
+      "trade_date": "2026-10-26",
+      "close": "553.90",
+      "volume": "513"
+    },
+    {
+      "trade_date": "2026-10-23",
+      "close": "565.20",
+      "volume": "541"
+    },
+    {
+      "trade_date": "2026-10-22",
+      "close": "576.70",
+      "volume": "3194"
+    },
+    {
+      "trade_date": "2026-10-21",
+      "close": "588.45",
+      "volume": "382"
+    },
+    {
+      "trade_date": "2026-10-19",
+      "close": "600.45",
+      "volume": "633"
+    },
+    {
+      "trade_date": "2026-10-16",
+      "close": "612.70",
+      "volume": "2460"
+    },
+    {
+      "trade_date": "2026-10-15",
+      "close": "623.15",
+      "volume": "4015"
+    },
+    {
+      "trade_date": "2026-10-14",
+      "close": "614.10",
+      "volume": "12602"
+    },
+    {
+      "trade_date": "2026-10-13",
+      "close": "602.10",
+      "volume": "752"
+    },
+    {
+      "trade_date": "2026-10-12",
+      "close": "614.35",
+      "volume": "1361"
+    },
+    {
+      "trade_date": "2026-10-09",
+      "close": "626.85",
+      "volume": "615"
+    },
+    {
+      "trade_date": "2026-10-08",
+      "close": "639.60",
+      "volume": "1316"
+    },
+    {
+      "trade_date": "2026-10-07",
+      "close": "652.65",
+      "volume": "19986"
+    },
+    {
+      "trade_date": "2026-10-06",
+      "close": "665.95",
+      "volume": "82088"
+    },
+    {
+      "trade_date": "2026-10-05",
+      "close": "652.90",
+      "volume": "12006"
+    },
+    {
+      "trade_date": "2026-10-01",
+      "close": "640.10",
+      "volume": "8868"
+    },
+    {
+      "trade_date": "2026-09-30",
+      "close": "627.55",
+      "volume": "9651"
+    },
+    {
+      "trade_date": "2026-09-29",
+      "close": "615.25",
+      "volume": "1258"
+    },
+    {
+      "trade_date": "2026-09-28",
+      "close": "603.20",
+      "volume": "1564"
+    },
+    {
+      "trade_date": "2026-09-25",
+      "close": "591.40",
+      "volume": "1638"
+    },
+    {
+      "trade_date": "2026-09-24",
+      "close": "579.85",
+      "volume": "3240"
+    },
+    {
+      "trade_date": "2026-09-23",
+      "close": "568.50",
+      "volume": "22328"
+    },
+    {
+      "trade_date": "2026-09-22",
+      "close": "557.40",
+      "volume": "1089"
+    },
+    {
+      "trade_date": "2026-09-21",
+      "close": "568.75",
+      "volume": "5480"
+    },
+    {
+      "trade_date": "2026-09-18",
+      "close": "580.35",
+      "volume": "7259"
+    },
+    {
+      "trade_date": "2026-09-17",
+      "close": "592.15",
+      "volume": "14658"
+    },
+    {
+      "trade_date": "2026-09-16",
+      "close": "604.20",
+      "volume": "3725"
+    },
+    {
+      "trade_date": "2026-09-15",
+      "close": "616.50",
+      "volume": "14478"
+    },
+    {
+      "trade_date": "2026-09-11",
+      "close": "614.65",
+      "volume": "19864"
+    },
+    {
+      "trade_date": "2026-09-10",
+      "close": "602.60",
+      "volume": "1501"
+    },
+    {
+      "trade_date": "2026-09-09",
+      "close": "590.80",
+      "volume": "762"
+    },
+    {
+      "trade_date": "2026-09-08",
+      "close": "579.25",
+      "volume": "977"
+    },
+    {
+      "trade_date": "2026-09-07",
+      "close": "567.90",
+      "volume": "1882"
+    },
+    {
+      "trade_date": "2026-09-04",
+      "close": "556.80",
+      "volume": "2195"
+    },
+    {
+      "trade_date": "2026-09-03",
+      "close": "545.90",
+      "volume": "23344"
+    },
+    {
+      "trade_date": "2026-09-02",
+      "close": "535.20",
+      "volume": "7985"
+    },
+    {
+      "trade_date": "2026-09-01",
+      "close": "546.10",
+      "volume": "2054"
+    },
+    {
+      "trade_date": "2026-08-31",
+      "close": "557.20",
+      "volume": "1963"
+    },
+    {
+      "trade_date": "2026-08-28",
+      "close": "568.55",
+      "volume": "586"
+    },
+    {
+      "trade_date": "2026-08-27",
+      "close": "580.15",
+      "volume": "994"
+    },
+    {
+      "trade_date": "2026-08-26",
+      "close": "591.95",
+      "volume": "1800"
+    },
+    {
+      "trade_date": "2026-08-25",
+      "close": "604.00",
+      "volume": "284"
+    },
+    {
+      "trade_date": "2026-08-24",
+      "close": "616.30",
+      "volume": "545"
+    },
+    {
+      "trade_date": "2026-08-21",
+      "close": "628.85",
+      "volume": "1490"
+    },
+    {
+      "trade_date": "2026-08-20",
+      "close": "641.65",
+      "volume": "24699"
+    },
+    {
+      "trade_date": "2026-08-19",
+      "close": "654.70",
+      "volume": "31799"
+    },
+    {
+      "trade_date": "2026-08-18",
+      "close": "623.55",
+      "volume": "23612"
+    },
+    {
+      "trade_date": "2026-08-17",
+      "close": "593.90",
+      "volume": "30965"
+    },
+    {
+      "trade_date": "2026-08-14",
+      "close": "565.65",
+      "volume": "10326"
+    },
+    {
+      "trade_date": "2026-08-13",
+      "close": "538.75",
+      "volume": "14992"
+    },
+    {
+      "trade_date": "2026-08-12",
+      "close": "513.10",
+      "volume": "10578"
+    },
+    {
+      "trade_date": "2026-08-11",
+      "close": "488.70",
+      "volume": "6754"
+    },
+    {
+      "trade_date": "2026-08-10",
+      "close": "465.45",
+      "volume": "22889"
+    },
+    {
+      "trade_date": "2026-08-07",
+      "close": "443.30",
+      "volume": "18160"
+    },
+    {
+      "trade_date": "2026-08-06",
+      "close": "422.20",
+      "volume": "22168"
+    },
+    {
+      "trade_date": "2026-08-05",
+      "close": "404.80",
+      "volume": "41482"
+    },
+    {
+      "trade_date": "2026-08-04",
+      "close": "385.55",
+      "volume": "2900"
+    },
+    {
+      "trade_date": "2026-08-03",
+      "close": "367.20",
+      "volume": "8859"
+    },
+    {
+      "trade_date": "2026-07-27",
+      "close": "349.75",
+      "volume": "5893"
+    },
+    {
+      "trade_date": "2026-07-20",
+      "close": "336.25",
+      "volume": "6439"
+    },
+    {
+      "trade_date": "2026-07-13",
+      "close": "320.25",
+      "volume": "12116"
+    },
+    {
+      "trade_date": "2026-07-06",
+      "close": "305.00",
+      "volume": "11123"
+    },
+    {
+      "trade_date": "2026-06-29",
+      "close": "308.60",
+      "volume": "5054"
+    },
+    {
+      "trade_date": "2026-06-22",
+      "close": "323.05",
+      "volume": "12393"
+    },
+    {
+      "trade_date": "2026-06-15",
+      "close": "336.95",
+      "volume": "30816"
+    },
+    {
+      "trade_date": "2026-06-08",
+      "close": "336.65",
+      "volume": "90262"
+    },
+    {
+      "trade_date": "2026-06-05",
+      "close": "320.65",
+      "volume": "10704"
+    },
+    {
+      "trade_date": "2026-06-04",
+      "close": "305.40",
+      "volume": "7181"
+    },
+    {
+      "trade_date": "2026-06-03",
+      "close": "290.90",
+      "volume": "5167"
+    },
+    {
+      "trade_date": "2026-06-02",
+      "close": "277.05",
+      "volume": "6595"
+    },
+    {
+      "trade_date": "2026-06-01",
+      "close": "263.90",
+      "volume": "10998"
+    },
+    {
+      "trade_date": "2026-05-25",
+      "close": "251.35",
+      "volume": "27656"
+    },
+    {
+      "trade_date": "2026-05-18",
+      "close": "239.40",
+      "volume": "1084"
+    },
+    {
+      "trade_date": "2026-05-11",
+      "close": "252.00",
+      "volume": "234"
+    },
+    {
+      "trade_date": "2026-05-04",
+      "close": "265.25",
+      "volume": "559"
+    },
+    {
+      "trade_date": "2026-04-27",
+      "close": "279.20",
+      "volume": "10912"
+    },
+    {
+      "trade_date": "2026-04-20",
+      "close": "291.70",
+      "volume": "19381"
+    },
+    {
+      "trade_date": "2026-04-13",
+      "close": "277.85",
+      "volume": "14642"
+    },
+    {
+      "trade_date": "2026-04-08",
+      "close": "264.65",
+      "volume": "5370"
+    },
+    {
+      "trade_date": "2026-04-07",
+      "close": "252.05",
+      "volume": "1588"
+    },
+    {
+      "trade_date": "2026-04-06",
+      "close": "240.05",
+      "volume": "4169"
+    },
+    {
+      "trade_date": "2026-04-02",
+      "close": "228.65",
+      "volume": "2092"
+    },
+    {
+      "trade_date": "2026-04-01",
+      "close": "217.80",
+      "volume": "3287"
+    },
+    {
+      "trade_date": "2026-03-30",
+      "close": "207.45",
+      "volume": "16816"
+    },
+    {
+      "trade_date": "2026-03-23",
+      "close": "197.60",
+      "volume": "5987"
+    },
+    {
+      "trade_date": "2026-03-16",
+      "close": "188.20",
+      "volume": "5014"
+    },
+    {
+      "trade_date": "2026-03-09",
+      "close": "179.25",
+      "volume": "3769"
+    },
+    {
+      "trade_date": "2026-03-02",
+      "close": "170.75",
+      "volume": "13550"
+    },
+    {
+      "trade_date": "2026-02-23",
+      "close": "162.65",
+      "volume": "3816"
+    },
+    {
+      "trade_date": "2026-02-16",
+      "close": "154.95",
+      "volume": "3012"
+    },
+    {
+      "trade_date": "2026-02-06",
+      "close": "147.60",
+      "volume": "2286"
+    },
+    {
+      "trade_date": "2026-02-05",
+      "close": "140.60",
+      "volume": "1179"
+    },
+    {
+      "trade_date": "2026-02-04",
+      "close": "133.95",
+      "volume": "72"
+    },
+    {
+      "trade_date": "2026-02-03",
+      "close": "127.60",
+      "volume": "1567"
+    },
+    {
+      "trade_date": "2026-02-02",
+      "close": "121.55",
+      "volume": "2056"
+    },
+    {
+      "trade_date": "2026-01-27",
+      "close": "110.29",
+      "volume": "2847"
+    },
+    {
+      "trade_date": "2026-01-19",
+      "close": "105.04",
+      "volume": "2289"
+    },
+    {
+      "trade_date": "2026-01-12",
+      "close": "100.04",
+      "volume": "679"
+    },
+    {
+      "trade_date": "2026-01-05",
+      "close": "95.28",
+      "volume": "94"
+    },
+    {
+      "trade_date": "2025-12-29",
+      "close": "90.75",
+      "volume": "373"
+    },
+    {
+      "trade_date": "2025-12-22",
+      "close": "86.43",
+      "volume": "119"
+    },
+    {
+      "trade_date": "2025-12-15",
+      "close": "82.32",
+      "volume": "118"
+    },
+    {
+      "trade_date": "2025-12-08",
+      "close": "78.40",
+      "volume": "147"
+    },
+    {
+      "trade_date": "2025-12-05",
+      "close": "74.67",
+      "volume": "13"
+    },
+    {
+      "trade_date": "2025-12-04",
+      "close": "71.12",
+      "volume": "254"
+    },
+    {
+      "trade_date": "2025-12-03",
+      "close": "67.74",
+      "volume": "18"
+    },
+    {
+      "trade_date": "2025-12-02",
+      "close": "64.52",
+      "volume": "74"
+    },
+    {
+      "trade_date": "2025-12-01",
+      "close": "61.45",
+      "volume": "26"
+    },
+    {
+      "trade_date": "2025-11-24",
+      "close": "58.53",
+      "volume": "198"
+    },
+    {
+      "trade_date": "2025-11-17",
+      "close": "55.75",
+      "volume": "510"
+    },
+    {
+      "trade_date": "2025-11-10",
+      "close": "53.10",
+      "volume": "887"
+    },
+    {
+      "trade_date": "2025-11-03",
+      "close": "50.58",
+      "volume": "791"
+    },
+    {
+      "trade_date": "2025-10-27",
+      "close": "48.18",
+      "volume": "955"
+    },
+    {
+      "trade_date": "2025-10-20",
+      "close": "45.89",
+      "volume": "96"
+    },
+    {
+      "trade_date": "2025-10-10",
+      "close": "43.71",
+      "volume": "38"
+    },
+    {
+      "trade_date": "2025-10-09",
+      "close": "41.63",
+      "volume": "97"
+    },
+    {
+      "trade_date": "2025-10-08",
+      "close": "39.65",
+      "volume": "64"
+    },
+    {
+      "trade_date": "2025-10-07",
+      "close": "37.77",
+      "volume": "207"
+    },
+    {
+      "trade_date": "2025-10-06",
+      "close": "35.98",
+      "volume": "66"
+    },
+    {
+      "trade_date": "2025-10-03",
+      "close": "34.27",
+      "volume": "906"
+    },
+    {
+      "trade_date": "2025-10-01",
+      "close": "32.64",
+      "volume": "469"
+    },
+    {
+      "trade_date": "2025-09-29",
+      "close": "31.09",
+      "volume": "623"
+    },
+    {
+      "trade_date": "2025-09-22",
+      "close": "29.61",
+      "volume": "526"
+    },
+    {
+      "trade_date": "2025-09-15",
+      "close": "28.20",
+      "volume": "155"
+    },
+    {
+      "trade_date": "2025-09-08",
+      "close": "26.86",
+      "volume": "630"
+    },
+    {
+      "trade_date": "2025-09-01",
+      "close": "25.59",
+      "volume": "240"
+    },
+    {
+      "trade_date": "2025-08-25",
+      "close": "24.38",
+      "volume": "57"
+    },
+    {
+      "trade_date": "2025-08-18",
+      "close": "23.22",
+      "volume": "70"
+    },
+    {
+      "trade_date": "2025-08-11",
+      "close": "22.12",
+      "volume": "86"
+    },
+    {
+      "trade_date": "2025-08-07",
+      "close": "21.07",
+      "volume": "128"
+    },
+    {
+      "trade_date": "2025-08-06",
+      "close": "20.07",
+      "volume": "86"
+    },
+    {
+      "trade_date": "2025-08-05",
+      "close": "19.12",
+      "volume": "10"
+    },
+    {
+      "trade_date": "2025-08-04",
+      "close": "18.21",
+      "volume": "171"
+    },
+    {
+      "trade_date": "2025-08-01",
+      "close": "17.35",
+      "volume": "135"
+    },
+    {
+      "trade_date": "2025-07-31",
+      "close": "16.53",
+      "volume": "899"
+    },
+    {
+      "trade_date": "2025-07-30",
+      "close": "15.75",
+      "volume": "651"
+    }
+  ],
+  "adjusted_prices": [
+    {
+      "trade_date": "2026-10-27",
+      "close": "553.00"
+    },
+    {
+      "trade_date": "2026-10-26",
+      "close": "553.90"
+    },
+    {
+      "trade_date": "2026-10-23",
+      "close": "565.20"
+    },
+    {
+      "trade_date": "2026-10-22",
+      "close": "576.70"
+    },
+    {
+      "trade_date": "2026-10-21",
+      "close": "588.45"
+    },
+    {
+      "trade_date": "2026-10-19",
+      "close": "600.45"
+    },
+    {
+      "trade_date": "2026-10-16",
+      "close": "612.70"
+    },
+    {
+      "trade_date": "2026-10-15",
+      "close": "623.15"
+    },
+    {
+      "trade_date": "2026-10-14",
+      "close": "614.10"
+    },
+    {
+      "trade_date": "2026-10-13",
+      "close": "602.10"
+    },
+    {
+      "trade_date": "2026-10-12",
+      "close": "614.35"
+    },
+    {
+      "trade_date": "2026-10-09",
+      "close": "626.85"
+    },
+    {
+      "trade_date": "2026-10-08",
+      "close": "639.60"
+    },
+    {
+      "trade_date": "2026-10-07",
+      "close": "652.65"
+    },
+    {
+      "trade_date": "2026-10-06",
+      "close": "665.95"
+    },
+    {
+      "trade_date": "2026-10-05",
+      "close": "652.90"
+    },
+    {
+      "trade_date": "2026-10-01",
+      "close": "640.10"
+    },
+    {
+      "trade_date": "2026-09-30",
+      "close": "627.55"
+    },
+    {
+      "trade_date": "2026-09-29",
+      "close": "615.25"
+    },
+    {
+      "trade_date": "2026-09-28",
+      "close": "603.20"
+    },
+    {
+      "trade_date": "2026-09-25",
+      "close": "591.40"
+    },
+    {
+      "trade_date": "2026-09-24",
+      "close": "579.85"
+    },
+    {
+      "trade_date": "2026-09-23",
+      "close": "568.50"
+    },
+    {
+      "trade_date": "2026-09-22",
+      "close": "557.40"
+    },
+    {
+      "trade_date": "2026-09-21",
+      "close": "568.75"
+    },
+    {
+      "trade_date": "2026-09-18",
+      "close": "580.35"
+    },
+    {
+      "trade_date": "2026-09-17",
+      "close": "592.15"
+    },
+    {
+      "trade_date": "2026-09-16",
+      "close": "604.20"
+    },
+    {
+      "trade_date": "2026-09-15",
+      "close": "616.50"
+    },
+    {
+      "trade_date": "2026-09-11",
+      "close": "614.65"
+    },
+    {
+      "trade_date": "2026-09-10",
+      "close": "602.60"
+    },
+    {
+      "trade_date": "2026-09-09",
+      "close": "590.80"
+    },
+    {
+      "trade_date": "2026-09-08",
+      "close": "579.25"
+    },
+    {
+      "trade_date": "2026-09-07",
+      "close": "567.90"
+    },
+    {
+      "trade_date": "2026-09-04",
+      "close": "556.80"
+    },
+    {
+      "trade_date": "2026-09-03",
+      "close": "545.90"
+    },
+    {
+      "trade_date": "2026-09-02",
+      "close": "535.20"
+    },
+    {
+      "trade_date": "2026-09-01",
+      "close": "546.10"
+    },
+    {
+      "trade_date": "2026-08-31",
+      "close": "557.20"
+    },
+    {
+      "trade_date": "2026-08-28",
+      "close": "568.55"
+    },
+    {
+      "trade_date": "2026-08-27",
+      "close": "580.15"
+    },
+    {
+      "trade_date": "2026-08-26",
+      "close": "591.95"
+    },
+    {
+      "trade_date": "2026-08-25",
+      "close": "604.00"
+    },
+    {
+      "trade_date": "2026-08-24",
+      "close": "616.30"
+    },
+    {
+      "trade_date": "2026-08-21",
+      "close": "628.85"
+    },
+    {
+      "trade_date": "2026-08-20",
+      "close": "641.65"
+    },
+    {
+      "trade_date": "2026-08-19",
+      "close": "654.70"
+    },
+    {
+      "trade_date": "2026-08-18",
+      "close": "623.55"
+    },
+    {
+      "trade_date": "2026-08-17",
+      "close": "593.90"
+    },
+    {
+      "trade_date": "2026-08-14",
+      "close": "565.65"
+    },
+    {
+      "trade_date": "2026-08-13",
+      "close": "538.75"
+    },
+    {
+      "trade_date": "2026-08-12",
+      "close": "513.10"
+    },
+    {
+      "trade_date": "2026-08-11",
+      "close": "488.70"
+    },
+    {
+      "trade_date": "2026-08-10",
+      "close": "465.45"
+    },
+    {
+      "trade_date": "2026-08-07",
+      "close": "443.30"
+    },
+    {
+      "trade_date": "2026-08-06",
+      "close": "422.20"
+    },
+    {
+      "trade_date": "2026-08-05",
+      "close": "404.80"
+    },
+    {
+      "trade_date": "2026-08-04",
+      "close": "385.55"
+    },
+    {
+      "trade_date": "2026-08-03",
+      "close": "367.20"
+    },
+    {
+      "trade_date": "2026-07-27",
+      "close": "349.75"
+    },
+    {
+      "trade_date": "2026-07-20",
+      "close": "336.25"
+    },
+    {
+      "trade_date": "2026-07-13",
+      "close": "320.25"
+    },
+    {
+      "trade_date": "2026-07-06",
+      "close": "305.00"
+    },
+    {
+      "trade_date": "2026-06-29",
+      "close": "308.60"
+    },
+    {
+      "trade_date": "2026-06-22",
+      "close": "323.05"
+    },
+    {
+      "trade_date": "2026-06-15",
+      "close": "336.95"
+    },
+    {
+      "trade_date": "2026-06-08",
+      "close": "336.65"
+    },
+    {
+      "trade_date": "2026-06-05",
+      "close": "320.65"
+    },
+    {
+      "trade_date": "2026-06-04",
+      "close": "305.40"
+    },
+    {
+      "trade_date": "2026-06-03",
+      "close": "290.90"
+    },
+    {
+      "trade_date": "2026-06-02",
+      "close": "277.05"
+    },
+    {
+      "trade_date": "2026-06-01",
+      "close": "263.90"
+    },
+    {
+      "trade_date": "2026-05-25",
+      "close": "251.35"
+    },
+    {
+      "trade_date": "2026-05-18",
+      "close": "239.40"
+    },
+    {
+      "trade_date": "2026-05-11",
+      "close": "252.00"
+    },
+    {
+      "trade_date": "2026-05-04",
+      "close": "265.25"
+    },
+    {
+      "trade_date": "2026-04-27",
+      "close": "279.20"
+    },
+    {
+      "trade_date": "2026-04-20",
+      "close": "291.70"
+    },
+    {
+      "trade_date": "2026-04-13",
+      "close": "277.85"
+    },
+    {
+      "trade_date": "2026-04-08",
+      "close": "264.65"
+    },
+    {
+      "trade_date": "2026-04-07",
+      "close": "252.05"
+    },
+    {
+      "trade_date": "2026-04-06",
+      "close": "240.05"
+    },
+    {
+      "trade_date": "2026-04-02",
+      "close": "228.65"
+    },
+    {
+      "trade_date": "2026-04-01",
+      "close": "217.80"
+    },
+    {
+      "trade_date": "2026-03-30",
+      "close": "207.45"
+    },
+    {
+      "trade_date": "2026-03-23",
+      "close": "197.60"
+    },
+    {
+      "trade_date": "2026-03-16",
+      "close": "188.20"
+    },
+    {
+      "trade_date": "2026-03-09",
+      "close": "179.25"
+    },
+    {
+      "trade_date": "2026-03-02",
+      "close": "170.75"
+    },
+    {
+      "trade_date": "2026-02-23",
+      "close": "162.65"
+    },
+    {
+      "trade_date": "2026-02-16",
+      "close": "154.95"
+    },
+    {
+      "trade_date": "2026-02-06",
+      "close": "147.60"
+    },
+    {
+      "trade_date": "2026-02-05",
+      "close": "140.60"
+    },
+    {
+      "trade_date": "2026-02-04",
+      "close": "133.95"
+    },
+    {
+      "trade_date": "2026-02-03",
+      "close": "127.60"
+    },
+    {
+      "trade_date": "2026-02-02",
+      "close": "121.55"
+    },
+    {
+      "trade_date": "2026-01-27",
+      "close": "110.29"
+    },
+    {
+      "trade_date": "2026-01-19",
+      "close": "105.04"
+    },
+    {
+      "trade_date": "2026-01-12",
+      "close": "100.04"
+    },
+    {
+      "trade_date": "2026-01-05",
+      "close": "95.28"
+    },
+    {
+      "trade_date": "2025-12-29",
+      "close": "90.75"
+    },
+    {
+      "trade_date": "2025-12-22",
+      "close": "86.43"
+    },
+    {
+      "trade_date": "2025-12-15",
+      "close": "82.32"
+    },
+    {
+      "trade_date": "2025-12-08",
+      "close": "78.40"
+    },
+    {
+      "trade_date": "2025-12-05",
+      "close": "74.67"
+    },
+    {
+      "trade_date": "2025-12-04",
+      "close": "71.12"
+    },
+    {
+      "trade_date": "2025-12-03",
+      "close": "67.74"
+    },
+    {
+      "trade_date": "2025-12-02",
+      "close": "64.52"
+    },
+    {
+      "trade_date": "2025-12-01",
+      "close": "61.45"
+    },
+    {
+      "trade_date": "2025-11-24",
+      "close": "58.53"
+    },
+    {
+      "trade_date": "2025-11-17",
+      "close": "55.75"
+    },
+    {
+      "trade_date": "2025-11-10",
+      "close": "53.10"
+    },
+    {
+      "trade_date": "2025-11-03",
+      "close": "50.58"
+    },
+    {
+      "trade_date": "2025-10-27",
+      "close": "48.18"
+    },
+    {
+      "trade_date": "2025-10-20",
+      "close": "45.89"
+    },
+    {
+      "trade_date": "2025-10-10",
+      "close": "43.71"
+    },
+    {
+      "trade_date": "2025-10-09",
+      "close": "41.63"
+    },
+    {
+      "trade_date": "2025-10-08",
+      "close": "39.65"
+    },
+    {
+      "trade_date": "2025-10-07",
+      "close": "37.77"
+    },
+    {
+      "trade_date": "2025-10-06",
+      "close": "35.98"
+    },
+    {
+      "trade_date": "2025-10-03",
+      "close": "34.27"
+    },
+    {
+      "trade_date": "2025-10-01",
+      "close": "32.64"
+    },
+    {
+      "trade_date": "2025-09-29",
+      "close": "31.09"
+    },
+    {
+      "trade_date": "2025-09-22",
+      "close": "29.61"
+    },
+    {
+      "trade_date": "2025-09-15",
+      "close": "28.20"
+    },
+    {
+      "trade_date": "2025-09-08",
+      "close": "26.86"
+    },
+    {
+      "trade_date": "2025-09-01",
+      "close": "25.59"
+    },
+    {
+      "trade_date": "2025-08-25",
+      "close": "24.38"
+    },
+    {
+      "trade_date": "2025-08-18",
+      "close": "23.22"
+    },
+    {
+      "trade_date": "2025-08-11",
+      "close": "22.12"
+    },
+    {
+      "trade_date": "2025-08-07",
+      "close": "21.07"
+    },
+    {
+      "trade_date": "2025-08-06",
+      "close": "20.07"
+    },
+    {
+      "trade_date": "2025-08-05",
+      "close": "19.12"
+    },
+    {
+      "trade_date": "2025-08-04",
+      "close": "18.21"
+    },
+    {
+      "trade_date": "2025-08-01",
+      "close": "17.35"
+    },
+    {
+      "trade_date": "2025-07-31",
+      "close": "16.53"
+    },
+    {
+      "trade_date": "2025-07-30",
+      "close": "15.75"
+    }
+  ],
+  "market": {
+    "date": "2026-10-27",
+    "close": 553.0,
+    "sma50": 597.058,
+    "sma200": null,
+    "from_high": -0.16960732787746835,
+    "history_sessions": 137,
+    "raw_turnover_median_60_cr": 0.2155860875
+  },
+  "facts": [
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "15900000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "11800000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "9300000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "8000000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "6000000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "3400000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "3200000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "3300000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "6.17",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "7.84",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "7.17",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "0.77",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "3.35",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "1.24",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "1.09",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "0.47",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "46400000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "33100000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "28300000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "19500000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "16000000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "10900000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "12200000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "7200000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "4900000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "18800000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "3100000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "700000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "2100000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "700000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "1400000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "800000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "472600000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "472600000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "442600000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "472600000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "472600000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "472600000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "472600000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "472600000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "290600000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "350100000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "317400000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "36500000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "157200000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "58700000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "51500000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "22100000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "393500000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "343900000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "318100000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "41800000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "260200000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "58700000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "51500000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "22100000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "2383800000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "2006700000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "1363600000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "486700000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "1164700000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "460100000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "484700000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "274300000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "102900000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "6100000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "700000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "5300000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "102900000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "2388700000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "2025600000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "1366700000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "487400000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "1166800000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "460800000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "486100000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "275100000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    }
+  ],
+  "holdings": [],
+  "documents": [
+    {
+      "publication_id": "42c24437-e4eb-4ae6-b846-340ede0d9616",
+      "published_at": "2026-10-07 16:40:23.863000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d8cd08a6-6aca-49c9-8fd4-9fe70455b2ca.pdf"
+    },
+    {
+      "publication_id": "b6aa5968-6110-414d-805e-db0bd7734f17",
+      "published_at": "2026-10-06 18:43:07.360000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d1c447cf-89f9-4ca6-b72c-db8c3ef553d4.pdf"
+    },
+    {
+      "publication_id": "3198c652-1ffe-4035-badd-61e88b5ea19f",
+      "published_at": "2026-10-01 19:05:39.950000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - News Feed -Presence In Process Gas Analyzer Systems With A Large Steel Plant Through An International Project",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/592518d1-1181-446b-931d-795053e82aa9.pdf"
+    },
+    {
+      "publication_id": "7535bb00-6c3e-4f0d-9d7f-e77d74010e9c",
+      "published_at": "2026-09-26 10:46:56.260000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Closure of Trading Window",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f471bf3b-0d11-40fb-9bf9-a7838b066469.pdf"
+    },
+    {
+      "publication_id": "42b37c35-2c52-4ffc-8264-286fd708e0c0",
+      "published_at": "2026-09-22 14:25:30.123000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Shareholder Meeting / Postal Ballot-Scrutinizer''s Report",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7ba30669-f311-4aa4-80e9-d6fd9b1b6e84.pdf"
+    },
+    {
+      "publication_id": "01eb8d4d-d07c-4870-8bcc-2e4528d94b42",
+      "published_at": "2026-09-19 19:17:58.023000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Appointment of Statutory Auditor/s",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/15fcca43-ec73-410f-b088-41934082634c.pdf"
+    },
+    {
+      "publication_id": "d94164b0-48a8-4b82-9bb7-a533a5c4e073",
+      "published_at": "2026-09-19 18:59:45.980000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Re-Appointment Of Secretarial Auditor",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/127d77f1-6826-4c3a-9b5a-694bd32dd095.pdf"
+    },
+    {
+      "publication_id": "0e8c8503-9573-4585-9692-a3a5e487095d",
+      "published_at": "2026-09-19 18:56:17.710000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Shareholder Meeting / Postal Ballot-Outcome of AGM",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/badba713-8800-4a08-a352-d7a20ef5c527.pdf"
+    },
+    {
+      "publication_id": "1be0d292-27cb-405f-80d0-7a2ceb5cff79",
+      "published_at": "2026-09-15 17:58:20.300000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Launch Of An Industry Supported Lab In The Instrumentation & Control (I&C) Department",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a3a98981-06e6-4b8d-8613-b3adb4c2f3a1.pdf"
+    },
+    {
+      "publication_id": "ea2a58ba-62a6-4d3f-87a2-0206395e622a",
+      "published_at": "2026-09-07 17:45:02.360000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Outcome",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/febfc19c-4711-4f04-9842-9f34deb9887f.pdf"
+    },
+    {
+      "publication_id": "83058a0c-92f1-47af-85b1-925a3a6d00ca",
+      "published_at": "2026-09-02 19:20:22.227000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Launch Of Indigenous Hydrogen-To-Electricity Generator System- India'S Clean Energy Alternative",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4a51a2c4-ce88-46ab-8d57-112aaa8ec0f3.pdf"
+    },
+    {
+      "publication_id": "88082fcb-c335-4965-86d9-f1b694b1d38b",
+      "published_at": "2026-09-02 15:52:32.730000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fb75717c-6007-4393-a4c6-4ec7f6977c55.pdf"
+    },
+    {
+      "publication_id": "dcdc6286-05d7-49a6-b71d-c430d5553a70",
+      "published_at": "2026-08-31 18:47:42.143000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Disclosure Under Regulation 30 Of The SEBI (LODR) Regulations, 2015-Execution Of E-House Systems For Siemens Energy India Limited",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b3c23ce4-9903-42d1-9914-8972cd2fe888.pdf"
+    },
+    {
+      "publication_id": "9b897e8d-0aa3-4f3c-87ff-501cb2750929",
+      "published_at": "2026-08-29 18:29:05.077000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Press Release- Inauguration Of Axis Flow Calibration Lab, Commissioning Of 160 KW On-Grid Solar Plant And Advancement In Lean Manufacturing",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3eb2d50d-d23a-4829-9bf3-368dd74faf31.pdf"
+    },
+    {
+      "publication_id": "d1e26da1-ad29-421e-9b7c-91f412964cde",
+      "published_at": "2026-08-29 11:39:24.847000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7dab7b45-637a-4048-9155-351fe883121b.pdf"
+    },
+    {
+      "publication_id": "fb344539-3b26-4f9e-94d9-632d8fd64a0f",
+      "published_at": "2026-08-27 18:24:50.233000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Disclosure Under Regulation 30 Of The Securities And Exchange Board Of India (Listing Obligations And Disclosure Requirements) Regulations, 2015",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/250f7a28-3cf4-456a-997b-e4c37cfa9708.pdf"
+    },
+    {
+      "publication_id": "1df2d65f-a676-464a-8493-d5759bf7e3e6",
+      "published_at": "2026-08-27 17:53:01.217000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Reg. 34 (1) Annual Report.",
+      "category": "Others",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f08c7d5b-c206-41b5-9606-37d2e42cf5c9.pdf"
+    },
+    {
+      "publication_id": "a25c97b0-2d0a-4f23-9815-a9cab9163db8",
+      "published_at": "2026-08-27 17:37:38.940000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Notice Of 41St Annual General Meeting Of Company Scheduled To Be Held On 19Th September, 2026",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/40f9eb22-d9ae-4d05-87f2-640392c3fa89.pdf"
+    },
+    {
+      "publication_id": "46fcdebd-a557-44d5-89c4-f1815e42cf77",
+      "published_at": "2026-08-24 10:49:12.847000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8d384599-613d-4343-881c-3744044b63cc.pdf"
+    },
+    {
+      "publication_id": "e644600a-b446-461b-8734-980b3b38cc42",
+      "published_at": "2026-08-12 18:41:47.017000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Earnings Call Transcript",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/77f12330-499c-4ca9-a8fb-d578fb23d18a.pdf"
+    },
+    {
+      "publication_id": "32b553a8-0a5a-4f28-9dad-5d0e6f869d4f",
+      "published_at": "2026-08-08 18:49:38.557000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/421b096e-1a70-4da4-a817-1b0796d2b532.pdf"
+    },
+    {
+      "publication_id": "3389b739-16bb-4037-b562-9d8dc830b46a",
+      "published_at": "2026-08-05 19:43:09.227000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/df773a25-3cb3-4eb4-a250-86cbeb2442f4.pdf"
+    },
+    {
+      "publication_id": "7c5efa36-0395-4a15-b3b8-ba1ec49f0679",
+      "published_at": "2026-08-05 19:37:14.010000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Outcome",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fc0ec57e-afac-4f3b-952d-ee0fbc1cb7ab.pdf"
+    },
+    {
+      "publication_id": "45b24f7c-51cb-4800-8e0d-108150398c2e",
+      "published_at": "2026-08-02 18:13:39.083000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9ed0d44e-4587-4bdf-a541-48a94952669b.pdf"
+    },
+    {
+      "publication_id": "9ba89bc5-c040-40fd-a044-4819ac674756",
+      "published_at": "2026-07-31 18:51:33.660000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Annual General Meeting To Be Held On 19Th September, 2026",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/df1dc87a-3f7d-4cb4-a91c-43d03a2b5ab1.pdf"
+    },
+    {
+      "publication_id": "2d99fbbf-8413-44ca-b9a6-a2afe1bd5ed3",
+      "published_at": "2026-07-31 18:43:23.650000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Fixing Record Date For Purpose Of Dividend And Annaual General Meeting",
+      "category": "Corp. Action",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/97f6c41a-c47b-460c-8163-66739169a0bf.pdf"
+    },
+    {
+      "publication_id": "9cf4f4d5-a592-47cd-a9b4-81776d03c460",
+      "published_at": "2026-07-31 18:35:37.587000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Investor Presentation",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/25db6490-2769-46fc-93e5-c88eb40994fc.pdf"
+    },
+    {
+      "publication_id": "e608a494-6e05-4fb1-a72f-83f1168b198b",
+      "published_at": "2026-07-31 18:24:11.720000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Appointment of Statutory Auditor/s",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4a6c2643-fc9d-429a-a488-31256e1dbf53.pdf"
+    },
+    {
+      "publication_id": "a8139794-6ce2-474b-84bf-b2ad6293e055",
+      "published_at": "2026-07-31 18:20:54.453000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Un-Audited Financial Results For The Quarter Ended On 30Th June, 2026",
+      "category": "Result",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/676df386-638c-42d5-95f6-c5b0d44a9643.pdf"
+    },
+    {
+      "publication_id": "f874c6b9-9c35-45b5-87cc-0965725069b9",
+      "published_at": "2026-07-31 18:12:50.150000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Board Meeting Outcome for Outcome Of Board Meeting Dated 31St July, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/895bf6db-7610-4d2e-8831-b4967164d802.pdf"
+    },
+    {
+      "publication_id": "998f5bed-86bd-4a66-8794-50a106dd3f33",
+      "published_at": "2026-07-27 10:33:50.727000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Board Meeting Intimation for Consider And Approve Un-Audited Financial Result For Quarter Ended On 30Th June, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ad1af5f0-4070-4f9c-820e-f0776cb88ad3.pdf"
+    },
+    {
+      "publication_id": "566c664b-0b72-442b-b644-0af12af131c3",
+      "published_at": "2026-07-14 11:54:55.833000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/708b2103-e552-44af-bacd-00c1611081b0.pdf"
+    },
+    {
+      "publication_id": "7d0dafb7-8eee-4c38-aa33-54586589a803",
+      "published_at": "2026-06-24 17:16:31.217000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Closure of Trading Window",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/50ddd630-eaac-4541-8c8c-d1c41cfdde27.pdf"
+    },
+    {
+      "publication_id": "8d567725-785e-478e-9cd7-ad996a57cd73",
+      "published_at": "2026-06-20 18:44:12.333000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Introduction Of Smart EV Charging Firmware With Dynamic Load Scheduling / Dynamic Load Sharing",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/84e260d8-31e8-432d-bdbc-efaafbed8229.pdf"
+    },
+    {
+      "publication_id": "905d5c06-e8cc-4a65-bafc-f52d5ee42759",
+      "published_at": "2026-06-13 19:30:49.767000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Press Release-Development Of \"MAG200\" Through The Advancement Of Electromagnetic Flow Meter By Axis Product Development Unit",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/98be7365-2c37-4daa-a6ff-971d9b968ac9.pdf"
+    },
+    {
+      "publication_id": "822faf8d-6f9c-4cf7-aad3-8a495e216f42",
+      "published_at": "2026-06-10 19:01:40.550000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Incorporation Of Wholly Owned Subsidiary Company In Saudi",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/569346cf-a255-4f80-be87-0e8942b6765b.pdf"
+    },
+    {
+      "publication_id": "90e1b691-b8db-4e10-b656-b19d4e26fbe0",
+      "published_at": "2026-05-30 18:21:44.017000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e258ac6a-9c4f-4a6c-b3b0-3ae7a0784410.pdf"
+    },
+    {
+      "publication_id": "57813f52-511d-4680-b500-34d8f67747d5",
+      "published_at": "2026-05-25 17:37:45.953000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Compliances-Reg.24(A)-Annual Secretarial Compliance",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8d996e15-b440-45ca-ad8e-1b9556eb76dd.pdf"
+    },
+    {
+      "publication_id": "4fe37ffc-25ce-43c2-a036-17ba4c340b79",
+      "published_at": "2026-05-25 17:22:50.987000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Compliances-Reg.24(A)-Annual Secretarial Compliance",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/36d47408-3be6-432b-90a6-4b5a4389a1d1.pdf"
+    },
+    {
+      "publication_id": "16e21ff6-0e55-4e91-8b76-3c9a079335ad",
+      "published_at": "2026-05-21 20:09:03.610000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Appointment Of Cost Auditor For FY 2026-27",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/81201d23-6369-4023-8ad9-f0e0169fadce.pdf"
+    },
+    {
+      "publication_id": "46b8aa62-ad77-409a-917f-5ae37f5c267b",
+      "published_at": "2026-05-21 20:06:44.257000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Appointment Of Internal Auditor For FY 2026-27",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4784f983-9e36-4567-8df7-b42f2fd797fd.pdf"
+    },
+    {
+      "publication_id": "5d2064bf-44bd-459b-876b-61ab9aa261e0",
+      "published_at": "2026-05-21 20:03:56.697000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Appointment of Statutory Auditor/s",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/568e18f3-28c5-4451-baee-04ba1e277dcb.pdf"
+    },
+    {
+      "publication_id": "dfcb215b-1b4f-44c9-91b8-fbc94dc4b670",
+      "published_at": "2026-05-21 19:59:40.470000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Change in Management",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2b136783-daf6-4d6b-9c9d-fd4443668bd4.pdf"
+    },
+    {
+      "publication_id": "f8639d98-3879-41f6-b508-1eb7b0d2c593",
+      "published_at": "2026-05-21 19:48:34.260000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Corporate Action-Board approves Dividend",
+      "category": "Corp. Action",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/58728502-e1c4-45fe-9fc0-8d5c3eca0a04.pdf"
+    },
+    {
+      "publication_id": "c6c4aca1-a78c-49af-a85a-77986a25fb33",
+      "published_at": "2026-05-21 19:43:12.847000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Standalone And Consolidated Financial Result For The Quarter And Year Ended On 31St March, 2026",
+      "category": "Result",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/39ddf79e-93b8-42fb-9440-7993e29b8cab.pdf"
+    },
+    {
+      "publication_id": "aff53c4a-725c-45c1-ab59-6a979dc6ce8e",
+      "published_at": "2026-05-21 19:37:44.070000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Board Meeting Outcome for Board Meeting Outcome",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/154c6338-6b91-4822-aa57-5c6057881259.pdf"
+    },
+    {
+      "publication_id": "d2a5d6a5-cb0c-42af-a436-1490d402bfb7",
+      "published_at": "2026-05-18 11:50:10.740000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Board Meeting Intimation for Consideration And Adoption Of Standalone And Consolidated Result For Quarter And Financial Year Ended On 31St March, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6f3e9e49-5d36-49e5-9245-5534fe940504.pdf"
+    },
+    {
+      "publication_id": "4925e7cd-01de-40a4-8f65-9e90da0df97d",
+      "published_at": "2026-05-11 19:12:44.570000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Regulation 30-Petchem & Chemical Leadership Connect",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/588519fa-77ff-4826-bf87-e712e7d2e52d.pdf"
+    },
+    {
+      "publication_id": "40469a93-98a5-45a9-b143-a783786960bf",
+      "published_at": "2026-04-13 14:17:17.940000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Announcement under Regulation 30 (LODR)-Change in RTA",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4d1df47d-98df-451f-a88a-dac35e08a6ed.pdf"
+    },
+    {
+      "publication_id": "fc59e28a-033b-46c4-95df-07b7f0b2416a",
+      "published_at": "2026-04-11 11:52:23.823000+05:30",
+      "title": "Axis Solutions Ltd - 511144 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/cf8c6af0-29cc-45e4-8a2a-291a6b503e8d.pdf"
+    }
+  ],
+  "events": [
+    {
+      "published_at": "2026-08-12 18:41:47.017000+05:30",
+      "family": "PRODUCT_LAUNCH",
+      "event_type": "PRODUCT_LAUNCH",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED",
+      "quote": "Ninad Vora: We have an in-house R&D centre, and we launch many products year on year, and we do not compromise on price for competition.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/77f12330-499c-4ca9-a8fb-d578fb23d18a.pdf",
+      "page_no": 10
+    },
+    {
+      "published_at": "2026-08-12 18:41:47.017000+05:30",
+      "family": "FINANCING",
+      "event_type": "EQUITY_FINANCING",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED",
+      "quote": "It is not about the fundraising, but yes, we need to comply with the minimum public shareholding requirements.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/77f12330-499c-4ca9-a8fb-d578fb23d18a.pdf",
+      "page_no": 9
+    },
+    {
+      "published_at": "2026-08-12 18:41:47.017000+05:30",
+      "family": "PRODUCT_LAUNCH",
+      "event_type": "PRODUCT_LAUNCH",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED",
+      "quote": "During this period, we have launched one product, that is the MAG200 flow meter, which is an electromagnetic flow meter range providing many more facilities than the existing flow meters.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/77f12330-499c-4ca9-a8fb-d578fb23d18a.pdf",
+      "page_no": 4
+    },
+    {
+      "published_at": "2026-08-12 18:41:47.017000+05:30",
+      "family": "PRODUCT_LAUNCH",
+      "event_type": "PRODUCT_LAUNCH",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED",
+      "quote": "We have an in-house R&D setup, which is a registered R&D centre, and we launch many products every year across multiple technologies.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/77f12330-499c-4ca9-a8fb-d578fb23d18a.pdf",
+      "page_no": 3
+    },
+    {
+      "published_at": "2026-08-05 19:43:09.227000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": "400",
+      "scale": "CRORE",
+      "currency": "INR",
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM",
+      "quote": "that Axis Solutions Limited (\u201cthe Company\u201d), has received an order for implementation of",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/df773a25-3cb3-4eb4-a250-86cbeb2442f4.pdf",
+      "page_no": 1
+    },
+    {
+      "published_at": "2026-07-31 18:35:37.587000+05:30",
+      "family": "CAPACITY",
+      "event_type": "CAPACITY",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "commercial_stage": "FUNDED_PLAN",
+      "amount_basis": "UNQUANTIFIED",
+      "quote": "Recent multi-zone (MarkNtel Advisors); approx. 8,000 TPA capacity already commissioned approvals (Northern, East Coast, South Western, Central Railway) show as of Feb 2026 (PIB, Govt. of India). procurement shifting to sustained rollout bundling Kavach with National Mission targets 5 MMT/annum by 2030 fibre/communication upgrades, well-suited to Axis's combined Rising commissioned capacity signals early-stage momentum hardware-plus-software offering.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/25db6490-2769-46fc-93e5-c88eb40994fc.pdf",
+      "page_no": 15
+    }
+  ],
+  "statement_pages": [
+    {
+      "published_at": "2026-07-31 18:20:54.453000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/676df386-638c-42d5-95f6-c5b0d44a9643.pdf",
+      "page_no": 15,
+      "body": "Axis Solutions Limited\nCIN No.: L43212GJ1985PLC029849\nI 5 Plot No. 107 to 112, Road No. 6&7, Kathwada GIDC,\nSP Ring Road, Ahmedabad - 382430, Gujarat, India.\n3 GST: 24AACCS1371D3ZS\nAn IS0 9001 Company T\n=\nel.:\nin\n+\nf\n9\no@\n1\na x\n9\ni\n9\ns\n0\nin\n9\nd\n9\ni a\n0\n.\n6\nn\n3 5\n@\n4\nwww.axisindia.in\nNotes\n1 The above Un-audited Consolidated Financial Results have been reviewed by Audit committee of the Board and approved and adopted by\nBoad of Directors at its meeting held on 31st July, 2026.\n2 UnAudited Consolidated Interim Statement of Financial Results for the three months ended June 30, 2026 have been prepared in\naccordance with the Indian Accounting Standard (referred to as *Ind AS\") 34 - Interim Financial Reporting prescribed under Section 133 of\nthe Companies Act, 2013 read with Companies (Indian Accounting Standards) Rules as amended from time to time.\n3 There were no extraordinary items during the quarter ended June 30, 2026.\n4 The Statutory Auditors of the company has carried out limited review of the above consolidated results for the quarter ended as on 30th\nJune, 2026 as per regutation 33 of the SEBI (LODR) Regulations, 2015.\n5 To facilitate Comparision, figures of previous periods has been regrouped and rearranged, wherever necessary.\n6 During the previous year, pursuant to NCLT order dated Tith July, 2024, the amalgamating company Axis Solutions Private Limited gat\namalgamated with Asya Infosaft Ltd. with effect from Ist April 2023. As per approved resolution plan creditors of the company of Asya\nInfosoft Ltd. The rearganisation of the corporate entity was under Insolvency and Banking Code, 2007 read with rules thereto.\n7 Segment Information\nParticulars Quarter Months ended Year Ended\n30.06202 | 3103.2026 | 30.062025 | 3103.2025\nUnaudited | Audited | Unaudited | _ Audited\n[BUSINESS SEGMENTS INFORMATION\n1. Segment Revenues :\n2. Automation and Digitalisation 72839 584 2162 241500\nb, Water 128208 32153 1534.22 7548.00\n. Industrial Engineering \u00a7 Systems 2888.36 669106 786.89 1410395\nTotal Revenue from Operations 4898.83 73642 714873 24066.95\n2. Seament Operating Results (EBITDA}\na. Automation and Digitalisation 276 %546 4040 54531\nb Water 29145 1336.08 17250 1993.43\n. Industrial Engineering & Systems 23172 127200 67.04 1970.98\nTotal Operating Results (EBITDA) 62193 2873.95 279.94 4509.72\n3. Segment Results (PBT)\na. Automation and Digitalisation 55.96 2513 2284 47358\nb. Water 175.82 125833 13.29 177453\nc.Industrial Engineering & Systems 1493 Tge.81 3176 17516\nTotal Proft Before Tax (PBT) 3467 2692.28 17489 392327\n4. Segment Assets :\n2. Automation and Digitalisation 109938 1033.09 326671 4033.09\nb. Water 874357 825684 626599 8256.84\nc.Industrial Engineering & Systems 165253 16102.70 222 1610270\nTotal Assets 29495.47 | 2839244 2074392 2639264\n5. Segment Liabilities :\na. Automation and Digitalisation 196754 1939.34 139867 1939.34\ncb.. IWnadtuse trr ial Engineering & Systems 9 40 0 2 2 6 0 . 7 7 4 9 8 3 7 5 3 4 4 1 9 5 7 9 4 2 8 7 7 6 3 7 7 5 6 7 7 3 3 56 4 1 9 5 7 9\nTotal Liabiities 015,07 | 1423590 9040.00 14235.90\n# Operating Results (EBITDA): Total Profit Befare Finance Cost, Tax, Depreciation & Amortisation\nNote : Other investments/assets/liabilities, ireasury investments, borrowings, deferred tax assets and liabilities, and income and\nexpenses which are not attributable to any reportable segment have een classified in the sales value ratio into respective segments.\nBY ORDER OF THE BOARD OF DIRECTORS , Place: Ahmedabad\nFOR, Axis Solutions Limited Date: 31 July,2026\nDIN: 01988242\nRegistered Office: Plot No. 324, Road No. 5, GIDC Kathwada, Kathwada,\nAhmedabad - 382430, Gujarat, India."
+    },
+    {
+      "published_at": "2026-07-31 18:12:50.150000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/895bf6db-7610-4d2e-8831-b4967164d802.pdf",
+      "page_no": 15,
+      "body": "Axis Solutions Limited\nCIN No.: L43212GJ1985PLC029849\nI 5 Plot No. 107 to 112, Road No. 6&7, Kathwada GIDC,\nSP Ring Road, Ahmedabad - 382430, Gujarat, India.\n3 GST: 24AACCS1371D3ZS\nAn IS0 9001 Company T\n=\nel.:\nin\n+\nf\n9\no@\n1\na x\n9\ni\n9\ns\n0\nin\n9\nd\n9\ni a\n0\n.\n6\nn\n3 5\n@\n4\nwww.axisindia.in\nNotes\n1 The above Un-audited Consolidated Financial Results have been reviewed by Audit committee of the Board and approved and adopted by\nBoad of Directors at its meeting held on 31st July, 2026.\n2 UnAudited Consolidated Interim Statement of Financial Results for the three months ended June 30, 2026 have been prepared in\naccordance with the Indian Accounting Standard (referred to as *Ind AS\") 34 - Interim Financial Reporting prescribed under Section 133 of\nthe Companies Act, 2013 read with Companies (Indian Accounting Standards) Rules as amended from time to time.\n3 There were no extraordinary items during the quarter ended June 30, 2026.\n4 The Statutory Auditors of the company has carried out limited review of the above consolidated results for the quarter ended as on 30th\nJune, 2026 as per regutation 33 of the SEBI (LODR) Regulations, 2015.\n5 To facilitate Comparision, figures of previous periods has been regrouped and rearranged, wherever necessary.\n6 During the previous year, pursuant to NCLT order dated Tith July, 2024, the amalgamating company Axis Solutions Private Limited gat\namalgamated with Asya Infosaft Ltd. with effect from Ist April 2023. As per approved resolution plan creditors of the company of Asya\nInfosoft Ltd. The rearganisation of the corporate entity was under Insolvency and Banking Code, 2007 read with rules thereto.\n7 Segment Information\nParticulars Quarter Months ended Year Ended\n30.06202 | 3103.2026 | 30.062025 | 3103.2025\nUnaudited | Audited | Unaudited | _ Audited\n[BUSINESS SEGMENTS INFORMATION\n1. Segment Revenues :\n2. Automation and Digitalisation 72839 584 2162 241500\nb, Water 128208 32153 1534.22 7548.00\n. Industrial Engineering \u00a7 Systems 2888.36 669106 786.89 1410395\nTotal Revenue from Operations 4898.83 73642 714873 24066.95\n2. Seament Operating Results (EBITDA}\na. Automation and Digitalisation 276 %546 4040 54531\nb Water 29145 1336.08 17250 1993.43\n. Industrial Engineering & Systems 23172 127200 67.04 1970.98\nTotal Operating Results (EBITDA) 62193 2873.95 279.94 4509.72\n3. Segment Results (PBT)\na. Automation and Digitalisation 55.96 2513 2284 47358\nb. Water 175.82 125833 13.29 177453\nc.Industrial Engineering & Systems 1493 Tge.81 3176 17516\nTotal Proft Before Tax (PBT) 3467 2692.28 17489 392327\n4. Segment Assets :\n2. Automation and Digitalisation 109938 1033.09 326671 4033.09\nb. Water 874357 825684 626599 8256.84\nc.Industrial Engineering & Systems 165253 16102.70 222 1610270\nTotal Assets 29495.47 | 2839244 2074392 2639264\n5. Segment Liabilities :\na. Automation and Digitalisation 196754 1939.34 139867 1939.34\ncb.. IWnadtuse trr ial Engineering & Systems 9 40 0 2 2 6 0 . 7 7 4 9 8 3 7 5 3 4 4 1 9 5 7 9 4 2 8 7 7 6 3 7 7 5 6 7 7 3 3 56 4 1 9 5 7 9\nTotal Liabiities 015,07 | 1423590 9040.00 14235.90\n# Operating Results (EBITDA): Total Profit Befare Finance Cost, Tax, Depreciation & Amortisation\nNote : Other investments/assets/liabilities, ireasury investments, borrowings, deferred tax assets and liabilities, and income and\nexpenses which are not attributable to any reportable segment have een classified in the sales value ratio into respective segments.\nBY ORDER OF THE BOARD OF DIRECTORS , Place: Ahmedabad\nFOR, Axis Solutions Limited Date: 31 July,2026\nDIN: 01988242\nRegistered Office: Plot No. 324, Road No. 5, GIDC Kathwada, Kathwada,\nAhmedabad - 382430, Gujarat, India."
+    },
+    {
+      "published_at": "2026-05-21 19:43:12.847000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/39ddf79e-93b8-42fb-9440-7993e29b8cab.pdf",
+      "page_no": 6,
+      "body": "disclosing, as applicable, matters related to going concern and using the going concern\nbasis of accounting unless the respective Board of Directors either intends to liquidate\ntheir respective entities or to cease operations, or has no realistic alternative but to do\nso.\nThe respective Board of Directors of the companies included in the Group and of its\nassociates and joint ventures are responsible for overseeing the financial reporting\nprocess of the Group and of its associates and joint ventures.\nAuditor\u2019s Responsibilities for the Audit of the Consolidated Financial Statements\nOur objectives are to obtain reasonable assurance about whether the consolidated\nfinancial statements as a whole are free from material misstatement, whether due to\nfraud or error, and to issue an auditor\u2019s report that includes our opinion. Reasonable\nassurance is a high level of assurance, but is not a guarantee that an audit conducted\nin accordance with SAs will always detect a material misstatement when it exists.\nMisstatements can arise from fraud or error and are considered material if, individually\nor in the aggregate, they could reasonably be expected to influence the economic\ndecisions of users taken on the basis of these consolidated financial statements.\nAs part of an audit in accordance with SAs, we exercise professional judgment and\nmaintain professional skepticism throughout the audit. We also:\ne Identify and assess the risks of material misstatement of the consolidated\nfinancial statements, whether due to fraud or error, design and perform audit\nprocedures responsive to those risks, and obtain audit evidence that is sufficient\nand appropriate to provide a basis for our opinion. The risk of not detecting a\nmaterial misstatement resulting from fraud is higher than for one resulting from\nerror, as fraud may involve collusion, forgery, intentional omissions,\nmisrepresentations, or the override of internal control.\n\u00a2 Obtain an understanding of internal financial controls relevant to the audit in\norder to design audit procedures that are appropriate in the circumstances. Under\nsection 143(3)(i) of the Act, we are also responsible for expressing our opinion\non whether the Company and its subsidiary companies which are companies\nincorporated in India, has adequate internal financial controls system in place and\nthe operating effectiveness of such controls.\ne Evaluate the appropriateness of accounting policies used and the\nreasonableness of accounting estimates and related disclosures made by\nmanagement.\n\u00ab Conclude on the appropriateness of management's use of the going concern\nbasis of accounting and, based on the audit evidence obtained, whether a\nmaterial uncertainty exists related to events or conditions that may cast significant\ndoubt on the ability of the Group to continue as a going concern. If we conclude\nthat a material uncertainty exists, we are required to draw attention in our\nauditor\u2019s report to the related disclosures in the consolidated financial statements\nor, if such disclosures are inadequate, to modify our opinion. Our conclusions are\nbased on the audit evidence obtained up to the date of our auditor's report.\nHowever, future events or conditions may cause the Group to cease to continue\na going concern.\nte the overall presentation, structure and content of the consolidated\njal statements, including the disclosures, and whether the consolidated"
+    },
+    {
+      "published_at": "2026-05-21 19:43:12.847000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/39ddf79e-93b8-42fb-9440-7993e29b8cab.pdf",
+      "page_no": 11,
+      "body": "AXIS Axis Solutions Limited\nCIN No.: L43212GJ1985PLC029849\nPlot No. 107 to 112, Road No. 6&7, Kathwada GIDC,\nSP Ring Road, Ahmedabad - 382430, Gujaral, India.\nGST: 24AACCS1371D3Z8\nAn IS0 9001 Company Tel.: +91 99099 06354\n& info@akisindia.in @ www.axisindia.in\nAxis Solutions Limited (Previously known as Asya Infosoft Limited)\nAudited Consolidated Balance Sheet as at 31st March, 2026\n(Rupees in Lacs)\nFor the Year Ended 3ist| For the Year Ended\nPartieulars March, 2026 3ist March, 2025\nASSETS\nNON-CURRENT ASSETS\n(@) Property, plant and equipment 291617 202928\nCapital work-in-progress 2020 140.70\nGoodwill 213879 273879\nOther intangible assets 1829 677\n() Financial assets\n@) Investments - -\n(i) Other financial assets 90,83 9091\n(\u00a9 Deferred tax assets (net) - 8769\n@ Other non current assets 65262 233.45\nTotal Non- Current Assets 662689 5327.60\nCURRENT ASSETS\n() Inventories 375572 315,66\n(6) Financial assets\n() Trade receivables 1347722 945176\n(i) Cash and cash equivalents 535.80 525.60\n(i) Loans - 108\n(\u00a9 Other current assets 3997.00 91828\n(@ Current tax assets (Net) - 13.43\nTotal Current Assats 2176574 14685.82\nTOTAL ASSETS 28392.64 20013.42\nEQUITY AND LIABILITIES\nEqury\n(@ Equity share capital 412603 472603\n() Other equity 9657.04 6969.06\n(6) Non-Controlling Interest (226.33) 78.15)\n14156.74 11516.94\nLIABILITIES\nNON-CURRENT LIABILITIES\n(2 Financial liabilities\n() Borrowings 1053.26 1109.65\n(i Trade payables\n(A) total outstanding dues of micro R .\nenterorises and small enterorises; and\n(B) total outstanding dues of creditors\nother than micro enterprises and small - -\nenterorises.\n(iii) Other financial liabilities - -\n[0} Provisions 40663 3827\n(\u00a9) Non Current tax liabilities. - -\n(@) Deferred tax liabilties (net) 25664 0,00\nTotal Non- Current Liabilities 71654 1421.92\nCURRENT LIABILITIES\n() Financial liabilities\n() Borrowings 7093.67 29611\n(i) Trade payables\n(A) total outstancing dues of micro S22 w143\nenterprises and small enterprises; and\n(8) total outstanding dues of creditors\nother than micro enterprises and small 2689.09 193811\nenterprises.\n(i) Other Financial lizbilties\n[0} Other current liabilities 4827 1913.56\n(\u00a9 Provisions 16671 15255\n(d) Current tax liabilities 310.40 -\nTotal Current Liabilities 12519.36 7068.56\nTOTAL EQUITY AND LIABILITIES 2839264 20013.42\nPlace: Ahmedabad FOR, Axis Solutions Limited\nDate: 21\" May, 2026\nRegistered Office: Plot No. 324, Road No. 5, GIDC Kal\nAhmedabad - 382430, Gujarat, India."
+    },
+    {
+      "published_at": "2026-05-21 19:43:12.847000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/39ddf79e-93b8-42fb-9440-7993e29b8cab.pdf",
+      "page_no": 12,
+      "body": "Axis Solutions Limited\nCIN No.: L43212GJ1985PLC029843\n) Plot No. 107to 112, Road No. 6&7, Kathwada GIDC,\nSP Ring Road, Ahmedabad - 382430, Gujarat, India.\nGST: 24AACCS1371D3ZS\nTel.: +91 99099 06354\nAn 180 9001 Company ] mo\u2018@axlslndla.ln @ www.axisindia.in\nAxis Solutions Limited (Previously known as Asya Infosoft Limited)\nRegistered Office Address: 324, Road No. 5, Kathwada GIDC, Kathwada, Ahmedabad 382430 Gujarat, India\nCIN : L432126J1985PLC029849\nAudited Consolidated Cash Flow Statement for the Year Ended 31st March, 2026\n(Rupees In lacs)\nYear ended Year ended\nParticulars March 31,2026 March 31,2025\nA. CASH FLOW FROM OPERATING ACTIVITIES\nNet Profit/(Loss) before Tax 3923.27 3287.16\nAdd/(Less) : Adjustments for non cash items\nDepreciation 158.97 118.50\nProvision for tax (698.00) (18.16)\nAdd/(Less) : Other adjustments\n(Profit)/Loss on Sale of Tangible/Intangible assets - 0.00\n(Profit)/Loss on sale of Investments - 0.00\nInterest Income (21.90) (19.73)\nInterest and Other Borrowing Cost Paid 466,50 330.49\nRe-measurement gains/loss on defined benefits plan (12.53) (34.25)\nOperating Profit before Working Capital Changes 3816.31 3664.00\nAdd/(Less) : Adjustments for working capital changes\nChanges in Current Assets\nDecrease / (Increase) in Inventory 19.94 (1200.94)\nDecrease / (Increase) in Trade Receivables (4025.46), (5008.74)\nDecr/ e(Inacrseasee) in Other Financial assets 0.08 (51.54)\nDecrease / (Increase) in loans and other financial assets 1.08 (1.08)\nDecrease / (Increase) in Current tax assets 32383 (69.66)\nDecrease / (Increase) in Other current assets (3078.72) (107.63)\nChanges in Current Liabilities\n(Decrease) / Increase in Trade Payables 91457 23553\n(Decrease) / Increase in Other Current Liabilities (165.29) 485.49\n(Decrease) / Increase in Provisions (5.84) 65.03\nDecrease / (Increase) in Current Tax Liability 0.00 0.00\nNet cash generated from operations (A) :| (2199.50)| (1989.55)\nB NET CASH FLOW FROM INVESTING ACTIVITIES\nPurchase of property, plant & equipment/intangible assets (1126.86) (237.22)\nInvestment in subsidiary - 0.00\nSale of property, plant & equipment - 0.00\nChange in other non current assets (419.16) (66.41)\nOther Cash Inflow/(Outflow) 7.70 (90.90)\nInterest Income 21.90 19.73\nNet cash used in investing activities (B): (1516.44) (374.80)\nC CASH FLOW FROM FINANCING ACTIVITIES\nChanges in current borrowings 439696 759.54\nChanges in non current : other financial liabilities (56.39) (407.88)\nChanges in non current provisions 88.36 913\nIssue of shares during the year - 2475.00\nInterest and Other Borrowing Cost Paid (466.50) (330.49)\nDividend paid including Corporate dividend tax (236.30) 0.00\nNet cash generated from financing activities (C) : 372614 2587.30\n10.20 22295\n525.60 302.64\n535.80 525.60"
+    },
+    {
+      "published_at": "2026-05-21 19:43:12.847000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/39ddf79e-93b8-42fb-9440-7993e29b8cab.pdf",
+      "page_no": 16,
+      "body": "e Conclude on the appropriateness of the Board of Directors' use of the going concern basis of\naccounting and, based on the audit evidence obtained, whether a material uncertainty exists\nrelated to events or conditions that may cast significant doubt on the Company's ability to continue\nas a going concern. If we conclude that a material uncertainty exists, we are required to draw\nattention in our auditor's report to the related disclosures in the financial results or, if such\ndisclosures are inadequate, to modify our opinion Our conclusions are based on the audit\nevidence obtained up to the date of our auditor's report. However, future events or conditions may\ncause the Company to cease to continue as a going concern.\ne Evaluate the overall presentation, structure and content of the Statement, including the\ndisclosures, and whether the Statement represents the underlying transactions and events in a\nmanner that achieves fair presentation.\n* Obtain sufficient appropriate audit evidence regarding the Statement to express an opinion on the\nStatement. Materiality is the magnitude of misstatements in the Statement that, individually or in\naggregate, make it probable that the economic decisions of a reasonably knowledgeable user of\nthe Statement may be influenced. We consider quantitative materiality and qualitative factors in\ni) planning the scope of our audit work and in evaluating the results of our work; and\nii) to evaluate the effect of any identified misstatements in the Statement.\nWe communicate with those charged with governance regarding, among other matters, the planned\nscope and timing of the audit and significant audit findings, including any significant deficiencies in\ninternal control that we identify during our audit.\nWe also provide those charged with governance with a statement that we have complied with\nrelevant ethical requirements regarding independence, and to communicate with them all\nrelationships and other matters that may reasonably be thought to bear on our independence, and\nwhere applicable, related safeguards.\nOther Matter\nThe Statement includes the results for the quarter ended March 31, 2026 being the balancing figure\nbetween the audited figures in respect of the full financial year ended March 31, 2026 and the\npublished unaudited year-to-date figures up to the third quarter of the current financial year, which\nwere subjected to a limited review by us, as required under the Listing Regulations. Our opinion on\nthe Audit of the Standalone Financial Results for the year ended March 31, 2026 is not modified in\nrespect of this matter.\nFor Chandabhoy & Jassoobhoy\nChartered Accountants\nCA Nimai G. Shah\n(Partner)\nFirm Regn. No.101648W\nPlace : Ahmedabad\nDate : 21-05-2026\nUDIN : 26100932GYARSM3583"
+    },
+    {
+      "published_at": "2026-05-21 19:43:12.847000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/39ddf79e-93b8-42fb-9440-7993e29b8cab.pdf",
+      "page_no": 18,
+      "body": "RIS Axis Solutions Limited '\nCIN No.: L43212GJ1985PLC029849\nPlot No. 107 to 112, Road No. 6&7, Kathwada GIDC,\nSP Ring Road, Ahmedabad - 382430, Gujarat, India.\nGST: 24AACCS1371D3ZS\n. Tel.: +91 99099 06354\nAn1S0 9001 Company\n& info@axisindia.in @ www.axisindia.in\nNotes :\n1 The audited Standane Financial Resuts for the three month period & year ended March 31, 2026 have been r jiewed by Audit committee of the Board\nand approved and adopted by Boad of Directors at its meeting held on 2Ist May, 2026, There are no qualification in the report issued by Statutory\nAuditors,\n2 Audited Standalone Statement of Financial Results for the Quarter & Year ended March 31, 2026 have been prepared in accordance with the Indian\nAccounting Standard (referred to as \u201cInd AS\") prescribed under Section 133 of the Companies Act, 2013 read with Compani ies (Inc n Accounting\nStandards) Rules as amended from time to time.\n3 The Company has estimated and recognized the impact of implementation of the New Labour Codes under Employee benefits expense for the year\n4 Tnere were no extraordinary items during the quarter ended March 31,\n5 The Statutory Auditors of the company has carried out audit of the above Standalone results for the Quarter & Year ended 3st March, 2026 as per\nreaulation 33 of the SEBI (LODR) Requlations, 2015.\n& To facilitate Comparision, igures of previous periods has been regrouped and rearranged, wherever necessary.\n7 During the previous year, pursuant to NCLT order dated Tith July, 2024, the amalgamating company Axis Solutions Private Limited got amalgamated\nwith Asya Infosoft Ltd. with effect from Ist April 2023. As per approved resolution plan creditors of the company of Asya Infosoft Ltd. The\nreorganisation of the corporate entity was under Insolvency and Banking Code, 2007 read with rules thereto,\n8 Segment Information\nParticilars Quarter Months ended Year Ended\n31032026 | 312205 | 3103205 | 3r0sc0z6 | soszozs\nAuted | Unsudited | Audited \u2018Audited Audited\nBUSINESS SEGMENTS INFORMATION\n1_Segment Revenues\na. Automaion end Digitalisation 56k P 9637 241500 299146\no Wiater w2153 75781 380852 7546.00 08703\n< Industril Engineering & Systems 560365 311609 535401 587471 11588.54\nTotal Revenue from Operations 647,06 L0104 985650 287 | 006743\n2 Seqment Operating Results (EBTDA)E\n. Automation and Digitalisation 26506 6038 w1 [7E] 37487\nb Water 153606 23024 45498 99343 83274\n. Industrial Engineering & Systems 121990 39139 73453 196255 164659\nTotal Operating Results (EBITDA) 287144 730,02 49562 452169 385422\n3 Seqment Results (PBT)\n= Automation are Dighalietion [ e 7E] 50 EYn\nb Water 125803 20943 59041 ) 9674\n< ndustrial Engineering & Systems 109839 29297 64376 166714 138767\nTotal Proit Before Tax (PBT) 20155 58678 1326.48 393625 340588\n4 Sogment Assats\n2. Automation and Digitaisation w0309 329179 20545 w0330 240345\no iater 825684 613920 65 825684 P\n< Industrial Engineering & Systems 1552511 126753 64704 1552511 64104\nTotal Assets a4 | zom252 2016803 281504 20166.03\n5 Seqment Lisbities\n= Automation snd Digalisation 5934 w2139 00150 193934 00150\nb Viater 356155 262140 255015 356159 255015\nc Industrial Engineering & Systems 787414 519552 ug5517 787414 485517\nTotal Lisbltes 537507 984431 840722 335,07 840722\n# Operating Results (EBITDA): Total Profit Before Finance Cost, Tax, Depreciation & Amortisation\nNotes to Segment Information for the Quarter and Year Ended 31st March, 2026 :-\nAs per Indian Accounting Standard 108 \u2018Operating Segments\u2019, the Company has reported \u2018Segment Informatior described below:\n) Automation and Digitalisation\nThe Automation and Digtalisation segment includes industrial automation solutions, digital transformation services, smart manufacturing systems, software-\nenabled process optimisation, Industrial Internet of Things (lloT) solutions, control systems integration, dats alytics, and other technology-driven services. The.\nsegment focuses on enhancing operational efficiency, productivity, connectivity, monitoring, and digital enablement across industrial and nfrastructure sectors.\nb) Water\nThe Water segment includes water quality monitoring and analytical solutions, analysers, instrumentation systems, process monitoring equipment, dosing and\nmeasurement solutions, operation and maintenance services, annual maintenance contracts (AMC),calibration and technical support services, and other\nproducts and services catering to industrial, municipal, utility, and infrastructure sectors. The segment focuses on enabling efficient water treatment, process\nreliabiltv. reaulatory comaliance. and sustainable water management.\n\u00a9) Industrial Engineering & Systems.\nThe Industrial Enginaering & Systems segment includes engineering solutions, system integr: fon, project execution, manufacture and supply of engineered\nproducts and industrial systems, electromechanical solutions, turnkey industrial projects, and related technical and support services catering to industrial\nsectors.\nNote - Other investments/assets/liabiites, treasury investments, borrowings, deferretadx assets and liabilities, and income and expenses which are not\nattributable to any reportable segment have been classified in the sales value ratio into respective segments.\nBY ORDER OF THE BOARD OF DIRECTORS,\nFOR, Axis S Limited Place: Ahmedabad\nDate: 21 May, 20 26\nMrBijal San\nManaging Dir\nDIN: 01988242\nRegistered Office: Plot No. 324, Road No. 5, GIDC Kathwad: la, Kathwada,\nAhmedabad - 382430, Gujarat, India."
+    },
+    {
+      "published_at": "2026-05-21 19:43:12.847000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/39ddf79e-93b8-42fb-9440-7993e29b8cab.pdf",
+      "page_no": 19,
+      "body": "RIS AXxis Solutions Limited\nCIN No.: L43212GJ1985PLC029849\nPlot No. 107 to 112, Road No. 637, Kathwada GIDC,\nSP Ring Road, Ahmedabad - 382430, Gujarat, India.\nGST: 24AACCS1371D3ZS\nAn SO 9001 Company Tel.: +91 99099 06354\n\u2122 info@axisindia.in @ www.axisindia.in\nAxis Solutions Limited (Previously known as Asya Infosoft Limited)\nAudited Standalone Balance Sheet as at 31st March, 2026\n(Rupees in Lacs)\n. For the Year Ended 3ist| For the Year Ended\nPeuticliare March, 2026 31st March, 2025|\nASSETS\nNON-CURRENT ASSETS\n(@) Property, plant and equipment 291617 2029.28\nCapital work-in-progress 21020 140.70\nGoodwill 273879 213879\nOther intangible assets 1829 671\n(\u00a9) Financial assets\n) Investments 1381 n8l\n(i) Other financial assets 8375 8484\n(\u00a9 Deferred tax assets (net) - 8769\n(@) Other non current assets 27489 23345\nTotal Non- Current Assets 625589 533314\nCURRENT ASSETS\n(a) Inventories 375336 376530\n\u00ae) Financial assets\n() Trade receivables 1360476 9559.72\n(i) Cash and cash equivalents 858,64 49414\n(i) Loans 22875 31233\n\u00a9 Other current assets nass 62997\n0 Current tax assets (Net) - 1343\nTotal Current Assets 2155915 1483489\nTOTAL ASSETS, 27815.04 20168.03\nEQUITY AND LIABILITIES\nEquiTy\n@) Equity share capital 412603 4712603\n(0) Other equity 9394 703478\n14439.97 1176081\nLIABILITIES\nNON-CURRENT LIABILITIES\n@) Financial liabilities.\n() Borrowings 104290 109890\n(i) Trade payables\n(A) total outstanding dues of micro ~ L4\nenterprises and small enterorises; and\n(8) total outstanding dues of creditors,\nother than micro enterprises and small - -\nenterorises.\n(i) Other financial liabilities = -\n) Provisions. 40663 3827\n() Non Current tax liabilities \u00a3 =\n(@) Deferred tax liabilties (net) 25664 -\nTotal Non- Current Liabilities 170617 W77\nCURRENT LIABILITIES\n(a) Financial liabilities\n() Borrowings. 709142 269611\n(i) Trade payables\n() total outstanding dues of micro o o5\nenterprises and small enterprises; and\n(8) total outstanding dues of creitors,\nother than micro enterprises and small 29285 194165\nenterprises.\n(i) Other Financial liabilities\n] Other current liabilities 89795 184287\n(\u00a9) Provisions 14523 14120\n(@) Current tax liabilities 3024 -\nTotal Current Liabilities 1166891 699005\nTOTAL EQUITY AND LIABILITIES 21815.04 20168.03\nPlace: Ahmedabad\nDate: 21\" May, 2026\nDIN: 01988242\nRegistered Office: Plot No. 324, Road No. 5, GIDC Kathwada, Kathwada,\nAhmedabad - 382430, Gujarat, India."
+    },
+    {
+      "published_at": "2026-05-21 19:43:12.847000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/39ddf79e-93b8-42fb-9440-7993e29b8cab.pdf",
+      "page_no": 20,
+      "body": "Axis Solutions Limited\nCIN No.: L43212GJ1985PLC029849\nPlot No. 107 to 112, Road No. 6&7, Kathwada GIDC,\nSP Ring Road, Ahmedabad - 382430, Gujarat, India.\nGST: 24AACCS1371D3ZS\nTel.: +91 99099 06354\n11 \u2122 info@axisindia.in @ www.axisindia.in\nAxis Solutions Limited (Previously known as Asya Infosoft Limited)\nRegistered Office Address: 324, Road No. 5, Kathwada GIDC, Kathwada, Ahmedabad 382430 Gujarat, India\nCIN : L43212GJ1985PLC029849\nAudited Standalone Cash Flow Statement for the Year Ended 31st March, 2026\n(Rupees In lacs)\nYear ended Year ended\nParticulars March 31,2026 March 31,2025\nA. CASH FLOW FROM OPERATING ACTIVITIES\nNet Profit/(Loss) before Tax 3935.25 3439.37\nAdd/(Less) : Adjustments for non cash items\nDepreciation 158.97 n7.87\nProvision for tax (688.00) (18.16)\nAdd/(Less) : Other adjustments\n(Profit)/Loss on Sale of Tangible/Intangible assets = 0.00\n(Profit)/Loss on sale of Investments - 0.00\nInterest Income (22.31) (19.73)\nInterest and Other Borrowing Cost Paid 463.47 330.46\nRe-measurement gains/loss on defined benefits plan (1253) (33.49),\nOperating Profit before Working Capital Changes 3834.84 3816.32\nAdd/(Less) : Adjustments for working capital changes\nChanges in Current Assets\nDecrease / (Increase) in Inventory n94 (190.57)\nDecrease / (Increase) in Trade Receivables (4045.04) (5116.70)\nDecrease / (Increase) in Other Financial assets 0.89 (45.27)\nDecrease / (Increase) in loans and other financial assets 14358 (370.98),\nDecrease / (Increase) in Current tax assets 361.30 (95.27),\nDecrease / (Increase) in Other current assets (24,83.68) 20694\nChanges in Current Liabilities\n(Decrease) / Increase in Trade Payables N479 252.69\n(Decrease) / Increase in Other Current Liabilities (944.92) \u00a314.80\n(Decrease) / Increase in Provisions 403 4005\nNet cash generated from operations (A) | (2202.27)| (2090.00)\nB NET CASH FLOW FROM INVESTING ACTIVITIES\nPurchase of property, plant & equipment/intangible assets (139.42) (236.59)\nInvestment in subsidiary (2.00) ey\nSale of property, plant & equipment - 0.00\nChange in other non current assets (41.43) (66.41)\nInterest Income 2231 19.73\nNet cash used in investing activities (B): (1160.54)| (295.08)\nC CASH FLOW FROM FINANCING ACTIVITIES\nChanges in current borrowings 4394M 159.54\nChanges in non current : other financial liabilities (56.00) (418.63)\nChanges in non current provisions 88.36 N3\nIssue of shares during the year 2475.00\nInterest and Other Borrowing Cost Paid (463.47) (330.46)\nDividend paid including Corporate dividend tax (236.30)\nNet cash generated from financing activities (C) : 3727.30 2576.58\nNET INCREASE/(DECREASE) IN CASH AND CASH EQUIVALENTS (A+B+C) 364.50 191.50\nCash and cash equivements at the beginning of the year F 49414 302.64\nCash and cash equivements at the end of the year wliong 858.64 494,14\nRegistered Office: Plot No.\nAhmedaba"
+    },
+    {
+      "published_at": "2026-05-21 19:37:44.070000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/154c6338-6b91-4822-aa57-5c6057881259.pdf",
+      "page_no": 6,
+      "body": "disclosing, as applicable, matters related to going concern and using the going concern\nbasis of accounting unless the respective Board of Directors either intends to liquidate\ntheir respective entities or to cease operations, or has no realistic alternative but to do\nso.\nThe respective Board of Directors of the companies included in the Group and of its\nassociates and joint ventures are responsible for overseeing the financial reporting\nprocess of the Group and of its associates and joint ventures.\nAuditor\u2019s Responsibilities for the Audit of the Consolidated Financial Statements\nOur objectives are to obtain reasonable assurance about whether the consolidated\nfinancial statements as a whole are free from material misstatement, whether due to\nfraud or error, and to issue an auditor\u2019s report that includes our opinion. Reasonable\nassurance is a high level of assurance, but is not a guarantee that an audit conducted\nin accordance with SAs will always detect a material misstatement when it exists.\nMisstatements can arise from fraud or error and are considered material if, individually\nor in the aggregate, they could reasonably be expected to influence the economic\ndecisions of users taken on the basis of these consolidated financial statements.\nAs part of an audit in accordance with SAs, we exercise professional judgment and\nmaintain professional skepticism throughout the audit. We also:\ne Identify and assess the risks of material misstatement of the consolidated\nfinancial statements, whether due to fraud or error, design and perform audit\nprocedures responsive to those risks, and obtain audit evidence that is sufficient\nand appropriate to provide a basis for our opinion. The risk of not detecting a\nmaterial misstatement resulting from fraud is higher than for one resulting from\nerror, as fraud may involve collusion, forgery, intentional omissions,\nmisrepresentations, or the override of internal control.\n\u00a2 Obtain an understanding of internal financial controls relevant to the audit in\norder to design audit procedures that are appropriate in the circumstances. Under\nsection 143(3)(i) of the Act, we are also responsible for expressing our opinion\non whether the Company and its subsidiary companies which are companies\nincorporated in India, has adequate internal financial controls system in place and\nthe operating effectiveness of such controls.\ne Evaluate the appropriateness of accounting policies used and the\nreasonableness of accounting estimates and related disclosures made by\nmanagement.\n\u00ab Conclude on the appropriateness of management's use of the going concern\nbasis of accounting and, based on the audit evidence obtained, whether a\nmaterial uncertainty exists related to events or conditions that may cast significant\ndoubt on the ability of the Group to continue as a going concern. If we conclude\nthat a material uncertainty exists, we are required to draw attention in our\nauditor\u2019s report to the related disclosures in the consolidated financial statements\nor, if such disclosures are inadequate, to modify our opinion. Our conclusions are\nbased on the audit evidence obtained up to the date of our auditor's report.\nHowever, future events or conditions may cause the Group to cease to continue\na going concern.\nte the overall presentation, structure and content of the consolidated\njal statements, including the disclosures, and whether the consolidated"
+    },
+    {
+      "published_at": "2026-05-21 19:37:44.070000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/154c6338-6b91-4822-aa57-5c6057881259.pdf",
+      "page_no": 11,
+      "body": "AXIS Axis Solutions Limited\nCIN No.: L43212GJ1985PLC029849\nPlot No. 107 to 112, Road No. 6&7, Kathwada GIDC,\nSP Ring Road, Ahmedabad - 382430, Gujaral, India.\nGST: 24AACCS1371D3Z8\nAn IS0 9001 Company Tel.: +91 99099 06354\n& info@akisindia.in @ www.axisindia.in\nAxis Solutions Limited (Previously known as Asya Infosoft Limited)\nAudited Consolidated Balance Sheet as at 31st March, 2026\n(Rupees in Lacs)\nFor the Year Ended 3ist| For the Year Ended\nPartieulars March, 2026 3ist March, 2025\nASSETS\nNON-CURRENT ASSETS\n(@) Property, plant and equipment 291617 202928\nCapital work-in-progress 2020 140.70\nGoodwill 213879 273879\nOther intangible assets 1829 677\n() Financial assets\n@) Investments - -\n(i) Other financial assets 90,83 9091\n(\u00a9 Deferred tax assets (net) - 8769\n@ Other non current assets 65262 233.45\nTotal Non- Current Assets 662689 5327.60\nCURRENT ASSETS\n() Inventories 375572 315,66\n(6) Financial assets\n() Trade receivables 1347722 945176\n(i) Cash and cash equivalents 535.80 525.60\n(i) Loans - 108\n(\u00a9 Other current assets 3997.00 91828\n(@ Current tax assets (Net) - 13.43\nTotal Current Assats 2176574 14685.82\nTOTAL ASSETS 28392.64 20013.42\nEQUITY AND LIABILITIES\nEqury\n(@ Equity share capital 412603 472603\n() Other equity 9657.04 6969.06\n(6) Non-Controlling Interest (226.33) 78.15)\n14156.74 11516.94\nLIABILITIES\nNON-CURRENT LIABILITIES\n(2 Financial liabilities\n() Borrowings 1053.26 1109.65\n(i Trade payables\n(A) total outstanding dues of micro R .\nenterorises and small enterorises; and\n(B) total outstanding dues of creditors\nother than micro enterprises and small - -\nenterorises.\n(iii) Other financial liabilities - -\n[0} Provisions 40663 3827\n(\u00a9) Non Current tax liabilities. - -\n(@) Deferred tax liabilties (net) 25664 0,00\nTotal Non- Current Liabilities 71654 1421.92\nCURRENT LIABILITIES\n() Financial liabilities\n() Borrowings 7093.67 29611\n(i) Trade payables\n(A) total outstancing dues of micro S22 w143\nenterprises and small enterprises; and\n(8) total outstanding dues of creditors\nother than micro enterprises and small 2689.09 193811\nenterprises.\n(i) Other Financial lizbilties\n[0} Other current liabilities 4827 1913.56\n(\u00a9 Provisions 16671 15255\n(d) Current tax liabilities 310.40 -\nTotal Current Liabilities 12519.36 7068.56\nTOTAL EQUITY AND LIABILITIES 2839264 20013.42\nPlace: Ahmedabad FOR, Axis Solutions Limited\nDate: 21\" May, 2026\nRegistered Office: Plot No. 324, Road No. 5, GIDC Kal\nAhmedabad - 382430, Gujarat, India."
+    },
+    {
+      "published_at": "2026-05-21 19:37:44.070000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/154c6338-6b91-4822-aa57-5c6057881259.pdf",
+      "page_no": 12,
+      "body": "Axis Solutions Limited\nCIN No.: L43212GJ1985PLC029843\n) Plot No. 107to 112, Road No. 6&7, Kathwada GIDC,\nSP Ring Road, Ahmedabad - 382430, Gujarat, India.\nGST: 24AACCS1371D3ZS\nTel.: +91 99099 06354\nAn 180 9001 Company ] mo\u2018@axlslndla.ln @ www.axisindia.in\nAxis Solutions Limited (Previously known as Asya Infosoft Limited)\nRegistered Office Address: 324, Road No. 5, Kathwada GIDC, Kathwada, Ahmedabad 382430 Gujarat, India\nCIN : L432126J1985PLC029849\nAudited Consolidated Cash Flow Statement for the Year Ended 31st March, 2026\n(Rupees In lacs)\nYear ended Year ended\nParticulars March 31,2026 March 31,2025\nA. CASH FLOW FROM OPERATING ACTIVITIES\nNet Profit/(Loss) before Tax 3923.27 3287.16\nAdd/(Less) : Adjustments for non cash items\nDepreciation 158.97 118.50\nProvision for tax (698.00) (18.16)\nAdd/(Less) : Other adjustments\n(Profit)/Loss on Sale of Tangible/Intangible assets - 0.00\n(Profit)/Loss on sale of Investments - 0.00\nInterest Income (21.90) (19.73)\nInterest and Other Borrowing Cost Paid 466,50 330.49\nRe-measurement gains/loss on defined benefits plan (12.53) (34.25)\nOperating Profit before Working Capital Changes 3816.31 3664.00\nAdd/(Less) : Adjustments for working capital changes\nChanges in Current Assets\nDecrease / (Increase) in Inventory 19.94 (1200.94)\nDecrease / (Increase) in Trade Receivables (4025.46), (5008.74)\nDecr/ e(Inacrseasee) in Other Financial assets 0.08 (51.54)\nDecrease / (Increase) in loans and other financial assets 1.08 (1.08)\nDecrease / (Increase) in Current tax assets 32383 (69.66)\nDecrease / (Increase) in Other current assets (3078.72) (107.63)\nChanges in Current Liabilities\n(Decrease) / Increase in Trade Payables 91457 23553\n(Decrease) / Increase in Other Current Liabilities (165.29) 485.49\n(Decrease) / Increase in Provisions (5.84) 65.03\nDecrease / (Increase) in Current Tax Liability 0.00 0.00\nNet cash generated from operations (A) :| (2199.50)| (1989.55)\nB NET CASH FLOW FROM INVESTING ACTIVITIES\nPurchase of property, plant & equipment/intangible assets (1126.86) (237.22)\nInvestment in subsidiary - 0.00\nSale of property, plant & equipment - 0.00\nChange in other non current assets (419.16) (66.41)\nOther Cash Inflow/(Outflow) 7.70 (90.90)\nInterest Income 21.90 19.73\nNet cash used in investing activities (B): (1516.44) (374.80)\nC CASH FLOW FROM FINANCING ACTIVITIES\nChanges in current borrowings 439696 759.54\nChanges in non current : other financial liabilities (56.39) (407.88)\nChanges in non current provisions 88.36 913\nIssue of shares during the year - 2475.00\nInterest and Other Borrowing Cost Paid (466.50) (330.49)\nDividend paid including Corporate dividend tax (236.30) 0.00\nNet cash generated from financing activities (C) : 372614 2587.30\n10.20 22295\n525.60 302.64\n535.80 525.60"
+    },
+    {
+      "published_at": "2026-05-21 19:37:44.070000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/154c6338-6b91-4822-aa57-5c6057881259.pdf",
+      "page_no": 16,
+      "body": "e Conclude on the appropriateness of the Board of Directors' use of the going concern basis of\naccounting and, based on the audit evidence obtained, whether a material uncertainty exists\nrelated to events or conditions that may cast significant doubt on the Company's ability to continue\nas a going concern. If we conclude that a material uncertainty exists, we are required to draw\nattention in our auditor's report to the related disclosures in the financial results or, if such\ndisclosures are inadequate, to modify our opinion Our conclusions are based on the audit\nevidence obtained up to the date of our auditor's report. However, future events or conditions may\ncause the Company to cease to continue as a going concern.\ne Evaluate the overall presentation, structure and content of the Statement, including the\ndisclosures, and whether the Statement represents the underlying transactions and events in a\nmanner that achieves fair presentation.\n* Obtain sufficient appropriate audit evidence regarding the Statement to express an opinion on the\nStatement. Materiality is the magnitude of misstatements in the Statement that, individually or in\naggregate, make it probable that the economic decisions of a reasonably knowledgeable user of\nthe Statement may be influenced. We consider quantitative materiality and qualitative factors in\ni) planning the scope of our audit work and in evaluating the results of our work; and\nii) to evaluate the effect of any identified misstatements in the Statement.\nWe communicate with those charged with governance regarding, among other matters, the planned\nscope and timing of the audit and significant audit findings, including any significant deficiencies in\ninternal control that we identify during our audit.\nWe also provide those charged with governance with a statement that we have complied with\nrelevant ethical requirements regarding independence, and to communicate with them all\nrelationships and other matters that may reasonably be thought to bear on our independence, and\nwhere applicable, related safeguards.\nOther Matter\nThe Statement includes the results for the quarter ended March 31, 2026 being the balancing figure\nbetween the audited figures in respect of the full financial year ended March 31, 2026 and the\npublished unaudited year-to-date figures up to the third quarter of the current financial year, which\nwere subjected to a limited review by us, as required under the Listing Regulations. Our opinion on\nthe Audit of the Standalone Financial Results for the year ended March 31, 2026 is not modified in\nrespect of this matter.\nFor Chandabhoy & Jassoobhoy\nChartered Accountants\nCA Nimai G. Shah\n(Partner)\nFirm Regn. No.101648W\nPlace : Ahmedabad\nDate : 21-05-2026\nUDIN : 26100932GYARSM3583"
+    },
+    {
+      "published_at": "2026-05-21 19:37:44.070000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/154c6338-6b91-4822-aa57-5c6057881259.pdf",
+      "page_no": 18,
+      "body": "RIS Axis Solutions Limited '\nCIN No.: L43212GJ1985PLC029849\nPlot No. 107 to 112, Road No. 6&7, Kathwada GIDC,\nSP Ring Road, Ahmedabad - 382430, Gujarat, India.\nGST: 24AACCS1371D3ZS\n. Tel.: +91 99099 06354\nAn1S0 9001 Company\n& info@axisindia.in @ www.axisindia.in\nNotes :\n1 The audited Standane Financial Resuts for the three month period & year ended March 31, 2026 have been r jiewed by Audit committee of the Board\nand approved and adopted by Boad of Directors at its meeting held on 2Ist May, 2026, There are no qualification in the report issued by Statutory\nAuditors,\n2 Audited Standalone Statement of Financial Results for the Quarter & Year ended March 31, 2026 have been prepared in accordance with the Indian\nAccounting Standard (referred to as \u201cInd AS\") prescribed under Section 133 of the Companies Act, 2013 read with Compani ies (Inc n Accounting\nStandards) Rules as amended from time to time.\n3 The Company has estimated and recognized the impact of implementation of the New Labour Codes under Employee benefits expense for the year\n4 Tnere were no extraordinary items during the quarter ended March 31,\n5 The Statutory Auditors of the company has carried out audit of the above Standalone results for the Quarter & Year ended 3st March, 2026 as per\nreaulation 33 of the SEBI (LODR) Requlations, 2015.\n& To facilitate Comparision, igures of previous periods has been regrouped and rearranged, wherever necessary.\n7 During the previous year, pursuant to NCLT order dated Tith July, 2024, the amalgamating company Axis Solutions Private Limited got amalgamated\nwith Asya Infosoft Ltd. with effect from Ist April 2023. As per approved resolution plan creditors of the company of Asya Infosoft Ltd. The\nreorganisation of the corporate entity was under Insolvency and Banking Code, 2007 read with rules thereto,\n8 Segment Information\nParticilars Quarter Months ended Year Ended\n31032026 | 312205 | 3103205 | 3r0sc0z6 | soszozs\nAuted | Unsudited | Audited \u2018Audited Audited\nBUSINESS SEGMENTS INFORMATION\n1_Segment Revenues\na. Automaion end Digitalisation 56k P 9637 241500 299146\no Wiater w2153 75781 380852 7546.00 08703\n< Industril Engineering & Systems 560365 311609 535401 587471 11588.54\nTotal Revenue from Operations 647,06 L0104 985650 287 | 006743\n2 Seqment Operating Results (EBTDA)E\n. Automation and Digitalisation 26506 6038 w1 [7E] 37487\nb Water 153606 23024 45498 99343 83274\n. Industrial Engineering & Systems 121990 39139 73453 196255 164659\nTotal Operating Results (EBITDA) 287144 730,02 49562 452169 385422\n3 Seqment Results (PBT)\n= Automation are Dighalietion [ e 7E] 50 EYn\nb Water 125803 20943 59041 ) 9674\n< ndustrial Engineering & Systems 109839 29297 64376 166714 138767\nTotal Proit Before Tax (PBT) 20155 58678 1326.48 393625 340588\n4 Sogment Assats\n2. Automation and Digitaisation w0309 329179 20545 w0330 240345\no iater 825684 613920 65 825684 P\n< Industrial Engineering & Systems 1552511 126753 64704 1552511 64104\nTotal Assets a4 | zom252 2016803 281504 20166.03\n5 Seqment Lisbities\n= Automation snd Digalisation 5934 w2139 00150 193934 00150\nb Viater 356155 262140 255015 356159 255015\nc Industrial Engineering & Systems 787414 519552 ug5517 787414 485517\nTotal Lisbltes 537507 984431 840722 335,07 840722\n# Operating Results (EBITDA): Total Profit Before Finance Cost, Tax, Depreciation & Amortisation\nNotes to Segment Information for the Quarter and Year Ended 31st March, 2026 :-\nAs per Indian Accounting Standard 108 \u2018Operating Segments\u2019, the Company has reported \u2018Segment Informatior described below:\n) Automation and Digitalisation\nThe Automation and Digtalisation segment includes industrial automation solutions, digital transformation services, smart manufacturing systems, software-\nenabled process optimisation, Industrial Internet of Things (lloT) solutions, control systems integration, dats alytics, and other technology-driven services. The.\nsegment focuses on enhancing operational efficiency, productivity, connectivity, monitoring, and digital enablement across industrial and nfrastructure sectors.\nb) Water\nThe Water segment includes water quality monitoring and analytical solutions, analysers, instrumentation systems, process monitoring equipment, dosing and\nmeasurement solutions, operation and maintenance services, annual maintenance contracts (AMC),calibration and technical support services, and other\nproducts and services catering to industrial, municipal, utility, and infrastructure sectors. The segment focuses on enabling efficient water treatment, process\nreliabiltv. reaulatory comaliance. and sustainable water management.\n\u00a9) Industrial Engineering & Systems.\nThe Industrial Enginaering & Systems segment includes engineering solutions, system integr: fon, project execution, manufacture and supply of engineered\nproducts and industrial systems, electromechanical solutions, turnkey industrial projects, and related technical and support services catering to industrial\nsectors.\nNote - Other investments/assets/liabiites, treasury investments, borrowings, deferretadx assets and liabilities, and income and expenses which are not\nattributable to any reportable segment have been classified in the sales value ratio into respective segments.\nBY ORDER OF THE BOARD OF DIRECTORS,\nFOR, Axis S Limited Place: Ahmedabad\nDate: 21 May, 20 26\nMrBijal San\nManaging Dir\nDIN: 01988242\nRegistered Office: Plot No. 324, Road No. 5, GIDC Kathwad: la, Kathwada,\nAhmedabad - 382430, Gujarat, India."
+    },
+    {
+      "published_at": "2026-05-21 19:37:44.070000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/154c6338-6b91-4822-aa57-5c6057881259.pdf",
+      "page_no": 19,
+      "body": "RIS AXxis Solutions Limited\nCIN No.: L43212GJ1985PLC029849\nPlot No. 107 to 112, Road No. 637, Kathwada GIDC,\nSP Ring Road, Ahmedabad - 382430, Gujarat, India.\nGST: 24AACCS1371D3ZS\nAn SO 9001 Company Tel.: +91 99099 06354\n\u2122 info@axisindia.in @ www.axisindia.in\nAxis Solutions Limited (Previously known as Asya Infosoft Limited)\nAudited Standalone Balance Sheet as at 31st March, 2026\n(Rupees in Lacs)\n. For the Year Ended 3ist| For the Year Ended\nPeuticliare March, 2026 31st March, 2025|\nASSETS\nNON-CURRENT ASSETS\n(@) Property, plant and equipment 291617 2029.28\nCapital work-in-progress 21020 140.70\nGoodwill 273879 213879\nOther intangible assets 1829 671\n(\u00a9) Financial assets\n) Investments 1381 n8l\n(i) Other financial assets 8375 8484\n(\u00a9 Deferred tax assets (net) - 8769\n(@) Other non current assets 27489 23345\nTotal Non- Current Assets 625589 533314\nCURRENT ASSETS\n(a) Inventories 375336 376530\n\u00ae) Financial assets\n() Trade receivables 1360476 9559.72\n(i) Cash and cash equivalents 858,64 49414\n(i) Loans 22875 31233\n\u00a9 Other current assets nass 62997\n0 Current tax assets (Net) - 1343\nTotal Current Assets 2155915 1483489\nTOTAL ASSETS, 27815.04 20168.03\nEQUITY AND LIABILITIES\nEquiTy\n@) Equity share capital 412603 4712603\n(0) Other equity 9394 703478\n14439.97 1176081\nLIABILITIES\nNON-CURRENT LIABILITIES\n@) Financial liabilities.\n() Borrowings 104290 109890\n(i) Trade payables\n(A) total outstanding dues of micro ~ L4\nenterprises and small enterorises; and\n(8) total outstanding dues of creditors,\nother than micro enterprises and small - -\nenterorises.\n(i) Other financial liabilities = -\n) Provisions. 40663 3827\n() Non Current tax liabilities \u00a3 =\n(@) Deferred tax liabilties (net) 25664 -\nTotal Non- Current Liabilities 170617 W77\nCURRENT LIABILITIES\n(a) Financial liabilities\n() Borrowings. 709142 269611\n(i) Trade payables\n() total outstanding dues of micro o o5\nenterprises and small enterprises; and\n(8) total outstanding dues of creitors,\nother than micro enterprises and small 29285 194165\nenterprises.\n(i) Other Financial liabilities\n] Other current liabilities 89795 184287\n(\u00a9) Provisions 14523 14120\n(@) Current tax liabilities 3024 -\nTotal Current Liabilities 1166891 699005\nTOTAL EQUITY AND LIABILITIES 21815.04 20168.03\nPlace: Ahmedabad\nDate: 21\" May, 2026\nDIN: 01988242\nRegistered Office: Plot No. 324, Road No. 5, GIDC Kathwada, Kathwada,\nAhmedabad - 382430, Gujarat, India."
+    },
+    {
+      "published_at": "2026-05-21 19:37:44.070000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/154c6338-6b91-4822-aa57-5c6057881259.pdf",
+      "page_no": 20,
+      "body": "Axis Solutions Limited\nCIN No.: L43212GJ1985PLC029849\nPlot No. 107 to 112, Road No. 6&7, Kathwada GIDC,\nSP Ring Road, Ahmedabad - 382430, Gujarat, India.\nGST: 24AACCS1371D3ZS\nTel.: +91 99099 06354\n11 \u2122 info@axisindia.in @ www.axisindia.in\nAxis Solutions Limited (Previously known as Asya Infosoft Limited)\nRegistered Office Address: 324, Road No. 5, Kathwada GIDC, Kathwada, Ahmedabad 382430 Gujarat, India\nCIN : L43212GJ1985PLC029849\nAudited Standalone Cash Flow Statement for the Year Ended 31st March, 2026\n(Rupees In lacs)\nYear ended Year ended\nParticulars March 31,2026 March 31,2025\nA. CASH FLOW FROM OPERATING ACTIVITIES\nNet Profit/(Loss) before Tax 3935.25 3439.37\nAdd/(Less) : Adjustments for non cash items\nDepreciation 158.97 n7.87\nProvision for tax (688.00) (18.16)\nAdd/(Less) : Other adjustments\n(Profit)/Loss on Sale of Tangible/Intangible assets = 0.00\n(Profit)/Loss on sale of Investments - 0.00\nInterest Income (22.31) (19.73)\nInterest and Other Borrowing Cost Paid 463.47 330.46\nRe-measurement gains/loss on defined benefits plan (1253) (33.49),\nOperating Profit before Working Capital Changes 3834.84 3816.32\nAdd/(Less) : Adjustments for working capital changes\nChanges in Current Assets\nDecrease / (Increase) in Inventory n94 (190.57)\nDecrease / (Increase) in Trade Receivables (4045.04) (5116.70)\nDecrease / (Increase) in Other Financial assets 0.89 (45.27)\nDecrease / (Increase) in loans and other financial assets 14358 (370.98),\nDecrease / (Increase) in Current tax assets 361.30 (95.27),\nDecrease / (Increase) in Other current assets (24,83.68) 20694\nChanges in Current Liabilities\n(Decrease) / Increase in Trade Payables N479 252.69\n(Decrease) / Increase in Other Current Liabilities (944.92) \u00a314.80\n(Decrease) / Increase in Provisions 403 4005\nNet cash generated from operations (A) | (2202.27)| (2090.00)\nB NET CASH FLOW FROM INVESTING ACTIVITIES\nPurchase of property, plant & equipment/intangible assets (139.42) (236.59)\nInvestment in subsidiary (2.00) ey\nSale of property, plant & equipment - 0.00\nChange in other non current assets (41.43) (66.41)\nInterest Income 2231 19.73\nNet cash used in investing activities (B): (1160.54)| (295.08)\nC CASH FLOW FROM FINANCING ACTIVITIES\nChanges in current borrowings 4394M 159.54\nChanges in non current : other financial liabilities (56.00) (418.63)\nChanges in non current provisions 88.36 N3\nIssue of shares during the year 2475.00\nInterest and Other Borrowing Cost Paid (463.47) (330.46)\nDividend paid including Corporate dividend tax (236.30)\nNet cash generated from financing activities (C) : 3727.30 2576.58\nNET INCREASE/(DECREASE) IN CASH AND CASH EQUIVALENTS (A+B+C) 364.50 191.50\nCash and cash equivements at the beginning of the year F 49414 302.64\nCash and cash equivements at the end of the year wliong 858.64 494,14\nRegistered Office: Plot No.\nAhmedaba"
+    }
+  ]
+}

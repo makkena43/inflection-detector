@@ -1,0 +1,928 @@
+[
+  {
+    "rule": "P/E-growth-uptrend baseline",
+    "all24": {
+      "selected": 118,
+      "n": 111,
+      "issuers": 98,
+      "doubles": 38,
+      "double_rate": 0.34234234234234234,
+      "triples": 19,
+      "losses": 36,
+      "expected_mature": 111,
+      "missing_mature": 0,
+      "median_return": 0.5484011881880133,
+      "median_smallcap_excess": 0.05889357643463966,
+      "median_drawdown": -0.4554440331259779,
+      "adjustment_unverified": 2,
+      "rate_ci95": [
+        0.2606726872036486,
+        0.43455970245306114
+      ]
+    },
+    "later24": {
+      "selected": 66,
+      "n": 59,
+      "issuers": 55,
+      "doubles": 18,
+      "double_rate": 0.3050847457627119,
+      "triples": 9,
+      "losses": 23,
+      "expected_mature": 59,
+      "missing_mature": 0,
+      "median_return": 0.3434690095408057,
+      "median_smallcap_excess": -0.07880334639008613,
+      "median_drawdown": -0.48193315266486003,
+      "adjustment_unverified": 1,
+      "rate_ci95": [
+        0.20253473477602124,
+        0.4314656725974384
+      ]
+    },
+    "years24": {
+      "2021": {
+        "selected": 7,
+        "n": 7,
+        "issuers": 7,
+        "doubles": 2,
+        "double_rate": 0.2857142857142857,
+        "triples": 2,
+        "losses": 2,
+        "expected_mature": 7,
+        "missing_mature": 0,
+        "median_return": 0.8975791433891993,
+        "median_smallcap_excess": 0.5619597362687194,
+        "median_drawdown": -0.4430593307713938,
+        "adjustment_unverified": 0,
+        "rate_ci95": [
+          0.0822171657090155,
+          0.6410709098517873
+        ]
+      },
+      "2022": {
+        "selected": 45,
+        "n": 45,
+        "issuers": 45,
+        "doubles": 18,
+        "double_rate": 0.4,
+        "triples": 8,
+        "losses": 11,
+        "expected_mature": 45,
+        "missing_mature": 0,
+        "median_return": 0.6659517426273458,
+        "median_smallcap_excess": 0.12233835584857067,
+        "median_drawdown": -0.41500348918353114,
+        "adjustment_unverified": 1,
+        "rate_ci95": [
+          0.27024679447957545,
+          0.5454840579085527
+        ]
+      },
+      "2023": {
+        "selected": 43,
+        "n": 43,
+        "issuers": 43,
+        "doubles": 17,
+        "double_rate": 0.3953488372093023,
+        "triples": 9,
+        "losses": 12,
+        "expected_mature": 43,
+        "missing_mature": 0,
+        "median_return": 0.7028589282924542,
+        "median_smallcap_excess": 0.008848750807037842,
+        "median_drawdown": -0.46715643906655147,
+        "adjustment_unverified": 1,
+        "rate_ci95": [
+          0.263651061984564,
+          0.5442120340668091
+        ]
+      },
+      "2024": {
+        "selected": 19,
+        "n": 16,
+        "issuers": 16,
+        "doubles": 1,
+        "double_rate": 0.0625,
+        "triples": 0,
+        "losses": 11,
+        "expected_mature": 16,
+        "missing_mature": 0,
+        "median_return": -0.11748590612048732,
+        "median_smallcap_excess": -0.17000366302121928,
+        "median_drawdown": -0.49967131533468767,
+        "adjustment_unverified": 0,
+        "rate_ci95": [
+          0.01111905730833121,
+          0.2832926836802987
+        ]
+      },
+      "2025": {
+        "selected": 4,
+        "n": 0,
+        "issuers": 0,
+        "doubles": 0,
+        "double_rate": null,
+        "triples": 0,
+        "losses": 0,
+        "expected_mature": 0,
+        "missing_mature": 0,
+        "median_return": null,
+        "median_smallcap_excess": null,
+        "median_drawdown": null,
+        "adjustment_unverified": 0
+      }
+    }
+  },
+  {
+    "rule": "Plus broad market above rising 200-day",
+    "all24": {
+      "selected": 76,
+      "n": 72,
+      "issuers": 68,
+      "doubles": 17,
+      "double_rate": 0.2361111111111111,
+      "triples": 6,
+      "losses": 30,
+      "expected_mature": 72,
+      "missing_mature": 0,
+      "median_return": 0.2712061703745773,
+      "median_smallcap_excess": -0.21903610882011187,
+      "median_drawdown": -0.4821099928109274,
+      "adjustment_unverified": 0,
+      "rate_ci95": [
+        0.15296584625945536,
+        0.34598987197433717
+      ]
+    },
+    "later24": {
+      "selected": 41,
+      "n": 37,
+      "issuers": 36,
+      "doubles": 6,
+      "double_rate": 0.16216216216216217,
+      "triples": 2,
+      "losses": 21,
+      "expected_mature": 37,
+      "missing_mature": 0,
+      "median_return": -0.06981769074949362,
+      "median_smallcap_excess": -0.2412485250068399,
+      "median_drawdown": -0.49961114711600774,
+      "adjustment_unverified": 0,
+      "rate_ci95": [
+        0.07651103235297099,
+        0.31136799295455864
+      ]
+    },
+    "years24": {
+      "2021": {
+        "selected": 0,
+        "n": 0,
+        "issuers": 0,
+        "doubles": 0,
+        "double_rate": null,
+        "triples": 0,
+        "losses": 0,
+        "expected_mature": 0,
+        "missing_mature": 0,
+        "median_return": null,
+        "median_smallcap_excess": null,
+        "median_drawdown": null,
+        "adjustment_unverified": 0
+      },
+      "2022": {
+        "selected": 35,
+        "n": 35,
+        "issuers": 35,
+        "doubles": 11,
+        "double_rate": 0.3142857142857143,
+        "triples": 4,
+        "losses": 9,
+        "expected_mature": 35,
+        "missing_mature": 0,
+        "median_return": 0.5353812397147557,
+        "median_smallcap_excess": 0.05889357643463966,
+        "median_drawdown": -0.4350433044636909,
+        "adjustment_unverified": 0,
+        "rate_ci95": [
+          0.18550658059782457,
+          0.47980071879251973
+        ]
+      },
+      "2023": {
+        "selected": 21,
+        "n": 21,
+        "issuers": 21,
+        "doubles": 5,
+        "double_rate": 0.23809523809523808,
+        "triples": 2,
+        "losses": 10,
+        "expected_mature": 21,
+        "missing_mature": 0,
+        "median_return": 0.10725801144962821,
+        "median_smallcap_excess": -0.35078861529870964,
+        "median_drawdown": -0.4976456383942046,
+        "adjustment_unverified": 0,
+        "rate_ci95": [
+          0.10627856389112261,
+          0.45091581972345923
+        ]
+      },
+      "2024": {
+        "selected": 19,
+        "n": 16,
+        "issuers": 16,
+        "doubles": 1,
+        "double_rate": 0.0625,
+        "triples": 0,
+        "losses": 11,
+        "expected_mature": 16,
+        "missing_mature": 0,
+        "median_return": -0.11748590612048732,
+        "median_smallcap_excess": -0.17000366302121928,
+        "median_drawdown": -0.49967131533468767,
+        "adjustment_unverified": 0,
+        "rate_ci95": [
+          0.01111905730833121,
+          0.2832926836802987
+        ]
+      },
+      "2025": {
+        "selected": 1,
+        "n": 0,
+        "issuers": 0,
+        "doubles": 0,
+        "double_rate": null,
+        "triples": 0,
+        "losses": 0,
+        "expected_mature": 0,
+        "missing_mature": 0,
+        "median_return": null,
+        "median_smallcap_excess": null,
+        "median_drawdown": null,
+        "adjustment_unverified": 0
+      }
+    }
+  },
+  {
+    "rule": "Plus broad market not >25% above 200-day",
+    "all24": {
+      "selected": 107,
+      "n": 100,
+      "issuers": 93,
+      "doubles": 36,
+      "double_rate": 0.36,
+      "triples": 17,
+      "losses": 31,
+      "expected_mature": 100,
+      "missing_mature": 0,
+      "median_return": 0.5587038006300692,
+      "median_smallcap_excess": 0.03387116362083875,
+      "median_drawdown": -0.4511124322268607,
+      "adjustment_unverified": 2,
+      "rate_ci95": [
+        0.2727107459049014,
+        0.45764780018837914
+      ]
+    },
+    "later24": {
+      "selected": 62,
+      "n": 55,
+      "issuers": 53,
+      "doubles": 18,
+      "double_rate": 0.32727272727272727,
+      "triples": 9,
+      "losses": 20,
+      "expected_mature": 55,
+      "missing_mature": 0,
+      "median_return": 0.49669937555753796,
+      "median_smallcap_excess": -0.06717115977316168,
+      "median_drawdown": -0.4737119796939838,
+      "adjustment_unverified": 1,
+      "rate_ci95": [
+        0.21812895688825168,
+        0.45897023823900523
+      ]
+    },
+    "years24": {
+      "2021": {
+        "selected": 0,
+        "n": 0,
+        "issuers": 0,
+        "doubles": 0,
+        "double_rate": null,
+        "triples": 0,
+        "losses": 0,
+        "expected_mature": 0,
+        "missing_mature": 0,
+        "median_return": null,
+        "median_smallcap_excess": null,
+        "median_drawdown": null,
+        "adjustment_unverified": 0
+      },
+      "2022": {
+        "selected": 45,
+        "n": 45,
+        "issuers": 45,
+        "doubles": 18,
+        "double_rate": 0.4,
+        "triples": 8,
+        "losses": 11,
+        "expected_mature": 45,
+        "missing_mature": 0,
+        "median_return": 0.6659517426273458,
+        "median_smallcap_excess": 0.12233835584857067,
+        "median_drawdown": -0.41500348918353114,
+        "adjustment_unverified": 1,
+        "rate_ci95": [
+          0.27024679447957545,
+          0.5454840579085527
+        ]
+      },
+      "2023": {
+        "selected": 43,
+        "n": 43,
+        "issuers": 43,
+        "doubles": 17,
+        "double_rate": 0.3953488372093023,
+        "triples": 9,
+        "losses": 12,
+        "expected_mature": 43,
+        "missing_mature": 0,
+        "median_return": 0.7028589282924542,
+        "median_smallcap_excess": 0.008848750807037842,
+        "median_drawdown": -0.46715643906655147,
+        "adjustment_unverified": 1,
+        "rate_ci95": [
+          0.263651061984564,
+          0.5442120340668091
+        ]
+      },
+      "2024": {
+        "selected": 15,
+        "n": 12,
+        "issuers": 12,
+        "doubles": 1,
+        "double_rate": 0.08333333333333333,
+        "triples": 0,
+        "losses": 8,
+        "expected_mature": 12,
+        "missing_mature": 0,
+        "median_return": -0.06959018374105125,
+        "median_smallcap_excess": -0.11729235614044914,
+        "median_drawdown": -0.49967131533468767,
+        "adjustment_unverified": 0,
+        "rate_ci95": [
+          0.014864709450773478,
+          0.35388592179859524
+        ]
+      },
+      "2025": {
+        "selected": 4,
+        "n": 0,
+        "issuers": 0,
+        "doubles": 0,
+        "double_rate": null,
+        "triples": 0,
+        "losses": 0,
+        "expected_mature": 0,
+        "missing_mature": 0,
+        "median_return": null,
+        "median_smallcap_excess": null,
+        "median_drawdown": null,
+        "adjustment_unverified": 0
+      }
+    }
+  },
+  {
+    "rule": "Plus both broad-market conditions",
+    "all24": {
+      "selected": 72,
+      "n": 68,
+      "issuers": 65,
+      "doubles": 17,
+      "double_rate": 0.25,
+      "triples": 6,
+      "losses": 27,
+      "expected_mature": 68,
+      "missing_mature": 0,
+      "median_return": 0.31990727206042613,
+      "median_smallcap_excess": -0.17100184757488301,
+      "median_drawdown": -0.47602746215602454,
+      "adjustment_unverified": 0,
+      "rate_ci95": [
+        0.16234881695499528,
+        0.3643877813390294
+      ]
+    },
+    "later24": {
+      "selected": 37,
+      "n": 33,
+      "issuers": 33,
+      "doubles": 6,
+      "double_rate": 0.18181818181818182,
+      "triples": 2,
+      "losses": 18,
+      "expected_mature": 33,
+      "missing_mature": 0,
+      "median_return": -0.05218120805369131,
+      "median_smallcap_excess": -0.22126161993324656,
+      "median_drawdown": -0.49961114711600774,
+      "adjustment_unverified": 0,
+      "rate_ci95": [
+        0.08610651225698263,
+        0.3438856704929522
+      ]
+    },
+    "years24": {
+      "2021": {
+        "selected": 0,
+        "n": 0,
+        "issuers": 0,
+        "doubles": 0,
+        "double_rate": null,
+        "triples": 0,
+        "losses": 0,
+        "expected_mature": 0,
+        "missing_mature": 0,
+        "median_return": null,
+        "median_smallcap_excess": null,
+        "median_drawdown": null,
+        "adjustment_unverified": 0
+      },
+      "2022": {
+        "selected": 35,
+        "n": 35,
+        "issuers": 35,
+        "doubles": 11,
+        "double_rate": 0.3142857142857143,
+        "triples": 4,
+        "losses": 9,
+        "expected_mature": 35,
+        "missing_mature": 0,
+        "median_return": 0.5353812397147557,
+        "median_smallcap_excess": 0.05889357643463966,
+        "median_drawdown": -0.4350433044636909,
+        "adjustment_unverified": 0,
+        "rate_ci95": [
+          0.18550658059782457,
+          0.47980071879251973
+        ]
+      },
+      "2023": {
+        "selected": 21,
+        "n": 21,
+        "issuers": 21,
+        "doubles": 5,
+        "double_rate": 0.23809523809523808,
+        "triples": 2,
+        "losses": 10,
+        "expected_mature": 21,
+        "missing_mature": 0,
+        "median_return": 0.10725801144962821,
+        "median_smallcap_excess": -0.35078861529870964,
+        "median_drawdown": -0.4976456383942046,
+        "adjustment_unverified": 0,
+        "rate_ci95": [
+          0.10627856389112261,
+          0.45091581972345923
+        ]
+      },
+      "2024": {
+        "selected": 15,
+        "n": 12,
+        "issuers": 12,
+        "doubles": 1,
+        "double_rate": 0.08333333333333333,
+        "triples": 0,
+        "losses": 8,
+        "expected_mature": 12,
+        "missing_mature": 0,
+        "median_return": -0.06959018374105125,
+        "median_smallcap_excess": -0.11729235614044914,
+        "median_drawdown": -0.49967131533468767,
+        "adjustment_unverified": 0,
+        "rate_ci95": [
+          0.014864709450773478,
+          0.35388592179859524
+        ]
+      },
+      "2025": {
+        "selected": 1,
+        "n": 0,
+        "issuers": 0,
+        "doubles": 0,
+        "double_rate": null,
+        "triples": 0,
+        "losses": 0,
+        "expected_mature": 0,
+        "missing_mature": 0,
+        "median_return": null,
+        "median_smallcap_excess": null,
+        "median_drawdown": null,
+        "adjustment_unverified": 0
+      }
+    }
+  },
+  {
+    "rule": "Plus stock within 15% of high",
+    "all24": {
+      "selected": 80,
+      "n": 75,
+      "issuers": 68,
+      "doubles": 25,
+      "double_rate": 0.3333333333333333,
+      "triples": 10,
+      "losses": 27,
+      "expected_mature": 75,
+      "missing_mature": 0,
+      "median_return": 0.5484011881880133,
+      "median_smallcap_excess": -0.048328934488608644,
+      "median_drawdown": -0.4623989737010904,
+      "adjustment_unverified": 2,
+      "rate_ci95": [
+        0.23708065705320355,
+        0.445827858248363
+      ]
+    },
+    "later24": {
+      "selected": 45,
+      "n": 40,
+      "issuers": 38,
+      "doubles": 11,
+      "double_rate": 0.275,
+      "triples": 4,
+      "losses": 18,
+      "expected_mature": 40,
+      "missing_mature": 0,
+      "median_return": 0.3432215564745943,
+      "median_smallcap_excess": -0.0729872530816239,
+      "median_drawdown": -0.49088779616160905,
+      "adjustment_unverified": 1,
+      "rate_ci95": [
+        0.1610785343314309,
+        0.4283525083312457
+      ]
+    },
+    "years24": {
+      "2021": {
+        "selected": 5,
+        "n": 5,
+        "issuers": 5,
+        "doubles": 1,
+        "double_rate": 0.2,
+        "triples": 1,
+        "losses": 2,
+        "expected_mature": 5,
+        "missing_mature": 0,
+        "median_return": 0.8975791433891993,
+        "median_smallcap_excess": 0.5619597362687194,
+        "median_drawdown": -0.4430593307713938,
+        "adjustment_unverified": 0,
+        "rate_ci95": [
+          0.03622316096978745,
+          0.6244717358814613
+        ]
+      },
+      "2022": {
+        "selected": 30,
+        "n": 30,
+        "issuers": 30,
+        "doubles": 13,
+        "double_rate": 0.43333333333333335,
+        "triples": 5,
+        "losses": 7,
+        "expected_mature": 30,
+        "missing_mature": 0,
+        "median_return": 0.8193292759281918,
+        "median_smallcap_excess": 0.2299280726506301,
+        "median_drawdown": -0.43806672560710747,
+        "adjustment_unverified": 1,
+        "rate_ci95": [
+          0.2737723743061511,
+          0.6080299045459127
+        ]
+      },
+      "2023": {
+        "selected": 28,
+        "n": 28,
+        "issuers": 28,
+        "doubles": 10,
+        "double_rate": 0.35714285714285715,
+        "triples": 4,
+        "losses": 9,
+        "expected_mature": 28,
+        "missing_mature": 0,
+        "median_return": 0.7602492340652727,
+        "median_smallcap_excess": 0.11612983731815452,
+        "median_drawdown": -0.46537687577294967,
+        "adjustment_unverified": 1,
+        "rate_ci95": [
+          0.20705611972458876,
+          0.5417002241777278
+        ]
+      },
+      "2024": {
+        "selected": 14,
+        "n": 12,
+        "issuers": 12,
+        "doubles": 1,
+        "double_rate": 0.08333333333333333,
+        "triples": 0,
+        "losses": 9,
+        "expected_mature": 12,
+        "missing_mature": 0,
+        "median_return": -0.11748590612048732,
+        "median_smallcap_excess": -0.17000366302121928,
+        "median_drawdown": -0.49967131533468767,
+        "adjustment_unverified": 0,
+        "rate_ci95": [
+          0.014864709450773478,
+          0.35388592179859524
+        ]
+      },
+      "2025": {
+        "selected": 3,
+        "n": 0,
+        "issuers": 0,
+        "doubles": 0,
+        "double_rate": null,
+        "triples": 0,
+        "losses": 0,
+        "expected_mature": 0,
+        "missing_mature": 0,
+        "median_return": null,
+        "median_smallcap_excess": null,
+        "median_drawdown": null,
+        "adjustment_unverified": 0
+      }
+    }
+  },
+  {
+    "rule": "Plus finance cost/revenue <3%",
+    "all24": {
+      "selected": 84,
+      "n": 79,
+      "issuers": 66,
+      "doubles": 26,
+      "double_rate": 0.3291139240506329,
+      "triples": 15,
+      "losses": 29,
+      "expected_mature": 79,
+      "missing_mature": 0,
+      "median_return": 0.4022211635800632,
+      "median_smallcap_excess": -0.10555851358351842,
+      "median_drawdown": -0.4567203854460874,
+      "adjustment_unverified": 2,
+      "rate_ci95": [
+        0.2355404921349963,
+        0.43853630020122125
+      ]
+    },
+    "later24": {
+      "selected": 42,
+      "n": 37,
+      "issuers": 33,
+      "doubles": 9,
+      "double_rate": 0.24324324324324326,
+      "triples": 5,
+      "losses": 17,
+      "expected_mature": 37,
+      "missing_mature": 0,
+      "median_return": 0.2350946285964337,
+      "median_smallcap_excess": -0.11583900617170628,
+      "median_drawdown": -0.4791184021038132,
+      "adjustment_unverified": 1,
+      "rate_ci95": [
+        0.13361203432663304,
+        0.4011760249070895
+      ]
+    },
+    "years24": {
+      "2021": {
+        "selected": 6,
+        "n": 6,
+        "issuers": 6,
+        "doubles": 2,
+        "double_rate": 0.3333333333333333,
+        "triples": 2,
+        "losses": 1,
+        "expected_mature": 6,
+        "missing_mature": 0,
+        "median_return": 0.9322976013128322,
+        "median_smallcap_excess": 0.5966781941923524,
+        "median_drawdown": -0.4290314099774625,
+        "adjustment_unverified": 0,
+        "rate_ci95": [
+          0.09676933255921683,
+          0.7000116786584712
+        ]
+      },
+      "2022": {
+        "selected": 36,
+        "n": 36,
+        "issuers": 36,
+        "doubles": 15,
+        "double_rate": 0.4166666666666667,
+        "triples": 8,
+        "losses": 11,
+        "expected_mature": 36,
+        "missing_mature": 0,
+        "median_return": 0.4698626200056054,
+        "median_smallcap_excess": -0.18618872237450257,
+        "median_drawdown": -0.37984535271945646,
+        "adjustment_unverified": 1,
+        "rate_ci95": [
+          0.2714033350508729,
+          0.5780003033572231
+        ]
+      },
+      "2023": {
+        "selected": 23,
+        "n": 23,
+        "issuers": 23,
+        "doubles": 8,
+        "double_rate": 0.34782608695652173,
+        "triples": 5,
+        "losses": 7,
+        "expected_mature": 23,
+        "missing_mature": 0,
+        "median_return": 0.8176395398380911,
+        "median_smallcap_excess": 0.2234109238292712,
+        "median_drawdown": -0.44319142937693834,
+        "adjustment_unverified": 1,
+        "rate_ci95": [
+          0.18811054636982238,
+          0.5511002309310836
+        ]
+      },
+      "2024": {
+        "selected": 15,
+        "n": 14,
+        "issuers": 14,
+        "doubles": 1,
+        "double_rate": 0.07142857142857142,
+        "triples": 0,
+        "losses": 10,
+        "expected_mature": 14,
+        "missing_mature": 0,
+        "median_return": -0.11748590612048732,
+        "median_smallcap_excess": -0.17000366302121928,
+        "median_drawdown": -0.49967131533468767,
+        "adjustment_unverified": 0,
+        "rate_ci95": [
+          0.012721886112291636,
+          0.3146926955395781
+        ]
+      },
+      "2025": {
+        "selected": 4,
+        "n": 0,
+        "issuers": 0,
+        "doubles": 0,
+        "double_rate": null,
+        "triples": 0,
+        "losses": 0,
+        "expected_mature": 0,
+        "missing_mature": 0,
+        "median_return": null,
+        "median_smallcap_excess": null,
+        "median_drawdown": null,
+        "adjustment_unverified": 0
+      }
+    }
+  },
+  {
+    "rule": "Plus liquidity \u2265\u20b91cr/day",
+    "all24": {
+      "selected": 108,
+      "n": 103,
+      "issuers": 91,
+      "doubles": 35,
+      "double_rate": 0.33980582524271846,
+      "triples": 16,
+      "losses": 33,
+      "expected_mature": 103,
+      "missing_mature": 0,
+      "median_return": 0.5690064130721251,
+      "median_smallcap_excess": 0.0942841530038363,
+      "median_drawdown": -0.45118033244866607,
+      "adjustment_unverified": 1,
+      "rate_ci95": [
+        0.25556868842441466,
+        0.4355628558429869
+      ]
+    },
+    "later24": {
+      "selected": 58,
+      "n": 53,
+      "issuers": 49,
+      "doubles": 16,
+      "double_rate": 0.3018867924528302,
+      "triples": 7,
+      "losses": 20,
+      "expected_mature": 53,
+      "missing_mature": 0,
+      "median_return": 0.3434690095408057,
+      "median_smallcap_excess": -0.06717115977316168,
+      "median_drawdown": -0.4791184021038132,
+      "adjustment_unverified": 0,
+      "rate_ci95": [
+        0.19518140287607166,
+        0.43537086869967556
+      ]
+    },
+    "years24": {
+      "2021": {
+        "selected": 7,
+        "n": 7,
+        "issuers": 7,
+        "doubles": 2,
+        "double_rate": 0.2857142857142857,
+        "triples": 2,
+        "losses": 2,
+        "expected_mature": 7,
+        "missing_mature": 0,
+        "median_return": 0.8975791433891993,
+        "median_smallcap_excess": 0.5619597362687194,
+        "median_drawdown": -0.4430593307713938,
+        "adjustment_unverified": 0,
+        "rate_ci95": [
+          0.0822171657090155,
+          0.6410709098517873
+        ]
+      },
+      "2022": {
+        "selected": 43,
+        "n": 43,
+        "issuers": 43,
+        "doubles": 17,
+        "double_rate": 0.3953488372093023,
+        "triples": 7,
+        "losses": 11,
+        "expected_mature": 43,
+        "missing_mature": 0,
+        "median_return": 0.6659517426273458,
+        "median_smallcap_excess": 0.12233835584857067,
+        "median_drawdown": -0.41500348918353114,
+        "adjustment_unverified": 1,
+        "rate_ci95": [
+          0.263651061984564,
+          0.5442120340668091
+        ]
+      },
+      "2023": {
+        "selected": 37,
+        "n": 37,
+        "issuers": 37,
+        "doubles": 15,
+        "double_rate": 0.40540540540540543,
+        "triples": 7,
+        "losses": 9,
+        "expected_mature": 37,
+        "missing_mature": 0,
+        "median_return": 0.8176395398380911,
+        "median_smallcap_excess": 0.2234109238292712,
+        "median_drawdown": -0.45118033244866607,
+        "adjustment_unverified": 0,
+        "rate_ci95": [
+          0.26346295839940137,
+          0.565143168686707
+        ]
+      },
+      "2024": {
+        "selected": 18,
+        "n": 16,
+        "issuers": 16,
+        "doubles": 1,
+        "double_rate": 0.0625,
+        "triples": 0,
+        "losses": 11,
+        "expected_mature": 16,
+        "missing_mature": 0,
+        "median_return": -0.11748590612048732,
+        "median_smallcap_excess": -0.17000366302121928,
+        "median_drawdown": -0.49967131533468767,
+        "adjustment_unverified": 0,
+        "rate_ci95": [
+          0.01111905730833121,
+          0.2832926836802987
+        ]
+      },
+      "2025": {
+        "selected": 3,
+        "n": 0,
+        "issuers": 0,
+        "doubles": 0,
+        "double_rate": null,
+        "triples": 0,
+        "losses": 0,
+        "expected_mature": 0,
+        "missing_mature": 0,
+        "median_return": null,
+        "median_smallcap_excess": null,
+        "median_drawdown": null,
+        "adjustment_unverified": 0
+      }
+    }
+  }
+]

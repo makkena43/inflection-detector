@@ -1,0 +1,235 @@
+{
+  "P/S <1.5 + Market cap <\u20b92000cr + Technicals \u22652": {
+    "all_selected": 31,
+    "3y": {
+      "n": 23,
+      "five": 11,
+      "ten": 3,
+      "losses": 1,
+      "hit_five_intraperiod": 12,
+      "hit_ten_intraperiod": 4,
+      "median_multiple": 3.807625272331155,
+      "median_drawdown": -0.4416091954022988,
+      "equal_ticket_multiple": 5.8512849207893565,
+      "largest_position_wealth_share": 0.21937251282117776,
+      "unverified": 0,
+      "winners5": [
+        "APOLLO 2021-01-04",
+        "JBMA 2021-01-11",
+        "HITECH 2021-01-11",
+        "OMINFRAL 2021-01-18",
+        "TALBROAUTO 2021-02-01",
+        "SALASAR 2021-02-15",
+        "MANINDS 2021-03-22",
+        "GRAVITA 2021-05-17",
+        "HPL 2021-05-17",
+        "DSSL 2021-12-27",
+        "TARIL 2022-01-03"
+      ],
+      "winners10": [
+        "JBMA 2021-01-11",
+        "GRAVITA 2021-05-17",
+        "TARIL 2022-01-03"
+      ]
+    },
+    "later3": {
+      "n": 2,
+      "five": 0,
+      "ten": 0,
+      "losses": 1,
+      "hit_five_intraperiod": 0,
+      "hit_ten_intraperiod": 0,
+      "median_multiple": 2.1230705439056496,
+      "median_drawdown": -0.4927945767647539,
+      "equal_ticket_multiple": 2.1230705439056496,
+      "largest_position_wealth_share": 0.852235029883261,
+      "unverified": 0,
+      "winners5": [],
+      "winners10": []
+    }
+  },
+  "Order/mcap \u226525% + Margin 0\u201310% + Technicals \u22652": {
+    "all_selected": 16,
+    "3y": {
+      "n": 13,
+      "five": 6,
+      "ten": 1,
+      "losses": 0,
+      "hit_five_intraperiod": 7,
+      "hit_ten_intraperiod": 1,
+      "median_multiple": 4.410189418680601,
+      "median_drawdown": -0.4614667868951007,
+      "equal_ticket_multiple": 6.394111299883723,
+      "largest_position_wealth_share": 0.3551712044749206,
+      "unverified": 0,
+      "winners5": [
+        "HITECH 2021-01-11",
+        "OMINFRAL 2021-01-18",
+        "SALASAR 2021-02-15",
+        "MANINDS 2021-03-22",
+        "DSSL 2021-12-27",
+        "TARIL 2022-01-03"
+      ],
+      "winners10": [
+        "TARIL 2022-01-03"
+      ]
+    },
+    "later3": {
+      "n": 2,
+      "five": 0,
+      "ten": 0,
+      "losses": 0,
+      "hit_five_intraperiod": 0,
+      "hit_ten_intraperiod": 0,
+      "median_multiple": 4.014449797770004,
+      "median_drawdown": -0.38046885209822096,
+      "equal_ticket_multiple": 4.014449797770004,
+      "largest_position_wealth_share": 0.5492893971585381,
+      "unverified": 0,
+      "winners5": [],
+      "winners10": []
+    }
+  },
+  "Order/mcap \u226525% + Margin 0\u201310% + P/S <1": {
+    "all_selected": 20,
+    "3y": {
+      "n": 15,
+      "five": 5,
+      "ten": 2,
+      "losses": 0,
+      "hit_five_intraperiod": 8,
+      "hit_ten_intraperiod": 2,
+      "median_multiple": 3.6187101768594054,
+      "median_drawdown": -0.4696969696969697,
+      "equal_ticket_multiple": 6.413523522894488,
+      "largest_position_wealth_share": 0.3068833603416714,
+      "unverified": 0,
+      "winners5": [
+        "HITECH 2021-01-11",
+        "TITAGARH 2021-02-08",
+        "MANINDS 2021-03-22",
+        "DSSL 2021-12-27",
+        "TARIL 2022-01-03"
+      ],
+      "winners10": [
+        "TITAGARH 2021-02-08",
+        "TARIL 2022-01-03"
+      ]
+    },
+    "later3": {
+      "n": 2,
+      "five": 0,
+      "ten": 0,
+      "losses": 0,
+      "hit_five_intraperiod": 0,
+      "hit_ten_intraperiod": 0,
+      "median_multiple": 2.3132511923258066,
+      "median_drawdown": -0.40627273960804716,
+      "equal_ticket_multiple": 2.3132511923258066,
+      "largest_position_wealth_share": 0.7821697420635617,
+      "unverified": 0,
+      "winners5": [],
+      "winners10": []
+    }
+  },
+  "OR_first_2": {
+    "all_selected": 33,
+    "3y": {
+      "n": 25,
+      "five": 11,
+      "ten": 3,
+      "losses": 1,
+      "hit_five_intraperiod": 12,
+      "hit_ten_intraperiod": 4,
+      "median_multiple": 3.807625272331155,
+      "median_drawdown": -0.4416091954022988,
+      "equal_ticket_multiple": 5.682313832631081,
+      "largest_position_wealth_share": 0.2078241760284695,
+      "unverified": 0,
+      "winners5": [
+        "APOLLO 2021-01-04",
+        "JBMA 2021-01-11",
+        "HITECH 2021-01-11",
+        "OMINFRAL 2021-01-18",
+        "TALBROAUTO 2021-02-01",
+        "SALASAR 2021-02-15",
+        "MANINDS 2021-03-22",
+        "GRAVITA 2021-05-17",
+        "HPL 2021-05-17",
+        "DSSL 2021-12-27",
+        "TARIL 2022-01-03"
+      ],
+      "winners10": [
+        "JBMA 2021-01-11",
+        "GRAVITA 2021-05-17",
+        "TARIL 2022-01-03"
+      ]
+    },
+    "later3": {
+      "n": 3,
+      "five": 0,
+      "ten": 0,
+      "losses": 1,
+      "hit_five_intraperiod": 0,
+      "hit_ten_intraperiod": 0,
+      "median_multiple": 3.6187101768594054,
+      "median_drawdown": -0.4614667868951007,
+      "equal_ticket_multiple": 2.8854435021639664,
+      "largest_position_wealth_share": 0.5094756277354633,
+      "unverified": 0,
+      "winners5": [],
+      "winners10": []
+    }
+  },
+  "OR_first_3": {
+    "all_selected": 43,
+    "3y": {
+      "n": 31,
+      "five": 12,
+      "ten": 4,
+      "losses": 1,
+      "hit_five_intraperiod": 15,
+      "hit_ten_intraperiod": 5,
+      "median_multiple": 3.6187101768594054,
+      "median_drawdown": -0.4476733820645391,
+      "equal_ticket_multiple": 5.649828132170201,
+      "largest_position_wealth_share": 0.168563818707805,
+      "unverified": 0,
+      "winners5": [
+        "APOLLO 2021-01-04",
+        "JBMA 2021-01-11",
+        "HITECH 2021-01-11",
+        "OMINFRAL 2021-01-18",
+        "TALBROAUTO 2021-02-01",
+        "TITAGARH 2021-02-08",
+        "SALASAR 2021-02-15",
+        "MANINDS 2021-03-22",
+        "GRAVITA 2021-05-17",
+        "HPL 2021-05-17",
+        "DSSL 2021-12-27",
+        "TARIL 2022-01-03"
+      ],
+      "winners10": [
+        "JBMA 2021-01-11",
+        "TITAGARH 2021-02-08",
+        "GRAVITA 2021-05-17",
+        "TARIL 2022-01-03"
+      ]
+    },
+    "later3": {
+      "n": 4,
+      "five": 0,
+      "ten": 0,
+      "losses": 1,
+      "hit_five_intraperiod": 0,
+      "hit_ten_intraperiod": 0,
+      "median_multiple": 2.3132511923258066,
+      "median_drawdown": -0.4872706744049269,
+      "equal_ticket_multiple": 2.416030678571027,
+      "largest_position_wealth_share": 0.4563465871725839,
+      "unverified": 0,
+      "winners5": [],
+      "winners10": []
+    }
+  }
+}

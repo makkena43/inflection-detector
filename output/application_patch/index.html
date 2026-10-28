@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inflection Backtest</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js">
+let auditReport = null;
+const relationNames = {CONFIRMED_RELATED:'Related to issuer', ISSUER_ASSERTED_UNRELATED:'Issuer declares unrelated', UNKNOWN:'Relationship needs verification'};
+const auditNames = {RELATIONSHIP_RECHECK:'Customer relationship changed', INTERNAL_DEMAND_REVIEW:'Verify internal-demand rejection', UNREVIEWED_CANDIDATE:'Candidate awaiting review', STALE_AWARD:'Award past completion date', AGGREGATE_SIZE_REVIEW:'Verify single-award size'};
+for (const [k,v] of Object.entries(auditNames)) { const option = document.createElement('option'); option.value = k; option.textContent = v; $('#audit-kind').appendChild(option); }
+async function loadAudit() {
+  $('#audit-status').textContent = 'Loading…';
+  try {
+    auditReport = await get('/api/detection_audit');
+    $('#audit-status').textContent = auditReport.generated_at ? 'Report: ' + new Date(auditReport.generated_at).toLocaleString() : (auditReport.message || 'No report yet');
+    const c = auditReport.coverage || {};
+    $('#audit-coverage').textContent = `Source documents checked: ${c.scanned_documents ?? 0} of ${c.total_affected_documents ?? '?'} with related-party labels. ${c.complete ? 'All affected documents covered.' : 'Partial audit; remaining documents have not been checked.'} Historical weeks are replay labels, not proof of alerts delivered then.`;
+    $('#audit-counts').innerHTML = Object.entries(auditReport.summary?.counts || {}).map(([k,v]) => `<div class="card"><b>${n(v,0)}</b><div>${esc(auditNames[k] || k)}</div></div>`).join('');
+    renderAudit();
+  } catch (error) { $('#audit-status').textContent = 'Unable to load: ' + error.message; }
+}
+function renderAudit() {
+  const term = $('#audit-search').value.toLowerCase();
+  const rows = (auditReport?.findings || []).filter(r => [r.label,r.legal_name,r.kind,auditNames[r.kind]].join(' ').toLowerCase().includes(term) && (!$('#audit-kind').value || r.kind === $('#audit-kind').value));
+  let h = '<tr><th>Company</th><th>Check</th><th>Date / historical week</th><th>Finding</th><th>Source</th></tr>';
+  for (const r of rows.slice(0,500)) {
+    const safeSource = /^https:\/\//.test(r.source_url || '') ? `<a href="${esc(r.source_url)}" target="_blank" rel="noopener">Filing, p${n(r.page_no,0)}</a>` : '—';
+    const reason = r.before ? `${relationNames[r.before] || r.before} → ${relationNames[r.after] || r.after}. ${r.evidence || ''}` : r.reason;
+    h += `<tr><td><button class="audit-company" data-id="${esc(r.issuer_id)}">${esc(r.label)}</button><br>${esc(r.legal_name)}</td><td>${esc(auditNames[r.kind] || r.kind)}</td><td>${esc(r.week_start || r.published_at?.slice(0,10))}</td><td class="wide">${esc(reason)}${r.quote ? `<details><summary>Source passage</summary>${esc(r.quote)}</details>` : ''}</td><td>${safeSource}</td></tr>`;
+  }
+  if (!rows.length) h += '<tr><td colspan="5">No findings match this search.</td></tr>';
+  if (rows.length > 500) h += `<tr><td colspan="5">Showing 500 of ${n(rows.length,0)} matching findings. Narrow the search to inspect the rest.</td></tr>`;
+  $('#audittable').innerHTML = h;
+  document.querySelectorAll('.audit-company').forEach(b => b.onclick = () => openCompany(b.dataset.id));
+}
+$('#audit-search').oninput = renderAudit;
+$('#audit-kind').onchange = renderAudit;
+$('#audit-refresh').onclick = loadAudit;
+loadAudit();
+</script>
+<style>
+:root { --bg:#f7f7f5; --panel:#fff; --text:#1d1d1b; --muted:#6b6b66; --line:#e3e2dd; --accent:#2f5d8a; --good:#2e7d4f; --bad:#b23b3b; --chip:#eef2f6; }
+@media (prefers-color-scheme: dark) { :root { --bg:#161615; --panel:#1f1f1d; --text:#ecebe6; --muted:#9a998f; --line:#33322e; --accent:#7fb0e0; --good:#6cc28f; --bad:#e07a7a; --chip:#2a3038; } }
+* { box-sizing:border-box }
+body { margin:0; background:var(--bg); color:var(--text); font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif }
+header { padding:16px; border-bottom:1px solid var(--line); display:flex; gap:16px; align-items:center; flex-wrap:wrap }
+h1 { font-size:18px; margin:0 }
+nav button { background:none; border:1px solid var(--line); color:var(--text); padding:6px 12px; border-radius:6px; cursor:pointer; margin-right:6px }
+button.primary { background:var(--accent); color:#fff; border:none; padding:7px 14px; border-radius:6px; cursor:pointer; font-weight:600 }
+button.primary:disabled { opacity:.5; cursor:default }
+nav button.on { background:var(--accent); color:#fff; border-color:var(--accent) }
+main { padding:16px; max-width:1400px; margin:0 auto }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-bottom:16px }
+#category-picker { position:relative; min-width:220px }
+#category-picker summary { cursor:pointer; padding:6px 10px; border:1px solid var(--line); border-radius:6px }
+#category-picker[open] { background:var(--panel); padding:8px; border:1px solid var(--line); border-radius:6px }
+#cat { display:grid; gap:6px; margin:8px 0; max-height:310px; overflow-y:auto }
+#cat label { display:flex; align-items:center; gap:7px }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:10px 12px }
+.card .k { color:var(--muted); font-size:12px } .card .v { font-size:17px; font-weight:600; margin-top:2px }
+.wrap { overflow-x:auto; background:var(--panel); border:1px solid var(--line); border-radius:8px }
+table { border-collapse:collapse; width:100%; font-size:13px }
+th, td { padding:6px 8px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; white-space:nowrap }
+td.wide { white-space:normal; min-width:320px; max-width:560px }
+th { position:sticky; top:0; background:var(--panel); font-weight:600; color:var(--muted); cursor:pointer }
+tr.click { cursor:pointer } tr.click:hover td { background:var(--chip) }
+.num { text-align:right; font-variant-numeric:tabular-nums }
+.good { color:var(--good) } .bad { color:var(--bad) } .muted { color:var(--muted) }
+.chip { display:inline-block; background:var(--chip); border-radius:10px; padding:1px 8px; font-size:12px }
+.bar { height:8px; background:var(--chip); border-radius:4px; min-width:80px; position:relative }
+.bar i { position:absolute; left:0; top:0; bottom:0; background:var(--accent); border-radius:4px }
+.controls { display:flex; gap:10px; align-items:center; margin-bottom:12px; flex-wrap:wrap }
+select, input { background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:6px; padding:5px 8px }
+#detail { position:fixed; inset:0; background:rgba(0,0,0,.45); display:none; z-index:10 }
+#detail .sheet { position:absolute; right:0; top:0; bottom:0; width:min(1100px,100%); background:var(--bg); overflow-y:auto; padding:16px }
+.close { float:right; font-size:20px; background:none; border:none; color:var(--text); cursor:pointer }
+h2 { font-size:16px; margin:18px 0 8px } h3 { font-size:14px; margin:14px 0 6px }
+.chartbox { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:10px; height:280px; margin-bottom:12px }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px } @media (max-width:800px) { .grid2 { grid-template-columns:1fr } }
+a { color:var(--accent) }
+</style>
+</head>
+<body>
+<header>
+  <h1>Inflection Backtest</h1>
+  <nav><button data-tab="progress" class="on">Run progress</button><button data-tab="picks">Picks by year</button><button data-tab="buy">Buy now</button><button data-tab="engine">Unreviewed engine candidates</button><button data-tab="audit">Detection audit</button></nav>
+  <span class="muted" id="gen"></span>
+</header>
+<main>
+  <section id="progress"></section>
+  <section id="picks" hidden>
+    <div class="controls">
+      <label>Year <select id="year"></select></label>
+      <label>Show <select id="include"><option value="">Picks only</option><option value="watch">Picks + watchlist</option></select></label>
+      <label>View <select id="view"><option value="year">One per company-year (pick preferred)</option><option value="events">Every event</option><option value="first">First per company-year</option><option value="latest">Latest per company-year</option></select></label>
+      <details id="category-picker"><summary id="category-label">Categories: All</summary><div id="cat"></div><button type="button" id="clear-categories">Clear selections</button></details>
+      <label>Match <select id="category-mode"><option value="any">Any selected (OR)</option><option value="all">All selected (AND)</option></select></label>
+      <label>Rulebook combo <select id="combo"><option value="">All picks</option><option value="any">Any rulebook combo</option><option value="anyR">Any watch-list combo</option></select></label>
+      <input id="search" placeholder="Search name or symbol">
+      <span class="muted" id="pickcount"></span>
+    </div>
+    <div class="cards" id="combo-summary" hidden></div>
+    <div class="cards" id="catcards"></div>
+    <details id="holding-impact"><summary>Promoter / FII shareholding changes: historical return comparison</summary>
+      <p class="muted">Quarter-on-quarter change in percentage points, using only filings published before entry. Changes within ±0.005 pp are Unchanged. Comparisons older than 180 days or missing a consecutive quarter are Unknown. Ownership changes can reflect dilution or reclassification as well as trades.</p>
+      <label>Return horizon <select id="impact-horizon"><option value="12">12m</option><option value="24">24m</option><option value="36" selected>36m</option></select></label>
+      <p class="muted">Cells: equal-weight stock return · n=eligible/total entries · difference from the category average (pp). Descriptive association, not a causal effect. Based on the selected year/show; the last row follows category selections and search.</p>
+      <div class="wrap"><table id="holding-impact-table"></table></div>
+    </details>
+    <div class="wrap"><table id="picktable"></table></div>
+  </section>
+  <section id="buy" hidden>
+    <div class="controls">Picks from the last <select id="buydays"><option>14</option><option selected>28</option><option>60</option><option>90</option></select> days
+      <span class="muted">· BUY = pick matching a core combo (C3, C5, C2, C7). Rs 1 lakh each; sell on a daily close at or below the stop (-20% of your buy price), else hold 36 months. Company already a candidate in the last 12 months = skip.</span></div>
+    <div class="wrap"><table id="buytable"></table></div>
+  </section>
+  <section id="engine" hidden>
+    <div class="controls">Local-engine DEEP_RESEARCH decisions with no model review for the same company-week, last
+      <select id="enginedays"><option value="30">30</option><option value="90" selected>90</option><option value="365">365</option><option value="0">all</option></select> days
+      <span class="muted" id="enginecount"></span></div>
+    <div class="wrap"><table id="enginetable"></table></div>
+  </section>
+  <section id="audit" hidden>
+    <h2>Detection audit</h2>
+    <p>Source conflicts, missed review handoffs and questionable award sizing. Entries need verification; they are research tasks.</p>
+    <div class="controls"><input id="audit-search" placeholder="Search company or check"><select id="audit-kind" aria-label="Audit check"><option value="">All checks</option></select><button id="audit-refresh">Refresh report</button><span class="muted" id="audit-status"></span></div>
+    <div class="cards" id="audit-counts"></div>
+    <p class="muted" id="audit-coverage"></p>
+    <div class="wrap"><table id="audittable"></table></div>
+  </section>
+</main>
+<div id="detail"><div class="sheet" id="sheet"></div></div>
+<script>
+const $ = s => document.querySelector(s);
+const pct = (v, d=0) => v == null ? '<span class="muted">–</span>' : `<span class="${v >= 0 ? 'good' : 'bad'}">${v >= 0 ? '+' : ''}${(100*v).toFixed(d)}%</span>`;
+const n = (v, d=1) => v == null ? '–' : Number(v).toLocaleString('en-IN', {maximumFractionDigits:d});
+const cr = v => v == null ? '–' : (v/1e7).toLocaleString('en-IN', {maximumFractionDigits:1});
+const unk = '<span class="muted" title="unknown: input missing">?</span>';
+const SCORE_LABELS = {order_mcap_25:'Order ≥25% of mcap', mcap_lt_2000:'Mcap < ₹2,000 cr', ps_lt_1_5:'P/S < 1.5', opm_up_1pp:'Op. margin up >1pp', opm_lt_10:'Op. margin < 10%',
+  mgmt_target_1_5x:'Mgmt target ≥1.5x rev', tech_2_of_3:'Technicals ≥2/3', revenue_growing:'Revenue growing', order_book_growing:'Order book growing',
+  illiquid_penalty:'Illiquid (−2)', expensive_penalty:'P/S > 3 (−1)'};
+const scoreTitle = r => Object.entries(r.score_inputs || {}).map(([k, v]) => `${SCORE_LABELS[k] || k}: ${v == null ? '?' : v ? 'yes' : 'no'}`).join('\n');
+const esc = s => (s ?? '').toString().replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const get = async u => {
+  const r = await fetch(u);
+  if (!r.ok) throw new Error(`Request failed (${r.status})`);
+  const data = await r.json();
+  if (data.error) throw new Error(data.error);
+  return data;
+};
+
+document.querySelectorAll('nav button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('nav button').forEach(x => x.classList.toggle('on', x === b));
+  document.querySelectorAll('main section').forEach(s => s.hidden = s.id !== b.dataset.tab);
+  try { localStorage.setItem('tab', b.dataset.tab) } catch (e) {}
+});
+
+async function loadProgress() {
+  const d = await get('/api/status'), s = d.summary;
+  $('#gen').textContent = 'updated ' + s.generated.replace('T', ' ');
+  const card = (k, v) => `<div class="card"><div class="k">${k}</div><div class="v">${v ?? '–'}</div></div>`;
+  let h = `<div class="controls"><button id="resume" class="primary">Resume processing from last run</button>
+    <span class="muted" id="resumemsg">Running now: ${s.running.length ? s.running.map(esc).join(', ') : 'nothing'}</span></div>
+    <div class="cards">${card('Filings listed up to', s.last_filing_listed?.slice(0,10))}${card('Last month processed', s.last_month_processed)}
+    ${card('Last week triaged', s.last_week_triaged)}${card('Prices up to', s.last_prices)}${card('Financials up to quarter', s.last_financial_quarter)}</div>`;
+  h += `<div class="wrap"><table><tr><th>Month</th><th class="num">Filings listed</th><th class="num">Key files</th><th>Downloaded</th>
+        <th>Processed</th><th class="num">Weeks triaged</th><th class="num">Model-reviewed decisions</th><th class="num">Picks</th></tr>`;
+  for (const r of d.months.slice().reverse()) {
+    const f = r.key_files ? r.key_downloaded / r.key_files : 0;
+    h += `<tr><td>${r.month}</td><td class="num">${n(r.listed,0)}</td><td class="num">${n(r.key_files,0)}</td>
+      <td><div class="bar" title="${n(r.key_downloaded,0)} of ${n(r.key_files,0)}"><i style="width:${(100*f).toFixed(0)}%"></i></div> <span class="muted">${(100*f).toFixed(0)}%</span></td>
+      <td>${r.processed ? '✓ <span class="muted">' + esc(r.processed.slice(0,10)) + '</span>' : '<span class="muted">pending</span>'}</td>
+      <td class="num">${r.weeks_triaged || '–'}</td><td class="num">${r.model_reviewed || '–'}</td><td class="num">${r.picks || '–'}</td></tr>`;
+  }
+  $('#progress').innerHTML = h + '</table></div>';
+  $('#resume').onclick = async () => {
+    if (!confirm('Start listing new filings, downloading and processing complete months?')) return;
+    $('#resume').disabled = true;
+    const r = await fetch('/api/resume', { method:'POST' }).then(x => x.json());
+    $('#resumemsg').textContent = r.message; setTimeout(loadProgress, 5000);
+  };
+  const years = [...new Set(d.months.map(r => r.month.slice(0,4)))];
+  if ($('#year').options.length <= 1) $('#year').innerHTML = '<option value="all">All years</option>' + years.map(y => `<option>${y}</option>`).join('');
+}
+
+const valueCategory = 'P/S <1.5 + market cap <₹2,000 crore';
+const matchesValueCategory = r => Number.isFinite(r.ps) && r.ps >= 0 && r.ps < 1.5
+  && Number.isFinite(r.mcap_cr) && r.mcap_cr > 0 && r.mcap_cr < 2000;
+const matchesBuyingCategory = r => (r.promoter_net_cr || 0) >= 1 || (r.inst_net_cr || 0) >= 1;
+const matchesScoreCategory = r => (r.score ?? -9) >= 4;
+const matchesGrowingBookCategory = r => (r.signals || []).includes('Order book growing');
+get('/api/combos').then(c => { const o = ([k, t]) => `<option value="${k}">${k}: ${esc(t)}</option>`, e = Object.entries(c);
+  $('#combo').innerHTML += `<optgroup label="Rulebook">${e.filter(([k]) => k[0] === 'C').map(o).join('')}</optgroup><optgroup label="Watch list">${e.filter(([k]) => k[0] === 'R').map(o).join('')}</optgroup>`; });
+const matchesCombo = (r, c) => !c || (c === 'any' || c === 'anyR' ? (r.combos || []).some(x => x[0] === (c === 'any' ? 'C' : 'R')) : (r.combos || []).includes(c));
+let rows = [], sortKey = 'week_start', sortDir = 1;
+  const average = a => a.reduce((sum, x) => sum + x, 0) / a.length;
+  const averageReturns = g => '<div class="muted">Equal-weight price returns</div>' + [12,24,36].map(h => {
+    const eligible = g.filter(r => Number.isFinite(r[`return_${h}m`]) && Number.isFinite(r[`benchmark_${h}m`]));
+    if (!eligible.length) return `<div class="muted">${h}m: – (n=0)</div>`;
+    const stock = average(eligible.map(r => r[`return_${h}m`])), market = average(eligible.map(r => r[`benchmark_${h}m`]));
+    const diff = stock - market;
+    return `<div>${h}m: ${pct(stock)} <span class="muted">vs ${pct(market)}</span><br><span class="muted">Δ ${diff >= 0 ? '+' : ''}${(100*diff).toFixed(0)} pp · n=${eligible.length}</span></div>`;
+  }).join('') + '<div class="muted" style="font-size:11px;margin-top:4px">vs average matched NSE medians</div>';
+  const sig = (lab, g) => `<div class="card"><div class="k">${lab}</div><div class="v">${g.length} entries</div>${averageReturns(g)}</div>`;
+
+async function loadPicks() {
+  $('#picktable').innerHTML = '<tr><td class="muted">Loading…</td></tr>';
+  try {
+    rows = await get(`/api/picks?year=${$('#year').value}&include=${$('#include').value}&view=${$('#view').value}`);
+  } catch (error) {
+    $('#picktable').innerHTML = `<tr><td>Unable to load picks: ${esc(error.message)}. Refresh to retry.</td></tr>`;
+    return;
+  }
+  const cats = [...new Set(rows.map(r => r.category))].sort();
+  const selected = new Set(selectedCategories());
+  const options = [['promoter-up','Promoter holding increased (QoQ)'], ['fii-up','FII holding increased (QoQ)']].concat(cats.map(c => [c,c]),[
+    ['value-smallcap',valueCategory], ['order-mcap','Order ≥25% of market cap'],
+    ['management-target','Management target ≥2x revenue'], ['technicals','Technicals 2–3 of 3'],
+    ['insider-buying','Promoter / institutions bought ≥₹1 cr'], ['score-four','Score 4+ (invest list)'],
+    ['order-book-growing','Order book growing'],
+    ['promoter-down','Promoter shareholding reduced (QoQ)'], ['fii-down','FII shareholding reduced (QoQ)']]);
+  $('#cat').innerHTML = options.map(([value,label]) => `<label><input type="checkbox" value="${esc(value)}" ${selected.has(value) ? 'checked' : ''}>${esc(label)}</label>`).join('');
+  $('#catcards').innerHTML = cats.map(c => sig(esc(c), rows.filter(r => r.category === c))).join('');
+  $('#catcards').innerHTML += sig(esc(valueCategory), rows.filter(matchesValueCategory))
+    + sig('Order ≥25% of market cap', rows.filter(r => (r.order_to_mcap || 0) >= 0.25))
+    + sig('Management target ≥2x revenue', rows.filter(r => (r.mgmt_target_x || 0) >= 2))
+    + sig('Technicals 2–3 of 3', rows.filter(r => (r.tech_score ?? -1) >= 2))
+    + sig('Score 4+ (invest list)', rows.filter(matchesScoreCategory))
+    + sig('Promoter / institutions bought ≥₹1 cr', rows.filter(matchesBuyingCategory));
+  renderPicks();
+}
+function selectedCategories() { return [...$('#cat').querySelectorAll('input:checked')].map(x => x.value) }
+function matchesCategories(r, categories, mode) {
+  const extra = {'value-smallcap': matchesValueCategory, 'insider-buying': matchesBuyingCategory,
+    'score-four': matchesScoreCategory, 'order-book-growing': matchesGrowingBookCategory,
+    'order-mcap': r => (r.order_to_mcap || 0) >= .25,
+    'management-target': r => (r.mgmt_target_x || 0) >= 2,
+    'technicals': r => (r.tech_score ?? -1) >= 2,
+    'promoter-up': r => holdingDirection(r.promoter_change_pp) === 'Increase',
+    'promoter-down': r => holdingDirection(r.promoter_change_pp) === 'Reduction',
+    'fii-up': r => holdingDirection(r.fii_change_pp) === 'Increase',
+    'fii-down': r => holdingDirection(r.fii_change_pp) === 'Reduction'};
+  const match = c => extra[c] ? extra[c](r) : r.category === c;
+  return !categories.length || (mode === 'all' ? categories.every(match) : categories.some(match));
+}
+function holdingDirection(value) {
+  return !Number.isFinite(value) ? 'Unknown' : value > 0.005 ? 'Increase' : value < -0.005 ? 'Reduction' : 'Unchanged';
+}
+function holdingCell(r, kind, yoy) {
+  const value = r[kind + (yoy ? '_yoy_pp' : '_change_pp')];
+  const title = `${(yoy ? r.holding_year_ago_period : r.holding_previous_period) || '?'} → ${r.holding_period || '?'}; published ${r.holding_published_at || '?'}`;
+  return `<td class="num" title="${esc(title)}">${!Number.isFinite(value) ? '–' : (value > 0 ? '+' : '') + value.toFixed(2) + ' pp'}</td>`;
+}
+function renderHoldingImpact(filtered) {
+  const h = $('#impact-horizon').value, key = `return_${h}m`;
+  const groups = [...new Set(rows.map(r=>r.category))].sort().map(c=>[c,rows.filter(r=>r.category===c)]);
+  for (const [id,label] of [['value-smallcap',valueCategory],['order-mcap','Order ≥25% of market cap'],['management-target','Management target ≥2x revenue'],['technicals','Technicals 2–3 of 3'],['score-four','Score 4+'],['insider-buying','Promoter / institutions bought ≥₹1 cr'],['order-book-growing','Order book growing']])
+    groups.push([label,rows.filter(r=>matchesCategories(r,[id],'all'))]);
+  groups.push(['Current filtered selection', filtered]);
+  let html='<tr><th>Category</th><th>Holder</th><th>All eligible</th>'+['Increase','Reduction','Unchanged','Unknown'].map(x=>`<th>${x}</th>`).join('')+'</tr>';
+  for (const [label,group] of groups) {
+    const eligible = group.filter(r=>Number.isFinite(r[key]));
+    const baseline = eligible.length ? average(eligible.map(r=>r[key])) : null;
+    for (const kind of ['promoter','fii']) {
+      html+=`<tr><td>${esc(label)}</td><td>${kind==='fii'?'FII':'Promoter'}</td><td>${baseline===null?'–':pct(baseline)} · n=${eligible.length}</td>`;
+      for (const direction of ['Increase','Reduction','Unchanged','Unknown']) {
+        const subset=eligible.filter(r=>holdingDirection(r[kind+'_change_pp'])===direction);
+        const total=group.filter(r=>holdingDirection(r[kind+'_change_pp'])===direction).length;
+        const value=subset.length?average(subset.map(r=>r[key])):null;
+        const diff=value===null?null:100*(value-baseline);
+        html+=`<td>${value===null?'–':pct(value)} · n=${subset.length}/${total}${diff===null?'':` · Δ ${diff>=0?'+':''}${diff.toFixed(0)} pp`}</td>`;
+      }
+      html+='</tr>';
+    }
+  }
+  $('#holding-impact-table').innerHTML=html;
+}
+function renderPicks() {
+  const categories = selectedCategories(), s = $('#search').value.toLowerCase();
+  const mode = $('#category-mode').value;
+  const combo = $('#combo').value;
+  let v = rows.filter(r => matchesCategories(r, categories, mode) && matchesCombo(r, combo) && (!s || (r.label + ' ' + r.legal_name).toLowerCase().includes(s)));
+  $('#category-label').textContent = categories.length ? `Categories: ${categories.length} selected` : 'Categories: All';
+  $('#combo-summary').hidden = !categories.length;
+  $('#combo-summary').innerHTML = categories.length ? sig(`${mode === 'all' ? 'All' : 'Any'} selected categories${s ? ' + search' : ''}`, v) : '';
+  v.sort((a, b) => ((a[sortKey] ?? -1e9) > (b[sortKey] ?? -1e9) ? 1 : -1) * sortDir);
+  renderHoldingImpact(v);
+  $('#pickcount').textContent = `${v.length} shown`;
+  const cols = [['week_start','Week'],['label','Symbol'],['legal_name','Company'],['category','Category'],['size_pct_of_revenue','Order % rev'],['orders_12m_pct','12m orders % rev'],['orders_y1_pct','Yr-1 executable % rev'],
+    ['order_to_mcap','Order % mcap'],['mgmt_target_x','Mgmt target ×rev'],['score','Score'],['combos','Combos'],['ps','P/S'],['opm','Operating margin %'],['tech_score','Technicals'],['signals','Signals'],['promoter_change_pp','Promoter QoQ (pp)'],['fii_change_pp','FII QoQ (pp)'],['promoter_yoy_pp','Promoter YoY (pp)'],['fii_yoy_pp','FII YoY (pp)'],
+    ['runup_6m','6m run-up'],['margin_ttm','PAT margin'],['excess_6m','6m vs mkt'],['excess_12m','12m vs mkt'],['excess_24m','24m vs mkt'],['excess_36m','36m vs mkt'],['rationale','Reasoning']];
+  let h = '<tr>' + cols.map(([k, t]) => `<th data-k="${k}">${t}${sortKey === k ? (sortDir > 0 ? ' ▲' : ' ▼') : ''}</th>`).join('') + '</tr>';
+  for (const r of v) h += `<tr class="click" data-id="${r.issuer_id}"><td>${r.week_start}</td><td><b>${esc(r.label)}</b></td><td>${esc(r.legal_name)}</td>
+    <td><span class="chip">${esc(r.category)}</span>${matchesValueCategory(r) ? `<br><span class="chip">${esc(valueCategory)}</span>` : ''}</td><td class="num" title="${r.order_cr == null ? '' : '₹' + n(r.order_cr) + ' cr: ' + esc(r.order_cr_basis)}">${r.size_pct_of_revenue == null ? '–' : n(r.size_pct_of_revenue) + '%'}</td>
+    <td class="num" title="${r.orders_12m_incl_big_pct != null && r.orders_12m_incl_big_pct !== r.orders_12m_pct ? 'incl. >4x revenue orders: ' + n(r.orders_12m_incl_big_pct) + '%' : ''}">${r.orders_12m_pct == null ? unk : n(r.orders_12m_pct) + '%'}</td>
+    <td class="num">${r.orders_y1_pct == null ? unk : n(r.orders_y1_pct) + '%'}</td>
+    <td class="num">${r.order_to_mcap == null ? unk : (100*r.order_to_mcap).toFixed(0) + '%'}</td>
+    <td class="num">${r.mgmt_target_x == null ? '–' : r.mgmt_target_x.toFixed(1) + 'x'}</td>
+    <td class="num" title="${esc(scoreTitle(r))}"><b>${r.score ?? '–'}</b>${r.score_n ? ` <span class="muted">(${r.score_known}/${r.score_n} known)</span>` : ''}</td><td>${(r.combos || []).join(' ') || '–'}</td><td class="num">${r.ps == null ? unk : r.ps.toFixed(2)}</td>
+    <td class="num">${r.opm == null ? unk : (100*r.opm).toFixed(1) + '%'}</td>
+    <td class="num" title="${r.price_date ? esc(r.exchange) + ' close ' + r.price_date : ''}">${r.tech_score == null ? unk : r.tech_score + '/3'}</td>
+    <td class="wide">${(r.signals || []).filter(f => !f.startsWith('Technicals') && !f.startsWith('Data ')).map(f => `<span class="chip">${esc(f)}</span>`).join(' ')}</td>
+    ${holdingCell(r,'promoter')}${holdingCell(r,'fii')}${holdingCell(r,'promoter',1)}${holdingCell(r,'fii',1)}
+    <td class="num">${pct(r.runup_6m)}</td><td class="num">${r.margin_ttm == null ? '–' : (100*r.margin_ttm).toFixed(1) + '%'}</td>
+    <td class="num">${pct(r.excess_6m)}</td><td class="num">${pct(r.excess_12m)}</td><td class="num">${pct(r.excess_24m)}</td><td class="num">${pct(r.excess_36m)}</td><td class="wide">${esc(r.rationale)}</td></tr>`;
+  $('#picktable').innerHTML = h;
+  $('#picktable').querySelectorAll('th').forEach(th => th.onclick = () => { sortDir = sortKey === th.dataset.k ? -sortDir : 1; sortKey = th.dataset.k; renderPicks() });
+  $('#picktable').querySelectorAll('tr.click').forEach(tr => tr.onclick = () => openCompany(tr.dataset.id));
+}
+['year','include','view'].forEach(id => $('#' + id).onchange = loadPicks);
+$('#impact-horizon').onchange = renderPicks;
+$('#cat').onchange = renderPicks; $('#category-mode').onchange = renderPicks; $('#combo').onchange = renderPicks;
+$('#clear-categories').onclick = () => { $('#cat').querySelectorAll('input').forEach(x => x.checked = false); renderPicks() }; $('#search').oninput = renderPicks;
+
+let charts = [];
+async function openCompany(id) {
+  $('#detail').style.display = 'block'; $('#sheet').innerHTML = '<p class="muted">Loading…</p>';
+  const d = await get('/api/company?id=' + id);
+  charts.forEach(c => c.destroy()); charts = [];
+  const q = Object.entries(d.quarters).sort(), ttm = (i, m) => { const w = q.slice(Math.max(0, i-3), i+1); return w.length === 4 && w.every(([,x]) => x[m] != null) ? w.reduce((s, [,x]) => s + x[m], 0) : null };
+  let h = `<button class="close" onclick="$('#detail').style.display='none'">×</button><h2>${esc(d.info.legal_name)}</h2>
+    <div class="muted">${esc(d.info.ids)} · ${esc(d.info.issuer_model)}</div>
+    <div class="grid2"><div class="chartbox"><canvas id="cp"></canvas></div><div class="chartbox"><canvas id="cf"></canvas></div></div>
+    <h3>Quarterly financials (₹ crore; EPS in ₹)</h3><div class="wrap"><table><tr><th>Quarter</th><th>Scope</th><th class="num">Revenue</th><th class="num">PAT</th>
+    <th class="num">PAT margin</th><th class="num">EPS</th><th class="num">Finance cost</th><th class="num">Depreciation</th><th class="num">TTM revenue</th><th class="num">TTM PAT</th><th class="num">Revenue YoY</th></tr>`;
+  q.slice().reverse().forEach(([pe, x], j) => { const i = q.length - 1 - j, yo = i >= 4 && q[i-4][1].revenue ? x.revenue / q[i-4][1].revenue - 1 : null;
+    h += `<tr><td>${pe}</td><td class="muted">${esc(x.scope)}</td><td class="num">${cr(x.revenue)}</td><td class="num">${cr(x.pat)}</td>
+      <td class="num">${x.revenue && x.pat != null ? (100*x.pat/x.revenue).toFixed(1) + '%' : '–'}</td><td class="num">${n(x.eps_basic, 2)}</td>
+      <td class="num">${cr(x.finance_cost)}</td><td class="num">${cr(x.depreciation)}</td><td class="num">${cr(ttm(i,'revenue'))}</td><td class="num">${cr(ttm(i,'pat'))}</td><td class="num">${pct(yo)}</td></tr>` });
+  const os = d.order_summary || {orders: []};
+  h += `</table></div><h3>New firm orders, last 12 months: ${os.total_cr ? '₹' + n(os.total_cr, 0) + ' cr' : '–'}${os.pct != null ? ' = ' + n(os.pct) + '% of TTM revenue (₹' + n(os.ttm_revenue_cr, 0) + ' cr)' : ''}</h3>
+    <div class="muted">${esc(os.basis || '')}. Single orders repeated within 90 days at the same value count once; period totals (FY, 9M, H1, "won 4 deals") are not added on top of the single orders they already contain. Some totals are annual contract value, some are multi-year contract value.</div>
+    ${os.execution ? `<div>Executable from order date, spread evenly over the stated term: <b>year 1 ${n(os.execution.y1_pct)}%</b> · year 2 ${n(os.execution.y2_pct)}% · year 3 ${n(os.execution.y3_pct)}% · later ${n(os.execution.later_pct)}% · <span class="muted">no term stated ${n(os.execution.unknown_pct)}%</span> of TTM revenue. Year-1 estimate (no-term orders assumed 24 months): <b>${n(os.execution.y1_est_pct)}%</b></div>` : ''}
+    <div class="wrap"><table><tr><th>Date</th><th class="num">₹ cr</th><th class="num">% TTM rev</th><th class="num">Term (months)</th><th>Counted as</th><th>Quote</th></tr>`;
+  for (const o of os.orders) h += `<tr><td>${o.d}</td><td class="num">${n(o.cr, 0)}${o.currency ? `<br><span class="muted">${esc(o.currency)} ${n(o.orig_amount * ({MILLION:1, BILLION:1000, THOUSAND:0.001, UNITS:1e-6, LAKH:0.1, CRORE:10}[o.orig_scale] ?? 1), 1)}m${o.fx_rate ? ' @ ' + n(o.fx_rate, 1) : ''}</span>` : ''}</td><td class="num">${os.ttm_revenue_cr ? n(100 * o.cr / os.ttm_revenue_cr) + '%' : '–'}</td><td class="num">${o.months ? n(o.months, 0) : '–'}</td>
+    <td><span class="chip">${esc(o.kind)}</span></td><td class="wide">${esc(o.quote)} <a href="${esc(o.source_url)}" target="_blank" rel="noopener">p.${o.page_no}</a></td></tr>`;
+  h += `</table></div><h3>Triage decisions (${d.reviews.length})</h3><div class="wrap"><table><tr><th>Week</th><th>Decision</th><th>Decided by</th><th>Rules</th>
+    <th class="num">Order % rev</th><th class="num">12m orders % rev</th><th>Firm</th><th>Routine</th><th>Disqualifier</th><th>Reasoning</th></tr>`;
+  for (const r of d.reviews) h += `<tr><td>${r.week_start}${r.is_final ? '' : ' <span class="muted">(older rules)</span>'}</td><td><span class="chip">${esc(r.triage_action)}</span></td>
+    <td class="muted">${esc(r.decided_by)}</td><td class="muted">${esc(r.rules_version)}</td><td class="num">${r.size_pct_of_revenue == null ? '–' : n(r.size_pct_of_revenue) + '%'}</td>
+    <td class="num" title="${esc(r.orders_12m_basis || '')}">${r.orders_12m_pct == null ? '–' : n(r.orders_12m_pct) + '%'}</td><td>${r.firm ?? '–'}</td><td>${r.routine ?? '–'}</td><td>${esc(r.disqualifier) || '–'}</td>
+    <td class="wide">${esc(r.rationale)}${r.missing_information ? '<div class="muted">Missing: ' + esc(JSON.stringify(r.missing_information)) + '</div>' : ''}</td></tr>`;
+  h += `</table></div><h3>Management guidance in concalls and presentations (${d.outlook.length})</h3><div class="wrap"><table><tr><th>Date</th><th>Kind</th><th>Source</th><th>Statement</th></tr>`;
+  for (const o of d.outlook) h += `<tr><td>${o.published_at.slice(0,10)}</td><td><span class="chip">${esc(o.kind)}</span></td><td class="muted">${esc(o.category)}</td><td class="wide">${esc(o.sentence)}</td></tr>`;
+  h += `</table></div><h3>Order book and order inflow (₹ cr, extracted from presentations/concalls)</h3><div class="wrap"><table><tr><th>Quarter</th><th class="num">Order book</th><th class="num">Book YoY</th><th class="num">Order inflow</th><th class="num">Inflow YoY</th></tr>`;
+  for (const o of (d.order_book || []).slice().reverse()) h += `<tr><td>${o.quarter_end}</td><td class="num">${n(o.order_book_cr,0)}${o.book_doubtful ? ' <span class="muted">(doubtful)</span>' : ''}</td><td class="num">${o.book_yoy_pct == null ? '–' : o.book_yoy_pct + '%'}</td><td class="num">${n(o.order_inflow_cr,0)}${o.inflow_doubtful ? ' <span class="muted">(doubtful)</span>' : ''}</td><td class="num">${o.inflow_yoy_pct == null ? '–' : o.inflow_yoy_pct + '%'}</td></tr>`;
+  h += `</table></div><h3>Shareholding pattern (% of shares)</h3><div class="wrap"><table><tr><th>Quarter</th><th class="num">Promoter</th><th class="num">Promoter YoY</th><th class="num">Pledged (% of promoter)</th><th class="num">Mutual funds</th><th class="num">MF YoY</th><th class="num">Foreign inst.</th><th class="num">FII YoY</th><th class="num">Domestic inst.</th><th class="num">Retail</th></tr>`;
+  for (const s of (d.shareholding || []).slice().reverse()) h += `<tr><td>${s.period_end}</td><td class="num">${n(s.promoter_pct)}</td><td class="num">${n(s.promoter_chg_yoy)}</td><td class="num">${n(s.promoter_pledged_pct)}</td><td class="num">${n(s.mf_pct)}</td><td class="num">${n(s.mf_chg_yoy)}</td><td class="num">${n(s.fii_pct)}</td><td class="num">${n(s.fii_chg_yoy)}</td><td class="num">${n(s.dii_pct)}</td><td class="num">${n(s.retail_pct)}</td></tr>`;
+  h += `</table></div><h3>PLI scheme approvals (${(d.pli || []).length})</h3><div class="wrap"><table><tr><th>Date</th><th>Scheme</th><th>Segment</th><th class="num">Committed ₹ cr</th><th>Source</th></tr>`;
+  for (const x of (d.pli || [])) h += `<tr><td>${x.approval_date}</td><td>${esc(x.scheme)} ${esc(x.tranche || '')}</td><td>${esc(x.product_segment || '')}</td><td class="num">${n(x.committed_investment_cr)}</td><td><a href="${esc(x.source_url)}" target="_blank" rel="noopener">PIB</a></td></tr>`;
+  h += `</table></div><h3>Promoter trades and institutional bulk/block deals of ₹1 cr or more (${d.deals.length})</h3><div class="wrap"><table><tr><th>Date</th><th>Type</th><th>Who</th><th>Side</th><th class="num">₹ cr</th></tr>`;
+  for (const x of d.deals) h += `<tr><td>${x.trade_date}</td><td>${esc(x.who)}</td><td>${esc(x.name)}</td><td>${esc(x.side)}</td><td class="num">${n(x.cr)}</td></tr>`;
+  h += `</table></div><h3>Commercial events found in filings (${d.events.length})</h3><div class="wrap"><table><tr><th>Date</th><th>Type</th><th>Stage</th><th>Amount</th><th>Outcome</th><th>Quote</th></tr>`;
+  for (const e of d.events) h += `<tr><td>${e.published_at.slice(0,10)}</td><td>${esc(e.event_type)}</td><td class="muted">${esc(e.commercial_stage)}</td>
+    <td>${esc(e.amount_text || (e.amount ? n(e.amount) + ' ' + (e.scale || '') : '–'))}</td><td class="muted">${esc(e.outcome) || 'unresolved'}</td>
+    <td class="wide">${esc(e.quote)} <a href="${esc(e.source_url)}" target="_blank" rel="noopener">p.${e.page_no}</a></td></tr>`;
+  h += `</table></div><h3>Filings (latest ${d.documents.length})</h3><div class="wrap"><table><tr><th>Date</th><th>Category</th><th>Title</th><th>State</th></tr>`;
+  for (const x of d.documents) h += `<tr><td>${(x.published_at || '').slice(0,10)}</td><td>${esc(x.category)}</td>
+    <td class="wide">${x.attachment_url ? `<a href="${esc(x.attachment_url)}" target="_blank" rel="noopener">${esc(x.title || 'document')}</a>` : esc(x.title)}</td><td class="muted">${esc(x.pipeline_state)}</td></tr>`;
+  $('#sheet').innerHTML = h + '</table></div>';
+  const css = getComputedStyle(document.documentElement), acc = css.getPropertyValue('--accent'), mut = css.getPropertyValue('--muted');
+  if (d.prices.length) {
+    const p0 = d.prices[0].close, idx = new Map(d.index.map(r => [r.d.slice(0,7), r.close])), i0 = d.index.length ? d.index[0].close : null;
+    charts.push(new Chart($('#cp'), { type:'line', data:{ labels:d.prices.map(r => r.d), datasets:[
+      { label:'Stock (rebased 100)', data:d.prices.map(r => 100*r.close/p0), borderColor:acc, pointRadius:0, borderWidth:1.5 },
+      { label:'Smallcap 250', data:d.prices.map(r => idx.get(r.d.slice(0,7)) && i0 ? 100*idx.get(r.d.slice(0,7))/i0 : null), borderColor:mut, pointRadius:0, borderWidth:1 }]},
+      options:{ maintainAspectRatio:false, plugins:{ title:{ display:true, text:'Price since 2020 (split/bonus adjusted)' } }, scales:{ y:{ type:'logarithmic' }, x:{ ticks:{ maxTicksLimit:8 } } } } }));
+  }
+  if (q.length) charts.push(new Chart($('#cf'), { type:'bar', data:{ labels:q.map(([pe]) => pe), datasets:[
+      { label:'TTM revenue (₹ cr)', data:q.map((_, i) => ttm(i,'revenue') && ttm(i,'revenue')/1e7), backgroundColor:acc, yAxisID:'y' },
+      { label:'TTM PAT (₹ cr)', type:'line', data:q.map((_, i) => ttm(i,'pat') && ttm(i,'pat')/1e7), borderColor:mut, pointRadius:2, yAxisID:'y1' }]},
+      options:{ maintainAspectRatio:false, plugins:{ title:{ display:true, text:'Trailing 12-month revenue and profit' } },
+        scales:{ y:{ position:'left' }, y1:{ position:'right', grid:{ drawOnChartArea:false } }, x:{ ticks:{ maxTicksLimit:8 } } } } }));
+}
+$('#detail').onclick = e => { if (e.target.id === 'detail') $('#detail').style.display = 'none' };
+document.addEventListener('keydown', e => { if (e.key === 'Escape') $('#detail').style.display = 'none' });
+
+$('#year').innerHTML = '<option value="all">All years</option>';
+$('#progress').innerHTML = '<p class="muted">Loading processing progress… Picks can be opened while this loads.</p>';
+try { const tab = localStorage.getItem('tab'); if (tab) document.querySelector(`nav button[data-tab="${tab}"]`)?.click() } catch (e) {}
+loadPicks();
+async function loadBuy() {
+  $('#buytable').innerHTML = '<tr><td class="muted">Loading… (first load takes about a minute)</td></tr>';
+  let rows;
+  try { rows = await get('/api/buy?days=' + $('#buydays').value) } catch (error) {
+    $('#buytable').innerHTML = `<tr><td>Unable to load buy list: ${esc(error.message)}. Refresh to retry.</td></tr>`; return }
+  if (!rows.length) { $('#buytable').innerHTML = '<tr><td class="muted">No core-combo picks in this window.</td></tr>'; return }
+  let h = '<tr><th>Action</th><th>Pick week</th><th>Symbol</th><th>Company</th><th>Combos</th><th>Why it qualifies</th><th class="num">Last close</th><th class="num">Stop (-20%)</th><th>Sell by</th></tr>';
+  for (const r of rows) h += `<tr class="click" data-id="${esc(r.issuer_id)}"><td>${r.repeat_of ? `<span class="muted">Skip (first ${esc(r.repeat_of)})</span>` : '<b class="good">BUY</b>'}</td>
+    <td>${esc(r.week_start)}</td><td>${esc(r.exchange)}: ${esc(r.symbol)}</td><td>${esc(r.name)}</td><td>${esc(r.combos.join(', '))}</td>
+    <td>${r.reasons.map(esc).join('<br>')}</td><td class="num">${n(r.close, 2)}<br><span class="muted">${esc(r.close_date)}</span></td>
+    <td class="num">${n(r.stop, 2)}</td><td>${esc(r.sell_by)}</td></tr>`;
+  $('#buytable').innerHTML = h;
+  $('#buytable').querySelectorAll('tr.click').forEach(tr => tr.onclick = () => openCompany(tr.dataset.id));
+}
+$('#buydays').onchange = loadBuy;
+async function loadEngine() {
+  $('#enginetable').innerHTML = '<tr><td class="muted">Loading…</td></tr>';
+  let rows;
+  try { rows = await get('/api/engine_queue?days=' + $('#enginedays').value) } catch (error) {
+    $('#enginetable').innerHTML = `<tr><td>Unable to load: ${esc(error.message)}. Refresh to retry.</td></tr>`; return }
+  $('#enginecount').textContent = `· ${rows.length} unreviewed`;
+  let h = '<tr><th>Week</th><th>Company</th><th class="num">Order % rev</th><th>Size basis</th><th>Confidence</th><th>Engine reasoning</th></tr>';
+  for (const r of rows) h += `<tr class="click" data-id="${esc(r.issuer_id)}"><td>${esc(r.week_start)}</td><td><b>${esc(r.label)}</b> ${esc(r.legal_name)}</td>
+    <td class="num">${r.size_pct_of_revenue == null ? unk : n(r.size_pct_of_revenue) + '%'}</td><td>${esc(r.size_basis) || '–'}</td><td>${esc(r.confidence) || '–'}</td><td class="wide">${esc(r.rationale)}</td></tr>`;
+  $('#enginetable').innerHTML = h;
+  $('#enginetable').querySelectorAll('tr.click').forEach(tr => tr.onclick = () => openCompany(tr.dataset.id));
+}
+$('#enginedays').onchange = loadEngine;
+loadEngine();
+loadBuy();
+loadProgress().catch(error => { $('#progress').innerHTML = `<p>Unable to load progress: ${esc(error.message)}. Refresh to retry. Picks remain available.</p>` });
+
+let auditReport = null;
+const relationNames = {CONFIRMED_RELATED:'Related to issuer', ISSUER_ASSERTED_UNRELATED:'Issuer declares unrelated', UNKNOWN:'Relationship needs verification'};
+const auditNames = {RELATIONSHIP_RECHECK:'Customer relationship changed', INTERNAL_DEMAND_REVIEW:'Verify internal-demand rejection', UNREVIEWED_CANDIDATE:'Candidate awaiting review', STALE_AWARD:'Award past completion date', AGGREGATE_SIZE_REVIEW:'Verify single-award size'};
+for (const [k,v] of Object.entries(auditNames)) { const option = document.createElement('option'); option.value = k; option.textContent = v; $('#audit-kind').appendChild(option); }
+async function loadAudit() {
+  $('#audit-status').textContent = 'Loading…';
+  try {
+    auditReport = await get('/api/detection_audit');
+    $('#audit-status').textContent = auditReport.generated_at ? 'Report: ' + new Date(auditReport.generated_at).toLocaleString() : (auditReport.message || 'No report yet');
+    const c = auditReport.coverage || {};
+    $('#audit-coverage').textContent = `Source documents checked: ${c.scanned_documents ?? 0} of ${c.total_affected_documents ?? '?'} with related-party labels. ${c.complete ? 'All affected documents covered.' : 'Partial audit; remaining documents have not been checked.'} Historical weeks are replay labels, not proof of alerts delivered then.`;
+    $('#audit-counts').innerHTML = Object.entries(auditReport.summary?.counts || {}).map(([k,v]) => `<div class="card"><b>${n(v,0)}</b><div>${esc(auditNames[k] || k)}</div></div>`).join('');
+    renderAudit();
+  } catch (error) { $('#audit-status').textContent = 'Unable to load: ' + error.message; }
+}
+function renderAudit() {
+  const term = $('#audit-search').value.toLowerCase();
+  const rows = (auditReport?.findings || []).filter(r => [r.label,r.legal_name,r.kind,auditNames[r.kind]].join(' ').toLowerCase().includes(term) && (!$('#audit-kind').value || r.kind === $('#audit-kind').value));
+  let h = '<tr><th>Company</th><th>Check</th><th>Date / historical week</th><th>Finding</th><th>Source</th></tr>';
+  for (const r of rows.slice(0,500)) {
+    const safeSource = /^https:\/\//.test(r.source_url || '') ? `<a href="${esc(r.source_url)}" target="_blank" rel="noopener">Filing, p${n(r.page_no,0)}</a>` : '—';
+    const reason = r.before ? `${relationNames[r.before] || r.before} → ${relationNames[r.after] || r.after}. ${r.evidence || ''}` : r.reason;
+    h += `<tr><td><button class="audit-company" data-id="${esc(r.issuer_id)}">${esc(r.label)}</button><br>${esc(r.legal_name)}</td><td>${esc(auditNames[r.kind] || r.kind)}</td><td>${esc(r.week_start || r.published_at?.slice(0,10))}</td><td class="wide">${esc(reason)}${r.quote ? `<details><summary>Source passage</summary>${esc(r.quote)}</details>` : ''}</td><td>${safeSource}</td></tr>`;
+  }
+  if (!rows.length) h += '<tr><td colspan="5">No findings match this search.</td></tr>';
+  if (rows.length > 500) h += `<tr><td colspan="5">Showing 500 of ${n(rows.length,0)} matching findings. Narrow the search to inspect the rest.</td></tr>`;
+  $('#audittable').innerHTML = h;
+  document.querySelectorAll('.audit-company').forEach(b => b.onclick = () => openCompany(b.dataset.id));
+}
+$('#audit-search').oninput = renderAudit;
+$('#audit-kind').onchange = renderAudit;
+$('#audit-refresh').onclick = loadAudit;
+loadAudit();
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+# Extended shortlist validation — 23 October 2026
+
+## Decision
+
+No additional policy, ownership or operating signal is sufficiently validated to claim repeatable multibagger selection. The strongest broader historical association remains order value ≥25% of market capitalisation together with a positive operating margin below 10%. This is a research ranking, not a proven forecast or a current buy recommendation.
+
+The stricter same-scope, disclosure-dated financial reconstruction selects 40 stock-year picks across 35 companies. Of 33 with completed 24-month outcomes, 17 doubled (51.5%), 10 tripled (30.3%) and 5 lost money (15.2%). Other picks with both required fields available doubled 23/89 times (25.8%). Reweighting the control to the signal’s selection-year mix reduces the apparent advantage from 25.7 to 19.3 percentage points. Deduplicating to each company’s first qualifying selection leaves 14/28 doubles (50%). However, later selections in companies not in the 2021–22 shortlist produced just 1 double among 6 completed outcomes. Repeatability remains unproven.
+
+## Scope and method
+
+The same 178 stock-year dashboard picks / 156 issuers were used, avoiding an unannounced change of universe. 172 picks have 12-month outcomes and 141 have 24-month outcomes. Prices end on 9 October 2026. The extract includes 46,790 quarterly financial-fact rows, 3,404 shareholding rows, 4,034 order-book figure rows, 1,541 programme mentions, 20 PLI beneficiary rows, 2,115 category-specific filing events, 3,576 grouped commercial signals and 1,458 guidance passages for these issuers. These are raw counts, not independent observations.
+
+57 additional fixed-threshold signal/intersection checks were evaluated. All results, including zero-size and adverse groups, are in comparison.csv and results.json. Earlier combination screening adds further selection bias. This is retrospective exploratory analysis, not a fresh holdout. No thresholds were grid-searched in this pass.
+
+New policy, PLI, ownership, guidance and operational-event signals must be dated strictly before the shortlist week starts. Recent events use a 365-day lookback. Financials use available_at before that date, one statement scope per observation, four contiguous quarters and a latest period within 200 days; annual comparisons require eight contiguous quarters. Consolidated is preferred where available. Operating margin requires PBT, finance cost, depreciation and other income for all four quarters rather than substituting zero for missing figures.
+
+Financial revisions can still restate old quarters; exact publication lineages, actual contract-value denominators and every corporate action were not reconstructed. The order/mcap ratio remains the dashboard’s proxy, built from model-estimated order/revenue size. Existing technical/buying/valuation features retain the entry-date timing limitations documented in the first report.
+
+“Doubled” means terminal price return ≥100% at 24 months, and “tripled” ≥200%. These are split/bonus-adjusted price returns, not intraperiod highs, total returns, portfolio CAGR, or after-cost performance. Excess is arithmetic percentage-point difference against the median NSE stock over the same entry window. Missing outcomes are excluded, never treated as losses. New feature dates are stricter than the old dashboard; medians use the conventional middle-pair average.
+
+## Which dimensions improved observed doubling frequency?
+
+Controls exclude signal-positive picks and exclude records missing the required field. A no-tag policy/guidance control means no signal found in the collected text, not proven absence of economic exposure. Each row has different coverage.
+
+| Dimension | Doubles / completed 24m | Rate | Control rate | Year-matched lift, pp | Later (2023+) doubles / 24m | Interpretation |
+|---|---:|---:|---:|---:|---:|---|
+| Order/mcap ≥25% + operating margin 0–10% | 17/33 | 51.5% | 25.8% | +19.3 | 3/10 | Strongest broader hypothesis; weak new-company test |
+| Promoter/institution buying ≥₹1cr | 7/14 | 50.0% | 29.9% | +20.0 | 2/6 | Promising; sparse and disclosure-date leakage unresolved |
+| Automated programme-order tag | 5/10 | 50.0% | 30.5% | +28.5 | 2/7 | Apparent lift; text audit finds substantial misclassification |
+| Automated early-cycle policy-order tag | 4/7 | 57.1% | 30.6% | +30.6 | 1/4 | Tiny; contaminated by generic opportunity passages |
+| PLI approval public before shortlist | 3/8 | 37.5% | 31.6% | +21.5 | 2/7 | Weak, incomplete coverage |
+| TTM revenue growth ≥20% | 8/26 | 30.8% | 31.4% | -6.8 | 2/16 | No useful standalone improvement |
+| Operating margin up ≥2pp | 8/23 | 34.8% | 33.3% | -1.8 | 3/15 | Near control; year adjustment removes lift |
+| Revenue growth + margin expansion | 3/10 | 30.0% | 34.8% | -9.8 | 1/6 | No improvement |
+| Production-start tag, realised wording | 5/20 | 25.0% | 33.1% | -6.7 | 0/10 | No improvement; extracted tag not independently verified |
+| Debt-reduction tag, realised wording | 8/41 | 19.5% | 37.0% | -16.6 | 2/20 | Worse historical hit rate; not evidence debt repayment is harmful |
+| Management revenue multiple ≥2x | 0/5 | 0.0% | 33.1% | -22.0 | 0/4 | No observed improvement; small and noisy |
+| Acquisition filing | 6/26 | 23.1% | 33.9% | -4.3 | 3/16 | No improvement |
+
+None of the tables establishes causality. Signal groups overlap. Baseline doubling frequency is 45/141 (31.9%); comparing every sparse subgroup directly with that pooled baseline would ignore different years and missingness.
+
+## PIB and policy validation: why the headline is misleading
+
+Policies are separated into announcement, issuer mention, and an issuer-specific received contract. Those are different evidence levels. The local table has 51 programmes: 29 source-linked rows and 22 labelled unverified. Three missing historical links were independently checked for this analysis: Kavach and Vande Bharat through the 1 February 2022 Budget release, and Green Energy Corridor II through the 6 January 2022 Cabinet release. This repaired analysis coverage, without changing the database. Remaining source-linked rows inherit the local dataset’s attribution; not every primary release was re-read.
+
+The automated early-policy group appears impressive: 4/7 doubles, median 24-month excess +145.6pp. A narrower newly announced programme group produces 4/6 doubles. Neither is a reliable strategy result: the order tag merely looks for words such as order or supply near a programme keyword. All 19 source-linked order-tagged stock-year selections were inspected at the stored-excerpt level. This identified generic macro slides, analyst questions, prospective opportunities, explicit lack of orders, and wrong programme attribution. Since excerpts are incomplete, insufficient evidence does not prove absence of a contract. The audit itself was retrospective and is not blind validation.
+
+Examples:
+- ELECON: PLI described as favourable for the industry; nearby order-inflow wording creates the tag. This does not establish a company PLI contract.
+- POWERMECH: RDSS and electricity-sector opportunity discussion, not receipt of an RDSS award.
+- TEXRAIL: an analyst asks about Vande Bharat while management describes its overall order book. Overall railway orders are not automatically Vande Bharat contracts.
+- TDPOWERSYS: management explicitly says it is not seeing Vande Bharat ordering action. The extractor still labels this an order mention.
+- MANAKCOAT: specialty-steel PLI sector discussion is not an issuer approval or award.
+- EXICOM: actual BharatNet Phase III APO exists, but it was mapped to the 2021 PPP programme; the relevant amended programme was approved on 4 August 2023. Using the wrong announcement date distorts “early cycle”.
+- EMSLIMITED and RAMKY’s 2025 water project: a contract exists, but the inspected passage does not establish AMRUT 2.0 linkage.
+
+Four selections have clearer named-programme contract/execution support in the inspected passages: RAMKY (July 2024 RDSS), EXICOM (February 2025 BharatNet), SALZERELEC (May 2025 RDSS), and POLYCAB (June 2025 RDSS/BharatNet). GVT&D is a probable RDSS example with inconsistent programme expansion, retained as unresolved. Only one of the four clearer cases has a completed 24-month outcome, and it lost money. Across their four 12-month outcomes, none doubled and three lost money. This is too little to infer that confirmed policy orders are beneficial OR harmful. It does invalidate claiming that the noisy historical 4/7 rate proves the contract mechanism.
+
+All 19 classifications and reasons are preserved in policy_audit.json and policy_audit.csv. “Confirmed” here means supported by the stored excerpt; it is not a full contract or original-PDF audit. The strict set is limited to the automated-tag positives inspected, not an exhaustive census of every government contract.
+
+## Ownership, order books and data gaps
+
+- PLI: 9 selected observations have a dated mapped approval, 8 have 24-month outcomes. They doubled 3/8 times, but median 12-month excess is −8.3pp. Parent/subsidiary mapping, provisional approvals, scheme renewal and coverage gaps remain. Approval alone is not proof of incremental realised revenue or incentive receipt.
+- Promoter stake up ≥1pp year-on-year: only 5 completed signal-positive outcomes, 2 doubles. Promoter up ≥2pp: just one completed case. These cannot support a stable filter.
+- MF/FII/DII stake up ≥1pp: only 2/3/4 completed positive observations respectively, with zero doubles. Historical availability is concentrated in later cohorts. This does not establish that institutional accumulation is bad.
+- Promoter stake down ≥5pp: 0/5 doubles, median 24-month excess −23.8pp. A possible risk-review flag only; dilution, issuance, reclassification and actual selling are not separated.
+- Pledging: only 2 selection-date observations have usable pledge values, neither supplies a completed 24-month positive-group observation. Cannot evaluate.
+- Dated order-book growth ≥30% is available for only 14 picks, and only 3 positive cases have completed 24-month outcomes. The “book ≥revenue and growth ≥30%” intersection has only 2 completed outcomes. This is not enough to confirm the optimistic comments in existing backtest scripts.
+- Debt/equity, cash-flow conversion, working-capital days and ROCE are not available with sufficient comparable point-in-time balance-sheet/cash-flow coverage in the exported quarterly facts. No result for these was fabricated.
+- Credit-rating filing presence does not reveal upgrade versus downgrade; capacity-filing categories alone are too sparse. Realised commercial-start tags are available but remain rule-extracted text, not independently confirmed economic events.
+
+## Repeatability and uncertainty
+
+The primary stricter combination has median actual 24-month return +101.7%, median excess +72.5pp, with a 95% illustrative Wilson interval of approximately 35%–67% for the doubling probability. This is not a forecast interval. A 3,000-resample issuer-cluster bootstrap gives an unadjusted 95% interval of roughly +6 to +45pp for its doubling-rate difference versus controls. That resampling does not correct for sector/time clustering, retrospective selection or the many tested rules. Buying and automated policy-order differences have bootstrap intervals that include zero.
+
+For the primary combination, 2023+ completed outcomes contain 3 doubles out of 10, versus 14/23 in 2021–22. Excluding every company already shortlisted in 2021–22 leaves 1/6 later doubles. The financial reconstruction changes a few group memberships versus the first report; the denominator of 33 differs from the previous positive-margin sensitivity’s 32 for that reason. No new return observations were added.
+
+No later-year slice is a true out-of-sample result: all data have been inspected, models may know historical winners, and 24-month windows overlap subsequent selection dates. Genuine validation requires freezing the rule now and evaluating new cohorts without retuning, with only past matured outcomes used for any future changes.
+
+## Operational conclusion
+
+Prioritise the large-order/low-positive-margin combination for source checking and prospective paper tracking. Treat genuine policy-linked execution and promoter/institutional buying as research annotations until their data pass timing and attribution checks; do not award points merely because a company mentions a PIB scheme. Do not add PLI, growth guidance, production-start or debt-reduction tags as mandatory positive filters based on this dataset. Use promoter dilution/decline as a question for investigation, not an automatic exclusion supported by five cases.
+
+The current evidence supports a ranked research hypothesis, not a claim that we have a repeatable multibagger system. No live dashboard, database rows, model rules, or investment decisions were modified.
+
+Correction to the prior chat table: Technicals ≥2 tripled in 16/97 cases (16.5%); score ≥4 tripled in 11/48 (22.9%), not the provisional 21% shown there. The saved first-study comparison file held the correct value.
+
+## Primary policy sources checked
+
+- Budget 2022 Kavach/Vande Bharat announcement: https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=1794123
+- Green Energy Corridor II, 6 January 2022: https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=1788011
+- Amended BharatNet, approved 4 August 2023: https://dbn.gov.in/en/amended-bharatnet-program ; historical PIB summary: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2086701
+- PLI qualification entails investment/production conditions; an approval is not a realised contract: https://www.meity.gov.in/static/uploads/2024/02/PLI-booklet__english.pdf
+
+All stock-performance numbers are calculated from local data. External policy releases were used to check identities/dates and interpret the evidence; recent programme outcomes were not backdated into historical features.

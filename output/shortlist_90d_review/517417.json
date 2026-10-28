@@ -1,0 +1,3785 @@
+{
+  "signal": {
+    "review_id": "044e0c07-2eb2-4b58-bdef-3bfbfcb7a29c",
+    "issuer_id": "1caa2eff-9ed6-44af-a1d5-2f4121b63631",
+    "week_start": "2026-09-07",
+    "label": "517417",
+    "legal_name": "PATELS AIRTEMP (INDIA) LTD.",
+    "triage_action": "DEEP_RESEARCH",
+    "is_pick": true,
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "rules_version": "triage-rules-3.5.1",
+    "size_pct_of_revenue": 121.6,
+    "size_basis": "STATED",
+    "firm": true,
+    "routine": false,
+    "disqualifier": null,
+    "confidence": "MEDIUM",
+    "rationale": "Stated order of INR 226.13 crore (USD 23.66m) against TTM revenue of INR 185.89 crore gives 121.6%, well above the 10% threshold (size STATED). The order is firm (received 2026-09-13), company-specific, and non-routine: no earlier comparable order is disclosed and it is larger than any year of reported revenue in the packet. Counterparty and execution period are unknown, ADTV is only INR 0.31 crore, and no disqualifier applies. TTM OPM is 10.0% and TTM PAT is INR 6.85 crore, so the company is not stressed.",
+    "excess_6m": null,
+    "excess_12m": null,
+    "excess_24m": null,
+    "return_12m": null,
+    "return_24m": null,
+    "holding_period": null,
+    "holding_previous_period": null,
+    "promoter_holding_pct": null,
+    "fii_holding_pct": null,
+    "promoter_change_pp": null,
+    "fii_change_pp": null,
+    "holding_year_ago_period": null,
+    "promoter_yoy_pp": null,
+    "fii_yoy_pp": null,
+    "return_36m": null,
+    "benchmark_36m": null,
+    "excess_36m": null,
+    "benchmark_12m": null,
+    "benchmark_24m": null,
+    "runup_6m": null,
+    "margin_ttm": 0.036849749852063046,
+    "category": "A: order \u2265100% of revenue",
+    "order_cr_derived": 226.04223999999996,
+    "order_cr": 226.1318461,
+    "order_cr_basis": "review amount",
+    "mcap_cr": null,
+    "orders_12m_pct": 121.6,
+    "orders_y1_pct": 60.8,
+    "orders_12m_incl_big_pct": 121.6,
+    "order_to_mcap": null,
+    "mgmt_target_x": null,
+    "promoter_net_cr": 0.0,
+    "inst_net_cr": 0.0,
+    "tech": {
+      "up": true,
+      "hi": true,
+      "rs": true,
+      "n": 3,
+      "runup6": 0.8058809466889791,
+      "liq": 0.21863693500000003,
+      "exchange": "BSE",
+      "below_falling_200": false,
+      "price_date": "2026-09-21",
+      "history_days": 304,
+      "near_high_threshold": 0.8
+    },
+    "tech_score": 3,
+    "price_date": "2026-09-21",
+    "exchange": "BSE",
+    "order_book": {},
+    "score": 1,
+    "score_inputs": {
+      "order_mcap_25": null,
+      "mcap_lt_2000": null,
+      "ps_lt_1_5": null,
+      "opm_up_1pp": null,
+      "opm_lt_10": false,
+      "mgmt_target_1_5x": false,
+      "tech_2_of_3": true,
+      "revenue_growing": null,
+      "order_book_growing": null,
+      "illiquid_penalty": null,
+      "expensive_penalty": null
+    },
+    "score_known": 3,
+    "score_n": 9,
+    "ps": null,
+    "opm": 0.10011297003604282,
+    "signals": [
+      "Technicals 3/3",
+      "Data 3/9 known"
+    ],
+    "combos": [
+      "C2",
+      "C4"
+    ],
+    "combo_checks": {
+      "up": true,
+      "hi": true,
+      "rs": true,
+      "n": 3,
+      "runup6": 0.8058809466889791,
+      "liq": 0.21863693500000003,
+      "exchange": "BSE",
+      "below_falling_200": false,
+      "price_date": "2026-09-21",
+      "history_days": 304,
+      "near_high_threshold": 0.8
+    }
+  },
+  "identifiers": [
+    {
+      "security_id": "2d0c9dc5-38b6-4e3a-a8a1-6df336b045d4",
+      "exchange": "BSE",
+      "kind": "SCRIP_CODE",
+      "value": "517417"
+    },
+    {
+      "security_id": "2d0c9dc5-38b6-4e3a-a8a1-6df336b045d4",
+      "exchange": "BSE",
+      "kind": "SYMBOL",
+      "value": "PATELSAI"
+    }
+  ],
+  "exchange": "BSE",
+  "security_id": "2d0c9dc5-38b6-4e3a-a8a1-6df336b045d4",
+  "prices": [
+    {
+      "trade_date": "2026-10-27",
+      "close": "346.70",
+      "volume": "1864"
+    },
+    {
+      "trade_date": "2026-10-26",
+      "close": "337.10",
+      "volume": "5921"
+    },
+    {
+      "trade_date": "2026-10-23",
+      "close": "340.65",
+      "volume": "15547"
+    },
+    {
+      "trade_date": "2026-10-22",
+      "close": "352.15",
+      "volume": "3359"
+    },
+    {
+      "trade_date": "2026-10-21",
+      "close": "357.15",
+      "volume": "5278"
+    },
+    {
+      "trade_date": "2026-10-19",
+      "close": "374.30",
+      "volume": "11024"
+    },
+    {
+      "trade_date": "2026-10-16",
+      "close": "360.80",
+      "volume": "12338"
+    },
+    {
+      "trade_date": "2026-10-15",
+      "close": "361.45",
+      "volume": "12571"
+    },
+    {
+      "trade_date": "2026-10-14",
+      "close": "373.80",
+      "volume": "5441"
+    },
+    {
+      "trade_date": "2026-10-13",
+      "close": "360.30",
+      "volume": "7837"
+    },
+    {
+      "trade_date": "2026-10-12",
+      "close": "358.45",
+      "volume": "6492"
+    },
+    {
+      "trade_date": "2026-10-09",
+      "close": "373.75",
+      "volume": "4570"
+    },
+    {
+      "trade_date": "2026-10-08",
+      "close": "363.70",
+      "volume": "8721"
+    },
+    {
+      "trade_date": "2026-10-07",
+      "close": "374.15",
+      "volume": "6970"
+    },
+    {
+      "trade_date": "2026-10-06",
+      "close": "375.20",
+      "volume": "8497"
+    },
+    {
+      "trade_date": "2026-10-05",
+      "close": "373.35",
+      "volume": "11562"
+    },
+    {
+      "trade_date": "2026-10-01",
+      "close": "367.60",
+      "volume": "7891"
+    },
+    {
+      "trade_date": "2026-09-30",
+      "close": "379.60",
+      "volume": "17678"
+    },
+    {
+      "trade_date": "2026-09-29",
+      "close": "388.25",
+      "volume": "20533"
+    },
+    {
+      "trade_date": "2026-09-28",
+      "close": "403.70",
+      "volume": "20423"
+    },
+    {
+      "trade_date": "2026-09-25",
+      "close": "407.20",
+      "volume": "15257"
+    },
+    {
+      "trade_date": "2026-09-24",
+      "close": "413.60",
+      "volume": "46877"
+    },
+    {
+      "trade_date": "2026-09-23",
+      "close": "416.35",
+      "volume": "24602"
+    },
+    {
+      "trade_date": "2026-09-22",
+      "close": "396.55",
+      "volume": "63018"
+    },
+    {
+      "trade_date": "2026-09-21",
+      "close": "377.70",
+      "volume": "98962"
+    },
+    {
+      "trade_date": "2026-09-18",
+      "close": "384.30",
+      "volume": "21003"
+    },
+    {
+      "trade_date": "2026-09-17",
+      "close": "366.00",
+      "volume": "114473"
+    },
+    {
+      "trade_date": "2026-09-16",
+      "close": "332.75",
+      "volume": "13755"
+    },
+    {
+      "trade_date": "2026-09-15",
+      "close": "302.50",
+      "volume": "9179"
+    },
+    {
+      "trade_date": "2026-09-11",
+      "close": "275.00",
+      "volume": "4791"
+    },
+    {
+      "trade_date": "2026-09-10",
+      "close": "274.30",
+      "volume": "3787"
+    },
+    {
+      "trade_date": "2026-09-09",
+      "close": "272.45",
+      "volume": "11740"
+    },
+    {
+      "trade_date": "2026-09-08",
+      "close": "278.85",
+      "volume": "7846"
+    },
+    {
+      "trade_date": "2026-09-07",
+      "close": "273.45",
+      "volume": "19881"
+    },
+    {
+      "trade_date": "2026-09-04",
+      "close": "279.75",
+      "volume": "4034"
+    },
+    {
+      "trade_date": "2026-09-03",
+      "close": "274.35",
+      "volume": "4826"
+    },
+    {
+      "trade_date": "2026-09-02",
+      "close": "278.85",
+      "volume": "8922"
+    },
+    {
+      "trade_date": "2026-09-01",
+      "close": "288.30",
+      "volume": "7078"
+    },
+    {
+      "trade_date": "2026-08-31",
+      "close": "285.25",
+      "volume": "4201"
+    },
+    {
+      "trade_date": "2026-08-28",
+      "close": "288.70",
+      "volume": "7568"
+    },
+    {
+      "trade_date": "2026-08-27",
+      "close": "276.55",
+      "volume": "19530"
+    },
+    {
+      "trade_date": "2026-08-26",
+      "close": "293.95",
+      "volume": "3509"
+    },
+    {
+      "trade_date": "2026-08-25",
+      "close": "291.75",
+      "volume": "8190"
+    },
+    {
+      "trade_date": "2026-08-24",
+      "close": "284.95",
+      "volume": "5784"
+    },
+    {
+      "trade_date": "2026-08-21",
+      "close": "283.50",
+      "volume": "7282"
+    },
+    {
+      "trade_date": "2026-08-20",
+      "close": "285.30",
+      "volume": "7356"
+    },
+    {
+      "trade_date": "2026-08-19",
+      "close": "289.70",
+      "volume": "8154"
+    },
+    {
+      "trade_date": "2026-08-18",
+      "close": "297.50",
+      "volume": "10252"
+    },
+    {
+      "trade_date": "2026-08-17",
+      "close": "281.70",
+      "volume": "6852"
+    },
+    {
+      "trade_date": "2026-08-14",
+      "close": "280.95",
+      "volume": "5537"
+    },
+    {
+      "trade_date": "2026-08-13",
+      "close": "287.50",
+      "volume": "10587"
+    },
+    {
+      "trade_date": "2026-08-12",
+      "close": "281.05",
+      "volume": "52268"
+    },
+    {
+      "trade_date": "2026-08-11",
+      "close": "271.45",
+      "volume": "50295"
+    },
+    {
+      "trade_date": "2026-08-10",
+      "close": "301.60",
+      "volume": "9184"
+    },
+    {
+      "trade_date": "2026-08-07",
+      "close": "335.10",
+      "volume": "4205"
+    },
+    {
+      "trade_date": "2026-08-06",
+      "close": "337.35",
+      "volume": "4730"
+    },
+    {
+      "trade_date": "2026-08-05",
+      "close": "331.75",
+      "volume": "4322"
+    },
+    {
+      "trade_date": "2026-08-04",
+      "close": "332.90",
+      "volume": "7753"
+    },
+    {
+      "trade_date": "2026-08-03",
+      "close": "336.30",
+      "volume": "3495"
+    },
+    {
+      "trade_date": "2026-07-31",
+      "close": "336.40",
+      "volume": "5884"
+    },
+    {
+      "trade_date": "2026-07-30",
+      "close": "347.75",
+      "volume": "5282"
+    },
+    {
+      "trade_date": "2026-07-29",
+      "close": "339.55",
+      "volume": "3870"
+    },
+    {
+      "trade_date": "2026-07-28",
+      "close": "332.85",
+      "volume": "5860"
+    },
+    {
+      "trade_date": "2026-07-27",
+      "close": "326.05",
+      "volume": "1867"
+    },
+    {
+      "trade_date": "2026-07-24",
+      "close": "328.30",
+      "volume": "1700"
+    },
+    {
+      "trade_date": "2026-07-23",
+      "close": "331.65",
+      "volume": "4470"
+    },
+    {
+      "trade_date": "2026-07-22",
+      "close": "332.80",
+      "volume": "12424"
+    },
+    {
+      "trade_date": "2026-07-21",
+      "close": "319.25",
+      "volume": "19992"
+    },
+    {
+      "trade_date": "2026-07-20",
+      "close": "336.05",
+      "volume": "3806"
+    },
+    {
+      "trade_date": "2026-07-17",
+      "close": "353.70",
+      "volume": "4214"
+    },
+    {
+      "trade_date": "2026-07-16",
+      "close": "366.70",
+      "volume": "4060"
+    },
+    {
+      "trade_date": "2026-07-15",
+      "close": "375.15",
+      "volume": "6205"
+    },
+    {
+      "trade_date": "2026-07-14",
+      "close": "380.70",
+      "volume": "5319"
+    },
+    {
+      "trade_date": "2026-07-13",
+      "close": "385.50",
+      "volume": "8094"
+    },
+    {
+      "trade_date": "2026-07-10",
+      "close": "402.50",
+      "volume": "4268"
+    },
+    {
+      "trade_date": "2026-07-09",
+      "close": "390.50",
+      "volume": "6680"
+    },
+    {
+      "trade_date": "2026-07-08",
+      "close": "394.95",
+      "volume": "11179"
+    },
+    {
+      "trade_date": "2026-07-07",
+      "close": "405.60",
+      "volume": "17189"
+    },
+    {
+      "trade_date": "2026-07-06",
+      "close": "390.70",
+      "volume": "17599"
+    },
+    {
+      "trade_date": "2026-07-03",
+      "close": "372.10",
+      "volume": "5029"
+    },
+    {
+      "trade_date": "2026-07-02",
+      "close": "372.10",
+      "volume": "7829"
+    },
+    {
+      "trade_date": "2026-07-01",
+      "close": "383.45",
+      "volume": "11530"
+    },
+    {
+      "trade_date": "2026-06-30",
+      "close": "375.30",
+      "volume": "12446"
+    },
+    {
+      "trade_date": "2026-06-29",
+      "close": "381.45",
+      "volume": "23683"
+    },
+    {
+      "trade_date": "2026-06-25",
+      "close": "390.15",
+      "volume": "15495"
+    },
+    {
+      "trade_date": "2026-06-24",
+      "close": "371.60",
+      "volume": "9427"
+    },
+    {
+      "trade_date": "2026-06-23",
+      "close": "353.95",
+      "volume": "30220"
+    },
+    {
+      "trade_date": "2026-06-22",
+      "close": "337.10",
+      "volume": "4398"
+    },
+    {
+      "trade_date": "2026-06-19",
+      "close": "321.05",
+      "volume": "13273"
+    },
+    {
+      "trade_date": "2026-06-18",
+      "close": "305.80",
+      "volume": "4818"
+    },
+    {
+      "trade_date": "2026-06-17",
+      "close": "291.25",
+      "volume": "3087"
+    },
+    {
+      "trade_date": "2026-06-16",
+      "close": "293.70",
+      "volume": "2703"
+    },
+    {
+      "trade_date": "2026-06-15",
+      "close": "296.00",
+      "volume": "10024"
+    },
+    {
+      "trade_date": "2026-06-12",
+      "close": "289.00",
+      "volume": "2572"
+    },
+    {
+      "trade_date": "2026-06-11",
+      "close": "279.55",
+      "volume": "6739"
+    },
+    {
+      "trade_date": "2026-06-10",
+      "close": "293.15",
+      "volume": "7300"
+    },
+    {
+      "trade_date": "2026-06-09",
+      "close": "298.05",
+      "volume": "8146"
+    },
+    {
+      "trade_date": "2026-06-08",
+      "close": "303.60",
+      "volume": "6122"
+    },
+    {
+      "trade_date": "2026-06-05",
+      "close": "300.90",
+      "volume": "4705"
+    },
+    {
+      "trade_date": "2026-06-04",
+      "close": "306.70",
+      "volume": "8842"
+    },
+    {
+      "trade_date": "2026-06-03",
+      "close": "302.70",
+      "volume": "11537"
+    },
+    {
+      "trade_date": "2026-06-02",
+      "close": "310.00",
+      "volume": "9309"
+    },
+    {
+      "trade_date": "2026-06-01",
+      "close": "326.30",
+      "volume": "11890"
+    },
+    {
+      "trade_date": "2026-05-29",
+      "close": "331.15",
+      "volume": "6016"
+    },
+    {
+      "trade_date": "2026-05-27",
+      "close": "324.00",
+      "volume": "4683"
+    },
+    {
+      "trade_date": "2026-05-26",
+      "close": "319.80",
+      "volume": "6812"
+    },
+    {
+      "trade_date": "2026-05-25",
+      "close": "308.85",
+      "volume": "4305"
+    },
+    {
+      "trade_date": "2026-05-22",
+      "close": "309.20",
+      "volume": "4117"
+    },
+    {
+      "trade_date": "2026-05-21",
+      "close": "308.25",
+      "volume": "6849"
+    },
+    {
+      "trade_date": "2026-05-20",
+      "close": "296.90",
+      "volume": "3110"
+    },
+    {
+      "trade_date": "2026-05-19",
+      "close": "299.20",
+      "volume": "1651"
+    },
+    {
+      "trade_date": "2026-05-18",
+      "close": "290.50",
+      "volume": "4671"
+    },
+    {
+      "trade_date": "2026-05-15",
+      "close": "300.75",
+      "volume": "5059"
+    },
+    {
+      "trade_date": "2026-05-14",
+      "close": "307.55",
+      "volume": "6315"
+    },
+    {
+      "trade_date": "2026-05-13",
+      "close": "320.20",
+      "volume": "2681"
+    },
+    {
+      "trade_date": "2026-05-12",
+      "close": "322.00",
+      "volume": "6287"
+    },
+    {
+      "trade_date": "2026-05-11",
+      "close": "335.00",
+      "volume": "4499"
+    },
+    {
+      "trade_date": "2026-05-08",
+      "close": "337.70",
+      "volume": "7614"
+    },
+    {
+      "trade_date": "2026-05-07",
+      "close": "345.55",
+      "volume": "7607"
+    },
+    {
+      "trade_date": "2026-05-06",
+      "close": "354.20",
+      "volume": "8344"
+    },
+    {
+      "trade_date": "2026-05-05",
+      "close": "349.25",
+      "volume": "10584"
+    },
+    {
+      "trade_date": "2026-05-04",
+      "close": "341.75",
+      "volume": "20689"
+    },
+    {
+      "trade_date": "2026-04-30",
+      "close": "325.60",
+      "volume": "3609"
+    },
+    {
+      "trade_date": "2026-04-29",
+      "close": "328.65",
+      "volume": "8435"
+    },
+    {
+      "trade_date": "2026-04-28",
+      "close": "331.05",
+      "volume": "4365"
+    },
+    {
+      "trade_date": "2026-04-27",
+      "close": "337.70",
+      "volume": "11014"
+    },
+    {
+      "trade_date": "2026-04-24",
+      "close": "323.30",
+      "volume": "7882"
+    },
+    {
+      "trade_date": "2026-04-23",
+      "close": "328.25",
+      "volume": "8752"
+    },
+    {
+      "trade_date": "2026-04-22",
+      "close": "336.70",
+      "volume": "8854"
+    },
+    {
+      "trade_date": "2026-04-21",
+      "close": "334.90",
+      "volume": "17249"
+    },
+    {
+      "trade_date": "2026-04-20",
+      "close": "333.20",
+      "volume": "27596"
+    },
+    {
+      "trade_date": "2026-04-17",
+      "close": "346.70",
+      "volume": "22233"
+    },
+    {
+      "trade_date": "2026-04-16",
+      "close": "346.40",
+      "volume": "62019"
+    },
+    {
+      "trade_date": "2026-04-15",
+      "close": "319.90",
+      "volume": "36253"
+    },
+    {
+      "trade_date": "2026-04-13",
+      "close": "291.70",
+      "volume": "18045"
+    },
+    {
+      "trade_date": "2026-04-10",
+      "close": "287.20",
+      "volume": "38082"
+    },
+    {
+      "trade_date": "2026-04-09",
+      "close": "269.00",
+      "volume": "8309"
+    },
+    {
+      "trade_date": "2026-04-08",
+      "close": "268.75",
+      "volume": "31660"
+    },
+    {
+      "trade_date": "2026-04-07",
+      "close": "255.00",
+      "volume": "36963"
+    },
+    {
+      "trade_date": "2026-04-06",
+      "close": "219.85",
+      "volume": "17779"
+    },
+    {
+      "trade_date": "2026-04-02",
+      "close": "204.90",
+      "volume": "5448"
+    },
+    {
+      "trade_date": "2026-04-01",
+      "close": "204.30",
+      "volume": "6557"
+    },
+    {
+      "trade_date": "2026-03-30",
+      "close": "184.45",
+      "volume": "12678"
+    },
+    {
+      "trade_date": "2026-03-27",
+      "close": "200.45",
+      "volume": "39226"
+    },
+    {
+      "trade_date": "2026-03-25",
+      "close": "211.60",
+      "volume": "15618"
+    },
+    {
+      "trade_date": "2026-03-24",
+      "close": "209.85",
+      "volume": "15455"
+    },
+    {
+      "trade_date": "2026-03-23",
+      "close": "209.15",
+      "volume": "26535"
+    },
+    {
+      "trade_date": "2026-03-20",
+      "close": "221.50",
+      "volume": "6236"
+    },
+    {
+      "trade_date": "2026-03-19",
+      "close": "219.05",
+      "volume": "5245"
+    },
+    {
+      "trade_date": "2026-03-18",
+      "close": "224.20",
+      "volume": "6736"
+    },
+    {
+      "trade_date": "2026-03-17",
+      "close": "221.75",
+      "volume": "6061"
+    },
+    {
+      "trade_date": "2026-03-16",
+      "close": "223.60",
+      "volume": "16401"
+    },
+    {
+      "trade_date": "2026-03-13",
+      "close": "227.55",
+      "volume": "3550"
+    },
+    {
+      "trade_date": "2026-03-12",
+      "close": "234.75",
+      "volume": "4773"
+    },
+    {
+      "trade_date": "2026-03-11",
+      "close": "228.50",
+      "volume": "4563"
+    },
+    {
+      "trade_date": "2026-03-10",
+      "close": "230.80",
+      "volume": "10454"
+    },
+    {
+      "trade_date": "2026-03-09",
+      "close": "227.65",
+      "volume": "6991"
+    },
+    {
+      "trade_date": "2026-03-06",
+      "close": "240.90",
+      "volume": "9461"
+    },
+    {
+      "trade_date": "2026-03-05",
+      "close": "246.25",
+      "volume": "35839"
+    },
+    {
+      "trade_date": "2026-03-04",
+      "close": "239.25",
+      "volume": "11648"
+    },
+    {
+      "trade_date": "2026-03-02",
+      "close": "245.15",
+      "volume": "3634"
+    },
+    {
+      "trade_date": "2026-02-27",
+      "close": "247.20",
+      "volume": "7134"
+    },
+    {
+      "trade_date": "2026-02-26",
+      "close": "246.00",
+      "volume": "8047"
+    },
+    {
+      "trade_date": "2026-02-25",
+      "close": "237.95",
+      "volume": "24231"
+    },
+    {
+      "trade_date": "2026-02-24",
+      "close": "228.50",
+      "volume": "5871"
+    },
+    {
+      "trade_date": "2026-02-23",
+      "close": "224.60",
+      "volume": "2933"
+    },
+    {
+      "trade_date": "2026-02-20",
+      "close": "220.35",
+      "volume": "5071"
+    },
+    {
+      "trade_date": "2026-02-19",
+      "close": "220.50",
+      "volume": "7213"
+    },
+    {
+      "trade_date": "2026-02-18",
+      "close": "225.25",
+      "volume": "6103"
+    },
+    {
+      "trade_date": "2026-02-17",
+      "close": "230.45",
+      "volume": "5561"
+    },
+    {
+      "trade_date": "2026-02-16",
+      "close": "231.90",
+      "volume": "5370"
+    },
+    {
+      "trade_date": "2026-02-13",
+      "close": "230.40",
+      "volume": "5025"
+    },
+    {
+      "trade_date": "2026-02-12",
+      "close": "230.75",
+      "volume": "7359"
+    },
+    {
+      "trade_date": "2026-02-11",
+      "close": "250.60",
+      "volume": "8535"
+    },
+    {
+      "trade_date": "2026-02-10",
+      "close": "250.35",
+      "volume": "34908"
+    },
+    {
+      "trade_date": "2026-02-09",
+      "close": "223.20",
+      "volume": "8762"
+    },
+    {
+      "trade_date": "2026-02-06",
+      "close": "209.60",
+      "volume": "10361"
+    },
+    {
+      "trade_date": "2026-02-05",
+      "close": "212.55",
+      "volume": "4373"
+    },
+    {
+      "trade_date": "2026-02-04",
+      "close": "214.00",
+      "volume": "6478"
+    },
+    {
+      "trade_date": "2026-02-03",
+      "close": "217.15",
+      "volume": "3963"
+    },
+    {
+      "trade_date": "2026-02-02",
+      "close": "208.55",
+      "volume": "2792"
+    },
+    {
+      "trade_date": "2026-01-30",
+      "close": "212.95",
+      "volume": "4541"
+    },
+    {
+      "trade_date": "2026-01-29",
+      "close": "205.70",
+      "volume": "5491"
+    },
+    {
+      "trade_date": "2026-01-28",
+      "close": "209.95",
+      "volume": "5582"
+    },
+    {
+      "trade_date": "2026-01-27",
+      "close": "205.80",
+      "volume": "6177"
+    },
+    {
+      "trade_date": "2026-01-23",
+      "close": "205.85",
+      "volume": "6523"
+    },
+    {
+      "trade_date": "2026-01-22",
+      "close": "213.25",
+      "volume": "5678"
+    },
+    {
+      "trade_date": "2026-01-21",
+      "close": "210.65",
+      "volume": "6192"
+    },
+    {
+      "trade_date": "2026-01-20",
+      "close": "216.10",
+      "volume": "5930"
+    },
+    {
+      "trade_date": "2026-01-19",
+      "close": "227.05",
+      "volume": "1468"
+    },
+    {
+      "trade_date": "2026-01-16",
+      "close": "233.40",
+      "volume": "3393"
+    },
+    {
+      "trade_date": "2026-01-14",
+      "close": "231.60",
+      "volume": "1343"
+    },
+    {
+      "trade_date": "2026-01-13",
+      "close": "230.75",
+      "volume": "1931"
+    },
+    {
+      "trade_date": "2026-01-12",
+      "close": "229.00",
+      "volume": "2170"
+    },
+    {
+      "trade_date": "2026-01-09",
+      "close": "235.95",
+      "volume": "4314"
+    },
+    {
+      "trade_date": "2026-01-08",
+      "close": "243.05",
+      "volume": "2192"
+    },
+    {
+      "trade_date": "2026-01-07",
+      "close": "253.15",
+      "volume": "8721"
+    },
+    {
+      "trade_date": "2026-01-06",
+      "close": "239.15",
+      "volume": "2318"
+    },
+    {
+      "trade_date": "2026-01-05",
+      "close": "243.40",
+      "volume": "8210"
+    },
+    {
+      "trade_date": "2026-01-02",
+      "close": "249.30",
+      "volume": "1842"
+    },
+    {
+      "trade_date": "2026-01-01",
+      "close": "251.45",
+      "volume": "2625"
+    },
+    {
+      "trade_date": "2025-12-31",
+      "close": "248.30",
+      "volume": "1989"
+    },
+    {
+      "trade_date": "2025-12-30",
+      "close": "247.55",
+      "volume": "2006"
+    },
+    {
+      "trade_date": "2025-12-29",
+      "close": "250.65",
+      "volume": "4290"
+    },
+    {
+      "trade_date": "2025-12-26",
+      "close": "264.45",
+      "volume": "3280"
+    },
+    {
+      "trade_date": "2025-12-24",
+      "close": "269.00",
+      "volume": "5789"
+    },
+    {
+      "trade_date": "2025-12-23",
+      "close": "264.10",
+      "volume": "9423"
+    },
+    {
+      "trade_date": "2025-12-22",
+      "close": "258.10",
+      "volume": "6465"
+    },
+    {
+      "trade_date": "2025-12-19",
+      "close": "246.60",
+      "volume": "8049"
+    },
+    {
+      "trade_date": "2025-12-18",
+      "close": "243.30",
+      "volume": "4464"
+    },
+    {
+      "trade_date": "2025-12-17",
+      "close": "253.60",
+      "volume": "1378"
+    },
+    {
+      "trade_date": "2025-12-16",
+      "close": "255.20",
+      "volume": "7841"
+    },
+    {
+      "trade_date": "2025-12-15",
+      "close": "251.95",
+      "volume": "18236"
+    },
+    {
+      "trade_date": "2025-12-12",
+      "close": "239.80",
+      "volume": "3479"
+    },
+    {
+      "trade_date": "2025-12-11",
+      "close": "229.10",
+      "volume": "2208"
+    },
+    {
+      "trade_date": "2025-12-10",
+      "close": "231.65",
+      "volume": "2866"
+    },
+    {
+      "trade_date": "2025-12-09",
+      "close": "234.00",
+      "volume": "9472"
+    },
+    {
+      "trade_date": "2025-12-08",
+      "close": "232.45",
+      "volume": "19884"
+    },
+    {
+      "trade_date": "2025-12-05",
+      "close": "247.95",
+      "volume": "1347"
+    },
+    {
+      "trade_date": "2025-12-04",
+      "close": "245.35",
+      "volume": "3204"
+    },
+    {
+      "trade_date": "2025-12-03",
+      "close": "249.30",
+      "volume": "2322"
+    },
+    {
+      "trade_date": "2025-12-02",
+      "close": "248.15",
+      "volume": "9996"
+    },
+    {
+      "trade_date": "2025-12-01",
+      "close": "251.30",
+      "volume": "11928"
+    },
+    {
+      "trade_date": "2025-11-28",
+      "close": "249.25",
+      "volume": "42960"
+    },
+    {
+      "trade_date": "2025-11-27",
+      "close": "222.65",
+      "volume": "3678"
+    },
+    {
+      "trade_date": "2025-11-26",
+      "close": "223.45",
+      "volume": "3881"
+    },
+    {
+      "trade_date": "2025-11-25",
+      "close": "218.80",
+      "volume": "24019"
+    },
+    {
+      "trade_date": "2025-11-24",
+      "close": "212.85",
+      "volume": "9725"
+    },
+    {
+      "trade_date": "2025-11-21",
+      "close": "228.05",
+      "volume": "4638"
+    },
+    {
+      "trade_date": "2025-11-20",
+      "close": "226.60",
+      "volume": "15595"
+    },
+    {
+      "trade_date": "2025-11-19",
+      "close": "229.65",
+      "volume": "7466"
+    },
+    {
+      "trade_date": "2025-11-18",
+      "close": "231.40",
+      "volume": "4507"
+    },
+    {
+      "trade_date": "2025-11-17",
+      "close": "238.05",
+      "volume": "8664"
+    },
+    {
+      "trade_date": "2025-11-14",
+      "close": "240.90",
+      "volume": "5143"
+    },
+    {
+      "trade_date": "2025-11-13",
+      "close": "243.45",
+      "volume": "7007"
+    },
+    {
+      "trade_date": "2025-11-12",
+      "close": "245.20",
+      "volume": "23240"
+    },
+    {
+      "trade_date": "2025-11-11",
+      "close": "244.45",
+      "volume": "30112"
+    },
+    {
+      "trade_date": "2025-11-10",
+      "close": "260.95",
+      "volume": "77766"
+    },
+    {
+      "trade_date": "2025-11-07",
+      "close": "305.25",
+      "volume": "6130"
+    },
+    {
+      "trade_date": "2025-11-06",
+      "close": "310.00",
+      "volume": "14337"
+    },
+    {
+      "trade_date": "2025-11-04",
+      "close": "308.75",
+      "volume": "10107"
+    },
+    {
+      "trade_date": "2025-11-03",
+      "close": "313.25",
+      "volume": "7642"
+    },
+    {
+      "trade_date": "2025-10-31",
+      "close": "308.05",
+      "volume": "4781"
+    },
+    {
+      "trade_date": "2025-10-30",
+      "close": "308.55",
+      "volume": "7739"
+    },
+    {
+      "trade_date": "2025-10-29",
+      "close": "310.40",
+      "volume": "5708"
+    },
+    {
+      "trade_date": "2025-10-28",
+      "close": "306.25",
+      "volume": "10940"
+    },
+    {
+      "trade_date": "2025-10-27",
+      "close": "314.20",
+      "volume": "10803"
+    },
+    {
+      "trade_date": "2025-10-24",
+      "close": "309.75",
+      "volume": "12988"
+    },
+    {
+      "trade_date": "2025-10-23",
+      "close": "320.40",
+      "volume": "19103"
+    },
+    {
+      "trade_date": "2025-10-21",
+      "close": "331.50",
+      "volume": "6304"
+    },
+    {
+      "trade_date": "2025-10-20",
+      "close": "324.50",
+      "volume": "3614"
+    },
+    {
+      "trade_date": "2025-10-17",
+      "close": "327.25",
+      "volume": "2089"
+    },
+    {
+      "trade_date": "2025-10-16",
+      "close": "325.90",
+      "volume": "2667"
+    },
+    {
+      "trade_date": "2025-10-15",
+      "close": "323.60",
+      "volume": "4794"
+    },
+    {
+      "trade_date": "2025-10-14",
+      "close": "322.70",
+      "volume": "4313"
+    },
+    {
+      "trade_date": "2025-10-13",
+      "close": "330.00",
+      "volume": "1980"
+    },
+    {
+      "trade_date": "2025-10-10",
+      "close": "329.35",
+      "volume": "2139"
+    },
+    {
+      "trade_date": "2025-10-09",
+      "close": "330.15",
+      "volume": "7194"
+    },
+    {
+      "trade_date": "2025-10-08",
+      "close": "334.25",
+      "volume": "4998"
+    },
+    {
+      "trade_date": "2025-10-07",
+      "close": "339.40",
+      "volume": "2645"
+    },
+    {
+      "trade_date": "2025-10-06",
+      "close": "342.10",
+      "volume": "15905"
+    },
+    {
+      "trade_date": "2025-10-03",
+      "close": "337.75",
+      "volume": "9572"
+    },
+    {
+      "trade_date": "2025-10-01",
+      "close": "329.05",
+      "volume": "4713"
+    },
+    {
+      "trade_date": "2025-09-30",
+      "close": "324.00",
+      "volume": "5904"
+    },
+    {
+      "trade_date": "2025-09-29",
+      "close": "328.75",
+      "volume": "9220"
+    },
+    {
+      "trade_date": "2025-09-26",
+      "close": "332.55",
+      "volume": "4615"
+    },
+    {
+      "trade_date": "2025-09-25",
+      "close": "340.30",
+      "volume": "9679"
+    },
+    {
+      "trade_date": "2025-09-24",
+      "close": "346.50",
+      "volume": "8499"
+    },
+    {
+      "trade_date": "2025-09-23",
+      "close": "350.05",
+      "volume": "16045"
+    },
+    {
+      "trade_date": "2025-09-22",
+      "close": "346.00",
+      "volume": "62639"
+    },
+    {
+      "trade_date": "2025-09-19",
+      "close": "335.00",
+      "volume": "24890"
+    },
+    {
+      "trade_date": "2025-09-18",
+      "close": "317.15",
+      "volume": "13810"
+    },
+    {
+      "trade_date": "2025-09-17",
+      "close": "315.55",
+      "volume": "28547"
+    },
+    {
+      "trade_date": "2025-09-16",
+      "close": "322.75",
+      "volume": "37659"
+    },
+    {
+      "trade_date": "2025-09-15",
+      "close": "333.95",
+      "volume": "5472"
+    },
+    {
+      "trade_date": "2025-09-12",
+      "close": "339.50",
+      "volume": "9443"
+    },
+    {
+      "trade_date": "2025-09-11",
+      "close": "340.75",
+      "volume": "6048"
+    },
+    {
+      "trade_date": "2025-09-10",
+      "close": "347.20",
+      "volume": "3471"
+    },
+    {
+      "trade_date": "2025-09-09",
+      "close": "349.35",
+      "volume": "4833"
+    },
+    {
+      "trade_date": "2025-09-08",
+      "close": "360.45",
+      "volume": "7048"
+    },
+    {
+      "trade_date": "2025-09-05",
+      "close": "351.65",
+      "volume": "2512"
+    },
+    {
+      "trade_date": "2025-09-04",
+      "close": "354.30",
+      "volume": "1824"
+    },
+    {
+      "trade_date": "2025-09-03",
+      "close": "357.05",
+      "volume": "3388"
+    },
+    {
+      "trade_date": "2025-09-02",
+      "close": "358.70",
+      "volume": "3388"
+    },
+    {
+      "trade_date": "2025-09-01",
+      "close": "362.70",
+      "volume": "3046"
+    },
+    {
+      "trade_date": "2025-08-29",
+      "close": "361.95",
+      "volume": "4559"
+    },
+    {
+      "trade_date": "2025-08-28",
+      "close": "366.25",
+      "volume": "8413"
+    },
+    {
+      "trade_date": "2025-08-26",
+      "close": "361.90",
+      "volume": "4829"
+    },
+    {
+      "trade_date": "2025-08-25",
+      "close": "370.50",
+      "volume": "9709"
+    },
+    {
+      "trade_date": "2025-08-22",
+      "close": "366.95",
+      "volume": "12881"
+    },
+    {
+      "trade_date": "2025-08-21",
+      "close": "361.40",
+      "volume": "32499"
+    },
+    {
+      "trade_date": "2025-08-20",
+      "close": "359.75",
+      "volume": "5364"
+    },
+    {
+      "trade_date": "2025-08-19",
+      "close": "361.60",
+      "volume": "18418"
+    },
+    {
+      "trade_date": "2025-08-18",
+      "close": "336.55",
+      "volume": "10219"
+    },
+    {
+      "trade_date": "2025-08-14",
+      "close": "314.60",
+      "volume": "19056"
+    },
+    {
+      "trade_date": "2025-08-13",
+      "close": "313.70",
+      "volume": "26072"
+    },
+    {
+      "trade_date": "2025-08-12",
+      "close": "322.25",
+      "volume": "27613"
+    },
+    {
+      "trade_date": "2025-08-11",
+      "close": "340.40",
+      "volume": "6648"
+    },
+    {
+      "trade_date": "2025-08-08",
+      "close": "329.20",
+      "volume": "25872"
+    },
+    {
+      "trade_date": "2025-08-07",
+      "close": "331.45",
+      "volume": "26638"
+    }
+  ],
+  "adjusted_prices": [
+    {
+      "trade_date": "2026-10-27",
+      "close": "346.70"
+    },
+    {
+      "trade_date": "2026-10-26",
+      "close": "337.10"
+    },
+    {
+      "trade_date": "2026-10-23",
+      "close": "340.65"
+    },
+    {
+      "trade_date": "2026-10-22",
+      "close": "352.15"
+    },
+    {
+      "trade_date": "2026-10-21",
+      "close": "357.15"
+    },
+    {
+      "trade_date": "2026-10-19",
+      "close": "374.30"
+    },
+    {
+      "trade_date": "2026-10-16",
+      "close": "360.80"
+    },
+    {
+      "trade_date": "2026-10-15",
+      "close": "361.45"
+    },
+    {
+      "trade_date": "2026-10-14",
+      "close": "373.80"
+    },
+    {
+      "trade_date": "2026-10-13",
+      "close": "360.30"
+    },
+    {
+      "trade_date": "2026-10-12",
+      "close": "358.45"
+    },
+    {
+      "trade_date": "2026-10-09",
+      "close": "373.75"
+    },
+    {
+      "trade_date": "2026-10-08",
+      "close": "363.70"
+    },
+    {
+      "trade_date": "2026-10-07",
+      "close": "374.15"
+    },
+    {
+      "trade_date": "2026-10-06",
+      "close": "375.20"
+    },
+    {
+      "trade_date": "2026-10-05",
+      "close": "373.35"
+    },
+    {
+      "trade_date": "2026-10-01",
+      "close": "367.60"
+    },
+    {
+      "trade_date": "2026-09-30",
+      "close": "379.60"
+    },
+    {
+      "trade_date": "2026-09-29",
+      "close": "388.25"
+    },
+    {
+      "trade_date": "2026-09-28",
+      "close": "403.70"
+    },
+    {
+      "trade_date": "2026-09-25",
+      "close": "407.20"
+    },
+    {
+      "trade_date": "2026-09-24",
+      "close": "413.60"
+    },
+    {
+      "trade_date": "2026-09-23",
+      "close": "416.35"
+    },
+    {
+      "trade_date": "2026-09-22",
+      "close": "396.55"
+    },
+    {
+      "trade_date": "2026-09-21",
+      "close": "377.70"
+    },
+    {
+      "trade_date": "2026-09-18",
+      "close": "384.30"
+    },
+    {
+      "trade_date": "2026-09-17",
+      "close": "366.00"
+    },
+    {
+      "trade_date": "2026-09-16",
+      "close": "332.75"
+    },
+    {
+      "trade_date": "2026-09-15",
+      "close": "302.50"
+    },
+    {
+      "trade_date": "2026-09-11",
+      "close": "275.00"
+    },
+    {
+      "trade_date": "2026-09-10",
+      "close": "274.30"
+    },
+    {
+      "trade_date": "2026-09-09",
+      "close": "272.45"
+    },
+    {
+      "trade_date": "2026-09-08",
+      "close": "278.85"
+    },
+    {
+      "trade_date": "2026-09-07",
+      "close": "273.45"
+    },
+    {
+      "trade_date": "2026-09-04",
+      "close": "279.75"
+    },
+    {
+      "trade_date": "2026-09-03",
+      "close": "274.35"
+    },
+    {
+      "trade_date": "2026-09-02",
+      "close": "278.85"
+    },
+    {
+      "trade_date": "2026-09-01",
+      "close": "288.30"
+    },
+    {
+      "trade_date": "2026-08-31",
+      "close": "285.25"
+    },
+    {
+      "trade_date": "2026-08-28",
+      "close": "288.70"
+    },
+    {
+      "trade_date": "2026-08-27",
+      "close": "276.55"
+    },
+    {
+      "trade_date": "2026-08-26",
+      "close": "293.95"
+    },
+    {
+      "trade_date": "2026-08-25",
+      "close": "291.75"
+    },
+    {
+      "trade_date": "2026-08-24",
+      "close": "284.95"
+    },
+    {
+      "trade_date": "2026-08-21",
+      "close": "283.50"
+    },
+    {
+      "trade_date": "2026-08-20",
+      "close": "285.30"
+    },
+    {
+      "trade_date": "2026-08-19",
+      "close": "289.70"
+    },
+    {
+      "trade_date": "2026-08-18",
+      "close": "297.50"
+    },
+    {
+      "trade_date": "2026-08-17",
+      "close": "281.70"
+    },
+    {
+      "trade_date": "2026-08-14",
+      "close": "280.95"
+    },
+    {
+      "trade_date": "2026-08-13",
+      "close": "287.50"
+    },
+    {
+      "trade_date": "2026-08-12",
+      "close": "281.05"
+    },
+    {
+      "trade_date": "2026-08-11",
+      "close": "271.45"
+    },
+    {
+      "trade_date": "2026-08-10",
+      "close": "301.60"
+    },
+    {
+      "trade_date": "2026-08-07",
+      "close": "335.10"
+    },
+    {
+      "trade_date": "2026-08-06",
+      "close": "337.35"
+    },
+    {
+      "trade_date": "2026-08-05",
+      "close": "331.75"
+    },
+    {
+      "trade_date": "2026-08-04",
+      "close": "332.90"
+    },
+    {
+      "trade_date": "2026-08-03",
+      "close": "336.30"
+    },
+    {
+      "trade_date": "2026-07-31",
+      "close": "336.40"
+    },
+    {
+      "trade_date": "2026-07-30",
+      "close": "347.75"
+    },
+    {
+      "trade_date": "2026-07-29",
+      "close": "339.55"
+    },
+    {
+      "trade_date": "2026-07-28",
+      "close": "332.85"
+    },
+    {
+      "trade_date": "2026-07-27",
+      "close": "326.05"
+    },
+    {
+      "trade_date": "2026-07-24",
+      "close": "328.30"
+    },
+    {
+      "trade_date": "2026-07-23",
+      "close": "331.65"
+    },
+    {
+      "trade_date": "2026-07-22",
+      "close": "332.80"
+    },
+    {
+      "trade_date": "2026-07-21",
+      "close": "319.25"
+    },
+    {
+      "trade_date": "2026-07-20",
+      "close": "336.05"
+    },
+    {
+      "trade_date": "2026-07-17",
+      "close": "353.70"
+    },
+    {
+      "trade_date": "2026-07-16",
+      "close": "366.70"
+    },
+    {
+      "trade_date": "2026-07-15",
+      "close": "375.15"
+    },
+    {
+      "trade_date": "2026-07-14",
+      "close": "380.70"
+    },
+    {
+      "trade_date": "2026-07-13",
+      "close": "385.50"
+    },
+    {
+      "trade_date": "2026-07-10",
+      "close": "402.50"
+    },
+    {
+      "trade_date": "2026-07-09",
+      "close": "390.50"
+    },
+    {
+      "trade_date": "2026-07-08",
+      "close": "394.95"
+    },
+    {
+      "trade_date": "2026-07-07",
+      "close": "405.60"
+    },
+    {
+      "trade_date": "2026-07-06",
+      "close": "390.70"
+    },
+    {
+      "trade_date": "2026-07-03",
+      "close": "372.10"
+    },
+    {
+      "trade_date": "2026-07-02",
+      "close": "372.10"
+    },
+    {
+      "trade_date": "2026-07-01",
+      "close": "383.45"
+    },
+    {
+      "trade_date": "2026-06-30",
+      "close": "375.30"
+    },
+    {
+      "trade_date": "2026-06-29",
+      "close": "381.45"
+    },
+    {
+      "trade_date": "2026-06-25",
+      "close": "390.15"
+    },
+    {
+      "trade_date": "2026-06-24",
+      "close": "371.60"
+    },
+    {
+      "trade_date": "2026-06-23",
+      "close": "353.95"
+    },
+    {
+      "trade_date": "2026-06-22",
+      "close": "337.10"
+    },
+    {
+      "trade_date": "2026-06-19",
+      "close": "321.05"
+    },
+    {
+      "trade_date": "2026-06-18",
+      "close": "305.80"
+    },
+    {
+      "trade_date": "2026-06-17",
+      "close": "291.25"
+    },
+    {
+      "trade_date": "2026-06-16",
+      "close": "293.70"
+    },
+    {
+      "trade_date": "2026-06-15",
+      "close": "296.00"
+    },
+    {
+      "trade_date": "2026-06-12",
+      "close": "289.00"
+    },
+    {
+      "trade_date": "2026-06-11",
+      "close": "279.55"
+    },
+    {
+      "trade_date": "2026-06-10",
+      "close": "293.15"
+    },
+    {
+      "trade_date": "2026-06-09",
+      "close": "298.05"
+    },
+    {
+      "trade_date": "2026-06-08",
+      "close": "303.60"
+    },
+    {
+      "trade_date": "2026-06-05",
+      "close": "300.90"
+    },
+    {
+      "trade_date": "2026-06-04",
+      "close": "306.70"
+    },
+    {
+      "trade_date": "2026-06-03",
+      "close": "302.70"
+    },
+    {
+      "trade_date": "2026-06-02",
+      "close": "310.00"
+    },
+    {
+      "trade_date": "2026-06-01",
+      "close": "326.30"
+    },
+    {
+      "trade_date": "2026-05-29",
+      "close": "331.15"
+    },
+    {
+      "trade_date": "2026-05-27",
+      "close": "324.00"
+    },
+    {
+      "trade_date": "2026-05-26",
+      "close": "319.80"
+    },
+    {
+      "trade_date": "2026-05-25",
+      "close": "308.85"
+    },
+    {
+      "trade_date": "2026-05-22",
+      "close": "309.20"
+    },
+    {
+      "trade_date": "2026-05-21",
+      "close": "308.25"
+    },
+    {
+      "trade_date": "2026-05-20",
+      "close": "296.90"
+    },
+    {
+      "trade_date": "2026-05-19",
+      "close": "299.20"
+    },
+    {
+      "trade_date": "2026-05-18",
+      "close": "290.50"
+    },
+    {
+      "trade_date": "2026-05-15",
+      "close": "300.75"
+    },
+    {
+      "trade_date": "2026-05-14",
+      "close": "307.55"
+    },
+    {
+      "trade_date": "2026-05-13",
+      "close": "320.20"
+    },
+    {
+      "trade_date": "2026-05-12",
+      "close": "322.00"
+    },
+    {
+      "trade_date": "2026-05-11",
+      "close": "335.00"
+    },
+    {
+      "trade_date": "2026-05-08",
+      "close": "337.70"
+    },
+    {
+      "trade_date": "2026-05-07",
+      "close": "345.55"
+    },
+    {
+      "trade_date": "2026-05-06",
+      "close": "354.20"
+    },
+    {
+      "trade_date": "2026-05-05",
+      "close": "349.25"
+    },
+    {
+      "trade_date": "2026-05-04",
+      "close": "341.75"
+    },
+    {
+      "trade_date": "2026-04-30",
+      "close": "325.60"
+    },
+    {
+      "trade_date": "2026-04-29",
+      "close": "328.65"
+    },
+    {
+      "trade_date": "2026-04-28",
+      "close": "331.05"
+    },
+    {
+      "trade_date": "2026-04-27",
+      "close": "337.70"
+    },
+    {
+      "trade_date": "2026-04-24",
+      "close": "323.30"
+    },
+    {
+      "trade_date": "2026-04-23",
+      "close": "328.25"
+    },
+    {
+      "trade_date": "2026-04-22",
+      "close": "336.70"
+    },
+    {
+      "trade_date": "2026-04-21",
+      "close": "334.90"
+    },
+    {
+      "trade_date": "2026-04-20",
+      "close": "333.20"
+    },
+    {
+      "trade_date": "2026-04-17",
+      "close": "346.70"
+    },
+    {
+      "trade_date": "2026-04-16",
+      "close": "346.40"
+    },
+    {
+      "trade_date": "2026-04-15",
+      "close": "319.90"
+    },
+    {
+      "trade_date": "2026-04-13",
+      "close": "291.70"
+    },
+    {
+      "trade_date": "2026-04-10",
+      "close": "287.20"
+    },
+    {
+      "trade_date": "2026-04-09",
+      "close": "269.00"
+    },
+    {
+      "trade_date": "2026-04-08",
+      "close": "268.75"
+    },
+    {
+      "trade_date": "2026-04-07",
+      "close": "255.00"
+    },
+    {
+      "trade_date": "2026-04-06",
+      "close": "219.85"
+    },
+    {
+      "trade_date": "2026-04-02",
+      "close": "204.90"
+    },
+    {
+      "trade_date": "2026-04-01",
+      "close": "204.30"
+    },
+    {
+      "trade_date": "2026-03-30",
+      "close": "184.45"
+    },
+    {
+      "trade_date": "2026-03-27",
+      "close": "200.45"
+    },
+    {
+      "trade_date": "2026-03-25",
+      "close": "211.60"
+    },
+    {
+      "trade_date": "2026-03-24",
+      "close": "209.85"
+    },
+    {
+      "trade_date": "2026-03-23",
+      "close": "209.15"
+    },
+    {
+      "trade_date": "2026-03-20",
+      "close": "221.50"
+    },
+    {
+      "trade_date": "2026-03-19",
+      "close": "219.05"
+    },
+    {
+      "trade_date": "2026-03-18",
+      "close": "224.20"
+    },
+    {
+      "trade_date": "2026-03-17",
+      "close": "221.75"
+    },
+    {
+      "trade_date": "2026-03-16",
+      "close": "223.60"
+    },
+    {
+      "trade_date": "2026-03-13",
+      "close": "227.55"
+    },
+    {
+      "trade_date": "2026-03-12",
+      "close": "234.75"
+    },
+    {
+      "trade_date": "2026-03-11",
+      "close": "228.50"
+    },
+    {
+      "trade_date": "2026-03-10",
+      "close": "230.80"
+    },
+    {
+      "trade_date": "2026-03-09",
+      "close": "227.65"
+    },
+    {
+      "trade_date": "2026-03-06",
+      "close": "240.90"
+    },
+    {
+      "trade_date": "2026-03-05",
+      "close": "246.25"
+    },
+    {
+      "trade_date": "2026-03-04",
+      "close": "239.25"
+    },
+    {
+      "trade_date": "2026-03-02",
+      "close": "245.15"
+    },
+    {
+      "trade_date": "2026-02-27",
+      "close": "247.20"
+    },
+    {
+      "trade_date": "2026-02-26",
+      "close": "246.00"
+    },
+    {
+      "trade_date": "2026-02-25",
+      "close": "237.95"
+    },
+    {
+      "trade_date": "2026-02-24",
+      "close": "228.50"
+    },
+    {
+      "trade_date": "2026-02-23",
+      "close": "224.60"
+    },
+    {
+      "trade_date": "2026-02-20",
+      "close": "220.35"
+    },
+    {
+      "trade_date": "2026-02-19",
+      "close": "220.50"
+    },
+    {
+      "trade_date": "2026-02-18",
+      "close": "225.25"
+    },
+    {
+      "trade_date": "2026-02-17",
+      "close": "230.45"
+    },
+    {
+      "trade_date": "2026-02-16",
+      "close": "231.90"
+    },
+    {
+      "trade_date": "2026-02-13",
+      "close": "230.40"
+    },
+    {
+      "trade_date": "2026-02-12",
+      "close": "230.75"
+    },
+    {
+      "trade_date": "2026-02-11",
+      "close": "250.60"
+    },
+    {
+      "trade_date": "2026-02-10",
+      "close": "250.35"
+    },
+    {
+      "trade_date": "2026-02-09",
+      "close": "223.20"
+    },
+    {
+      "trade_date": "2026-02-06",
+      "close": "209.60"
+    },
+    {
+      "trade_date": "2026-02-05",
+      "close": "212.55"
+    },
+    {
+      "trade_date": "2026-02-04",
+      "close": "214.00"
+    },
+    {
+      "trade_date": "2026-02-03",
+      "close": "217.15"
+    },
+    {
+      "trade_date": "2026-02-02",
+      "close": "208.55"
+    },
+    {
+      "trade_date": "2026-01-30",
+      "close": "212.95"
+    },
+    {
+      "trade_date": "2026-01-29",
+      "close": "205.70"
+    },
+    {
+      "trade_date": "2026-01-28",
+      "close": "209.95"
+    },
+    {
+      "trade_date": "2026-01-27",
+      "close": "205.80"
+    },
+    {
+      "trade_date": "2026-01-23",
+      "close": "205.85"
+    },
+    {
+      "trade_date": "2026-01-22",
+      "close": "213.25"
+    },
+    {
+      "trade_date": "2026-01-21",
+      "close": "210.65"
+    },
+    {
+      "trade_date": "2026-01-20",
+      "close": "216.10"
+    },
+    {
+      "trade_date": "2026-01-19",
+      "close": "227.05"
+    },
+    {
+      "trade_date": "2026-01-16",
+      "close": "233.40"
+    },
+    {
+      "trade_date": "2026-01-14",
+      "close": "231.60"
+    },
+    {
+      "trade_date": "2026-01-13",
+      "close": "230.75"
+    },
+    {
+      "trade_date": "2026-01-12",
+      "close": "229.00"
+    },
+    {
+      "trade_date": "2026-01-09",
+      "close": "235.95"
+    },
+    {
+      "trade_date": "2026-01-08",
+      "close": "243.05"
+    },
+    {
+      "trade_date": "2026-01-07",
+      "close": "253.15"
+    },
+    {
+      "trade_date": "2026-01-06",
+      "close": "239.15"
+    },
+    {
+      "trade_date": "2026-01-05",
+      "close": "243.40"
+    },
+    {
+      "trade_date": "2026-01-02",
+      "close": "249.30"
+    },
+    {
+      "trade_date": "2026-01-01",
+      "close": "251.45"
+    },
+    {
+      "trade_date": "2025-12-31",
+      "close": "248.30"
+    },
+    {
+      "trade_date": "2025-12-30",
+      "close": "247.55"
+    },
+    {
+      "trade_date": "2025-12-29",
+      "close": "250.65"
+    },
+    {
+      "trade_date": "2025-12-26",
+      "close": "264.45"
+    },
+    {
+      "trade_date": "2025-12-24",
+      "close": "269.00"
+    },
+    {
+      "trade_date": "2025-12-23",
+      "close": "264.10"
+    },
+    {
+      "trade_date": "2025-12-22",
+      "close": "258.10"
+    },
+    {
+      "trade_date": "2025-12-19",
+      "close": "246.60"
+    },
+    {
+      "trade_date": "2025-12-18",
+      "close": "243.30"
+    },
+    {
+      "trade_date": "2025-12-17",
+      "close": "253.60"
+    },
+    {
+      "trade_date": "2025-12-16",
+      "close": "255.20"
+    },
+    {
+      "trade_date": "2025-12-15",
+      "close": "251.95"
+    },
+    {
+      "trade_date": "2025-12-12",
+      "close": "239.80"
+    },
+    {
+      "trade_date": "2025-12-11",
+      "close": "229.10"
+    },
+    {
+      "trade_date": "2025-12-10",
+      "close": "231.65"
+    },
+    {
+      "trade_date": "2025-12-09",
+      "close": "234.00"
+    },
+    {
+      "trade_date": "2025-12-08",
+      "close": "232.45"
+    },
+    {
+      "trade_date": "2025-12-05",
+      "close": "247.95"
+    },
+    {
+      "trade_date": "2025-12-04",
+      "close": "245.35"
+    },
+    {
+      "trade_date": "2025-12-03",
+      "close": "249.30"
+    },
+    {
+      "trade_date": "2025-12-02",
+      "close": "248.15"
+    },
+    {
+      "trade_date": "2025-12-01",
+      "close": "251.30"
+    },
+    {
+      "trade_date": "2025-11-28",
+      "close": "249.25"
+    },
+    {
+      "trade_date": "2025-11-27",
+      "close": "222.65"
+    },
+    {
+      "trade_date": "2025-11-26",
+      "close": "223.45"
+    },
+    {
+      "trade_date": "2025-11-25",
+      "close": "218.80"
+    },
+    {
+      "trade_date": "2025-11-24",
+      "close": "212.85"
+    },
+    {
+      "trade_date": "2025-11-21",
+      "close": "228.05"
+    },
+    {
+      "trade_date": "2025-11-20",
+      "close": "226.60"
+    },
+    {
+      "trade_date": "2025-11-19",
+      "close": "229.65"
+    },
+    {
+      "trade_date": "2025-11-18",
+      "close": "231.40"
+    },
+    {
+      "trade_date": "2025-11-17",
+      "close": "238.05"
+    },
+    {
+      "trade_date": "2025-11-14",
+      "close": "240.90"
+    },
+    {
+      "trade_date": "2025-11-13",
+      "close": "243.45"
+    },
+    {
+      "trade_date": "2025-11-12",
+      "close": "245.20"
+    },
+    {
+      "trade_date": "2025-11-11",
+      "close": "244.45"
+    },
+    {
+      "trade_date": "2025-11-10",
+      "close": "260.95"
+    },
+    {
+      "trade_date": "2025-11-07",
+      "close": "305.25"
+    },
+    {
+      "trade_date": "2025-11-06",
+      "close": "310.00"
+    },
+    {
+      "trade_date": "2025-11-04",
+      "close": "308.75"
+    },
+    {
+      "trade_date": "2025-11-03",
+      "close": "313.25"
+    },
+    {
+      "trade_date": "2025-10-31",
+      "close": "308.05"
+    },
+    {
+      "trade_date": "2025-10-30",
+      "close": "308.55"
+    },
+    {
+      "trade_date": "2025-10-29",
+      "close": "310.40"
+    },
+    {
+      "trade_date": "2025-10-28",
+      "close": "306.25"
+    },
+    {
+      "trade_date": "2025-10-27",
+      "close": "314.20"
+    },
+    {
+      "trade_date": "2025-10-24",
+      "close": "309.75"
+    },
+    {
+      "trade_date": "2025-10-23",
+      "close": "320.40"
+    },
+    {
+      "trade_date": "2025-10-21",
+      "close": "331.50"
+    },
+    {
+      "trade_date": "2025-10-20",
+      "close": "324.50"
+    },
+    {
+      "trade_date": "2025-10-17",
+      "close": "327.25"
+    },
+    {
+      "trade_date": "2025-10-16",
+      "close": "325.90"
+    },
+    {
+      "trade_date": "2025-10-15",
+      "close": "323.60"
+    },
+    {
+      "trade_date": "2025-10-14",
+      "close": "322.70"
+    },
+    {
+      "trade_date": "2025-10-13",
+      "close": "330.00"
+    },
+    {
+      "trade_date": "2025-10-10",
+      "close": "329.35"
+    },
+    {
+      "trade_date": "2025-10-09",
+      "close": "330.15"
+    },
+    {
+      "trade_date": "2025-10-08",
+      "close": "334.25"
+    },
+    {
+      "trade_date": "2025-10-07",
+      "close": "339.40"
+    },
+    {
+      "trade_date": "2025-10-06",
+      "close": "342.10"
+    },
+    {
+      "trade_date": "2025-10-03",
+      "close": "337.75"
+    },
+    {
+      "trade_date": "2025-10-01",
+      "close": "329.05"
+    },
+    {
+      "trade_date": "2025-09-30",
+      "close": "324.00"
+    },
+    {
+      "trade_date": "2025-09-29",
+      "close": "328.75"
+    },
+    {
+      "trade_date": "2025-09-26",
+      "close": "332.55"
+    },
+    {
+      "trade_date": "2025-09-25",
+      "close": "340.30"
+    },
+    {
+      "trade_date": "2025-09-24",
+      "close": "346.50"
+    },
+    {
+      "trade_date": "2025-09-23",
+      "close": "350.05"
+    },
+    {
+      "trade_date": "2025-09-22",
+      "close": "346.00"
+    },
+    {
+      "trade_date": "2025-09-19",
+      "close": "335.00"
+    },
+    {
+      "trade_date": "2025-09-18",
+      "close": "317.15"
+    },
+    {
+      "trade_date": "2025-09-17",
+      "close": "315.55"
+    },
+    {
+      "trade_date": "2025-09-16",
+      "close": "322.75"
+    },
+    {
+      "trade_date": "2025-09-15",
+      "close": "333.95"
+    },
+    {
+      "trade_date": "2025-09-12",
+      "close": "339.50"
+    },
+    {
+      "trade_date": "2025-09-11",
+      "close": "340.75"
+    },
+    {
+      "trade_date": "2025-09-10",
+      "close": "347.20"
+    },
+    {
+      "trade_date": "2025-09-09",
+      "close": "349.35"
+    },
+    {
+      "trade_date": "2025-09-08",
+      "close": "360.45"
+    },
+    {
+      "trade_date": "2025-09-05",
+      "close": "351.65"
+    },
+    {
+      "trade_date": "2025-09-04",
+      "close": "354.30"
+    },
+    {
+      "trade_date": "2025-09-03",
+      "close": "357.05"
+    },
+    {
+      "trade_date": "2025-09-02",
+      "close": "358.70"
+    },
+    {
+      "trade_date": "2025-09-01",
+      "close": "362.70"
+    },
+    {
+      "trade_date": "2025-08-29",
+      "close": "361.95"
+    },
+    {
+      "trade_date": "2025-08-28",
+      "close": "366.25"
+    },
+    {
+      "trade_date": "2025-08-26",
+      "close": "361.90"
+    },
+    {
+      "trade_date": "2025-08-25",
+      "close": "370.50"
+    },
+    {
+      "trade_date": "2025-08-22",
+      "close": "366.95"
+    },
+    {
+      "trade_date": "2025-08-21",
+      "close": "361.40"
+    },
+    {
+      "trade_date": "2025-08-20",
+      "close": "359.75"
+    },
+    {
+      "trade_date": "2025-08-19",
+      "close": "361.60"
+    },
+    {
+      "trade_date": "2025-08-18",
+      "close": "336.55"
+    },
+    {
+      "trade_date": "2025-08-14",
+      "close": "314.60"
+    },
+    {
+      "trade_date": "2025-08-13",
+      "close": "313.70"
+    },
+    {
+      "trade_date": "2025-08-12",
+      "close": "322.25"
+    },
+    {
+      "trade_date": "2025-08-11",
+      "close": "340.40"
+    },
+    {
+      "trade_date": "2025-08-08",
+      "close": "329.20"
+    },
+    {
+      "trade_date": "2025-08-07",
+      "close": "331.45"
+    }
+  ],
+  "market": {
+    "date": "2026-10-27",
+    "close": 346.7,
+    "sma50": 333.084,
+    "sma200": 298.48975,
+    "from_high": -0.16728713822505115,
+    "history_sessions": 300,
+    "raw_turnover_median_60_cr": 0.25943996
+  },
+  "facts": [
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "35100000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "39200000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "40600000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "8800000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "8900000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "8900000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "8800000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "8600000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "18.78",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "30.18",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "26.86",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "-1.14",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "7.59",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "4.86",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "1.21",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "5.12",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "99500000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "113400000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "128600000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "19800000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "22900000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "35000000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "19800000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "21800000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "40400000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "15500000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "19900000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "2600000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "10800000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "9800000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "13900000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "5900000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "54700000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "54700000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "54700000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "54700000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "54700000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "54700000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "54700000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "54700000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "102700000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "165100000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "147000000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "-6200000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "41500000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "26600000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "6600000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "28000000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "139000000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "218800000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "201400000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "-7700000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "50700000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "30300000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "17000000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "41000000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "2529400000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "3878200000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "3707600000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "155200000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "895200000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "588100000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "220400000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "825700000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "36200000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "53700000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "54500000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "1500000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "9200000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "3800000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "10400000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "13000000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "2569800000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "3893700000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "3727500000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "157700000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "906000000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "597900000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "234300000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "831600000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    }
+  ],
+  "holdings": [],
+  "documents": [
+    {
+      "publication_id": "5fb05948-9659-48dc-8a66-b2c50a966776",
+      "published_at": "2026-10-23 14:02:08.070000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Board Meeting Intimation for To Consider And Approve Unaudited Financial Results Of The Company For The Quarter And Half Year Ended On 30Th September, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8c89555e-1aa5-4fa0-993f-672a231c1c5e.pdf"
+    },
+    {
+      "publication_id": "73d274ad-75ee-4216-9b1b-03bb44959617",
+      "published_at": "2026-10-14 17:44:23.090000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fdfd6291-41e7-45ff-87f3-13595ec9e392.pdf"
+    },
+    {
+      "publication_id": "f56c975f-8751-471c-9597-224ea27691f6",
+      "published_at": "2026-09-29 12:17:22.273000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Closure of Trading Window",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/91a8cef8-97f8-4c4a-a1d2-54b28ef13cad.pdf"
+    },
+    {
+      "publication_id": "4a44bcbf-9a78-431d-8811-e1c34c1a6cd0",
+      "published_at": "2026-09-19 14:45:54.087000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Reply To Clarification On Price Movement Sought By BSE Limited",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/73749c4a-920a-4553-8afd-c9db36898394.pdf"
+    },
+    {
+      "publication_id": "cd1e883c-c805-4518-af51-6cf28f60dc04",
+      "published_at": "2026-09-18 18:42:26.133000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Clarification sought from Patels Airtemp India Ltd",
+      "category": "Company Update",
+      "attachment_url": null
+    },
+    {
+      "publication_id": "a0957e86-27f7-4d0c-8f4a-1221efc13812",
+      "published_at": "2026-09-15 16:20:09.470000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Shareholder Meeting / Postal Ballot-Scrutinizer''s Report",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/218aa962-4023-4624-8f8f-ae79b0a22689.pdf"
+    },
+    {
+      "publication_id": "980fc1a3-72db-4dff-8cb6-ce6d41a8b1e4",
+      "published_at": "2026-09-14 13:55:39.763000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Shareholder Meeting / Postal Ballot-Outcome of AGM",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0524308b-8fec-4999-9015-787b5945894f.pdf"
+    },
+    {
+      "publication_id": "b6732ff2-2c6d-43ea-a4fe-8df0d3c9f81b",
+      "published_at": "2026-09-13 15:19:23.297000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7e1a3bc4-06b8-4133-a231-ca81e68e44b4.pdf"
+    },
+    {
+      "publication_id": "5cc10ed5-c0f3-4fd2-96a4-c7179614315f",
+      "published_at": "2026-08-20 14:24:45.360000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Intimation Under Regulation 30 Regarding Letter Dispatched To The Shareholders Of The Company.",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5f346811-de54-4790-af8a-3c8a5be0a727.pdf"
+    },
+    {
+      "publication_id": "f9e0807d-c007-40d9-a5df-8cb911e93fb4",
+      "published_at": "2026-08-19 13:15:26.913000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1c604d37-389c-4598-a008-f93cdab95014.pdf"
+    },
+    {
+      "publication_id": "28732c64-edab-4460-a577-aa852da63ebd",
+      "published_at": "2026-08-17 11:29:59.713000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Annual General Meeting Will Be Held On Monday, 14Th September, 2026",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4671ffeb-ee67-4493-af38-1b30238dbdbc.pdf"
+    },
+    {
+      "publication_id": "784de033-8131-4750-becd-f2e982d381d6",
+      "published_at": "2026-08-17 11:16:42.257000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Reg. 34 (1) Annual Report.",
+      "category": "Others",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/96968507-53f8-4a22-8b79-162401e26cd4.pdf"
+    },
+    {
+      "publication_id": "cd80a529-1ef5-418f-a849-61b6583766c7",
+      "published_at": "2026-08-11 15:44:26.613000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Communication To Shareholders - Intimation On Tax Deduction At Source (TDS) On Dividend For Financial Year 2025-2026",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/eb9ea992-bafc-419b-9e5f-e2cc7c8a4bb6.pdf"
+    },
+    {
+      "publication_id": "600d5385-b790-491c-a693-e7119492c7d5",
+      "published_at": "2026-08-10 13:55:54.637000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/127a2843-ba75-46a0-8399-3e2107d00429.pdf"
+    },
+    {
+      "publication_id": "73e95c2e-957a-4904-aa49-47f11a06cc69",
+      "published_at": "2026-08-08 16:48:06.377000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Intimation Of Record Date",
+      "category": "Corp. Action",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7e822ae3-d985-4ef6-b4b9-b7a151ad3972.pdf"
+    },
+    {
+      "publication_id": "0e4c70cf-c7c6-4be0-9b2e-660c87fee82c",
+      "published_at": "2026-08-08 16:44:14.077000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Intimation Of 34Th AGM To Be Held On Monday, 14Th September, 2026.",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4d0344eb-4c02-4e6d-81eb-52feef75ba3d.pdf"
+    },
+    {
+      "publication_id": "771c0354-82b5-4f16-a753-bf627e0a1865",
+      "published_at": "2026-08-08 16:40:08.147000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Unaudited Financial Results For The Quarter Ended On 30Th June, 2026.",
+      "category": "Result",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d507fbf9-8fac-4e6e-8503-627483f77d74.pdf"
+    },
+    {
+      "publication_id": "ac1c47b0-aca5-48fa-973e-7f3daa58b51f",
+      "published_at": "2026-08-08 16:34:10.287000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Board Meeting Outcome for Outcome Of Board Meeting Held On 08Th August, 2026.",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e817ad51-901a-4c56-9a12-5095b932777a.pdf"
+    },
+    {
+      "publication_id": "30511dd1-2c81-4864-a31c-5d00806705c0",
+      "published_at": "2026-07-31 11:57:34.157000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Board Meeting Intimation for  To Consider And Approve Unaudited Financial Results Of The Company For The Quarter Ended On 30Th June, 2026.",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/21f152f1-15d4-47dc-8d25-0a9d49d51273.pdf"
+    },
+    {
+      "publication_id": "c106dcf9-8cc4-4ba7-9b53-4524abcb220a",
+      "published_at": "2026-07-13 17:30:26.650000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3a9ba274-9065-478c-b578-6068a1e66f7b.pdf"
+    },
+    {
+      "publication_id": "3af16ed8-3547-404a-9e9b-9130c5ef687f",
+      "published_at": "2026-07-07 14:00:31.987000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/df250fe1-197c-44cd-bfd8-48f120db0146.pdf"
+    },
+    {
+      "publication_id": "b1b883b4-54f7-46dc-8cac-1b19bc67ec95",
+      "published_at": "2026-07-06 18:23:14.717000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Announcement under Regulation 30 (LODR)-Change in Management",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/acc83a27-1fad-47b5-9bca-6ab8ad0e2691.pdf"
+    },
+    {
+      "publication_id": "17af9121-f9e4-4dad-8a5a-50931704abf6",
+      "published_at": "2026-06-29 13:57:08.220000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Closure of Trading Window",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/17222fd3-d817-4bf9-99da-246bb8c3649a.pdf"
+    },
+    {
+      "publication_id": "e64bc912-acc8-4df6-a947-e0c368570795",
+      "published_at": "2026-06-20 14:47:05.350000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Disclosure By The Company Under Regulation 7(2) Of SEBI (Prohibition Of Insider Trading) Regulations, 2015",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/019d9769-4d16-4663-87f0-b0d8290c1553.pdf"
+    },
+    {
+      "publication_id": "1097558a-fea2-457a-b0c1-3a7a68b7351a",
+      "published_at": "2026-06-20 14:36:32.847000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Disclosures under Reg. 29(2) of SEBI (SAST) Regulations, 2011",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/068AAD36_83CB_448D_8D0E_085CDBE1E53C_143614.pdf"
+    },
+    {
+      "publication_id": "c2ac61fb-08bc-4225-b042-b3c894972ddb",
+      "published_at": "2026-06-20 14:26:58.090000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Disclosures under Reg. 29(2) of SEBI (SAST) Regulations, 2011",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/810A1DB1_DA57_4663_AC2B_1BAE0C6A3146_142637.pdf"
+    },
+    {
+      "publication_id": "c6805ae8-9808-4533-b18a-5f1c4a3eaf14",
+      "published_at": "2026-06-10 19:02:40.470000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Announcement under Regulation 30 (LODR)-Change in Management",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c939c229-99d2-4aec-88b4-addc928cc37f.pdf"
+    },
+    {
+      "publication_id": "af972b3d-7420-4903-befa-77de19a80027",
+      "published_at": "2026-06-01 15:06:22.670000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1b5dd5bd-d3cc-493f-9670-77da9f290399.pdf"
+    },
+    {
+      "publication_id": "dc3d1ad7-68da-48c3-bc33-7ddd95fe161b",
+      "published_at": "2026-05-30 17:17:44.627000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Corporate Action-Board approves Dividend",
+      "category": "Corp. Action",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8947053c-9afd-4b95-bf09-81ab9284d8bf.pdf"
+    },
+    {
+      "publication_id": "ebadc2a4-58b1-49b8-b02a-5121d350b132",
+      "published_at": "2026-05-30 17:09:25.690000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Financial Results For The Financial Year Ended On 31St March, 2026",
+      "category": "Result",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f0bdaadb-4108-4d6e-a986-fdb1ff026898.pdf"
+    },
+    {
+      "publication_id": "77c13c0b-008a-4b63-a026-8ff0c05cfcd8",
+      "published_at": "2026-05-30 17:02:18.030000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Board Meeting Outcome for Outcome Of Board Meeting Held On 30Th May, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6ca23297-d786-46d5-9924-f2af65bcd310.pdf"
+    },
+    {
+      "publication_id": "16b6515a-000a-4f60-b9fc-734cc1180504",
+      "published_at": "2026-05-25 11:41:49.170000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Compliances-Reg.24(A)-Annual Secretarial Compliance",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/752951a0-87d4-462e-be4e-4059206e7c0e.pdf"
+    },
+    {
+      "publication_id": "53d3b86b-9d72-4f8a-9a58-cff88d0e0396",
+      "published_at": "2026-05-22 13:00:38.817000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Board Meeting Intimation for Intimation Of Board Meeting To Consider And Approve Audited Financial Results Of The Company For The Quarter And Year Ended On 31St March, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f380dcc3-3f53-41b5-b70e-a23eeb2d47c7.pdf"
+    },
+    {
+      "publication_id": "808fa6c4-1707-4457-b1c9-bd61dc8f811b",
+      "published_at": "2026-04-22 15:35:00.840000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Format of the Initial Disclosure to be made by an entity identified as a Large Corporate : Annexure A",
+      "category": "Others",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0d9d5605-1dfb-4667-b3e9-cda7272ae0ac.pdf"
+    },
+    {
+      "publication_id": "f93b3487-dc01-437a-a11c-614d8f6d60b3",
+      "published_at": "2026-04-10 11:36:42.507000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Reply To Clarification On Price Movement Sought By BSE Limited",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/394caedb-f2a0-49ff-a824-3384d067906b.pdf"
+    },
+    {
+      "publication_id": "1e1afa12-afa4-42e6-8ab1-a29196c4ff3e",
+      "published_at": "2026-04-08 19:08:15.720000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Clarification sought from Patels Airtemp India Ltd",
+      "category": "Company Update",
+      "attachment_url": null
+    },
+    {
+      "publication_id": "638a7613-d7d7-4957-b496-1efc2f54b4a3",
+      "published_at": "2026-04-08 15:56:16.070000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Shareholder Meeting / Postal Ballot-Outcome of Postal_Ballot",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0d077997-e4bc-444f-8e38-2761293e9740.pdf"
+    },
+    {
+      "publication_id": "0ce890ed-4bce-4c59-a2d4-56705e4d080f",
+      "published_at": "2026-04-08 15:53:11.070000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 -  Shareholder Meeting / Postal Ballot-Scrutinizer\"s Report",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/35437851-c215-4f90-b09f-c243968311de.pdf"
+    },
+    {
+      "publication_id": "1d48e0f3-5fdc-4595-b6d1-f8b6476e749f",
+      "published_at": "2026-04-06 17:05:04.297000+05:30",
+      "title": "Patels Airtemp India Ltd - 517417 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/340a75f9-ebbc-448a-ad77-1ac003d60b37.pdf"
+    }
+  ],
+  "events": [
+    {
+      "published_at": "2026-09-13 15:19:23.297000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": "2261318461",
+      "scale": "UNITS",
+      "currency": "INR",
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM",
+      "quote": "This is to inform you that the Company has received a Fixed Price Contract / Order amounting to USD",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7e1a3bc4-06b8-4133-a231-ca81e68e44b4.pdf",
+      "page_no": 1
+    }
+  ],
+  "statement_pages": [
+    {
+      "published_at": "2026-05-30 17:09:25.690000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f0bdaadb-4108-4d6e-a986-fdb1ff026898.pdf",
+      "page_no": 10,
+      "body": "Conclude on the appropriateness of management's use of the going concern basis of\naccounting and, based on the audit evidence obtained, whether a material uncertainty\nexists related to events or conditions that may cast significant doubt on the Company's\nability to continue as a going concern. lf we conclude that a material uncertainty exists,\nwe are required to draw attention in our auditor's report to the related disclosures in the\nStandalone lnd AS Financial Results or, if such disclosures are inadequate, to modify our\nopinion. Our conclusions are based on the audit evidence obtained up to the date of our\nauditor's report. However, future events or conditions may cause the Company to cease\nto continue as a going concern.\nEvaluate the overall presentation, structure and content of the Standalone lnd AS\nFinancial Results, including the disclosures, and whether the Standalone lnd AS\nFinancial Results represent the underlying transactions and events in a manner that\nachieves fair presentation.\nWe communicate with those charged with governance regarding, among other matters, the\nplanned scope and timing of the audit and significant audit findings, including any significant\ndeficiencies in internal control that we identify during our audit.\nWe also provide those charged with governance with a statement that we have complied with\nrelevant ethical requirements regarding independence; and to communicate with them all\nrelationships and other matters that may reasonably be thought to bear on our independence,\nand where applicable, related safeguards.\nOther Matter\nThe Statement includes the results for the quarter ended March 31 , 2026 being the balancing\nfigures between the audited figures in respect of the full financial year ended March 31, 2026\nand the published unaudited yearto-date figures up to the end of the third quarter of the current\nfinancial year, which were subjected to a limited review by us, as required under the Listing\nRegulations.\nFor, Parikh & Majmudar\nI Chartered Acco nta nts\nFR No. 1075 5W\nIf+\ntcA ATWIK DURKAL]\n[+ Partner\nPlace: Ahmedabad Membership No. 107628\nDate: 30-05-2026 UDIN: {6 }0a6,zg TB\\JY 6At$q.r"
+    },
+    {
+      "published_at": "2026-05-30 17:02:18.030000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6ca23297-d786-46d5-9924-f2af65bcd310.pdf",
+      "page_no": 10,
+      "body": "Conclude on the appropriateness of management's use of the going concern basis of\naccounting and, based on the audit evidence obtained, whether a material uncertainty\nexists related to events or conditions that may cast significant doubt on the Company's\nability to continue as a going concern. lf we conclude that a material uncertainty exists,\nwe are required to draw attention in our auditor's report to the related disclosures in the\nStandalone lnd AS Financial Results or, if such disclosures are inadequate, to modify our\nopinion. Our conclusions are based on the audit evidence obtained up to the date of our\nauditor's report. However, future events or conditions may cause the Company to cease\nto continue as a going concern.\nEvaluate the overall presentation, structure and content of the Standalone lnd AS\nFinancial Results, including the disclosures, and whether the Standalone lnd AS\nFinancial Results represent the underlying transactions and events in a manner that\nachieves fair presentation.\nWe communicate with those charged with governance regarding, among other matters, the\nplanned scope and timing of the audit and significant audit findings, including any significant\ndeficiencies in internal control that we identify during our audit.\nWe also provide those charged with governance with a statement that we have complied with\nrelevant ethical requirements regarding independence; and to communicate with them all\nrelationships and other matters that may reasonably be thought to bear on our independence,\nand where applicable, related safeguards.\nOther Matter\nThe Statement includes the results for the quarter ended March 31 , 2026 being the balancing\nfigures between the audited figures in respect of the full financial year ended March 31, 2026\nand the published unaudited yearto-date figures up to the end of the third quarter of the current\nfinancial year, which were subjected to a limited review by us, as required under the Listing\nRegulations.\nFor, Parikh & Majmudar\nI Chartered Acco nta nts\nFR No. 1075 5W\nIf+\ntcA ATWIK DURKAL]\n[+ Partner\nPlace: Ahmedabad Membership No. 107628\nDate: 30-05-2026 UDIN: {6 }0a6,zg TB\\JY 6At$q.r"
+    }
+  ]
+}

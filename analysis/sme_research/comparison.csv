@@ -1,0 +1,91 @@
+rule,horizon,action_screened,n,doubles,five,ten,losses,median_multiple,median_drawdown
+All liquid SME (price baseline),1,False,275,29,1,0,164,0.874767513949163,-0.4527320034692107
+All liquid SME (price baseline),1,True,266,28,1,0,160,0.8727319776421756,-0.4524317296304561
+All liquid SME (price baseline),2,False,146,21,3,0,97,0.7701601853466531,-0.6610753795813784
+All liquid SME (price baseline),2,True,135,21,3,0,90,0.7885024840312278,-0.6581395348837209
+All liquid SME (price baseline),3,False,37,10,2,0,18,1.2416756176154673,-0.7073681759981376
+All liquid SME (price baseline),3,True,33,10,2,0,15,1.2977272727272726,-0.7073681759981376
+Financial baseline,1,False,223,18,0,0,163,0.7118055555555556,-0.49345794392523357
+Financial baseline,1,True,217,18,0,0,159,0.7111111111111111,-0.49333788862316363
+Financial baseline,2,False,67,6,1,0,53,0.6501780767708746,-0.6670673076923077
+Financial baseline,2,True,63,6,1,0,50,0.6754385964912281,-0.6623376623376622
+Financial baseline,3,False,0,0,0,0,0,,
+Financial baseline,3,True,0,0,0,0,0,,
+Profitable growth,1,False,29,0,0,0,23,0.7195979899497487,-0.48238482384823844
+Profitable growth,1,True,28,0,0,0,22,0.7219234584941876,-0.4699788352350382
+Profitable growth,2,False,2,0,0,0,2,0.5603013652295098,-0.6943963651005174
+Profitable growth,2,True,2,0,0,0,2,0.5603013652295098,-0.6943963651005174
+Profitable growth,3,False,0,0,0,0,0,,
+Profitable growth,3,True,0,0,0,0,0,,
+Cheap profitable growth,1,False,8,0,0,0,6,0.697368055748355,-0.4556713439458396
+Cheap profitable growth,1,True,8,0,0,0,6,0.697368055748355,-0.4556713439458396
+Cheap profitable growth,2,False,0,0,0,0,0,,
+Cheap profitable growth,2,True,0,0,0,0,0,,
+Cheap profitable growth,3,False,0,0,0,0,0,,
+Cheap profitable growth,3,True,0,0,0,0,0,,
+Cheap growth + technicals,1,False,1,0,0,0,1,0.7195979899497487,-0.4537698412698412
+Cheap growth + technicals,1,True,1,0,0,0,1,0.7195979899497487,-0.4537698412698412
+Cheap growth + technicals,2,False,0,0,0,0,0,,
+Cheap growth + technicals,2,True,0,0,0,0,0,,
+Cheap growth + technicals,3,False,0,0,0,0,0,,
+Cheap growth + technicals,3,True,0,0,0,0,0,,
+Profitable growth + technicals,1,False,8,0,0,0,5,0.8289454511736343,-0.49111800837772035
+Profitable growth + technicals,1,True,7,0,0,0,4,0.933641975308642,-0.4537698412698412
+Profitable growth + technicals,2,False,1,0,0,0,1,0.21075065119583236,-0.837593984962406
+Profitable growth + technicals,2,True,1,0,0,0,1,0.21075065119583236,-0.837593984962406
+Profitable growth + technicals,3,False,0,0,0,0,0,,
+Profitable growth + technicals,3,True,0,0,0,0,0,,
+Cheap sales + positive profit,1,False,92,9,0,0,69,0.7545394710598747,-0.4803445497205998
+Cheap sales + positive profit,1,True,91,9,0,0,69,0.7372093023255814,-0.481753400993306
+Cheap sales + positive profit,2,False,22,4,1,0,16,0.6606184579094796,-0.664702485014985
+Cheap sales + positive profit,2,True,22,4,1,0,16,0.6606184579094796,-0.664702485014985
+Cheap sales + positive profit,3,False,0,0,0,0,0,,
+Cheap sales + positive profit,3,True,0,0,0,0,0,,
+Cheap sales + technicals,1,False,15,5,0,0,7,1.0001996007984033,-0.4332945886607258
+Cheap sales + technicals,1,True,15,5,0,0,7,1.0001996007984033,-0.4332945886607258
+Cheap sales + technicals,2,False,4,1,0,0,3,0.41420900800297783,-0.8373184503006916
+Cheap sales + technicals,2,True,4,1,0,0,3,0.41420900800297783,-0.8373184503006916
+Cheap sales + technicals,3,False,0,0,0,0,0,,
+Cheap sales + technicals,3,True,0,0,0,0,0,,
+Profitable small company + technicals,1,False,61,10,0,0,41,0.7822210213455822,-0.4537698412698412
+Profitable small company + technicals,1,True,59,10,0,0,39,0.7256220578345663,-0.4537698412698412
+Profitable small company + technicals,2,False,14,2,0,0,11,0.6243482976446966,-0.6622294869155196
+Profitable small company + technicals,2,True,13,2,0,0,10,0.6501780767708746,-0.6596273291925465
+Profitable small company + technicals,3,False,0,0,0,0,0,,
+Profitable small company + technicals,3,True,0,0,0,0,0,,
+Positive net margin 5–15% + growth,1,False,25,0,0,0,22,0.6638338054768649,-0.5283911671924291
+Positive net margin 5–15% + growth,1,True,24,0,0,0,21,0.6683018792642541,-0.5097395295089373
+Positive net margin 5–15% + growth,2,False,1,0,0,0,1,0.21075065119583236,-0.837593984962406
+Positive net margin 5–15% + growth,2,True,1,0,0,0,1,0.21075065119583236,-0.837593984962406
+Positive net margin 5–15% + growth,3,False,0,0,0,0,0,,
+Positive net margin 5–15% + growth,3,True,0,0,0,0,0,,
+Low operating margin + cheap sales,1,False,7,0,0,0,5,0.8051911805749372,-0.5739348370927317
+Low operating margin + cheap sales,1,True,7,0,0,0,5,0.8051911805749372,-0.5739348370927317
+Low operating margin + cheap sales,2,False,3,0,0,0,3,0.6754385964912281,-0.5739348370927317
+Low operating margin + cheap sales,2,True,3,0,0,0,3,0.6754385964912281,-0.5739348370927317
+Low operating margin + cheap sales,3,False,0,0,0,0,0,,
+Low operating margin + cheap sales,3,True,0,0,0,0,0,,
+Margin expansion + growth,1,False,1,0,0,0,1,0.7643818849449204,-0.48238482384823844
+Margin expansion + growth,1,True,1,0,0,0,1,0.7643818849449204,-0.48238482384823844
+Margin expansion + growth,2,False,0,0,0,0,0,,
+Margin expansion + growth,2,True,0,0,0,0,0,,
+Margin expansion + growth,3,False,0,0,0,0,0,,
+Margin expansion + growth,3,True,0,0,0,0,0,,
+Low interest growth,1,False,20,0,0,0,14,0.7338432747253317,-0.472438750790843
+Low interest growth,1,True,20,0,0,0,14,0.7338432747253317,-0.472438750790843
+Low interest growth,2,False,0,0,0,0,0,,
+Low interest growth,2,True,0,0,0,0,0,,
+Low interest growth,3,False,0,0,0,0,0,,
+Low interest growth,3,True,0,0,0,0,0,,
+Turnaround + revenue growth,1,False,0,0,0,0,0,,
+Turnaround + revenue growth,1,True,0,0,0,0,0,,
+Turnaround + revenue growth,2,False,0,0,0,0,0,,
+Turnaround + revenue growth,2,True,0,0,0,0,0,,
+Turnaround + revenue growth,3,False,0,0,0,0,0,,
+Turnaround + revenue growth,3,True,0,0,0,0,0,,
+Price trend only,1,False,93,14,1,0,53,0.9050373134328358,-0.4502141327623127
+Price trend only,1,True,90,14,1,0,51,0.9141601831393951,-0.4487259615384616
+Price trend only,2,False,44,7,1,0,28,0.6928155174854878,-0.66287133950392
+Price trend only,2,True,41,7,1,0,25,0.7365478340466589,-0.6596273291925465
+Price trend only,3,False,13,4,1,1,5,1.3387096774193548,-0.652029432708284
+Price trend only,3,True,11,4,1,1,3,1.6554913294797686,-0.5912806539509536

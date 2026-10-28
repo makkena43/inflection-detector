@@ -1,0 +1,20 @@
+label,week_start,policy_audit_class,policy_audit_reason,return_12m,return_24m
+ELECON,2022-02-07,general opportunity,PLI bodes well for industry; nearby modest order inflows do not establish a PLI-linked contract.,1.84848484848485,5.72996632996633
+HAL,2022-03-28,general opportunity,Policy boost and anticipated orders; no specific awarded contract linked to the cited list in inspected excerpts.,0.681880433488151,3.24604025247112
+POWERMECH,2022-08-15,general opportunity,"Industry opportunity slide; supply wording relates to plans, not an awarded RDSS contract.",1.8474398065398,3.743840465426
+SIEMENS,2023-01-16,insufficient linkage,Slides mix existing metro orders and Vande Bharat growth drivers; cannot attribute the listed orders to the cited programme.,0.420459025385235,0.996726144563857
+TEXRAIL,2023-05-08,analyst question,"Analyst asks about Vande Bharat; management cites overall book, not a specific programme-linked award.",2.67036011080332,1.90600184672207
+MIDHANI,2023-07-24,prospective,Expected orders and analyst question about Vande Bharat; receipt not established.,0.214774281805746,0.0995896032831736
+VIKASLIFE,2023-11-13,insufficient linkage,Subsidiary gas-meter supplies do not establish an RDSS electricity-meter contract.,-0.15049504950495,-0.615841584158416
+GVT&D,2024-05-27,"probable, unresolved naming",ADMS package for Gujarat discom called RDSS but expanded as Remote Data Synchronization System; probable linkage needs source confirmation.,0.661021845098393,2.51399169525185
+RAMKY,2024-07-15,confirmed,Notification of award from PowerGrid Energy Services for loss-reduction works explicitly under RDSS.,-0.203160270880361,-0.493741021957726
+EMSLIMITED,2024-08-05,insufficient linkage,"Water/sewerage order exists, but inspected excerpt does not link this order to AMRUT 2.0.",-0.357687605519008,-0.54014088606858
+MANAKCOAT,2024-09-30,general opportunity,"Specialty-steel PLI sector budget and supply discussion, not issuer approval or scheme order.",1.45119103222793,
+ZODIAC,2024-10-07,insufficient linkage,PM Surya Ghar response and separate captive-project order book; no quantified programme contract established.,-0.342682394058541,
+TDPOWERSYS,2024-11-04,negated/prospective,Management explicitly says it is not seeing Vande Bharat ordering action; pipeline is not a received contract.,0.859796067006555,
+EXICOM,2025-02-03,confirmed,"Advance purchase order of ~₹1412.48cr for BharatNet Phase III from RVNL. Programme is amended BharatNet approved 4 Aug 2023, not 2021 PPP; corrected for interpretation only.",-0.405435745937962,
+ACE,2025-02-17,general opportunity,Budget outlay slide repeats Vande Bharat plan without issuer-specific contract.,-0.169410618606917,
+SALZERELEC,2025-05-19,confirmed,Release explicitly titled smart-meter order under RDSS; earlier first-order passages support execution.,-0.293700917128892,
+POLYCAB,2025-06-16,confirmed,Company explicitly reports execution of RDSS order book and a signed BharatNet agreement.,0.520531216608151,
+NETWEB,2025-09-01,"approval/incentive, not order",Milestone slide identifies PLI qualification and claim receipt; unrelated orders nearby create the order flag.,0.600471747199001,
+RAMKY,2025-11-10,insufficient linkage,"Signed water project disclosed, but no AMRUT 2.0 linkage established in inspected excerpts.",,

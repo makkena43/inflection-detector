@@ -1,0 +1,3888 @@
+{
+  "signal": {
+    "review_id": "26598296-e438-4e11-be06-740360ff10f0",
+    "issuer_id": "7f347804-eae3-408a-8a5b-c1a82513892a",
+    "week_start": "2026-08-31",
+    "label": "531911",
+    "legal_name": "GALAXY AGRICO EXPORTS LTD.",
+    "triage_action": "DEEP_RESEARCH",
+    "is_pick": true,
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "rules_version": "triage-rules-3.5.1",
+    "size_pct_of_revenue": 381.7,
+    "size_basis": "STATED",
+    "firm": true,
+    "routine": false,
+    "disqualifier": null,
+    "confidence": "LOW",
+    "rationale": "Firm purchase order received for about 10.00 crore of agricultural commodities, about 3.8x FY2026 revenue of 2.62 crore, so the size test is passed by a wide margin. Not routine: no comparable order is disclosed and revenue fell for three years. Open questions are the trading counterparty, the likely thin trade margin and whether the order is one-off, so this is a low-confidence DEEP_RESEARCH and not evidence of an earnings uplift.",
+    "excess_6m": null,
+    "excess_12m": null,
+    "excess_24m": null,
+    "return_12m": null,
+    "return_24m": null,
+    "holding_period": null,
+    "holding_previous_period": null,
+    "promoter_holding_pct": null,
+    "fii_holding_pct": null,
+    "promoter_change_pp": null,
+    "fii_change_pp": null,
+    "holding_year_ago_period": null,
+    "promoter_yoy_pp": null,
+    "fii_yoy_pp": null,
+    "return_36m": null,
+    "benchmark_36m": null,
+    "excess_36m": null,
+    "benchmark_12m": null,
+    "benchmark_24m": null,
+    "runup_6m": null,
+    "margin_ttm": 0.7214983713355049,
+    "category": "A: order \u2265100% of revenue",
+    "order_cr_derived": 23.436379999999996,
+    "order_cr": 10.0,
+    "order_cr_basis": "review amount",
+    "mcap_cr": null,
+    "orders_12m_pct": 162.9,
+    "orders_y1_pct": 81.4,
+    "orders_12m_incl_big_pct": 162.9,
+    "order_to_mcap": null,
+    "mgmt_target_x": null,
+    "promoter_net_cr": 0.0,
+    "inst_net_cr": 0.0,
+    "tech": {
+      "up": true,
+      "hi": true,
+      "rs": true,
+      "n": 3,
+      "runup6": 1.2563005230622921,
+      "liq": 0.38350802500000003,
+      "exchange": "BSE",
+      "below_falling_200": false,
+      "price_date": "2026-09-11",
+      "history_days": 284,
+      "near_high_threshold": 0.8
+    },
+    "tech_score": 3,
+    "price_date": "2026-09-11",
+    "exchange": "BSE",
+    "order_book": {},
+    "score": 1,
+    "score_inputs": {
+      "order_mcap_25": null,
+      "mcap_lt_2000": null,
+      "ps_lt_1_5": null,
+      "opm_up_1pp": null,
+      "opm_lt_10": null,
+      "mgmt_target_1_5x": false,
+      "tech_2_of_3": true,
+      "revenue_growing": null,
+      "order_book_growing": null,
+      "illiquid_penalty": null,
+      "expensive_penalty": null
+    },
+    "score_known": 2,
+    "score_n": 9,
+    "ps": null,
+    "opm": null,
+    "signals": [
+      "Technicals 3/3",
+      "Data 2/9 known"
+    ],
+    "combos": [
+      "C2",
+      "C4",
+      "R1"
+    ],
+    "combo_checks": {
+      "up": true,
+      "hi": true,
+      "rs": true,
+      "n": 3,
+      "runup6": 1.2563005230622921,
+      "liq": 0.38350802500000003,
+      "exchange": "BSE",
+      "below_falling_200": false,
+      "price_date": "2026-09-11",
+      "history_days": 284,
+      "near_high_threshold": 0.8
+    }
+  },
+  "identifiers": [
+    {
+      "security_id": "29cf881f-8911-4ba0-84cf-f9eb10b195c9",
+      "exchange": "BSE",
+      "kind": "SCRIP_CODE",
+      "value": "531911"
+    },
+    {
+      "security_id": "29cf881f-8911-4ba0-84cf-f9eb10b195c9",
+      "exchange": "BSE",
+      "kind": "SYMBOL",
+      "value": "GALAGEX"
+    }
+  ],
+  "exchange": "BSE",
+  "security_id": "29cf881f-8911-4ba0-84cf-f9eb10b195c9",
+  "prices": [
+    {
+      "trade_date": "2026-10-27",
+      "close": "101.96",
+      "volume": "11872"
+    },
+    {
+      "trade_date": "2026-10-26",
+      "close": "102.09",
+      "volume": "7179"
+    },
+    {
+      "trade_date": "2026-10-23",
+      "close": "100.94",
+      "volume": "40297"
+    },
+    {
+      "trade_date": "2026-10-22",
+      "close": "97.90",
+      "volume": "96787"
+    },
+    {
+      "trade_date": "2026-10-21",
+      "close": "99.50",
+      "volume": "51052"
+    },
+    {
+      "trade_date": "2026-10-19",
+      "close": "98.49",
+      "volume": "9914"
+    },
+    {
+      "trade_date": "2026-10-16",
+      "close": "98.00",
+      "volume": "1303"
+    },
+    {
+      "trade_date": "2026-10-15",
+      "close": "98.01",
+      "volume": "56684"
+    },
+    {
+      "trade_date": "2026-10-14",
+      "close": "95.53",
+      "volume": "55746"
+    },
+    {
+      "trade_date": "2026-10-13",
+      "close": "90.99",
+      "volume": "217230"
+    },
+    {
+      "trade_date": "2026-10-12",
+      "close": "90.23",
+      "volume": "3042"
+    },
+    {
+      "trade_date": "2026-10-09",
+      "close": "88.22",
+      "volume": "649"
+    },
+    {
+      "trade_date": "2026-10-08",
+      "close": "88.01",
+      "volume": "183930"
+    },
+    {
+      "trade_date": "2026-10-07",
+      "close": "90.46",
+      "volume": "2683"
+    },
+    {
+      "trade_date": "2026-10-06",
+      "close": "92.00",
+      "volume": "28023"
+    },
+    {
+      "trade_date": "2026-10-05",
+      "close": "90.00",
+      "volume": "34587"
+    },
+    {
+      "trade_date": "2026-10-01",
+      "close": "88.17",
+      "volume": "273"
+    },
+    {
+      "trade_date": "2026-09-30",
+      "close": "92.45",
+      "volume": "74"
+    },
+    {
+      "trade_date": "2026-09-29",
+      "close": "92.40",
+      "volume": "1492"
+    },
+    {
+      "trade_date": "2026-09-28",
+      "close": "93.80",
+      "volume": "1845"
+    },
+    {
+      "trade_date": "2026-09-25",
+      "close": "96.80",
+      "volume": "11312"
+    },
+    {
+      "trade_date": "2026-09-24",
+      "close": "97.00",
+      "volume": "26757"
+    },
+    {
+      "trade_date": "2026-09-23",
+      "close": "94.98",
+      "volume": "137716"
+    },
+    {
+      "trade_date": "2026-09-22",
+      "close": "93.92",
+      "volume": "313"
+    },
+    {
+      "trade_date": "2026-09-21",
+      "close": "97.50",
+      "volume": "464"
+    },
+    {
+      "trade_date": "2026-09-18",
+      "close": "98.00",
+      "volume": "205"
+    },
+    {
+      "trade_date": "2026-09-17",
+      "close": "98.49",
+      "volume": "1326"
+    },
+    {
+      "trade_date": "2026-09-16",
+      "close": "97.49",
+      "volume": "101526"
+    },
+    {
+      "trade_date": "2026-09-15",
+      "close": "97.20",
+      "volume": "813"
+    },
+    {
+      "trade_date": "2026-09-11",
+      "close": "94.90",
+      "volume": "7686"
+    },
+    {
+      "trade_date": "2026-09-10",
+      "close": "97.00",
+      "volume": "253544"
+    },
+    {
+      "trade_date": "2026-09-09",
+      "close": "94.70",
+      "volume": "84"
+    },
+    {
+      "trade_date": "2026-09-08",
+      "close": "96.99",
+      "volume": "13330"
+    },
+    {
+      "trade_date": "2026-09-07",
+      "close": "93.45",
+      "volume": "2776"
+    },
+    {
+      "trade_date": "2026-09-04",
+      "close": "97.00",
+      "volume": "37845"
+    },
+    {
+      "trade_date": "2026-09-03",
+      "close": "97.12",
+      "volume": "104332"
+    },
+    {
+      "trade_date": "2026-09-02",
+      "close": "96.84",
+      "volume": "16941"
+    },
+    {
+      "trade_date": "2026-09-01",
+      "close": "96.89",
+      "volume": "188625"
+    },
+    {
+      "trade_date": "2026-08-31",
+      "close": "91.77",
+      "volume": "44334"
+    },
+    {
+      "trade_date": "2026-08-28",
+      "close": "87.32",
+      "volume": "264111"
+    },
+    {
+      "trade_date": "2026-08-27",
+      "close": "72.77",
+      "volume": "145929"
+    },
+    {
+      "trade_date": "2026-08-26",
+      "close": "70.15",
+      "volume": "229173"
+    },
+    {
+      "trade_date": "2026-08-25",
+      "close": "67.00",
+      "volume": "2343"
+    },
+    {
+      "trade_date": "2026-08-24",
+      "close": "70.00",
+      "volume": "86641"
+    },
+    {
+      "trade_date": "2026-08-21",
+      "close": "71.00",
+      "volume": "93381"
+    },
+    {
+      "trade_date": "2026-08-20",
+      "close": "70.22",
+      "volume": "113026"
+    },
+    {
+      "trade_date": "2026-08-19",
+      "close": "70.29",
+      "volume": "674287"
+    },
+    {
+      "trade_date": "2026-08-18",
+      "close": "65.02",
+      "volume": "230219"
+    },
+    {
+      "trade_date": "2026-08-17",
+      "close": "65.99",
+      "volume": "817"
+    },
+    {
+      "trade_date": "2026-08-14",
+      "close": "62.00",
+      "volume": "13985"
+    },
+    {
+      "trade_date": "2026-08-13",
+      "close": "63.40",
+      "volume": "2244"
+    },
+    {
+      "trade_date": "2026-08-12",
+      "close": "63.97",
+      "volume": "182353"
+    },
+    {
+      "trade_date": "2026-08-11",
+      "close": "62.08",
+      "volume": "3315"
+    },
+    {
+      "trade_date": "2026-08-10",
+      "close": "64.25",
+      "volume": "4325"
+    },
+    {
+      "trade_date": "2026-08-07",
+      "close": "66.82",
+      "volume": "156461"
+    },
+    {
+      "trade_date": "2026-08-06",
+      "close": "65.48",
+      "volume": "119833"
+    },
+    {
+      "trade_date": "2026-08-05",
+      "close": "67.62",
+      "volume": "124595"
+    },
+    {
+      "trade_date": "2026-08-04",
+      "close": "65.00",
+      "volume": "105202"
+    },
+    {
+      "trade_date": "2026-08-03",
+      "close": "65.61",
+      "volume": "231666"
+    },
+    {
+      "trade_date": "2026-07-31",
+      "close": "66.94",
+      "volume": "133736"
+    },
+    {
+      "trade_date": "2026-07-30",
+      "close": "65.23",
+      "volume": "259236"
+    },
+    {
+      "trade_date": "2026-07-29",
+      "close": "68.53",
+      "volume": "293770"
+    },
+    {
+      "trade_date": "2026-07-28",
+      "close": "66.25",
+      "volume": "70028"
+    },
+    {
+      "trade_date": "2026-07-27",
+      "close": "65.93",
+      "volume": "136170"
+    },
+    {
+      "trade_date": "2026-07-24",
+      "close": "68.18",
+      "volume": "150871"
+    },
+    {
+      "trade_date": "2026-07-23",
+      "close": "65.79",
+      "volume": "379595"
+    },
+    {
+      "trade_date": "2026-07-22",
+      "close": "65.98",
+      "volume": "7817"
+    },
+    {
+      "trade_date": "2026-07-21",
+      "close": "69.45",
+      "volume": "515"
+    },
+    {
+      "trade_date": "2026-07-20",
+      "close": "69.10",
+      "volume": "313"
+    },
+    {
+      "trade_date": "2026-07-17",
+      "close": "69.90",
+      "volume": "14288"
+    },
+    {
+      "trade_date": "2026-07-16",
+      "close": "69.49",
+      "volume": "158339"
+    },
+    {
+      "trade_date": "2026-07-15",
+      "close": "67.98",
+      "volume": "5378"
+    },
+    {
+      "trade_date": "2026-07-14",
+      "close": "67.81",
+      "volume": "48033"
+    },
+    {
+      "trade_date": "2026-07-13",
+      "close": "67.50",
+      "volume": "57751"
+    },
+    {
+      "trade_date": "2026-07-10",
+      "close": "66.47",
+      "volume": "22919"
+    },
+    {
+      "trade_date": "2026-07-09",
+      "close": "68.38",
+      "volume": "15710"
+    },
+    {
+      "trade_date": "2026-07-08",
+      "close": "66.78",
+      "volume": "564"
+    },
+    {
+      "trade_date": "2026-07-07",
+      "close": "66.69",
+      "volume": "2977"
+    },
+    {
+      "trade_date": "2026-07-06",
+      "close": "65.75",
+      "volume": "76669"
+    },
+    {
+      "trade_date": "2026-07-03",
+      "close": "67.68",
+      "volume": "25644"
+    },
+    {
+      "trade_date": "2026-07-02",
+      "close": "65.37",
+      "volume": "92606"
+    },
+    {
+      "trade_date": "2026-07-01",
+      "close": "64.00",
+      "volume": "58937"
+    },
+    {
+      "trade_date": "2026-06-30",
+      "close": "62.90",
+      "volume": "36539"
+    },
+    {
+      "trade_date": "2026-06-29",
+      "close": "64.57",
+      "volume": "53867"
+    },
+    {
+      "trade_date": "2026-06-25",
+      "close": "63.47",
+      "volume": "25166"
+    },
+    {
+      "trade_date": "2026-06-24",
+      "close": "60.99",
+      "volume": "3208"
+    },
+    {
+      "trade_date": "2026-06-23",
+      "close": "61.40",
+      "volume": "207564"
+    },
+    {
+      "trade_date": "2026-06-22",
+      "close": "61.90",
+      "volume": "37913"
+    },
+    {
+      "trade_date": "2026-06-19",
+      "close": "62.68",
+      "volume": "615"
+    },
+    {
+      "trade_date": "2026-06-18",
+      "close": "61.76",
+      "volume": "34729"
+    },
+    {
+      "trade_date": "2026-06-17",
+      "close": "60.06",
+      "volume": "110785"
+    },
+    {
+      "trade_date": "2026-06-16",
+      "close": "63.79",
+      "volume": "623798"
+    },
+    {
+      "trade_date": "2026-06-15",
+      "close": "62.29",
+      "volume": "15909"
+    },
+    {
+      "trade_date": "2026-06-12",
+      "close": "64.93",
+      "volume": "13178"
+    },
+    {
+      "trade_date": "2026-06-11",
+      "close": "65.50",
+      "volume": "481"
+    },
+    {
+      "trade_date": "2026-06-10",
+      "close": "66.00",
+      "volume": "1812"
+    },
+    {
+      "trade_date": "2026-06-09",
+      "close": "66.40",
+      "volume": "136"
+    },
+    {
+      "trade_date": "2026-06-08",
+      "close": "64.20",
+      "volume": "1576"
+    },
+    {
+      "trade_date": "2026-06-05",
+      "close": "65.00",
+      "volume": "295874"
+    },
+    {
+      "trade_date": "2026-06-04",
+      "close": "62.67",
+      "volume": "12172"
+    },
+    {
+      "trade_date": "2026-06-03",
+      "close": "60.99",
+      "volume": "48091"
+    },
+    {
+      "trade_date": "2026-06-02",
+      "close": "60.45",
+      "volume": "15272"
+    },
+    {
+      "trade_date": "2026-06-01",
+      "close": "61.87",
+      "volume": "780855"
+    },
+    {
+      "trade_date": "2026-05-29",
+      "close": "58.94",
+      "volume": "16"
+    },
+    {
+      "trade_date": "2026-05-27",
+      "close": "59.72",
+      "volume": "42215"
+    },
+    {
+      "trade_date": "2026-05-26",
+      "close": "60.78",
+      "volume": "54116"
+    },
+    {
+      "trade_date": "2026-05-25",
+      "close": "59.00",
+      "volume": "365089"
+    },
+    {
+      "trade_date": "2026-05-22",
+      "close": "58.51",
+      "volume": "116456"
+    },
+    {
+      "trade_date": "2026-05-21",
+      "close": "59.50",
+      "volume": "127035"
+    },
+    {
+      "trade_date": "2026-05-20",
+      "close": "59.85",
+      "volume": "8669"
+    },
+    {
+      "trade_date": "2026-05-19",
+      "close": "57.00",
+      "volume": "76834"
+    },
+    {
+      "trade_date": "2026-05-18",
+      "close": "55.50",
+      "volume": "30471"
+    },
+    {
+      "trade_date": "2026-05-15",
+      "close": "56.75",
+      "volume": "4670"
+    },
+    {
+      "trade_date": "2026-05-14",
+      "close": "56.63",
+      "volume": "4696"
+    },
+    {
+      "trade_date": "2026-05-13",
+      "close": "56.25",
+      "volume": "6371"
+    },
+    {
+      "trade_date": "2026-05-12",
+      "close": "55.95",
+      "volume": "228596"
+    },
+    {
+      "trade_date": "2026-05-11",
+      "close": "57.92",
+      "volume": "4727"
+    },
+    {
+      "trade_date": "2026-05-08",
+      "close": "56.09",
+      "volume": "474749"
+    },
+    {
+      "trade_date": "2026-05-07",
+      "close": "53.42",
+      "volume": "2654"
+    },
+    {
+      "trade_date": "2026-05-06",
+      "close": "53.15",
+      "volume": "197098"
+    },
+    {
+      "trade_date": "2026-05-05",
+      "close": "50.99",
+      "volume": "385877"
+    },
+    {
+      "trade_date": "2026-05-04",
+      "close": "51.00",
+      "volume": "202661"
+    },
+    {
+      "trade_date": "2026-04-30",
+      "close": "50.02",
+      "volume": "2209"
+    },
+    {
+      "trade_date": "2026-04-29",
+      "close": "52.00",
+      "volume": "89336"
+    },
+    {
+      "trade_date": "2026-04-28",
+      "close": "49.99",
+      "volume": "1453"
+    },
+    {
+      "trade_date": "2026-04-27",
+      "close": "51.07",
+      "volume": "85141"
+    },
+    {
+      "trade_date": "2026-04-24",
+      "close": "49.98",
+      "volume": "47833"
+    },
+    {
+      "trade_date": "2026-04-23",
+      "close": "49.34",
+      "volume": "4650"
+    },
+    {
+      "trade_date": "2026-04-22",
+      "close": "49.98",
+      "volume": "90020"
+    },
+    {
+      "trade_date": "2026-04-21",
+      "close": "50.48",
+      "volume": "4458"
+    },
+    {
+      "trade_date": "2026-04-20",
+      "close": "51.75",
+      "volume": "51612"
+    },
+    {
+      "trade_date": "2026-04-17",
+      "close": "52.75",
+      "volume": "29125"
+    },
+    {
+      "trade_date": "2026-04-16",
+      "close": "50.24",
+      "volume": "6926"
+    },
+    {
+      "trade_date": "2026-04-15",
+      "close": "48.38",
+      "volume": "60071"
+    },
+    {
+      "trade_date": "2026-04-13",
+      "close": "48.64",
+      "volume": "138151"
+    },
+    {
+      "trade_date": "2026-04-10",
+      "close": "48.99",
+      "volume": "61287"
+    },
+    {
+      "trade_date": "2026-04-09",
+      "close": "48.25",
+      "volume": "66703"
+    },
+    {
+      "trade_date": "2026-04-08",
+      "close": "49.30",
+      "volume": "5651"
+    },
+    {
+      "trade_date": "2026-04-07",
+      "close": "49.67",
+      "volume": "133998"
+    },
+    {
+      "trade_date": "2026-04-06",
+      "close": "48.04",
+      "volume": "89264"
+    },
+    {
+      "trade_date": "2026-04-02",
+      "close": "47.15",
+      "volume": "108281"
+    },
+    {
+      "trade_date": "2026-04-01",
+      "close": "45.06",
+      "volume": "462430"
+    },
+    {
+      "trade_date": "2026-03-30",
+      "close": "42.92",
+      "volume": "1137278"
+    },
+    {
+      "trade_date": "2026-03-27",
+      "close": "41.79",
+      "volume": "1690181"
+    },
+    {
+      "trade_date": "2026-03-25",
+      "close": "39.98",
+      "volume": "1783807"
+    },
+    {
+      "trade_date": "2026-03-24",
+      "close": "39.33",
+      "volume": "1090213"
+    },
+    {
+      "trade_date": "2026-03-23",
+      "close": "41.39",
+      "volume": "651429"
+    },
+    {
+      "trade_date": "2026-03-20",
+      "close": "41.99",
+      "volume": "855336"
+    },
+    {
+      "trade_date": "2026-03-19",
+      "close": "41.98",
+      "volume": "481902"
+    },
+    {
+      "trade_date": "2026-03-18",
+      "close": "40.09",
+      "volume": "1553469"
+    },
+    {
+      "trade_date": "2026-03-17",
+      "close": "41.94",
+      "volume": "638031"
+    },
+    {
+      "trade_date": "2026-03-16",
+      "close": "41.06",
+      "volume": "48360"
+    },
+    {
+      "trade_date": "2026-03-13",
+      "close": "42.06",
+      "volume": "1927515"
+    },
+    {
+      "trade_date": "2026-03-12",
+      "close": "40.48",
+      "volume": "181779"
+    },
+    {
+      "trade_date": "2026-03-11",
+      "close": "40.72",
+      "volume": "10149"
+    },
+    {
+      "trade_date": "2026-03-10",
+      "close": "42.86",
+      "volume": "115184"
+    },
+    {
+      "trade_date": "2026-03-09",
+      "close": "45.00",
+      "volume": "7319"
+    },
+    {
+      "trade_date": "2026-03-06",
+      "close": "45.49",
+      "volume": "25"
+    },
+    {
+      "trade_date": "2026-03-04",
+      "close": "44.45",
+      "volume": "815"
+    },
+    {
+      "trade_date": "2026-03-02",
+      "close": "42.90",
+      "volume": "953"
+    },
+    {
+      "trade_date": "2026-02-27",
+      "close": "45.00",
+      "volume": "1040"
+    },
+    {
+      "trade_date": "2026-02-26",
+      "close": "45.39",
+      "volume": "330"
+    },
+    {
+      "trade_date": "2026-02-25",
+      "close": "43.45",
+      "volume": "1674"
+    },
+    {
+      "trade_date": "2026-02-24",
+      "close": "41.45",
+      "volume": "32"
+    },
+    {
+      "trade_date": "2026-02-23",
+      "close": "39.50",
+      "volume": "486"
+    },
+    {
+      "trade_date": "2026-02-20",
+      "close": "37.69",
+      "volume": "34"
+    },
+    {
+      "trade_date": "2026-02-19",
+      "close": "39.00",
+      "volume": "6"
+    },
+    {
+      "trade_date": "2026-02-18",
+      "close": "40.65",
+      "volume": "94"
+    },
+    {
+      "trade_date": "2026-02-17",
+      "close": "42.78",
+      "volume": "2035"
+    },
+    {
+      "trade_date": "2026-02-16",
+      "close": "44.96",
+      "volume": "2402"
+    },
+    {
+      "trade_date": "2026-02-13",
+      "close": "42.99",
+      "volume": "94"
+    },
+    {
+      "trade_date": "2026-02-12",
+      "close": "43.99",
+      "volume": "168"
+    },
+    {
+      "trade_date": "2026-02-11",
+      "close": "43.50",
+      "volume": "8688"
+    },
+    {
+      "trade_date": "2026-02-10",
+      "close": "41.43",
+      "volume": "23"
+    },
+    {
+      "trade_date": "2026-02-09",
+      "close": "43.61",
+      "volume": "137"
+    },
+    {
+      "trade_date": "2026-02-05",
+      "close": "45.90",
+      "volume": "11"
+    },
+    {
+      "trade_date": "2026-02-04",
+      "close": "45.15",
+      "volume": "2011"
+    },
+    {
+      "trade_date": "2026-02-03",
+      "close": "43.00",
+      "volume": "101"
+    },
+    {
+      "trade_date": "2026-02-02",
+      "close": "45.25",
+      "volume": "10801"
+    },
+    {
+      "trade_date": "2026-01-30",
+      "close": "43.12",
+      "volume": "5"
+    },
+    {
+      "trade_date": "2026-01-29",
+      "close": "43.12",
+      "volume": "3000"
+    },
+    {
+      "trade_date": "2026-01-28",
+      "close": "41.07",
+      "volume": "325"
+    },
+    {
+      "trade_date": "2026-01-27",
+      "close": "41.37",
+      "volume": "1500"
+    },
+    {
+      "trade_date": "2026-01-23",
+      "close": "39.40",
+      "volume": "23001"
+    },
+    {
+      "trade_date": "2026-01-22",
+      "close": "51.45",
+      "volume": "5646"
+    },
+    {
+      "trade_date": "2026-01-21",
+      "close": "54.15",
+      "volume": "3336"
+    },
+    {
+      "trade_date": "2026-01-20",
+      "close": "57.00",
+      "volume": "3515"
+    },
+    {
+      "trade_date": "2026-01-19",
+      "close": "60.00",
+      "volume": "375"
+    },
+    {
+      "trade_date": "2026-01-16",
+      "close": "58.08",
+      "volume": "2138"
+    },
+    {
+      "trade_date": "2026-01-14",
+      "close": "60.90",
+      "volume": "50"
+    },
+    {
+      "trade_date": "2026-01-13",
+      "close": "60.20",
+      "volume": "100"
+    },
+    {
+      "trade_date": "2026-01-12",
+      "close": "60.50",
+      "volume": "564"
+    },
+    {
+      "trade_date": "2026-01-08",
+      "close": "58.72",
+      "volume": "2000"
+    },
+    {
+      "trade_date": "2026-01-07",
+      "close": "55.94",
+      "volume": "155"
+    },
+    {
+      "trade_date": "2026-01-06",
+      "close": "56.05",
+      "volume": "5"
+    },
+    {
+      "trade_date": "2026-01-05",
+      "close": "59.00",
+      "volume": "50"
+    },
+    {
+      "trade_date": "2026-01-01",
+      "close": "60.87",
+      "volume": "10"
+    },
+    {
+      "trade_date": "2025-12-31",
+      "close": "60.83",
+      "volume": "110"
+    },
+    {
+      "trade_date": "2025-12-30",
+      "close": "60.76",
+      "volume": "377"
+    },
+    {
+      "trade_date": "2025-12-29",
+      "close": "59.90",
+      "volume": "300"
+    },
+    {
+      "trade_date": "2025-12-26",
+      "close": "59.00",
+      "volume": "230"
+    },
+    {
+      "trade_date": "2025-12-24",
+      "close": "59.00",
+      "volume": "1940"
+    },
+    {
+      "trade_date": "2025-12-23",
+      "close": "59.98",
+      "volume": "2795"
+    },
+    {
+      "trade_date": "2025-12-22",
+      "close": "60.92",
+      "volume": "1523"
+    },
+    {
+      "trade_date": "2025-12-19",
+      "close": "59.65",
+      "volume": "3843"
+    },
+    {
+      "trade_date": "2025-12-18",
+      "close": "56.81",
+      "volume": "10645"
+    },
+    {
+      "trade_date": "2025-12-17",
+      "close": "54.11",
+      "volume": "7159"
+    },
+    {
+      "trade_date": "2025-12-16",
+      "close": "51.59",
+      "volume": "4803"
+    },
+    {
+      "trade_date": "2025-12-15",
+      "close": "50.62",
+      "volume": "13839"
+    },
+    {
+      "trade_date": "2025-12-12",
+      "close": "48.99",
+      "volume": "5409"
+    },
+    {
+      "trade_date": "2025-12-11",
+      "close": "47.00",
+      "volume": "229"
+    },
+    {
+      "trade_date": "2025-12-10",
+      "close": "45.01",
+      "volume": "3109"
+    },
+    {
+      "trade_date": "2025-12-09",
+      "close": "46.90",
+      "volume": "2359"
+    },
+    {
+      "trade_date": "2025-12-08",
+      "close": "45.01",
+      "volume": "595"
+    },
+    {
+      "trade_date": "2025-12-05",
+      "close": "47.37",
+      "volume": "127"
+    },
+    {
+      "trade_date": "2025-12-04",
+      "close": "45.96",
+      "volume": "65"
+    },
+    {
+      "trade_date": "2025-12-03",
+      "close": "48.32",
+      "volume": "101"
+    },
+    {
+      "trade_date": "2025-12-02",
+      "close": "48.76",
+      "volume": "1"
+    },
+    {
+      "trade_date": "2025-12-01",
+      "close": "51.32",
+      "volume": "16"
+    },
+    {
+      "trade_date": "2025-11-28",
+      "close": "51.40",
+      "volume": "320"
+    },
+    {
+      "trade_date": "2025-11-27",
+      "close": "52.00",
+      "volume": "3"
+    },
+    {
+      "trade_date": "2025-11-26",
+      "close": "50.90",
+      "volume": "303"
+    },
+    {
+      "trade_date": "2025-11-24",
+      "close": "48.51",
+      "volume": "33"
+    },
+    {
+      "trade_date": "2025-11-21",
+      "close": "48.51",
+      "volume": "140"
+    },
+    {
+      "trade_date": "2025-11-20",
+      "close": "46.20",
+      "volume": "3064"
+    },
+    {
+      "trade_date": "2025-11-19",
+      "close": "44.01",
+      "volume": "2381"
+    },
+    {
+      "trade_date": "2025-11-18",
+      "close": "45.77",
+      "volume": "1190"
+    },
+    {
+      "trade_date": "2025-11-17",
+      "close": "46.01",
+      "volume": "551"
+    },
+    {
+      "trade_date": "2025-11-14",
+      "close": "48.25",
+      "volume": "440"
+    },
+    {
+      "trade_date": "2025-11-13",
+      "close": "45.98",
+      "volume": "917"
+    },
+    {
+      "trade_date": "2025-11-12",
+      "close": "48.40",
+      "volume": "63"
+    },
+    {
+      "trade_date": "2025-11-11",
+      "close": "48.66",
+      "volume": "3208"
+    },
+    {
+      "trade_date": "2025-11-10",
+      "close": "47.75",
+      "volume": "311"
+    },
+    {
+      "trade_date": "2025-11-07",
+      "close": "49.00",
+      "volume": "310"
+    },
+    {
+      "trade_date": "2025-11-06",
+      "close": "49.32",
+      "volume": "81"
+    },
+    {
+      "trade_date": "2025-11-04",
+      "close": "49.56",
+      "volume": "1"
+    },
+    {
+      "trade_date": "2025-11-03",
+      "close": "47.20",
+      "volume": "194"
+    },
+    {
+      "trade_date": "2025-10-31",
+      "close": "47.50",
+      "volume": "34"
+    },
+    {
+      "trade_date": "2025-10-29",
+      "close": "49.65",
+      "volume": "29"
+    },
+    {
+      "trade_date": "2025-10-28",
+      "close": "48.30",
+      "volume": "243"
+    },
+    {
+      "trade_date": "2025-10-27",
+      "close": "49.99",
+      "volume": "2113"
+    },
+    {
+      "trade_date": "2025-10-24",
+      "close": "50.83",
+      "volume": "16"
+    },
+    {
+      "trade_date": "2025-10-23",
+      "close": "53.50",
+      "volume": "129"
+    },
+    {
+      "trade_date": "2025-10-21",
+      "close": "51.80",
+      "volume": "212"
+    },
+    {
+      "trade_date": "2025-10-20",
+      "close": "49.40",
+      "volume": "2"
+    },
+    {
+      "trade_date": "2025-10-17",
+      "close": "49.40",
+      "volume": "13"
+    },
+    {
+      "trade_date": "2025-10-15",
+      "close": "52.00",
+      "volume": "18"
+    },
+    {
+      "trade_date": "2025-10-14",
+      "close": "52.00",
+      "volume": "410"
+    },
+    {
+      "trade_date": "2025-10-10",
+      "close": "53.44",
+      "volume": "2"
+    },
+    {
+      "trade_date": "2025-10-09",
+      "close": "53.70",
+      "volume": "10"
+    },
+    {
+      "trade_date": "2025-10-08",
+      "close": "51.60",
+      "volume": "181"
+    },
+    {
+      "trade_date": "2025-10-07",
+      "close": "49.95",
+      "volume": "554"
+    },
+    {
+      "trade_date": "2025-10-06",
+      "close": "49.41",
+      "volume": "174"
+    },
+    {
+      "trade_date": "2025-10-03",
+      "close": "52.00",
+      "volume": "1874"
+    },
+    {
+      "trade_date": "2025-10-01",
+      "close": "50.83",
+      "volume": "3309"
+    },
+    {
+      "trade_date": "2025-09-30",
+      "close": "53.50",
+      "volume": "7"
+    },
+    {
+      "trade_date": "2025-09-29",
+      "close": "51.00",
+      "volume": "13"
+    },
+    {
+      "trade_date": "2025-09-26",
+      "close": "52.00",
+      "volume": "13"
+    },
+    {
+      "trade_date": "2025-09-25",
+      "close": "53.00",
+      "volume": "2"
+    },
+    {
+      "trade_date": "2025-09-24",
+      "close": "51.30",
+      "volume": "118"
+    },
+    {
+      "trade_date": "2025-09-22",
+      "close": "54.00",
+      "volume": "1465"
+    },
+    {
+      "trade_date": "2025-09-19",
+      "close": "54.49",
+      "volume": "6"
+    },
+    {
+      "trade_date": "2025-09-18",
+      "close": "51.90",
+      "volume": "33"
+    },
+    {
+      "trade_date": "2025-09-17",
+      "close": "52.25",
+      "volume": "601"
+    },
+    {
+      "trade_date": "2025-09-16",
+      "close": "49.90",
+      "volume": "2"
+    },
+    {
+      "trade_date": "2025-09-15",
+      "close": "49.90",
+      "volume": "10"
+    },
+    {
+      "trade_date": "2025-09-12",
+      "close": "47.90",
+      "volume": "857"
+    },
+    {
+      "trade_date": "2025-09-11",
+      "close": "49.25",
+      "volume": "1844"
+    },
+    {
+      "trade_date": "2025-09-10",
+      "close": "47.21",
+      "volume": "1063"
+    },
+    {
+      "trade_date": "2025-09-09",
+      "close": "49.69",
+      "volume": "20"
+    },
+    {
+      "trade_date": "2025-09-08",
+      "close": "52.30",
+      "volume": "1001"
+    },
+    {
+      "trade_date": "2025-09-05",
+      "close": "53.00",
+      "volume": "12"
+    },
+    {
+      "trade_date": "2025-09-04",
+      "close": "53.45",
+      "volume": "1"
+    },
+    {
+      "trade_date": "2025-09-02",
+      "close": "54.00",
+      "volume": "2"
+    },
+    {
+      "trade_date": "2025-09-01",
+      "close": "56.50",
+      "volume": "1"
+    },
+    {
+      "trade_date": "2025-08-29",
+      "close": "54.00",
+      "volume": "50"
+    },
+    {
+      "trade_date": "2025-08-22",
+      "close": "53.00",
+      "volume": "162"
+    },
+    {
+      "trade_date": "2025-08-21",
+      "close": "50.88",
+      "volume": "80"
+    },
+    {
+      "trade_date": "2025-08-20",
+      "close": "48.55",
+      "volume": "2017"
+    },
+    {
+      "trade_date": "2025-08-19",
+      "close": "50.77",
+      "volume": "29"
+    },
+    {
+      "trade_date": "2025-08-18",
+      "close": "51.85",
+      "volume": "11306"
+    },
+    {
+      "trade_date": "2025-08-12",
+      "close": "54.00",
+      "volume": "2076"
+    },
+    {
+      "trade_date": "2025-08-11",
+      "close": "52.99",
+      "volume": "1"
+    },
+    {
+      "trade_date": "2025-08-08",
+      "close": "53.40",
+      "volume": "11"
+    },
+    {
+      "trade_date": "2025-08-06",
+      "close": "52.39",
+      "volume": "1028"
+    },
+    {
+      "trade_date": "2025-08-05",
+      "close": "50.13",
+      "volume": "10"
+    },
+    {
+      "trade_date": "2025-08-04",
+      "close": "50.13",
+      "volume": "51"
+    },
+    {
+      "trade_date": "2025-08-01",
+      "close": "52.76",
+      "volume": "16"
+    },
+    {
+      "trade_date": "2025-07-31",
+      "close": "55.53",
+      "volume": "1015"
+    },
+    {
+      "trade_date": "2025-07-30",
+      "close": "56.99",
+      "volume": "21"
+    },
+    {
+      "trade_date": "2025-07-29",
+      "close": "56.99",
+      "volume": "2"
+    },
+    {
+      "trade_date": "2025-07-28",
+      "close": "54.50",
+      "volume": "121"
+    },
+    {
+      "trade_date": "2025-07-24",
+      "close": "52.20",
+      "volume": "252"
+    },
+    {
+      "trade_date": "2025-07-23",
+      "close": "52.20",
+      "volume": "1511"
+    },
+    {
+      "trade_date": "2025-07-22",
+      "close": "50.00",
+      "volume": "92"
+    },
+    {
+      "trade_date": "2025-07-21",
+      "close": "51.00",
+      "volume": "490"
+    },
+    {
+      "trade_date": "2025-07-18",
+      "close": "50.37",
+      "volume": "601"
+    },
+    {
+      "trade_date": "2025-07-17",
+      "close": "51.00",
+      "volume": "1593"
+    },
+    {
+      "trade_date": "2025-07-15",
+      "close": "49.40",
+      "volume": "1"
+    },
+    {
+      "trade_date": "2025-07-14",
+      "close": "52.00",
+      "volume": "1"
+    }
+  ],
+  "adjusted_prices": [
+    {
+      "trade_date": "2026-10-27",
+      "close": "101.96"
+    },
+    {
+      "trade_date": "2026-10-26",
+      "close": "102.09"
+    },
+    {
+      "trade_date": "2026-10-23",
+      "close": "100.94"
+    },
+    {
+      "trade_date": "2026-10-22",
+      "close": "97.90"
+    },
+    {
+      "trade_date": "2026-10-21",
+      "close": "99.50"
+    },
+    {
+      "trade_date": "2026-10-19",
+      "close": "98.49"
+    },
+    {
+      "trade_date": "2026-10-16",
+      "close": "98.00"
+    },
+    {
+      "trade_date": "2026-10-15",
+      "close": "98.01"
+    },
+    {
+      "trade_date": "2026-10-14",
+      "close": "95.53"
+    },
+    {
+      "trade_date": "2026-10-13",
+      "close": "90.99"
+    },
+    {
+      "trade_date": "2026-10-12",
+      "close": "90.23"
+    },
+    {
+      "trade_date": "2026-10-09",
+      "close": "88.22"
+    },
+    {
+      "trade_date": "2026-10-08",
+      "close": "88.01"
+    },
+    {
+      "trade_date": "2026-10-07",
+      "close": "90.46"
+    },
+    {
+      "trade_date": "2026-10-06",
+      "close": "92.00"
+    },
+    {
+      "trade_date": "2026-10-05",
+      "close": "90.00"
+    },
+    {
+      "trade_date": "2026-10-01",
+      "close": "88.17"
+    },
+    {
+      "trade_date": "2026-09-30",
+      "close": "92.45"
+    },
+    {
+      "trade_date": "2026-09-29",
+      "close": "92.40"
+    },
+    {
+      "trade_date": "2026-09-28",
+      "close": "93.80"
+    },
+    {
+      "trade_date": "2026-09-25",
+      "close": "96.80"
+    },
+    {
+      "trade_date": "2026-09-24",
+      "close": "97.00"
+    },
+    {
+      "trade_date": "2026-09-23",
+      "close": "94.98"
+    },
+    {
+      "trade_date": "2026-09-22",
+      "close": "93.92"
+    },
+    {
+      "trade_date": "2026-09-21",
+      "close": "97.50"
+    },
+    {
+      "trade_date": "2026-09-18",
+      "close": "98.00"
+    },
+    {
+      "trade_date": "2026-09-17",
+      "close": "98.49"
+    },
+    {
+      "trade_date": "2026-09-16",
+      "close": "97.49"
+    },
+    {
+      "trade_date": "2026-09-15",
+      "close": "97.20"
+    },
+    {
+      "trade_date": "2026-09-11",
+      "close": "94.90"
+    },
+    {
+      "trade_date": "2026-09-10",
+      "close": "97.00"
+    },
+    {
+      "trade_date": "2026-09-09",
+      "close": "94.70"
+    },
+    {
+      "trade_date": "2026-09-08",
+      "close": "96.99"
+    },
+    {
+      "trade_date": "2026-09-07",
+      "close": "93.45"
+    },
+    {
+      "trade_date": "2026-09-04",
+      "close": "97.00"
+    },
+    {
+      "trade_date": "2026-09-03",
+      "close": "97.12"
+    },
+    {
+      "trade_date": "2026-09-02",
+      "close": "96.84"
+    },
+    {
+      "trade_date": "2026-09-01",
+      "close": "96.89"
+    },
+    {
+      "trade_date": "2026-08-31",
+      "close": "91.77"
+    },
+    {
+      "trade_date": "2026-08-28",
+      "close": "87.32"
+    },
+    {
+      "trade_date": "2026-08-27",
+      "close": "72.77"
+    },
+    {
+      "trade_date": "2026-08-26",
+      "close": "70.15"
+    },
+    {
+      "trade_date": "2026-08-25",
+      "close": "67.00"
+    },
+    {
+      "trade_date": "2026-08-24",
+      "close": "70.00"
+    },
+    {
+      "trade_date": "2026-08-21",
+      "close": "71.00"
+    },
+    {
+      "trade_date": "2026-08-20",
+      "close": "70.22"
+    },
+    {
+      "trade_date": "2026-08-19",
+      "close": "70.29"
+    },
+    {
+      "trade_date": "2026-08-18",
+      "close": "65.02"
+    },
+    {
+      "trade_date": "2026-08-17",
+      "close": "65.99"
+    },
+    {
+      "trade_date": "2026-08-14",
+      "close": "62.00"
+    },
+    {
+      "trade_date": "2026-08-13",
+      "close": "63.40"
+    },
+    {
+      "trade_date": "2026-08-12",
+      "close": "63.97"
+    },
+    {
+      "trade_date": "2026-08-11",
+      "close": "62.08"
+    },
+    {
+      "trade_date": "2026-08-10",
+      "close": "64.25"
+    },
+    {
+      "trade_date": "2026-08-07",
+      "close": "66.82"
+    },
+    {
+      "trade_date": "2026-08-06",
+      "close": "65.48"
+    },
+    {
+      "trade_date": "2026-08-05",
+      "close": "67.62"
+    },
+    {
+      "trade_date": "2026-08-04",
+      "close": "65.00"
+    },
+    {
+      "trade_date": "2026-08-03",
+      "close": "65.61"
+    },
+    {
+      "trade_date": "2026-07-31",
+      "close": "66.94"
+    },
+    {
+      "trade_date": "2026-07-30",
+      "close": "65.23"
+    },
+    {
+      "trade_date": "2026-07-29",
+      "close": "68.53"
+    },
+    {
+      "trade_date": "2026-07-28",
+      "close": "66.25"
+    },
+    {
+      "trade_date": "2026-07-27",
+      "close": "65.93"
+    },
+    {
+      "trade_date": "2026-07-24",
+      "close": "68.18"
+    },
+    {
+      "trade_date": "2026-07-23",
+      "close": "65.79"
+    },
+    {
+      "trade_date": "2026-07-22",
+      "close": "65.98"
+    },
+    {
+      "trade_date": "2026-07-21",
+      "close": "69.45"
+    },
+    {
+      "trade_date": "2026-07-20",
+      "close": "69.10"
+    },
+    {
+      "trade_date": "2026-07-17",
+      "close": "69.90"
+    },
+    {
+      "trade_date": "2026-07-16",
+      "close": "69.49"
+    },
+    {
+      "trade_date": "2026-07-15",
+      "close": "67.98"
+    },
+    {
+      "trade_date": "2026-07-14",
+      "close": "67.81"
+    },
+    {
+      "trade_date": "2026-07-13",
+      "close": "67.50"
+    },
+    {
+      "trade_date": "2026-07-10",
+      "close": "66.47"
+    },
+    {
+      "trade_date": "2026-07-09",
+      "close": "68.38"
+    },
+    {
+      "trade_date": "2026-07-08",
+      "close": "66.78"
+    },
+    {
+      "trade_date": "2026-07-07",
+      "close": "66.69"
+    },
+    {
+      "trade_date": "2026-07-06",
+      "close": "65.75"
+    },
+    {
+      "trade_date": "2026-07-03",
+      "close": "67.68"
+    },
+    {
+      "trade_date": "2026-07-02",
+      "close": "65.37"
+    },
+    {
+      "trade_date": "2026-07-01",
+      "close": "64.00"
+    },
+    {
+      "trade_date": "2026-06-30",
+      "close": "62.90"
+    },
+    {
+      "trade_date": "2026-06-29",
+      "close": "64.57"
+    },
+    {
+      "trade_date": "2026-06-25",
+      "close": "63.47"
+    },
+    {
+      "trade_date": "2026-06-24",
+      "close": "60.99"
+    },
+    {
+      "trade_date": "2026-06-23",
+      "close": "61.40"
+    },
+    {
+      "trade_date": "2026-06-22",
+      "close": "61.90"
+    },
+    {
+      "trade_date": "2026-06-19",
+      "close": "62.68"
+    },
+    {
+      "trade_date": "2026-06-18",
+      "close": "61.76"
+    },
+    {
+      "trade_date": "2026-06-17",
+      "close": "60.06"
+    },
+    {
+      "trade_date": "2026-06-16",
+      "close": "63.79"
+    },
+    {
+      "trade_date": "2026-06-15",
+      "close": "62.29"
+    },
+    {
+      "trade_date": "2026-06-12",
+      "close": "64.93"
+    },
+    {
+      "trade_date": "2026-06-11",
+      "close": "65.50"
+    },
+    {
+      "trade_date": "2026-06-10",
+      "close": "66.00"
+    },
+    {
+      "trade_date": "2026-06-09",
+      "close": "66.40"
+    },
+    {
+      "trade_date": "2026-06-08",
+      "close": "64.20"
+    },
+    {
+      "trade_date": "2026-06-05",
+      "close": "65.00"
+    },
+    {
+      "trade_date": "2026-06-04",
+      "close": "62.67"
+    },
+    {
+      "trade_date": "2026-06-03",
+      "close": "60.99"
+    },
+    {
+      "trade_date": "2026-06-02",
+      "close": "60.45"
+    },
+    {
+      "trade_date": "2026-06-01",
+      "close": "61.87"
+    },
+    {
+      "trade_date": "2026-05-29",
+      "close": "58.94"
+    },
+    {
+      "trade_date": "2026-05-27",
+      "close": "59.72"
+    },
+    {
+      "trade_date": "2026-05-26",
+      "close": "60.78"
+    },
+    {
+      "trade_date": "2026-05-25",
+      "close": "59.00"
+    },
+    {
+      "trade_date": "2026-05-22",
+      "close": "58.51"
+    },
+    {
+      "trade_date": "2026-05-21",
+      "close": "59.50"
+    },
+    {
+      "trade_date": "2026-05-20",
+      "close": "59.85"
+    },
+    {
+      "trade_date": "2026-05-19",
+      "close": "57.00"
+    },
+    {
+      "trade_date": "2026-05-18",
+      "close": "55.50"
+    },
+    {
+      "trade_date": "2026-05-15",
+      "close": "56.75"
+    },
+    {
+      "trade_date": "2026-05-14",
+      "close": "56.63"
+    },
+    {
+      "trade_date": "2026-05-13",
+      "close": "56.25"
+    },
+    {
+      "trade_date": "2026-05-12",
+      "close": "55.95"
+    },
+    {
+      "trade_date": "2026-05-11",
+      "close": "57.92"
+    },
+    {
+      "trade_date": "2026-05-08",
+      "close": "56.09"
+    },
+    {
+      "trade_date": "2026-05-07",
+      "close": "53.42"
+    },
+    {
+      "trade_date": "2026-05-06",
+      "close": "53.15"
+    },
+    {
+      "trade_date": "2026-05-05",
+      "close": "50.99"
+    },
+    {
+      "trade_date": "2026-05-04",
+      "close": "51.00"
+    },
+    {
+      "trade_date": "2026-04-30",
+      "close": "50.02"
+    },
+    {
+      "trade_date": "2026-04-29",
+      "close": "52.00"
+    },
+    {
+      "trade_date": "2026-04-28",
+      "close": "49.99"
+    },
+    {
+      "trade_date": "2026-04-27",
+      "close": "51.07"
+    },
+    {
+      "trade_date": "2026-04-24",
+      "close": "49.98"
+    },
+    {
+      "trade_date": "2026-04-23",
+      "close": "49.34"
+    },
+    {
+      "trade_date": "2026-04-22",
+      "close": "49.98"
+    },
+    {
+      "trade_date": "2026-04-21",
+      "close": "50.48"
+    },
+    {
+      "trade_date": "2026-04-20",
+      "close": "51.75"
+    },
+    {
+      "trade_date": "2026-04-17",
+      "close": "52.75"
+    },
+    {
+      "trade_date": "2026-04-16",
+      "close": "50.24"
+    },
+    {
+      "trade_date": "2026-04-15",
+      "close": "48.38"
+    },
+    {
+      "trade_date": "2026-04-13",
+      "close": "48.64"
+    },
+    {
+      "trade_date": "2026-04-10",
+      "close": "48.99"
+    },
+    {
+      "trade_date": "2026-04-09",
+      "close": "48.25"
+    },
+    {
+      "trade_date": "2026-04-08",
+      "close": "49.30"
+    },
+    {
+      "trade_date": "2026-04-07",
+      "close": "49.67"
+    },
+    {
+      "trade_date": "2026-04-06",
+      "close": "48.04"
+    },
+    {
+      "trade_date": "2026-04-02",
+      "close": "47.15"
+    },
+    {
+      "trade_date": "2026-04-01",
+      "close": "45.06"
+    },
+    {
+      "trade_date": "2026-03-30",
+      "close": "42.92"
+    },
+    {
+      "trade_date": "2026-03-27",
+      "close": "41.79"
+    },
+    {
+      "trade_date": "2026-03-25",
+      "close": "39.98"
+    },
+    {
+      "trade_date": "2026-03-24",
+      "close": "39.33"
+    },
+    {
+      "trade_date": "2026-03-23",
+      "close": "41.39"
+    },
+    {
+      "trade_date": "2026-03-20",
+      "close": "41.99"
+    },
+    {
+      "trade_date": "2026-03-19",
+      "close": "41.98"
+    },
+    {
+      "trade_date": "2026-03-18",
+      "close": "40.09"
+    },
+    {
+      "trade_date": "2026-03-17",
+      "close": "41.94"
+    },
+    {
+      "trade_date": "2026-03-16",
+      "close": "41.06"
+    },
+    {
+      "trade_date": "2026-03-13",
+      "close": "42.06"
+    },
+    {
+      "trade_date": "2026-03-12",
+      "close": "40.48"
+    },
+    {
+      "trade_date": "2026-03-11",
+      "close": "40.72"
+    },
+    {
+      "trade_date": "2026-03-10",
+      "close": "42.86"
+    },
+    {
+      "trade_date": "2026-03-09",
+      "close": "45.00"
+    },
+    {
+      "trade_date": "2026-03-06",
+      "close": "45.49"
+    },
+    {
+      "trade_date": "2026-03-04",
+      "close": "44.45"
+    },
+    {
+      "trade_date": "2026-03-02",
+      "close": "42.90"
+    },
+    {
+      "trade_date": "2026-02-27",
+      "close": "45.00"
+    },
+    {
+      "trade_date": "2026-02-26",
+      "close": "45.39"
+    },
+    {
+      "trade_date": "2026-02-25",
+      "close": "43.45"
+    },
+    {
+      "trade_date": "2026-02-24",
+      "close": "41.45"
+    },
+    {
+      "trade_date": "2026-02-23",
+      "close": "39.50"
+    },
+    {
+      "trade_date": "2026-02-20",
+      "close": "37.69"
+    },
+    {
+      "trade_date": "2026-02-19",
+      "close": "39.00"
+    },
+    {
+      "trade_date": "2026-02-18",
+      "close": "40.65"
+    },
+    {
+      "trade_date": "2026-02-17",
+      "close": "42.78"
+    },
+    {
+      "trade_date": "2026-02-16",
+      "close": "44.96"
+    },
+    {
+      "trade_date": "2026-02-13",
+      "close": "42.99"
+    },
+    {
+      "trade_date": "2026-02-12",
+      "close": "43.99"
+    },
+    {
+      "trade_date": "2026-02-11",
+      "close": "43.50"
+    },
+    {
+      "trade_date": "2026-02-10",
+      "close": "41.43"
+    },
+    {
+      "trade_date": "2026-02-09",
+      "close": "43.61"
+    },
+    {
+      "trade_date": "2026-02-05",
+      "close": "45.90"
+    },
+    {
+      "trade_date": "2026-02-04",
+      "close": "45.15"
+    },
+    {
+      "trade_date": "2026-02-03",
+      "close": "43.00"
+    },
+    {
+      "trade_date": "2026-02-02",
+      "close": "45.25"
+    },
+    {
+      "trade_date": "2026-01-30",
+      "close": "43.12"
+    },
+    {
+      "trade_date": "2026-01-29",
+      "close": "43.12"
+    },
+    {
+      "trade_date": "2026-01-28",
+      "close": "41.07"
+    },
+    {
+      "trade_date": "2026-01-27",
+      "close": "41.37"
+    },
+    {
+      "trade_date": "2026-01-23",
+      "close": "39.40"
+    },
+    {
+      "trade_date": "2026-01-22",
+      "close": "51.45"
+    },
+    {
+      "trade_date": "2026-01-21",
+      "close": "54.15"
+    },
+    {
+      "trade_date": "2026-01-20",
+      "close": "57.00"
+    },
+    {
+      "trade_date": "2026-01-19",
+      "close": "60.00"
+    },
+    {
+      "trade_date": "2026-01-16",
+      "close": "58.08"
+    },
+    {
+      "trade_date": "2026-01-14",
+      "close": "60.90"
+    },
+    {
+      "trade_date": "2026-01-13",
+      "close": "60.20"
+    },
+    {
+      "trade_date": "2026-01-12",
+      "close": "60.50"
+    },
+    {
+      "trade_date": "2026-01-08",
+      "close": "58.72"
+    },
+    {
+      "trade_date": "2026-01-07",
+      "close": "55.94"
+    },
+    {
+      "trade_date": "2026-01-06",
+      "close": "56.05"
+    },
+    {
+      "trade_date": "2026-01-05",
+      "close": "59.00"
+    },
+    {
+      "trade_date": "2026-01-01",
+      "close": "60.87"
+    },
+    {
+      "trade_date": "2025-12-31",
+      "close": "60.83"
+    },
+    {
+      "trade_date": "2025-12-30",
+      "close": "60.76"
+    },
+    {
+      "trade_date": "2025-12-29",
+      "close": "59.90"
+    },
+    {
+      "trade_date": "2025-12-26",
+      "close": "59.00"
+    },
+    {
+      "trade_date": "2025-12-24",
+      "close": "59.00"
+    },
+    {
+      "trade_date": "2025-12-23",
+      "close": "59.98"
+    },
+    {
+      "trade_date": "2025-12-22",
+      "close": "60.92"
+    },
+    {
+      "trade_date": "2025-12-19",
+      "close": "59.65"
+    },
+    {
+      "trade_date": "2025-12-18",
+      "close": "56.81"
+    },
+    {
+      "trade_date": "2025-12-17",
+      "close": "54.11"
+    },
+    {
+      "trade_date": "2025-12-16",
+      "close": "51.59"
+    },
+    {
+      "trade_date": "2025-12-15",
+      "close": "50.62"
+    },
+    {
+      "trade_date": "2025-12-12",
+      "close": "48.99"
+    },
+    {
+      "trade_date": "2025-12-11",
+      "close": "47.00"
+    },
+    {
+      "trade_date": "2025-12-10",
+      "close": "45.01"
+    },
+    {
+      "trade_date": "2025-12-09",
+      "close": "46.90"
+    },
+    {
+      "trade_date": "2025-12-08",
+      "close": "45.01"
+    },
+    {
+      "trade_date": "2025-12-05",
+      "close": "47.37"
+    },
+    {
+      "trade_date": "2025-12-04",
+      "close": "45.96"
+    },
+    {
+      "trade_date": "2025-12-03",
+      "close": "48.32"
+    },
+    {
+      "trade_date": "2025-12-02",
+      "close": "48.76"
+    },
+    {
+      "trade_date": "2025-12-01",
+      "close": "51.32"
+    },
+    {
+      "trade_date": "2025-11-28",
+      "close": "51.40"
+    },
+    {
+      "trade_date": "2025-11-27",
+      "close": "52.00"
+    },
+    {
+      "trade_date": "2025-11-26",
+      "close": "50.90"
+    },
+    {
+      "trade_date": "2025-11-24",
+      "close": "48.51"
+    },
+    {
+      "trade_date": "2025-11-21",
+      "close": "48.51"
+    },
+    {
+      "trade_date": "2025-11-20",
+      "close": "46.20"
+    },
+    {
+      "trade_date": "2025-11-19",
+      "close": "44.01"
+    },
+    {
+      "trade_date": "2025-11-18",
+      "close": "45.77"
+    },
+    {
+      "trade_date": "2025-11-17",
+      "close": "46.01"
+    },
+    {
+      "trade_date": "2025-11-14",
+      "close": "48.25"
+    },
+    {
+      "trade_date": "2025-11-13",
+      "close": "45.98"
+    },
+    {
+      "trade_date": "2025-11-12",
+      "close": "48.40"
+    },
+    {
+      "trade_date": "2025-11-11",
+      "close": "48.66"
+    },
+    {
+      "trade_date": "2025-11-10",
+      "close": "47.75"
+    },
+    {
+      "trade_date": "2025-11-07",
+      "close": "49.00"
+    },
+    {
+      "trade_date": "2025-11-06",
+      "close": "49.32"
+    },
+    {
+      "trade_date": "2025-11-04",
+      "close": "49.56"
+    },
+    {
+      "trade_date": "2025-11-03",
+      "close": "47.20"
+    },
+    {
+      "trade_date": "2025-10-31",
+      "close": "47.50"
+    },
+    {
+      "trade_date": "2025-10-29",
+      "close": "49.65"
+    },
+    {
+      "trade_date": "2025-10-28",
+      "close": "48.30"
+    },
+    {
+      "trade_date": "2025-10-27",
+      "close": "49.99"
+    },
+    {
+      "trade_date": "2025-10-24",
+      "close": "50.83"
+    },
+    {
+      "trade_date": "2025-10-23",
+      "close": "53.50"
+    },
+    {
+      "trade_date": "2025-10-21",
+      "close": "51.80"
+    },
+    {
+      "trade_date": "2025-10-20",
+      "close": "49.40"
+    },
+    {
+      "trade_date": "2025-10-17",
+      "close": "49.40"
+    },
+    {
+      "trade_date": "2025-10-15",
+      "close": "52.00"
+    },
+    {
+      "trade_date": "2025-10-14",
+      "close": "52.00"
+    },
+    {
+      "trade_date": "2025-10-10",
+      "close": "53.44"
+    },
+    {
+      "trade_date": "2025-10-09",
+      "close": "53.70"
+    },
+    {
+      "trade_date": "2025-10-08",
+      "close": "51.60"
+    },
+    {
+      "trade_date": "2025-10-07",
+      "close": "49.95"
+    },
+    {
+      "trade_date": "2025-10-06",
+      "close": "49.41"
+    },
+    {
+      "trade_date": "2025-10-03",
+      "close": "52.00"
+    },
+    {
+      "trade_date": "2025-10-01",
+      "close": "50.83"
+    },
+    {
+      "trade_date": "2025-09-30",
+      "close": "53.50"
+    },
+    {
+      "trade_date": "2025-09-29",
+      "close": "51.00"
+    },
+    {
+      "trade_date": "2025-09-26",
+      "close": "52.00"
+    },
+    {
+      "trade_date": "2025-09-25",
+      "close": "53.00"
+    },
+    {
+      "trade_date": "2025-09-24",
+      "close": "51.30"
+    },
+    {
+      "trade_date": "2025-09-22",
+      "close": "54.00"
+    },
+    {
+      "trade_date": "2025-09-19",
+      "close": "54.49"
+    },
+    {
+      "trade_date": "2025-09-18",
+      "close": "51.90"
+    },
+    {
+      "trade_date": "2025-09-17",
+      "close": "52.25"
+    },
+    {
+      "trade_date": "2025-09-16",
+      "close": "49.90"
+    },
+    {
+      "trade_date": "2025-09-15",
+      "close": "49.90"
+    },
+    {
+      "trade_date": "2025-09-12",
+      "close": "47.90"
+    },
+    {
+      "trade_date": "2025-09-11",
+      "close": "49.25"
+    },
+    {
+      "trade_date": "2025-09-10",
+      "close": "47.21"
+    },
+    {
+      "trade_date": "2025-09-09",
+      "close": "49.69"
+    },
+    {
+      "trade_date": "2025-09-08",
+      "close": "52.30"
+    },
+    {
+      "trade_date": "2025-09-05",
+      "close": "53.00"
+    },
+    {
+      "trade_date": "2025-09-04",
+      "close": "53.45"
+    },
+    {
+      "trade_date": "2025-09-02",
+      "close": "54.00"
+    },
+    {
+      "trade_date": "2025-09-01",
+      "close": "56.50"
+    },
+    {
+      "trade_date": "2025-08-29",
+      "close": "54.00"
+    },
+    {
+      "trade_date": "2025-08-22",
+      "close": "53.00"
+    },
+    {
+      "trade_date": "2025-08-21",
+      "close": "50.88"
+    },
+    {
+      "trade_date": "2025-08-20",
+      "close": "48.55"
+    },
+    {
+      "trade_date": "2025-08-19",
+      "close": "50.77"
+    },
+    {
+      "trade_date": "2025-08-18",
+      "close": "51.85"
+    },
+    {
+      "trade_date": "2025-08-12",
+      "close": "54.00"
+    },
+    {
+      "trade_date": "2025-08-11",
+      "close": "52.99"
+    },
+    {
+      "trade_date": "2025-08-08",
+      "close": "53.40"
+    },
+    {
+      "trade_date": "2025-08-06",
+      "close": "52.39"
+    },
+    {
+      "trade_date": "2025-08-05",
+      "close": "50.13"
+    },
+    {
+      "trade_date": "2025-08-04",
+      "close": "50.13"
+    },
+    {
+      "trade_date": "2025-08-01",
+      "close": "52.76"
+    },
+    {
+      "trade_date": "2025-07-31",
+      "close": "55.53"
+    },
+    {
+      "trade_date": "2025-07-30",
+      "close": "56.99"
+    },
+    {
+      "trade_date": "2025-07-29",
+      "close": "56.99"
+    },
+    {
+      "trade_date": "2025-07-28",
+      "close": "54.50"
+    },
+    {
+      "trade_date": "2025-07-24",
+      "close": "52.20"
+    },
+    {
+      "trade_date": "2025-07-23",
+      "close": "52.20"
+    },
+    {
+      "trade_date": "2025-07-22",
+      "close": "50.00"
+    },
+    {
+      "trade_date": "2025-07-21",
+      "close": "51.00"
+    },
+    {
+      "trade_date": "2025-07-18",
+      "close": "50.37"
+    },
+    {
+      "trade_date": "2025-07-17",
+      "close": "51.00"
+    },
+    {
+      "trade_date": "2025-07-15",
+      "close": "49.40"
+    },
+    {
+      "trade_date": "2025-07-14",
+      "close": "52.00"
+    }
+  ],
+  "market": {
+    "date": "2026-10-27",
+    "close": 101.96,
+    "sma50": 89.779,
+    "sma200": 63.6188,
+    "from_high": -0.0012733862278382357,
+    "history_sessions": 300,
+    "raw_turnover_median_60_cr": 0.28541295
+  },
+  "facts": [
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "2000000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "3000000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "5200000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "200000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "500000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "600000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "depreciation",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "600000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "10.29",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "0.30",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "-2.05",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "1.35",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "-3.16",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "19.46",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "-0.82",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "eps_basic",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "0.44",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "200000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "400000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "900000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "0.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "100000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "100000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "100000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "finance_cost",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "100000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "2400000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "2500000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "1500000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "3900000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "1500000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "200000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "other_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "500000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "37100000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "27300000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "27300000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "37100000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "37100000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "27300000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "27300000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "paid_up_capital",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "27300000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "38100000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "800000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "-5600000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "5000000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "-11700000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "53200000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "-2200000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pat",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "-1200000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "41600000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "400000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "-7100000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "6800000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "-7100000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "53200000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "-3300000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "pbt",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "-1400000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "26200000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "35900000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "73200000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "35200000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "7500000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "9800000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "revenue",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "8900000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "3500000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "400000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "1500000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "1800000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "4700000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "1000000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "tax",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "200000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "28600000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2025-03-31",
+      "scope": "STANDALONE",
+      "value": "38400000.00",
+      "available_at": "2025-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "ANNUAL",
+      "period_end": "2024-03-31",
+      "scope": "STANDALONE",
+      "value": "74800000.00",
+      "available_at": "2024-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-06-30",
+      "scope": "STANDALONE",
+      "value": "39100000.00",
+      "available_at": "2026-08-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2026-03-31",
+      "scope": "STANDALONE",
+      "value": "1500000.00",
+      "available_at": "2026-05-30 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-12-31",
+      "scope": "STANDALONE",
+      "value": "7500000.00",
+      "available_at": "2026-02-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-09-30",
+      "scope": "STANDALONE",
+      "value": "10100000.00",
+      "available_at": "2025-11-14 23:59:00+05:30"
+    },
+    {
+      "metric": "total_income",
+      "period_type": "QUARTER",
+      "period_end": "2025-06-30",
+      "scope": "STANDALONE",
+      "value": "9400000.00",
+      "available_at": "2025-08-14 23:59:00+05:30"
+    }
+  ],
+  "holdings": [],
+  "documents": [
+    {
+      "publication_id": "8bc4be7f-44e4-48ff-80a7-a9292ec769c5",
+      "published_at": "2026-10-21 15:46:47.500000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Announcement under Regulation 30 (LODR)-Resignation of Chairman and Managing Director",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/aebe45f1-e357-49c9-88cb-094a579a2341.pdf"
+    },
+    {
+      "publication_id": "7193516f-d7f4-4a97-af44-3556fc9cda29",
+      "published_at": "2026-10-21 15:45:16.083000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Announcement under Regulation 30 (LODR)-Change in Management",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/99fcfef1-8e20-42cc-b5f8-6ecc0073111e.pdf"
+    },
+    {
+      "publication_id": "677b37ec-772b-4315-80b6-3147ded9f81d",
+      "published_at": "2026-10-21 15:42:48.243000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Board Meeting Outcome for Outcome Of Board Meeting Held On 21St October, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/af7e216f-a5b7-4074-aef4-681e1a6547b3.pdf"
+    },
+    {
+      "publication_id": "a4ed60a3-fad7-4b07-b248-580d16b4b266",
+      "published_at": "2026-10-16 19:52:07.807000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Board Meeting Intimation for We Wish To Inform You That A Meeting Of The Board Of Directors Of Galaxy Agrico Exports Limited Is Scheduled To Be Held On Wednesday, 21St October, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8bc372c1-bdbd-4b1a-a4e5-400f5aef0892.pdf"
+    },
+    {
+      "publication_id": "50669a25-93ba-4d6a-a198-6583aca51b40",
+      "published_at": "2026-10-12 15:16:17.510000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d79061b7-a342-43d2-858b-5690948ccb51.pdf"
+    },
+    {
+      "publication_id": "063826cf-4478-46d8-8f87-6ff2d1d3608d",
+      "published_at": "2026-10-07 16:13:46.913000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Board Meeting Outcome for Outcome Of Board Meeting Held Today",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8013d3fd-2f27-4081-946a-0efcda077112.pdf"
+    },
+    {
+      "publication_id": "3bbab2e4-97e1-4588-8f24-913a41b16a09",
+      "published_at": "2026-10-02 18:35:43.617000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Board Meeting Intimation for We Hereby Inform You That A Meeting Of The Board Of Directors Of Galaxy Agrico Exports Limited Is Scheduled To Be Held On Wednesday, 07Th October, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/91bb4105-842a-43ce-8cbd-62abe8ca89ac.pdf"
+    },
+    {
+      "publication_id": "1094e9bc-aa07-42fc-9fc2-e970f8837ee6",
+      "published_at": "2026-10-01 16:11:07.310000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Announcement under Regulation 30 (LODR)-Resignation of Director",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a523cce4-21c2-4d86-b811-18690e95d8c6.pdf"
+    },
+    {
+      "publication_id": "b121a37c-e40c-40e8-80e9-33438ccab1be",
+      "published_at": "2026-09-29 17:30:57.143000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Shareholder Meeting / Postal Ballot-Scrutinizer''s Report",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ca395d10-2f25-497d-8a7c-a5adb71ca5a3.pdf"
+    },
+    {
+      "publication_id": "472fb664-0887-46fe-ae6e-27af1ef8fcd5",
+      "published_at": "2026-09-28 19:13:28.187000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Shareholder Meeting / Postal Ballot-Outcome of AGM",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/58f5289b-6564-4195-9678-c68ed82a812c.pdf"
+    },
+    {
+      "publication_id": "3b6774c8-76f3-4ec5-b0cd-e97d487f544d",
+      "published_at": "2026-09-26 23:07:06.983000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Closure of Trading Window",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b55066ba-e732-4275-8426-2455131695fc.pdf"
+    },
+    {
+      "publication_id": "e6e11b42-e215-400e-a3a1-e1bdaa206e0d",
+      "published_at": "2026-09-04 18:21:16.003000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Reg. 34 (1) Annual Report.",
+      "category": "Others",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6f808d8b-4dfd-4c65-bc7a-83d8893d5c0c.pdf"
+    },
+    {
+      "publication_id": "4633beef-db14-47d7-a37c-3caa8e2cd5ae",
+      "published_at": "2026-09-04 18:16:23.103000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Notice For Annual General Meeting For The FY 2025-2026",
+      "category": "AGM/EGM",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/887a8791-31b7-4ef1-981b-67490fcd360f.pdf"
+    },
+    {
+      "publication_id": "ecac0dae-c8e1-4f0c-ad51-b2c5df28338a",
+      "published_at": "2026-09-04 18:13:59.573000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Intimation For Book Closure For The Purpose Of AGM",
+      "category": "Corp. Action",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4f48c7d8-b65a-4425-813e-a521f1c428b4.pdf"
+    },
+    {
+      "publication_id": "b9890f10-fe7d-45e6-93f6-5ef9b8dd847e",
+      "published_at": "2026-09-04 18:12:04.710000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Board Meeting Outcome for Outcome Of Board Meeting Held On 04Th September, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/bea52740-3a05-4dca-b85d-e1f335b56e9f.pdf"
+    },
+    {
+      "publication_id": "127c64b6-ca42-43b0-8dc6-f880be2ae99a",
+      "published_at": "2026-09-01 20:05:57.020000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Board Meeting Intimation for Galaxy Agrico Exports Limited (\"The Company\") Will Be Held On 04Th September, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/700daba3-87ee-41f9-b83f-a72a78e8a785.pdf"
+    },
+    {
+      "publication_id": "93d4e42e-acea-496c-9bc9-22111f2025f6",
+      "published_at": "2026-09-01 15:39:02.103000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Intimation Regarding Receipt Of Purchase Order Aggregating To ?10 Crores",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/15fa9fbd-87d4-4b60-9989-bbdee35e65ee.pdf"
+    },
+    {
+      "publication_id": "0e11eb0b-11b1-4033-a5a0-b698243a44cc",
+      "published_at": "2026-08-31 11:53:29.377000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Intimation Regarding Application For Reservation Of Name For Proposed Subsidiary Of The Company",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/25df4a7e-c02d-4991-b2e0-a83e82bdb757.pdf"
+    },
+    {
+      "publication_id": "329d5830-a32f-4f44-8914-8050e7c83dc3",
+      "published_at": "2026-08-25 17:32:57.403000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Board Meeting Outcome for Outcome Of Board Meeting Held On 25Th August, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/10c4b885-b5fb-4358-bf19-cbcd8a54e1de.pdf"
+    },
+    {
+      "publication_id": "c794d52d-8651-477f-bc7e-4886d994ce31",
+      "published_at": "2026-08-18 14:43:59.083000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Board Meeting Intimation for We Hereby Inform You That A Meeting Of The Board Of\r\nDirectors Of Galaxy Agrico Export Limited Is Scheduled To Be Held On Tuesday, 25Th August 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8276998d-d608-4f1c-b87d-cc8b03f24c46.pdf"
+    },
+    {
+      "publication_id": "6fcb1911-f660-4ff4-a023-d2734122b184",
+      "published_at": "2026-08-14 19:12:54.640000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Un-Audited Financial Results For The Quarter Ended 30Th June, 2026",
+      "category": "Result",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8ef04627-721c-4884-982e-4353f085bd63.pdf"
+    },
+    {
+      "publication_id": "daa11517-467e-42e8-84b7-9432b55bf620",
+      "published_at": "2026-08-14 19:08:27.640000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Board Meeting Outcome for Outcome Of Board Meeting Held On 14Th August, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f26dd713-cf3f-4307-badf-639a81c3fe64.pdf"
+    },
+    {
+      "publication_id": "e80f609e-1ebb-4c33-894f-7cb6d6978c56",
+      "published_at": "2026-08-06 19:47:44.793000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Board Meeting Intimation for Intimation Of Board Meeting To Be Held On 14Th August 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dae23056-4c1e-4d92-bf6a-27381e348212.pdf"
+    },
+    {
+      "publication_id": "aa135319-4bc8-4c4e-a4b7-918675de8a97",
+      "published_at": "2026-08-01 20:21:01.543000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Disclosure Of Related Party Transactions For The Half And Quarter Year Ended On 30Th September, 2020 Is Not Applicable To The Company",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2642e76d-c05f-46f6-b78b-f2e221106fc9.pdf"
+    },
+    {
+      "publication_id": "dcd511c6-9537-4509-b568-4bebc8d12638",
+      "published_at": "2026-07-23 09:59:13.580000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Revised Disclosures under Reg. 29(2) of SEBI (SAST) Regulations, 2011",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/2FDCADC7_34E9_4D29_97F4_ED1489188EC3_095909.pdf"
+    },
+    {
+      "publication_id": "3e758520-553c-4710-8ea0-588406015174",
+      "published_at": "2026-07-14 13:49:44.713000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/66705fd5-ddb2-465d-a9eb-6145c23265df.pdf"
+    },
+    {
+      "publication_id": "7e453afd-bec3-493a-a0cc-6b4b7008aee3",
+      "published_at": "2026-07-01 13:12:57.580000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Disclosures under Reg. 29(2) of SEBI (SAST) Regulations, 2011",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/60F176F0_A806_4C7F_94CC_B243DFBDA4FE_131253.pdf"
+    },
+    {
+      "publication_id": "914c3c3c-828b-42a2-bb10-4325f10c4ef5",
+      "published_at": "2026-06-30 22:27:15.877000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Intimation For Appointment Of Independent Directors",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/48438858-f621-4fd2-8d65-ef53d336ee0b.pdf"
+    },
+    {
+      "publication_id": "9b9ac2c7-bbb1-4919-b616-1fe6297ae80c",
+      "published_at": "2026-06-29 23:14:57.660000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Withdrawal Of Intimation Regarding Appointment Of Non-Executive Independent Directors",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3bf4695e-6b7e-4c7d-beb0-d0df1f9d176f.pdf"
+    },
+    {
+      "publication_id": "d86b73b5-c6f2-4725-99f9-4ceae61f3ec2",
+      "published_at": "2026-06-29 18:29:09.480000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Announcement under Regulation 30 (LODR)-Change in Directorate",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/052f8fd9-cc35-4f7f-b9ae-2ae696e6ba98.pdf"
+    },
+    {
+      "publication_id": "029e7f0a-59d9-423c-814d-e4eb16bf8fa7",
+      "published_at": "2026-06-25 15:19:14.840000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Closure of Trading Window",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d4b34e0f-c5ba-4b81-aa70-ad120763639c.pdf"
+    },
+    {
+      "publication_id": "00eaf7c7-f7fc-4a5a-9130-bdd864d111df",
+      "published_at": "2026-06-04 16:50:53.377000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3cce4782-3999-4085-9516-25c0781674de.pdf"
+    },
+    {
+      "publication_id": "e80b9624-0166-4b19-859b-114dac42186b",
+      "published_at": "2026-06-04 13:09:51.623000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Intimation Under Regulation 31A(8)(C) Of SEBI (Listing Obligations And Disclosure Requirements) Regulations, 2015 Regarding Submission Of Application For Reclassification Of Promoter(S) / Promoter Group Category To Public Category",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5e940975-0d4c-461a-8166-1ea60f97eb26.pdf"
+    },
+    {
+      "publication_id": "0096c0eb-45e9-496a-aaaf-040652204267",
+      "published_at": "2026-05-30 18:43:26.533000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Announcement under Regulation 30 (LODR)-Appointment of Statutory Auditor/s",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a43d8aa5-d922-4a3c-9be7-a26448df2a81.pdf"
+    },
+    {
+      "publication_id": "42f37ba3-cd4f-454e-896e-c08dd297dfc8",
+      "published_at": "2026-05-30 18:41:10.200000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Announcement under Regulation 30 (LODR)-Resignation of Statutory Auditors",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/602e3298-f580-476a-9ac7-ca22501ffbd9.pdf"
+    },
+    {
+      "publication_id": "c8b2e347-0397-47d1-91b9-acf01c75c5b7",
+      "published_at": "2026-05-30 18:31:26.467000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Compliances-Reg.24(A)-Annual Secretarial Compliance",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/34799e6f-dc82-42b4-98c7-9cd4c68cd853.pdf"
+    },
+    {
+      "publication_id": "8bf1fce8-a600-42d8-978f-490cb56a761f",
+      "published_at": "2026-05-30 18:29:14.017000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Sttatement Of Deviation & Variation For The Year Ended 31St March, 2026",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e910b2f0-087f-4e1b-a7ee-4121bd98f344.pdf"
+    },
+    {
+      "publication_id": "526a21d1-0572-4805-b21e-1102a19e3bff",
+      "published_at": "2026-05-30 18:26:16.847000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Disclosure For Related Party Transaction Is Not Applicable To The Company",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3a0fbcec-8ea6-4204-99df-e35ea7597858.pdf"
+    },
+    {
+      "publication_id": "e310425e-03d2-433d-affb-40b844ad5df0",
+      "published_at": "2026-05-30 18:22:21.467000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Audiited Financial Results For The Year Ended 31St March, 2026",
+      "category": "Result",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c00fbd33-acad-4be1-b1ad-64853a528c0f.pdf"
+    },
+    {
+      "publication_id": "b2f973d9-9f16-485b-8a26-ae6a4a5dca92",
+      "published_at": "2026-05-30 18:18:19.817000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Board Meeting Outcome for Outcome Of Board Meeting Held On 30Th May, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9ced3c26-390e-4f41-8408-1c398d60fcaa.pdf"
+    },
+    {
+      "publication_id": "f73f407b-271c-4e24-82bb-893f87bf6ecb",
+      "published_at": "2026-05-21 20:33:18.627000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Board Meeting Intimation for We Wish To Inform That The Meeting Of The Board Of Directors Of The Company Is Scheduled To Be Held On Saturday, 30Th May, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/343e6f7f-d0c8-43b2-86b9-5a8c4398e8af.pdf"
+    },
+    {
+      "publication_id": "6dfee10c-1991-4329-9406-02be9180b749",
+      "published_at": "2026-05-17 18:26:57.807000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Submission Of Copy Of Report Of Monitoring Agency For Right Issue",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a02b0b39-b3bd-4cfc-bb55-a74419f44f59.pdf"
+    },
+    {
+      "publication_id": "0bf6a6d2-37ba-4759-8a24-a6b799e3a93d",
+      "published_at": "2026-04-26 20:42:14.650000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Format of the Annual Disclosure to be made by an entity identified as a LC - Annexure B2",
+      "category": "Others",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1f8cb9a2-1cc7-4c5f-80ef-3cfed1febe1f.pdf"
+    },
+    {
+      "publication_id": "b1ac21b1-b53e-40db-bfef-01c9400f46c8",
+      "published_at": "2026-04-26 20:38:40.357000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Format of the Initial Disclosure to be made by an entity identified as a Large Corporate : Annexure A",
+      "category": "Others",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a9bcdf52-2b53-4056-a405-e6344478aefb.pdf"
+    },
+    {
+      "publication_id": "cc746e91-7543-4ebb-9e88-d79c824e529b",
+      "published_at": "2026-04-15 15:48:55.407000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/bda1d0b2-02c6-428d-b25e-ee2c16a579e6.pdf"
+    },
+    {
+      "publication_id": "978188c0-e1ce-49d7-ab54-27b8313fc4a9",
+      "published_at": "2026-04-09 17:50:34.680000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Board Meeting Outcome for Outcome Of Board Meeting Held On 09Th April, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/eb9991d5-eae4-45ed-9d7e-ed6b9c869454.pdf"
+    },
+    {
+      "publication_id": "e1cea48d-3d8a-4a15-a11d-52eb4dd4369a",
+      "published_at": "2026-04-02 13:47:02.303000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Board Meeting Intimation for We Wish To Inform You That The Meeting Of The Board Of Directors Of The Company Is Scheduled To Be Held On Thursday, 09Th April, 2026",
+      "category": "Board Meeting",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/144901aa-9038-4d4b-9632-02c78825b5df.pdf"
+    },
+    {
+      "publication_id": "66809789-b4af-46d5-b03a-dee355db1e5d",
+      "published_at": "2026-04-01 15:58:48.403000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Disclosures under Reg. 29(2) of SEBI (SAST) Regulations, 2011",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/E985FDC8_F5CA_47B4_A5E8_717449AFABB0_155845.pdf"
+    },
+    {
+      "publication_id": "8f0aa245-40db-42dd-81e5-f9d0e0ca4dc0",
+      "published_at": "2026-04-01 15:52:36.837000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Disclosures under Reg. 29(2) of SEBI (SAST) Regulations, 2011",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/2E5D01A1_49D1_4C94_B714_C2E8961D2F75_155233.pdf"
+    },
+    {
+      "publication_id": "87502a09-1c35-4fab-bf51-0a0fb8cebbdf",
+      "published_at": "2026-04-01 13:26:51.883000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Disclosures under Reg. 29(2) of SEBI (SAST) Regulations, 2011",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/F6B6714A_00D7_487E_B5BB_13B8D368ABAF_132648.pdf"
+    },
+    {
+      "publication_id": "f10637cc-4cc9-4012-9dd6-b35395329944",
+      "published_at": "2026-04-01 13:05:03.207000+05:30",
+      "title": "Galaxy Agrico Exports Ltd - 531911 - Disclosures under Reg. 29(2) of SEBI (SAST) Regulations, 2011",
+      "category": "Insider Trading / SAST",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/7FCA582E_DE95_4431_B3A7_C9EA906BD3C5_130454.pdf"
+    }
+  ],
+  "events": [
+    {
+      "published_at": "2026-09-04 18:12:04.710000+05:30",
+      "family": "FINANCING",
+      "event_type": "EQUITY_FINANCING",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "commercial_stage": "UNKNOWN",
+      "amount_basis": "UNQUANTIFIED",
+      "quote": "6. Prior Approval for Raising of Funds through Secured / Unsecured Loans with an Option to Convert into Equity Shares The Board considered and approved the proposal for obtaining prior approval of the Members for raising funds through secured and/or unsecured loans, with an option to convert such loans into Equity Shares of the Company, subject to such terms and conditions and applicable statutory and regulatory approvals as may be required.",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/bea52740-3a05-4dca-b85d-e1f335b56e9f.pdf",
+      "page_no": 2
+    },
+    {
+      "published_at": "2026-09-01 15:39:02.103000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": null,
+      "scale": null,
+      "currency": null,
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "UNQUANTIFIED",
+      "quote": "contract(s) is to be executed Purchase Order",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/15fa9fbd-87d4-4b60-9989-bbdee35e65ee.pdf",
+      "page_no": 2
+    },
+    {
+      "published_at": "2026-09-01 15:39:02.103000+05:30",
+      "family": "ORDER",
+      "event_type": "ORDER",
+      "amount": "10",
+      "scale": "CRORE",
+      "currency": "INR",
+      "commercial_stage": "BINDING_DEMAND",
+      "amount_basis": "FIRM",
+      "quote": "Subject: Intimation regarding receipt of Purchase Order aggregating to \u20b910 Crores",
+      "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/15fa9fbd-87d4-4b60-9989-bbdee35e65ee.pdf",
+      "page_no": 1
+    }
+  ],
+  "statement_pages": [
+    {
+      "published_at": "2026-05-30 18:22:21.467000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c00fbd33-acad-4be1-b1ad-64853a528c0f.pdf",
+      "page_no": 8,
+      "body": "GALAXY AGRICO EXPORTS LIMITED\n236, Jai Kishan Industrial Estate, Behind Murlidhar Weigh Bridge, Shapar Rajkot GJ 360024\nCIN:L01110GJ1994PLC021368\nAUDITED BALANCE SHEET AS AT 31ST MARCH, 2026\n(Rs. in lakhs)\nParticulars As at\n31.03.2026 31.03.2025\n(Audited) (Audited)\nA ASSETS\n1 Non-Current Assets\n(a) Property, Plant & Equipment - 207.61\n(b) Capital Work-in-Progress - -\n(c) Investment properties - 74.88\n(d) Goodwill - -\n(e) Other intangible assets - -\n(f) Intangible assets under development - -\n(g) Biological Assets other than bearer plants - -\n(h) Financial Assets\n(i) Investments 1,000.00 0 .24\n(ii)Trade Receivables - -\n(iii) Loans, Advances & Others 4 00.00 77.44\n(i) Deferred tax assets (net) 7.89 23.80\n(j) Other Non-Current Assets - -\nSub-Total (Non-Current Assets) 1,407.89 383.96\n2 Current Assets\n(a) Inventories - 60.91\n(b) Financial Assets -\n(i) Investments - -\n(ii) Trade Receivables - 34.75\n(iii) Cash & Cash equivalents 22.71 24.89\n(iv) Bank Balances other than cash & Cash equivelants - -\n(v) Loans & Advances 5 00.00 4 .57\n(vi) Other Financial Assets - 32.36\n(c) Current Tax Assets (Net) - -\n(d) Other Current Assets 3,661.75 93.23\nSub-Total (Current Assets) 4,184.46 250.70\nTOTAL ASSETS (1+2) 5,592.35 634.67\nB EQUITY AND LIABILITIES\n3 Equity\n(a) Equity Share Capital 1,707.27 391.36\n(b) Other Equity 3,819.54 10.97\nSub-Total (Equity) 5,526.81 402.33\nLiabilities\n4 Non-Current Liabilities\n(a) Financial Liabilities\n(i) Long-Term Borrowings 1.00 165.25\n(ii) Trade Payable - -\n(iii) Other Financial Liabilities - -\n(b) Provisions 0.46 5 .41\n(c) Deferred Tax Liabilites (Net) - -\n(d) Other non-current liabilities - -\nSub-Total (Non-Current Liabilities) 1.46 170.66\n5 Current Liabilities\n(a) Financial Liabilities\n(i) Short-term Borrowings - 17.54\n(ii) Trade Payables 4.11 6 .34\n(iii) Other Financial Liabilities 1.00 19.27\n(b) Other Current Liabilities 4.74 6 .75\n(c) Provisions 0.16 11.78\n(d) Current Tax Liabilities (Net) 54.07 -\nSub-Total (Current Liabilities) 64.08 61.67\nTOTAL EQUITY AND LIABILITIES(3+4+5) 5,592.35 634.67\nFor and on behalf of Board of Directors,\nPrashant S. Khairnar\nDate : 30.05.2026 Director\nPlace : Shapar (Veraval) DIN- 11434708"
+    },
+    {
+      "published_at": "2026-05-30 18:22:21.467000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c00fbd33-acad-4be1-b1ad-64853a528c0f.pdf",
+      "page_no": 9,
+      "body": "GALAXY AGRICO EXPORTS LIMITED\n236, Jai Kishan Industrial Estate, Behind Murlidhar Weigh Bridge, Shapar Rajkot GJ 360024\nCIN:L01110GJ1994PLC021368\nCASH FLOW STATEMENT FOR THE YEAR ENDED 31ST MARCH, 2026\n(Rs. in lakhs)\nParticulars 2025-26 2024-25\nA. Cash Flow from Operating Activity\nNet Profit Before Tax 416.18 4.23\nAdjustments For:\nDepreciation 19.68 29.78\nInterest & Financial Expenses 2.42 4.00\nProvision to gratuity fund (0.34) 3.73\n(Profit)/Loss on Investments 13.75 (6.49)\n(Gain)/Loss on Sales of Assets (16.46) 0.00\nInterest Received on Deposits (4.83) (5.13)\nGain on sale of Plot/workshop (2.03) (12.66)\nProfit on slump sales (524.69) 0.00\nOther assets and liabilities written off 3.16 0.00\nEmployee Written Off 0.10 0.00\n(509.25) 13.23\nOperation profit before Working Capital Changes (93.07) 17.46\nAdjustment For:\nInventories 0.00 (11.57)\nTrade Receivables 0.00 0.66\nOther Assets (4558.59) (25.18)\nTrade Payables & Other Liabilities and Provisions 9.85 (2.78)\n(4548.74) (38.87)\nCash Generated from Operations (4641.81) (21.42)\nB. Cash Flow from Investment Activities\nProceeds from disposal of Property, Plant and Equipments 40.00 0.00\nPurchase of Property, Plant and Equipments (0.31) (1.65)\nGain on sale of current investments (13.75) 6.49\nSale of Investment Properties 12.50 0.00\nRedemption of Investments 0.00 19.25\nPurchase of Investments (1000.00) 0.00\nBank Balances not considered as Cash Equivelant 0.00 19.85\nProceeds from slump sales 887.96 0.00\nProvision for F&O (0.27) 0.27\nInterest Received 4.83 5.13\nNet Cash Flow from Investment Activities (69.04) 49.34\nC. Cash Flow from Financial Activities:\nChanges in Long-term borrowings (net) (14.25) 66.86\nChanges in Short-term borrowings (net) (17.54) (47.31)\nIssue of Right Shares 4720.17 0.00\nOther Adjustment (0.00) 0.00\nCapital Expenditure 22.72 (22.72)\nInterest & Financial Expenses (2.42) (4.00)\nNet Cash Flow from Financial Activities 4708.67 (7.17)\nTotal of Cash Flow (A+B+C) (2.17) 20.76\nCash & Cash Equivalent at the beginning of the year 24.89 4.12\nCash & Cash Equivalent at the ending of the year 22.71 24.89\nCash & Cash Equivalent comprising of\nCash on Hand 0.32 0.30\nBalances with Scheduled Banks 22.39 24.59\n22.71 24.89\nFor and on behalf of Board of Directors,\nPrashant S. Khairnar\nDate : 30.05.2026 Director\nPlace : Shapar (Veraval) DIN- 11434708"
+    },
+    {
+      "published_at": "2026-05-30 18:22:21.467000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c00fbd33-acad-4be1-b1ad-64853a528c0f.pdf",
+      "page_no": 13,
+      "body": "I\nI{. B. KALARIA & ASSOCIATES 4-601/602, The lmperial Heights, 150 Ft. Ring Hoad,\nChartered Accountants Opp. Big Bazaar, Rajkot - 360 004.\n5\" Conclude on the appropriateness of management's use of the going concern basis of\naccounting and, based on the audit evidence obtained, whether a material uncertainty\nexists related to events or conditions that may cast significant doubt on the Company's\nability to continue as a going concern. lf we conclude that a material uncertainty exists,\nwe are required to draw attention in our auditor's report to the related disclosures in\nthe lnd AS financial results or, if such disclosures are inadequate, to modify our opinion.\nOur conclusions are based on the audit evidence obtained up to the date of our auditor's\nreport. However, future events or conditions may cause the Company to cease to\ncontinue as a going concern.\n6. Evaluate the overall presentation, structure and content of the lnd AS financial results,\nincluding the disclosures, and whether the lnd AS financial results represent the\nunderlying transactions and events in a manner that achieves fair presentation.\n7. Obtain sufficient appropriate audit evidence regarding the Annual lnd AS Financial\nResults of the Company to express an opinion on the Annual Financial Results.\nMateriality is the magnitude of misstatements in the Annual lnd AS Financial Results that,\nindividually or in aggregate, makes it probable that the economic decisions of a reasonably\nknowledgeable user of the Annual lnd AS Financial Results may be influenced. We consider\nquantitative materiality and qualitative factors in (i) planning the scope of our audit work\nand in evaluating the results of our work; and (ii) to evaluate the effect of any identified\nmisstatements in the Annual lnd AS Financial Results.\nWe communicate with those charged with governance regarding, among other matters, the\nplanned scope and timing of the audit and significant audit findings, including any significant\ndeficiencies in internal controlthat we identify during our audit.\nWe also provide those charged with governance with a statement that we have complied\nwith relevant ethical requirements regarding independence, and to communicate with them\nall relationships and other matters that may reasonably be thought to bear on our\nindependence, and where applicable, related safeguards.\n(b) Review of the lnd AS Financial Results for the quarter ended March 3L,2026\nWe conducted our review of the lnd AS Financial Results for the quarter ended March 31,\n2026 in accordance with the Standard on Review Engagements (\"SRE\") 2410 'Review of\nlnterim Financial lnformation Performed by the lndependent Auditor of the Entity', issued\nby the lCAl. A review of interim financial information consists of making inquiries, primarily\nof the Company's personnel responsible for financial and accounting matters, and applying\nanalytical and other review procedures. A review is substantially less in scope than an audit\nconducted in accordance with SAs specified under section 143(10) of the Act and\nconsequently does not enable us to obtain assurance that we would become aware of all\nsignificant matters that might be identified in an audit. Accordingly, we do not express an\naudit opinion.\nTel.:0281-2581501 IOZIOA M: +91 98240 4Z11E,gg141 gA11S E-mail: info@hbkalaria.in"
+    },
+    {
+      "published_at": "2026-05-30 18:18:19.817000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9ced3c26-390e-4f41-8408-1c398d60fcaa.pdf",
+      "page_no": 8,
+      "body": "GALAXY AGRICO EXPORTS LIMITED\n236, Jai Kishan Industrial Estate, Behind Murlidhar Weigh Bridge, Shapar Rajkot GJ 360024\nCIN:L01110GJ1994PLC021368\nAUDITED BALANCE SHEET AS AT 31ST MARCH, 2026\n(Rs. in lakhs)\nParticulars As at\n31.03.2026 31.03.2025\n(Audited) (Audited)\nA ASSETS\n1 Non-Current Assets\n(a) Property, Plant & Equipment - 207.61\n(b) Capital Work-in-Progress - -\n(c) Investment properties - 74.88\n(d) Goodwill - -\n(e) Other intangible assets - -\n(f) Intangible assets under development - -\n(g) Biological Assets other than bearer plants - -\n(h) Financial Assets\n(i) Investments 1,000.00 0 .24\n(ii)Trade Receivables - -\n(iii) Loans, Advances & Others 4 00.00 77.44\n(i) Deferred tax assets (net) 7.89 23.80\n(j) Other Non-Current Assets - -\nSub-Total (Non-Current Assets) 1,407.89 383.96\n2 Current Assets\n(a) Inventories - 60.91\n(b) Financial Assets -\n(i) Investments - -\n(ii) Trade Receivables - 34.75\n(iii) Cash & Cash equivalents 22.71 24.89\n(iv) Bank Balances other than cash & Cash equivelants - -\n(v) Loans & Advances 5 00.00 4 .57\n(vi) Other Financial Assets - 32.36\n(c) Current Tax Assets (Net) - -\n(d) Other Current Assets 3,661.75 93.23\nSub-Total (Current Assets) 4,184.46 250.70\nTOTAL ASSETS (1+2) 5,592.35 634.67\nB EQUITY AND LIABILITIES\n3 Equity\n(a) Equity Share Capital 1,707.27 391.36\n(b) Other Equity 3,819.54 10.97\nSub-Total (Equity) 5,526.81 402.33\nLiabilities\n4 Non-Current Liabilities\n(a) Financial Liabilities\n(i) Long-Term Borrowings 1.00 165.25\n(ii) Trade Payable - -\n(iii) Other Financial Liabilities - -\n(b) Provisions 0.46 5 .41\n(c) Deferred Tax Liabilites (Net) - -\n(d) Other non-current liabilities - -\nSub-Total (Non-Current Liabilities) 1.46 170.66\n5 Current Liabilities\n(a) Financial Liabilities\n(i) Short-term Borrowings - 17.54\n(ii) Trade Payables 4.11 6 .34\n(iii) Other Financial Liabilities 1.00 19.27\n(b) Other Current Liabilities 4.74 6 .75\n(c) Provisions 0.16 11.78\n(d) Current Tax Liabilities (Net) 54.07 -\nSub-Total (Current Liabilities) 64.08 61.67\nTOTAL EQUITY AND LIABILITIES(3+4+5) 5,592.35 634.67\nFor and on behalf of Board of Directors,\nPrashant S. Khairnar\nDate : 30.05.2026 Director\nPlace : Shapar (Veraval) DIN- 11434708"
+    },
+    {
+      "published_at": "2026-05-30 18:18:19.817000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9ced3c26-390e-4f41-8408-1c398d60fcaa.pdf",
+      "page_no": 9,
+      "body": "GALAXY AGRICO EXPORTS LIMITED\n236, Jai Kishan Industrial Estate, Behind Murlidhar Weigh Bridge, Shapar Rajkot GJ 360024\nCIN:L01110GJ1994PLC021368\nCASH FLOW STATEMENT FOR THE YEAR ENDED 31ST MARCH, 2026\n(Rs. in lakhs)\nParticulars 2025-26 2024-25\nA. Cash Flow from Operating Activity\nNet Profit Before Tax 416.18 4.23\nAdjustments For:\nDepreciation 19.68 29.78\nInterest & Financial Expenses 2.42 4.00\nProvision to gratuity fund (0.34) 3.73\n(Profit)/Loss on Investments 13.75 (6.49)\n(Gain)/Loss on Sales of Assets (16.46) 0.00\nInterest Received on Deposits (4.83) (5.13)\nGain on sale of Plot/workshop (2.03) (12.66)\nProfit on slump sales (524.69) 0.00\nOther assets and liabilities written off 3.16 0.00\nEmployee Written Off 0.10 0.00\n(509.25) 13.23\nOperation profit before Working Capital Changes (93.07) 17.46\nAdjustment For:\nInventories 0.00 (11.57)\nTrade Receivables 0.00 0.66\nOther Assets (4558.59) (25.18)\nTrade Payables & Other Liabilities and Provisions 9.85 (2.78)\n(4548.74) (38.87)\nCash Generated from Operations (4641.81) (21.42)\nB. Cash Flow from Investment Activities\nProceeds from disposal of Property, Plant and Equipments 40.00 0.00\nPurchase of Property, Plant and Equipments (0.31) (1.65)\nGain on sale of current investments (13.75) 6.49\nSale of Investment Properties 12.50 0.00\nRedemption of Investments 0.00 19.25\nPurchase of Investments (1000.00) 0.00\nBank Balances not considered as Cash Equivelant 0.00 19.85\nProceeds from slump sales 887.96 0.00\nProvision for F&O (0.27) 0.27\nInterest Received 4.83 5.13\nNet Cash Flow from Investment Activities (69.04) 49.34\nC. Cash Flow from Financial Activities:\nChanges in Long-term borrowings (net) (14.25) 66.86\nChanges in Short-term borrowings (net) (17.54) (47.31)\nIssue of Right Shares 4720.17 0.00\nOther Adjustment (0.00) 0.00\nCapital Expenditure 22.72 (22.72)\nInterest & Financial Expenses (2.42) (4.00)\nNet Cash Flow from Financial Activities 4708.67 (7.17)\nTotal of Cash Flow (A+B+C) (2.17) 20.76\nCash & Cash Equivalent at the beginning of the year 24.89 4.12\nCash & Cash Equivalent at the ending of the year 22.71 24.89\nCash & Cash Equivalent comprising of\nCash on Hand 0.32 0.30\nBalances with Scheduled Banks 22.39 24.59\n22.71 24.89\nFor and on behalf of Board of Directors,\nPrashant S. Khairnar\nDate : 30.05.2026 Director\nPlace : Shapar (Veraval) DIN- 11434708"
+    },
+    {
+      "published_at": "2026-05-30 18:18:19.817000+05:30",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9ced3c26-390e-4f41-8408-1c398d60fcaa.pdf",
+      "page_no": 13,
+      "body": "I\nI{. B. KALARIA & ASSOCIATES 4-601/602, The lmperial Heights, 150 Ft. Ring Hoad,\nChartered Accountants Opp. Big Bazaar, Rajkot - 360 004.\n5\" Conclude on the appropriateness of management's use of the going concern basis of\naccounting and, based on the audit evidence obtained, whether a material uncertainty\nexists related to events or conditions that may cast significant doubt on the Company's\nability to continue as a going concern. lf we conclude that a material uncertainty exists,\nwe are required to draw attention in our auditor's report to the related disclosures in\nthe lnd AS financial results or, if such disclosures are inadequate, to modify our opinion.\nOur conclusions are based on the audit evidence obtained up to the date of our auditor's\nreport. However, future events or conditions may cause the Company to cease to\ncontinue as a going concern.\n6. Evaluate the overall presentation, structure and content of the lnd AS financial results,\nincluding the disclosures, and whether the lnd AS financial results represent the\nunderlying transactions and events in a manner that achieves fair presentation.\n7. Obtain sufficient appropriate audit evidence regarding the Annual lnd AS Financial\nResults of the Company to express an opinion on the Annual Financial Results.\nMateriality is the magnitude of misstatements in the Annual lnd AS Financial Results that,\nindividually or in aggregate, makes it probable that the economic decisions of a reasonably\nknowledgeable user of the Annual lnd AS Financial Results may be influenced. We consider\nquantitative materiality and qualitative factors in (i) planning the scope of our audit work\nand in evaluating the results of our work; and (ii) to evaluate the effect of any identified\nmisstatements in the Annual lnd AS Financial Results.\nWe communicate with those charged with governance regarding, among other matters, the\nplanned scope and timing of the audit and significant audit findings, including any significant\ndeficiencies in internal controlthat we identify during our audit.\nWe also provide those charged with governance with a statement that we have complied\nwith relevant ethical requirements regarding independence, and to communicate with them\nall relationships and other matters that may reasonably be thought to bear on our\nindependence, and where applicable, related safeguards.\n(b) Review of the lnd AS Financial Results for the quarter ended March 3L,2026\nWe conducted our review of the lnd AS Financial Results for the quarter ended March 31,\n2026 in accordance with the Standard on Review Engagements (\"SRE\") 2410 'Review of\nlnterim Financial lnformation Performed by the lndependent Auditor of the Entity', issued\nby the lCAl. A review of interim financial information consists of making inquiries, primarily\nof the Company's personnel responsible for financial and accounting matters, and applying\nanalytical and other review procedures. A review is substantially less in scope than an audit\nconducted in accordance with SAs specified under section 143(10) of the Act and\nconsequently does not enable us to obtain assurance that we would become aware of all\nsignificant matters that might be identified in an audit. Accordingly, we do not express an\naudit opinion.\nTel.:0281-2581501 IOZIOA M: +91 98240 4Z11E,gg141 gA11S E-mail: info@hbkalaria.in"
+    }
+  ]
+}
