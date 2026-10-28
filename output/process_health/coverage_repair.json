@@ -4,12 +4,12 @@
   "last": "2026-10-28",
   "state": "RUNNING",
   "total_days": 89,
-  "complete_days": 74,
-  "attempted_days": 64,
-  "received": 75684,
-  "inserted": 887,
+  "complete_days": 84,
+  "attempted_days": 10,
+  "received": 7125,
+  "inserted": 201,
   "gaps": [],
-  "last_checked_day": "2026-10-13",
-  "current_day": "2026-10-14",
-  "updated_at": "2026-10-28T16:28:58.226065+00:00"
+  "last_checked_day": "2026-10-23",
+  "current_day": "2026-10-24",
+  "updated_at": "2026-10-28T17:22:29.619749+00:00"
 }
