@@ -56,3 +56,17 @@ def test_tied_valid_candidates_have_deterministic_selection():
     p=packet();p['events'].append(dict(p['events'][0],event_id='second-valid'))
     first=triage(p);p['events'].reverse()
     assert triage(p)==first
+
+
+@pytest.mark.parametrize('amount',['625000 INR CRORE','161868600 INR CRORE'])
+def test_implausible_order_size_is_held_for_verification(amount):
+    p=packet();p['events'][0]['amount']=amount
+    result=triage(p)
+    assert result['triage_action']=='WATCH_MILESTONE' and 'ORDER_SIZE_IMPLAUSIBLE' in result['data_gaps']
+    assert result['size_pct_of_revenue'] is None
+
+
+def test_implausible_order_does_not_outrank_a_real_award():
+    p=packet();p['events'].append(dict(p['events'][0],event_id='typo',amount='625000 INR CRORE'))
+    result=triage(p)
+    assert result['triage_action']=='DEEP_RESEARCH' and result['selected_event_id']=='external'

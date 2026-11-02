@@ -15,6 +15,10 @@ SCREEN_VERSION = "local-screen-11"
 KEY = {"ORDER", "COMMERCIAL_START", "CAPACITY", "QUALIFICATION"}
 FIRM_STAGES = {"BINDING_DEMAND", "COMMERCIAL_SHIPMENT", "REPEAT_SHIPMENT"}
 SCALE = {"CRORE": 1.0, "MILLION": 0.1, "BILLION": 100.0, "LAKH": 0.01, "THOUSAND": 0.0001, "UNITS": 0.0000001}
+# A single award above 10x TTM revenue is far more often a misparsed amount, a market or customer total
+# quoted on a call, or a filing typo (QPOWER Rs 6.25 lakh crore; "Rs. 16,18,68,600 Crores" for Rs 16 crore)
+# than a real order: hold it for verification instead of admitting it or letting it outrank real awards.
+IMPLAUSIBLE_SIZE_PCT = 1000
 FX = {"INR": 1.0}  # Foreign values require dated conversion evidence; never use a fixed historical rate.
 DEEP, WATCH, REJECT, REPAIR = "DEEP_RESEARCH", "WATCH_MILESTONE", "REJECT_WITH_REASON", "DATA_REPAIR"
 
@@ -228,11 +232,14 @@ def triage(p, conn=None, issuer_id=None, use_llm=False):
         size = (100 * amt / rev) if (amt and rev and not (e.get("details") or {}).get("history_conflict")
                                     and not (e.get("details") or {}).get("size_needs_filing") and (e.get("details") or {}).get("tax_basis")!="INCLUSIVE" and e.get("amount_basis") != "NON_BINDING"
                                     and e.get('ownership_scope') != 'JOINT_VENTURE') else None
-        cand = dict(e=e, amt=amt, firm=firm, size=size)
+        implausible = size is not None and size > IMPLAUSIBLE_SIZE_PCT
+        if implausible:
+            size = None
+        cand = dict(e=e, amt=amt, firm=firm, size=size, implausible=implausible)
         # An unrelated viable award must not be vetoed by another event's customer.
         eligible = not (e.get("details") or {}).get("history_conflict") and e.get("relationship") != "CONFIRMED_RELATED" and not any(
             (e.get('details') or {}).get(k) for k in ('relationship_conflict', 'source_recheck_conflict'))
-        key = (eligible, firm, size or -1,str(e.get('event_id') or ''))
+        key = (eligible and not implausible, firm, size or -1,str(e.get('event_id') or ''))
         if best is None or key > best["key"]:
             cand["key"] = key
             best = cand
@@ -250,6 +257,8 @@ def triage(p, conn=None, issuer_id=None, use_llm=False):
         data_gaps.append('NET_ORDER_VALUE_REQUIRED')
     if (e.get('details') or {}).get('size_needs_filing'):
         data_gaps.append('ORDER_SIZE_FILING_REQUIRED')
+    if best["implausible"]:
+        data_gaps.append('ORDER_SIZE_IMPLAUSIBLE')
     if rev is None and cutoff:
         data_gaps.append('CURRENT_DATED_REVENUE_REQUIRED')
     if e.get('ownership_scope') == 'JOINT_VENTURE':
