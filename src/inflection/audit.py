@@ -155,18 +155,35 @@ def recheck_packet(conn, packet):
     tids = sorted({x['text_artifact_id'] for x in passages if x.get('text_artifact_id')})
     if not tids:
         return p
-    rows = conn.execute('''SELECT DISTINCT tp.text_artifact_id, tp.page_no, tp.body
-        FROM text_pages tp JOIN text_artifacts ta USING (text_artifact_id)
-        JOIN document_publications pub USING (document_version_id)
-        WHERE tp.text_artifact_id=ANY(%s::uuid[]) AND pub.issuer_id=%s
+    mode = p.get('manifest', {}).get('mode', 'PUBLIC_INFORMATION_RECONSTRUCTION')
+    eligible = {str(r[0]) for r in conn.execute('''SELECT DISTINCT ta.text_artifact_id
+        FROM text_artifacts ta JOIN document_publications pub USING (document_version_id)
+        WHERE ta.text_artifact_id=ANY(%s::uuid[]) AND pub.issuer_id=%s
           AND pub.published_at IS NOT NULL AND pub.published_at <= %s
-          AND (%s <> 'ACTUAL_SYSTEM_REPLAY' OR (pub.ingested_at <= %s AND ta.created_at <= %s))
-        ORDER BY tp.text_artifact_id, tp.page_no''',
-        (tids, issuer, cutoff, p.get('manifest', {}).get('mode', 'PUBLIC_INFORMATION_RECONSTRUCTION'), cutoff, cutoff)).fetchall()
+          AND (%s <> 'ACTUAL_SYSTEM_REPLAY' OR (pub.ingested_at <= %s AND ta.created_at <= %s))''',
+        (tids, issuer, cutoff, mode, cutoff, cutoff)).fetchall()}
+    # The rescan already stored this extractor's reading of each document under the current rules; reuse it
+    # instead of re-reading every page each week. Documents without a completed current scan are read here.
+    fresh = defaultdict(list)
+    stored = set()
+    if mode != 'ACTUAL_SYSTEM_REPLAY' and eligible:
+        from .commercial.pipeline import _MENTION_COLS, _mention
+        stored = {str(r[0]) for r in conn.execute('''SELECT text_artifact_id FROM commercial_scans
+            WHERE text_artifact_id=ANY(%s::uuid[]) AND rules_version=%s AND status='SCANNED' ''',
+            (sorted(eligible), V.RULES_VERSION)).fetchall()}
+        if stored:
+            for r in conn.execute(f'''SELECT {_MENTION_COLS} FROM commercial_mentions m
+                    WHERE m.text_artifact_id=ANY(%s::uuid[]) AND m.rules_version=%s
+                    ORDER BY m.text_artifact_id, m.page_no, m.span_start''', (sorted(stored), V.RULES_VERSION)).fetchall():
+                fresh[str(r[2])].append(_mention(r))
+    rows = conn.execute('''SELECT tp.text_artifact_id, tp.page_no, tp.body FROM text_pages tp
+        WHERE tp.text_artifact_id=ANY(%s::uuid[]) ORDER BY tp.text_artifact_id, tp.page_no''',
+        (sorted(eligible - stored),)).fetchall() if eligible - stored else []
     pages = defaultdict(list)
     for tid, page, body in rows:
         pages[str(tid)].append((page, body))
-    fresh = {tid: PARSED_DOCUMENTS.extract(ps,V.RULES_VERSION,extract_document)[0] for tid, ps in pages.items()}
+    for tid, ps in pages.items():
+        fresh[tid] = PARSED_DOCUMENTS.extract(ps,V.RULES_VERSION,extract_document)[0]
     changes = []
     corrections = []
     for e in p.get('events', []):
