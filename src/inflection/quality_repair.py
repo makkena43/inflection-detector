@@ -23,8 +23,11 @@ from .triage import pipeline as T,screen,rules as TR
 from .sources.download import Archive
 
 ROOT=Path(__file__).resolve().parents[2]
-JOB=ROOT/'output/process_health/jobs/quality_repair'
-VERSION='quality-repair-1'
+# quality-repair-2 (2026-11-02): fresh run of every week under commercial-26, the corrected packet recheck and
+# financial timing; quality-repair-1 (output/process_health/jobs/quality_repair) stays as it was, paused.
+JOB=ROOT/'output/process_health/jobs/quality_repair_2'
+VERSION='quality-repair-2'
+RUN_TAG='quality-20261102'
 SPLIT=date(2024,10,28)
 TERMINAL={'COMPLETE','FINISHED_WITH_GAPS','SOURCE_UNAVAILABLE','ALLOWANCE_REACHED','STORAGE_LIMIT','FAILED','OCR_UNAVAILABLE'}
 
@@ -283,7 +286,7 @@ def parallel_cases(conn,items,day,tag,job,guard,workers):
 
 
 def corrected_week(conn,week,plan,job,guard=storage_guard,workers=1):
-    tag=f"quality-20261030-{week['cohort']}";day=date.fromisoformat(week['week']);now=datetime.fromisoformat(plan['observed_at'])
+    tag=f"{RUN_TAG}-{week['cohort']}";day=date.fromisoformat(week['week']);now=datetime.fromisoformat(plan['observed_at'])
     previous={k:os.environ.get(k) for k in ('INFLECTION_RUN_TAG','INFLECTION_RUN_BASE_UNTIL')}
     os.environ['INFLECTION_RUN_TAG']=tag;os.environ.pop('INFLECTION_RUN_BASE_UNTIL',None)
     try:

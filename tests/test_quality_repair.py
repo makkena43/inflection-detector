@@ -21,7 +21,7 @@ def test_corrected_run_preserves_original_decision_and_packet(db,tmp_path):
     T.record(db,DAY,'ABC','WATCH_MILESTONE',packet_hash=PC.content_hash(old['content']))
     original=db.execute('SELECT to_jsonb(i) FROM triage_shortlist_items i WHERE shortlist_id=%s',(it['shortlist_id'],)).fetchone()[0]
     result=Q.corrected_week(db,plan['weeks'][0],plan,tmp_path,guard=lambda:None)
-    assert result['run_tag']=='quality-20261030-recent'
+    assert result['run_tag']==Q.RUN_TAG+'-recent'
     assert db.execute('SELECT to_jsonb(i) FROM triage_shortlist_items i WHERE shortlist_id=%s',(it['shortlist_id'],)).fetchone()[0]==original
     case=Q.read_lines(tmp_path/'cases.jsonl')[0]
     assert case['packet_id']!=str(old['packet_id'])
@@ -47,7 +47,7 @@ def test_pending_screen_does_not_consume_assessments_or_record_rejection(db,tmp_
     Q.corrected_week(db,plan['weeks'][0],plan,tmp_path,guard=lambda:None)
     case=Q.read_lines(tmp_path/'cases.jsonl')[0]
     assert case['status']=='EVIDENCE_OR_RESEARCH_PENDING' and case['recorded'] is None
-    assert db.execute("SELECT triage_action FROM triage_shortlist_items i JOIN triage_shortlists s USING(shortlist_id) WHERE s.run_tag='quality-20261030-recent'").fetchone()[0] is None
+    assert db.execute("SELECT triage_action FROM triage_shortlist_items i JOIN triage_shortlists s USING(shortlist_id) WHERE s.run_tag=%s",(Q.RUN_TAG+'-recent',)).fetchone()[0] is None
 
 
 def test_storage_stop_happens_before_a_new_shortlist_is_written(db,tmp_path):

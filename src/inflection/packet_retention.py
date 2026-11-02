@@ -43,7 +43,7 @@ def batch(conn,limit=100,packet_ids=None):
     return receipts
 
 
-def register_completed_weeks(conn,quality_job=ROOT/'output/process_health/jobs/quality_repair'):
+def register_completed_weeks(conn,quality_job=ROOT/'output/process_health/jobs/quality_repair',run_tag=None):
     """Only proven completed reconstruction weeks; active weeks stay intact."""
     path=Path(quality_job)/'stages.jsonl'
     if not path.exists():return 0
@@ -53,7 +53,12 @@ def register_completed_weeks(conn,quality_job=ROOT/'output/process_health/jobs/q
         if not key.startswith('week/'):continue
         _,cohort,week=key.split('/')
         if cohort not in ('recent','archive'):raise ValueError('Unexpected repair cohort')
-        rows.append((week,'quality-20261030-'+cohort))
+        if run_tag is None:
+            # the paused quality-repair-1 job wrote quality-20261030-*; every other job uses the current tag
+            from .quality_repair import RUN_TAG
+            legacy=Path(quality_job).resolve()==(ROOT/'output/process_health/jobs/quality_repair').resolve()
+            run_tag='quality-20261030' if legacy else RUN_TAG
+        rows.append((week,run_tag+'-'+cohort))
     count=0
     for week,tag in rows:
         count+=conn.execute('''INSERT INTO packet_retention_completed_shortlists(shortlist_id,week_start,run_tag)

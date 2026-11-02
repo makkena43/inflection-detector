@@ -52,7 +52,7 @@ NUMBER = re.compile(r"\(\s*-?[\d,]+(?:\.\d+)?\s*\)|-?[\d,]*\d(?:\.\d+)?")
 LINES = (  # metric, line start (after an optional row number), words that disqualify the line
     ("revenue", re.compile(r"(?:revenue from operations|[il1]ncome from operations?|net sales|sales\s*/\s*[il1]ncome from operations?|"
                            r"total revenue from operations)\b", I), re.compile(r"other income|total income|total revenue \(", I)),
-    ("other_income", re.compile(r"other [il1]ncome\b", I), None),
+    ("other_income", re.compile(r"o[l1]?ther [il1]ncome\b", I), None),
     ("_total_income", re.compile(r"total [il1]ncome\b|total revenue\b", I), re.compile(r"comprehensive", I)),
     ("total_expenses", re.compile(r"total (?:expenses|expenditure)\b", I), None),
     ("_pbt_before_exceptional", re.compile(r"(?:net )?profit\s*/?\s*\(?loss\)?\s*before exceptional", I), None),
@@ -146,7 +146,7 @@ def _start(ptype: str, end: date) -> Optional[date]:
     return date(y, (m - 1) % 12 + 1, 1)
 
 
-def read_page(page_no: int, body: str) -> list[Figure]:
+def read_page(page_no: int, body: str, unlabelled_scope: Optional[str] = None) -> list[Figure]:
     if not (UNIT.search(body) or BARE_UNIT.search(body)):
         return []
     lines = body.splitlines()
@@ -214,7 +214,9 @@ def read_page(page_no: int, body: str) -> list[Figure]:
         return []
     scopes = SCOPE.findall("\n".join(lines[max(0, header_at - 25):header_at + 1]))
     if not scopes:
-        return []                       # an unlabelled statement could be either; never guess
+        if not unlabelled_scope:
+            return []                   # an unlabelled statement could be either; never guess
+        scopes = [unlabelled_scope]     # the filing never mentions consolidated figures: a standalone company
     scope = scopes[-1].upper()          # the label nearest the table
     for line in lines[max(0, header_at - 4):header_at + 1]:
         both = SCOPE.findall(line)
@@ -229,7 +231,10 @@ def read_page(page_no: int, body: str) -> list[Figure]:
             m = start.match(text)
             if not m or metric in seen or (veto and veto.search(text)):
                 continue
-            rest = re.sub(r"^(\W*)(\d{1,3}) (\d{2,3}\.\d{2})\b", r"\1\2\3", text[m.end():])   # OCR "9 74.00" = 974.00
+            # row references are not figures: "(1+11)", "(I+II)", "(III-IV)", "(a to g)", "[4(a) to 4(g)]"
+            rest = re.sub(r"[\(\[]\s*[\divxl]{1,4}\s*(?:[+\-–]|to)\s*[\divxl]{1,4}\s*[\)\]]|[\(\[][^\d\)\]]{0,12}[\)\]]", " ",
+                          text[m.end():], flags=I)
+            rest = re.sub(r"^(\W*)(\d{1,3}) (\d{2,3}\.\d{2})\b", r"\1\2\3", rest)   # OCR "9 74.00" = 974.00
             if re.match(r"^[\s|]*[\-–—](?:\s|$)", rest) and re.search(r"\d", rest):
                 seen.add(metric)        # a dash then figures: which column is nil cannot be told
                 continue
@@ -286,8 +291,9 @@ def _coherent(figs: list[Figure]) -> bool:
 def read_document(pages: list[tuple[int, str]]) -> list[Figure]:
     """The first coherent statement per scope in the filing."""
     out, scopes = [], set()
+    single = None if any(re.search(r"\bconsolidat", b or "", I) for _, b in pages) else "STANDALONE"
     for page_no, body in pages:
-        figs = read_page(page_no, body or "")
+        figs = read_page(page_no, body or "", single)
         if figs and figs[0].scope not in scopes:
             scopes.add(figs[0].scope)
             out += figs

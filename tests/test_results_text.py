@@ -99,3 +99,10 @@ Total income 20,853 19,505 20,001 59,713 57,903 78,399
     (rev,) = [f for f in read_page(3, text) if f.metric == "revenue"]
     assert (rev.period_type, rev.period_end, rev.scope) == ("QUARTER", date(2020, 12, 31), "CONSOLIDATED")
     assert rev.value == 20237 * 10 ** 6
+
+
+def test_an_unlabelled_statement_is_standalone_only_when_the_filing_never_mentions_consolidated():
+    page = SME_HALF_YEAR.replace("Standalone\n", "").replace("Standalone ", "")
+    (rev,) = [f for f in read_document([(1, page)]) if f.metric == "revenue"]
+    assert rev.scope == "STANDALONE"
+    assert read_document([(1, page), (2, "Consolidated results will follow")]) == []

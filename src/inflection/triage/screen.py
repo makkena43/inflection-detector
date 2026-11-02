@@ -10,7 +10,7 @@ import math
 from datetime import datetime, timedelta
 from ..commercial import vocabulary as V
 
-SCREEN_VERSION = "local-screen-11"
+SCREEN_VERSION = "local-screen-12"   # dated FX sizing, call-only huge orders held, period deadlines dropped
 
 KEY = {"ORDER", "COMMERCIAL_START", "CAPACITY", "QUALIFICATION"}
 FIRM_STAGES = {"BINDING_DEMAND", "COMMERCIAL_SHIPMENT", "REPEAT_SHIPMENT"}
