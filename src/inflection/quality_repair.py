@@ -28,6 +28,7 @@ ROOT=Path(__file__).resolve().parents[2]
 JOB=ROOT/'output/process_health/jobs/quality_repair_2'
 VERSION='quality-repair-2'
 RUN_TAG='quality-20261102'
+MAX_WORKERS=6   # owner 2026-11-02: 6 packet workers with a 2 GB Postgres cache
 SPLIT=date(2024,10,28)
 TERMINAL={'COMPLETE','FINISHED_WITH_GAPS','SOURCE_UNAVAILABLE','ALLOWANCE_REACHED','STORAGE_LIMIT','FAILED','OCR_UNAVAILABLE'}
 
@@ -253,7 +254,7 @@ def case_connection(dsn,timeout,it,day,tag,job,guard):
 
 def parallel_cases(conn,items,day,tag,job,guard,workers):
     """At most four in-flight tasks; journal successful peers before any failure."""
-    if not 1<=workers<=4:raise ValueError('Packet workers must be between 1 and 4')
+    if not 1<=workers<=MAX_WORKERS:raise ValueError(f'Packet workers must be between 1 and {MAX_WORKERS}')
     if len({str(it['issuer_id']) for it in items})!=len(items):raise ValueError('Duplicate issuer in parallel packet tasks')
     if workers==1:
         for it in items:yield corrected_case(conn,it,day,tag,guard)
@@ -517,13 +518,13 @@ def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--job',type=Path,default=JOB);ap.add_argument('--evidence',action='store_true')
     ap.add_argument('--recover-evidence',action='store_true',help='Use only the unspent original OCR recovery allowance')
     ap.add_argument('--statement-timeout-seconds',type=int,default=90,help='Bound each repair query; historical weekly reconstruction may need more time')
-    ap.add_argument('--workers',type=int,default=1,help='Parallel packet workers within each chronological week (1-4)')
+    ap.add_argument('--workers',type=int,default=1,help='Parallel packet workers within each chronological week (1-6)')
     ap.add_argument('--prune-old-packets',action='store_true',help='Owner-authorized removal of older completed draft payloads after each week')
     ap.add_argument('--reserve-gib',type=int,default=8,help='Minimum free disk space; only lower with owner authorization')
     args=ap.parse_args()
     if not 5<=args.reserve_gib<=1024:ap.error('--reserve-gib must be between 5 and 1024')
     os.environ['INFLECTION_REPAIR_RESERVE_GIB']=str(args.reserve_gib)
-    if not 1<=args.workers<=4:ap.error('--workers must be between 1 and 4')
+    if not 1<=args.workers<=MAX_WORKERS:ap.error(f'--workers must be between 1 and {MAX_WORKERS}')
     if args.recover_evidence and not args.evidence:ap.error('--recover-evidence requires --evidence')
     if not 1<=args.statement_timeout_seconds<=900:ap.error('--statement-timeout-seconds must be between 1 and 900')
     with psycopg.connect(os.environ.get('INFLECTION_DSN','postgresql:///inflection'),autocommit=True) as conn:
