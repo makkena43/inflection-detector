@@ -1,0 +1,72 @@
+2025-04-01 WindowRecord(run_id='15a04eb1-9258-4623-9921-885609c30f85', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=58, inserted=58) []
+2025-04-02 WindowRecord(run_id='1e2f47d4-e701-4473-9c38-74f1132c32ac', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=63, inserted=63) []
+2025-04-03 WindowRecord(run_id='764a5343-6f57-45fb-a10d-296d351478eb', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=51, inserted=51) []
+2025-04-04 WindowRecord(run_id='b7b57115-3fb1-4ab9-8caf-c86849b4674a', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=83, inserted=83) []
+2025-04-05 WindowRecord(run_id='5e5f53b7-ac69-4a37-95ad-0abd3395687c', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=52, inserted=52) []
+2025-04-06 WindowRecord(run_id='4f17d576-f9cf-4aa4-a132-7d7f95ed8e58', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=3, inserted=3) []
+2025-04-07 WindowRecord(run_id='84dd4756-db37-4a75-a4d4-631985e9a477', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=130, inserted=130) []
+2025-04-08 WindowRecord(run_id='a19fafcc-e715-4473-b303-869a7df2dc2a', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=130, inserted=130) []
+2025-04-09 WindowRecord(run_id='54a1b7dd-3a15-4cbf-9637-7e7fe159b7ff', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=129, inserted=129) []
+2025-04-10 WindowRecord(run_id='35da2288-396b-4c64-9f98-cd578ec8e3c2', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=64, inserted=64) []
+2025-04-11 WindowRecord(run_id='4df54d5a-ded6-4f12-b371-72b5f7bbf244', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=102, inserted=102) []
+2025-04-12 WindowRecord(run_id='71e23992-9e1f-47dc-a699-a98895a2bfbf', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=54, inserted=54) []
+2025-04-13 WindowRecord(run_id='3efc057d-b868-4a85-aa78-5774964ab501', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=4, inserted=4) []
+2025-04-14 WindowRecord(run_id='46b44ee8-87ce-438e-9f8e-34199fa2047c', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=88, inserted=88) []
+2025-04-15 WindowRecord(run_id='13939e88-30eb-4d1c-80e2-139a0233960d', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=127, inserted=127) []
+2025-04-16 WindowRecord(run_id='1cea3998-7134-47b2-b23d-9cf4ab8f7210', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=82, inserted=82) []
+2025-04-17 WindowRecord(run_id='831b7134-63d9-4dfb-b82e-1b8ef3e95934', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=84, inserted=84) []
+2025-04-18 WindowRecord(run_id='c6abef6e-0a70-4681-a467-64a4a9e68565', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=78, inserted=78) []
+2025-04-19 WindowRecord(run_id='214d4f5a-d0ac-4843-b7d9-9bb3501c6580', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=86, inserted=86) []
+2025-04-20 WindowRecord(run_id='136430f0-9305-433c-97b9-d9a1173b872e', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=9, inserted=9) []
+2025-04-21 WindowRecord(run_id='b1b3bf98-ac22-4026-ad6b-02bb09bd4fcc', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=111, inserted=111) []
+2025-04-22 WindowRecord(run_id='a96f5f5a-a3c9-46b0-8bd7-3828facca1af', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=48, inserted=48) []
+2025-04-23 WindowRecord(run_id='058b4086-e853-4241-804c-75afc8f1f36c', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=51, inserted=51) []
+2025-04-24 WindowRecord(run_id='277ebcaf-718c-465f-bbfa-0c2127466336', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=87, inserted=87) []
+2025-04-25 WindowRecord(run_id='1b5fc221-a9c2-43e0-a736-929aa42324a2', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=73, inserted=73) []
+2025-04-26 WindowRecord(run_id='31d322be-ad5a-454f-b713-612d8e05beab', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=23, inserted=23) []
+2025-04-27 WindowRecord(run_id='7b929933-de11-4718-aeb3-0bf45a4599cd', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=1, inserted=1) []
+2025-04-28 WindowRecord(run_id='08aa21dd-e368-453e-9bf0-b5b9d0de4a14', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=58, inserted=58) []
+2025-04-29 WindowRecord(run_id='f1257848-563f-4a43-9eac-3f9a60196efd', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=102, inserted=102) []
+2025-04-30 WindowRecord(run_id='86fecbfa-c080-40af-ae33-2ae9cda75368', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=103, inserted=103) []
+2026-10-01 WindowRecord(run_id='81238fba-e72e-4057-ab6f-158a38432edf', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=216, inserted=0) []
+2026-10-02 WindowRecord(run_id='8818d4c6-d0f9-48f3-9047-306fc0ee9c6b', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=45, inserted=0) []
+2026-10-03 WindowRecord(run_id='233e2add-1f21-4ca5-815c-afc00eca18b6', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=55, inserted=0) []
+2026-10-04 WindowRecord(run_id='7f0762b3-c2b3-4eb7-a17b-e1759d930973', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=4, inserted=0) []
+2026-10-05 WindowRecord(run_id='8fd5a2c3-4aca-471c-8596-2f06a1deb462', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=99, inserted=1) []
+2026-10-06 WindowRecord(run_id='23d8e418-66f1-4f9f-af48-39b42010276f', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=78, inserted=0) []
+2026-10-07 WindowRecord(run_id='79a5fc0d-25ad-4b40-8fb2-e69bb8ca8b4c', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=102, inserted=0) []
+2026-10-08 WindowRecord(run_id='2a69e8d9-e9df-4f98-be2d-8c642fdde0af', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=131, inserted=0) []
+2026-10-09 WindowRecord(run_id='d26e988c-572e-4b1a-b8a3-fb9b19ab6273', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=128, inserted=0) []
+2026-10-10 WindowRecord(run_id='fa572be0-48a3-4fe7-87a0-1d1dbdb091f8', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=83, inserted=0) []
+2026-10-11 WindowRecord(run_id='04b09c8b-909e-46af-9009-20521d5dcb7e', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=7, inserted=0) []
+2026-10-12 WindowRecord(run_id='c3a1e863-a5cd-403a-b897-fa69e9fe2147', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=170, inserted=0) []
+2026-10-13 WindowRecord(run_id='8b560818-6060-4870-a42e-605cd98f28d2', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=151, inserted=0) []
+2026-10-14 WindowRecord(run_id='633863aa-5cf0-4bd0-bdf1-4138fcaa258d', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=137, inserted=0) []
+2026-10-15 WindowRecord(run_id='7c81ac8c-a092-4629-bf61-50e0191dbf86', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=130, inserted=2) []
+2026-10-16 WindowRecord(run_id='329e0cdb-611e-4023-ab12-f91e33371093', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=86, inserted=0) []
+2026-10-17 WindowRecord(run_id='13e6d017-cb36-448a-a5d5-e21a7d316a3a', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=54, inserted=0) []
+2026-10-18 WindowRecord(run_id='edd28aa4-ff9c-4696-8f9a-8923aac24840', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=9, inserted=0) []
+2026-10-19 WindowRecord(run_id='d9164eb5-2d4e-4009-b65c-1640e72a6780', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=72, inserted=1) []
+2026-10-20 WindowRecord(run_id='703dcc1a-b9d5-4f4f-ba15-560690ff9061', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=22, inserted=0) []
+2026-10-21 WindowRecord(run_id='fdbc634b-5d4f-459b-8329-14e183b5f1b2', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=92, inserted=0) []
+2026-10-22 WindowRecord(run_id='f122936d-ca34-4405-a6b4-c00ca36676f3', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=55, inserted=0) []
+2026-10-23 WindowRecord(run_id='54709574-5950-4d0f-b5c8-0edff89cb546', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=56, inserted=0) []
+2026-10-24 WindowRecord(run_id='590de76f-b0f1-4cde-b447-eb0cf2c7fdc6', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=40, inserted=0) []
+2026-10-25 WindowRecord(run_id='eaf8eb6f-3e83-4f7c-885f-3a3450444629', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=6, inserted=0) []
+2026-10-26 WindowRecord(run_id='de17e925-5c22-4cc8-b1fa-075a24ce280c', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=78, inserted=0) []
+2026-10-27 WindowRecord(run_id='c85c155a-55bb-4c9a-9f12-5132cd3fa713', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=67, inserted=0) []
+2026-10-28 WindowRecord(run_id='ccb0809d-bf19-47aa-8fb5-0392b5cb01f4', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=81, inserted=0) []
+{
+  "scope": "nse_announcements:sme announcement listings",
+  "first": "2025-04-01",
+  "last": "2026-10-28",
+  "state": "COMPLETE",
+  "total_days": 576,
+  "complete_days": 576,
+  "attempted_days": 58,
+  "received": 4388,
+  "inserted": 2138,
+  "gaps": [],
+  "current_day": "2026-10-28",
+  "last_checked_day": "2026-10-28"
+}

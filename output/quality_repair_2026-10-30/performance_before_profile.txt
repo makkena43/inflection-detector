@@ -1,0 +1,30 @@
+         4836706 function calls (4780065 primitive calls) in 7.163 seconds
+
+   Ordered by: cumulative time
+   List reduced from 510 to 22 due to restriction <22>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        6    0.006    0.001    5.036    0.839 /Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/audit.py:138(recheck_packet)
+       44    0.020    0.000    3.626    0.082 /Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/commercial/extract.py:704(extract_document)
+    13544    0.049    0.000    3.192    0.000 /Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/commercial/extract.py:495(sentence_mention)
+      280    0.001    0.000    3.059    0.011 /Users/makkenasrinivas/PycharmProjects/inflection-detector/.venv/lib/python3.12/site-packages/psycopg/connection.py:281(execute)
+      280    0.001    0.000    3.053    0.011 /Users/makkenasrinivas/PycharmProjects/inflection-detector/.venv/lib/python3.12/site-packages/psycopg/cursor.py:100(execute)
+      280    2.994    0.011    3.052    0.011 /Users/makkenasrinivas/PycharmProjects/inflection-detector/.venv/lib/python3.12/site-packages/psycopg/connection.py:479(wait)
+        6    0.002    0.000    2.134    0.356 /Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/packets/pipeline.py:391(packet_for)
+       12    0.002    0.000    2.094    0.175 /Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/packets/pipeline.py:328(nomination_issues)
+   490268    1.752    0.000    1.752    0.000 {method 'search' of 're.Pattern' objects}
+    12806    0.174    0.000    1.480    0.000 /Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/commercial/extract.py:108(is_garbled)
+    10978    0.036    0.000    1.402    0.000 /Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/commercial/extract.py:450(_family)
+       12    0.000    0.000    1.283    0.107 /Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/queue.py:151(evaluation_rows)
+    35914    0.068    0.000    0.918    0.000 {built-in method builtins.sum}
+1692/1552    0.001    0.000    0.766    0.000 {built-in method builtins.any}
+      156    0.000    0.000    0.762    0.005 /Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/packets/pipeline.py:349(<genexpr>)
+      144    0.001    0.000    0.762    0.005 /Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/financial/pipeline.py:68(_input_fingerprint)
+        6    0.001    0.000    0.760    0.127 /Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/audit.py:106(recheck_nomination)
+    16704    0.078    0.000    0.532    0.000 /Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/commercial/extract.py:122(<genexpr>)
+   393673    0.184    0.000    0.344    0.000 /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/re/__init__.py:280(_compile)
+   165108    0.077    0.000    0.340    0.000 /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/re/__init__.py:174(search)
+      866    0.105    0.000    0.321    0.000 /Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/commercial/extract.py:76(split_page)
+   213566    0.095    0.000    0.293    0.000 /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/re/__init__.py:169(fullmatch)
+
+

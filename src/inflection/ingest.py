@@ -16,6 +16,7 @@ Every step is idempotent and resumable:
 from __future__ import annotations
 
 from collections import Counter
+import hashlib
 from dataclasses import dataclass
 from datetime import date, datetime, time, timedelta
 from pathlib import Path
@@ -29,6 +30,7 @@ from .sources.download import Archive, DownloadResult, DownloadStatus, StoredFil
 from .sources.http import HttpClient, curl_cffi_transport
 from .states import CoverageStatus, PipelineState, PublicationBasis
 from .text_extraction import EXTRACTION_METHOD, ExtractionStatus, extract_pdf, extraction_version
+from .documents import lock_document_hashes
 
 ADAPTER_VERSION = "exchange-announcements-2"
 CREATED_BY = "inflection.ingest"
@@ -82,11 +84,17 @@ def _publication_row(a: Announcement, source_id, run_id, listing_url: str) -> tu
                                                                   "_issuer_name": a.issuer_name}))
 
 
-def record_window(conn, w: WindowResult) -> WindowRecord:
+def record_window(conn, w: WindowResult, observed_at: Optional[datetime] = None) -> WindowRecord:
     """Store one listing window and its announcements in a single transaction."""
     spec = SOURCES[w.exchange]
     status = CoverageStatus(w.status.value)
     start, end = _window_bounds(w)
+    observed_at=observed_at or datetime.now(IST)
+    if observed_at.tzinfo is None:raise ValueError('listing observation time must be timezone-aware')
+    notes=list(w.notes)
+    if status==CoverageStatus.COMPLETE and end>observed_at:
+        status=CoverageStatus.PARTIAL
+        notes.append('OPEN_WINDOW: a listing snapshot cannot verify hours after its observation')
     with conn.transaction():
         source_id = ensure_source(conn, w.exchange)
         run_id = conn.execute(
@@ -95,7 +103,7 @@ def record_window(conn, w: WindowResult) -> WindowRecord:
                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, now()) RETURNING run_id""",
             (source_id, start, end, w.segment, len(w.announcements), status.value,
              status.value if status in (CoverageStatus.BLOCKED, CoverageStatus.FAILED) else None,
-             Jsonb({"notes": w.notes, "requests": w.requests}))).fetchone()[0]
+             Jsonb({"notes": notes, "requests": w.requests, "observed_at": observed_at.isoformat()}))).fetchone()[0]
         inserted = 0
         with conn.cursor() as cur:
             for a in w.announcements:
@@ -143,17 +151,27 @@ def _store_version(conn, f: StoredFile, document_id=None) -> tuple:
 def _apply_download(conn, publication_id, revision: int, d: DownloadResult) -> bool:
     """Write the outcome with an optimistic revision check; False if another worker got there first."""
     with conn.transaction():
+        current=conn.execute('SELECT revision FROM document_publications WHERE publication_id=%s FOR UPDATE',
+                             (publication_id,)).fetchone()
+        if current is None or current[0]!=revision:
+            return False
         if d.original is not None:
+            lock_document_hashes(conn,[d.original.sha256]+[p.sha256 for p in d.pdfs])
             document_id, version_id = _store_version(conn, d.original)
             for member in d.pdfs:
                 if member.sha256 != d.original.sha256:
                     _store_version(conn, member, document_id)
+            blocked = d.status in (DownloadStatus.BLOCKED, DownloadStatus.FAILED)
+            reason=f'{d.status.value}: {d.note}' if blocked else None
+            issues=['ZIP_INCOMPLETE',d.note] if d.status in (DownloadStatus.ZIP_PARTIAL,DownloadStatus.ZIP_NO_PDF) else []
             cur = conn.execute(
                 """UPDATE document_publications
-                      SET document_version_id = %s, response_sha256 = %s, ingested_at = now(),
-                          pipeline_state = 'DOWNLOADED', failure_reason = NULL, revision = revision + 1
+                      SET document_version_id = %s, response_sha256 = %s,
+                          ingested_at = CASE WHEN document_version_id=%s THEN coalesce(ingested_at,now()) ELSE now() END,
+                          pipeline_state = %s, failure_reason = %s, processing_issues=%s, revision = revision + 1
                     WHERE publication_id = %s AND revision = %s""",
-                (version_id, d.original.sha256, publication_id, revision))
+                (version_id, d.original.sha256, version_id, 'FAILED' if blocked else 'DOWNLOADED',
+                 reason, issues, publication_id, revision))
         else:
             reason = f"{d.status.value}: {d.note or 'HTTP ' + str(d.http_status)}"[:1000]
             cur = conn.execute(
@@ -163,23 +181,37 @@ def _apply_download(conn, publication_id, revision: int, d: DownloadResult) -> b
         return cur.rowcount == 1
 
 
+def _publication_window(start, end):
+    """Use bound comparisons that remain indexable after PostgreSQL prepares the query."""
+    expression="coalesce(p.published_at,p.published_date::timestamp AT TIME ZONE 'Asia/Kolkata')"
+    clauses=[];values=[]
+    if start is not None:
+        clauses.append(f'AND {expression} >= %s')
+        values.append(datetime.combine(start,time(),IST))
+    if end is not None:
+        clauses.append(f'AND {expression} < %s')
+        values.append(datetime.combine(end+timedelta(days=1),time(),IST))
+    return ' '.join(clauses),values
+
+
 def download_pending(conn, archive: Archive, client: HttpClient, exchange: Optional[str] = None,
                      limit: int = 100, retry_failed: bool = False,
-                     start: Optional[date] = None, end: Optional[date] = None) -> Counter:
+                     start: Optional[date] = None, end: Optional[date] = None,
+                     stop_on_unavailable: bool = False) -> Counter:
     """Download attachments of DISCOVERED publications (and retryable failures when asked), oldest first."""
-    states = ["DISCOVERED"] + (["FAILED"] if retry_failed else [])
+    states = "IN ('DISCOVERED','FAILED')" if retry_failed else "= 'DISCOVERED'"
+    window,bounds=_publication_window(start,end)
     rows = conn.execute(
-        """SELECT p.publication_id, p.revision, p.attachment_url, s.name, p.pipeline_state, p.failure_reason
+        f"""SELECT p.publication_id, p.revision, p.attachment_url, s.name, p.pipeline_state, p.failure_reason
              FROM document_publications p JOIN sources s USING (source_id)
-            WHERE p.attachment_url IS NOT NULL AND p.pipeline_state = ANY(%s)
+            WHERE p.attachment_url IS NOT NULL AND p.pipeline_state {states}
               AND s.name = ANY(%s) AND (%s::text IS NULL OR s.name = %s)
               AND (p.pipeline_state='DISCOVERED' OR p.failure_reason LIKE 'BLOCKED%%' OR p.failure_reason LIKE 'FAILED%%')
-              AND (%s::date IS NULL OR coalesce(p.published_at,p.published_date::timestamp AT TIME ZONE 'Asia/Kolkata') >= (%s::date::timestamp AT TIME ZONE 'Asia/Kolkata'))
-              AND (%s::date IS NULL OR coalesce(p.published_at,p.published_date::timestamp AT TIME ZONE 'Asia/Kolkata') < ((%s::date+1)::timestamp AT TIME ZONE 'Asia/Kolkata'))
-            ORDER BY p.published_at NULLS LAST, p.first_seen_at
+              {window}
+            ORDER BY coalesce(p.published_at,p.published_date::timestamp AT TIME ZONE 'Asia/Kolkata') NULLS LAST, p.first_seen_at
             LIMIT %s""",
-        (states, [s['name'] for s in SOURCES.values()], exchange and SOURCES[exchange]["name"],
-         exchange and SOURCES[exchange]["name"], start,start,end,end,limit)).fetchall()
+        ([s['name'] for s in SOURCES.values()], exchange and SOURCES[exchange]["name"],
+         exchange and SOURCES[exchange]["name"], *bounds,limit)).fetchall()
     referers = {spec["name"]: spec["referer"] for spec in SOURCES.values()}
     outcome: Counter = Counter()
     for pid, rev, url, source_name, state, reason in rows:
@@ -187,6 +219,8 @@ def download_pending(conn, archive: Archive, client: HttpClient, exchange: Optio
             continue
         d = download(url, archive, client, referer=referers[source_name])
         outcome[d.status.value if _apply_download(conn, pid, rev, d) else "SKIPPED_CONCURRENT"] += 1
+        if stop_on_unavailable and d.status in (DownloadStatus.BLOCKED, DownloadStatus.FAILED):
+            break
     return outcome
 
 
@@ -194,6 +228,8 @@ def download_pending(conn, archive: Archive, client: HttpClient, exchange: Optio
 
 def _artifact(conn, version_id, path: Path) -> ExtractionStatus:
     """Extract one PDF version once per extractor version; reuse the stored result on reruns."""
+    key=hashlib.sha256(f'text-artifact:{version_id}:{extraction_version()}'.encode()).hexdigest()
+    lock_document_hashes(conn,[key])
     row = conn.execute("SELECT status FROM text_artifacts WHERE document_version_id = %s AND extraction_method = %s "
                        "AND extraction_version = %s", (version_id, EXTRACTION_METHOD, extraction_version())).fetchone()
     if row:
@@ -230,23 +266,37 @@ def _publication_state(statuses: list[ExtractionStatus]) -> tuple[PipelineState,
 
 
 def extract_pending(conn, archive: Archive, limit: int = 100,
-                    start: Optional[date] = None, end: Optional[date] = None) -> Counter:
+                    start: Optional[date] = None, end: Optional[date] = None,
+                    publication_ids=None) -> Counter:
+    if publication_ids is not None and not publication_ids:
+        return Counter()
+    window,bounds=_publication_window(start,end)
     rows = conn.execute(
-        """SELECT p.publication_id, p.revision, v.document_id
+        f"""SELECT p.publication_id, p.revision, v.document_id,v.media_type,v.document_version_id,p.processing_issues
              FROM document_publications p JOIN document_versions v USING (document_version_id)
             WHERE p.pipeline_state = 'DOWNLOADED'
-              AND (%s::date IS NULL OR coalesce(p.published_at,p.published_date::timestamp AT TIME ZONE 'Asia/Kolkata') >= (%s::date::timestamp AT TIME ZONE 'Asia/Kolkata'))
-              AND (%s::date IS NULL OR coalesce(p.published_at,p.published_date::timestamp AT TIME ZONE 'Asia/Kolkata') < ((%s::date+1)::timestamp AT TIME ZONE 'Asia/Kolkata'))
-            ORDER BY p.published_at NULLS LAST LIMIT %s""", (start,start,end,end,limit)).fetchall()
+              AND (%s::uuid[] IS NULL OR p.publication_id=ANY(%s::uuid[]))
+              {window}
+            ORDER BY p.published_at NULLS LAST LIMIT %s""", (publication_ids,publication_ids,*bounds,limit)).fetchall()
     outcome: Counter = Counter()
-    for pid, rev, document_id in rows:
+    for pid, rev, document_id,media_type,root_id,download_issues in rows:
         try:
             with conn.transaction():
+                current=conn.execute('SELECT revision,pipeline_state FROM document_publications WHERE publication_id=%s FOR UPDATE',
+                                     (pid,)).fetchone()
+                if current is None or current!=(rev,'DOWNLOADED'):
+                    outcome['SKIPPED_CONCURRENT']+=1
+                    continue
                 versions = conn.execute(
                     "SELECT document_version_id, sha256 FROM document_versions WHERE document_id = %s "
-                    "AND media_type = 'application/pdf' ORDER BY created_at", (document_id,)).fetchall()
+                    "AND media_type = 'application/pdf' AND (%s='application/zip' OR document_version_id=%s) "
+                    "ORDER BY document_version_id", (document_id,media_type,root_id)).fetchall()
                 statuses = [_artifact(conn, vid, archive.root / _storage_key(sha)) for vid, sha in versions]
                 state, reason = _publication_state(statuses)
+                if 'ZIP_INCOMPLETE' in download_issues:
+                    state=(PipelineState.PARTIAL_TEXT if any(s.usable for s in statuses) else
+                           PipelineState.OCR_REQUIRED if state==PipelineState.OCR_REQUIRED else PipelineState.FAILED)
+                    reason=('ZIP_INCOMPLETE: '+'; '.join(x for x in download_issues if x!='ZIP_INCOMPLETE')) if state==PipelineState.FAILED else None
                 conn.execute("""UPDATE document_publications SET pipeline_state = %s, failure_reason = %s,
                                        revision = revision + 1 WHERE publication_id = %s AND revision = %s""",
                              (state.value, reason, pid, rev))
@@ -269,7 +319,9 @@ def coverage_report(conn, start: date, end: date) -> dict:
     lo = datetime.combine(start, time(0), tzinfo=IST)
     hi = datetime.combine(end + timedelta(days=1), time(0), tzinfo=IST)
     windows = conn.execute(
-        """SELECT s.name, coalesce(r.segment, ''), r.coverage_status, count(*), sum(r.received_count)
+        """SELECT s.name, coalesce(r.segment, ''),
+                  CASE WHEN r.coverage_status='COMPLETE' AND (r.finished_at IS NULL OR r.finished_at<r.window_end)
+                    THEN 'PARTIAL' ELSE r.coverage_status END, count(*), sum(r.received_count)
              FROM ingestion_runs r JOIN sources s USING (source_id)
             WHERE r.window_start < %s AND r.window_end > %s
             GROUP BY 1, 2, 3 ORDER BY 1, 2, 3""", (hi, lo)).fetchall()

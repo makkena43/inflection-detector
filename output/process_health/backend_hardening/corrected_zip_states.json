@@ -1,0 +1,27 @@
+[
+  {
+    "publication_id": "5ef8c5d4-3045-4e89-a932-3fe4ce34895a",
+    "before": "TEXT_READY",
+    "after": "PARTIAL_TEXT"
+  },
+  {
+    "publication_id": "7c9e7cb6-b487-4857-b1ed-fcf2138de1c1",
+    "before": "PARTIAL_TEXT",
+    "after": "PARTIAL_TEXT"
+  },
+  {
+    "publication_id": "76f7f366-7423-47ae-94a2-4ff83139c756",
+    "before": "TEXT_READY",
+    "after": "PARTIAL_TEXT"
+  },
+  {
+    "publication_id": "4979179c-c21c-4abb-b638-f0143e2c991d",
+    "before": "TEXT_READY",
+    "after": "PARTIAL_TEXT"
+  },
+  {
+    "publication_id": "a2e1f14a-38e0-4de0-a546-37e62af0bac6",
+    "before": "PARTIAL_TEXT",
+    "after": "PARTIAL_TEXT"
+  }
+]

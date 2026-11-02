@@ -47,7 +47,7 @@ def test_results_statement_with_table():
 
 def test_date_only_is_end_of_day_and_not_tradable_same_day():
     a = availability(None, date(2024, 8, 12))
-    assert a.available_at == datetime(2024, 8, 12, 23, 59, 59, tzinfo=IST)
+    assert a.available_at == datetime(2024, 8, 12, 23, 59, 59, 999999, tzinfo=IST)
     assert a.basis == "DATE_ONLY" and a.earliest_trade_date == date(2024, 8, 13)
     assert availability(None, None).available_at is None
 

@@ -1,0 +1,43 @@
+{
+  "observed_at": "2026-10-30T05:00:20.812886+00:00",
+  "history_read_seconds": 10.237,
+  "issuers_with_completed_review": 2956,
+  "consumed_evaluation_ids": 53379,
+  "sample": [
+    {
+      "issuer_id": "0001004f-a6f0-479f-8262-2bb9f105f4f5",
+      "previous_queue_lines": 0,
+      "fixed_queue_lines": 1,
+      "reassessment_required": true,
+      "unseen_assessments": 5
+    },
+    {
+      "issuer_id": "0007d7a9-e869-4974-a278-66089d99bb4a",
+      "previous_queue_lines": 0,
+      "fixed_queue_lines": 1,
+      "reassessment_required": true,
+      "unseen_assessments": 2
+    },
+    {
+      "issuer_id": "000bbbc2-b3b0-407e-a164-522c393a84b0",
+      "previous_queue_lines": 0,
+      "fixed_queue_lines": 0,
+      "reassessment_required": false,
+      "unseen_assessments": 0
+    },
+    {
+      "issuer_id": "00418337-0dab-4121-bb4c-51c361a328bd",
+      "previous_queue_lines": 0,
+      "fixed_queue_lines": 1,
+      "reassessment_required": true,
+      "unseen_assessments": 18
+    },
+    {
+      "issuer_id": "004198ff-cafd-4bfe-b95f-9fe5dceb9849",
+      "previous_queue_lines": 1,
+      "fixed_queue_lines": 1,
+      "reassessment_required": true,
+      "unseen_assessments": 8
+    }
+  ]
+}

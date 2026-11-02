@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-31T06:57:17.416136+00:00",
+  "old_pid": 69768,
+  "pid": 38340,
+  "workers": 4,
+  "packets_at_restart": 19732,
+  "week": "2025-01-13",
+  "free_gib": 8.935970306396484,
+  "chronological_weeks": true,
+  "reserve_gib": 8,
+  "validation": "61 passed"
+}

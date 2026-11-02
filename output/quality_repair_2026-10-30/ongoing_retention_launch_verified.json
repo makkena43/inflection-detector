@@ -1,0 +1,7 @@
+{
+  "pid": 77386,
+  "workers": 4,
+  "reserve_gib": 5,
+  "automatic_weekly_packet_cleanup": true,
+  "validation": "69 passed"
+}

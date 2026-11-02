@@ -1,0 +1,33 @@
+.............F.............................................              [100%]
+=================================== FAILURES ===================================
+__ test_late_cancellation_invalidates_later_terms_snapshot_and_award_baseline __
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_a62876dff871) at 0x107a60a70>
+
+    def test_late_cancellation_invalidates_later_terms_snapshot_and_award_baseline(db):
+        from inflection.orderbook_evidence import awards_totals
+        issuer,src=_seed(db)
+        _filing(db,issuer,src,3050,at('2025-01-01'),[PO])
+        C.scan(db);C.resolve(db)
+        _filing(db,issuer,src,3051,at('2025-05-01'),[PO+' The execution period is 18 months.'])
+        C.scan(db);C.resolve(db)
+        _filing(db,issuer,src,3052,at('2025-03-01'),[
+            'Eastern Rail Systems Limited has cancelled Rs 150 crore of the purchase order for bogie frames.'])
+        C.scan(db);C.resolve(db)
+        first=db.execute('SELECT event_version_id FROM event_versions ORDER BY version_no LIMIT 1').fetchone()[0]
+        it=dict(issuer_id=issuer,trigger_event_version_ids=[first],cutoff=at('2025-06-01'),
+                mode='PUBLIC_INFORMATION_RECONSTRUCTION')
+        event=P._events(db,it)[0]
+>       assert event['details']=={'history_conflict':True}
+E       AssertionError: assert {'tax_basis': 'UNKNOWN'} == {'history_conflict': True}
+E         
+E         Left contains 1 more item:
+E         {'tax_basis': 'UNKNOWN'}
+E         Right contains 1 more item:
+E         {'history_conflict': True}
+E         Use -v to get more diff
+
+tests/test_event_history_processing.py:184: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_event_history_processing.py::test_late_cancellation_invalidates_later_terms_snapshot_and_award_baseline
+1 failed, 58 passed in 6.97s

@@ -1,0 +1,242 @@
+FFFFF.....................................                               [100%]
+=================================== FAILURES ===================================
+_____ test_rebuild_appends_current_packet_and_keeps_prior_decision_binding _____
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_89bc1391826b) at 0x103ef1e50>
+
+    def test_rebuild_appends_current_packet_and_keeps_prior_decision_binding(db):
+>       it,old,target=legacy(db)
+                      ^^^^^^^^^^
+
+tests/test_packet_rebuild.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_packet_rebuild.py:13: in legacy
+    db.execute("UPDATE triage_packets SET packet_version='triage-packet-12'")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_89bc1391826b) at 0x103ef1e50>
+query = "UPDATE triage_packets SET packet_version='triage-packet-12'"
+params = None, prepare = None, binary = False
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -> Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.IntegrityConstraintViolation: triage_packets is append-only; UPDATE is not allowed
+E           CONTEXT:  PL/pgSQL function forbid_mutation() line 3 at RAISE
+
+.venv/lib/python3.12/site-packages/psycopg/connection.py:304: IntegrityConstraintViolation
+_ test_rebuild_retains_original_cutoff_and_missing_nomination_as_pending_evidence _
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_18b7c67937fa) at 0x105aad460>
+
+    def test_rebuild_retains_original_cutoff_and_missing_nomination_as_pending_evidence(db):
+        from uuid import uuid4
+>       it,old,target=legacy(db)
+                      ^^^^^^^^^^
+
+tests/test_packet_rebuild.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_packet_rebuild.py:13: in legacy
+    db.execute("UPDATE triage_packets SET packet_version='triage-packet-12'")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_18b7c67937fa) at 0x105aad460>
+query = "UPDATE triage_packets SET packet_version='triage-packet-12'"
+params = None, prepare = None, binary = False
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -> Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.IntegrityConstraintViolation: triage_packets is append-only; UPDATE is not allowed
+E           CONTEXT:  PL/pgSQL function forbid_mutation() line 3 at RAISE
+
+.venv/lib/python3.12/site-packages/psycopg/connection.py:304: IntegrityConstraintViolation
+____ test_job_checkpoint_resumes_after_commit_without_duplicate_generations ____
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_8be99561302c) at 0x105ae3350>
+tmp_path = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-127/test_job_checkpoint_resumes_af0')
+
+    def test_job_checkpoint_resumes_after_commit_without_duplicate_generations(db,tmp_path):
+>       it,old,target=legacy(db)
+                      ^^^^^^^^^^
+
+tests/test_packet_rebuild.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_packet_rebuild.py:13: in legacy
+    db.execute("UPDATE triage_packets SET packet_version='triage-packet-12'")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_8be99561302c) at 0x105ae3350>
+query = "UPDATE triage_packets SET packet_version='triage-packet-12'"
+params = None, prepare = None, binary = False
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -> Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.IntegrityConstraintViolation: triage_packets is append-only; UPDATE is not allowed
+E           CONTEXT:  PL/pgSQL function forbid_mutation() line 3 at RAISE
+
+.venv/lib/python3.12/site-packages/psycopg/connection.py:304: IntegrityConstraintViolation
+__ test_storage_guard_rolls_back_before_append_and_retains_unprocessed_target __
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_9cdbfcd8845c) at 0x105ae3230>
+tmp_path = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-127/test_storage_guard_rolls_back_0')
+
+    def test_storage_guard_rolls_back_before_append_and_retains_unprocessed_target(db,tmp_path):
+>       it,old,target=legacy(db);calls=[]
+                      ^^^^^^^^^^
+
+tests/test_packet_rebuild.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_packet_rebuild.py:13: in legacy
+    db.execute("UPDATE triage_packets SET packet_version='triage-packet-12'")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_9cdbfcd8845c) at 0x105ae3230>
+query = "UPDATE triage_packets SET packet_version='triage-packet-12'"
+params = None, prepare = None, binary = False
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -> Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.IntegrityConstraintViolation: triage_packets is append-only; UPDATE is not allowed
+E           CONTEXT:  PL/pgSQL function forbid_mutation() line 3 at RAISE
+
+.venv/lib/python3.12/site-packages/psycopg/connection.py:304: IntegrityConstraintViolation
+__________________ test_actual_system_replay_is_not_rewritten __________________
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_d907cf10e5d6) at 0x105ae2ff0>
+
+    def test_actual_system_replay_is_not_rewritten(db):
+>       it,old,target=legacy(db)
+                      ^^^^^^^^^^
+
+tests/test_packet_rebuild.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_packet_rebuild.py:13: in legacy
+    db.execute("UPDATE triage_packets SET packet_version='triage-packet-12'")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_d907cf10e5d6) at 0x105ae2ff0>
+query = "UPDATE triage_packets SET packet_version='triage-packet-12'"
+params = None, prepare = None, binary = False
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -> Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.IntegrityConstraintViolation: triage_packets is append-only; UPDATE is not allowed
+E           CONTEXT:  PL/pgSQL function forbid_mutation() line 3 at RAISE
+
+.venv/lib/python3.12/site-packages/psycopg/connection.py:304: IntegrityConstraintViolation
+=========================== short test summary info ============================
+FAILED tests/test_packet_rebuild.py::test_rebuild_appends_current_packet_and_keeps_prior_decision_binding
+FAILED tests/test_packet_rebuild.py::test_rebuild_retains_original_cutoff_and_missing_nomination_as_pending_evidence
+FAILED tests/test_packet_rebuild.py::test_job_checkpoint_resumes_after_commit_without_duplicate_generations
+FAILED tests/test_packet_rebuild.py::test_storage_guard_rolls_back_before_append_and_retains_unprocessed_target
+FAILED tests/test_packet_rebuild.py::test_actual_system_replay_is_not_rewritten
+5 failed, 37 passed in 9.75s

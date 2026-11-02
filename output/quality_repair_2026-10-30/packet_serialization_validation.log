@@ -1,0 +1,27 @@
+..............F....................................................      [100%]
+=================================== FAILURES ===================================
+_______ test_rechecked_packet_persists_exact_nested_decimal_and_resumes ________
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_63a17f1b39b2) at 0x120d6fbf0>
+tmp_path = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-153/test_rechecked_packet_persists0')
+
+    def test_rechecked_packet_persists_exact_nested_decimal_and_resumes(db,tmp_path):
+        from decimal import Decimal
+        it,old,plan=scenario(db,tmp_path)
+        content=json.loads(json.dumps(old['content']))
+        content['source_recheck']={'amount':Decimal('12345678901234567890.0123456789'),'nested':[Decimal('0.000000001')]}
+        before=PC.content_hash(content)
+        result=P.store_packet(db,it,content,PC.TOKEN_BUDGET)
+        persisted=db.execute('SELECT content,content_hash FROM triage_packets WHERE packet_id=%s',(result['packet_id'],)).fetchone()
+        assert result['content']==persisted[0]
+        assert result['content']['source_recheck']['amount']=='12345678901234567890.0123456789'
+>       assert result['content']['source_recheck']['nested']==['0.000000001']
+E       AssertionError: assert ['1E-9'] == ['0.000000001']
+E         
+E         At index 0 diff: '1E-9' != '0.000000001'
+E         Use -v to get more diff
+
+tests/test_quality_repair.py:212: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_quality_repair.py::test_rechecked_packet_persists_exact_nested_decimal_and_resumes
+1 failed, 66 passed in 14.30s

@@ -1,0 +1,10 @@
+{
+  "recorded_at": "2026-10-29T16:58:25.814977+00:00",
+  "user_choice": "Continue within current storage limits",
+  "raw_archive_allowance_mib": 512,
+  "free_space_reserve_gib": 8,
+  "purge_archive": false,
+  "increase_budget_without_new_authorization": false,
+  "on_limit": "Stop new downloads; retain unresolved records as pending",
+  "free_bytes": 10731520000
+}

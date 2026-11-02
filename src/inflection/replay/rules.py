@@ -23,7 +23,7 @@ from typing import Iterable, Optional
 
 from ..asof import IST
 
-POLICY_VERSION = "replay-2"
+POLICY_VERSION = "replay-5"
 POLICY = dict(
     entry_lag_days=7,           # entry at the first close on or after cutoff + this: the week triage takes
     entry_window_days=10,       # no close that soon after the target: NO_PRICE

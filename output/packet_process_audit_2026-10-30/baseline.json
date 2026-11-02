@@ -1,0 +1,8 @@
+{
+  "packet_count": 44970,
+  "cross_issuer_or_missing_nomination_references": 0,
+  "cross_issuer_or_missing_trigger_references": 0,
+  "equal_time_packet_groups": 0,
+  "multiple_packet_leaf_groups": 0,
+  "financial_only_shortlist_items": 2928
+}

@@ -1,0 +1,162 @@
+{
+  "attachments": {
+    "task": "attachments",
+    "state": "STORAGE_LIMIT",
+    "pid": 93686,
+    "first": "2026-08-01",
+    "last": "2026-10-29",
+    "started_at": "2026-10-29T16:49:36.755170+00:00",
+    "counts": {
+      "download:OK": 137,
+      "text:TEXT_READY": 125,
+      "text:OCR_REQUIRED": 6,
+      "text:PARTIAL_TEXT": 15,
+      "download:ZIP_PARTIAL": 1,
+      "text:FAILED": 2,
+      "download:NOT_FOUND": 2
+    },
+    "issues": [],
+    "stage": "Download and extract NSE attachments across all companies",
+    "archive_bytes_added": 266401720,
+    "error": "Storage limit reached; progress retained, no archive files deleted",
+    "updated_at": "2026-10-29T17:00:17.874874+00:00"
+  },
+  "financials": {
+    "task": "financials",
+    "state": "SOURCE_UNAVAILABLE",
+    "pid": 93687,
+    "first": "2024-10-29",
+    "last": "2026-10-29",
+    "started_at": "2026-10-29T16:49:36.754852+00:00",
+    "counts": {
+      "COMPLETE": 84,
+      "filings_new": 5,
+      "load:NO_FIGURES": 7,
+      "load:LOADED": 5,
+      "load:figures": 254,
+      "load:unverified_figures": 0,
+      "EMPTY_UNVERIFIED": 7,
+      "PARTIAL": 1
+    },
+    "issues": [
+      {
+        "source": "references",
+        "status": "FINISHED_WITH_GAPS"
+      },
+      {
+        "source": "3BBLACKBIO",
+        "status": "EMPTY_UNVERIFIED",
+        "notes": []
+      },
+      {
+        "source": "ABH",
+        "status": "EMPTY_UNVERIFIED",
+        "notes": []
+      },
+      {
+        "source": "ABMKNO",
+        "status": "EMPTY_UNVERIFIED",
+        "notes": []
+      },
+      {
+        "source": "ACGL",
+        "status": "EMPTY_UNVERIFIED",
+        "notes": []
+      },
+      {
+        "source": "ACSTECH",
+        "status": "EMPTY_UNVERIFIED",
+        "notes": []
+      },
+      {
+        "source": "ADDIND",
+        "status": "EMPTY_UNVERIFIED",
+        "notes": []
+      },
+      {
+        "source": "ADVIKCA",
+        "status": "EMPTY_UNVERIFIED",
+        "notes": []
+      },
+      {
+        "source": "AETHER",
+        "status": "PARTIAL",
+        "notes": [
+          "Half-Yearly: TimeoutError: The read operation timed out",
+          "Annual: TimeoutError: The read operation timed out",
+          "Integrated: TimeoutError: The read operation timed out"
+        ]
+      },
+      {
+        "source": "AFCONS",
+        "status": "FAILED",
+        "notes": [
+          "Quarterly: TimeoutError: The read operation timed out",
+          "Half-Yearly: TimeoutError: The read operation timed out",
+          "Annual: TimeoutError: The read operation timed out",
+          "Integrated: TimeoutError: The read operation timed out"
+        ]
+      }
+    ],
+    "stage": "Discover original results and prior periods: AFCONS",
+    "archive_bytes_added": 721612,
+    "updated_at": "2026-10-29T17:06:07.072293+00:00"
+  },
+  "ocr": {
+    "task": "ocr",
+    "state": "STORAGE_LIMIT",
+    "pid": 93688,
+    "first": "2024-10-29",
+    "last": "2026-10-29",
+    "started_at": "2026-10-29T16:49:36.754982+00:00",
+    "counts": {
+      "PARTIAL": 410,
+      "COMPLETE": 1,
+      "ocr_failed": 2,
+      "OCR_REQUIRED": 1
+    },
+    "issues": [
+      {
+        "document_version_id": "208a964d-3ac9-4b58-89f4-4b16659141fc",
+        "status": "OCR_FAILED",
+        "error": "Command '['/Users/makkenasrinivas/PycharmProjects/inflection-detector/.venv/bin/python', '-m', 'inflection.ocr_cpu', '--config', '/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/ocr_runtime.json', '/Users/makkenasrinivas/inflection-archive/40/408fc4005ce8087f94b3cc3e",
+        "stderr": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/ocr_cpu.py\", line 89, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"/Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/ocr_cpu.py\", line 87, in main\n    args=ap.parse_args();print(json.dumps(recognize_pdf(args.pdf,json.loads(args.config.read_text()))))\n                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/ocr_cpu.py\", line 43, in recognize_pdf\n    if not 0<len(pdf)<=500:raise ValueError('PDF exceeds the 500 page OCR limit or is empty')\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: PDF exceeds the 500 page OCR limit or is empty\n"
+      },
+      {
+        "document_version_id": "2ec31e1a-ce03-4595-b821-ddebda2673b5",
+        "status": "OCR_FAILED",
+        "error": "Command '['/Users/makkenasrinivas/PycharmProjects/inflection-detector/.venv/bin/python', '-m', 'inflection.ocr_cpu', '--config', '/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/ocr_runtime.json', '/Users/makkenasrinivas/inflection-archive/62/620328f3a9cf0b43103ccc7e",
+        "stderr": ""
+      }
+    ],
+    "stage": "OCR archived PDF 019e5cc8-b810-47a0-aac7-6ae37c55a05a",
+    "archive_bytes_added": 133102396,
+    "error": "Storage limit reached; progress retained, no archive files deleted",
+    "updated_at": "2026-10-30T03:41:17.427686+00:00"
+  },
+  "analysis": {
+    "task": "analysis",
+    "state": "STORAGE_LIMIT",
+    "pid": 6789,
+    "first": "2024-10-29",
+    "last": "2026-10-29",
+    "started_at": "2026-10-29T18:01:07.527428+00:00",
+    "counts": {
+      "historical_packets_refreshed": 0
+    },
+    "issues": [
+      {
+        "stage": "historical_source_packets",
+        "status": "EVIDENCE_REQUIRED",
+        "pending": 3
+      }
+    ],
+    "stage": "Waiting for additional recovered evidence",
+    "archive_bytes_added": 0,
+    "waiting_for": [
+      "ocr"
+    ],
+    "error": "Free-space reserve reached; no further repair writes started",
+    "updated_at": "2026-10-30T02:46:19.604458+00:00"
+  }
+}

@@ -2,14 +2,14 @@
   "scope": "BSE announcement listings",
   "first": "2026-08-01",
   "last": "2026-10-28",
-  "state": "RUNNING",
+  "state": "COMPLETE",
   "total_days": 89,
-  "complete_days": 84,
-  "attempted_days": 10,
-  "received": 7125,
-  "inserted": 201,
+  "complete_days": 89,
+  "attempted_days": 15,
+  "received": 11628,
+  "inserted": 1490,
   "gaps": [],
-  "last_checked_day": "2026-10-23",
-  "current_day": "2026-10-24",
-  "updated_at": "2026-10-28T17:22:29.619749+00:00"
+  "last_checked_day": "2026-10-28",
+  "current_day": "2026-10-28",
+  "updated_at": "2026-10-28T17:24:47.990075+00:00"
 }

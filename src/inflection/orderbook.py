@@ -1,14 +1,10 @@
-"""Order book and order inflow figures from results presentations, press releases and con-call transcripts.
+"""Source-qualified order book and intake from presentations, releases and transcripts.
 
-    python -m inflection.orderbook scan [--from D] [--to D]     # extract into order_book_figures
-    python -m inflection.orderbook series SYMBOL                # print a company's quarterly series
+    python -m inflection.orderbook scan [--from D] [--to D]
+    python -m inflection.orderbook series SYMBOL
 
-Rule-based: a sentence or table line naming "order book" / "order backlog" / "unexecuted orders" or "order
-inflow" / "order intake" / "orders received" with an amount within 80 characters.  The amount closest to the
-wording is taken (after it preferred); per document and kind the largest such figure is kept, normally the company
-total.  Analyst questions ('?') are skipped.  Figures can still be a segment's book or a pipeline: treat as
-indicative.  In the 2021-2025 backtest a book of at least 1x revenue growing 30%+ year on year beat the index in
-every year, and a shrinking book lagged it.
+Only source-dated INR company observations support cycle arithmetic. Targets, segment totals,
+unknown reporting periods and partial sources remain distinct. Legacy raw figures stay available for audit.
 """
 from __future__ import annotations
 
@@ -23,12 +19,13 @@ from typing import Iterable, Optional
 
 import psycopg
 
-EXTRACTOR_VERSION = "orderbook-2"   # 2: prefers company-total wording
+EXTRACTOR_VERSION = "orderbook-3"   # source-qualified observations and resumable scans
 CHECKED_VERSION = "haiku-check-1"   # a doubtful figure re-read by a model from the source page; replaces the extracted one
-SERIES_VERSION = "orderbook-series-3"  # cutoff-safe revenue and explicit inflow comparability/provenance
+SERIES_VERSION = "orderbook-series-6"  # cutoff-safe revenue and explicit inflow comparability/provenance
                                     # (amount 0 = the document states no company total: the extracted figure is dropped)
 CATS = ['investor presentation', 'press release', 'financial result updates', 'analysts/institutional investor meet/con. call updates',
-        'updates', 'company update', 'press release / media release', 'outcome of board meeting', 'result']
+        'updates', 'company update', 'press release / media release', 'outcome of board meeting', 'result',
+        'annual report','annual reports','financial results','integrated filing-financial','integrated filing - financial']
 NUM = r"(?:rs\.?|inr|₹)?\s*([\d,]+(?:\.\d+)?)\s*(crores?|cr\.?|bn|billion|mn|million|lakhs?|lacs?)\b"
 BOOK = re.compile(r"\b(order\s?book|order\s?backlog|unexecuted\s+order|outstanding\s+order|pending\s+order|backlog)\b", re.I)
 INFLOW = re.compile(r"\b(order\s+inflows?|order\s+intake|orders?\s+received|new\s+orders?|order\s+bookings?|fresh\s+orders?)\b", re.I)
@@ -57,20 +54,15 @@ def sentences(body: str) -> Iterable[str]:
 
 
 def figures(body: str) -> dict:
-    """{kind: (amount_cr, sentence)}: the largest figure per kind in one text."""
-    best: dict = {}
-    for s in sentences(body):
-        for kind, rx in (("BOOK", BOOK), ("INFLOW", INFLOW)):
-            m = rx.search(s)
-            if not m: continue
-            near = [(pos - m.end() if pos >= m.end() else m.start() - pos + 20, v) for v, pos in amounts(s)
-                    if -80 <= pos - m.start() and pos - m.end() <= 80]
-            if not near: continue
-            v = min(near)[1]
-            rank = (1 if TOTAL.search(s) else 0) - (1 if SEGMENT.search(s) else 0)     # company total over a segment line
-            if kind not in best or (rank, v) > (best[kind][2], best[kind][0]):
-                best[kind] = (v, s[:400], rank)
-    return {k: (v, s) for k, (v, s, _) in best.items()}
+    """Compatibility summary; signal consumers use source-qualified observations."""
+    from .orderbook_evidence import extract_points
+    points,_=extract_points(body)
+    best={}
+    for p in points:
+        if p['quality'] in ('FORECAST_OR_PIPELINE','SEGMENT_ONLY','FUTURE_PERIOD'):continue
+        rank=(p['scope']!='SEGMENT',p['period_end'] or date.min,p['amount_cr'])
+        if p['kind'] not in best or rank>best[p['kind']][0]:best[p['kind']]=(rank,p)
+    return {kind:(float(p['amount_cr']),p['quote']) for kind,(_,p) in best.items()}
 
 
 def quarter_end(published: date) -> date:
@@ -79,117 +71,59 @@ def quarter_end(published: date) -> date:
     return date(published.year, m + 1, 1) - timedelta(days=1) if m else date(published.year - 1, 12, 31)
 
 
-def scan(conn, start: date, end: date) -> dict:
-    cur = conn.cursor(name="orderbook"); cur.itersize = 2000
-    cur.execute("""SELECT p.issuer_id, p.published_at, p.publication_id, tp.body
-                     FROM document_publications p JOIN text_artifacts ta USING (document_version_id) JOIN text_pages tp USING (text_artifact_id)
-                    WHERE p.issuer_id IS NOT NULL AND lower(p.original_category) = ANY(%s) AND p.published_at >= %s AND p.published_at < %s
-                      AND tp.tsv @@ to_tsquery('english', 'order & (book | backlog | inflow | intake | receiv | unexecut)')""",
-                (CATS, start, end + timedelta(days=1)))
-    per: dict = {}
-    for iss, pub, pid, body in cur:
-        for kind, (v, s) in figures(body).items():
-            k = (pid, kind)
-            if k not in per or v > per[k][0]:
-                per[k] = (v, iss, pub, s)
-    n = 0
-    with conn.cursor() as w:
-        for (pid, kind), (v, iss, pub, s) in per.items():
-            w.execute("""INSERT INTO order_book_figures (issuer_id, publication_id, published_at, quarter_end, kind, amount_cr, sentence, extractor_version)
-                         VALUES (%s,%s,%s,%s,%s,%s,%s,%s) ON CONFLICT (publication_id, kind, extractor_version) DO NOTHING""",
-                      (iss, pid, pub, quarter_end(pub.date()), kind, round(v, 2), s, EXTRACTOR_VERSION))
-            n += w.rowcount
-    return {"documents_with_figures": len({p for p, _ in per}), "inserted": n}
+def scan(conn, start: date, end: date, publication_ids=None, limit=None) -> dict:
+    from .orderbook_evidence import scan as read_sources
+    return read_sources(conn,start,end,publication_ids=publication_ids,limit=limit)
 
 
 SOURCE_RANK = {"investor presentation": 3, "press release": 3, "press release / media release": 3, "financial result updates": 3,
                "result": 3, "outcome of board meeting": 2, "updates": 2, "company update": 2}   # concall transcripts: 1
 
 
-def series(conn, issuer_id, cutoff: Optional[datetime] = None, quarters: int = 8) -> list[dict]:
-    """Per quarter (latest last): order book and inflow public by the cutoff, from the best source that quarter
-    (presentations / results releases before concall talk), with year-on-year growth.  A figure that breaks from
-    both neighbouring quarters (under half or over double both), or a book under one quarter's revenue at a
-    company whose book is normally at least 2x revenue, is marked doubtful and left out of the growth figures."""
-    q = defaultdict(dict)
-    provenance = {}
-    for qe, kind, amt, pub, cat, pid, sentence in conn.execute(
-            """SELECT f.quarter_end, f.kind, f.amount_cr, f.published_at, lower(coalesce(p.original_category, '')),
-                      f.publication_id, f.sentence
-                 FROM order_book_figures f JOIN document_publications p USING (publication_id)
-                WHERE f.issuer_id=%s AND f.extractor_version=%s AND (%s::timestamptz IS NULL OR f.published_at <= %s)
-                ORDER BY f.published_at, f.publication_id""",
-            (issuer_id, EXTRACTOR_VERSION, cutoff, cutoff)):
-        key = (SOURCE_RANK.get(cat, 1), float(amt))
-        if kind not in q[qe] or key > q[qe][kind]:
-            q[qe][kind] = key
-            provenance[(qe, kind)] = dict(publication_id=str(pid), published_at=pub.isoformat(),
-                                           sentence=sentence, period_basis=inflow_period(sentence))
-    rev = {pe: float(v) / 1e7 for pe, v in conn.execute(
-        """SELECT DISTINCT ON (period_end) period_end, value FROM financial_facts_asof WHERE issuer_id=%s AND metric='revenue'
-           AND period_type='QUARTER' AND NOT cumulative AND segment IS NULL AND value IS NOT NULL
-           AND available_at IS NOT NULL AND (%s::timestamptz IS NULL OR available_at <= %s)
-           ORDER BY period_end, (scope='CONSOLIDATED') DESC, available_at DESC, recorded_at DESC""",
-        (issuer_id, cutoff, cutoff))}
-    ends = sorted(q)
-    val = {(qe, k): q[qe][k][1] for qe in ends for k in ("BOOK", "INFLOW") if k in q[qe]}
-    ratios = sorted(val[(qe, "BOOK")] / (rev[qe] * 4) for qe in ends if (qe, "BOOK") in val and rev.get(qe))
-    typical = ratios[len(ratios) // 2] if ratios else None
-    doubtful = set()
-    for k in ("BOOK", "INFLOW"):
-        ks = [qe for qe in ends if (qe, k) in val]
-        for i, qe in enumerate(ks):
-            nb = [val[(x, k)] for x in ks[max(0, i - 1):i] + ks[i + 1:i + 2]]
-            v = val[(qe, k)]
-            if len(nb) == 2 and (v < 0.5 * min(nb) or v > 2 * max(nb)):
-                doubtful.add((qe, k))
-            if k == "BOOK" and typical and typical >= 2 and rev.get(qe) and v < rev[qe]:
-                doubtful.add((qe, k))
-    for qe, kind, amt, pub, pid, sentence in conn.execute(
-            """SELECT quarter_end, kind, amount_cr, published_at, publication_id, sentence
-                 FROM order_book_figures WHERE issuer_id=%s AND extractor_version=%s
-                 AND (%s::timestamptz IS NULL OR published_at <= %s)
-                 ORDER BY published_at, publication_id""", (issuer_id, CHECKED_VERSION, cutoff, cutoff)):
-        if float(amt) == 0:                     # checked: the document states no company total -> drop the extracted figure
-            val.pop((qe, kind), None)
-        else:
-            val[(qe, kind)] = float(amt)
-        provenance[(qe, kind)] = dict(publication_id=str(pid), published_at=pub.isoformat(),
-                                       sentence=sentence, period_basis=inflow_period(sentence), checked=True)
-        doubtful.discard((qe, kind))
-        if qe not in ends: ends.append(qe)
-    ends.sort()
-
-    def ok(qe, k):
-        return val.get((qe, k)) if (qe, k) in val and (qe, k) not in doubtful else None
-    out = []
-    for qe in ends:
-        py = date(qe.year - 1, qe.month, min(qe.day, calendar.monthrange(qe.year - 1, qe.month)[1]))
-        b, i, pb, pi = ok(qe, "BOOK"), ok(qe, "INFLOW"), ok(py, "BOOK"), ok(py, "INFLOW")
-        basis = provenance.get((qe, "INFLOW"), {}).get("period_basis", "UNKNOWN")
-        comparable = basis != "UNKNOWN" and basis == provenance.get((py, "INFLOW"), {}).get("period_basis")
-        out.append(dict(quarter_end=qe.isoformat(), order_book_cr=val.get((qe, "BOOK")), order_inflow_cr=val.get((qe, "INFLOW")),
-                        book_doubtful=(qe, "BOOK") in doubtful, inflow_doubtful=(qe, "INFLOW") in doubtful,
-                        book_yoy_pct=round((b / pb - 1) * 100, 1) if b and pb else None,
-                        inflow_yoy_pct=round((i / pi - 1) * 100, 1) if i and pi and comparable else None,
-                        inflow_period_basis=basis, inflow_comparable=comparable,
-                        sources={k.lower(): provenance[(qe, k)] for k in ("BOOK", "INFLOW") if (qe, k) in provenance},
-                        series_version=SERIES_VERSION))
-    return out[-quarters:]
+def series(conn, issuer_id, cutoff: Optional[datetime] = None, quarters: int = 8,
+           mode='PUBLIC_INFORMATION_RECONSTRUCTION') -> list[dict]:
+    """Source-qualified points, with duration and scope checked before year-on-year arithmetic."""
+    from .orderbook_evidence import effective_points
+    points=effective_points(conn,issuer_id,cutoff,mode)
+    by={}
+    basis_rank={'QUARTER':4,'ANNUAL':3,'HALF_YEAR':2,'NINE_MONTHS':1,'UNKNOWN':0,'POINT_IN_TIME':4}
+    for point in points:
+        key=(point['period_end'],point['kind'])
+        rank=(point['quality']=='VERIFIED',basis_rank.get(point['period_basis'],0),
+              {'CONSOLIDATED':3,'COMPANY':2,'STANDALONE':1}.get(point['scope'],0))
+        if key not in by or rank>by[key][0]:by[key]=(rank,point)
+    def point(end,kind):return by.get((end,kind),(None,None))[1]
+    def growth(current,prior):
+        if not current or not prior or any(p['quality']!='VERIFIED' for p in (current,prior)):return None
+        if current['period_basis']!=prior['period_basis'] or current['scope']!=prior['scope']:return None
+        if prior['amount_cr']<=0:return None
+        return round(float((current['amount_cr']/prior['amount_cr']-1)*100),1)
+    def source(p):
+        return dict(publication_id=p['publication_id'],published_at=p['published_at'].isoformat(),sentence=p['quote'],
+                    period_basis=p['period_basis'],quality=p['quality'],scope=p['scope'],
+                    first_published_at=p['first_published_at'].isoformat(),first_publication_id=p['first_publication_id'],
+                    input_fingerprint=p['fingerprint'],legacy_inferred_period=p.get('legacy_inferred_period',False))
+    result=[]
+    for end in sorted({p['period_end'] for p in points}):
+        previous=date(end.year-1,end.month,min(end.day,calendar.monthrange(end.year-1,end.month)[1]))
+        book,intake=point(end,'BOOK'),point(end,'INFLOW')
+        old_book,old_intake=point(previous,'BOOK'),point(previous,'INFLOW')
+        comparable=bool(intake and old_intake and intake['period_basis']!='UNKNOWN'
+                        and intake['period_basis']==old_intake['period_basis'] and intake['scope']==old_intake['scope']
+                        and intake['quality']==old_intake['quality']=='VERIFIED')
+        result.append(dict(quarter_end=end.isoformat(),order_book_cr=float(book['amount_cr']) if book else None,
+            order_inflow_cr=float(intake['amount_cr']) if intake else None,
+            book_doubtful=bool(book and book['quality']!='VERIFIED'),
+            inflow_doubtful=bool(intake and intake['quality']!='VERIFIED'),
+            book_yoy_pct=growth(book,old_book),inflow_yoy_pct=growth(intake,old_intake),
+            inflow_period_basis=intake['period_basis'] if intake else 'UNKNOWN',inflow_comparable=comparable,
+            sources={k:source(p) for k,p in [('book',book),('inflow',intake)] if p},series_version=SERIES_VERSION))
+    return result[-quarters:]
 
 
 def inflow_period(sentence: str) -> str:
-    """A flow needs an explicit reporting duration before year-on-year comparison."""
-    s = sentence or ""
-    for basis, pattern in (
-        ("NINE_MONTHS", r"nine months|9\s*months|9m\b"),
-        ("HALF_YEAR", r"half[- ]year|six months|6\s*months|h[12]\b"),
-        ("ANNUAL", r"annual|full[- ]year|(?:for|during|in) (?:the )?(?:financial |fiscal )?year\b"),
-        ("QUARTER", r"quarter|\bq[1-4]\b"),
-    ):
-        if re.search(pattern, s, re.I):
-            return basis
-    return "UNKNOWN"
+    from .orderbook_evidence import period_basis
+    return period_basis(sentence)
 
 
 def main(argv: Optional[list[str]] = None) -> int:

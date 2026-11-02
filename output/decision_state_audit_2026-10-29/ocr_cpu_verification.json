@@ -1,0 +1,5 @@
+{
+  "returncode": 1,
+  "seconds": 96.88,
+  "stderr": "OCR failed on page 1, including CPU fallback: e5rtError(\"e5rt_execution_stream_operation_create_precompiled_compute_operation_with_options call failed\", 13)"
+}

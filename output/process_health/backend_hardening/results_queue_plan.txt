@@ -1,0 +1,11 @@
+Limit  (cost=168333.73..170307.89 rows=500 width=327)
+  ->  Nested Loop Left Join  (cost=168333.73..440890.74 rows=69031 width=327)
+        ->  Gather Merge  (cost=168333.31..176373.10 rows=69031 width=210)
+              Workers Planned: 2
+              ->  Sort  (cost=167333.28..167405.19 rows=28763 width=210)
+                    Sort Key: p.published_at, p.publication_id
+                    ->  Parallel Index Scan using document_publications_attachment_queue on document_publications p  (cost=0.43..162252.61 rows=28763 width=210)
+                          Index Cond: (source_id = 'b315e071-a1ba-4115-90fb-dbc28db03453'::uuid)
+                          Filter: ((published_at >= '2021-01-01 00:00:00+05:30'::timestamp with time zone) AND (published_at < '2026-10-29 00:00:00+05:30'::timestamp with time zone) AND ((pipeline_state = 'DISCOVERED'::text) OR (failure_reason IS NULL) OR (failure_reason ~~ 'BLOCKED%'::text) OR (failure_reason ~~ 'FAILED%'::text) OR (failure_reason ~~ 'XBRL:%'::text)))
+        ->  Index Scan using document_versions_pkey on document_versions v  (cost=0.42..3.83 rows=1 width=149)
+              Index Cond: (document_version_id = p.document_version_id)

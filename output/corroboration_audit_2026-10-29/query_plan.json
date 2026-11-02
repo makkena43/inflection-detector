@@ -1,0 +1,421 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Nested Loop",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Join Type": "Inner",
+      "Startup Cost": 0.42,
+      "Total Cost": 45152879.97,
+      "Plan Rows": 2068,
+      "Plan Width": 479,
+      "Inner Unique": true,
+      "Join Filter": "(c.issuer_id = i.issuer_id)",
+      "Plans": [
+        {
+          "Node Type": "Index Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Scan Direction": "Forward",
+          "Index Name": "candidate_evaluations_issuer",
+          "Relation Name": "candidate_evaluations",
+          "Alias": "c",
+          "Startup Cost": 0.42,
+          "Total Cost": 41565723.69,
+          "Plan Rows": 2068,
+          "Plan Width": 1122,
+          "Index Cond": "((as_of >= '2026-09-01 00:00:00+05:30'::timestamp with time zone) AND (as_of < '2026-10-01 00:00:00+05:30'::timestamp with time zone))",
+          "Filter": "(((route <> 'COMMERCIAL'::text) OR (policy_version = 'commercial-25'::text) OR (NOT (hashed SubPlan 6))) AND ((route <> 'FINANCIAL'::text) OR (NOT (SubPlan 9))) AND ((route <> 'FINANCIAL'::text) OR (((components -> 'filing'::text) ->> 'scope'::text) <> 'STANDALONE'::text) OR (NOT (hashed SubPlan 11))) AND ((route <> 'FINANCIAL'::text) OR (policy_version = 'financial-9'::text) OR (((components -> 'filing'::text) ->> 'publication_id'::text) IS NOT NULL) OR (NOT (hashed SubPlan 8))))",
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "SubPlan",
+              "Subplan Name": "SubPlan 6",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "commercial_scans",
+              "Alias": "s_3",
+              "Startup Cost": 0.0,
+              "Total Cost": 34598.72,
+              "Plan Rows": 91810,
+              "Plan Width": 16,
+              "Filter": "((published_at < '2026-10-01 00:00:00+05:30'::timestamp with time zone) AND (rules_version = 'commercial-25'::text))"
+            },
+            {
+              "Node Type": "Index Scan",
+              "Parent Relationship": "SubPlan",
+              "Subplan Name": "SubPlan 9",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Scan Direction": "Forward",
+              "Index Name": "financial_scans_pkey",
+              "Relation Name": "financial_scans",
+              "Alias": "cur_1",
+              "Startup Cost": 0.44,
+              "Total Cost": 8.46,
+              "Plan Rows": 1,
+              "Plan Width": 0,
+              "Index Cond": "((publication_id = CASE WHEN (((c.components -> 'filing'::text) ->> 'publication_id'::text) ~ '^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$'::text) THEN (((c.components -> 'filing'::text) ->> 'publication_id'::text))::uuid ELSE NULL::uuid END) AND (rules_version = 'financial-9'::text))",
+              "Filter": "((evaluation_id IS DISTINCT FROM c.evaluation_id) AND (available_at < '2026-10-01 00:00:00+05:30'::timestamp with time zone))"
+            },
+            {
+              "Node Type": "Index Scan",
+              "Parent Relationship": "SubPlan",
+              "Subplan Name": "SubPlan 11",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Scan Direction": "Forward",
+              "Index Name": "financial_scans_pkey",
+              "Relation Name": "financial_scans",
+              "Alias": "consolidated",
+              "Startup Cost": 0.42,
+              "Total Cost": 10831.1,
+              "Plan Rows": 1,
+              "Plan Width": 56,
+              "Index Cond": "(rules_version = 'financial-9'::text)",
+              "Filter": "((available_at < '2026-10-01 00:00:00+05:30'::timestamp with time zone) AND (scope = 'CONSOLIDATED'::text) AND (status = ANY ('{EVALUATED,NOT_NOMINATED,NO_COMPARABLE}'::text[])))"
+            },
+            {
+              "Node Type": "Nested Loop",
+              "Parent Relationship": "SubPlan",
+              "Subplan Name": "SubPlan 8",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Inner",
+              "Startup Cost": 0.84,
+              "Total Cost": 10847.6,
+              "Plan Rows": 3,
+              "Plan Width": 16,
+              "Inner Unique": false,
+              "Plans": [
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "financial_scans_pkey",
+                  "Relation Name": "financial_scans",
+                  "Alias": "cur",
+                  "Startup Cost": 0.42,
+                  "Total Cost": 10831.09,
+                  "Plan Rows": 1,
+                  "Plan Width": 16,
+                  "Index Cond": "(rules_version = 'financial-9'::text)",
+                  "Filter": "(available_at < '2026-10-01 00:00:00+05:30'::timestamp with time zone)"
+                },
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "financial_scans_pkey",
+                  "Relation Name": "financial_scans",
+                  "Alias": "old",
+                  "Startup Cost": 0.42,
+                  "Total Cost": 16.47,
+                  "Plan Rows": 3,
+                  "Plan Width": 32,
+                  "Index Cond": "(publication_id = cur.publication_id)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Node Type": "Materialize",
+          "Parent Relationship": "Inner",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 0.0,
+          "Total Cost": 316.11,
+          "Plan Rows": 8407,
+          "Plan Width": 42,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "issuers",
+              "Alias": "i",
+              "Startup Cost": 0.0,
+              "Total Cost": 274.07,
+              "Plan Rows": 8407,
+              "Plan Width": 42
+            }
+          ]
+        },
+        {
+          "Node Type": "Limit",
+          "Parent Relationship": "SubPlan",
+          "Subplan Name": "SubPlan 1",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 265.49,
+          "Total Cost": 265.49,
+          "Plan Rows": 1,
+          "Plan Width": 13,
+          "Plans": [
+            {
+              "Node Type": "Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 265.49,
+              "Total Cost": 265.49,
+              "Plan Rows": 3,
+              "Plan Width": 13,
+              "Sort Key": [
+                "((h.valid_to IS NULL)) DESC",
+                "((h.exchange = 'NSE'::text)) DESC",
+                "h.valid_from DESC"
+              ],
+              "Plans": [
+                {
+                  "Node Type": "Nested Loop",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 4.31,
+                  "Total Cost": 265.47,
+                  "Plan Rows": 3,
+                  "Plan Width": 13,
+                  "Inner Unique": false,
+                  "Plans": [
+                    {
+                      "Node Type": "Seq Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Relation Name": "securities",
+                      "Alias": "s",
+                      "Startup Cost": 0.0,
+                      "Total Cost": 246.09,
+                      "Plan Rows": 1,
+                      "Plan Width": 16,
+                      "Filter": "(issuer_id = c.issuer_id)"
+                    },
+                    {
+                      "Node Type": "Bitmap Heap Scan",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Relation Name": "identifier_history",
+                      "Alias": "h",
+                      "Startup Cost": 4.31,
+                      "Total Cost": 19.34,
+                      "Plan Rows": 4,
+                      "Plan Width": 35,
+                      "Recheck Cond": "(security_id = s.security_id)",
+                      "Filter": "(kind = ANY ('{SYMBOL,SCRIP_CODE}'::text[]))",
+                      "Plans": [
+                        {
+                          "Node Type": "Bitmap Index Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Index Name": "identifier_history_no_conflicting_overlap",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 4.31,
+                          "Plan Rows": 4,
+                          "Plan Width": 0,
+                          "Index Cond": "(security_id = s.security_id)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Node Type": "Limit",
+          "Parent Relationship": "SubPlan",
+          "Subplan Name": "SubPlan 2",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 246.1,
+          "Total Cost": 246.1,
+          "Plan Rows": 1,
+          "Plan Width": 13,
+          "Plans": [
+            {
+              "Node Type": "Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 246.1,
+              "Total Cost": 246.1,
+              "Plan Rows": 1,
+              "Plan Width": 13,
+              "Sort Key": [
+                "s_1.isin"
+              ],
+              "Plans": [
+                {
+                  "Node Type": "Seq Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "securities",
+                  "Alias": "s_1",
+                  "Startup Cost": 0.0,
+                  "Total Cost": 246.09,
+                  "Plan Rows": 1,
+                  "Plan Width": 13,
+                  "Filter": "(issuer_id = c.issuer_id)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Plain",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "SubPlan",
+          "Subplan Name": "SubPlan 3",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 831.26,
+          "Total Cost": 831.27,
+          "Plan Rows": 1,
+          "Plan Width": 32,
+          "Plans": [
+            {
+              "Node Type": "Nested Loop",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Left",
+              "Startup Cost": 0.44,
+              "Total Cost": 830.01,
+              "Plan Rows": 100,
+              "Plan Width": 171,
+              "Inner Unique": true,
+              "Plans": [
+                {
+                  "Node Type": "Function Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Function Name": "jsonb_array_elements",
+                  "Alias": "item",
+                  "Startup Cost": 0.01,
+                  "Total Cost": 1.0,
+                  "Plan Rows": 100,
+                  "Plan Width": 32
+                },
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "event_versions_pkey",
+                  "Relation Name": "event_versions",
+                  "Alias": "v",
+                  "Startup Cost": 0.43,
+                  "Total Cost": 8.29,
+                  "Plan Rows": 1,
+                  "Plan Width": 155,
+                  "Index Cond": "(event_version_id = CASE WHEN ((item.value ->> 'version_id'::text) ~ '^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$'::text) THEN ((item.value ->> 'version_id'::text))::uuid ELSE NULL::uuid END)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Node Type": "Limit",
+          "Parent Relationship": "SubPlan",
+          "Subplan Name": "SubPlan 4",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 265.49,
+          "Total Cost": 265.49,
+          "Plan Rows": 1,
+          "Plan Width": 13,
+          "Plans": [
+            {
+              "Node Type": "Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 265.49,
+              "Total Cost": 265.49,
+              "Plan Rows": 3,
+              "Plan Width": 13,
+              "Sort Key": [
+                "((h_1.valid_to IS NULL)) DESC",
+                "((h_1.exchange = 'NSE'::text)) DESC",
+                "h_1.valid_from DESC"
+              ],
+              "Plans": [
+                {
+                  "Node Type": "Nested Loop",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 4.31,
+                  "Total Cost": 265.47,
+                  "Plan Rows": 3,
+                  "Plan Width": 13,
+                  "Inner Unique": false,
+                  "Plans": [
+                    {
+                      "Node Type": "Seq Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Relation Name": "securities",
+                      "Alias": "s_2",
+                      "Startup Cost": 0.0,
+                      "Total Cost": 246.09,
+                      "Plan Rows": 1,
+                      "Plan Width": 16,
+                      "Filter": "(issuer_id = c.issuer_id)"
+                    },
+                    {
+                      "Node Type": "Bitmap Heap Scan",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Relation Name": "identifier_history",
+                      "Alias": "h_1",
+                      "Startup Cost": 4.31,
+                      "Total Cost": 19.34,
+                      "Plan Rows": 4,
+                      "Plan Width": 35,
+                      "Recheck Cond": "(security_id = s_2.security_id)",
+                      "Filter": "(kind = ANY ('{SYMBOL,SCRIP_CODE}'::text[]))",
+                      "Plans": [
+                        {
+                          "Node Type": "Bitmap Index Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Index Name": "identifier_history_no_conflicting_overlap",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 4.31,
+                          "Plan Rows": 4,
+                          "Plan Width": 0,
+                          "Index Cond": "(security_id = s_2.security_id)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

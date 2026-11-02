@@ -38,7 +38,7 @@ def available_at(basis: PublicationBasis, published_at: Optional[datetime],
     if basis == PublicationBasis.DATE_ONLY:
         if published_date is None:
             raise ValueError("DATE_ONLY needs published_date")
-        return datetime.combine(published_date, time(23, 59, 59), tzinfo=IST)
+        return datetime.combine(published_date, time.max, tzinfo=IST)
     return None
 
 

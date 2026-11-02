@@ -76,3 +76,13 @@ def test_a_purged_file_downloaded_again_is_deleted_again(db, tmp_path):
     path.write_bytes(b"same bytes stored again by a later filing")
     purge_archive(db, archive, cap=0)
     assert not path.exists()
+
+
+def test_unread_zip_members_are_retained_even_with_include_read(db,tmp_path):
+    pdf=make_pdf(tmp_path/'read.pdf',['Readable annexure']).read_bytes()
+    raw=zip_of({'read.pdf':pdf,'unread.xlsx':b'original workbook'})
+    ingest.record_window(db,nse_window([nse_row(1,'https://h/mixed.zip')]))
+    archive=Archive(tmp_path/'archive');c,_=client({'mixed.zip':[(200,raw)]})
+    ingest.download_pending(db,archive,c);ingest.extract_pending(db,archive)
+    assert purge_archive(db,archive,cap=0,include_read=True).files_deleted==0
+    assert _exists(archive,sha256(raw))

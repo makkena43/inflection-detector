@@ -28,3 +28,13 @@ def test_quarter_reported():
 def test_company_total_wins_over_a_segment_line():
     f = figures("Defence order book now stands at Rs. 2,817 crores. Total order book stood at Rs 1,900 crore.")
     assert f["BOOK"][0] == 1900.0
+
+
+def test_a_sentence_comparing_two_quarters_has_no_single_period():
+    from datetime import datetime
+    from inflection.orderbook_evidence import extract_points
+    from inflection.asof import IST
+    text = ('They may have variances like, for example, quarter 1 was low order inflow at only about INR700 crores, '
+            'but quarter 2 was quite healthy, about INR1,500 crores plus.')
+    points, _ = extract_points(text, published=datetime(2024, 11, 2, tzinfo=IST), title='Transcript Q2 FY25')
+    assert points and all(p['period_end'] is None and p['quality'] == 'UNVERIFIED_PERIOD' for p in points)

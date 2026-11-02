@@ -1,0 +1,31 @@
+{
+  "shareholding_patterns": 44533,
+  "govt_programmes": 51,
+  "programme_mentions": 8194,
+  "pli_beneficiaries": 573,
+  "corporate_actions": 17016,
+  "publication_timing": [
+    0,
+    2382611,
+    0
+  ],
+  "financial_timing": [
+    0,
+    0,
+    0
+  ],
+  "latest_publication_by_source": [
+    {
+      "source": "bse_announcements",
+      "latest": "2026-10-28 22:53:04.447000+05:30"
+    },
+    {
+      "source": "nse_announcements",
+      "latest": "2026-10-28 21:07:10+05:30"
+    },
+    {
+      "source": "nse_results_xbrl",
+      "latest": "2026-10-28 23:51:08+05:30"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "activated_at": "2026-10-29T17:23:47.508127+00:00",
+  "financial_rules": "financial-9",
+  "commercial_rules": "commercial-25",
+  "tests": "681 passed",
+  "backend_http": 200,
+  "dashboard_pid": 99890,
+  "analysis_pid": 99891,
+  "source_workers_restarted": false,
+  "archive_budget_changed": false
+}

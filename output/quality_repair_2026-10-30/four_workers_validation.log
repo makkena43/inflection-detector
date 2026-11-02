@@ -1,0 +1,85 @@
+FF...........................................................            [100%]
+=================================== FAILURES ===================================
+______ test_four_workers_use_distinct_connections_same_cutoff_and_resume _______
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_3b500815498c) at 0x1039bda60>
+tmp_path = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-155/test_four_workers_use_distinct0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x105d97ad0>
+
+    def test_four_workers_use_distinct_connections_same_cutoff_and_resume(db,tmp_path,monkeypatch):
+        issuers=[_issuer(db,symbol) for symbol in ['AAA','BBB','CCC','DDD']]
+        for issuer in issuers:_evaluation(db,issuer,CUTOFF-timedelta(days=2),'P1')
+        week=dict(week=str(DAY),cohort='recent',original_issuers=list(map(str,issuers)))
+        plan=dict(observed_at=CUTOFF.isoformat(),weeks=[week])
+        original=Q.P.packet_for;barrier=Barrier(4);observed=[]
+        def checked(conn,it,*a,**kw):
+            observed.append((conn.info.backend_pid,it['cutoff'],conn.execute('SHOW transaction_isolation').fetchone()[0]))
+            barrier.wait(timeout=15)
+            return original(conn,it,*a,**kw)
+        monkeypatch.setattr(Q.P,'packet_for',checked)
+        report=Q.corrected_week(db,week,plan,tmp_path,guard=lambda:None,workers=4)
+        assert len({x[0] for x in observed})==4
+        assert all(x[1]==CUTOFF and x[2]=='repeatable read' for x in observed)
+        assert db.execute('SELECT count(*) FROM triage_packets').fetchone()[0]==4
+        assert len(Q.read_lines(tmp_path/'cases.jsonl'))==4
+        assert Q.corrected_week(db,week,plan,tmp_path,guard=lambda:None,workers=4)==report
+        assert db.execute('SELECT count(*) FROM triage_packets').fetchone()[0]==4
+        assert db.execute('SELECT count(*) FROM triage_reviews').fetchone()[0]==0
+        # A serial rebuild reads the same packets and preserves ranking/report order.
+        monkeypatch.setattr(Q.P,'packet_for',original)
+>       serial=Q.corrected_week(db,week,plan,tmp_path/'serial',guard=lambda:None,workers=1)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_parallel_quality_repair.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/inflection/quality_repair.py:307: in corrected_week
+    append(job/'cases.jsonl',row);results[row['issuer_id']]=row
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/inflection/quality_repair.py:39: in append
+    with Path(path).open('a') as f:f.write(json.dumps(payload,default=str)+'\n')
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-155/test_four_workers_use_distinct0/serial/cases.jsonl')
+mode = 'a', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-155/test_four_workers_use_distinct0/serial/cases.jsonl'
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_________ test_parallel_failure_yields_completed_peers_before_raising __________
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_01bf59de894b) at 0x1039bc590>
+tmp_path = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-155/test_parallel_failure_yields_c0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1039bc6b0>
+
+    def test_parallel_failure_yields_completed_peers_before_raising(db,tmp_path,monkeypatch):
+        items=[dict(issuer_id=str(n)) for n in range(8)];barrier=Barrier(4);started=[]
+        def task(dsn,timeout,it,*args):
+            started.append(it['issuer_id']);barrier.wait(timeout=10)
+            if it['issuer_id']=='0':raise RuntimeError('STORAGE_LIMIT: reserve')
+            return it
+        monkeypatch.setattr(Q,'case_connection',task)
+        results=[]
+        with pytest.raises(RuntimeError,match='STORAGE_LIMIT'):
+            for result in Q.parallel_cases(db,items,DAY,'audit',tmp_path,lambda:None,4):results.append(result)
+>       assert sorted(started)==['0','1','2','3']
+E       AssertionError: assert ['0', '1', '2...'4', '5', ...] == ['0', '1', '2', '3']
+E         
+E         Left contains 3 more items, first extra item: '4'
+E         Use -v to get more diff
+
+tests/test_parallel_quality_repair.py:47: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_parallel_quality_repair.py::test_four_workers_use_distinct_connections_same_cutoff_and_resume
+FAILED tests/test_parallel_quality_repair.py::test_parallel_failure_yields_completed_peers_before_raising
+2 failed, 59 passed in 23.05s

@@ -1,0 +1,52 @@
+{
+  "activated_at": "2026-10-29T16:49:36.823762+00:00",
+  "workers": {
+    "backend": {
+      "pid": 93682,
+      "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/dashboard_runtime.log"
+    },
+    "bse_listings": {
+      "pid": 93683,
+      "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/source_ocr_repair_2026-10-29/bse_listings/worker.log"
+    },
+    "nse_main_listings": {
+      "pid": 93684,
+      "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/source_ocr_repair_2026-10-29/nse_main_listings/worker.log"
+    },
+    "nse_sme_listings": {
+      "pid": 93685,
+      "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/source_ocr_repair_2026-10-29/nse_sme_listings/worker.log"
+    },
+    "attachments": {
+      "pid": 93686,
+      "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/attachments.log"
+    },
+    "financials": {
+      "pid": 93687,
+      "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/financials.log"
+    },
+    "ocr": {
+      "pid": 93688,
+      "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/ocr.log"
+    },
+    "analysis": {
+      "pid": 93697,
+      "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/analysis.log"
+    }
+  },
+  "tests": "663 passed",
+  "raw_archive_allowance_mib": 512,
+  "free_space_reserve_gib": 8,
+  "commercial_rules": "commercial-25",
+  "financial_rules": "financial-8",
+  "packet_version": "triage-packet-11",
+  "screen_version": "local-screen-9",
+  "backend_http": 200,
+  "ocr_runtime": {
+    "node": "/Users/makkenasrinivas/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "modules": "/Users/makkenasrinivas/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules",
+    "models": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/ocr_models",
+    "model_sha256": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2",
+    "model_source": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/main/eng.traineddata"
+  }
+}

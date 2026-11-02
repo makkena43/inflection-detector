@@ -1,0 +1,45 @@
+{
+  "coordinator": {
+    "state": "RUNNING",
+    "stage": "Recalculate financial inputs: initial",
+    "financial_position": 17200,
+    "financial_total": 88444,
+    "counts": null,
+    "error": null,
+    "updated_at": "2026-10-30T12:59:03.373286+00:00"
+  },
+  "cached_evidence": {
+    "state": "FINISHED_WITH_GAPS",
+    "stage": "Cached evidence pass finished",
+    "financial_position": null,
+    "financial_total": null,
+    "counts": {
+      "PARTIAL": 3,
+      "archive_not_cached": 2076
+    },
+    "error": null,
+    "updated_at": "2026-10-30T12:56:20.360870+00:00"
+  },
+  "financial_batch_results": {
+    "MARGIN_EXPANSION:FIRED": 41,
+    "OPERATING_PROFIT_GROWTH:NOT_MEASURABLE": 73,
+    "SEGMENT_LOSS_REDUCTION:NOT_MEASURABLE": 110,
+    "FINANCE_COST_DROP:NOT_FIRED": 64,
+    "WORKING_CAPITAL_DAYS:NOT_MEASURABLE": 117,
+    "class:P2": 34,
+    "EVALUATED": 69,
+    "SEGMENT_LOSS_REDUCTION:FIRED": 5,
+    "FINANCE_COST_DROP:NOT_MEASURABLE": 25,
+    "MARGIN_EXPANSION:NOT_FIRED": 69,
+    "OPERATING_PROFIT_GROWTH:NOT_FIRED": 25,
+    "NOT_NOMINATED": 48,
+    "NO_COMPARABLE": 17,
+    "OPERATING_PROFIT_GROWTH:FIRED": 19,
+    "FINANCE_COST_DROP:FIRED": 28,
+    "class:P3": 35,
+    "SKIPPED_STANDALONE": 26,
+    "SEGMENT_LOSS_REDUCTION:NOT_FIRED": 2,
+    "MARGIN_EXPANSION:NOT_MEASURABLE": 7
+  },
+  "completed_stages": 860
+}

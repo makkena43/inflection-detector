@@ -1,0 +1,13 @@
+{
+  "pid": 68521,
+  "at": "2026-10-31T02:00:59.550277+00:00",
+  "reason": "Weekly evaluation lookup exceeded original 90-second budget",
+  "statement_timeout_seconds": 300,
+  "indexes": [
+    "financial_scans_evaluation",
+    "securities_issuer"
+  ],
+  "original_predicates_preserved": true,
+  "checkpoint_preserved": true,
+  "validation": "43 focused tests; first-week lookup returned 35592 rows in 85.57 seconds"
+}

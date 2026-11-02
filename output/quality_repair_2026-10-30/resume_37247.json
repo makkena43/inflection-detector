@@ -1,0 +1,9 @@
+{
+  "pid": 37247,
+  "at": "2026-10-30T17:47:56.272752+00:00",
+  "checkpoint_filings": 5380,
+  "reserve_gib": 8,
+  "automatic_storage_resume": true,
+  "free_gib": 9.447925567626953,
+  "validation": "31 passed"
+}

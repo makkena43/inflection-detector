@@ -19,6 +19,7 @@ import io
 import os
 import threading
 import zipfile
+import zlib
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
@@ -30,16 +31,24 @@ from .http import HttpClient
 ZIP_MAGIC = b"PK\x03\x04"
 PDF_MAGIC = b"%PDF"
 MAX_ZIP_MEMBER_BYTES = 200 * 1024 * 1024
+MAX_ZIP_TOTAL_BYTES = 256 * 1024 * 1024
+MAX_ZIP_MEMBERS = 1000
+
+
+class DocumentResourceLimit(RuntimeError):
+    """A single file exceeds processing limits; other publications can continue."""
 
 
 class DownloadStatus(str, Enum):
     OK = "OK"
     ZIP_NO_PDF = "ZIP_NO_PDF"               # archive kept; nothing in it to extract text from
+    ZIP_PARTIAL = "ZIP_PARTIAL"             # some attached files could not be read
     UNSUPPORTED_FORMAT = "UNSUPPORTED_FORMAT"
     EMPTY = "EMPTY"
     NOT_FOUND = "NOT_FOUND"
     BLOCKED = "BLOCKED"
     FAILED = "FAILED"
+    RESOURCE_LIMIT = "RESOURCE_LIMIT"
 
 
 @dataclass(frozen=True)
@@ -114,7 +123,11 @@ def download(url: str, archive: Archive, client: Optional[HttpClient] = None, re
         result.status, result.note = DownloadStatus.EMPTY, "zero-byte response"
         return result
     name = last.url.rstrip("/").rsplit("/", 1)[-1]
-    result.original = archive.put(body, name)
+    try:
+        result.original = archive.put(body, name)
+    except DocumentResourceLimit as exc:
+        result.status,result.note=DownloadStatus.RESOURCE_LIMIT,str(exc)
+        return result
     if body[:4] == PDF_MAGIC:
         result.status, result.pdfs = DownloadStatus.OK, [result.original]
     elif body[:4] == ZIP_MAGIC:
@@ -132,12 +145,30 @@ def _unzip(body: bytes, archive: Archive) -> tuple[DownloadStatus, list[StoredFi
     except zipfile.BadZipFile as exc:
         return DownloadStatus.UNSUPPORTED_FORMAT, [], f"bad zip: {exc}"
     pdfs, skipped = [], []
-    for info in zf.infolist():
+    expanded = 0
+    for index,info in enumerate(zf.infolist()):
+        if index >= MAX_ZIP_MEMBERS:
+            skipped.append('remaining entries: member-count limit')
+            break
         if info.is_dir():
             continue
         if not info.filename.lower().endswith(".pdf") or info.file_size > MAX_ZIP_MEMBER_BYTES:
             skipped.append(info.filename)
             continue
-        pdfs.append(archive.put(zf.read(info), info.filename))
+        if expanded+info.file_size>MAX_ZIP_TOTAL_BYTES:
+            skipped.append(info.filename+' (expanded-size limit)')
+            continue
+        expanded+=info.file_size
+        try:
+            data=zf.read(info)
+        except (zipfile.BadZipFile,RuntimeError,NotImplementedError,zlib.error) as exc:
+            skipped.append(info.filename+f' ({type(exc).__name__})')
+            continue
+        try:
+            pdfs.append(archive.put(data, info.filename))
+        except DocumentResourceLimit as exc:
+            skipped.append(info.filename+f' ({exc})')
     note = f"zip members not extracted: {', '.join(skipped)}" if skipped else ""
-    return (DownloadStatus.OK if pdfs else DownloadStatus.ZIP_NO_PDF), pdfs, note
+    zf.close()
+    return (DownloadStatus.ZIP_PARTIAL if pdfs and skipped else
+            DownloadStatus.OK if pdfs else DownloadStatus.ZIP_NO_PDF), pdfs, note

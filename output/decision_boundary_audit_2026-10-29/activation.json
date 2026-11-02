@@ -1,0 +1,20 @@
+{
+  "activated_at": "2026-10-29T16:31:06.758731+00:00",
+  "screen_version": "local-screen-8",
+  "tests": "652 passed",
+  "backend_http": 200,
+  "dashboard_pid": 90748,
+  "analysis": {
+    "task": "analysis",
+    "state": "RUNNING",
+    "pid": 89665,
+    "first": "2024-10-29",
+    "last": "2026-10-29",
+    "started_at": "2026-10-29T16:27:19.480581+00:00",
+    "counts": {},
+    "issues": [],
+    "stage": "Link recovered identities and scan available commercial evidence",
+    "archive_bytes_added": 0,
+    "updated_at": "2026-10-29T16:27:19.510646+00:00"
+  }
+}

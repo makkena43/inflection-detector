@@ -1,0 +1,5854 @@
+{
+  "source_files": 24,
+  "issuer_ids": [
+    "cafd6541-2ed0-4e31-8259-c80ff2cb617d",
+    "988be145-5e92-4874-a75d-299fe1b6674d",
+    "4fedff6c-36f6-4ccd-ad97-e0bdf89d426d",
+    "05f5af3f-b399-4091-ba02-b44cdff440bc",
+    "49c3bf63-a7ce-42d8-b9a8-7b728143131f",
+    "2f5c884c-774b-464b-bf29-97bb7006998d",
+    "a5ab794a-1933-4478-97d4-23aa288258e0",
+    "1e4f4317-8d3d-43c5-bda1-9d75b069f036",
+    "a0ebfd08-a0ac-4468-a036-e0d46de1a544",
+    "82541ae8-7d1f-4b9b-af01-3819b3e1ed24",
+    "76a7d3e0-c260-4d08-87df-bcc6da7fbe88",
+    "a43bd79c-4e6f-4144-88e0-d7b79d0809b4",
+    "34cff319-0f81-49ab-99e0-b5a4e2a982bc",
+    "3e503f9f-d0c5-4d44-9fc9-8e55be649864",
+    "f14d8968-6db3-4eee-b688-b15e2b51ad5f",
+    "f2f59869-7d95-4c8e-afd3-5f369e12c728",
+    "cd4ed3e6-1091-484a-9f63-b454d7133779",
+    "3e70f18f-ad66-4bc2-9777-1a0e3976f9c0",
+    "3e3a5556-6db5-4a94-ade2-0b0f1c0cffce",
+    "65716476-0f6c-4220-b832-5675015d2f7c",
+    "8aeac27c-4821-49a2-8f7b-b9864dfbc89c",
+    "82b65f87-1a1b-4a92-a5e6-bba69eaa7447",
+    "e8a49bff-7a91-4d4e-93c8-30677736896b",
+    "d1685a8e-61c7-4862-8844-6be3fe5bf727"
+  ],
+  "verified_values": 469,
+  "verified_scope": 469,
+  "verified_periods": 469,
+  "unproved_periods": 0,
+  "checks": [
+    {
+      "fact_id": "8a6b8946-9119-4076-932f-1b236e6a8907",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "revenue",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "5030600000"
+    },
+    {
+      "fact_id": "33b80a07-2590-4acf-a3c4-8a97bbec6f58",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "other_income",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "118900000"
+    },
+    {
+      "fact_id": "10462730-0d40-4e26-96f4-7670804be3d6",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "finance_cost",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "3400000"
+    },
+    {
+      "fact_id": "e4c3e431-d61d-47f6-b33a-7813a48f5da0",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "depreciation",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "116200000"
+    },
+    {
+      "fact_id": "64964c5e-6275-48f1-bff8-147301171265",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "total_expenses",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "4681300000"
+    },
+    {
+      "fact_id": "6829a77e-08a9-4847-9b6d-8c035aa5be4e",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "exceptional_items",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "0c7fb65c-c61c-4458-8a11-7f1135135576",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "pbt",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "468200000"
+    },
+    {
+      "fact_id": "fdd8d8e0-9c24-4023-9554-08afe332c664",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "pat",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "423100000"
+    },
+    {
+      "fact_id": "0c7d3659-b1ad-460a-8f96-83f23fd796c8",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "paid_up_capital",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "120400000"
+    },
+    {
+      "fact_id": "2c715c1f-61cb-4f46-b47b-75067f674eb9",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "face_value",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2"
+    },
+    {
+      "fact_id": "0077b00e-0bbf-4ba5-8f0d-034fe45cff80",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "eps_diluted",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "7.03"
+    },
+    {
+      "fact_id": "6071b54a-6033-45bf-9e22-9943ec507194",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "revenue",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "9951400000"
+    },
+    {
+      "fact_id": "8ce464a5-efed-4178-8d68-6efa8dd23114",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "other_income",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "237800000"
+    },
+    {
+      "fact_id": "e3c592f4-69de-46ea-9d65-992d2dc40912",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "finance_cost",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "7500000"
+    },
+    {
+      "fact_id": "b1a96a30-b38d-407f-8d93-dfaca37cecf4",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "depreciation",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "232300000"
+    },
+    {
+      "fact_id": "093d8606-5614-4d84-9811-03200ea743f9",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "total_expenses",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "9283200000"
+    },
+    {
+      "fact_id": "0e9526b3-8b6e-48ba-b049-4e71edb068f4",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "exceptional_items",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "f0913e9b-c502-492e-9543-ab345139e492",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "pbt",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "906000000"
+    },
+    {
+      "fact_id": "bee46999-5795-4eb4-8e93-935dcc123cf7",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "pat",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "742200000"
+    },
+    {
+      "fact_id": "751b5543-09cc-4a81-9f52-4420c656ad92",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "paid_up_capital",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "120400000"
+    },
+    {
+      "fact_id": "e5976d80-9f79-43a1-9fb3-929e0c071284",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "face_value",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2"
+    },
+    {
+      "fact_id": "aee198e3-a76c-4668-909b-d9e67a753536",
+      "publication_id": "33f3b727-5f5d-4a82-8d5c-d253942c250c",
+      "metric": "eps_diluted",
+      "source_sha256": "1add609a72fb352e8d08e36b58390e0048853516633722c6c634eaa2fd98aefa",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "12.32"
+    },
+    {
+      "fact_id": "d034d8d9-0f47-4bda-8055-3cab2e3e627a",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "revenue",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "533555000000"
+    },
+    {
+      "fact_id": "c9c1faf7-a2ce-4bd2-a7e9-a77720d5eaf8",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "other_income",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "4136000000"
+    },
+    {
+      "fact_id": "5643a2cb-a274-46ea-ad32-16ecaa8ef966",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "finance_cost",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "677000000"
+    },
+    {
+      "fact_id": "79c1a144-517d-4222-beef-71627222d814",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "depreciation",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "19599000000"
+    },
+    {
+      "fact_id": "be96b1df-2e23-4a2c-ad80-a992051889b2",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "total_expenses",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "506190000000"
+    },
+    {
+      "fact_id": "d326181e-10ce-43b6-ab62-16212899ae26",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "exceptional_items",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "0cabd7fa-ecc0-4004-8ffc-45a016c75edb",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "pbt",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "31501000000"
+    },
+    {
+      "fact_id": "28e4c530-d054-49e7-8313-74b5791d772f",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "pat",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "24661000000"
+    },
+    {
+      "fact_id": "e50de5c9-8cdf-4841-9d4a-36edbf89ea28",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "paid_up_capital",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1572000000"
+    },
+    {
+      "fact_id": "c1c0548a-a525-45ea-abe4-85443cf8f213",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "face_value",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "5"
+    },
+    {
+      "fact_id": "3ea41caf-dec4-483e-af10-e8a011aa2967",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "eps_diluted",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "78.44"
+    },
+    {
+      "fact_id": "8a33741e-3efd-4eb9-b4e8-57f287e0543f",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "revenue",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1058253000000"
+    },
+    {
+      "fact_id": "08d6f0a2-6a89-4114-9e5c-1296c15d77ca",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "other_income",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "21870000000"
+    },
+    {
+      "fact_id": "14ec7bdd-8bcc-470c-b9ea-449f52f35dd1",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "finance_cost",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1312000000"
+    },
+    {
+      "fact_id": "5d2e5b4a-e4aa-423a-8cc2-ed246acc88bf",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "depreciation",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "37402000000"
+    },
+    {
+      "fact_id": "19d4f2d4-5d42-4619-b719-8e9e5a11f965",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "total_expenses",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1005187000000"
+    },
+    {
+      "fact_id": "f49b5515-e974-474e-a5a1-47a25b14c953",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "exceptional_items",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "12ff6137-d0e5-4cad-bc9a-343cc709c000",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "pbt",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "74936000000"
+    },
+    {
+      "fact_id": "fc9f2bdc-0be3-4525-93d9-2ab3250724f5",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "pat",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "59130000000"
+    },
+    {
+      "fact_id": "51dd1c37-34fe-4c3a-a067-81b501d6190a",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "paid_up_capital",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1572000000"
+    },
+    {
+      "fact_id": "1053d1cd-5310-429c-81ea-0f30c57c0447",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "face_value",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "5"
+    },
+    {
+      "fact_id": "84ce2cff-7b4a-4079-b8e7-293856de8a0e",
+      "publication_id": "04f9af58-9f6e-4422-aaa3-6b81f0d76635",
+      "metric": "eps_diluted",
+      "source_sha256": "c2cd333af280335fc4edd7afacbb77a661a2d58eb75484bf0a38b8dfe5b92db7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "188.07"
+    },
+    {
+      "fact_id": "a476cde2-74a8-400d-a059-01b95180dda8",
+      "publication_id": "588ff921-0bf5-48eb-981d-6976b6423053",
+      "metric": "revenue",
+      "source_sha256": "a8093dc3cdfdf06d0df0dacd4329714340c432b57c0e68bd340908411cdf1cf1",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2781965000"
+    },
+    {
+      "fact_id": "9fe64f8a-538b-4954-be46-2b14ed39bda3",
+      "publication_id": "588ff921-0bf5-48eb-981d-6976b6423053",
+      "metric": "other_income",
+      "source_sha256": "a8093dc3cdfdf06d0df0dacd4329714340c432b57c0e68bd340908411cdf1cf1",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "37298000"
+    },
+    {
+      "fact_id": "c738f326-9b1a-4467-b83c-b91da778b6d5",
+      "publication_id": "588ff921-0bf5-48eb-981d-6976b6423053",
+      "metric": "finance_cost",
+      "source_sha256": "a8093dc3cdfdf06d0df0dacd4329714340c432b57c0e68bd340908411cdf1cf1",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "80348000"
+    },
+    {
+      "fact_id": "31a5d311-6e2e-4018-9d35-a7f29fb46f21",
+      "publication_id": "588ff921-0bf5-48eb-981d-6976b6423053",
+      "metric": "depreciation",
+      "source_sha256": "a8093dc3cdfdf06d0df0dacd4329714340c432b57c0e68bd340908411cdf1cf1",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "62147000"
+    },
+    {
+      "fact_id": "f68a8239-8a76-4ca3-ae11-6b6bfba528f2",
+      "publication_id": "588ff921-0bf5-48eb-981d-6976b6423053",
+      "metric": "total_expenses",
+      "source_sha256": "a8093dc3cdfdf06d0df0dacd4329714340c432b57c0e68bd340908411cdf1cf1",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2507671000"
+    },
+    {
+      "fact_id": "580b5dd1-70e5-4c7c-a435-5c1b5ee800aa",
+      "publication_id": "588ff921-0bf5-48eb-981d-6976b6423053",
+      "metric": "exceptional_items",
+      "source_sha256": "a8093dc3cdfdf06d0df0dacd4329714340c432b57c0e68bd340908411cdf1cf1",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "485e16bd-7d83-4d72-900a-f023dcf14155",
+      "publication_id": "588ff921-0bf5-48eb-981d-6976b6423053",
+      "metric": "pbt",
+      "source_sha256": "a8093dc3cdfdf06d0df0dacd4329714340c432b57c0e68bd340908411cdf1cf1",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "311592000"
+    },
+    {
+      "fact_id": "440b0cab-0d6c-4d83-8854-8ed4b462ee12",
+      "publication_id": "588ff921-0bf5-48eb-981d-6976b6423053",
+      "metric": "pat",
+      "source_sha256": "a8093dc3cdfdf06d0df0dacd4329714340c432b57c0e68bd340908411cdf1cf1",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "234048000"
+    },
+    {
+      "fact_id": "e90b82d0-6965-4e3b-be98-84d1a0c9e9b2",
+      "publication_id": "588ff921-0bf5-48eb-981d-6976b6423053",
+      "metric": "paid_up_capital",
+      "source_sha256": "a8093dc3cdfdf06d0df0dacd4329714340c432b57c0e68bd340908411cdf1cf1",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "3592875000"
+    },
+    {
+      "fact_id": "cf6837d4-0656-4558-ba5a-e8cdda8dd247",
+      "publication_id": "588ff921-0bf5-48eb-981d-6976b6423053",
+      "metric": "face_value",
+      "source_sha256": "a8093dc3cdfdf06d0df0dacd4329714340c432b57c0e68bd340908411cdf1cf1",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "9e7ce1e4-89d9-48ff-962f-6a1c1554b2f0",
+      "publication_id": "588ff921-0bf5-48eb-981d-6976b6423053",
+      "metric": "eps_diluted",
+      "source_sha256": "a8093dc3cdfdf06d0df0dacd4329714340c432b57c0e68bd340908411cdf1cf1",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0.61"
+    },
+    {
+      "fact_id": "cb3775bc-784c-4c7a-b7cb-1cae7fca008f",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "revenue",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "829864000"
+    },
+    {
+      "fact_id": "500c49af-1893-49bc-b30b-717fb40f8ff9",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "other_income",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "5969000"
+    },
+    {
+      "fact_id": "fb096899-b351-4f3d-b6e9-7398f92fc497",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "finance_cost",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "11824000"
+    },
+    {
+      "fact_id": "425294b8-3322-4cbd-b507-03c66527d37b",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "depreciation",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "3498000"
+    },
+    {
+      "fact_id": "b1cf62aa-fda7-4b16-9d02-f7eb63caaee2",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "total_expenses",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "773681000"
+    },
+    {
+      "fact_id": "57973cca-a439-4eb5-aff2-6884f8ad8f1d",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "exceptional_items",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "c9c1fd16-110f-4047-92ac-16ae4bcf0ebb",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "pbt",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "62152000"
+    },
+    {
+      "fact_id": "269ec013-637f-4d55-9cb5-210c8cb68471",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "pat",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "45652000"
+    },
+    {
+      "fact_id": "7e8ffc09-b62b-4ebb-99ec-1114d15f7bf7",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "paid_up_capital",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "143189000"
+    },
+    {
+      "fact_id": "9dba76d3-02bb-4ffb-8325-43c6a3afbde4",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "face_value",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "60ebc5d7-c815-4bc2-be93-2efc364b64a8",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "eps_diluted",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "3.19"
+    },
+    {
+      "fact_id": "b2ada58c-33bb-466e-93f5-863a54260138",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "revenue",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1479581000"
+    },
+    {
+      "fact_id": "96935def-7fe2-4811-a782-adc7a2ec31b0",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "other_income",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "23705000"
+    },
+    {
+      "fact_id": "e8a27864-daf4-4259-bec9-5903d97912bb",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "finance_cost",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "21807000"
+    },
+    {
+      "fact_id": "ce97a574-22d9-42fa-a957-7473b3636279",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "depreciation",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "6761000"
+    },
+    {
+      "fact_id": "d66cbe43-6610-4734-bef1-fa43ae839bdd",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "total_expenses",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1422556000"
+    },
+    {
+      "fact_id": "cecfc9a9-034e-4186-a2d5-4bc034a6a2e3",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "exceptional_items",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "5159fa95-d10f-4ded-9c5e-86838bec9a6d",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "pbt",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "80730000"
+    },
+    {
+      "fact_id": "a794b297-573a-41e4-a785-52d6058c51ee",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "pat",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "59289000"
+    },
+    {
+      "fact_id": "49740033-1359-425a-8a8e-ccbcc36fb698",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "paid_up_capital",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "143189000"
+    },
+    {
+      "fact_id": "9c743c14-affb-4ee8-9ab2-62dd0fd422e0",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "face_value",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "39554062-c218-4073-b565-b4579ee5b833",
+      "publication_id": "b9f3efbc-2f0a-4835-ac61-566ce6a7404f",
+      "metric": "eps_diluted",
+      "source_sha256": "0bbd667ecafc0b94992bb096058601080e52d380ee98c3384c5f49b647b123f9",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "4.14"
+    },
+    {
+      "fact_id": "8aacc2fe-d282-4a28-b0cf-801f844fe8bb",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "revenue",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "40642900000"
+    },
+    {
+      "fact_id": "a01cd259-7a3e-42f4-93ed-387e2aba73b4",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "other_income",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "436700000"
+    },
+    {
+      "fact_id": "57ed5516-6ae1-4bd0-aa09-30f2e21096b9",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "finance_cost",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "346400000"
+    },
+    {
+      "fact_id": "b34ede01-72d4-445b-8c3f-1fe09bf64403",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "depreciation",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1245800000"
+    },
+    {
+      "fact_id": "46011f46-e88c-4401-80ba-c7365164fbfc",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "total_expenses",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "39142400000"
+    },
+    {
+      "fact_id": "b794d4ab-4bfd-46a9-a1d7-2f5a0a593021",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "exceptional_items",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "5ff66a8b-e8d1-488e-8fbb-d237575dc675",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "pbt",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1937200000"
+    },
+    {
+      "fact_id": "8a9577b5-fae5-49d3-84dd-15d2ef97cac4",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "pat",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1443500000"
+    },
+    {
+      "fact_id": "b8ffe5d0-63fe-4ff0-bf06-480375651b86",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "paid_up_capital",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "311900000"
+    },
+    {
+      "fact_id": "376264fd-5a18-48ed-917c-c7cd4000e1c6",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "face_value",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2"
+    },
+    {
+      "fact_id": "3ea5a7fb-3b4e-40a2-96c2-9dcdb8e7b558",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "eps_diluted",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "9.26"
+    },
+    {
+      "fact_id": "5ce4d247-c39d-4ccf-a80d-3d71f324252d",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "revenue",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "77239300000"
+    },
+    {
+      "fact_id": "15c6ff8c-292c-4d60-8c48-eafd763fdbd7",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "other_income",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "725200000"
+    },
+    {
+      "fact_id": "8dbf18a6-efff-49a4-baaf-d87d812b5887",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "finance_cost",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "748100000"
+    },
+    {
+      "fact_id": "22561f72-018c-40e1-a0bd-5cd8585e29dc",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "depreciation",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2468500000"
+    },
+    {
+      "fact_id": "1edb5b53-e6ca-4995-827a-a21ac9594b04",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "total_expenses",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "74179100000"
+    },
+    {
+      "fact_id": "1ee25c44-c9e3-48e4-bb0d-af814ecfed5f",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "exceptional_items",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1060300000"
+    },
+    {
+      "fact_id": "3d4f4a04-1033-49a1-bbc7-4199d711a279",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "pbt",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "4845700000"
+    },
+    {
+      "fact_id": "85994aa0-ae84-4f83-9345-34ff4471c2e6",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "pat",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "8557800000"
+    },
+    {
+      "fact_id": "06956ace-b9e6-4303-8c43-46b50440e47d",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "paid_up_capital",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "313500000"
+    },
+    {
+      "fact_id": "097e4613-aab0-4710-b3f2-0b3d6a47540b",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "face_value",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2"
+    },
+    {
+      "fact_id": "2855359f-6601-45ce-8ad4-8ea691c92571",
+      "publication_id": "672cf19d-82b0-4152-9177-04591547b611",
+      "metric": "eps_diluted",
+      "source_sha256": "10f4b6c1e526dafeed53c4348db8ebdd3bef5ab4c67c86b3fc9a4e1379951cf7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "54.88"
+    },
+    {
+      "fact_id": "dee62298-f8f1-4005-8d36-a3640f955237",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "revenue",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "17347200000"
+    },
+    {
+      "fact_id": "a3692530-8a33-4cce-ba13-70721280e0c6",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "other_income",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "134000000"
+    },
+    {
+      "fact_id": "72eb231f-5c3a-4ce9-8297-4828ee7df239",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "finance_cost",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "17200000"
+    },
+    {
+      "fact_id": "fed705cf-43a0-4923-bc20-7a192e23ac39",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "depreciation",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "303400000"
+    },
+    {
+      "fact_id": "2e6995dc-a337-43e8-9d0e-b8b22099bb20",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "total_expenses",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "15047400000"
+    },
+    {
+      "fact_id": "243102ef-a13c-4e5e-beb6-3f35f017fde9",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "exceptional_items",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "d2b9bb05-7a5a-4f80-82d4-59c2cb96ffdf",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "pbt",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2433800000"
+    },
+    {
+      "fact_id": "0f5008a8-38dd-4ae8-ad2e-0d3ed08ccd35",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "pat",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1763700000"
+    },
+    {
+      "fact_id": "8c0ba72c-3b38-4d81-843a-658a55c87a59",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "paid_up_capital",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "4945600000"
+    },
+    {
+      "fact_id": "7f53f128-f816-47c1-893a-8483c2082b0e",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "face_value",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "5"
+    },
+    {
+      "fact_id": "458f5ad4-b465-4b2a-ab47-a6ff46420a20",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "eps_diluted",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1.78"
+    },
+    {
+      "fact_id": "c8624684-a300-4388-aa1c-f36e8a80570e",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "revenue",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "51514300000"
+    },
+    {
+      "fact_id": "001eeb5c-430a-433e-95b6-093dac4da482",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "other_income",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "507400000"
+    },
+    {
+      "fact_id": "033bfaaf-81a5-45bb-9fda-d52984994c74",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "finance_cost",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "52900000"
+    },
+    {
+      "fact_id": "5fcffcba-2588-4006-8289-00df945c1aff",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "depreciation",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "884600000"
+    },
+    {
+      "fact_id": "0b46dae4-fe18-49a7-b2ea-fdaed2726cb9",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "total_expenses",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "41596500000"
+    },
+    {
+      "fact_id": "87af6293-5d51-4f71-a1f2-b21f28be583c",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "exceptional_items",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "84812a2f-f8a4-4f96-af6e-2d07f70952d4",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "pbt",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10425200000"
+    },
+    {
+      "fact_id": "179e9395-e695-4295-bd36-8a85e0baf7c2",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "pat",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "7662500000"
+    },
+    {
+      "fact_id": "150a5ca6-5511-43a9-a47c-db2960f485ed",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "paid_up_capital",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "4945600000"
+    },
+    {
+      "fact_id": "efe23e51-12b4-40f1-ae8b-f2dffcce136f",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "face_value",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "5"
+    },
+    {
+      "fact_id": "28e74422-20cb-438e-9d7f-7553938a4ecf",
+      "publication_id": "4e63bee8-58d4-4f83-a3f0-5e98d177676a",
+      "metric": "eps_diluted",
+      "source_sha256": "ae0388c1aebb5440457e8874987e9f2057c1125fa309b34affd9b4b864972030",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "7.75"
+    },
+    {
+      "fact_id": "4b30bde3-164f-4bcc-8ec3-ad47c95e4382",
+      "publication_id": "a800f9d7-e761-4ba2-8ff0-4327101f2aa6",
+      "metric": "revenue",
+      "source_sha256": "5e5c693a666d1312fc308969306ee2be8e5305465cff3ed6da58a6382ae398e7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "36252000000"
+    },
+    {
+      "fact_id": "e1fe34e0-0d80-4628-86e6-ecda844a5e97",
+      "publication_id": "a800f9d7-e761-4ba2-8ff0-4327101f2aa6",
+      "metric": "other_income",
+      "source_sha256": "5e5c693a666d1312fc308969306ee2be8e5305465cff3ed6da58a6382ae398e7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "578600000"
+    },
+    {
+      "fact_id": "55a05bbb-11c5-46d9-88ea-5fc882e71f86",
+      "publication_id": "a800f9d7-e761-4ba2-8ff0-4327101f2aa6",
+      "metric": "exceptional_items",
+      "source_sha256": "5e5c693a666d1312fc308969306ee2be8e5305465cff3ed6da58a6382ae398e7",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "b74266fd-c567-47a3-a0a6-c1cd3e94fe5c",
+      "publication_id": "a800f9d7-e761-4ba2-8ff0-4327101f2aa6",
+      "metric": "pbt",
+      "source_sha256": "5e5c693a666d1312fc308969306ee2be8e5305465cff3ed6da58a6382ae398e7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "5586500000"
+    },
+    {
+      "fact_id": "17e94aa5-9ec4-43a0-8f8e-a9d6eeb17be6",
+      "publication_id": "a800f9d7-e761-4ba2-8ff0-4327101f2aa6",
+      "metric": "pat",
+      "source_sha256": "5e5c693a666d1312fc308969306ee2be8e5305465cff3ed6da58a6382ae398e7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "5292100000"
+    },
+    {
+      "fact_id": "d77faf0b-e459-4cc4-80e8-dfddca8a3116",
+      "publication_id": "a800f9d7-e761-4ba2-8ff0-4327101f2aa6",
+      "metric": "paid_up_capital",
+      "source_sha256": "5e5c693a666d1312fc308969306ee2be8e5305465cff3ed6da58a6382ae398e7",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "473300000"
+    },
+    {
+      "fact_id": "a2a2b98a-9e25-4879-aeeb-decb93489e25",
+      "publication_id": "a800f9d7-e761-4ba2-8ff0-4327101f2aa6",
+      "metric": "face_value",
+      "source_sha256": "5e5c693a666d1312fc308969306ee2be8e5305465cff3ed6da58a6382ae398e7",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2"
+    },
+    {
+      "fact_id": "c217d3a1-ee24-4f98-b142-7e33f39ec97b",
+      "publication_id": "a800f9d7-e761-4ba2-8ff0-4327101f2aa6",
+      "metric": "eps_diluted",
+      "source_sha256": "5e5c693a666d1312fc308969306ee2be8e5305465cff3ed6da58a6382ae398e7",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "22.8"
+    },
+    {
+      "fact_id": "756046d1-241a-4711-a600-43c3b426149b",
+      "publication_id": "a800f9d7-e761-4ba2-8ff0-4327101f2aa6",
+      "metric": "revenue",
+      "source_sha256": "5e5c693a666d1312fc308969306ee2be8e5305465cff3ed6da58a6382ae398e7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "70148300000"
+    },
+    {
+      "fact_id": "eb92c592-538b-433d-a9bd-a78f2ec61a78",
+      "publication_id": "a800f9d7-e761-4ba2-8ff0-4327101f2aa6",
+      "metric": "other_income",
+      "source_sha256": "5e5c693a666d1312fc308969306ee2be8e5305465cff3ed6da58a6382ae398e7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1189100000"
+    },
+    {
+      "fact_id": "9eac74e4-00f8-4a7f-ae5a-3d4ec5e2c00e",
+      "publication_id": "a800f9d7-e761-4ba2-8ff0-4327101f2aa6",
+      "metric": "exceptional_items",
+      "source_sha256": "5e5c693a666d1312fc308969306ee2be8e5305465cff3ed6da58a6382ae398e7",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "02172baf-e031-4247-856b-f1e55f5939b7",
+      "publication_id": "a800f9d7-e761-4ba2-8ff0-4327101f2aa6",
+      "metric": "pbt",
+      "source_sha256": "5e5c693a666d1312fc308969306ee2be8e5305465cff3ed6da58a6382ae398e7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "9797300000"
+    },
+    {
+      "fact_id": "60f5160f-3622-4a27-a6f3-7a0a48189eae",
+      "publication_id": "a800f9d7-e761-4ba2-8ff0-4327101f2aa6",
+      "metric": "pat",
+      "source_sha256": "5e5c693a666d1312fc308969306ee2be8e5305465cff3ed6da58a6382ae398e7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "9691300000"
+    },
+    {
+      "fact_id": "4f595e90-d9bf-46aa-9ae5-d2d8378b834e",
+      "publication_id": "a800f9d7-e761-4ba2-8ff0-4327101f2aa6",
+      "metric": "paid_up_capital",
+      "source_sha256": "5e5c693a666d1312fc308969306ee2be8e5305465cff3ed6da58a6382ae398e7",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "473300000"
+    },
+    {
+      "fact_id": "09b2a0c3-c403-45c6-a414-edb62ce5a21e",
+      "publication_id": "a800f9d7-e761-4ba2-8ff0-4327101f2aa6",
+      "metric": "face_value",
+      "source_sha256": "5e5c693a666d1312fc308969306ee2be8e5305465cff3ed6da58a6382ae398e7",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2"
+    },
+    {
+      "fact_id": "dd9fe1da-a44f-45ba-bc37-9a37227d3bef",
+      "publication_id": "a800f9d7-e761-4ba2-8ff0-4327101f2aa6",
+      "metric": "eps_diluted",
+      "source_sha256": "5e5c693a666d1312fc308969306ee2be8e5305465cff3ed6da58a6382ae398e7",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "42.09"
+    },
+    {
+      "fact_id": "e613f9d2-bc0c-453e-b2f1-289f208e450d",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "revenue",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "21096500000"
+    },
+    {
+      "fact_id": "3b7d3f57-768f-4953-9b4d-22f32d4b979f",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "other_income",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "140100000"
+    },
+    {
+      "fact_id": "071be5e3-3d20-4d75-8acf-eed7aede18e4",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "finance_cost",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "364600000"
+    },
+    {
+      "fact_id": "9c97b0ad-f1a5-4260-9d98-6731ffcb2d15",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "depreciation",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "717400000"
+    },
+    {
+      "fact_id": "1003e73f-58f3-4eb6-a203-bd8740798436",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "total_expenses",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "18903200000"
+    },
+    {
+      "fact_id": "eaf120be-0c17-4828-a08d-24baa27be494",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "exceptional_items",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "fe86c9ab-f620-40a0-aa5f-c5faf2f2807a",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "pbt",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2333400000"
+    },
+    {
+      "fact_id": "c1f6d657-07c7-4848-b653-d96b4f6a511c",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "pat",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1732700000"
+    },
+    {
+      "fact_id": "d0c44439-57ca-40c9-be63-317d71805aa7",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "paid_up_capital",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1099800000"
+    },
+    {
+      "fact_id": "8d41c126-2a23-4749-8027-d5da7a2a48f6",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "face_value",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1"
+    },
+    {
+      "fact_id": "19598599-99bf-466a-bf32-fe5d2e96b22b",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "eps_diluted",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1.58"
+    },
+    {
+      "fact_id": "6280b673-f91b-44b3-b95b-33c18234e5fd",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "revenue",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "40164400000"
+    },
+    {
+      "fact_id": "e0337bf7-f39c-4b6b-916b-a35d5396b6ea",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "other_income",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "269900000"
+    },
+    {
+      "fact_id": "b50f7373-5089-4870-b562-b79136882dfe",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "finance_cost",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "755600000"
+    },
+    {
+      "fact_id": "94cb9b2c-7e7a-4893-920e-595a10141ed3",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "depreciation",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1384000000"
+    },
+    {
+      "fact_id": "18a69f9c-cbea-4d2f-b46e-b1f7ea5faa30",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "total_expenses",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "36327600000"
+    },
+    {
+      "fact_id": "ad0656ce-061c-4e9b-ba0c-0a04f3ddf541",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "exceptional_items",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "34c8bfd4-b981-4edf-9408-b796c454414c",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "pbt",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "4106700000"
+    },
+    {
+      "fact_id": "5da12330-702b-4062-9ddb-669a6ee0b7dd",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "pat",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "3149900000"
+    },
+    {
+      "fact_id": "3bbfcc3c-e656-4a5a-bebb-2525b915cd22",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "paid_up_capital",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1099800000"
+    },
+    {
+      "fact_id": "872cd27c-34e3-4f0c-b7fb-c94fdf155d44",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "face_value",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1"
+    },
+    {
+      "fact_id": "78fb40ad-1c90-450b-8736-67408e569ac3",
+      "publication_id": "8be91ae4-3caa-4c8f-b1dc-7462db90154e",
+      "metric": "eps_diluted",
+      "source_sha256": "d8fce4fd6cd12748ab36f3999567e01cb0d29b6af2669e062b4c5e4ec6cc8fed",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2.86"
+    },
+    {
+      "fact_id": "518b0635-ffc7-434a-9c1c-018791de453b",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "revenue",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2130918000"
+    },
+    {
+      "fact_id": "e5bf868c-092b-48fa-97f5-d261e9f5dbf6",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "other_income",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "231342000"
+    },
+    {
+      "fact_id": "0322679a-df0d-4558-a624-3380d2fa1386",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "finance_cost",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "30362000"
+    },
+    {
+      "fact_id": "5d26ea48-e47e-4507-b78f-e028e0ce183c",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "depreciation",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "106542000"
+    },
+    {
+      "fact_id": "3a8a771e-24d7-4ba9-bb1b-c7c5cb8489df",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "total_expenses",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1507779000"
+    },
+    {
+      "fact_id": "62eb2cb9-4aa0-4403-9937-39829eee7c01",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "exceptional_items",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "7845709a-472e-455d-83e3-243f1b47db28",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "pbt",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "854481000"
+    },
+    {
+      "fact_id": "4e2cbd58-7463-4f1b-994a-f3f1a4805993",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "pat",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "659549000"
+    },
+    {
+      "fact_id": "6e2ebcbd-e172-4216-a163-ccb17ce3769f",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "paid_up_capital",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "486150000"
+    },
+    {
+      "fact_id": "79eaf7d1-adaf-437e-af58-5fa7c7062c33",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "face_value",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "2c7a2ca4-cb94-43b4-bf6b-2b9a296801e3",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "eps_diluted",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "11.88"
+    },
+    {
+      "fact_id": "5b0da8ea-98e6-40c1-99a7-1dd80940989b",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "revenue",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "4142550000"
+    },
+    {
+      "fact_id": "3d04cea2-e561-4099-9605-47f5de4873b0",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "other_income",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "517092000"
+    },
+    {
+      "fact_id": "d6be0c44-1ac5-4979-b7ec-29ab27b83075",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "finance_cost",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "62247000"
+    },
+    {
+      "fact_id": "59749fe9-b854-4d88-a5d5-60301bce92e8",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "depreciation",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "214251000"
+    },
+    {
+      "fact_id": "528744cd-4ec9-4b44-8fd1-641c0b2cd105",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "total_expenses",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "3029234000"
+    },
+    {
+      "fact_id": "60ebed6f-935e-4334-ba0d-a7d468022184",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "exceptional_items",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "-30755000"
+    },
+    {
+      "fact_id": "a6bd21c5-6a6a-4871-8c67-6921c5e99a7a",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "pbt",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1599653000"
+    },
+    {
+      "fact_id": "42662f61-ed77-4fb8-9e96-cdbc8c51428a",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "pat",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1227078000"
+    },
+    {
+      "fact_id": "fbc087be-2414-46e6-b516-c973a0a6add3",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "paid_up_capital",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "486150000"
+    },
+    {
+      "fact_id": "f7fc6682-ad77-442b-ac10-f9729a844794",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "face_value",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "fbf007d7-fc21-4dfd-9d4a-75f960f221c9",
+      "publication_id": "812417cf-66ce-4275-a106-047f565f287d",
+      "metric": "eps_diluted",
+      "source_sha256": "cb393d06fb31c9564ecc37b06220dc979ccdf8acc415baab4dc7f28b588796e6",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "22.21"
+    },
+    {
+      "fact_id": "66cad706-9a78-4c2a-a9e9-3b86855b88a5",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "revenue",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1365057000"
+    },
+    {
+      "fact_id": "fbf7a4d9-eb78-43d1-a2d3-74b63593582e",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "other_income",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "4897000"
+    },
+    {
+      "fact_id": "7c6e48ef-6a14-482b-8839-d63c38c5271f",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "finance_cost",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10050000"
+    },
+    {
+      "fact_id": "0d864f28-9a23-4b78-a497-1a3bae467302",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "depreciation",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "22095000"
+    },
+    {
+      "fact_id": "cbd7e053-4ced-456f-afe1-677f18248c38",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "total_expenses",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1133453000"
+    },
+    {
+      "fact_id": "7997e113-7400-45b7-a0bd-0ee270a0c865",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "exceptional_items",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "11405c51-d4fa-48e9-81e8-ad89b90e99b8",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "pbt",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "236501000"
+    },
+    {
+      "fact_id": "95e8e79b-aa53-417d-959b-90c016b70ac4",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "pat",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "176191000"
+    },
+    {
+      "fact_id": "c4a79153-d39c-4143-9f31-e7edf17175f6",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "paid_up_capital",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "49945000"
+    },
+    {
+      "fact_id": "3088a49d-d170-4c38-8974-bb8e6f312fed",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "face_value",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1"
+    },
+    {
+      "fact_id": "a3abea81-7ff2-4eec-9003-a985546cbbe6",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "eps_diluted",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "3.52"
+    },
+    {
+      "fact_id": "302811d4-ad9e-46f1-a837-0d3c346a99a7",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "revenue",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2827866000"
+    },
+    {
+      "fact_id": "27fd38d0-0b0e-47fa-9163-2eea172ed548",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "other_income",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "6896000"
+    },
+    {
+      "fact_id": "3c1d7c92-c683-469d-bd77-844e08d5afdf",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "finance_cost",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "20297000"
+    },
+    {
+      "fact_id": "c6404ac7-9186-470f-8ca4-52f988704f16",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "depreciation",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "43819000"
+    },
+    {
+      "fact_id": "4989e2b0-1e6d-4205-8e7d-1df1638d25fc",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "total_expenses",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2368104000"
+    },
+    {
+      "fact_id": "f0c8be6c-8f38-45c7-a777-9358f22adc2a",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "exceptional_items",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "fe98293d-8479-4def-a3eb-67fa7a24351f",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "pbt",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "466658000"
+    },
+    {
+      "fact_id": "09487720-62e7-44a7-8bc2-dd0eedf32e80",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "pat",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "347351000"
+    },
+    {
+      "fact_id": "653a412a-1de9-4436-9eab-6e5cae5ddd57",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "paid_up_capital",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "49945000"
+    },
+    {
+      "fact_id": "f325c27b-53fa-4697-b3bd-036018cc6f21",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "face_value",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1"
+    },
+    {
+      "fact_id": "ec5595c8-b7ff-40ce-b0fd-9963ac579ddf",
+      "publication_id": "11db0954-9d34-4a91-a8d5-4e2e1e9b6d86",
+      "metric": "eps_diluted",
+      "source_sha256": "6ffe9f33858e595d4364883f4b6ddaa4b579f14a5e5019740d6fb608e01a31f3",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "6.95"
+    },
+    {
+      "fact_id": "9c69d38f-d1d2-41a1-8cc3-016c4c5fda54",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "revenue",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1295985000"
+    },
+    {
+      "fact_id": "c2e763a6-fe26-4b18-ab16-e0c5b0d50526",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "other_income",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "11487000"
+    },
+    {
+      "fact_id": "5f3adbcd-7178-4399-9569-deaa9792f872",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "finance_cost",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "7542000"
+    },
+    {
+      "fact_id": "d2d8d5be-b20e-4cfd-9a70-c5409540f499",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "depreciation",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "4066000"
+    },
+    {
+      "fact_id": "96998d1f-9f37-4e70-8ed2-18c5b1a25b45",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "total_expenses",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1183782000"
+    },
+    {
+      "fact_id": "1c44cc77-2614-4111-9796-3e96e9c33226",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "exceptional_items",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "f7330329-5b6a-489e-9e8e-93d75ebee158",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "pbt",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "123690000"
+    },
+    {
+      "fact_id": "21e55551-6716-49a2-ad64-6c059506ec8a",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "pat",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "92561000"
+    },
+    {
+      "fact_id": "3be43392-2b8c-4fce-a40f-9829a3b9dbbd",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "paid_up_capital",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "160140000"
+    },
+    {
+      "fact_id": "20c3d8b4-c82f-4133-8854-1e8d9f51a34b",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "face_value",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "7c790d21-29ff-48c1-af87-da8429aa4bf2",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "eps_diluted",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "4.9"
+    },
+    {
+      "fact_id": "7486fb48-18f8-4aa3-a904-771544682618",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "revenue",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1804367000"
+    },
+    {
+      "fact_id": "f312fdd1-7ad3-4f47-9479-2c481f40d997",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "other_income",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "18492000"
+    },
+    {
+      "fact_id": "c532eb11-be6f-43c8-a0f8-b99d38c03f43",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "finance_cost",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "14686000"
+    },
+    {
+      "fact_id": "b2ad4e07-afdb-42f2-945e-5ccb0e18be06",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "depreciation",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "8079000"
+    },
+    {
+      "fact_id": "5cf67bfb-f5eb-44ed-9a1d-cc02cb38b49c",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "total_expenses",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1651261000"
+    },
+    {
+      "fact_id": "5d8c1623-97b4-4cc8-8806-9ab762fbac01",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "exceptional_items",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "861e4871-5a0e-4a39-853c-3033d797fe01",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "pbt",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "171598000"
+    },
+    {
+      "fact_id": "240b5f22-5c80-49b8-8d11-cfe88f701bed",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "pat",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "128728000"
+    },
+    {
+      "fact_id": "7a3d0f34-f647-4a8c-9dd3-c2c8f36d14c1",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "paid_up_capital",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "160140000"
+    },
+    {
+      "fact_id": "9a7d32ff-30fa-4142-9ec2-6ff850453408",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "face_value",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "a0d03ae4-cc24-4901-9b6d-081e4c4111f0",
+      "publication_id": "ec41f534-a3e3-48cf-9c52-138a39e4f242",
+      "metric": "eps_diluted",
+      "source_sha256": "e711ccc8813f6b8122577f1b65f52adea864b8bbc286b876c39669eb3300c01d",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "6.82"
+    },
+    {
+      "fact_id": "b3efda97-90b9-4420-883c-91fba46c3ea2",
+      "publication_id": "69f7cc67-b37e-4b24-8af1-e226d65c672c",
+      "metric": "revenue",
+      "source_sha256": "35a4005263b65b305fa97732940035b68b2665ad0f4e18360294287e88f02def",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "689243000"
+    },
+    {
+      "fact_id": "5f38938f-7b17-4b1b-9cb7-533e2d00a4a6",
+      "publication_id": "69f7cc67-b37e-4b24-8af1-e226d65c672c",
+      "metric": "other_income",
+      "source_sha256": "35a4005263b65b305fa97732940035b68b2665ad0f4e18360294287e88f02def",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "3712000"
+    },
+    {
+      "fact_id": "6f07f923-0844-48f4-87ed-26a8c1a02259",
+      "publication_id": "69f7cc67-b37e-4b24-8af1-e226d65c672c",
+      "metric": "finance_cost",
+      "source_sha256": "35a4005263b65b305fa97732940035b68b2665ad0f4e18360294287e88f02def",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "12679000"
+    },
+    {
+      "fact_id": "93810446-7588-43ff-938d-ebaf4c1830eb",
+      "publication_id": "69f7cc67-b37e-4b24-8af1-e226d65c672c",
+      "metric": "total_expenses",
+      "source_sha256": "35a4005263b65b305fa97732940035b68b2665ad0f4e18360294287e88f02def",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "588397000"
+    },
+    {
+      "fact_id": "b2015504-442c-4dfd-9658-08e76e3c041a",
+      "publication_id": "69f7cc67-b37e-4b24-8af1-e226d65c672c",
+      "metric": "pbt",
+      "source_sha256": "35a4005263b65b305fa97732940035b68b2665ad0f4e18360294287e88f02def",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "104558000"
+    },
+    {
+      "fact_id": "fb198185-9878-42d3-a5c7-f95731db5098",
+      "publication_id": "69f7cc67-b37e-4b24-8af1-e226d65c672c",
+      "metric": "paid_up_capital",
+      "source_sha256": "35a4005263b65b305fa97732940035b68b2665ad0f4e18360294287e88f02def",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "171208000"
+    },
+    {
+      "fact_id": "4d7df1d7-026b-4b2e-9e55-c89fb9064f78",
+      "publication_id": "69f7cc67-b37e-4b24-8af1-e226d65c672c",
+      "metric": "face_value",
+      "source_sha256": "35a4005263b65b305fa97732940035b68b2665ad0f4e18360294287e88f02def",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "1abb136a-f912-4aad-af66-313be7591e4d",
+      "publication_id": "69f7cc67-b37e-4b24-8af1-e226d65c672c",
+      "metric": "eps_diluted",
+      "source_sha256": "35a4005263b65b305fa97732940035b68b2665ad0f4e18360294287e88f02def",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "4.58"
+    },
+    {
+      "fact_id": "0698f064-abf5-4102-970f-ae16d92a9019",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "revenue",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1229983000"
+    },
+    {
+      "fact_id": "279bbae4-462e-46dc-93fe-f19ddbab12da",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "other_income",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "69779000"
+    },
+    {
+      "fact_id": "18d0134d-8180-47f0-afa4-a39130d0bf6c",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "finance_cost",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "20336000"
+    },
+    {
+      "fact_id": "b2c89eec-d9d6-427f-b330-900aed5f4f59",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "depreciation",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "90432000"
+    },
+    {
+      "fact_id": "7fa73ef5-4c5d-4049-8c72-75d54dda48c0",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "total_expenses",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "850694000"
+    },
+    {
+      "fact_id": "e433a4de-1050-4d13-8c76-23601971a736",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "exceptional_items",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "74bbc4c2-68f4-400e-b8a5-f3102d21b8a9",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "pbt",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "449068000"
+    },
+    {
+      "fact_id": "2e247460-3bb5-4c56-9b8e-de2e9452822c",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "pat",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "317748000"
+    },
+    {
+      "fact_id": "9992d9ac-707e-4eb1-8b0d-441513a7f21b",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "paid_up_capital",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "254510000"
+    },
+    {
+      "fact_id": "488796b6-c36b-49f7-b420-c1e90686faae",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "face_value",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "5"
+    },
+    {
+      "fact_id": "928a9028-81c7-4c6d-8c8f-1b4c30617e8d",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "eps_diluted",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "6.24"
+    },
+    {
+      "fact_id": "d9b0722b-4035-4377-9279-e82b30e0e2cf",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "revenue",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2306188000"
+    },
+    {
+      "fact_id": "e95fb5ac-2fb6-472c-9a56-06e9e26748f9",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "other_income",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "143064000"
+    },
+    {
+      "fact_id": "d28f8a1f-05df-41c6-82f3-3e9d8c27f6fe",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "finance_cost",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "39712000"
+    },
+    {
+      "fact_id": "9958a280-8b39-4c35-b4d6-35ee3a95e708",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "depreciation",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "170002000"
+    },
+    {
+      "fact_id": "36e9159a-9b24-442a-996b-8c1fc50ed98c",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "total_expenses",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1633299000"
+    },
+    {
+      "fact_id": "7cc2f760-3cda-439e-952b-a5bee29e81c1",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "exceptional_items",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "30c40088-a51c-43a9-a1f0-6d6ea5fa0528",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "pbt",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "815953000"
+    },
+    {
+      "fact_id": "c28b6313-956d-4724-b860-1dff45bab930",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "pat",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "596385000"
+    },
+    {
+      "fact_id": "7b67684b-dc89-4508-8c3d-433fefd0819e",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "paid_up_capital",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "254510000"
+    },
+    {
+      "fact_id": "bafbf278-06e5-48a7-a520-6ceee62b9d58",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "face_value",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "5"
+    },
+    {
+      "fact_id": "0edc3a38-7690-403e-8594-63761022d06f",
+      "publication_id": "a6f3be97-2bbf-4140-8221-610fe4bc93be",
+      "metric": "eps_diluted",
+      "source_sha256": "a17662dcc4b2b713eecb4654415c0893df309ce31d0bbf56a3a687a762a1bbda",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "11.71"
+    },
+    {
+      "fact_id": "450ca40e-0329-443a-9401-f9e0bf256797",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "revenue",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "17057900000"
+    },
+    {
+      "fact_id": "3ca31e57-0d7e-488c-8279-255a6b5ee9e6",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "other_income",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "217100000"
+    },
+    {
+      "fact_id": "589ece01-8683-4745-b225-cdc4454eb4e9",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "finance_cost",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "8100000"
+    },
+    {
+      "fact_id": "e4d909c2-5e78-4c00-ac28-b95cb4decf54",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "depreciation",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "341600000"
+    },
+    {
+      "fact_id": "19f4fa82-c6bf-4670-920f-5af21ffc3b67",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "total_expenses",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "12672800000"
+    },
+    {
+      "fact_id": "ce198485-4825-423d-83d5-773d47ecb2d6",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "exceptional_items",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "c39f9892-8090-45d5-8990-48aacbf6a414",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "pbt",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "4602200000"
+    },
+    {
+      "fact_id": "bd35053b-61d7-4703-bae9-57f1127f34b9",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "pat",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "3415700000"
+    },
+    {
+      "fact_id": "8f71031e-59aa-437e-81ce-bc296e2f923d",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "paid_up_capital",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "272000000"
+    },
+    {
+      "fact_id": "41e680fe-8480-4236-ac57-82d27a1269d8",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "face_value",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1"
+    },
+    {
+      "fact_id": "3beb8cb2-4979-4391-ba3c-c4b019b90349",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "eps_diluted",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "12.56"
+    },
+    {
+      "fact_id": "9796532f-89fa-45ba-8528-583937728b03",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "revenue",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "33090900000"
+    },
+    {
+      "fact_id": "23782bee-c1d9-48a2-baa0-8416bfd4479f",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "other_income",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "445100000"
+    },
+    {
+      "fact_id": "8271c693-04c0-4c20-82d8-2fa6ac34ef75",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "finance_cost",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "18400000"
+    },
+    {
+      "fact_id": "9e95aab6-24d8-4642-9606-628743afa751",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "depreciation",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "733700000"
+    },
+    {
+      "fact_id": "edf886b0-332d-4905-a48e-1de8ca564456",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "total_expenses",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "24278500000"
+    },
+    {
+      "fact_id": "9c3be029-0aa5-40e8-976d-956e8e32f9be",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "exceptional_items",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "-33400000"
+    },
+    {
+      "fact_id": "26aa88dc-92ba-4778-afdf-0bb2f9354149",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "pbt",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "9224100000"
+    },
+    {
+      "fact_id": "deaf7d24-3ab3-4260-9358-4d3192a7647d",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "pat",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "6846500000"
+    },
+    {
+      "fact_id": "91781611-a90d-4c48-8da1-cbc4665738be",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "paid_up_capital",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "272000000"
+    },
+    {
+      "fact_id": "6751e337-97c1-48ec-a371-04ab6710f1b9",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "face_value",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1"
+    },
+    {
+      "fact_id": "5a19df8f-6e1f-4566-a379-34b45d29caaa",
+      "publication_id": "0844026c-f350-4805-9d8f-e3f794efe7b1",
+      "metric": "eps_diluted",
+      "source_sha256": "9e7a1830124133aab8e019de049e3906564dd7dcfcb86cf5d245455d5b46ecfc",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "25.17"
+    },
+    {
+      "fact_id": "5a9169c0-61b8-4721-a953-3445c863ad4b",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "revenue",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "203709000"
+    },
+    {
+      "fact_id": "6be63740-f96e-4c36-9c62-6fa0612a707b",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "other_income",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "5166000"
+    },
+    {
+      "fact_id": "cf119246-22bf-41c9-b74e-2bb0742ba90d",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "finance_cost",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "24441000"
+    },
+    {
+      "fact_id": "ac022b70-9122-4317-978a-dbba14debc0c",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "depreciation",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "20596000"
+    },
+    {
+      "fact_id": "f87d23ca-2a98-4cd8-9cbc-ba260c10d8f8",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "total_expenses",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "143752000"
+    },
+    {
+      "fact_id": "dc8c2d96-159b-4360-a074-e36467de86c7",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "exceptional_items",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "283164c2-7820-45c5-8afc-9e7a69f4107d",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "pbt",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "65123000"
+    },
+    {
+      "fact_id": "a40506fc-c506-4686-bdc1-8c33feae5378",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "pat",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "62153000"
+    },
+    {
+      "fact_id": "1dbbb392-1726-4bab-8177-4ea59c2fb9ec",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "paid_up_capital",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "273044000"
+    },
+    {
+      "fact_id": "27b0b3d1-dd83-4f02-87fc-676963ed6938",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "face_value",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "15e81134-a0e3-4eff-b212-07c536aa406b",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "eps_diluted",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2.28"
+    },
+    {
+      "fact_id": "523105e9-4c73-4a75-8e76-e10ef2c25738",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "revenue",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "618513000"
+    },
+    {
+      "fact_id": "29b94999-8023-418a-a7ed-5745ae5621c1",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "other_income",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "18804000"
+    },
+    {
+      "fact_id": "e7f2371e-d46b-412f-a0b9-618119d10b2a",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "finance_cost",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "49423000"
+    },
+    {
+      "fact_id": "7b6037ad-db23-4502-801d-eaf8dcff1d51",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "depreciation",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "41047000"
+    },
+    {
+      "fact_id": "a4c8dea3-b23e-44e2-b8e9-625ed6026f7c",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "total_expenses",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "570372000"
+    },
+    {
+      "fact_id": "3de38695-812d-4023-ac91-d6a083e20eb6",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "exceptional_items",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "9ac1fbb8-0567-4493-a2d4-06c217d4d20a",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "pbt",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "66945000"
+    },
+    {
+      "fact_id": "a57b2b2e-8058-48a7-b031-b07c812f7a65",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "pat",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "63703000"
+    },
+    {
+      "fact_id": "ab8d7dfc-15a0-45a1-91ff-d31b0ae056c2",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "paid_up_capital",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "273044000"
+    },
+    {
+      "fact_id": "140bbcb9-7060-4437-9c14-fc4e9f84c34a",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "face_value",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "65c8ee86-509d-4066-9c11-bff4b641b322",
+      "publication_id": "660faea9-1ed7-4e9f-992e-d8eaf34bf612",
+      "metric": "eps_diluted",
+      "source_sha256": "c5e39f198e2298299997b41ebc518e7beec280658ce441fe641a46bb6346d8ec",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2.33"
+    },
+    {
+      "fact_id": "6e141853-cc60-4d19-96be-28684c09f2ea",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "revenue",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1511950000"
+    },
+    {
+      "fact_id": "941d1ea4-7065-4a95-8da7-03043d8e3656",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "other_income",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "26170000"
+    },
+    {
+      "fact_id": "500e28ae-fb2c-404c-a91f-0a6bb97d09f2",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "finance_cost",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "25770000"
+    },
+    {
+      "fact_id": "b736ff0d-cfab-4651-b1c7-3605f4057665",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "depreciation",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "32120000"
+    },
+    {
+      "fact_id": "dfbfb023-a0e4-4dc9-baa5-e801b0b0e7b0",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "total_expenses",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1686560000"
+    },
+    {
+      "fact_id": "8b76f0a5-99b0-4060-b47b-497bcf9fdec9",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "exceptional_items",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "-13070000"
+    },
+    {
+      "fact_id": "9add3853-0aa8-4230-9327-b129769f0dc3",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "pbt",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "-161510000"
+    },
+    {
+      "fact_id": "da8111a8-be66-404e-aedf-90dd0d072586",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "pat",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "-175980000"
+    },
+    {
+      "fact_id": "6220f8b1-f099-4135-bdd8-a3bc2d222b8c",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "paid_up_capital",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "544190000"
+    },
+    {
+      "fact_id": "06ec8449-573b-4d3a-a602-c97e0ec90538",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "face_value",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1"
+    },
+    {
+      "fact_id": "14f07ded-0e44-463c-b9c0-66d0e4fb7dfb",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "eps_diluted",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "-0.48"
+    },
+    {
+      "fact_id": "12f4bd4d-a97f-4334-8cdc-0b272362dac9",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "revenue",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2855000000"
+    },
+    {
+      "fact_id": "65755d7e-9fb9-46c0-aa5a-19e3f6953123",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "other_income",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "44050000"
+    },
+    {
+      "fact_id": "c26116d1-48c6-467e-869d-b8994f2eeb88",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "finance_cost",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "39640000"
+    },
+    {
+      "fact_id": "f04d6b63-e641-4dd9-a877-a6ecf90b990f",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "depreciation",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "63320000"
+    },
+    {
+      "fact_id": "854e6415-074d-41ce-81db-db2c820d36bd",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "total_expenses",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "3302160000"
+    },
+    {
+      "fact_id": "a7a3e96c-7aa3-4310-88ce-9f9537a009e7",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "exceptional_items",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "-13070000"
+    },
+    {
+      "fact_id": "d1119205-ae63-48ad-a9e3-01a0c0c39de6",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "pbt",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "-416180000"
+    },
+    {
+      "fact_id": "bff53a14-f834-493f-9c99-23ab045d2340",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "pat",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "-429540000"
+    },
+    {
+      "fact_id": "8f6e632d-f9a5-480d-a3fa-6f04af735269",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "paid_up_capital",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "544190000"
+    },
+    {
+      "fact_id": "8ca5709f-d36c-4a2e-aef0-318a588eb44c",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "face_value",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1"
+    },
+    {
+      "fact_id": "7670f97c-21cf-488a-813e-261a95eeb105",
+      "publication_id": "e232f26a-9231-4783-98b0-4fdd68946330",
+      "metric": "eps_diluted",
+      "source_sha256": "07f94fa8829178e63321eb46a5ad079a9f51d4ab11505cfb62f0d028377c5317",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "-1.1"
+    },
+    {
+      "fact_id": "5f6ed244-af53-4b61-90ad-842935d69c1a",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "revenue",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "612673000"
+    },
+    {
+      "fact_id": "5bc153fa-a92d-4ba7-adf2-567ebd6fe49f",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "other_income",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "237000"
+    },
+    {
+      "fact_id": "c41221b3-b3a7-45a9-b28d-0a2908fdc469",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "finance_cost",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "18507000"
+    },
+    {
+      "fact_id": "6953fcec-137d-484e-86c1-c87b4e3b9e9b",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "depreciation",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "24876000"
+    },
+    {
+      "fact_id": "630d4c6b-bdc0-4dc4-bb7f-5ba009805c9c",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "total_expenses",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "529333000"
+    },
+    {
+      "fact_id": "17d38c4d-4a92-4974-95da-1f398d7a9f63",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "exceptional_items",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "8e0b5832-1477-41b8-aaea-ab5dd54b77aa",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "pbt",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "83577000"
+    },
+    {
+      "fact_id": "20b1277e-b5fc-43c3-8384-1fdb2bbb8046",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "pat",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "62398000"
+    },
+    {
+      "fact_id": "b1a601cc-d8c9-406f-be7b-671188b407b0",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "paid_up_capital",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1130703000"
+    },
+    {
+      "fact_id": "8daf10a8-21ee-4d95-bb41-66b8ad7411fa",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "face_value",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "45c440e9-c575-45ee-a4b5-f1912213c8e0",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "eps_diluted",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0.55"
+    },
+    {
+      "fact_id": "4fac4169-84a4-4b6a-adc9-31c0c6bb0fb9",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "revenue",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1532481000"
+    },
+    {
+      "fact_id": "8abc20d5-2739-4621-b6af-5bbfa4269765",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "other_income",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "291000"
+    },
+    {
+      "fact_id": "005f69d0-a0d8-4236-bd3b-3a343d1bee4f",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "finance_cost",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "36112000"
+    },
+    {
+      "fact_id": "c0d0e021-a022-474d-b9fa-fb665b01106f",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "depreciation",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "49709000"
+    },
+    {
+      "fact_id": "be05b8f7-9a63-4574-b0b5-77d423644976",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "total_expenses",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1374474000"
+    },
+    {
+      "fact_id": "590cb097-410c-4bb8-8114-d326dbdbc5bf",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "exceptional_items",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "4d8094d9-53de-41b8-96bd-4826c4c1529c",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "pbt",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "158298000"
+    },
+    {
+      "fact_id": "67212d6a-e033-42ed-9a6b-8d5c5b3a5463",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "pat",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "107018000"
+    },
+    {
+      "fact_id": "28c865ab-cabf-4f01-92db-a375190d4d44",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "paid_up_capital",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1130703000"
+    },
+    {
+      "fact_id": "88ff6216-bea0-4e79-80e0-a79edb7294d7",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "face_value",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "188a11bc-296c-4ea8-a9d1-ced51ba1b050",
+      "publication_id": "e095eeef-e286-400a-994f-a11523a302ae",
+      "metric": "eps_diluted",
+      "source_sha256": "ae6d981f0fcff71f98b0337c1e6e1975ae1af21a45795f47ab0b32f198c03c44",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0.95"
+    },
+    {
+      "fact_id": "0c974893-0b9c-4870-b1cb-a5eb1281ae53",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "revenue",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "44125800000"
+    },
+    {
+      "fact_id": "37e1f2ea-832f-49c5-93b2-eef765f3ed3e",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "other_income",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1585700000"
+    },
+    {
+      "fact_id": "5d02637a-b5ce-4c4a-88fb-6c424be1e6b7",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "finance_cost",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "487400000"
+    },
+    {
+      "fact_id": "afc0c7bc-36ff-4217-92c6-33195059ab20",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "depreciation",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1243500000"
+    },
+    {
+      "fact_id": "fb5b0f3e-95c2-41fe-ad9c-7b270b7c2efa",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "total_expenses",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "43853700000"
+    },
+    {
+      "fact_id": "9920cecb-28fe-445d-ab67-cc042869fd4b",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "exceptional_items",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "d7e137f5-0bc8-4a34-8cbb-823300764453",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "pbt",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1857800000"
+    },
+    {
+      "fact_id": "49c97f0e-df73-4439-bf18-7f0d14c06c81",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "pat",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1237400000"
+    },
+    {
+      "fact_id": "7aed1ef3-c6b4-4bea-9d20-a70640517eb1",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "paid_up_capital",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "46570000000"
+    },
+    {
+      "fact_id": "1e3f7f0d-bab5-42af-b374-6b12677fa183",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "face_value",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "8059434d-71af-499b-b117-212f4ee5476a",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "eps_diluted",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0.27"
+    },
+    {
+      "fact_id": "17991cc3-cfa2-4107-9743-74a46eeb2a4b",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "revenue",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "79998500000"
+    },
+    {
+      "fact_id": "c9123f3f-88ef-4e45-be24-acb7af70a937",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "other_income",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2945400000"
+    },
+    {
+      "fact_id": "6ca8ad12-850d-4dd7-bddd-bf167b5ba464",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "finance_cost",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "970700000"
+    },
+    {
+      "fact_id": "6ad56b32-71c1-46d1-a963-4cbb4d4c0c08",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "depreciation",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2505900000"
+    },
+    {
+      "fact_id": "20fedf6b-c6f9-4f28-8a73-2f043f8c83ad",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "total_expenses",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "82116800000"
+    },
+    {
+      "fact_id": "e69138b1-eb81-4421-9039-53a50624f703",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "exceptional_items",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "2eebd43c-17a4-4daa-81f7-aabee9e6bb82",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "pbt",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "827100000"
+    },
+    {
+      "fact_id": "ed691489-a2fe-4729-bf1d-b9766fa08b9f",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "pat",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "556500000"
+    },
+    {
+      "fact_id": "9c53c9aa-20e5-4752-a045-bbbb38b61d51",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "paid_up_capital",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "46570000000"
+    },
+    {
+      "fact_id": "d07bd7a7-6128-4e69-b79b-c49fb8bffbaf",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "face_value",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "b9c8043d-5233-4684-84db-801793c3e18a",
+      "publication_id": "c5ebb2e9-1763-4059-9687-062a821c2356",
+      "metric": "eps_diluted",
+      "source_sha256": "1245c11b6bfa034510552ee1eecb2f18549d725852fc7ae72f71724184972e04",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0.12"
+    },
+    {
+      "fact_id": "800515bd-6529-40c3-a990-eb86a9e49c74",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "revenue",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "13794266000"
+    },
+    {
+      "fact_id": "28301de7-c736-4cc9-989e-0d4fb4645d3a",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "other_income",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "270644000"
+    },
+    {
+      "fact_id": "72cd321f-572c-4b39-b4db-21f79fe2ad56",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "finance_cost",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "144339000"
+    },
+    {
+      "fact_id": "ca6042d0-81bb-49b2-8b6e-4bd33f1be24d",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "depreciation",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "186507000"
+    },
+    {
+      "fact_id": "d5832b1d-0f5e-41df-b6d0-e817a8ec6507",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "total_expenses",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "12497721000"
+    },
+    {
+      "fact_id": "f3562e1d-32ae-41ea-83d2-1c97bcb6c8bb",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "exceptional_items",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "af39d750-07d4-4e7e-ba98-480835b63309",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "pbt",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1567189000"
+    },
+    {
+      "fact_id": "8a1f76ca-2ca5-4a38-8cf3-2ff0c177870b",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "pat",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1171936000"
+    },
+    {
+      "fact_id": "d90cad6b-137c-48a0-b7bb-8552116bbfb1",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "paid_up_capital",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "99111000"
+    },
+    {
+      "fact_id": "5830eea9-be22-4622-b709-293cbb569939",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "face_value",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2"
+    },
+    {
+      "fact_id": "b174d8ba-f7b6-4f81-b77e-0e2027bf66ae",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "eps_diluted",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "23.41"
+    },
+    {
+      "fact_id": "2b54b7c4-f8d7-453e-82ca-4f6ea8cd2511",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "revenue",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "26997865000"
+    },
+    {
+      "fact_id": "40d0b316-2a44-4882-ae4f-08f6adaea789",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "other_income",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "537077000"
+    },
+    {
+      "fact_id": "a8cde862-7a5a-4b2c-b71c-e2cc1e53e4a2",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "finance_cost",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "221186000"
+    },
+    {
+      "fact_id": "a513f2bf-8e14-4859-977d-383296bf814f",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "depreciation",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "355352000"
+    },
+    {
+      "fact_id": "c1331b75-a267-4f9f-9144-f83d3e16d0b2",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "total_expenses",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "24243349000"
+    },
+    {
+      "fact_id": "ebe0005e-59de-4b31-b57b-99f9140e04ad",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "exceptional_items",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "c9060226-8742-423a-b200-e34cf152476d",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "pbt",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "3291593000"
+    },
+    {
+      "fact_id": "a3e2892b-c3ee-4550-9914-ccff5c738718",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "pat",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2447181000"
+    },
+    {
+      "fact_id": "f1233c2d-fb11-4e39-8ea1-a46148ca4f0c",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "paid_up_capital",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "99111000"
+    },
+    {
+      "fact_id": "9b7435e6-7835-48b3-8cc2-27f2a457c09a",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "face_value",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2"
+    },
+    {
+      "fact_id": "14fb4526-a7b1-46ad-ad44-77b3656c7eb1",
+      "publication_id": "396f33a0-0b18-4f4f-9438-68d3b17db30c",
+      "metric": "eps_diluted",
+      "source_sha256": "64636e8106eb4f780f2a657768584f08b1707e4a16ee88cdff8b500c6fbcabe3",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "49"
+    },
+    {
+      "fact_id": "8a3edfb1-287c-4536-9053-5bb22686cc0c",
+      "publication_id": "fcc9f5db-3d9e-4667-bb16-ee756d9bc931",
+      "metric": "revenue",
+      "source_sha256": "7efdf2c272cf81b53d08e249306c0f93259ba2154e84456731a0c09f6db0e799",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1138749000"
+    },
+    {
+      "fact_id": "1e300d00-dcae-437a-b322-3b4beda6a6eb",
+      "publication_id": "fcc9f5db-3d9e-4667-bb16-ee756d9bc931",
+      "metric": "other_income",
+      "source_sha256": "7efdf2c272cf81b53d08e249306c0f93259ba2154e84456731a0c09f6db0e799",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "4308000"
+    },
+    {
+      "fact_id": "0dd499b1-1b8d-4cce-ab3f-2d75f559a416",
+      "publication_id": "fcc9f5db-3d9e-4667-bb16-ee756d9bc931",
+      "metric": "finance_cost",
+      "source_sha256": "7efdf2c272cf81b53d08e249306c0f93259ba2154e84456731a0c09f6db0e799",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2316000"
+    },
+    {
+      "fact_id": "6b70d076-11f1-4c05-bdb1-925c15280721",
+      "publication_id": "fcc9f5db-3d9e-4667-bb16-ee756d9bc931",
+      "metric": "total_expenses",
+      "source_sha256": "7efdf2c272cf81b53d08e249306c0f93259ba2154e84456731a0c09f6db0e799",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1019730000"
+    },
+    {
+      "fact_id": "dec8ae19-2c19-4478-ace4-cb16bf49c702",
+      "publication_id": "fcc9f5db-3d9e-4667-bb16-ee756d9bc931",
+      "metric": "pbt",
+      "source_sha256": "7efdf2c272cf81b53d08e249306c0f93259ba2154e84456731a0c09f6db0e799",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "123327000"
+    },
+    {
+      "fact_id": "6a435185-18d2-45f9-8aac-ff5a09547eaf",
+      "publication_id": "fcc9f5db-3d9e-4667-bb16-ee756d9bc931",
+      "metric": "paid_up_capital",
+      "source_sha256": "7efdf2c272cf81b53d08e249306c0f93259ba2154e84456731a0c09f6db0e799",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "157273000"
+    },
+    {
+      "fact_id": "1c4661e6-6da8-4fe1-9bc6-5a3b04cc45c5",
+      "publication_id": "fcc9f5db-3d9e-4667-bb16-ee756d9bc931",
+      "metric": "face_value",
+      "source_sha256": "7efdf2c272cf81b53d08e249306c0f93259ba2154e84456731a0c09f6db0e799",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "7d23db54-2232-41fc-9120-1f6e0999e6cb",
+      "publication_id": "fcc9f5db-3d9e-4667-bb16-ee756d9bc931",
+      "metric": "eps_diluted",
+      "source_sha256": "7efdf2c272cf81b53d08e249306c0f93259ba2154e84456731a0c09f6db0e799",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "5.88"
+    },
+    {
+      "fact_id": "d1dc78af-5adf-41fe-a7d2-ab4935b23a81",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "revenue",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "339807000"
+    },
+    {
+      "fact_id": "69162c3d-13ad-43f4-b460-414ec91c1f29",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "other_income",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "16134000"
+    },
+    {
+      "fact_id": "45106481-566e-4b14-8aa9-a48799363ea4",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "finance_cost",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "3121000"
+    },
+    {
+      "fact_id": "0cfeda75-5c7b-4df0-9827-270bb9f39abc",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "depreciation",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "3895000"
+    },
+    {
+      "fact_id": "1e3170e7-ccc8-4358-9ace-7c966fb8e5ad",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "total_expenses",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "300548000"
+    },
+    {
+      "fact_id": "f4bddd5c-0aeb-46de-b221-9463b466290b",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "exceptional_items",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "b0590ada-edf4-4fc4-ab53-f4c797c80366",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "pbt",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "55393000"
+    },
+    {
+      "fact_id": "dda7d49a-9abb-4956-aa82-8f7e4fa7caa9",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "pat",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "44476000"
+    },
+    {
+      "fact_id": "b71ec309-46dc-4673-b1fa-6413ff57dd3d",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "paid_up_capital",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "159145000"
+    },
+    {
+      "fact_id": "21746c58-f217-4311-b839-216b4e897909",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "face_value",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2"
+    },
+    {
+      "fact_id": "92ffc318-d1d5-4c97-9b41-dc20aac54e83",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "eps_diluted",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0.56"
+    },
+    {
+      "fact_id": "c4c99782-ed06-4eea-aae9-f7c21c31e424",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "revenue",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "611444000"
+    },
+    {
+      "fact_id": "a8c1f1a8-ab03-4209-be4d-a41dda6f063f",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "other_income",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "23862000"
+    },
+    {
+      "fact_id": "d9887f40-9121-4371-af0a-bf1ba822c243",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "finance_cost",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "5757000"
+    },
+    {
+      "fact_id": "b45791d6-2f43-4da8-8924-8bd7c609ce6a",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "depreciation",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "7290000"
+    },
+    {
+      "fact_id": "5b3b162d-a2ac-4c9f-8b77-e4ef308729be",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "total_expenses",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "538385000"
+    },
+    {
+      "fact_id": "31bfbda6-5872-42a6-affa-8504622c8d13",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "exceptional_items",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "13e60f2f-3ffc-4242-899b-71543fdde25b",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "pbt",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "96921000"
+    },
+    {
+      "fact_id": "5f2983ff-d679-4726-ac0d-17b0cd57c874",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "pat",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "75858000"
+    },
+    {
+      "fact_id": "e5f7d5cc-a45e-4ff9-8c45-d0af08bb0a94",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "paid_up_capital",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "159145000"
+    },
+    {
+      "fact_id": "e2017250-eaee-41bc-b0eb-525d33d051b2",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "face_value",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2"
+    },
+    {
+      "fact_id": "e1a758f5-74a4-441c-a8b5-5dbcf8bf3a54",
+      "publication_id": "67bcfad6-8657-43af-8eeb-af02562a4193",
+      "metric": "eps_diluted",
+      "source_sha256": "852ffdf2270068c99717aae1df827774d34ccd827a9fd8821738e2df2bee398c",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0.95"
+    },
+    {
+      "fact_id": "5222d656-8b15-4e79-942f-cb08168ebb93",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "revenue",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "70017000000"
+    },
+    {
+      "fact_id": "ac6c4d10-56b1-41b8-a106-fc754241d4d5",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "other_income",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "401600000"
+    },
+    {
+      "fact_id": "a2a44b54-9748-49be-aabd-757f72844fab",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "finance_cost",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "524000000"
+    },
+    {
+      "fact_id": "a85898c1-1a00-480b-948f-208177371b25",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "depreciation",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "658700000"
+    },
+    {
+      "fact_id": "037972c2-f995-4f19-b0f6-2ae406f4d21f",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "total_expenses",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "65421600000"
+    },
+    {
+      "fact_id": "cb828c28-b0af-44bc-bf38-923651028931",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "exceptional_items",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "2f6b3129-4021-4dc5-a8ec-94434c99f7ce",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "pbt",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "4997000000"
+    },
+    {
+      "fact_id": "08dec9eb-0da6-41ef-8ddf-8433cc5fc4ec",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "pat",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "3824200000"
+    },
+    {
+      "fact_id": "665aa439-b265-4283-8e02-5f467bbaf452",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "paid_up_capital",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "555400000"
+    },
+    {
+      "fact_id": "6b89800c-4f66-43fd-9fde-a9dc611eb826",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "face_value",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2"
+    },
+    {
+      "fact_id": "25c3581f-26d4-432e-b2f9-f6b6d969d7de",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "eps_diluted",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "13.61"
+    },
+    {
+      "fact_id": "54fd70a1-5b94-4cf5-abd1-9633969e0a40",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "revenue",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "126084100000"
+    },
+    {
+      "fact_id": "8ae3e45b-03ec-40ba-a6a8-5e0287f5b7e0",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "other_income",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "796800000"
+    },
+    {
+      "fact_id": "0c9c1a44-ea32-422f-9d38-93947ae95c94",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "finance_cost",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "913400000"
+    },
+    {
+      "fact_id": "d4b3f0ad-9a45-4dec-b460-ded5ad083870",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "depreciation",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1253000000"
+    },
+    {
+      "fact_id": "eaa6990b-2915-4793-a005-35f99751818f",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "total_expenses",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "118359600000"
+    },
+    {
+      "fact_id": "6d45dd5a-e041-44a7-b25b-44f82fe515e2",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "exceptional_items",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "ae731d02-3ee0-4e19-948a-8a179e0019b3",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "pbt",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "8521300000"
+    },
+    {
+      "fact_id": "1655b403-5c89-4b1b-8443-4803c4768e4e",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "pat",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "6455300000"
+    },
+    {
+      "fact_id": "dbac26a0-9159-4c41-8904-6d8db8fa27e8",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "paid_up_capital",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "555400000"
+    },
+    {
+      "fact_id": "69135cf8-247a-4d83-9439-17b472e1d593",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "face_value",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2"
+    },
+    {
+      "fact_id": "b20ecbd8-8cbd-4dbb-a0e9-a65b8304e678",
+      "publication_id": "fcf80e7e-1f9e-44be-8a5d-51a2a38882a6",
+      "metric": "eps_diluted",
+      "source_sha256": "11d50f34e32dbb0c81a0493a5152f25149395ad2f0d92bf2a8dbe4eaffcc33ba",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "23.23"
+    },
+    {
+      "fact_id": "a0a9982b-b76d-40b2-a3e3-344960091eef",
+      "publication_id": "07a3f969-9619-4dfc-b6ca-15f7cd320cf9",
+      "metric": "revenue",
+      "source_sha256": "42657c834c4f05d16043d31c3ec4be96cc8dd1ab811a1f7b2c9290a1cf196a62",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "344563000"
+    },
+    {
+      "fact_id": "021d5a20-2ea6-473e-b163-7413d4ad345b",
+      "publication_id": "07a3f969-9619-4dfc-b6ca-15f7cd320cf9",
+      "metric": "other_income",
+      "source_sha256": "42657c834c4f05d16043d31c3ec4be96cc8dd1ab811a1f7b2c9290a1cf196a62",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "591000"
+    },
+    {
+      "fact_id": "01808e7b-3aa9-4505-8d6b-208ef81be655",
+      "publication_id": "07a3f969-9619-4dfc-b6ca-15f7cd320cf9",
+      "metric": "finance_cost",
+      "source_sha256": "42657c834c4f05d16043d31c3ec4be96cc8dd1ab811a1f7b2c9290a1cf196a62",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "799000"
+    },
+    {
+      "fact_id": "63133589-e194-4949-8562-49a27f5bed2e",
+      "publication_id": "07a3f969-9619-4dfc-b6ca-15f7cd320cf9",
+      "metric": "total_expenses",
+      "source_sha256": "42657c834c4f05d16043d31c3ec4be96cc8dd1ab811a1f7b2c9290a1cf196a62",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "291503000"
+    },
+    {
+      "fact_id": "b056a82b-baeb-4c00-a134-17f8ba010704",
+      "publication_id": "07a3f969-9619-4dfc-b6ca-15f7cd320cf9",
+      "metric": "pbt",
+      "source_sha256": "42657c834c4f05d16043d31c3ec4be96cc8dd1ab811a1f7b2c9290a1cf196a62",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "53651000"
+    },
+    {
+      "fact_id": "44a228c8-7061-4696-b614-e5b12e57d57e",
+      "publication_id": "07a3f969-9619-4dfc-b6ca-15f7cd320cf9",
+      "metric": "paid_up_capital",
+      "source_sha256": "42657c834c4f05d16043d31c3ec4be96cc8dd1ab811a1f7b2c9290a1cf196a62",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "14631000"
+    },
+    {
+      "fact_id": "98ce31e6-b690-4062-b456-49f730080cdc",
+      "publication_id": "07a3f969-9619-4dfc-b6ca-15f7cd320cf9",
+      "metric": "face_value",
+      "source_sha256": "42657c834c4f05d16043d31c3ec4be96cc8dd1ab811a1f7b2c9290a1cf196a62",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "f8d24a4a-59a8-4349-963f-6d443f50eb2e",
+      "publication_id": "07a3f969-9619-4dfc-b6ca-15f7cd320cf9",
+      "metric": "eps_diluted",
+      "source_sha256": "42657c834c4f05d16043d31c3ec4be96cc8dd1ab811a1f7b2c9290a1cf196a62",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2.74"
+    },
+    {
+      "fact_id": "df136f17-3e84-4fee-bca7-e941d692a976",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "revenue",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "287776000"
+    },
+    {
+      "fact_id": "9396c274-891f-47a6-8eb1-4d36c6166605",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "other_income",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2000"
+    },
+    {
+      "fact_id": "c505f533-50d6-4efc-9fc3-c68d31f75d49",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "finance_cost",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "40000"
+    },
+    {
+      "fact_id": "17233462-26b2-42db-ac77-751ddc38e56c",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "depreciation",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "1006000"
+    },
+    {
+      "fact_id": "bc56768b-9e3c-4dc9-9300-8e52c981cd54",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "total_expenses",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "277414000"
+    },
+    {
+      "fact_id": "17d00299-deab-4229-bfb4-0972679a8de6",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "exceptional_items",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "61f58681-8b30-419c-afd2-2a81e9ec3d2e",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "pbt",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10364000"
+    },
+    {
+      "fact_id": "ae55dc3a-1b88-47df-a729-d4fec9e2ab15",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "pat",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "7803000"
+    },
+    {
+      "fact_id": "31ac5875-fc5e-428c-b9f1-25fe6ff7c620",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "paid_up_capital",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "3324000000"
+    },
+    {
+      "fact_id": "592e1256-efbb-4f73-a671-d84090f1cf6e",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "face_value",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "21b10d53-c057-46ea-a35b-bfc1e0d74300",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "eps_diluted",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "OneD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0.02"
+    },
+    {
+      "fact_id": "f0a4b580-040d-4602-b9ca-8993daf2901b",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "revenue",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "460670000"
+    },
+    {
+      "fact_id": "eb26a61f-3ed5-4b43-80bd-f8bb32e40ecd",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "other_income",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2000"
+    },
+    {
+      "fact_id": "7660904a-b277-48c5-9775-8f1037e761a1",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "finance_cost",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "80000"
+    },
+    {
+      "fact_id": "e569d79d-b54e-4ea0-a89e-68b3fcfdffa9",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "depreciation",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "2012000"
+    },
+    {
+      "fact_id": "657f18ee-0884-4ed8-a419-57902b375df3",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "total_expenses",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "432488000"
+    },
+    {
+      "fact_id": "b5abde3a-a203-45c2-ad64-b721d8edab0a",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "exceptional_items",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0"
+    },
+    {
+      "fact_id": "51f57fb1-c8ab-4b25-9e48-7ba72839961c",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "pbt",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "28184000"
+    },
+    {
+      "fact_id": "f465008d-accf-4d46-a844-7e27886f73bb",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "pat",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "21138000"
+    },
+    {
+      "fact_id": "a2067190-55bf-494a-a422-a58ca0143316",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "paid_up_capital",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "3324000000"
+    },
+    {
+      "fact_id": "f568f9fb-4bc8-4e59-b2c1-abb712f61cff",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "face_value",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "OneD",
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "10"
+    },
+    {
+      "fact_id": "bec07779-5068-4e65-9203-4aeb2412d334",
+      "publication_id": "9b075fee-0e85-4254-96cc-34313e58befb",
+      "metric": "eps_diluted",
+      "source_sha256": "817d18865cad7b09598761128324ac621f960bcfb400c180f51b8737196d431f",
+      "context_refs": [
+        "FourD"
+      ],
+      "period_proved_in_xml": true,
+      "value": "0.06"
+    }
+  ],
+  "failures": [
+    {
+      "publication_id": "29859668-a07e-4544-9826-92b9466c7fc7",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "a888bf75-12e7-4719-adc7-df3400a26181",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "6be89c1f-3ba4-48a3-86dc-27303e3c06cc",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "fddb13e3-ccaf-4b5b-aed1-dc23bc0cf2bc",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "a7eeed4b-f0d2-4d73-96a7-27839da87020",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "4861f464-37f1-4b30-83f7-5e971edf208b",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "eceb4227-67c0-444f-b981-ac64bb499c4e",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "997cea87-d8d7-4c31-adea-77c0e58b708d",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "a5a0dc62-7c34-4888-9ef5-8a72d7717e10",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "2257d8b9-f7d1-4818-b928-5d4ffe4f2d6e",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "e678eb51-d88b-453f-aee2-220ae55ba451",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "3cb05c60-062c-430a-b247-2f48310304e4",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "b37324fd-5851-4be5-8414-1dbc66b7375c",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "8bb0d403-cf5b-4c6d-b13e-258becab475c",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "3436f7d6-65ab-464c-86b1-56f364f831d3",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "747872d6-207c-499d-89fc-7715b4cfdf83",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "a2ac8797-d97e-498f-9a97-2b4ddd41b826",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "5c961708-a3db-4d80-bc70-c8e1041b1219",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "15f5f73f-ce72-4f81-97d4-092267f724f8",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "071699a0-e257-48aa-bb9e-85cbf8f31f41",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "31bc59d7-0ebf-45ad-8da9-668be5748020",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "cb0e6856-84ee-48b2-b0c7-ac7b854e9621",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "72e6eb46-ea36-4b56-87d1-634df0168993",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "09e360ed-c581-4eed-920c-e9dec1bac130",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "4dc62650-1759-43f9-8a02-d34476cf4546",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "98fac87a-606c-47f9-ad07-c0daa50f4f95",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "bdb4ff62-1d32-4e51-bd0f-6b0b76e1938c",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "021285fe-ae9d-4c93-8f92-ba9545624df8",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "dea9be43-3f84-4c25-8cb8-08ea3b17c305",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "4665a350-ac2c-4582-867a-468f577ec964",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "5ed4305a-0436-48be-ae25-3afe04d97ed0",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "9eb66458-ba59-47c5-856e-34a91ea45121",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "cc44c3f5-1d30-4d95-a9c7-efdd5c21d098",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "568468a7-cee8-45c2-9a6e-f202a6c8ca50",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "d731f266-8474-48cb-b365-b0987df84d3b",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "76c3e96f-996b-4c48-a325-4333f4a238a7",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "209c6ad3-4e61-4212-9537-126350cfc488",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "3f2afb12-509c-4d6a-ae0e-239308af862d",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "0fa44964-2be6-46f3-a6ce-fb576cd55c20",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "ba621100-1ecb-4e23-869a-f388ae22969f",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "1a7d0816-1a19-4268-bafb-7d4f1098e48b",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "f7b99488-c42d-4583-88d8-ef235cd16e94",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "27f74fd3-2e3e-42fd-b687-53a607ea2c40",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "cd5d750c-be46-4990-85c0-3b042bca3318",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "702780e1-af0b-4700-aa44-9c6ee58dabf1",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "f209fa83-8161-4b79-bafb-130c8204a315",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "b7473203-0ae5-4908-abde-e9480b42110b",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "778fe57e-fe11-4d22-b004-ca10c3416e87",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "23606511-7b4f-4310-a339-3944b83dcf80",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "4f98668e-5431-4f88-9c5d-0903921faebe",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "0a9ecf5d-169a-4a3a-a1ef-05ec9b52b88c",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "241261f9-8f3a-483d-8727-8b297a9f60ae",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "715ebce2-32d2-48ce-b9f4-109ed5c99758",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "dd870c0d-035d-40bf-aa26-eae874bac57c",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "eac10912-6da6-4e16-9e98-66ac9ed01b7e",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "d80ba0f3-6c9f-4c8f-ba51-d74a631b6556",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "684c3eb3-c7e1-46ec-a68e-32c1dc635559",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "861459a8-61ec-4a61-8919-7cc3721dcbeb",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "fd7c57b2-9b56-4d6f-98cc-67ed5602d090",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "088d203e-5117-4302-832f-2b9a81368bbe",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "4f2a9ac1-f832-46bc-a478-abe921b94c4d",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "ceaafc2c-f449-4413-8dff-b8f8f81c7d2c",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "fadf271f-2140-4e37-8487-4433bf6fcecc",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "6cc92e49-cf35-4cb1-b058-58ffc8bfe133",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "7e4dc684-2dde-4933-99fd-0e4e4e4a867a",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "4de85ad8-08c0-4990-b282-d9cdf42af9df",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "b931b39e-780c-4a4f-bba0-ebab79ea6163",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "bd27023d-78d7-42da-81bb-760e56427f07",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "442cba6c-6309-406a-a9fa-16d1631e7ba4",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "70ae9737-441e-4b12-9832-70abdcec2a3e",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "6b8bf868-56c2-4ac1-ba55-57dda810f537",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "55af5dcc-2efd-4152-9dce-42b036f94611",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "bda8dedf-0445-4a18-9c1b-63a48254a924",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "def0d94c-8aeb-463e-9945-6f865458ac64",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "1fd283c7-005d-4b1f-a5b3-2106b64bc9fc",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "c9c4bc08-a5c5-479e-a225-28b3ccd69423",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "e587b105-b733-4816-b751-2f0485ddb719",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "90b842cf-132c-41ba-abbd-7475523db82e",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "739b7cac-8ef3-4f42-8468-354a2a226e39",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "784e35e6-e6cb-409b-9f57-c0541850f3b4",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "39c45b72-e549-444e-be6d-6ef061b0ba07",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "58fae357-31f7-4abd-ac0e-fcc2e4e36dca",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "41ccba5d-550f-40df-b574-aecbf9b8a8c2",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "3b83a657-1935-42a6-b33b-88868a9538d6",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "69973972-43dd-4a36-8eea-6ee4b978ebc4",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "e741c879-f65e-4334-9b23-7f4b60c97c85",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "6fe65740-de11-43eb-9be3-da4866d6cffa",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "7d934728-45f7-4c2c-b43b-5fc8eec92b87",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "1c62c5b1-1c81-4c81-8143-d683a52ab526",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "1d3c39f2-a5d3-49b5-a501-1f913a5aab70",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "973f3a0b-23e8-444f-a9ea-6c4b119539f1",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "84fdf458-f260-4c29-a216-e43f8cc0e179",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "c7c3c0b4-12eb-48a7-8d43-9e527bbb97d8",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "82a3f92b-e01b-4119-9e0b-33fda4830dc4",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "0edd4ca9-ab92-494e-9d12-0fd04c4c07b3",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "0d2c246b-d943-4766-94e0-55353e491657",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "7f95e8d5-b78b-4f2a-a273-59f34e8795d5",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "48696511-f355-4b5c-b47a-e9b4c0e9d911",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "fac6603f-a652-4a9d-aaf0-edb651652b9a",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "c80ab0d6-bc22-41f9-aaa7-5b21986e419f",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "af9f42ff-8a64-42f0-91d4-28b1d7d02313",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "01dfb56e-c93a-42b7-9cdb-1bcace2a9e1b",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "2d2ebab6-3dc3-4432-9095-930ec1339b2d",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "fbeb9c80-2540-4eb3-9699-dd0092e76055",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "8333871c-79a8-416c-b6b9-b07a8d2f8ee6",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "8bb40d95-7f27-4dbc-bd9b-019f2c6f892f",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "e3a458a8-e3a9-42cc-9079-2937d8ec1e51",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "6e5ae4a9-4bb5-4aa3-b7e2-888265c658ee",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "af49bb1f-2cb0-4bb5-b7e1-699e21d7528a",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "04624ad6-5c02-4935-a891-449201bcb528",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "887ac36d-51d0-4698-baae-b38f6b792d5d",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "a9f927fd-0c6c-461b-9b85-fe0e212bff5b",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "c98ca725-cc21-4961-93af-64ede19f2dea",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "a0d59e9b-ba9e-4856-b71a-81141cb3146e",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "9dd1e377-bfbf-4c81-8158-bd97ed7c7a68",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "430684f0-b597-4199-bd0c-a9aab062d7a9",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "e56ee414-c508-49fb-8c5d-019efe609f88",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "19ed74a8-b877-46bb-8401-1cce43e77744",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "ef3b366b-4f75-4e40-87f7-79431b458ff2",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "b4854b0b-e1ea-4668-b607-83b214963a9a",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "3fccf410-ee20-4e82-8a66-ab74fa56e1b7",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "415bb07e-306f-47e9-80dc-a07774b70eb5",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "664eb204-3652-416f-ac59-3f896053ed4d",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "244c8e62-8448-400f-80da-65ad8932bafd",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "a39f18c7-f471-44ba-ad27-7fe4d771008c",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "92b4bd96-9a96-4f6d-b33d-c060dd60771d",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "153e33a7-c200-4fb0-ae58-1411f4a98bbf",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "2ad284f7-385b-4c77-928f-cb9a698b44e8",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "c2155b6e-d7b8-4cde-9d0f-cc46912e66b3",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "91e31f94-ccd3-4fe8-8b23-faf992e0a105",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "75704753-721c-4bf4-81ca-9b29bb3bfabe",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "b56ede90-511f-4731-8eb1-4573a2a1cc40",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "02120987-dd56-4c96-b76a-edbb04b97481",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "b682437b-9a6d-447c-9b6f-04337c7edb3e",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "5cbadffe-ea0f-4f2a-81ae-677fa857140d",
+      "issue": "SOURCE_NOT_CACHED"
+    },
+    {
+      "publication_id": "0894498c-f5e7-4519-8bb4-88561c870a44",
+      "issue": "SOURCE_NOT_CACHED"
+    }
+  ]
+}

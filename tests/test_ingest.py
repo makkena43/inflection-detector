@@ -139,3 +139,108 @@ def test_cached_text_survives_a_purged_archive(db,tmp_path,monkeypatch):
     def unexpected(*args):raise AssertionError('cached PDF was parsed again')
     monkeypatch.setattr(I,'extract_pdf',unexpected)
     assert I._artifact(db,vid,tmp_path/'missing.pdf').value=='COMPLETE'
+
+
+def test_html_block_retains_failure_instead_of_becoming_an_unread_pdf(db,tmp_path):
+    ingest.record_window(db,nse_window([nse_row(1,'https://h/blocked.pdf')]))
+    archive=Archive(tmp_path/'archive')
+    c,_=client({'blocked.pdf':[(200,b'<html>Access denied</html>')]})
+    assert ingest.download_pending(db,archive,c)=={'BLOCKED':1}
+    state,reason=db.execute('SELECT pipeline_state,failure_reason FROM document_publications').fetchone()
+    assert state=='FAILED' and reason.startswith('BLOCKED:')
+    assert ingest.extract_pending(db,archive)=={}
+
+
+def test_background_batch_stops_on_unavailable_source(db,tmp_path):
+    ingest.record_window(db,nse_window([nse_row(i,f'https://h/{i}.pdf') for i in (1,2,3)]))
+    c,t=client({'https://h/':[(403,b'')]})
+    assert ingest.download_pending(db,Archive(tmp_path/'archive'),c,limit=20,stop_on_unavailable=True)=={'BLOCKED':1}
+    assert len(t.calls)==1
+    assert db.execute("SELECT count(*) FROM document_publications WHERE pipeline_state='DISCOVERED'").fetchone()[0]==2
+
+
+
+def test_zip_with_unread_sidecar_never_becomes_text_ready(db,tmp_path):
+    pdf=make_pdf(tmp_path/'a.pdf',['Readable evidence']).read_bytes()
+    ingest.record_window(db,nse_window([nse_row(1,'https://h/mixed.zip')]))
+    archive=Archive(tmp_path/'archive')
+    c,_=client({'mixed.zip':[(200,zip_of({'readable.pdf':pdf,'important.xlsx':b'not parsed'}))]})
+    assert ingest.download_pending(db,archive,c)=={'ZIP_PARTIAL':1}
+    assert ingest.extract_pending(db,archive)=={'PARTIAL_TEXT':1}
+    state,reason,issues=db.execute('SELECT pipeline_state,failure_reason,processing_issues FROM document_publications').fetchone()
+    assert state=='PARTIAL_TEXT' and reason is None and 'ZIP_INCOMPLETE' in issues
+    assert any('important.xlsx' in issue for issue in issues)
+    import pytest,psycopg
+    with pytest.raises(psycopg.errors.CheckViolation):
+        db.execute("UPDATE document_publications SET pipeline_state='TEXT_READY'")
+
+
+def test_standalone_pdf_extracts_only_itself_even_when_reused_as_zip_member(db,tmp_path):
+    good=make_pdf(tmp_path/'good.pdf',['Published document']).read_bytes()
+    other=make_pdf(tmp_path/'other.pdf',['Not part of the direct filing']).read_bytes()
+    ingest.record_window(db,nse_window([nse_row(1,'https://h/bundle.zip')]))
+    archive=Archive(tmp_path/'archive')
+    c,_=client({'bundle.zip':[(200,zip_of({'good.pdf':good,'other.pdf':other}))]})
+    ingest.download_pending(db,archive,c)
+    # Keep the ZIP itself out of this extraction batch.
+    db.execute("UPDATE document_publications SET pipeline_state='FAILED',failure_reason='TEST: deferred ZIP',revision=revision+1 WHERE external_id='1'")
+    ingest.record_window(db,nse_window([nse_row(2,'https://h/good.pdf')]))
+    c,_=client({'good.pdf':[(200,good)]})
+    ingest.download_pending(db,archive,c,limit=1,start=DAY,end=DAY)
+    assert ingest.extract_pending(db,archive)=={'TEXT_READY':1}
+    assert db.execute('SELECT count(*) FROM text_artifacts').fetchone()[0]==1
+
+
+def test_oversized_document_does_not_abort_unrelated_downloads(db,tmp_path):
+    from inflection.sources.download import DocumentResourceLimit
+    class Limited(Archive):
+        def put(self,data,name):
+            if name=='large.pdf':raise DocumentResourceLimit('file too large')
+            return super().put(data,name)
+    pdf=make_pdf(tmp_path/'good.pdf',['Useful filing']).read_bytes()
+    ingest.record_window(db,nse_window([nse_row(1,'https://h/large.pdf'),nse_row(2,'https://h/good.pdf')]))
+    c,_=client({'https://h/':[(200,pdf)]})
+    archive=Limited(tmp_path/'archive')
+    assert ingest.download_pending(db,archive,c)=={'RESOURCE_LIMIT':1,'OK':1}
+    assert ingest.extract_pending(db,archive)=={'TEXT_READY':1}
+    failed=db.execute("SELECT failure_reason FROM document_publications WHERE external_id='1'").fetchone()[0]
+    assert failed.startswith('RESOURCE_LIMIT:')
+
+
+def test_concurrent_publications_reuse_one_document_and_one_text_artifact(db,tmp_path):
+    import psycopg
+    from concurrent.futures import ThreadPoolExecutor
+    from threading import Barrier
+    from inflection.sources.download import download
+    pdf=make_pdf(tmp_path/'a.pdf',['Concurrent publication evidence']).read_bytes()
+    ingest.record_window(db,nse_window([nse_row(i,f'https://h/{i}.pdf') for i in (1,2)]))
+    pubs=db.execute('SELECT publication_id,revision FROM document_publications ORDER BY external_id').fetchall()
+    archive=Archive(tmp_path/'archive');c,_=client({'https://h/':[(200,pdf)]})
+    fetched=download('https://h/1.pdf',archive,c);barrier=Barrier(2)
+    def apply(row):
+        with psycopg.connect(db.info.dsn,autocommit=True) as conn:
+            barrier.wait(timeout=5)
+            return ingest._apply_download(conn,*row,fetched)
+    with ThreadPoolExecutor(2) as pool:assert all(pool.map(apply,pubs))
+    assert db.execute('SELECT count(*) FROM documents').fetchone()[0]==1
+    assert db.execute('SELECT count(*) FROM document_versions').fetchone()[0]==1
+    barrier=Barrier(2)
+    def extract(_):
+        with psycopg.connect(db.info.dsn,autocommit=True) as conn:
+            barrier.wait(timeout=5)
+            return ingest.extract_pending(conn,archive,limit=2)
+    with ThreadPoolExecutor(2) as pool:list(pool.map(extract,range(2)))
+    assert db.execute('SELECT count(*) FROM text_artifacts').fetchone()[0]==1
+    assert db.execute("SELECT count(*) FROM document_publications WHERE pipeline_state='TEXT_READY'").fetchone()[0]==2
+
+
+def test_partitioned_extraction_only_processes_requested_publications(db,tmp_path):
+    body=make_pdf(tmp_path/'a.pdf',['One partition']).read_bytes()
+    ingest.record_window(db,nse_window([nse_row(i,f'https://h/{i}.pdf') for i in (1,2)]))
+    archive=Archive(tmp_path/'archive');c,_=client({'https://h/':[(200,body)]})
+    ingest.download_pending(db,archive,c)
+    pid=db.execute("SELECT publication_id FROM document_publications WHERE external_id='2'").fetchone()[0]
+    assert ingest.extract_pending(db,archive,publication_ids=[])=={}
+    assert ingest.extract_pending(db,archive,publication_ids=[pid])=={'TEXT_READY':1}
+    states=dict(db.execute('SELECT external_id,pipeline_state FROM document_publications'))
+    assert states=={'1':'DOWNLOADED','2':'TEXT_READY'}

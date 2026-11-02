@@ -1,0 +1,18 @@
+{
+  "financial_filings": 88444,
+  "source_documents": 20120,
+  "issuers_missing_prices": 331,
+  "reconstruction_weeks": 304,
+  "cohorts": {
+    "recent": 105,
+    "archive": 199
+  },
+  "observed_at": "2026-10-30T12:27:31.575960+00:00",
+  "rules": {
+    "financial": "financial-10",
+    "commercial": "commercial-25",
+    "packet": "triage-packet-13",
+    "screen": "local-screen-11",
+    "triage": "triage-2"
+  }
+}

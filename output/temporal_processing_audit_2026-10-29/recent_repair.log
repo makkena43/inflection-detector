@@ -1,0 +1,585 @@
+NSE equities 2026-10-27..2026-10-29: COMPLETE, 1985 listed, 507 new
+{
+  "windows": [
+    {
+      "source": "bse_announcements",
+      "segment": "equity",
+      "status": "COMPLETE",
+      "windows": 2,
+      "rows": 2842
+    },
+    {
+      "source": "bse_announcements",
+      "segment": "equity",
+      "status": "PARTIAL",
+      "windows": 1,
+      "rows": 2691
+    },
+    {
+      "source": "bse_bhavcopy",
+      "segment": "equity",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 5015
+    },
+    {
+      "source": "bse_listings",
+      "segment": "BSE_ACTIVE",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 5123
+    },
+    {
+      "source": "bse_listings",
+      "segment": "BSE_DELISTED",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 4624
+    },
+    {
+      "source": "bse_listings",
+      "segment": "BSE_SUSPENDED",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 1222
+    },
+    {
+      "source": "nse_announcements",
+      "segment": "equities",
+      "status": "COMPLETE",
+      "windows": 2,
+      "rows": 3461
+    },
+    {
+      "source": "nse_announcements",
+      "segment": "sme",
+      "status": "COMPLETE",
+      "windows": 2,
+      "rows": 983
+    },
+    {
+      "source": "nse_bhavcopy",
+      "segment": "equity",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 3670
+    },
+    {
+      "source": "nse_corporate_actions",
+      "segment": "equities",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 54
+    },
+    {
+      "source": "nse_corporate_actions",
+      "segment": "sme",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 8
+    },
+    {
+      "source": "nse_listings",
+      "segment": "NSE_EQUITY_L",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 2620
+    },
+    {
+      "source": "nse_listings",
+      "segment": "NSE_SME_EQUITY_L",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 582
+    },
+    {
+      "source": "nse_listings",
+      "segment": "NSE_SYMBOL_CHANGES",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 1070
+    },
+    {
+      "source": "nse_results_xbrl",
+      "segment": "equities",
+      "status": "COMPLETE",
+      "windows": 2363,
+      "rows": 76168
+    },
+    {
+      "source": "nse_results_xbrl",
+      "segment": "equities",
+      "status": "EMPTY_UNVERIFIED",
+      "windows": 378,
+      "rows": 0
+    },
+    {
+      "source": "nse_results_xbrl",
+      "segment": "equities",
+      "status": "PARTIAL",
+      "windows": 1,
+      "rows": 48
+    },
+    {
+      "source": "nse_results_xbrl",
+      "segment": "sme",
+      "status": "COMPLETE",
+      "windows": 552,
+      "rows": 4462
+    },
+    {
+      "source": "nse_results_xbrl",
+      "segment": "sme",
+      "status": "EMPTY_UNVERIFIED",
+      "windows": 44,
+      "rows": 0
+    }
+  ],
+  "publications": [
+    {
+      "source": "bse_announcements",
+      "state": "DISCOVERED",
+      "count": 2704,
+      "without_attachment": 12
+    },
+    {
+      "source": "bse_announcements",
+      "state": "PARTIAL_TEXT",
+      "count": 41,
+      "without_attachment": 0
+    },
+    {
+      "source": "bse_announcements",
+      "state": "TEXT_READY",
+      "count": 97,
+      "without_attachment": 0
+    },
+    {
+      "source": "nse_announcements",
+      "state": "DISCOVERED",
+      "count": 1158,
+      "without_attachment": 2
+    },
+    {
+      "source": "nse_announcements",
+      "state": "OCR_REQUIRED",
+      "count": 2,
+      "without_attachment": 0
+    },
+    {
+      "source": "nse_announcements",
+      "state": "PARTIAL_TEXT",
+      "count": 51,
+      "without_attachment": 0
+    },
+    {
+      "source": "nse_announcements",
+      "state": "TEXT_READY",
+      "count": 916,
+      "without_attachment": 0
+    },
+    {
+      "source": "nse_results_xbrl",
+      "state": "FAILED",
+      "count": 3,
+      "without_attachment": 0
+    },
+    {
+      "source": "nse_results_xbrl",
+      "state": "TEXT_READY",
+      "count": 367,
+      "without_attachment": 0
+    }
+  ]
+}
+NSE sme 2026-10-27..2026-10-29: COMPLETE, 176 listed, 32 new
+{
+  "windows": [
+    {
+      "source": "bse_announcements",
+      "segment": "equity",
+      "status": "COMPLETE",
+      "windows": 2,
+      "rows": 2842
+    },
+    {
+      "source": "bse_announcements",
+      "segment": "equity",
+      "status": "PARTIAL",
+      "windows": 1,
+      "rows": 2691
+    },
+    {
+      "source": "bse_bhavcopy",
+      "segment": "equity",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 5015
+    },
+    {
+      "source": "bse_listings",
+      "segment": "BSE_ACTIVE",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 5123
+    },
+    {
+      "source": "bse_listings",
+      "segment": "BSE_DELISTED",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 4624
+    },
+    {
+      "source": "bse_listings",
+      "segment": "BSE_SUSPENDED",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 1222
+    },
+    {
+      "source": "nse_announcements",
+      "segment": "equities",
+      "status": "COMPLETE",
+      "windows": 2,
+      "rows": 3461
+    },
+    {
+      "source": "nse_announcements",
+      "segment": "sme",
+      "status": "COMPLETE",
+      "windows": 3,
+      "rows": 1159
+    },
+    {
+      "source": "nse_bhavcopy",
+      "segment": "equity",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 3670
+    },
+    {
+      "source": "nse_corporate_actions",
+      "segment": "equities",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 54
+    },
+    {
+      "source": "nse_corporate_actions",
+      "segment": "sme",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 8
+    },
+    {
+      "source": "nse_listings",
+      "segment": "NSE_EQUITY_L",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 2620
+    },
+    {
+      "source": "nse_listings",
+      "segment": "NSE_SME_EQUITY_L",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 582
+    },
+    {
+      "source": "nse_listings",
+      "segment": "NSE_SYMBOL_CHANGES",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 1070
+    },
+    {
+      "source": "nse_results_xbrl",
+      "segment": "equities",
+      "status": "COMPLETE",
+      "windows": 2363,
+      "rows": 76168
+    },
+    {
+      "source": "nse_results_xbrl",
+      "segment": "equities",
+      "status": "EMPTY_UNVERIFIED",
+      "windows": 378,
+      "rows": 0
+    },
+    {
+      "source": "nse_results_xbrl",
+      "segment": "equities",
+      "status": "PARTIAL",
+      "windows": 1,
+      "rows": 48
+    },
+    {
+      "source": "nse_results_xbrl",
+      "segment": "sme",
+      "status": "COMPLETE",
+      "windows": 552,
+      "rows": 4462
+    },
+    {
+      "source": "nse_results_xbrl",
+      "segment": "sme",
+      "status": "EMPTY_UNVERIFIED",
+      "windows": 44,
+      "rows": 0
+    }
+  ],
+  "publications": [
+    {
+      "source": "bse_announcements",
+      "state": "DISCOVERED",
+      "count": 2704,
+      "without_attachment": 12
+    },
+    {
+      "source": "bse_announcements",
+      "state": "PARTIAL_TEXT",
+      "count": 41,
+      "without_attachment": 0
+    },
+    {
+      "source": "bse_announcements",
+      "state": "TEXT_READY",
+      "count": 97,
+      "without_attachment": 0
+    },
+    {
+      "source": "nse_announcements",
+      "state": "DISCOVERED",
+      "count": 1190,
+      "without_attachment": 2
+    },
+    {
+      "source": "nse_announcements",
+      "state": "OCR_REQUIRED",
+      "count": 2,
+      "without_attachment": 0
+    },
+    {
+      "source": "nse_announcements",
+      "state": "PARTIAL_TEXT",
+      "count": 51,
+      "without_attachment": 0
+    },
+    {
+      "source": "nse_announcements",
+      "state": "TEXT_READY",
+      "count": 916,
+      "without_attachment": 0
+    },
+    {
+      "source": "nse_results_xbrl",
+      "state": "FAILED",
+      "count": 3,
+      "without_attachment": 0
+    },
+    {
+      "source": "nse_results_xbrl",
+      "state": "TEXT_READY",
+      "count": 367,
+      "without_attachment": 0
+    }
+  ]
+}
+BSE equity 2026-10-27..2026-10-27: COMPLETE, 1260 listed, 0 new
+BSE equity 2026-10-28..2026-10-28: COMPLETE, 1594 listed, 12 new
+BSE equity 2026-10-29..2026-10-29: PARTIAL, 751 listed, 751 new
+{
+  "windows": [
+    {
+      "source": "bse_announcements",
+      "segment": "equity",
+      "status": "COMPLETE",
+      "windows": 4,
+      "rows": 5696
+    },
+    {
+      "source": "bse_announcements",
+      "segment": "equity",
+      "status": "PARTIAL",
+      "windows": 2,
+      "rows": 3442
+    },
+    {
+      "source": "bse_bhavcopy",
+      "segment": "equity",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 5015
+    },
+    {
+      "source": "bse_listings",
+      "segment": "BSE_ACTIVE",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 5123
+    },
+    {
+      "source": "bse_listings",
+      "segment": "BSE_DELISTED",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 4624
+    },
+    {
+      "source": "bse_listings",
+      "segment": "BSE_SUSPENDED",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 1222
+    },
+    {
+      "source": "nse_announcements",
+      "segment": "equities",
+      "status": "COMPLETE",
+      "windows": 2,
+      "rows": 3461
+    },
+    {
+      "source": "nse_announcements",
+      "segment": "sme",
+      "status": "COMPLETE",
+      "windows": 3,
+      "rows": 1159
+    },
+    {
+      "source": "nse_bhavcopy",
+      "segment": "equity",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 3670
+    },
+    {
+      "source": "nse_corporate_actions",
+      "segment": "equities",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 54
+    },
+    {
+      "source": "nse_corporate_actions",
+      "segment": "sme",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 8
+    },
+    {
+      "source": "nse_listings",
+      "segment": "NSE_EQUITY_L",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 2620
+    },
+    {
+      "source": "nse_listings",
+      "segment": "NSE_SME_EQUITY_L",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 582
+    },
+    {
+      "source": "nse_listings",
+      "segment": "NSE_SYMBOL_CHANGES",
+      "status": "COMPLETE",
+      "windows": 1,
+      "rows": 1070
+    },
+    {
+      "source": "nse_results_xbrl",
+      "segment": "equities",
+      "status": "COMPLETE",
+      "windows": 2363,
+      "rows": 76168
+    },
+    {
+      "source": "nse_results_xbrl",
+      "segment": "equities",
+      "status": "EMPTY_UNVERIFIED",
+      "windows": 378,
+      "rows": 0
+    },
+    {
+      "source": "nse_results_xbrl",
+      "segment": "equities",
+      "status": "PARTIAL",
+      "windows": 1,
+      "rows": 48
+    },
+    {
+      "source": "nse_results_xbrl",
+      "segment": "sme",
+      "status": "COMPLETE",
+      "windows": 552,
+      "rows": 4462
+    },
+    {
+      "source": "nse_results_xbrl",
+      "segment": "sme",
+      "status": "EMPTY_UNVERIFIED",
+      "windows": 44,
+      "rows": 0
+    }
+  ],
+  "publications": [
+    {
+      "source": "bse_announcements",
+      "state": "DISCOVERED",
+      "count": 3467,
+      "without_attachment": 12
+    },
+    {
+      "source": "bse_announcements",
+      "state": "PARTIAL_TEXT",
+      "count": 41,
+      "without_attachment": 0
+    },
+    {
+      "source": "bse_announcements",
+      "state": "TEXT_READY",
+      "count": 97,
+      "without_attachment": 0
+    },
+    {
+      "source": "nse_announcements",
+      "state": "DISCOVERED",
+      "count": 1190,
+      "without_attachment": 2
+    },
+    {
+      "source": "nse_announcements",
+      "state": "OCR_REQUIRED",
+      "count": 2,
+      "without_attachment": 0
+    },
+    {
+      "source": "nse_announcements",
+      "state": "PARTIAL_TEXT",
+      "count": 51,
+      "without_attachment": 0
+    },
+    {
+      "source": "nse_announcements",
+      "state": "TEXT_READY",
+      "count": 916,
+      "without_attachment": 0
+    },
+    {
+      "source": "nse_results_xbrl",
+      "state": "FAILED",
+      "count": 3,
+      "without_attachment": 0
+    },
+    {
+      "source": "nse_results_xbrl",
+      "state": "TEXT_READY",
+      "count": 367,
+      "without_attachment": 0
+    }
+  ]
+}
+Recent attachment repair started: 59449

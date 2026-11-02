@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-10-30T11:47:16.253425+00:00",
+  "latest_packets": 43807,
+  "latest_packets_with_warnings": 35887,
+  "warnings": {
+    "price: no prices public by the cutoff": 2532,
+    "financial snapshot: no results figures public by the cutoff": 6827,
+    "Financial nomination inputs changed and require reprocessing": 17765,
+    "Nomination filing attachments do not have complete verified text": 4274,
+    "trigger passages: none public by the cutoff for the trigger events": 151,
+    "Current evidence priority differs from the frozen shortlist priority": 4725,
+    "Original nomination assessments have been replaced or withdrawn; reassess the shortlist": 21081
+  }
+}

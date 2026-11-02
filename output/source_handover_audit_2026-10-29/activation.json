@@ -1,0 +1,15 @@
+{
+  "activated_at": "2026-10-29T18:01:07.316460+00:00",
+  "financial_rules": "financial-10",
+  "commercial_rules": "commercial-25",
+  "tests": "693 passed",
+  "packet_version": "triage-packet-12",
+  "screen_version": "local-screen-10",
+  "replay_version": "replay-4",
+  "audit_version": "detection-audit-5",
+  "backend_http": 200,
+  "dashboard_pid": 6788,
+  "analysis_pid": 6789,
+  "source_workers_restarted": false,
+  "archive_budget_changed": false
+}

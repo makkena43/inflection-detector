@@ -1,0 +1,50 @@
+{
+  "packets": 35,
+  "original_packets_preserved": 35,
+  "original_reviews_preserved": 35,
+  "financial_comparisons": [
+    {
+      "label": "HECPROJECT",
+      "week": "2025-05-26",
+      "revenue": "112.10"
+    },
+    {
+      "label": "HECPROJECT",
+      "week": "2025-08-18",
+      "revenue": "121.98"
+    },
+    {
+      "label": "REFEX",
+      "week": "2025-04-14",
+      "revenue": "2,182.25"
+    },
+    {
+      "label": "WABAG",
+      "week": "2025-02-03",
+      "revenue": "3,072.00"
+    },
+    {
+      "label": "EXICOM",
+      "week": "2025-08-11",
+      "revenue": "820.84"
+    },
+    {
+      "label": "MANAKCOAT",
+      "week": "2025-02-10",
+      "revenue": "756.30"
+    },
+    {
+      "label": "REFEX",
+      "week": "2025-08-18",
+      "revenue": "2,255.79"
+    },
+    {
+      "label": "HECPROJECT",
+      "week": "2025-05-19",
+      "revenue": "112.10"
+    }
+  ]
+}
+DHRUV corrected source rows 1
+HECPROJECT corrected source rows 1
+EXICOM corrected source rows 1

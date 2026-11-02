@@ -208,15 +208,57 @@ def amounts(text: str) -> list[Money]:
     return [x for _, x in sorted(found, key=lambda t: t[0])]
 
 
-def _pick_amount(s: str, lifecycle: Optional[str]) -> tuple[Optional[Money], dict]:
+def figure_kind(s: str, m: Money) -> Optional[str]:
+    """REPORTED_REVENUE | COMPLETED_WORK | PROJECT_COST | ORDER_BOOK when the words right around
+    ``m`` say the figure is not an award's value; None otherwise."""
+    at = s.find(m.original_text)
+    if at < 0:
+        return None
+    before = s[max(0, at - 60):at]
+    restart = list(V.FIGURE_RESTART.finditer(before))
+    if restart:
+        before = before[restart[-1].end():]       # "revenue rose, and we bagged an order of Rs 50 crore"
+    after = s[at + len(m.original_text):at + len(m.original_text) + 30]
+    if V.FIGURE_BOOK_BEFORE.search(before):
+        return "ORDER_BOOK"
+    if V.FIGURE_REVENUE_BEFORE.search(before) or V.FIGURE_REVENUE_AFTER.search(after):
+        return "REPORTED_REVENUE"
+    if V.FIGURE_COMPLETED_BEFORE.search(before):
+        return "COMPLETED_WORK"
+    if V.FIGURE_COST_BEFORE.search(before):
+        return "PROJECT_COST"
+    return None
+
+
+def _pick_amount(s: str, lifecycle: Optional[str], order_cue=None) -> tuple[Optional[Money], dict]:
     found = amounts(s)
     notes: dict = {}
     if not found:
         return None, notes
+    kinds = []
+    for m in found:
+        kind = figure_kind(s, m)
+        if kind is None and kinds and kinds[-1][1]:
+            at = s.find(m.original_text)
+            if re.search(r"(?:compared (?:to|with)|as against|against|vs\.?|versus|(?:up|down)? ?from)\s*$",
+                         s[max(0, at - 25):at], re.I):
+                kind = kinds[-1][1]               # "revenue is Rs 416 crore compared to Rs 433 crore"
+        kinds.append((m, kind))
+    if any(k for _, k in kinds):
+        notes["excluded_figures"] = [dict(amount=m.original_text, kind=k) for m, k in kinds if k]
+        found = [m for m, k in kinds if not k]
+        if not found:
+            return None, notes
     if len(found) > 1:
         notes["amounts_in_sentence"] = len(found)
     if lifecycle == "AMENDED":
         return found[-1], notes                  # "reduced from Rs 450 crore to Rs 300 crore" -> 300
+    if order_cue is not None and V.FINANCING_CUE.search(s[:order_cue.start()]):
+        # PDF bullets can merge unrelated financing and order clauses. Never
+        # borrow the financing number preceding the actual award clause.
+        after = [m for m in found if s.find(m.original_text) >= order_cue.start()]
+        if after:
+            found = after
     for m in found:
         before = s[:s.find(m.original_text)][-40:]
         if V.AGGREGATE.search(before):
@@ -266,7 +308,13 @@ def window_end(text: str) -> Optional[date]:
 
 
 def stated_deadline(s: str) -> tuple[Optional[date], str]:
-    m = V.DELIVERY.search(s) or _WHEN.search(s)
+    m = V.DELIVERY.search(s)
+    if not m:
+        # "by Q3FY27", "before March 2027": a deadline.  "During FY 22-23 the Company bagged", "in FY22",
+        # "from FY24": the period something happened in, not a completion date
+        forward = classify_modality(s) in ("FORWARD", "CONDITIONAL")      # "expects orders in FY27": a target
+        m = next((w for w in _WHEN.finditer(s)
+                  if forward or not re.match(r"(?:in|during|from)\b", w.group(0), re.I)), None)
     if not m:
         return None, ""
     return window_end(m.group(1)), m.group(1)
@@ -310,12 +358,18 @@ def clean_counterparty(raw: str) -> str:
         return ""
     if re.fullmatch(r"(?:Rs|INR|USD|FY\d*|Q\d|Crore|Lakh|Ministry|Hon'?ble)\.?", name.split()[0], re.I):
         return ""
+    if re.match(r"[\d₹$]", name) or re.fullmatch(r"(?:[\d,.]+\s*)?(?:Million|Billion|Crores?|Lakhs?|Mn|Cr|Bn)\b.*", name, re.I):
+        return ""                                 # "200 Million": an amount, not a customer
     return name
 
 
 def _relationship(s: str, verb: Optional[re.Match], cp: Optional[re.Match]) -> tuple[str, str]:
     """(relationship, ownership scope) from one sentence."""
     scope = "UNKNOWN"
+    collaboration = V.COLLABORATIVE_RECIPIENT.search(s)
+    if V.JOINT_VENTURE_RECIPIENT.search(s) or (collaboration and verb
+            and collaboration.start() > verb.start() and (cp is None or collaboration.start() < cp.start())):
+        scope = 'JOINT_VENTURE'
     if V.NO_GROUP_INTEREST.search(s) or V.ASSERT_UNRELATED.search(s):
         return "ISSUER_ASSERTED_UNRELATED", scope
     sub = V.SUBSIDIARY_RECIPIENT.search(s)
@@ -337,6 +391,8 @@ def _relationship(s: str, verb: Optional[re.Match], cp: Optional[re.Match]) -> t
 
 def _counterparty(s: str) -> tuple[str, bool, Optional[re.Match], str]:
     for m in V.COUNTERPARTY_NAMED.finditer(s):
+        if re.search(r'\bin (?:collaboration|association)\s*$', s[:m.start()], re.I):
+            continue  # A co-recipient is not the customer awarding the contract.
         name = clean_counterparty(m.group(1))
         if name:
             return name, True, m, ""
@@ -373,7 +429,8 @@ def _order_stage(s: str) -> tuple[str, Optional[str], str]:
 
 def _order_terms(s: str) -> dict:
     d: dict = {}
-    d["tax_basis"] = ("INCLUSIVE" if V.TAX_INCL.search(s) else "EXCLUSIVE" if V.TAX_EXCL.search(s) else "UNKNOWN")
+    d["tax_basis"] = ("INCLUSIVE" if V.TAX_INCL.search(s) or V.TAX_INCL_ALT.search(s)
+                      else "EXCLUSIVE" if V.TAX_EXCL.search(s) else "UNKNOWN")
     m = V.DURATION.search(s) or V.DURATION_COLON.search(s)
     if m:
         n = int(m.group(1))
@@ -406,7 +463,18 @@ def _order_basis(s: str, amount: Optional[Money], stage: str, wording: str) -> t
         return "GUARANTEED_MINIMUM", ""
     if V.RELEASE.search(s):
         return "EXECUTABLE_RELEASE", ""
-    if V.CEILING.search(s) or wording == "framework / rate contract":
+    # A deadline such as "within up to 12 months" does not cap the
+    # separately stated money. Bind a numeric ceiling cue to this amount.
+    position=s.find(amount.original_text) if amount.original_text else -1
+    prefix=s[:position] if position>=0 else ''
+    ceilings=list(V.CEILING.finditer(prefix))
+    ceiling=False
+    if ceilings:
+        between=prefix[ceilings[-1].end():]
+        ceiling=len(between)<60 and not re.search(r'\d|\b(?:days?|weeks?|months?|years?|quarters?)\b',between,re.I)
+    suffix=s[position+len(amount.original_text):] if position>=0 else ''
+    suffix_ceiling=re.match(r'^\s*[,(:]?\s*(?:(?:is|being|as|represents)\s+)?(?:the\s+)?(?:maximum|ceiling|upper limit)\b',suffix,re.I)
+    if ceiling or suffix_ceiling or wording == "framework / rate contract":
         return "CEILING", "up to / framework value, no minimum stated"
     if stage == "UNKNOWN":
         return "NON_BINDING", "commitment wording unclear"
@@ -432,11 +500,13 @@ def _family(s: str) -> Optional[tuple[str, str, re.Match]]:
         if name == "ORDER":
             if V.LEGAL_ORDER.search(s) or V.MARKET_ORDER.search(s):
                 continue                         # a court / tax / regulator order
-            if (V.ORDER_BOOK.search(s) and (not V.AWARD_VERB.search(s) or len(amounts(s)) >= 3)) \
+            if (V.ORDER_BOOK.search(s) and (not V.AWARD_VERB.search(s) or len(amounts(s)) >= 3 or number_soup(s))) \
                     or V.PERIOD_INFLOW.search(s):
                 continue                         # order-book or inflow totals (or an order-book table), not one order
             if V.MOU.search(s) and not V.ORDER_NOUN.search(s) and V.MOU_INVESTMENT.search(s):
                 return "CAPACITY", "CAPACITY", m  # an investment MoU is a capacity ambition
+        if name in ("ORDER", "CAPACITY") and V.INDUSTRY_CONTEXT.search(s):
+            return None                          # industry or government figures, not the company's
         if V.ACCOUNTING_NOISE.search(s) or V.BIO_NOISE.search(s) or (name != "FINANCING" and V.HISTORY_NOISE.search(s)):
             return None                          # accounting-policy, ESOP, form or biography text
         if name == "ORDER" and (V.ORDER_LEGAL_NOISE.search(s) or (V.MOU.search(s) and V.JV_FORMATION.search(s))):
@@ -466,12 +536,19 @@ def _family(s: str) -> Optional[tuple[str, str, re.Match]]:
     return None
 
 
-def sentence_mention(sent: Sentence) -> Optional[Mention]:
+_AWARD_ITEM = re.compile(r'^(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\s+from\b', re.I)
+
+
+def sentence_mention(sent: Sentence, order_context: Optional[Sentence] = None) -> Optional[Mention]:
     s = sent.text
     if (len(s) < 12 or is_garbled(s) or V.SAFE_HARBOUR.search(s) or V.ANNEX_FIELD.search(s) or table_row(s)
             or s.rstrip().endswith("?")):
         return None                               # questions (analysts on calls) are not disclosures
     hit = _family(s)
+    inherited_award = (order_context is not None and _AWARD_ITEM.match(s) and amounts(s)
+                       and (hit is None or hit[0] != 'ORDER'))
+    if inherited_award:
+        hit = ('ORDER', 'ORDER', _AWARD_ITEM.match(s))
     if hit is None:
         return None
     family, etype, cue = hit
@@ -491,6 +568,9 @@ def sentence_mention(sent: Sentence) -> Optional[Mention]:
 
     if family == "ORDER":
         stage, lifecycle, wording = _order_stage(s)
+        if inherited_award and stage == 'UNKNOWN' and modality == 'REALIZED':
+            stage, wording = 'BINDING_DEMAND', 'enumerated award after binding order summary'
+            details['award_context'] = dict(page_no=order_context.page_no, quote=order_context.text)
         if stage == "UNKNOWN" and lifecycle is None and not amounts(s):
             return None                          # a term or detail sentence, not an order
         if lifecycle in ("CANCELLED", "EXPIRED", "AMENDED"):
@@ -499,12 +579,19 @@ def sentence_mention(sent: Sentence) -> Optional[Mention]:
                 return None                      # "has not been cancelled": no state change
         details["wording"] = wording
         details |= _order_terms(s)
-        amount, notes = _pick_amount(s, lifecycle)
+        amount, notes = _pick_amount(s, lifecycle, order_cue=cue)
         details |= notes
+        if V.MULTI_AWARD.search(s):
+            details['aggregate_order_total'] = True
         if modality in ("FORWARD", "CONDITIONAL") and lifecycle is None:
             details["stated_stage"] = stage
             stage = "AMBITION"                   # an order that is expected is not demand yet
         basis, why = _order_basis(s, amount, stage, wording)
+        if stage == "AMBITION" and basis == "FIRM":
+            basis, why = "NON_BINDING", "expected order; not received"   # "expects orders worth Rs 500 crore"
+        if V.MIXED_COMMITMENT.search(s):
+            basis, why = 'NON_BINDING', 'combined firm and forecast amount; firm portion not quantified'
+            details['mixed_commitment'] = True
         if why:
             details["basis_reason"] = why
     else:
@@ -567,7 +654,7 @@ def _fill_order_value(sentences: list[Sentence], mentions: list[Mention]) -> Non
         t = sent.text
         if (V.ORDER_VALUE_CUE.search(t) and V.ORDER_NOUN.search(t)
                 and not V.ORDER_BOOK.search(t) and not V.PERIOD_INFLOW.search(t)):
-            found = [a for a in amounts(t) if a.currency == "INR" and a.value > 0]
+            found = [a for a in amounts(t) if a.currency == "INR" and a.value > 0 and not figure_kind(t, a)]
             if found:
                 values.setdefault(found[0].to_base(), (found[0], sent))
     if len(values) != 1 or len({re.sub(r"\W+", " ", m.quote.lower())[:160] for m in awards}) != 1:
@@ -627,7 +714,7 @@ def _enrich_single_order(text: str, mentions: list[Mention]) -> None:
             if hit:
                 d["reference_id"] = hit.group(1).rstrip(".").upper()
         if d.get("tax_basis", "UNKNOWN") == "UNKNOWN":
-            d["tax_basis"] = ("INCLUSIVE" if V.TAX_INCL.search(one) else
+            d["tax_basis"] = ("INCLUSIVE" if V.TAX_INCL.search(one) or V.TAX_INCL_ALT.search(one) else
                               "EXCLUSIVE" if V.TAX_EXCL.search(one) else "UNKNOWN")
         if not m.counterparty_named:
             hit = V.ANNEX_ENTITY.search(flat)
@@ -668,8 +755,17 @@ def extract_document(pages: list[tuple[int, str]]) -> tuple[list[Mention], int]:
     sentences = [s for page_no, body in pages for s in split_page(page_no, body)]
     out: list[Mention] = []
     seen: set = set()
+    order_context = None
     for sent in sentences:
-        m = sentence_mention(sent)
+        if order_context is not None and order_context.page_no != sent.page_no:
+            order_context = None
+        m = sentence_mention(sent, order_context)
+        bundle = V.MULTI_AWARD.search(sent.text)
+        if (bundle and _order_stage(sent.text)[0] == 'BINDING_DEMAND'
+                and modality_at(sent.text, bundle) == 'REALIZED'):
+            order_context = sent
+        elif not _AWARD_ITEM.match(sent.text):
+            order_context = None
         if m is None:
             continue
         key = (m.family, re.sub(r"\W+", " ", m.quote.lower()))

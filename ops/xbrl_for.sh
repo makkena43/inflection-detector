@@ -4,6 +4,9 @@
 set -euo pipefail
 J=~/inflection-jobs; cd ~/PycharmProjects/inflection-detector; export INFLECTION_DSN=postgresql:///inflection
 PY=.venv/bin/python; T=$3
+FILING_TO=$(date -j -v+40d -f %Y-%m-%d $2 +%Y-%m-%d)
+OBSERVED_TODAY=$(TZ=Asia/Kolkata date +%Y-%m-%d)
+if [[ $FILING_TO > $OBSERVED_TODAY ]]; then FILING_TO=$OBSERVED_TODAY; fi
 # Refresh every currently identified NSE issuer, not just companies with orders.
 psql -v ON_ERROR_STOP=1 -d inflection -Atc "
 select string_agg(distinct h.value, ',') from securities s join identifier_history h using(security_id)
@@ -14,7 +17,7 @@ import sys; s=[x for x in open(sys.argv[1]).read().strip().split(',') if x]
 pids=()
 for i in 0 1 2 3 4; do
   if [[ -s $J/syms_${T}_$i ]]; then
-    nice -n 10 $PY -m inflection.financials list --from $(date -j -v-2y -f %Y-%m-%d $1 +%Y-%m-%d) --to $(date -j -v+40d -f %Y-%m-%d $2 +%Y-%m-%d) --symbols "$(cat $J/syms_${T}_$i)" > $J/logs/xbrl_list_${T}_$i.log 2>&1 &
+    nice -n 10 $PY -m inflection.financials list --from $(date -j -v-2y -f %Y-%m-%d $1 +%Y-%m-%d) --to $FILING_TO --symbols "$(cat $J/syms_${T}_$i)" > $J/logs/xbrl_list_${T}_$i.log 2>&1 &
     pids+=($!)
   fi
 done

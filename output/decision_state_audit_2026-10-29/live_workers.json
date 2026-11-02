@@ -1,0 +1,55 @@
+{
+  "analysis": {
+    "state": "RUNNING",
+    "pid": 60728,
+    "stage": "Refresh health report",
+    "counts": {},
+    "archive_bytes_added": 0,
+    "updated_at": "2026-10-29T11:36:49.680984+00:00"
+  },
+  "attachments": {
+    "state": "STORAGE_LIMIT",
+    "pid": 59449,
+    "stage": "Download and extract NSE attachments across all companies",
+    "counts": {
+      "download:OK": 167,
+      "download:NOT_FOUND": 13,
+      "text:TEXT_READY": 158,
+      "text:PARTIAL_TEXT": 7,
+      "text:OCR_REQUIRED": 4
+    },
+    "archive_bytes_added": 265167766,
+    "updated_at": "2026-10-29T11:13:39.778831+00:00"
+  },
+  "financials": {
+    "state": "FINISHED_WITH_GAPS",
+    "pid": 98381,
+    "stage": "Load remaining discovered results",
+    "counts": {
+      "already_complete": 486,
+      "EMPTY_UNVERIFIED": 284,
+      "filings_new": 1140,
+      "load:LOADED": 1141,
+      "load:figures": 44470,
+      "load:unverified_figures": 1048,
+      "load:NO_FIGURES": 603,
+      "COMPLETE": 2429,
+      "PARTIAL": 1,
+      "load:NOT_FOUND": 2
+    },
+    "archive_bytes_added": 171843911,
+    "updated_at": "2026-10-29T10:54:07.889931+00:00"
+  },
+  "ocr": {
+    "state": "FINISHED_WITH_GAPS",
+    "pid": 62928,
+    "stage": "OCR archived PDF fc982b95-73ee-4c17-a420-6273f31cd16e",
+    "counts": {
+      "ocr_failed": 9,
+      "archive_not_cached": 81
+    },
+    "archive_bytes_added": 0,
+    "updated_at": "2026-10-29T11:31:06.533234+00:00"
+  },
+  "backend_http_status": 200
+}

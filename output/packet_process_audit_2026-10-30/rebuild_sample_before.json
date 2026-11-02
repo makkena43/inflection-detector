@@ -1,0 +1,144 @@
+[
+  {
+    "target": {
+      "packet_id": "0fe0ef82-237b-4870-bafb-24431f9f6d27",
+      "shortlist_id": "b1b4799d-e701-4cca-bf77-6d038beaee4f",
+      "issuer_id": "0295ceb7-c306-4200-b506-e29a6df1791e",
+      "cutoff": "2026-10-26T00:00:00+05:30",
+      "run_tag": "base",
+      "mode": "PUBLIC_INFORMATION_RECONSTRUCTION"
+    },
+    "shortlist_item": {
+      "note": null,
+      "slot": "RANKED",
+      "stale": false,
+      "reason": "order: binding demand; order value not disclosed",
+      "ranking": [
+        2,
+        1,
+        -4,
+        -1,
+        "2026-09-29T17:06:25.650000+05:30",
+        "669bbecdada71d0f"
+      ],
+      "position": 26,
+      "revision": 2,
+      "issuer_id": "0295ceb7-c306-4200-b506-e29a6df1791e",
+      "packet_id": "0fe0ef82-237b-4870-bafb-24431f9f6d27",
+      "triaged_at": "2026-10-27T22:10:19.205773+05:30",
+      "triaged_by": "local engine rules-3.5",
+      "triage_note": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "corroborated": false,
+      "shortlist_id": "b1b4799d-e701-4cca-bf77-6d038beaee4f",
+      "triage_action": "WATCH_MILESTONE",
+      "waiting_since": "2026-09-29T17:06:25.65+05:30",
+      "evaluation_ids": [
+        "bb18f320-5237-4b4e-820f-199f1cb6d8cb",
+        "6c0747f9-0e77-4a46-ad48-dd7e715cb442",
+        "5640837a-b8f9-40ed-9f9b-a570baafa45a"
+      ],
+      "priority_class": "P2",
+      "trigger_event_version_ids": [
+        "10e8d61d-15bd-4ace-94f1-862d2b513fcc",
+        "4bc56545-b963-4b64-bae3-7a9a32f4edce",
+        "ba118cf7-2171-41f7-bc29-47e1bbf7e840",
+        "c3f9616a-cfac-4f18-9b97-5f4d7a72af0a",
+        "df6ed896-af76-439e-a9c4-2b190eeb21a1",
+        "e57cbcee-4e7e-4993-a6b6-4f2a9a42097b",
+        "f04a52ff-e38b-4ace-9998-29fc438c26ea",
+        "f04b848a-fde2-45f9-967d-84a4dd2800e5"
+      ]
+    }
+  },
+  {
+    "target": {
+      "packet_id": "6b4e2829-9964-435a-93d8-6df63b73a02c",
+      "shortlist_id": "b1b4799d-e701-4cca-bf77-6d038beaee4f",
+      "issuer_id": "0909fb52-e095-4212-a088-3e63824b89e6",
+      "cutoff": "2026-10-26T00:00:00+05:30",
+      "run_tag": "base",
+      "mode": "PUBLIC_INFORMATION_RECONSTRUCTION"
+    },
+    "shortlist_item": {
+      "note": null,
+      "slot": "RANKED",
+      "stale": false,
+      "reason": "order: binding demand; order value not disclosed",
+      "ranking": [
+        2,
+        1,
+        -4,
+        -1,
+        "2026-09-14T20:59:58+05:30",
+        "7d3c9352bf17c1f8"
+      ],
+      "position": 25,
+      "revision": 2,
+      "issuer_id": "0909fb52-e095-4212-a088-3e63824b89e6",
+      "packet_id": "7c293912-7003-44af-8db3-3ca1eebf91da",
+      "triaged_at": "2026-10-27T22:10:17.386994+05:30",
+      "triaged_by": "local engine rules-3.5",
+      "triage_note": "ORDER BINDING_DEMAND no value = 30.0% of revenue; firm=True; routine=True; disq=None",
+      "corroborated": false,
+      "shortlist_id": "b1b4799d-e701-4cca-bf77-6d038beaee4f",
+      "triage_action": "REJECT_WITH_REASON",
+      "waiting_since": "2026-09-14T20:59:58+05:30",
+      "evaluation_ids": [
+        "49c8ffd0-3c08-44c6-8a62-152e0efed034",
+        "7d4dff6c-8168-4c99-9bd4-390dd896d3e6",
+        "9e4e479c-b086-4b7a-a91f-c79f5a05ca69"
+      ],
+      "priority_class": "P2",
+      "trigger_event_version_ids": [
+        "14ff32df-afe7-477a-8b58-0f8b369f3425",
+        "25d96921-19aa-4a17-9568-273f51520289",
+        "2ead14d1-55a6-4a44-9b5a-b8ca98c1ced4",
+        "800d7b8f-3d79-4f64-b6e6-6d99f9c65117"
+      ]
+    }
+  },
+  {
+    "target": {
+      "packet_id": "d14dc3c1-481f-4b98-a79a-005c4cd875f2",
+      "shortlist_id": "b1b4799d-e701-4cca-bf77-6d038beaee4f",
+      "issuer_id": "0aef6b69-c975-42f5-81a9-2a697e414e1a",
+      "cutoff": "2026-10-26T00:00:00+05:30",
+      "run_tag": "base",
+      "mode": "PUBLIC_INFORMATION_RECONSTRUCTION"
+    },
+    "shortlist_item": {
+      "note": null,
+      "slot": "RANKED",
+      "stale": false,
+      "reason": "order: binding demand; order value not disclosed",
+      "ranking": [
+        2,
+        1,
+        -4,
+        -1,
+        "2026-10-23T12:53:24+05:30",
+        "f45d7500600c7ccd"
+      ],
+      "position": 50,
+      "revision": 2,
+      "issuer_id": "0aef6b69-c975-42f5-81a9-2a697e414e1a",
+      "packet_id": "d14dc3c1-481f-4b98-a79a-005c4cd875f2",
+      "triaged_at": "2026-10-27T22:11:02.053391+05:30",
+      "triaged_by": "local engine rules-3.5",
+      "triage_note": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "corroborated": false,
+      "shortlist_id": "b1b4799d-e701-4cca-bf77-6d038beaee4f",
+      "triage_action": "WATCH_MILESTONE",
+      "waiting_since": "2026-10-23T12:53:24+05:30",
+      "evaluation_ids": [
+        "e8268bb2-d73c-46c0-9cdc-855b2087b932"
+      ],
+      "priority_class": "P2",
+      "trigger_event_version_ids": [
+        "2a597ace-8908-4ff4-a9b4-00dcc1181a1c",
+        "8051243f-7fc9-4861-9fa9-3a1d38a22c66",
+        "a52060f8-c5f5-429d-b4e5-db92ad920a4e"
+      ]
+    }
+  }
+]

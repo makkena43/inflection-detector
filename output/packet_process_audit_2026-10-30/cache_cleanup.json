@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-30T04:38:57.008946+00:00",
+  "removed": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/swift-cache",
+  "file_bytes": 280363468,
+  "reason": "Regenerable compiler module cache from completed native OCR builds; no compiler or OCR worker running",
+  "free_bytes_before": 12042240000,
+  "free_bytes_after": 12328960000,
+  "source_filings_deleted": false,
+  "packets_deleted": false,
+  "entries_removed": 374
+}

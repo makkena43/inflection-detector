@@ -1,0 +1,11 @@
+Source copies restored: 4 new raw bytes 279501
+Traceback (most recent call last):
+  File "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/random_company_audit_2026-10-30/repair_sources.py", line 49, in <module>
+    result=financials.reparse_cached(c,archive,guard=storage_guard)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/makkenasrinivas/PycharmProjects/inflection-detector/src/inflection/financials.py", line 298, in reparse_cached
+    rows=conn.execute("""SELECT p.publication_id,p.issuer_id,p.published_at,p.raw_metadata,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/makkenasrinivas/PycharmProjects/inflection-detector/.venv/lib/python3.12/site-packages/psycopg/connection.py", line 304, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.QueryCanceled: canceling statement due to statement timeout

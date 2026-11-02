@@ -1,0 +1,139 @@
+{
+  "verified_at": "2026-10-29T16:53:57.318520+00:00",
+  "workers": {
+    "ocr": {
+      "task": "ocr",
+      "state": "RUNNING",
+      "pid": 93688,
+      "first": "2024-10-29",
+      "last": "2026-10-29",
+      "started_at": "2026-10-29T16:49:36.754982+00:00",
+      "counts": {
+        "PARTIAL": 10
+      },
+      "issues": [],
+      "stage": "OCR archived PDF 01c6454f-c88c-46c7-b264-bebba00f145c",
+      "archive_bytes_added": 0,
+      "updated_at": "2026-10-29T16:53:30.535996+00:00"
+    },
+    "attachments": {
+      "task": "attachments",
+      "state": "RUNNING",
+      "pid": 93686,
+      "first": "2026-08-01",
+      "last": "2026-10-29",
+      "started_at": "2026-10-29T16:49:36.755170+00:00",
+      "counts": {
+        "download:OK": 39,
+        "text:TEXT_READY": 35,
+        "text:OCR_REQUIRED": 2,
+        "text:PARTIAL_TEXT": 2,
+        "download:ZIP_PARTIAL": 1,
+        "text:FAILED": 1
+      },
+      "issues": [],
+      "stage": "Download and extract BSE attachments across all companies",
+      "archive_bytes_added": 96437084,
+      "updated_at": "2026-10-29T16:53:48.213391+00:00"
+    },
+    "financials": {
+      "task": "financials",
+      "state": "RUNNING",
+      "pid": 93687,
+      "first": "2024-10-29",
+      "last": "2026-10-29",
+      "started_at": "2026-10-29T16:49:36.754852+00:00",
+      "counts": {
+        "COMPLETE": 39,
+        "filings_new": 5,
+        "load:NO_FIGURES": 5,
+        "load:LOADED": 5,
+        "load:figures": 254,
+        "load:unverified_figures": 0,
+        "EMPTY_UNVERIFIED": 3
+      },
+      "issues": [
+        {
+          "source": "references",
+          "status": "FINISHED_WITH_GAPS"
+        },
+        {
+          "source": "3BBLACKBIO",
+          "status": "EMPTY_UNVERIFIED",
+          "notes": []
+        },
+        {
+          "source": "ABH",
+          "status": "EMPTY_UNVERIFIED",
+          "notes": []
+        },
+        {
+          "source": "ABMKNO",
+          "status": "EMPTY_UNVERIFIED",
+          "notes": []
+        }
+      ],
+      "stage": "Discover original results and prior periods: ABSLAMC",
+      "archive_bytes_added": 721612,
+      "updated_at": "2026-10-29T16:53:53.959034+00:00"
+    },
+    "analysis": {
+      "task": "analysis",
+      "state": "RUNNING",
+      "pid": 93697,
+      "first": "2024-10-29",
+      "last": "2026-10-29",
+      "started_at": "2026-10-29T16:49:37.013094+00:00",
+      "counts": {},
+      "issues": [],
+      "stage": "Link recovered identities and scan available commercial evidence",
+      "archive_bytes_added": 0,
+      "updated_at": "2026-10-29T16:49:37.040767+00:00"
+    },
+    "bse_listings": {
+      "scope": "bse_announcements:equity announcement listings",
+      "first": "2024-10-29",
+      "last": "2026-10-28",
+      "state": "RUNNING",
+      "total_days": 730,
+      "complete_days": 9,
+      "attempted_days": 9,
+      "received": 7584,
+      "inserted": 61,
+      "gaps": [],
+      "current_day": "2024-11-07",
+      "last_checked_day": "2024-11-06",
+      "updated_at": "2026-10-29T16:53:37.311052+00:00"
+    },
+    "nse_main_listings": {
+      "scope": "nse_announcements:equities announcement listings",
+      "first": "2026-10-26",
+      "last": "2026-10-28",
+      "state": "COMPLETE",
+      "total_days": 3,
+      "complete_days": 3,
+      "attempted_days": 3,
+      "received": 2116,
+      "inserted": 536,
+      "gaps": [],
+      "current_day": "2026-10-28",
+      "last_checked_day": "2026-10-28",
+      "updated_at": "2026-10-29T16:49:44.507432+00:00"
+    },
+    "nse_sme_listings": {
+      "scope": "nse_announcements:sme announcement listings",
+      "first": "2025-04-01",
+      "last": "2026-10-28",
+      "state": "COMPLETE",
+      "total_days": 576,
+      "complete_days": 576,
+      "attempted_days": 58,
+      "received": 4388,
+      "inserted": 2138,
+      "gaps": [],
+      "current_day": "2026-10-28",
+      "last_checked_day": "2026-10-28",
+      "updated_at": "2026-10-29T16:51:06.300752+00:00"
+    }
+  }
+}

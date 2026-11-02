@@ -1,0 +1,41 @@
+Source copies restored: 4 new raw bytes 279501
+Successful local files reparsed: 1352 pending source recovery: 87092
+{
+  "started_at": "2026-10-30T05:14:22.689485+00:00",
+  "state": "FINISHED_WITH_GAPS",
+  "archive_bytes_added": 279501,
+  "financial_archive_bytes_before": 721612,
+  "financial_archive_bytes_after": 1001113,
+  "stage": "Refresh affected packets: 174/175",
+  "reparsed": 1352,
+  "source_recovery_pending": 87092,
+  "financial_scan": {
+    "NO_COMPARABLE": 446,
+    "MARGIN_EXPANSION:NOT_FIRED": 449,
+    "OPERATING_PROFIT_GROWTH:NOT_FIRED": 290,
+    "SEGMENT_LOSS_REDUCTION:NOT_MEASURABLE": 767,
+    "FINANCE_COST_DROP:NOT_FIRED": 413,
+    "WORKING_CAPITAL_DAYS:NOT_MEASURABLE": 802,
+    "NOT_NOMINATED": 362,
+    "MARGIN_EXPANSION:NOT_MEASURABLE": 55,
+    "OPERATING_PROFIT_GROWTH:NOT_MEASURABLE": 241,
+    "FINANCE_COST_DROP:NOT_MEASURABLE": 253,
+    "FINANCE_COST_DROP:FIRED": 88,
+    "class:P3": 146,
+    "EVALUATED": 440,
+    "SKIPPED_STANDALONE": 104,
+    "OPERATING_PROFIT_GROWTH:FIRED": 223,
+    "MARGIN_EXPANSION:FIRED": 250,
+    "class:P2": 246,
+    "SEGMENT_LOSS_REDUCTION:FIRED": 22,
+    "MARGIN_EXPANSION:UNVERIFIED": 48,
+    "OPERATING_PROFIT_GROWTH:UNVERIFIED": 48,
+    "FINANCE_COST_DROP:UNVERIFIED": 48,
+    "class:D": 48,
+    "SEGMENT_LOSS_REDUCTION:NOT_FIRED": 13
+  },
+  "affected_current_packets": 175,
+  "updated_at": "2026-10-30T05:24:08.757516+00:00",
+  "pid": 44567,
+  "finished_at": "2026-10-30T05:28:04.170244+00:00"
+}

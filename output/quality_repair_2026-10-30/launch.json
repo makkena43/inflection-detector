@@ -1,0 +1,24 @@
+{
+  "started_at": "2026-10-30T12:53:32.948218+00:00",
+  "workers": {
+    "coordinator": {
+      "pid": 13505,
+      "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/quality_repair/coordinator.log"
+    },
+    "cached_evidence": {
+      "pid": 13506,
+      "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/quality_repair/cached_evidence.log"
+    }
+  },
+  "financial_filings": 88444,
+  "source_documents": 20120,
+  "missing_price_issuers": 331,
+  "weeks": 304,
+  "source_budget_changed": false,
+  "reserve_gib": 8,
+  "original_decisions_preserved": true,
+  "validation": {
+    "full_suite": "771 passed",
+    "latest_safety_checks": "35 passed"
+  }
+}

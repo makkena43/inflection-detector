@@ -1,0 +1,10 @@
+{
+  "resumed_at": "2026-10-30T11:22:42.631289+00:00",
+  "pid": 99625,
+  "previous_verified": 29,
+  "previous_pending": 10,
+  "original_allowance_used": 3917414,
+  "remaining_allowance": 130300314,
+  "allowance_reset": false,
+  "tests": "17 passed"
+}
