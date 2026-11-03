@@ -228,6 +228,47 @@ def test_build_carries_company_role():
     assert {m["issuer_id"]: m["role"] for m in t["members"]} == {"A": "SUPPLIER", "B": "BUYER", "C": None}
 
 
+def test_rejected_phrases_are_dropped():
+    as_of = date(2025, 12, 31)
+    rows = [(c, as_of - timedelta(days=10), ["bess", "commissioned"], 10) for c in "ABC"]
+    rows += [(c, as_of - timedelta(days=10), ["mtpa"], None) for c in "DEF"]
+    names = {t["name"] for t in E.build(rows, as_of, rejected=frozenset({"commissioned", "mtpa"}))}
+    assert names == {"bess"}
+
+
+def test_label_phrases_cached(db):
+    from inflection.themes import labels as L
+    assert L.parse("Yes.") is True and L.parse("no") is False and L.parse("maybe") is None
+    db.execute("INSERT INTO theme_background_runs VALUES (%s, '2021-01-01', '2022-01-01', 1, 1000)", (E.BACKGROUND_VERSION,))
+    E._BG_CACHE.clear()
+    E._LABEL_CACHE.clear()
+    cos = [_company(db, f"Co {i} Limited", f"CO{i}", f"INE{i:03d}A01011") for i in range(3)]
+    src = db.execute("""INSERT INTO sources (name, kind, access_policy) VALUES ('nse_announcements', 'announcements',
+                        'test') RETURNING source_id""").fetchone()[0]
+    for i, iss in enumerate(cos):
+        pub = _filing(db, iss, src, 300 + i, datetime(2025, 11, 10, 18, 0, tzinfo=IST), "x")
+        ver, art = db.execute("""SELECT p.document_version_id, a.text_artifact_id FROM document_publications p
+                                  JOIN text_artifacts a USING (document_version_id) WHERE p.publication_id = %s""",
+                              (pub,)).fetchone()
+        mid = db.execute("""INSERT INTO commercial_mentions (rules_version, text_artifact_id, document_version_id,
+                              publication_id, issuer_id, published_at, source_url, page_no, span_start, span_end,
+                              quote, family, event_type, commercial_stage, modality, observation_status, amount,
+                              currency, scale, amount_basis, relationship)
+                            VALUES ('r',%s,%s,%s,%s,now(),'u',1,0,1,'q','ORDER','ORDER','BINDING_DEMAND','REALIZED',
+                                    'OBSERVED',1,'INR','CRORE','FIRM','UNKNOWN') RETURNING mention_id""",
+                         (art, ver, pub, iss)).fetchone()[0]
+        db.execute("""INSERT INTO theme_phrase_mentions (mention_id, issuer_id, source_key, quote_md5, published_at,
+                          family, phrases, version) VALUES (%s,%s,%s,'m',now(),'ORDER',%s,%s)""",
+                   (mid, iss, str(pub), ["bess", "commissioned"], E.VERSION))
+    asked = []
+    res = L.label(db, ask=lambda p: asked.append(p) or ("no" if p == "commissioned" else "Yes"))
+    assert res["yes"] == 1 and res["no"] == 1 and sorted(asked) == ["bess", "commissioned"]
+    assert L.label(db, ask=lambda p: 1 / 0)["candidates"] == 0          # cached: never asked again
+    assert E.load_rejected(db) == frozenset({"commissioned"})
+    E._BG_CACHE.clear()
+    E._LABEL_CACHE.clear()
+
+
 def test_stage_thresholds():
     assert [E._stage(n, g) for n, g in ((3, None), (5, 50.0), (12, 10.0), (30, 5.0), (30, 0.0), (8, -40.0))] == \
         [0, 1, 2, 3, 4, 5]
@@ -268,22 +309,22 @@ def test_emergent_index_snapshot_and_exposure(db):
                        (rules, art, ver, pub, iss, when, quote))
     assert E.index(db) == {"indexed": 6}
     assert E.index(db) == {"indexed": 0}
-    assert "error" in E.snapshot(db, date(2025, 11, 15))          # no background yet: nothing written
+    assert "error" in E.snapshot(db, date(2025, 11, 15), spec_min=8)          # no background yet: nothing written
     for i in range(3):                                            # ordinary filings: board meeting language
         _filing(db, cos[i], src, 200 + i, datetime(2025, 3, 1, 18, 0, tzinfo=IST),
                 "The board approved the results. The meeting ended at 5 pm. Power transformers were not discussed.")
     bg = E.background(db, date(2025, 1, 1), date(2025, 6, 1))
     assert bg["documents"] == 3 and bg["sentences"] == 9 and bg["phrases_seen"] >= 1
     assert E.background(db, date(2025, 1, 1), date(2025, 6, 1))["skipped"] == "exists"
-    res = E.snapshot(db, date(2025, 11, 15))
+    res = E.snapshot(db, date(2025, 11, 15), spec_min=8)
     assert res["themes"] >= 1
-    assert E.snapshot(db, date(2025, 11, 15)) == {"as_of": "2025-11-15", "skipped": "exists"}
+    assert E.snapshot(db, date(2025, 11, 15), spec_min=8) == {"as_of": "2025-11-15", "skipped": "exists"}
     ex = E.exposure(db, cos[0], datetime(2025, 11, 20, 9, 0, tzinfo=IST))
     assert ex["snapshot"] == "2025-11-15" and ex["themes"]
     top = ex["themes"][0]
     assert top["companies"] == 6 and top["company_value_cr"] == 100.0 and top["stage"] == 1
     assert top["company_role"] == "SUPPLIER"
     assert E.exposure(db, cos[0], datetime(2025, 11, 1, tzinfo=IST)) == {"snapshot": None, "themes": []}
-    nxt = E.snapshot(db, date(2025, 11, 22))                 # next week keeps the theme key
+    nxt = E.snapshot(db, date(2025, 11, 22), spec_min=8)                 # next week keeps the theme key
     keys = db.execute("SELECT as_of, theme_key FROM emergent_theme_snapshots ORDER BY as_of, theme_key").fetchall()
     assert {k for d, k in keys if d == date(2025, 11, 15)} == {k for d, k in keys if d == date(2025, 11, 22)}
