@@ -176,6 +176,24 @@ def test_specificity_drops_words_common_in_ordinary_filings():
     assert set(E.build(rows, as_of)[0]["phrases"]) == {"bess", "months"}   # without a background "months" joins
 
 
+def test_role_from_wording():
+    assert E.role("ORDER", "The Company has received an order for supply of power transformers.") == "SUPPLIER"
+    assert E.role("ORDER", "Bagged an EPC order for erection of a 220 kV substation.") == "EPC"
+    assert E.role("ORDER", "The Company has placed an order for solar modules with Waaree Energies.") == "BUYER"
+    assert E.role("CAPACITY", "Commissioned a 5 MW solar plant for captive consumption.") == "BUYER"
+    assert E.role("CAPACITY", "Commenced commercial production of lithium-ion cells.") == "MAKER"
+    assert E.role("ORDER", "Order book stands at Rs 500 crore.") is None
+    assert E.company_role(["BUYER", "SUPPLIER", "SUPPLIER", None]) == "SUPPLIER"
+    assert E.company_role(["BUYER", "MAKER"]) == "MAKER" and E.company_role([None]) is None
+
+
+def test_build_carries_company_role():
+    as_of = date(2025, 12, 31)
+    rows = [(c, as_of - timedelta(days=10), ["bess"], 10, r) for c, r in (("A", "SUPPLIER"), ("B", "BUYER"), ("C", None))]
+    t = E.build(rows, as_of)[0]
+    assert {m["issuer_id"]: m["role"] for m in t["members"]} == {"A": "SUPPLIER", "B": "BUYER", "C": None}
+
+
 def test_stage_thresholds():
     assert [E._stage(n, g) for n, g in ((3, None), (5, 50.0), (12, 10.0), (30, 5.0), (30, 0.0), (8, -40.0))] == \
         [0, 1, 2, 3, 4, 5]
@@ -230,6 +248,7 @@ def test_emergent_index_snapshot_and_exposure(db):
     assert ex["snapshot"] == "2025-11-15" and ex["themes"]
     top = ex["themes"][0]
     assert top["companies"] == 6 and top["company_value_cr"] == 100.0 and top["stage"] == 1
+    assert top["company_role"] == "SUPPLIER"
     assert E.exposure(db, cos[0], datetime(2025, 11, 1, tzinfo=IST)) == {"snapshot": None, "themes": []}
     nxt = E.snapshot(db, date(2025, 11, 22))                 # next week keeps the theme key
     keys = db.execute("SELECT as_of, theme_key FROM emergent_theme_snapshots ORDER BY as_of, theme_key").fetchall()
