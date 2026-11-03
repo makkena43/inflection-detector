@@ -26,6 +26,14 @@ import psycopg
 from . import discovery, emergent, importer, labels
 
 
+def _try_label(conn, model: str) -> dict:
+    """Label new phrases before the weekly snapshot when the local model answers; otherwise they wait a week."""
+    try:
+        return labels.label(conn, model=model)
+    except Exception as e:                               # model not running, no background yet, ...
+        return {"skipped": f"{type(e).__name__}: {e}"[:200]}
+
+
 def main(argv: Optional[list[str]] = None) -> int:
     ap = argparse.ArgumentParser(prog="python -m inflection.themes")
     ap.add_argument("command", choices=["import-makrograph", "tag", "discover", "weekly", "show", "emergent-index", "emergent-background", "emergent", "label-phrases"])
@@ -60,6 +68,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             res = {"tag": discovery.tag(conn, a.as_of - timedelta(days=a.lookback + 35), a.as_of),
                    "discover": discovery.discover(conn, a.as_of, a.lookback),
                    "emergent_index": emergent.index(conn),
+                   "labels": _try_label(conn, a.model),
                    "emergent": emergent.snapshot(conn, a.as_of)}
         elif a.command == "emergent-index":
             res = emergent.index(conn, a.start, a.end)

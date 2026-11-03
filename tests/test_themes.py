@@ -228,12 +228,12 @@ def test_build_carries_company_role():
     assert {m["issuer_id"]: m["role"] for m in t["members"]} == {"A": "SUPPLIER", "B": "BUYER", "C": None}
 
 
-def test_rejected_phrases_are_dropped():
+def test_only_labelled_yes_phrases_form_themes():
     as_of = date(2025, 12, 31)
     rows = [(c, as_of - timedelta(days=10), ["bess", "commissioned"], 10) for c in "ABC"]
     rows += [(c, as_of - timedelta(days=10), ["mtpa"], None) for c in "DEF"]
-    names = {t["name"] for t in E.build(rows, as_of, rejected=frozenset({"commissioned", "mtpa"}))}
-    assert names == {"bess"}
+    themes = E.build(rows, as_of, allowed=frozenset({"bess"}))
+    assert [(t["name"], t["phrases"]) for t in themes] == [("bess", ["bess"])]
 
 
 def test_label_phrases_cached(db):
@@ -264,7 +264,7 @@ def test_label_phrases_cached(db):
     res = L.label(db, ask=lambda p: asked.append(p) or ("no" if p == "commissioned" else "Yes"))
     assert res["yes"] == 1 and res["no"] == 1 and sorted(asked) == ["bess", "commissioned"]
     assert L.label(db, ask=lambda p: 1 / 0)["candidates"] == 0          # cached: never asked again
-    assert E.load_rejected(db) == frozenset({"commissioned"})
+    assert E.load_allowed(db) == frozenset({"bess"})
     E._BG_CACHE.clear()
     E._LABEL_CACHE.clear()
 
