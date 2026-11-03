@@ -16,9 +16,13 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest>=8"]
 verify = ["anthropic>=1.0"]           # python -m inflection.commercial verify
+ocr = ["pypdfium2>=5.0", "Pillow>=12.0"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+inflection = ["native/*.swift", "native/*.cjs"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

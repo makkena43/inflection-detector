@@ -19,7 +19,7 @@ from datetime import datetime, timedelta
 from decimal import Decimal
 from typing import Optional
 
-RULES_VERSION = "financial-4"
+RULES_VERSION = "financial-10"
 
 CR = Decimal(10) ** 7
 
@@ -148,7 +148,7 @@ def _cr(x: Decimal) -> str:
 
 def _bad(name: str, a: str, b: str, what: str, kind: str = "OPERATING") -> Optional[Check]:
     if "UNVERIFIED" in (a, b):
-        return Check(name, "UNVERIFIED", f"{what} fails the statement arithmetic", mechanism_kind=kind)
+        return Check(name, "UNVERIFIED", f"{what} has unverified source inputs", mechanism_kind=kind)
     if "MISSING" in (a, b):
         return Check(name, "NOT_MEASURABLE", f"{what} not reported for both periods", mechanism_kind=kind)
     return None
@@ -298,14 +298,16 @@ class Mechanism:
     details: dict
 
     def explains(self, kind: str) -> bool:
-        if self.observation == "FORECAST" or self.stage == "CANCELLED":
+        if (any(self.details.get(k) for k in ('history_conflict','ocr_verification_required',
+                    'source_recheck_conflict','relationship_conflict'))
+                or self.observation != "OBSERVED" or self.stage in ('CANCELLED','EXPIRED','EXECUTED')):
             return False
         if kind == "DEBT":
             return self.event_type in DEBT_MECHANISMS and not self.details.get("funded_by_equity")
         if kind != "OPERATING" or self.event_type not in OPERATING_MECHANISMS:
             return False
         if self.event_type == "ORDER":
-            return self.stage_rank >= QUALIFIED_RANK
+            return self.stage_rank >= QUALIFIED_RANK and self.details.get('relationship')!='CONFIRMED_RELATED'
         if self.event_type == "CAPACITY":
             return bool(self.details.get("commissioned"))
         return True

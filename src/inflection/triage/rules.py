@@ -19,7 +19,7 @@ from typing import Optional
 
 from ..financial.rules import CLASS_ORDER
 
-POLICY_VERSION = "triage-1"
+POLICY_VERSION = "triage-2"
 POLICY = dict(
     ranked_cap=None,            # P1/P2 companies per week; None = all of them
     exploration=4,              # oldest waiting companies outside the ranked slots
@@ -59,6 +59,7 @@ def _cooldown(line: dict, last: Optional[Triaged], cutoff: datetime, p: dict) ->
     commercial event version (stage advance, amendment, cancellation) bypasses it."""
     if last is None:
         return None
+    if line.get("reassessment_required"):return None
     until = last.cutoff + timedelta(days=p["cooldown_days"])
     if cutoff >= until or line["priority"] == "U0":
         return None

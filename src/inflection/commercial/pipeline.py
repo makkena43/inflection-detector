@@ -32,6 +32,7 @@ from ..states import PublicationBasis
 from ..units import Money, Scale
 from ..periods import consecutive_quarters
 from . import vocabulary as V
+from ..documents import publication_member_sql
 from . import verify
 from .extract import Mention, extract_document
 from .resolve import (CLASS_ORDER, Assessment, EventState, Placement, Resolver, assess, evaluation, execution_end,
@@ -49,22 +50,23 @@ def _day_bounds(start: Optional[date], end: Optional[date]) -> tuple[Optional[da
 
 # ---------------------------------------------------------------- scan
 
-_PENDING = """
+_PENDING = f"""
 WITH arts AS (
-    SELECT DISTINCT ON (a.document_version_id) a.text_artifact_id, a.document_version_id
+    SELECT DISTINCT ON (a.document_version_id) a.text_artifact_id, a.document_version_id,a.extraction_method,a.status
       FROM text_artifacts a
      WHERE a.status IN ('COMPLETE','PARTIAL')
+       AND (%(artifact_ids)s::uuid[] IS NULL OR a.text_artifact_id=ANY(%(artifact_ids)s::uuid[]))
      ORDER BY a.document_version_id, a.created_at DESC)
 SELECT arts.text_artifact_id, arts.document_version_id, pub.publication_id, pub.issuer_id,
        pub.publication_basis, pub.published_at, pub.published_date, pub.source_url,
        coalesce(pub.original_category, '') || ' ' || coalesce(pub.original_subcategory, '') || ' '
-           || coalesce(pub.title, '') AS label
+           || coalesce(pub.title, '') AS label,arts.extraction_method,arts.status
   FROM arts
   JOIN document_versions v USING (document_version_id)
  CROSS JOIN LATERAL (
        SELECT p.* FROM document_publications p
          JOIN document_versions pv ON pv.document_version_id = p.document_version_id
-        WHERE pv.document_id = v.document_id
+        WHERE {publication_member_sql('pv','v')}
         ORDER BY (p.issuer_id IS NULL), (p.publication_basis = 'UNKNOWN'),
                  coalesce(p.published_at, (p.published_date + 1)::timestamp AT TIME ZONE 'Asia/Kolkata'),
                  p.first_seen_at
@@ -73,6 +75,7 @@ SELECT arts.text_artifact_id, arts.document_version_id, pub.publication_id, pub.
  WHERE (s.text_artifact_id IS NULL
         OR (s.status = 'NO_ISSUER' AND pub.issuer_id IS NOT NULL)
         OR (s.status = 'NO_TIMESTAMP' AND pub.publication_basis <> 'UNKNOWN'))
+   AND (%(artifact_ids)s::uuid[] IS NULL OR arts.text_artifact_id = ANY(%(artifact_ids)s::uuid[]))
    AND (%(lo)s::timestamptz IS NULL
         OR coalesce(pub.published_at, (pub.published_date + 1)::timestamp AT TIME ZONE 'Asia/Kolkata') >= %(lo)s)
    AND (%(hi)s::timestamptz IS NULL
@@ -99,12 +102,16 @@ def _money_cols(m: Optional[Money]) -> tuple:
     return (m.value, m.currency, m.scale.value, m.original_text) if m else (None, None, None, None)
 
 
-def scan(conn, start: Optional[date] = None, end: Optional[date] = None, limit: Optional[int] = None) -> Counter:
+def scan(conn, start: Optional[date] = None, end: Optional[date] = None, limit: Optional[int] = None,
+         artifact_ids=None) -> Counter:
+    if artifact_ids == []:
+        return Counter()
     lo, hi = _day_bounds(start, end)
-    rows = conn.execute(_PENDING, dict(rv=V.RULES_VERSION, lo=lo, hi=hi, limit=limit)).fetchall()
+    rows = conn.execute(_PENDING, dict(rv=V.RULES_VERSION, lo=lo, hi=hi, limit=limit,
+                                     artifact_ids=artifact_ids)).fetchall()
     out: Counter = Counter()
     for row in rows:
-        artifact, version, publication, issuer, basis, published_at, published_date, url, label = row
+        artifact, version, publication, issuer, basis, published_at, published_date, url, label,method,text_status = row
         with conn.transaction():
             at = available_at(PublicationBasis(basis), published_at, published_date)
             if issuer is None:
@@ -122,6 +129,10 @@ def scan(conn, start: Optional[date] = None, end: Optional[date] = None, limit: 
             pages = conn.execute("SELECT page_no, body FROM text_pages WHERE text_artifact_id = %s ORDER BY page_no",
                                  (artifact,)).fetchall()
             mentions, sentences = extract_document(pages)
+            if method in ('apple-vision','tesseract-cpu') and text_status!='COMPLETE':
+                for mention in mentions:
+                    mention.details['source_recheck_conflict']=True
+                    mention.details['ocr_verification_required']=True
             with conn.cursor() as cur:
                 cur.executemany(
                     """INSERT INTO commercial_mentions
@@ -161,10 +172,10 @@ def _mention(r) -> Mention:
                    r[20], r[21] or "", r[22], r[23], r[24], dict(r[25] or {}))
 
 
-def load_events(conn, issuer_id) -> list[EventState]:
-    """The latest version of each of an issuer's events, with the filings behind them."""
+def load_events(conn, issuer_id, all_versions=False) -> list[EventState]:
+    """Disclosure-dated event states; full immutable history is used for resolution."""
     rows = conn.execute(
-        """SELECT DISTINCT ON (e.event_id) e.event_id, e.event_type, e.first_public_at, v.event_version_id,
+        f"""SELECT {'' if all_versions else 'DISTINCT ON (e.event_id)'} e.event_id, coalesce(v.event_type,e.event_type), e.first_public_at, v.event_version_id,
                   v.version_no, v.commercial_stage, v.observation_status, v.magnitude, v.magnitude_currency,
                   v.magnitude_scale, v.amount_basis, v.counterparty, v.facility, v.stream, v.ownership_scope,
                   v.deadline, v.details, v.published_at,
@@ -172,7 +183,7 @@ def load_events(conn, issuer_id) -> list[EventState]:
                      JOIN event_versions x ON x.event_version_id = l.event_version_id WHERE x.event_id = e.event_id)
              FROM events e JOIN event_versions v USING (event_id)
             WHERE e.issuer_id = %s AND e.event_type IS NOT NULL AND e.rules_version = %s
-            ORDER BY e.event_id, v.version_no DESC""", (issuer_id, V.RULES_VERSION)).fetchall()
+            ORDER BY e.event_id, v.published_at DESC NULLS LAST, v.version_no DESC""", (issuer_id, V.RULES_VERSION)).fetchall()
     out = []
     for (eid, etype, first, vid, vno, stage, obs, mag, cur, scale, basis, cp, fac, stream, scope, deadline, details,
          published_at, arts) in rows:
@@ -188,30 +199,45 @@ def load_events(conn, issuer_id) -> list[EventState]:
 
 
 def annual_revenue(conn, issuer_id, at: datetime) -> tuple[Optional[Decimal], dict]:
-    """Comparable annual revenue known at ``at``: the later of the last reported year and the sum of
-    the last four reported quarters (consolidated first, else standalone).  Exact rupees."""
-    rows = conn.execute(
-        """SELECT DISTINCT ON (scope, period_type, period_end) scope, period_type, period_start, period_end, value
-             FROM financial_facts_asof
-            WHERE issuer_id = %s AND metric = 'revenue' AND segment IS NULL AND (NOT cumulative OR period_type='ANNUAL')
-              AND value IS NOT NULL AND available_at IS NOT NULL AND available_at <= %s
-              AND period_type IN ('QUARTER','ANNUAL') AND scope IN ('CONSOLIDATED','STANDALONE')
-            ORDER BY scope, period_type, period_end, available_at DESC, recorded_at DESC, fact_id""", (issuer_id, at)).fetchall()
-    for scope in ("CONSOLIDATED", "STANDALONE"):
-        annual = [r for r in rows if r[0] == scope and r[1] == "ANNUAL"]
-        quarters = sorted((r for r in rows if r[0] == scope and r[1] == "QUARTER"), key=lambda r: r[3])[-4:]
-        best = None
+    """Latest annual/complete TTM denominator in exact INR, with source provenance.
+
+    Select revisions before validating amounts. A newer unverified value must
+    never resurrect an older value for the same period.
+    """
+    from ..units import inr_base
+    from ..freshness import period_age, QUARTER_MAX_AGE_DAYS, ANNUAL_MAX_AGE_DAYS
+    raw=conn.execute("""SELECT
+        scope,period_type,period_start,period_end,value,currency,scale,value_kind,fact_id,publication_id,available_at,recorded_at
+        FROM financial_facts_asof WHERE issuer_id=%s AND metric='revenue' AND segment IS NULL
+          AND (NOT cumulative OR period_type='ANNUAL') AND available_at<=%s AND period_end<=%s
+          AND period_type IN('QUARTER','ANNUAL') AND scope IN('CONSOLIDATED','STANDALONE')
+        ORDER BY scope,period_type,period_end,available_at DESC,recorded_at DESC,fact_id DESC""",
+        (issuer_id,at,at.astimezone(IST).date())).fetchall()
+    from ..financial_revisions import latest_facts
+    keys=('scope','period_type','period_start','period_end','value','currency','scale','value_kind',
+          'fact_id','publication_id','available_at','recorded_at')
+    effective=latest_facts([dict(zip(keys,r),metric='revenue') for r in raw])
+    rows=[(r['scope'],r['period_type'],r['period_start'],r['period_end'],
+           inr_base(r['value'],r['currency'],r['scale'],r['value_kind']),r['fact_id'],r['publication_id'],r['available_at'])
+          for r in effective]
+    for scope in ('CONSOLIDATED','STANDALONE'):
+        annual=[r for r in rows if r[0]==scope and r[1]=='ANNUAL'
+                and period_age(r[3],at,ANNUAL_MAX_AGE_DAYS)[0]=='CURRENT']
+        quarters=sorted((r for r in rows if r[0]==scope and r[1]=='QUARTER'),key=lambda r:r[3])[-4:]
+        best=None
         if annual:
-            a = annual[-1]
-            best = (a[3], Decimal(a[4]), dict(scope=scope, basis="ANNUAL", period_end=a[3].isoformat()))
-        if consecutive_quarters([q[3] for q in quarters]):
-            q_end = quarters[-1][3]
-            if best is None or q_end > best[0]:
-                best = (q_end, sum(Decimal(q[4]) for q in quarters),
-                        dict(scope=scope, basis="LAST_FOUR_QUARTERS", period_end=q_end.isoformat()))
+            r=annual[-1]
+            if r[4] is not None and r[4]>0:best=(r[3],r[4],'ANNUAL',[r])
+        if consecutive_quarters([r[3] for r in quarters]) and all(r[4] is not None for r in quarters):
+            end=quarters[-1][3];total=sum(r[4] for r in quarters)
+            if total>0 and period_age(end,at,QUARTER_MAX_AGE_DAYS)[0]=='CURRENT' and (best is None or end>best[0]):
+                best=(end,total,'LAST_FOUR_QUARTERS',quarters)
         if best:
-            return best[1], best[2] | dict(value=str(best[1]))
-    return None, {}
+            end,value,basis,inputs=best
+            return value,dict(scope=scope,basis=basis,period_end=end.isoformat(),currency='INR',scale='UNITS',value=str(value),
+                fact_ids=[str(r[5]) for r in inputs],publication_ids=sorted({str(r[6]) for r in inputs if r[6]}),
+                latest_available_at=max(r[7] for r in inputs).isoformat())
+    return None,{}
 
 
 def _active_case(conn, issuer_id) -> bool:
@@ -248,6 +274,9 @@ def _write_version(conn, p: Placement, run_id) -> None:
         conn.execute("""INSERT INTO events (event_id, issuer_id, event_type, first_public_at, rules_version, created_by)
                         VALUES (%s, %s, %s, %s, %s, %s)""",
                      (evt.event_id, evt.issuer_id, evt.event_type, evt.first_public_at, V.RULES_VERSION, CREATED_BY))
+    if p.outcome!='NEW':
+        conn.execute('UPDATE events SET first_public_at=least(first_public_at,%s) WHERE event_id=%s',
+                     (evt.first_public_at,evt.event_id))
     mag = _money_cols(evt.amount)
     details = _version_details(evt)
     payload = dict(event_id=evt.event_id, version_no=evt.version_no, stage=evt.stage, observation=evt.observation,
@@ -283,7 +312,7 @@ def _evidence(conn, r, version_id, relation: str, assertion: str, section: str,
 def _apply(conn, r, p: Placement, run_id) -> None:
     mention_id, at = r[0], r[5]
     evidence_id = None
-    if p.outcome in ("NEW", "REVISION"):
+    if p.outcome in ("NEW", "REVISION") or p.creates_version:
         _write_version(conn, p, run_id)
         evidence_id = _evidence(conn, r, p.event.version_id, "SUPPORTS", _assertion(p.event), p.event.family)
         src = (r[25] or {}).get("amount_source")
@@ -306,7 +335,7 @@ def _evaluate(conn, issuer_id, at: datetime, items: list[tuple[Placement, Mentio
     revenue, revenue_basis = annual_revenue(conn, issuer_id, at)
     lookback = at - timedelta(days=V.POLICY["equity_funding_lookback_days"])
     equity = any(e.event_type == "EQUITY_FINANCING" and lookback <= e.first_public_at <= at
-                 and e.observation == "OBSERVED" for e in resolver.events)
+                 and e.observation == "OBSERVED" for e in resolver.events_at(at) if (e.published_at or e.first_public_at)<=at)
     assessed: list[Assessment] = []
     for p, _ in items:
         a = assess(p.event, p.novelty, p.previous_stage, materiality(p.event, revenue), active, equity)
@@ -320,6 +349,10 @@ def _evaluate(conn, issuer_id, at: datetime, items: list[tuple[Placement, Mentio
     components = dict(
         route=ROUTE, filing=filing, revenue=revenue_basis or None, equity_financing_within_lookback=equity,
         events=[dict(event_id=a.event.event_id, version_id=a.event.version_id, event_type=a.event.event_type,
+                     version_no=a.event.version_no,published_at=a.event.published_at.isoformat() if a.event.published_at else at.isoformat(),
+                     details={k:v for k,v in a.event.details.items() if k in ('commissioned','funded_by_equity',
+                         'history_conflict','ocr_verification_required','source_recheck_conflict','relationship_conflict')},
+                     materiality_band=a.materiality.band,
                      stage=a.event.stage, previous_stage=a.previous_stage, novelty=a.novelty,
                      observation=a.event.observation,
                      amount=[str(a.event.amount.value), a.event.amount.currency, a.event.amount.scale.value]
@@ -350,11 +383,13 @@ def _evaluate(conn, issuer_id, at: datetime, items: list[tuple[Placement, Mentio
 
 
 def resolve(conn, limit: Optional[int] = None, now: Optional[datetime] = None,
-            before: Optional[datetime] = None) -> Counter:
+            before: Optional[datetime] = None, artifact_ids=None) -> Counter:
     """Place unresolved mentions of the current rules version and evaluate each filing's changes.
 
     ``before`` limits it to passages published earlier, so a month can be resolved once its model
     check is in while later months wait for theirs."""
+    if artifact_ids == []:
+        return Counter()
     now = now or datetime.now(timezone.utc)
     run_id = uuid.uuid4()
     rows = conn.execute(
@@ -362,8 +397,9 @@ def resolve(conn, limit: Optional[int] = None, now: Optional[datetime] = None,
              WHERE m.rules_version = %s
                AND NOT EXISTS (SELECT 1 FROM commercial_resolutions r WHERE r.mention_id = m.mention_id)
                AND (%s::timestamptz IS NULL OR m.published_at < %s)
+               AND (%s::uuid[] IS NULL OR m.text_artifact_id = ANY(%s::uuid[]))
              ORDER BY m.issuer_id, m.published_at, m.text_artifact_id, m.page_no, m.span_start
-             LIMIT %s""", (V.RULES_VERSION, before, before, limit)).fetchall()
+             LIMIT %s""", (V.RULES_VERSION, before, before, artifact_ids, artifact_ids, limit)).fetchall()
     out: Counter = Counter()
     rejected = [r for r in rows if r[-1]]
     rows = [r[:-1] for r in rows if not r[-1]]
@@ -373,7 +409,7 @@ def resolve(conn, limit: Optional[int] = None, now: Optional[datetime] = None,
                    run_id)
         out["REJECTED_BY_CHECK"] += 1
     for issuer_id, issuer_rows in groupby(rows, key=lambda r: r[1]):
-        resolver = Resolver(str(issuer_id), load_events(conn, issuer_id))
+        resolver = Resolver(str(issuer_id), load_events(conn, issuer_id,all_versions=True))
         active = _active_case(conn, issuer_id)
         for (artifact, at), batch in groupby(issuer_rows, key=lambda r: (r[2], r[5])):
             batch = list(batch)
@@ -384,7 +420,7 @@ def resolve(conn, limit: Optional[int] = None, now: Optional[datetime] = None,
                     p = resolver.place(m, at, str(artifact))
                     _apply(conn, r, p, run_id)
                     out[p.outcome] += 1
-                    if p.outcome in ("NEW", "REVISION"):
+                    if p.outcome in ("NEW", "REVISION") or p.creates_version:
                         changed.append((p, m))
                 if changed:
                     filing = dict(text_artifact_id=str(artifact), publication_id=str(batch[0][4]),
@@ -426,7 +462,7 @@ def report(conn, start: Optional[date] = None, end: Optional[date] = None, top: 
                                   SELECT DISTINCT ON (e.event_id) e.event_type, v.commercial_stage
                                     FROM events e JOIN event_versions v USING (event_id)
                                    WHERE e.rules_version IS NOT NULL AND {window.format(c='e.first_public_at')}
-                                   ORDER BY e.event_id, v.version_no DESC) x
+                                   ORDER BY e.event_id, v.published_at DESC NULLS LAST, v.version_no DESC) x
                                GROUP BY 1, 2 ORDER BY 1, 2""", args).fetchall()
     classes = conn.execute(f"""SELECT priority_class, outcome, count(*), count(DISTINCT issuer_id)
                                  FROM candidate_evaluations
@@ -474,7 +510,7 @@ def timeline(conn, symbol: str) -> dict:
                     AND l.relation = 'CONTEXT')
              FROM events e JOIN event_versions v USING (event_id)
             WHERE e.issuer_id = %s AND e.event_type IS NOT NULL AND e.rules_version = %s
-            ORDER BY e.first_public_at, e.event_id, v.version_no""", (issuer_id, V.RULES_VERSION)).fetchall()
+            ORDER BY e.first_public_at, e.event_id, v.published_at, v.version_no""", (issuer_id, V.RULES_VERSION)).fetchall()
     events = []
     for eid, items in groupby(versions, key=lambda r: r[0]):
         items = list(items)

@@ -98,3 +98,11 @@ def test_ttm_needs_four_contiguous_quarters():
     assert ttm(qs).value == 40
     assert ttm(qs[:3]) is None                                  # never annualised
     assert ttm(qs[:2] + [qs[3], qs[3]]) is None                 # gap
+
+
+def test_a_lakh_of_units_or_tonnes_is_a_quantity_not_money():
+    from inflection.units import parse_amount
+    assert parse_amount("expected generation of 77 lakh units per year") is None
+    assert parse_amount("supply of 10 lakh MT of coal") is None
+    assert parse_amount("an order worth 77 lakh for supply").value == 77
+    assert parse_amount("Rs 77 lakh units").value == 77          # a currency marker still makes it money

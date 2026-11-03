@@ -294,3 +294,81 @@ def test_explicit_reparse_uses_verified_archive_and_keeps_first_ingestion(db,tmp
     n=db.execute('SELECT count(*) FROM financial_facts').fetchone()[0]
     assert financials.load_pending(db,archive,offline,reparse_failed=True)=={}
     assert db.execute('SELECT count(*) FROM financial_facts').fetchone()[0]==n
+
+
+def test_financial_loader_discards_a_stale_concurrent_selection(db,tmp_path,monkeypatch):
+    issuer=_company(db)
+    from inflection.sources.xbrl import ListingResult
+    parsed=parse_entry(entry(1),'RAIN','Quarterly')
+    financials.record_listing(db,ListingResult('RAIN','equities',WindowStatus.COMPLETE,[parsed]),str(issuer),date(2021,1,1),date(2024,11,30))
+    archive=Archive(tmp_path/'archive')
+    original=financials._download_rows;inside=False
+    def overlap(rows,*args,**kwargs):
+        nonlocal inside
+        for row,response in original(rows,*args,**kwargs):
+            if not inside:
+                inside=True
+                nested,_=client({'INDAS_1.xml':[(200,filing())]})
+                assert financials.load_pending(db,archive,nested)['LOADED']==1
+            yield row,response
+    monkeypatch.setattr(financials,'_download_rows',overlap)
+    dl,_=client({'INDAS_1.xml':[(200,filing())]})
+    assert financials.load_pending(db,archive,dl)=={'SKIPPED_CONCURRENT':1}
+    assert db.execute('SELECT count(*) FROM financial_facts').fetchone()[0]==len(parse_results_xbrl(filing()).figures)
+    assert db.execute('SELECT pipeline_state FROM document_publications').fetchone()[0]=='TEXT_READY'
+
+
+def test_future_requested_window_is_not_cached_before_it_was_observed(db):
+    issuer=_company(db)
+    from inflection.sources.xbrl import ListingResult
+    first,last=date(2021,1,1),date(2099,12,31)
+    financials.record_listing(db,ListingResult('RAIN','equities',WindowStatus.COMPLETE),str(issuer),first,last)
+    assert financials.listed_symbols(db,first,last)==set()
+
+
+def test_complete_results_listing_is_specific_to_its_exchange_stream(db):
+    issuer=_company(db)
+    from inflection.sources.xbrl import ListingResult
+    first,last=date(2021,1,1),date(2024,11,30)
+    financials.record_listing(db,ListingResult('RAIN','sme',WindowStatus.COMPLETE),str(issuer),first,last)
+    assert financials.listed_symbols(db,first,last,'sme')=={'RAIN'}
+    assert financials.listed_symbols(db,first,last,'equities')==set()
+
+
+def test_snapshot_figures_are_timed_by_the_results_announcement(db):
+    from datetime import date, datetime, timezone, timedelta
+    from inflection import bse_results
+    IST = timezone(timedelta(hours=5, minutes=30))
+    iss = db.execute("INSERT INTO issuers(legal_name) VALUES ('Snap Ltd') RETURNING issuer_id").fetchone()[0]
+    src = db.execute("INSERT INTO sources(name, kind, access_policy) VALUES ('bse_announcements_t', 'announcements', 'test') RETURNING source_id").fetchone()[0]
+    def pub(n, when, title):
+        return db.execute("""INSERT INTO document_publications(source_id, external_id, external_version, source_url,
+            published_at, issuer_id, title, publication_basis) VALUES (%s,%s,'1','u',%s,%s,%s,'EXCHANGE_TIMESTAMP') RETURNING publication_id""",
+            (src, str(n), when, iss, title)).fetchone()[0]
+    pub(1, datetime(2024, 10, 30, 10, tzinfo=IST), 'Snap Ltd - Board Meeting Intimation for Financial Results')
+    good = pub(2, datetime(2024, 11, 12, 18, tzinfo=IST), 'Snap Ltd - Results - Financial Results For Half Year Ended 30Th September, 2024')
+    pub(3, datetime(2025, 2, 12, 18, tzinfo=IST), 'Snap Ltd - Results - Financial Results For Quarter Ended December 31, 2024')
+    fid = db.execute("""INSERT INTO financial_facts(issuer_id, metric, period_end, scope, value, value_kind, currency, scale,
+        period_type, available_at, provider, provider_version, content_hash, recorded_at)
+        VALUES (%s,'revenue','2024-09-30','STANDALONE',100,'MONEY','INR','UNITS','QUARTER','2026-10-01','bse_results_snapshot',
+                'bse-results-snapshot-1','h','2026-10-01') RETURNING fact_id""", (iss,)).fetchone()[0]
+    assert bse_results.time_from_filings(db)['timed_now'] == 1
+    at, basis = db.execute("SELECT available_at, availability_basis FROM financial_facts_asof WHERE fact_id=%s", (fid,)).fetchone()
+    assert at == datetime(2024, 11, 12, 18, tzinfo=IST) and basis == 'SNAPSHOT_TIMED_BY_FILING'
+    assert db.execute("SELECT publication_id FROM financial_snapshot_timing WHERE fact_id=%s", (fid,)).fetchone()[0] == good
+    assert bse_results.time_from_filings(db)['timed_now'] == 0
+
+
+def test_voting_results_never_time_a_figure(db):
+    from datetime import datetime, timezone, timedelta
+    from inflection import bse_results
+    IST = timezone(timedelta(hours=5, minutes=30))
+    iss = db.execute("INSERT INTO issuers(legal_name) VALUES ('Vote Ltd') RETURNING issuer_id").fetchone()[0]
+    src = db.execute("INSERT INTO sources(name, kind, access_policy) VALUES ('bse_v', 'announcements', 'test') RETURNING source_id").fetchone()[0]
+    db.execute("""INSERT INTO document_publications(source_id, external_id, external_version, source_url, published_at, issuer_id,
+        title, publication_basis) VALUES (%s,'v','1','u',%s,%s,'Vote Ltd - E-Voting Results Of Postal Ballot Dated 12Th May, 2021',
+        'EXCHANGE_TIMESTAMP')""", (src, datetime(2021, 5, 20, tzinfo=IST), iss))
+    db.execute("""INSERT INTO financial_facts(issuer_id, metric, period_end, scope, value, value_kind, currency, scale,
+        period_type, available_at, provider, provider_version, content_hash) VALUES (%s,'revenue','2021-03-31','STANDALONE',
+        100,'MONEY','INR','UNITS','ANNUAL','2026-10-01','bse_results_snapshot','bse-results-snapshot-1','h')""", (iss,))
+    assert bse_results.time_from_filings(db)['timed_now'] == 0

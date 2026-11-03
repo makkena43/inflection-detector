@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import Optional
 
 from .sources.download import Archive
+from .documents import publication_member_sql
 
 GB = 1024 ** 3
 CREATED_BY = "inflection.purge"
@@ -25,10 +26,10 @@ REASON = "archive over size cap; filing text stored (TEXT_READY)"
 REASON_READ = "archive over size cap; extraction done (TEXT_READY, PARTIAL_TEXT or OCR_REQUIRED)"
 READ_STATES = ("TEXT_READY", "PARTIAL_TEXT", "OCR_REQUIRED")
 
-_CANDIDATES = """
+_CANDIDATES = f"""
 SELECT v.sha256, max(v.byte_size)
   FROM document_versions v
-  JOIN document_versions pv ON pv.document_id = v.document_id
+  JOIN document_versions pv ON {publication_member_sql('pv','v')}
   JOIN document_publications p ON p.document_version_id = pv.document_version_id
  WHERE NOT EXISTS (SELECT 1 FROM archive_purges a WHERE a.sha256 = v.sha256)
    AND (v.media_type <> 'application/pdf' OR EXISTS (
@@ -39,29 +40,29 @@ HAVING bool_and(p.pipeline_state = 'TEXT_READY')
  ORDER BY min(coalesce(p.published_at, p.published_date::timestamptz, p.first_seen_at)), v.sha256"""
 
 
-_CANDIDATES_READ = """
+_CANDIDATES_READ = f"""
 SELECT v.sha256, max(v.byte_size)
   FROM document_versions v
-  JOIN document_versions pv ON pv.document_id = v.document_id
+  JOIN document_versions pv ON {publication_member_sql('pv','v')}
   JOIN document_publications p ON p.document_version_id = pv.document_version_id
  WHERE NOT EXISTS (SELECT 1 FROM archive_purges a WHERE a.sha256 = v.sha256)
    AND (v.media_type <> 'application/pdf' OR EXISTS (
            SELECT 1 FROM text_artifacts t WHERE t.document_version_id = v.document_version_id))
  GROUP BY v.sha256
-HAVING bool_and(p.pipeline_state = ANY(%s))
+HAVING bool_and(p.pipeline_state = ANY(%s) AND NOT ('ZIP_INCOMPLETE'=ANY(p.processing_issues)))
  ORDER BY min(coalesce(p.published_at, p.published_date::timestamptz, p.first_seen_at)), v.sha256"""
 
 
 # Bytes purged once can come back: another filing attaches the same PDF and the downloader stores it
 # again.  Those copies are already recorded in archive_purges, so they are deleted again on sight once
 # every filing using them is read.
-_REDOWNLOADED = """
+_REDOWNLOADED = f"""
 SELECT a.sha256 FROM archive_purges a
   JOIN document_versions v ON v.sha256 = a.sha256
-  JOIN document_versions pv ON pv.document_id = v.document_id
+  JOIN document_versions pv ON {publication_member_sql('pv','v')}
   JOIN document_publications p ON p.document_version_id = pv.document_version_id
  GROUP BY a.sha256
-HAVING bool_and(p.pipeline_state = ANY(%s))"""
+HAVING bool_and(p.pipeline_state = ANY(%s) AND NOT ('ZIP_INCOMPLETE'=ANY(p.processing_issues)))"""
 
 
 def archive_bytes(root: Path) -> int:

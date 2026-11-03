@@ -205,7 +205,7 @@ def test_zip_keeps_every_pdf_and_the_original(tmp_path, pdf_bytes):
     z = zip_of({"a.pdf": pdf_bytes, "b.PDF": pdf_bytes + b"\n%x", "c.xlsx": b"xx"})
     c, _ = client({"nsearchives": [(200, z)]})
     d = download("https://nsearchives.nseindia.com/corporate/x.zip", Archive(tmp_path), c)
-    assert d.status == DownloadStatus.OK and [p.name for p in d.pdfs] == ["a.pdf", "b.PDF"]
+    assert d.status == DownloadStatus.ZIP_PARTIAL and [p.name for p in d.pdfs] == ["a.pdf", "b.PDF"]
     assert d.original.path.read_bytes() == z and "c.xlsx" in d.note
 
 
@@ -283,3 +283,33 @@ def test_bse_a_failed_child_day_cannot_produce_complete_range():
             yield WindowResult('BSE','equity',date(2026,10,9),date(2026,10,9),WindowStatus.BLOCKED)
     w=Days().list_window(date(2026,10,8),date(2026,10,9))
     assert w.status==WindowStatus.PARTIAL and len(w.announcements)==1
+
+
+
+def test_zip_corrupt_member_preserves_other_pdfs_and_stays_incomplete(tmp_path,pdf_bytes):
+    raw=bytearray(zip_of({'good.pdf':pdf_bytes,'bad.pdf':pdf_bytes+b'CRC_BAD_MEMBER'}))
+    raw[raw.index(b'CRC_BAD_MEMBER')]=ord('X')
+    c,_=client({'scan.zip':[(200,bytes(raw))]})
+    result=download('https://h/scan.zip',Archive(tmp_path/'a'),c)
+    assert result.status==DownloadStatus.ZIP_PARTIAL
+    assert [p.name for p in result.pdfs]==['good.pdf']
+    assert 'BadZipFile' in result.note
+    assert result.original.path.read_bytes()==bytes(raw)
+
+
+def test_zip_expanded_size_limit_does_not_hide_skipped_pdf(tmp_path,pdf_bytes,monkeypatch):
+    from inflection.sources import download as D
+    monkeypatch.setattr(D,'MAX_ZIP_TOTAL_BYTES',len(pdf_bytes))
+    c,_=client({'scan.zip':[(200,zip_of({'one.pdf':pdf_bytes,'two.pdf':pdf_bytes}))]})
+    result=download('https://h/scan.zip',Archive(tmp_path/'a'),c)
+    assert result.status==DownloadStatus.ZIP_PARTIAL and len(result.pdfs)==1
+    assert 'expanded-size limit' in result.note
+
+
+@pytest.mark.parametrize('second_total',[49,52])
+def test_bse_changing_totals_cannot_prove_complete_coverage(second_total):
+    c,_=client({'AnnSubCategoryGetData':[
+       (200,{'Table':[bse_row(i) for i in range(50)],'Table1':[{'ROWCNT':51}]}),
+       (200,{'Table':[bse_row(50)],'Table1':[{'ROWCNT':second_total}]})]})
+    w=bse.BSEAnnouncements(c).list_window(date(2026,10,8),date(2026,10,8))
+    assert w.status==WindowStatus.PARTIAL and any('inconsistent row count' in n for n in w.notes)

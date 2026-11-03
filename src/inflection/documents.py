@@ -137,3 +137,29 @@ def content_hash(text: str) -> str:
     """Hash of whitespace/case-normalised text, for detecting re-filed identical content."""
     norm = re.sub(r"\s+", " ", text or "").strip().lower()
     return hashlib.sha256(norm.encode("utf-8")).hexdigest()
+
+
+def lock_document_hashes(conn, hashes):
+    """Serialize reuse by content. Call inside the publication transaction.
+
+    ZIPs acquire every hash in a common order before storing any member, avoiding
+    deadlocks when different archives contain the same files in different orders.
+    """
+    for digest in sorted(set(hashes)):
+        key=int(digest[:16],16)
+        if key>=2**63:key-=2**64
+        conn.execute('SELECT pg_advisory_xact_lock(%s)',(key,))
+
+
+def publication_member_sql(root: str, member: str) -> str:
+    """A direct PDF publishes itself; a ZIP publishes its registered members.
+
+    A PDF's hash can also appear as a ZIP member. Sharing a logical document must
+    never publish the ZIP's other members at the standalone PDF's earlier date.
+    Only internal SQL aliases are accepted here; source values remain parameters.
+    """
+    if not all(a.isascii() and a.isidentifier() for a in (root,member)):
+        raise ValueError('Expected internal SQL aliases')
+    return (f"{root}.document_id={member}.document_id AND "
+            f"({root}.media_type='application/zip' OR "
+            f"{root}.document_version_id={member}.document_version_id)")

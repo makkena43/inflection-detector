@@ -28,24 +28,24 @@ def _ends(n=8):
 
 
 def _q(v):
-    return [dict(value=str(x)) for x in v]
+    return [dict(value=str(x),publication_id="source") for x in v]
 
 
 def test_valuation_section():
-    fin = dict(status="FOUND", quarters=_ends(), rows=dict(revenue=_q([100] * 4 + [125] * 4), pbt=_q([5] * 4 + [10] * 4),
+    fin = dict(status="FOUND", quarters=_ends(), rows=dict(revenue=_q([100] * 4 + [125] * 4), total_expenses=_q([95]*4+[115]*4), pbt=_q([5] * 4 + [10] * 4),
                                          finance_cost=_q([1] * 8), depreciation=_q([2] * 8), other_income=_q([0] * 8)))
-    v = C.valuation(fin, dict(market_cap_cr="400"))
+    v = C.valuation(fin, dict(status="FOUND", market_cap_cr="400"))
     assert v["price_to_sales"] == "0.80" and v["opm_ttm_pct"] == "10.4" and v["opm_change_pts"] == "2.4"
     assert v["revenue_growth_ttm_pct"] == "25.0"
     assert C.valuation(dict(status="MISSING"), {})["status"] == "MISSING"
 
 
 def test_valuation_tolerates_formatted_or_missing_cells():
-    fin = dict(status="FOUND", quarters=_ends(4), rows=dict(revenue=_q(["1,000"] * 4), pbt=_q([50] * 4), finance_cost=_q([0] * 4),
+    fin = dict(status="FOUND", quarters=_ends(4), rows=dict(revenue=_q(["1,000"] * 4), total_expenses=_q([950]*4), pbt=_q([50] * 4), finance_cost=_q([0] * 4),
                                          depreciation=[dict(value="–")] * 4, other_income=_q([0] * 4)))
-    v = C.valuation(fin, dict(market_cap_cr="400"))
+    v = C.valuation(fin, dict(status="FOUND", market_cap_cr="400"))
     assert v["status"] == "FOUND" and v["opm_ttm_pct"] is None and v["ttm_revenue_cr"] == "4,000.00"
 
-    assert C.valuation(dict(status="FOUND", quarters=_ends(4), rows=dict(revenue=_q([100] * 4), pbt=_q([5] * 4), finance_cost=_q([1] * 4),
+    assert C.valuation(dict(status="FOUND", quarters=_ends(4), rows=dict(revenue=_q([100] * 4), total_expenses=_q([95]*4), pbt=_q([5] * 4), finance_cost=_q([1] * 4),
                                                        depreciation=_q([2] * 4), other_income=_q([0] * 4))),
-                       dict(market_cap_cr="1,200"))["price_to_sales"] == "3.00"
+                       dict(status="FOUND", market_cap_cr="1,200"))["price_to_sales"] == "3.00"

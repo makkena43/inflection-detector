@@ -78,6 +78,7 @@ class Placement:
     previous_stage: Optional[str] = None
     relation: str = "SUPPORTS"
     note: str = ""
+    creates_version: bool = False
 
 
 # ---------------------------------------------------------------- matching helpers (ported)
@@ -125,11 +126,41 @@ class Resolver:
 
     def __init__(self, issuer_id: str, events: Optional[list[EventState]] = None):
         self.issuer_id = issuer_id
-        self.events: list[EventState] = list(events or [])
+        self._history: dict[str,list[EventState]] = {}
+        self._sequence: dict[str,int] = {}
+        for event in events or []:
+            self._history.setdefault(event.event_id,[]).append(event.snapshot())
+            self._sequence[event.event_id]=max(self._sequence.get(event.event_id,0),event.version_no)
+        self.events=self.events_at()
+
+    def events_at(self,at=None,include_future=False):
+        out=[]
+        for history in self._history.values():
+            eligible=[e for e in history if at is None or (e.published_at or e.first_public_at)<=at]
+            if not eligible and not include_future:continue
+            chosen=max(eligible,key=lambda e:(e.published_at or e.first_public_at,e.version_no)) if eligible else min(
+                history,key=lambda e:(e.published_at or e.first_public_at,e.version_no))
+            state=chosen.snapshot()
+            state.first_public_at=min(e.first_public_at for e in history)
+            out.append(state)
+        return sorted(out,key=lambda e:(e.first_public_at,e.event_id))
 
     # -- public
 
     def place(self, m: Mention, at: datetime, artifact: str) -> Placement:
+        self.events=self.events_at(at,include_future=True)
+        result=self._place(m,at,artifact)
+        if result.event is not None:
+            if result.outcome in ('NEW','REVISION') or result.creates_version:
+                self._history.setdefault(result.event.event_id,[]).append(result.event.snapshot())
+            else:
+                for known in self._history.get(result.event.event_id,[]):
+                    if known.version_id==result.event.version_id:
+                        known.artifacts.update(result.event.artifacts)
+        self.events=self.events_at()
+        return result
+
+    def _place(self, m: Mention, at: datetime, artifact: str) -> Placement:
         if m.modality == "NEGATED":
             return Placement("NOT_AN_EVENT", note="negated")
         if m.family == "ORDER":
@@ -144,7 +175,7 @@ class Resolver:
 
     def _orders(self, at: datetime, before: bool = True) -> list[EventState]:
         return [e for e in self.events if e.family == "ORDER"
-                and ((e.first_public_at <= at) if before else (e.first_public_at > at))]
+                and (((e.published_at or e.first_public_at)<=at) if before else ((e.published_at or e.first_public_at)>at))]
 
     def _find_order(self, m: Mention, cands: list[EventState], at: datetime, artifact: str
                     ) -> tuple[Optional[EventState], list[EventState]]:
@@ -195,7 +226,7 @@ class Resolver:
         cp = _named(m)
         if cp:
             earlier = [e for e in self.events if e is not evt and same_counterparty(e.counterparty, cp) is True
-                       and e.first_public_at <= at]
+                       and (e.published_at or e.first_public_at) <= at]
             orders = [e for e in earlier if e.family == "ORDER" and RANK.get(e.stage, 0) >= RANK["BINDING_DEMAND"]]
             if m.details.get("repeat_marker") and orders and m.modality == "REALIZED":
                 evt.stage = "REPEAT_SHIPMENT"
@@ -265,8 +296,9 @@ class Resolver:
             if m.amount is not None:
                 target.details["amended_from"] = (f"{current.value} {current.scale.value}" if current else None)
                 target.amount = m.amount
-                if target.basis == "UNQUANTIFIED":
-                    target.basis = "FIRM"
+                if m.amount_basis in ('CEILING','GUARANTEED_MINIMUM','EXECUTABLE_RELEASE'):
+                    target.basis=m.amount_basis
+                elif target.basis=='UNQUANTIFIED':target.basis='FIRM'
                 note = "value amended"
             else:
                 target.details["amendment_unquantified"] = True
@@ -277,14 +309,15 @@ class Resolver:
             target.stage = "COMMERCIAL_SHIPMENT"
             target.observation = "OBSERVED"
             note = "execution / delivery reported"
+        self._merge_terms(target,m)
         self._advance(target, m, at, artifact)
         return Placement("REVISION", target.snapshot(), "REVISION", prev_version, prev_stage, note=note)
 
     # -- shared
 
-    def _new(self, m: Mention, at: datetime, artifact: str) -> EventState:
+    def _new(self, m: Mention, at: datetime, artifact: str, event_id=None) -> EventState:
         evt = EventState(
-            event_id=str(uuid.uuid4()), issuer_id=self.issuer_id, family=m.family, event_type=m.event_type,
+            event_id=event_id or str(uuid.uuid4()), issuer_id=self.issuer_id, family=m.family, event_type=m.event_type,
             first_public_at=at, stage=m.stage, observation=m.observation_status, amount=m.amount,
             original_amount=m.amount, basis=m.amount_basis, counterparty=_named(m),
             facility=m.details.get("facility", ""), stream=_stream(m), relationship=m.relationship,
@@ -297,7 +330,8 @@ class Resolver:
         return evt
 
     def _advance(self, evt: EventState, m: Mention, at: datetime, artifact: str) -> None:
-        evt.version_no += 1
+        evt.version_no=self._sequence.get(evt.event_id,evt.version_no)+1
+        self._sequence[evt.event_id]=evt.version_no
         evt.version_id = str(uuid.uuid4())
         evt.artifacts.add(artifact)
         evt.published_at = at
@@ -307,10 +341,24 @@ class Resolver:
         return Placement("REPETITION", evt.snapshot(), relation="CONTEXT", note="restates a known event")
 
     def _earlier(self, evt: EventState, m: Mention, at: datetime, artifact: str) -> Placement:
-        evt.first_public_at = at
-        evt.artifacts.add(artifact)
-        return Placement("EARLIER_DISCLOSURE", evt.snapshot(), relation="CONTEXT",
-                         note="an earlier disclosure of this event, read after later ones")
+        # Materialize only facts stated in this older source. Copying the
+        # later snapshot here would backdate its stage, customer or amount.
+        earlier=self._new(m,at,artifact,event_id=evt.event_id)
+        earlier.first_public_at=min(evt.first_public_at,at)
+        return Placement('EARLIER_DISCLOSURE',earlier.snapshot(),'NEW',relation='SUPPORTS',
+                         note='earlier source materialized without later event fields',creates_version=True)
+
+    def _merge_terms(self,evt,m):
+        changes=[]
+        for key in ('duration_months','delivery_window','payment_terms','termination_terms','reference_id',
+                    'product','tax_basis','customer_geography','capacity','deadline','funding_cue',
+                    'relationship_conflict','relationship_source','mixed_commitment','aggregate_order_total',
+                    'source_recheck_conflict','ocr_verification_required'):
+            value=m.details.get(key)
+            if value not in (None,'','UNKNOWN') and value!=evt.details.get(key):
+                evt.details[key]=value;changes.append('term '+key)
+                if key=='deadline':evt.deadline=_deadline(m)
+        return changes
 
     def _absorb(self, evt: EventState, m: Mention, at: datetime, artifact: str) -> Placement:
         """A known event mentioned again: a new version only for a substantive change (stage advance,
@@ -338,19 +386,14 @@ class Resolver:
             evt.details["commissioned"] = True
             evt.observation = "OBSERVED"
             changes.append("commissioned")
-        # terms fill in without making a version on their own
-        for k in ("duration_months", "delivery_window", "payment_terms", "termination_terms", "reference_id",
-                  "product", "tax_basis", "customer_geography", "capacity", "deadline", "funding_cue"):
-            if m.details.get(k) and (not evt.details.get(k) or evt.details.get(k) == "UNKNOWN"):
-                evt.details[k] = m.details[k]
-                if k == "deadline":
-                    evt.deadline = _deadline(m)
+        changes.extend(self._merge_terms(evt,m))
         rel_rank = {"UNKNOWN": 0, "ISSUER_ASSERTED_UNRELATED": 1, "INDEPENDENTLY_SUPPORTED_UNRELATED": 2,
                     "CONFIRMED_RELATED": 3}
         if rel_rank[m.relationship] > rel_rank[evt.relationship]:
-            if m.relationship == "CONFIRMED_RELATED":
-                changes.append("related party")
+            changes.append("relationship " + m.relationship)
             evt.relationship = m.relationship
+            for key in ('relationship_source','relationship_conflict'):
+                if key in m.details:evt.details[key]=m.details[key]
         if not changes:
             return self._repeat(evt, m, artifact)
         self._advance(evt, m, at, artifact)
@@ -392,14 +435,14 @@ class Resolver:
         return best
 
     def _stream_event(self, m: Mention, at: datetime, artifact: str) -> Placement:
-        before = [e for e in self.events if e.family != "ORDER" and e.first_public_at <= at]
+        before = [e for e in self.events if e.family != "ORDER" and (e.published_at or e.first_public_at) <= at]
         target = self._stream_match(m, before, at, artifact)
         if target is not None:
             if target.event_type != m.event_type and RANK.get(m.stage, 0) > RANK.get(target.stage, 0) \
                     and m.modality == "REALIZED":
                 target.details["commercial_start"] = True
             return self._absorb(target, m, at, artifact)
-        after = [e for e in self.events if e.family != "ORDER" and e.first_public_at > at]
+        after = [e for e in self.events if e.family != "ORDER" and (e.published_at or e.first_public_at)>at]
         later = self._stream_match(m, after, at, artifact)
         if later is not None:
             return self._earlier(later, m, at, artifact)
@@ -422,6 +465,14 @@ def materiality(evt: EventState, annual_revenue: Optional[Decimal]) -> Materiali
     capacity, capex and foreign-currency amounts never count (no FX conversion is done)."""
     if evt.family != "ORDER":
         return Materiality("MATERIALITY_UNKNOWN", "not a revenue commitment; magnitude needs research")
+    if evt.details.get('aggregate_order_total'):
+        return Materiality('MATERIALITY_UNKNOWN', 'bundle of awards; individual contract values require separate evidence')
+    if evt.details.get('mixed_commitment'):
+        return Materiality('MATERIALITY_UNKNOWN', 'firm and forecast portions are not separately quantified')
+    if evt.details.get('tax_basis')=='INCLUSIVE':
+        return Materiality('MATERIALITY_UNKNOWN','tax-inclusive contract value needs a verified net revenue amount')
+    if evt.ownership_scope == 'JOINT_VENTURE':
+        return Materiality('MATERIALITY_UNKNOWN', 'joint-venture award; issuer-attributable value requires source verification')
     if evt.amount is None:
         return Materiality("MATERIALITY_UNKNOWN", "order value not disclosed")
     if evt.basis not in ("FIRM", "GUARANTEED_MINIMUM", "EXECUTABLE_RELEASE"):
@@ -487,6 +538,8 @@ def assess(evt: EventState, novelty: str, previous_stage: Optional[str], mat: Ma
 
     if fam in V.CONTEXT_FAMILIES:
         return None
+    if evt.details.get('ocr_verification_required'):
+        return a('P3','OCR evidence requires source verification')
     if active_case:
         return a("U0", "change for an issuer with an open research case")
     if stage == "CANCELLED":

@@ -25,13 +25,14 @@ from typing import Iterable, Optional
 from psycopg.types.json import Jsonb
 
 from .sources.common import IST
-from .sources.download import Archive
+from .sources.download import Archive,DocumentResourceLimit
 from .sources.http import HttpClient, Response
 from .sources.xbrl import REFERER, ListingResult, NSEResultsListing, ResultEntry, listed_period, parse_results_xbrl
 from .states import CoverageStatus
+from .documents import lock_document_hashes
 
 SOURCE = "nse_results_xbrl"
-ADAPTER_VERSION = "nse-results-xbrl-1"
+ADAPTER_VERSION = "nse-results-xbrl-2"
 PROVIDER = "nse_xbrl"
 CREATED_BY = "inflection.financials"
 ACCESS_POLICY = ("NSE results XBRL files, fetched directly from NSE's public website by owner decision of "
@@ -60,14 +61,17 @@ def current_symbols(conn, symbols: Optional[Iterable[str]] = None) -> list[tuple
     return [(sym, str(issuer), "sme" if board == "SME" else "equities") for sym, issuer, board in rows]
 
 
-def listed_symbols(conn, start: date, end: date) -> set[str]:
+def listed_symbols(conn, start: date, end: date, index: Optional[str] = None) -> set[str]:
     """Only proven-complete listings are cached; uncertain empty responses must be retried."""
     rows = conn.execute(
         """SELECT DISTINCT r.reconciliation_result->>'symbol'
              FROM ingestion_runs r JOIN sources s USING (source_id)
             WHERE s.name = %s AND r.coverage_status = 'COMPLETE'
-              AND r.reconciliation_result->>'from' = %s AND r.reconciliation_result->>'to' = %s""",
-        (SOURCE, start.isoformat(), end.isoformat())).fetchall()
+              AND r.reconciliation_result->>'from' = %s AND r.reconciliation_result->>'to' = %s
+              AND (%s::text IS NULL OR r.segment=%s)
+              AND r.finished_at >= %s""",
+        (SOURCE, start.isoformat(), end.isoformat(),index,index,
+         datetime.combine(end+timedelta(days=1),time(),IST))).fetchall()
     return {r[0] for r in rows}
 
 
@@ -119,11 +123,12 @@ def list_results(conn, client: HttpClient, start: date, end: date, symbols: Opti
                  relist: bool = False, progress=None) -> Counter:
     """List results filings for every current NSE symbol (or ``symbols``).  Symbols already listed for
     this window are skipped unless ``relist``, so an interrupted run resumes where it stopped."""
-    done = set() if relist else listed_symbols(conn, start, end)
+    done = ({index:set() for index in ('equities','sme')} if relist else
+            {index:listed_symbols(conn,start,end,index) for index in ('equities','sme')})
     listing = NSEResultsListing(client)
     counts: Counter = Counter()
     for symbol, issuer_id, index in current_symbols(conn, symbols):
-        if symbol in done:
+        if symbol in done[index]:
             counts["skipped_already_listed"] += 1
             continue
         status, found, new = record_listing(conn, listing.list_symbol(symbol, index), issuer_id, start, end)
@@ -138,12 +143,13 @@ def list_results(conn, client: HttpClient, start: date, end: date, symbols: Opti
 # ---------------------------------------------------------------- download and parse
 
 def _content_hash(publication_id, f) -> str:
-    key = "|".join(str(x) for x in (publication_id, f.metric, f.period_start, f.period_end, f.scope, f.segment or "",
+    key = "|".join(str(x) for x in (ADAPTER_VERSION, publication_id, f.metric, f.period_start, f.period_end, f.scope, f.segment or "",
                                      f.tag, f.context, f.original_text))
     return hashlib.sha256(key.encode()).hexdigest()
 
 
 def _store_xml(conn, stored) -> tuple:
+    lock_document_hashes(conn,[stored.sha256])
     row = conn.execute("SELECT document_id, document_version_id FROM document_versions WHERE sha256 = %s "
                        "ORDER BY created_at LIMIT 1", (stored.sha256,)).fetchone()
     if row:
@@ -201,36 +207,70 @@ def _download_rows(rows, client, workers=1, client_factory=None, archive=None):
                 pending.append(pool.submit(download, row))
 
 
+def _store_figures(conn,issuer_id,published_at,pid,vid,parsed):
+    with conn.cursor() as cur:
+        cur.executemany(
+            """INSERT INTO financial_facts
+                 (issuer_id, metric, period_start, period_end, scope, segment, value, value_kind, currency,
+                  scale, original_text, missing_reason, period_type, cumulative, available_at, provider,
+                  provider_version, document_version_id, publication_id, content_hash, created_by)
+               VALUES (%s, %s, %s, %s, %s, %s, %s, %s, 'INR', %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+            [(issuer_id, f.metric, f.period_start, f.period_end, f.scope, f.segment, f.value, f.value_kind,
+              "UNITS" if f.value_kind == "MONEY" else None, f.original_text,
+              "UNVERIFIED" if f.unverified else None, f.period_type, f.cumulative, published_at, PROVIDER,
+              ADAPTER_VERSION, vid, pid, _content_hash(pid, f), CREATED_BY) for f in parsed.figures])
+
+
 def load_pending(conn, archive: Archive, client: HttpClient, limit: int = 500, retry_failed: bool = False,
                  workers: int = 1, client_factory=None, progress=None, reparse_failed: bool = False,
                  start: Optional[date] = None, end: Optional[date] = None) -> Counter:
     """Download, archive and parse listed XBRL filings; append their figures to ``financial_facts``."""
+    source=conn.execute('SELECT source_id FROM sources WHERE name=%s',(SOURCE,)).fetchone()
+    if source is None:
+        return Counter()
     states = ["DISCOVERED", "FAILED"] if retry_failed or reparse_failed else ["DISCOVERED"]
+    state_sql="IN ('DISCOVERED','FAILED')" if len(states)>1 else "= 'DISCOVERED'"
+    window=[];bounds=[]
+    if start is not None:
+        window.append('AND p.published_at >= %s');bounds.append(datetime.combine(start,time(),IST))
+    if end is not None:
+        window.append('AND p.published_at < %s');bounds.append(datetime.combine(end+timedelta(days=1),time(),IST))
     rows = conn.execute(
-        """SELECT p.publication_id, p.revision, p.attachment_url, p.issuer_id, p.published_at, p.failure_reason,
+        f"""SELECT p.publication_id, p.revision, p.attachment_url, p.issuer_id, p.published_at, p.failure_reason,
                   v.storage_key,v.sha256
-             FROM document_publications p JOIN sources s USING (source_id)
+             FROM document_publications p
              LEFT JOIN document_versions v USING(document_version_id)
-            WHERE s.name = %s AND p.pipeline_state = ANY(%s)
+            WHERE p.source_id = %s AND p.pipeline_state {state_sql} AND p.attachment_url IS NOT NULL
               AND (p.pipeline_state='DISCOVERED' OR
                 (%s AND (p.failure_reason IS NULL OR p.failure_reason LIKE 'BLOCKED%%' OR p.failure_reason LIKE 'FAILED%%')) OR
                 (%s AND p.failure_reason LIKE 'XBRL:%%'))
-              AND (%s::date IS NULL OR p.published_at >= (%s::date::timestamp AT TIME ZONE 'Asia/Kolkata'))
-              AND (%s::date IS NULL OR p.published_at < ((%s::date+1)::timestamp AT TIME ZONE 'Asia/Kolkata'))
+              {' '.join(window)}
             ORDER BY p.published_at NULLS LAST, p.publication_id LIMIT %s""",
-        (SOURCE, states, retry_failed, reparse_failed, start,start,end,end,limit)).fetchall()
+        # Source/state distributions are highly uneven. A generic plan can scan the
+        # entire announcements table for a tiny native-results queue.
+        (source[0], retry_failed, reparse_failed,*bounds,limit),prepare=False).fetchall()
     out: Counter = Counter()
     for index, (row, resp) in enumerate(_download_rows(rows, client, workers, client_factory, archive), 1):
         pid, rev, url, issuer_id, published_at, failure = row[:6]
         if progress and (index == 1 or (index - 1) % 100 == 0):
             progress(index - 1, len(rows), dict(out))
         with conn.transaction():
+            current=conn.execute('''SELECT revision,pipeline_state FROM document_publications
+                WHERE publication_id=%s FOR UPDATE''',(pid,)).fetchone()
+            if current is None or current[0]!=rev or current[1] not in states:
+                out['SKIPPED_CONCURRENT']+=1
+                continue
             if not resp.ok:
                 kind = "BLOCKED" if resp.blocked else ("NOT_FOUND" if resp.status == 404 else "FAILED")
                 _fail(conn, pid, rev, f"{kind}: {resp.error or f'HTTP {resp.status}'}")
                 out[kind] += 1
                 continue
-            stored = archive.put(resp.body, url.rsplit("/", 1)[-1])
+            try:
+                stored = archive.put(resp.body, url.rsplit("/", 1)[-1])
+            except DocumentResourceLimit as exc:
+                _fail(conn,pid,rev,f'RESOURCE_LIMIT: {exc}')
+                out['RESOURCE_LIMIT']+=1
+                continue
             _, vid = _store_xml(conn, stored)
             conn.execute("""UPDATE document_publications SET document_version_id = %s,
                                    ingested_at = CASE WHEN document_version_id=%s THEN coalesce(ingested_at,now()) ELSE now() END,
@@ -242,17 +282,7 @@ def load_pending(conn, archive: Archive, client: HttpClient, limit: int = 500, r
                 _fail(conn, pid, rev, "XBRL: " + ("; ".join(parsed.issues[:3]) or "no figures"))
                 out["NO_FIGURES"] += 1
                 continue
-            with conn.cursor() as cur:
-                cur.executemany(
-                    """INSERT INTO financial_facts
-                         (issuer_id, metric, period_start, period_end, scope, segment, value, value_kind, currency,
-                          scale, original_text, missing_reason, period_type, cumulative, available_at, provider,
-                          provider_version, document_version_id, publication_id, content_hash, created_by)
-                       VALUES (%s, %s, %s, %s, %s, %s, %s, %s, 'INR', %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
-                    [(issuer_id, f.metric, f.period_start, f.period_end, f.scope, f.segment, f.value, f.value_kind,
-                      "UNITS" if f.value_kind == "MONEY" else None, f.original_text,
-                      "UNVERIFIED" if f.unverified else None, f.period_type, f.cumulative, published_at, PROVIDER,
-                      ADAPTER_VERSION, vid, pid, _content_hash(pid, f), CREATED_BY) for f in parsed.figures])
+            _store_figures(conn,issuer_id,published_at,pid,vid,parsed)
             conn.execute("""UPDATE document_publications SET pipeline_state = 'TEXT_READY', failure_reason = NULL,
                                    revision = revision + 1 WHERE publication_id = %s AND revision = %s""", (pid, rev))
         out["LOADED"] += 1
@@ -261,6 +291,50 @@ def load_pending(conn, archive: Archive, client: HttpClient, limit: int = 500, r
     if progress:
         progress(len(rows), len(rows), dict(out))
     return out
+
+
+def reparse_cached(conn,archive: Archive,limit=None,publication_ids=None,guard=lambda:None) -> dict:
+    """Upgrade successful results from verified local bytes; never fetch or reset download budgets."""
+    source=conn.execute('SELECT source_id FROM sources WHERE name=%s',(SOURCE,)).fetchone()
+    if source is None:
+        return dict(parser_version=ADAPTER_VERSION,identified=0,reparsed=[],pending=[],remaining=0,archive_bytes_added=0)
+    # Resolve the sparse source first: a join through sources can choose a merge
+    # over every downloaded announcement instead of the source-key index.
+    rows=conn.execute("""SELECT p.publication_id,p.issuer_id,p.published_at,p.raw_metadata,
+       p.document_version_id,v.storage_key,v.sha256 FROM document_publications p
+       JOIN document_versions v USING(document_version_id)
+       WHERE p.source_id=%s AND p.pipeline_state='TEXT_READY'
+         AND (%s::uuid[] IS NULL OR p.publication_id=ANY(%s::uuid[]))
+         AND NOT EXISTS(SELECT 1 FROM financial_facts f WHERE f.publication_id=p.publication_id
+                        AND f.provider=%s AND f.provider_version=%s)
+       ORDER BY p.published_at DESC,p.publication_id""",(source[0],publication_ids,publication_ids,PROVIDER,ADAPTER_VERSION),prepare=False).fetchall()
+    result=dict(parser_version=ADAPTER_VERSION,identified=len(rows),reparsed=[],pending=[],archive_bytes_added=0)
+    for pid,issuer,published,raw,vid,key,digest in rows:
+        if limit is not None and len(result['reparsed'])>=limit:break
+        guard()
+        if issuer is None or published is None:
+            result['pending'].append(dict(publication_id=str(pid),reason='SOURCE_IDENTITY_OR_TIME_UNKNOWN'));continue
+        path=(archive.root/key).resolve()
+        if not path.is_relative_to(archive.root.resolve()) or not path.is_file():
+            result['pending'].append(dict(publication_id=str(pid),reason='SOURCE_ARCHIVE_MISSING'));continue
+        if path.stat().st_size>32_000_000:
+            result['pending'].append(dict(publication_id=str(pid),reason='SOURCE_RESOURCE_LIMIT'));continue
+        body=path.read_bytes()
+        if hashlib.sha256(body).hexdigest()!=digest:
+            result['pending'].append(dict(publication_id=str(pid),reason='SOURCE_HASH_MISMATCH'));continue
+        parsed=parse_results_xbrl(body,listed_period(raw))
+        if not parsed.figures:
+            result['pending'].append(dict(publication_id=str(pid),reason='PARSER_NO_FIGURES',issues=parsed.issues));continue
+        with conn.transaction():
+            current=conn.execute('SELECT document_version_id,pipeline_state,issuer_id,published_at FROM document_publications WHERE publication_id=%s FOR UPDATE',(pid,)).fetchone()
+            if current!=(vid,'TEXT_READY',issuer,published):
+                result['pending'].append(dict(publication_id=str(pid),reason='SOURCE_CHANGED'));continue
+            if conn.execute('SELECT 1 FROM financial_facts WHERE publication_id=%s AND provider=%s AND provider_version=%s LIMIT 1',
+                            (pid,PROVIDER,ADAPTER_VERSION)).fetchone():continue
+            guard();_store_figures(conn,issuer,published,pid,vid,parsed)
+        result['reparsed'].append(dict(publication_id=str(pid),issuer_id=str(issuer),figures=len(parsed.figures),issues=parsed.issues))
+    result['remaining']=result['identified']-len(result['reparsed'])
+    return result
 
 
 def results_report(conn) -> dict:
@@ -296,7 +370,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     import psycopg
 
     ap = argparse.ArgumentParser(prog="python -m inflection.financials")
-    ap.add_argument("command", choices=("list", "load", "report"))
+    ap.add_argument("command", choices=("list", "load", "reparse-cached", "report"))
     ap.add_argument("--from", dest="start", type=date.fromisoformat,
                     help="periods ending on or after this date")
     ap.add_argument("--to", dest="end", type=date.fromisoformat,
@@ -312,19 +386,21 @@ def main(argv: Optional[list[str]] = None) -> int:
     a = ap.parse_args(argv)
     if a.workers < 1:
         ap.error("--workers must be positive")
-    if a.command == "load" and not a.archive:
-        ap.error("load needs --archive")
+    if a.command in ("load","reparse-cached") and not a.archive:
+        ap.error("load and reparse-cached need --archive")
     with psycopg.connect(os.environ["INFLECTION_DSN"], autocommit=True) as conn:
         client = HttpClient(min_interval=a.interval)
         if a.command == "list":
             symbols = [s.strip() for s in a.symbols.split(",")] if a.symbols else None
-            counts = list_results(conn, client, a.start or date(2021,1,1), a.end or date.today(), symbols, a.relist,
+            counts = list_results(conn, client, a.start or date(2021,1,1), a.end or datetime.now(IST).date(), symbols, a.relist,
                                   progress=lambda s, st, f, n: print(f"{s}: {st}, {f} in window, {n} new", flush=True))
             print(json.dumps(dict(counts), indent=2))
         elif a.command == "load":
             print(json.dumps(dict(load_pending(conn, Archive(a.archive), client, a.limit, a.retry_failed, workers=a.workers,
                 reparse_failed=a.reparse_failed,start=a.start,end=a.end,
                 progress=lambda done, total, counts: print(f"load: {done}/{total} {json.dumps(counts)}", flush=True))), indent=2))
+        elif a.command == 'reparse-cached':
+            print(json.dumps(reparse_cached(conn,Archive(a.archive),limit=a.limit),indent=2))
         print(json.dumps(results_report(conn), indent=2))
     return 0
 

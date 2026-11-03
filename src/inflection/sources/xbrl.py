@@ -67,6 +67,14 @@ MONEY_TAGS = {
     "ProfitOrLossAttributableToOwnersOfParent": "pat_owners",
     "ProfitOrLossAttributableToNonControllingInterests": "pat_non_controlling",
     "PaidUpValueOfEquityShareCapital": "paid_up_capital",
+    # Non-Ind AS result instances use distinct names and a signed minority
+    # adjustment. Preserve the filed final profit and its reconciliation inputs.
+    "ProfitLossForThePeriod": "pat",
+    "ProfitLossForThePeriodFromContinuingOperations": "pat_continuing",
+    "ProfitLossFromDiscontinuingOperationAfterTax": "pat_discontinued",
+    "ShareOfProfitLossOfAssociates": "share_of_associates",
+    "ProfitLossForPeriodBeforeMinorityInterest": "pat_before_minority",
+    "ProfitLossOfMinorityInterest": "minority_adjustment",
 }
 PER_SHARE_TAGS = {
     "FaceValueOfEquityShareCapital": "face_value",
@@ -377,6 +385,9 @@ def parse_results_xbrl(body: bytes, listed: Optional[tuple[Optional[date], Optio
         except InvalidOperation:
             issues.append(f"{n} in context {cref}: {v!r} is not a number; not used")
             continue
+        if not value.is_finite():
+            issues.append(f"{n} in context {cref}: non-finite numeric value; not used")
+            continue
         ctx = contexts.get(cref) or {"dims": {}}
         unit_name = units.get(uref or "", "")
         segment = None
@@ -444,9 +455,15 @@ def _check_arithmetic(figures: list[Figure], issues: list[str]) -> None:
             checks.append(("PBT - tax = profit from continuing operations", [pbt, tax, cont],
                            ok(pbt.value - tax.value, cont.value)))
         pat = g("pat")
+        before_minority = g("pat_before_minority")
         if pat and cont:
             base = cont.value + val("pat_discontinued", Decimal(0))
-            checks.append(("continuing + discontinued = profit for the period", [pat],
+            target = before_minority or pat
+            checks.append(("continuing + discontinued = profit for the period", [target,pat],
+                           ok(base, target.value) or ok(base + val("share_of_associates", Decimal(0)), target.value)))
+        if pat and before_minority:
+            base = before_minority.value + val("minority_adjustment", Decimal(0))
+            checks.append(("profit before minority + filed minority adjustment = final profit", [pat],
                            ok(base, pat.value) or ok(base + val("share_of_associates", Decimal(0)), pat.value)))
         own, nci = g("pat_owners"), g("pat_non_controlling")
         if pat and own and nci:

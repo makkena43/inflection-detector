@@ -27,7 +27,9 @@ main { padding:16px; max-width:1400px; margin:0 auto }
 .card .k { color:var(--muted); font-size:12px } .card .v { font-size:17px; font-weight:600; margin-top:2px }
 .wrap { overflow-x:auto; background:var(--panel); border:1px solid var(--line); border-radius:8px }
 table { border-collapse:collapse; width:100%; font-size:13px }
-#health-table { table-layout:fixed }
+#health-table, #health-workers { table-layout:fixed }
+#health-workers th, #health-workers td { white-space:normal; overflow-wrap:anywhere }
+#health-workers-panel { margin-bottom:16px }
 #health-table th, #health-table td { white-space:normal; overflow-wrap:anywhere; min-width:0 }
 #health-table th:nth-child(1) { width:27% }
 #health-table th:nth-child(2) { width:17% }
@@ -109,6 +111,7 @@ a { color:var(--accent) }
     <div class="cards" id="health-summary"></div>
     <p id="health-window" class="muted"></p>
     <p id="health-repair" class="muted"></p>
+    <details id="health-workers-panel" open hidden><summary>Background repairs</summary><div class="wrap"><table id="health-workers"></table></div></details>
     <div class="wrap"><table id="health-table"></table></div>
     <p class="muted">A completed processing window does not prove historical-data completeness or investment performance. Source limitations remain visible after software fixes.</p>
   </section>
@@ -444,6 +447,11 @@ async function loadHealth() {
     const age=repair?.updated_at ? Date.now()-new Date(repair.updated_at).getTime() : 0;
     $('#health-repair').textContent=repair ? `${repairNames[repair.state] || repair.state}: ${repair.scope || 'announcement listings'}. ${n(repair.complete_days,0)} of ${n(repair.total_days,0)} days verified. ${repair.current_day ? 'Current day: '+repair.current_day+'. ' : ''}${repair.state==='RUNNING' && age>900000 ? 'Progress has not updated for 15 minutes; the repair may have stopped. ' : ''}Listing repair does not complete downloads or analysis.` : '';
 
+    const workers=healthReport.repair_jobs || [];
+    $('#health-workers-panel').hidden=!workers.length;
+    const tasks={references:'Company identities and actions',financials:'Original results and prior periods',attachments:'Attachment download and text',ocr:'Local OCR',evidence:'Disclosure evidence inventory',analysis:'Recheck recovered evidence'};
+    const states={RUNNING:'Running',COMPLETE:'Stage finished',FINISHED_WITH_GAPS:'Finished with unresolved items',SOURCE_UNAVAILABLE:'Source unavailable',STORAGE_LIMIT:'Storage limit reached',EVIDENCE_REQUIRED:'Source evidence required',STOPPED:'Worker stopped',FAILED:'Stopped: needs attention',STATUS_UNAVAILABLE:'Status unavailable'};
+    $('#health-workers').innerHTML='<tr><th>Repair</th><th>Status</th><th>Current work</th><th>Last progress</th></tr>'+workers.map(w=>`<tr><td>${esc(tasks[w.task] || w.task)}</td><td>${esc(states[w.state] || w.state)}</td><td>${esc(w.task==='ocr' && w.state==='RUNNING' ? 'Reading scanned filings; retaining uncertain text for review' : ((w.stage || '').includes('month_local.py') || (w.stage || '').includes('/.venv/')) ? 'Check recovered passages and connect related events' : w.stage || '')}${w.error ? '<br>'+esc(w.error) : ''}${w.issues?.length ? `<details><summary>Unresolved items (${n(w.issues.length,0)})</summary><pre>${esc(JSON.stringify(w.issues,null,2))}</pre></details>` : ''}</td><td>${w.updated_at ? esc(new Date(w.updated_at).toLocaleString()) : '—'}${w.state==='RUNNING' && Date.now()-new Date(w.updated_at).getTime()>900000 ? '<br>No recent progress recorded' : ''}</td></tr>`).join('');
     renderHealth();
   } catch(error) { $('#health-status').textContent='Unable to load: '+error.message; }
 }
@@ -455,7 +463,7 @@ function renderHealth() {
 $('#health-refresh').onclick=loadHealth;
 $('#health-filter').onchange=renderHealth;
 loadHealth();
-setInterval(()=>{if(!$('#health').hidden && healthReport?.coverage_repair?.state==='RUNNING') loadHealth();},15000);
+setInterval(()=>{if(!$('#health').hidden && (healthReport?.coverage_repair?.state==='RUNNING' || healthReport?.repair_jobs?.some(w=>w.state==='RUNNING'))) loadHealth();},15000);
 </script>
 </body>
 </html>
