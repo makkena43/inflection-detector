@@ -1,0 +1,46 @@
+{
+  "117296": {
+    "company": "Uniparts India Limited",
+    "report_date": "2023-01-16",
+    "revenue_growth": {
+      "status": "met", "value_pct": 36.0, "basis": "reported FY2022 versus FY2021; future growth not quantified", "page": 1,
+      "quote": "recorded a healthy growth in revenues in FY2022 (36% over FY2021)"
+    },
+    "order_book": {"status": "not_disclosed", "ratio": null, "basis": "No quantified order-book/revenue ratio disclosed", "page": null, "quote": ""},
+    "margin_expansion": {
+      "status": "met", "previous_pct": 20.7, "current_pct": 21.7, "basis": "reported OPM: FY2022 to Q1 FY2023; quarterly versus annual comparison", "page": 1,
+      "quote": "maintained improved profitability (OPM of 20.7% and 21.7% in FY2022 and Q1 FY2023"
+    },
+    "capacity_expansion": {
+      "status": "met", "basis": "ongoing new-plant construction; not maintenance-only capex", "page": 3,
+      "quote": "construction of the new plant in Ludhiana, under its recently set up subsidiary, Gripwel Conag Pvt. Ltd."
+    },
+    "credit_metrics": {
+      "status": "met", "basis": "reported FY2021 to FY2022: debt/OPBDIT 1.3 to 0.6; interest coverage 14.9 to 44.5; ICRA expects further strengthening", "page": 4,
+      "quote": "Total debt/OPBDIT (times)",
+      "metrics": [{"name":"debt/OPBDIT","previous":1.3,"current":0.6,"lower_is_better":true},{"name":"interest_coverage","previous":14.9,"current":44.5,"lower_is_better":false}]
+    }
+  },
+  "117559": {
+    "company": "Garware Technical Fibres Limited",
+    "report_date": "2023-01-25",
+    "revenue_growth": {
+      "status": "not_met", "previous_revenue": 1034.6, "current_revenue": 1189.4, "basis": "reported FY2022 versus FY2021; H1 FY2023 has no comparable prior-half figure and forward growth is not quantified", "page": 4,
+      "quote": "Operating Income (Rs. crore)"
+    },
+    "order_book": {"status":"not_disclosed","ratio":null,"basis":"No quantified order-book/revenue ratio disclosed","page":null,"quote":""},
+    "margin_expansion": {
+      "status":"not_met","previous_pct":17.3,"current_pct":15.5,"basis":"reported OPM: FY2022 to H1 FY2023; annual versus half-year comparison; FY2021 OPM was 18.7%", "page":4,
+      "quote":"OPBDIT/OI (%)"
+    },
+    "capacity_expansion": {
+      "status":"not_disclosed","basis":"No incremental capacity project quantified; report says no large capital expenditure", "page":3,
+      "quote":"any large capital expenditure as well as no long-term debt exposure at present"
+    },
+    "credit_metrics": {
+      "status":"mixed","basis":"FY2022 to H1 FY2023: TOL/TNW improves 0.5 to 0.4, but debt/OPBDIT rises 0.4 to 0.5 and interest coverage falls 19.4 to 17.4; mixed trend does not score", "page":4,
+      "quote":"Total Debt/OPBDIT (times)",
+      "metrics":[{"name":"TOL/TNW","previous":0.5,"current":0.4,"lower_is_better":true},{"name":"debt/OPBDIT","previous":0.4,"current":0.5,"lower_is_better":true},{"name":"interest_coverage","previous":19.4,"current":17.4,"lower_is_better":false}]
+    }
+  }
+}
