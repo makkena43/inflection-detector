@@ -809,6 +809,7 @@ def ownership_section(o: Optional[dict]) -> list[str]:
 
 
 SUPPLY_ROLE_LABEL = {"MAKER": "maker (manufacturing evidence)", "SUPPLIER": "supplier (evidenced)",
+                     "EPC": "EPC contractor (own filings mostly EPC work)",
                      "MENTION_ONLY": "mention only (no maker/supplier evidence)"}
 
 

@@ -315,11 +315,30 @@ _ROLE_PRODUCT_RE = {
 _ROLE_MAP = {"MANUFACTURER": "MAKER", "DIRECT_PRODUCT_SUPPLIER": "SUPPLIER"}
 
 
-def company_roles(conn, issuer_id, day: date, products: list[str]) -> dict[str, str]:
-    """{product: MAKER | SUPPLIER | MENTION_ONLY} from MakroGraph's capability and evidenced role rows dated on or
-    before `day`; {} when the makrograph_ref tables are not present."""
+EPC_LOOKBACK_DAYS = 730
+EPC_MIN_PASSAGES = 2
+
+
+def is_contractor(conn, issuer_id, cutoff: datetime) -> bool:
+    """True when the company's own order / capacity passages of the two years before the cutoff mostly describe EPC
+    work (erection, installation, turnkey) rather than making things. MakroGraph's capability table calls solar and
+    transmission EPC firms 'manufacturers'; this check, from inflection's emergent roles, overrides that."""
+    from . import emergent
+    counts = dict(conn.execute(
+        """SELECT role, count(*) FROM theme_phrase_mentions
+            WHERE issuer_id = %s AND version = %s AND role IN ('EPC', 'MAKER')
+              AND published_at < %s AND published_at >= %s GROUP BY role""",
+        (issuer_id, emergent.VERSION, cutoff, cutoff - timedelta(days=EPC_LOOKBACK_DAYS))).fetchall())
+    return counts.get("EPC", 0) >= EPC_MIN_PASSAGES and counts.get("EPC", 0) > counts.get("MAKER", 0)
+
+
+def company_roles(conn, issuer_id, day: date, products: list[str], cutoff: Optional[datetime] = None) -> dict[str, str]:
+    """{product: MAKER | SUPPLIER | EPC | MENTION_ONLY} from MakroGraph's capability and evidenced role rows dated on
+    or before `day`; a 'maker' whose own filings mostly describe EPC work is EPC. {} when the makrograph_ref tables
+    are not present."""
     if not products or conn.execute("SELECT to_regclass('makrograph_ref.mg_company_capabilities')").fetchone()[0] is None:
         return {}
+    contractor = cutoff is not None and is_contractor(conn, issuer_id, cutoff)
     syms = [r[0] for r in conn.execute(
         """SELECT DISTINCT upper(h.value) FROM securities s JOIN identifier_history h USING (security_id)
             WHERE s.issuer_id = %s AND h.kind = 'SYMBOL'""", (issuer_id,)).fetchall()]
@@ -329,7 +348,7 @@ def company_roles(conn, issuer_id, day: date, products: list[str]) -> dict[str, 
         if conn.execute("""SELECT 1 FROM makrograph_ref.mg_company_capabilities
                             WHERE upper(ticker) = ANY(%s) AND product = ANY(%s) AND manufacturer
                               AND as_of_date <= %s LIMIT 1""", (syms, names, day)).fetchone():
-            out[prod] = "MAKER"
+            out[prod] = "EPC" if contractor else "MAKER"
             continue
         rx = _ROLE_PRODUCT_RE.get(prod)
         r = conn.execute(
@@ -339,6 +358,8 @@ def company_roles(conn, issuer_id, day: date, products: list[str]) -> dict[str, 
                   AND adjudication_state LIKE '%%EVIDENCED%%' AND as_of_date <= %s AND last_evidence_date <= %s
                 ORDER BY role_type = 'MANUFACTURER' DESC LIMIT 1""", (syms, rx, day, day)).fetchone() if rx else None
         out[prod] = _ROLE_MAP[r[0]] if r else "MENTION_ONLY"
+        if contractor and out[prod] == "MAKER":
+            out[prod] = "EPC"
     return out
 
 
@@ -373,7 +394,7 @@ def exposure(conn, issuer_id, cutoff: datetime, mode: str = "PUBLIC_INFORMATION"
               for r in rows]
     themes.sort(key=lambda t: (-t["conviction"], t["product"]))
     themes = themes[:limit]
-    roles = company_roles(conn, issuer_id, day, [t["product"] for t in themes])
+    roles = company_roles(conn, issuer_id, day, [t["product"] for t in themes], cutoff)
     for t in themes:
         t["company_role"] = roles.get(t["product"])
     return {"snapshot": latest.isoformat(), "themes": themes}
