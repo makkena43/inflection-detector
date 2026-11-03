@@ -35,3 +35,42 @@ def test_repair_does_not_mask_parser_or_storage_failures(db,tmp_path):
     path=tmp_path/'progress.json'
     with pytest.raises(OSError):repair(db,Broken(),date(2026,10,1),date(2026,10,1),path)
     assert json.loads(path.read_text())['state']=='INTERRUPTED'
+
+
+def test_nse_stream_repair_does_not_reuse_other_streams(db,tmp_path):
+    from inflection.ingest import record_window
+    day=date(2026,10,1)
+    record_window(db,WindowResult('BSE','equity',day,day,WindowStatus.COMPLETE))
+    record_window(db,WindowResult('NSE','equities',day,day,WindowStatus.COMPLETE))
+    class Adapter:
+        def __init__(self):self.calls=[]
+        def list_window(self,a,b,segment):
+            self.calls.append(segment)
+            return WindowResult('NSE',segment,a,b,WindowStatus.COMPLETE)
+    adapter=Adapter()
+    result=repair(db,adapter,day,day,tmp_path/'sme.json',source='nse_announcements',segment='sme')
+    assert adapter.calls==['sme'] and result['state']=='COMPLETE'
+    repair(db,adapter,day,day,tmp_path/'sme.json',source='nse_announcements',segment='sme')
+    assert adapter.calls==['sme']  # Correct stream is now covered.
+
+
+def test_coverage_storage_guard_prevents_further_source_writes(db,tmp_path):
+    import pytest
+    class Adapter:
+        def list_window(self,*args):raise AssertionError('Called source after storage stop')
+    def full():raise RuntimeError('reserve reached')
+    path=tmp_path/'progress.json'
+    with pytest.raises(RuntimeError,match='reserve reached'):
+        repair(db,Adapter(),date(2026,10,1),date(2026,10,1),path,guard=full)
+    assert json.loads(path.read_text())['state']=='INTERRUPTED'
+    assert db.execute('SELECT count(*) FROM ingestion_runs').fetchone()[0]==0
+
+
+def test_coverage_repair_rejects_a_different_returned_stream(db,tmp_path):
+    import pytest
+    class Adapter:
+        def list_window(self,a,b,segment):return WindowResult('NSE','equities',a,b,WindowStatus.COMPLETE)
+    with pytest.raises(ValueError,match='different stream'):
+        repair(db,Adapter(),date(2026,10,1),date(2026,10,1),tmp_path/'progress.json',
+               source='nse_announcements',segment='sme')
+    assert db.execute('SELECT count(*) FROM ingestion_runs').fetchone()[0]==0

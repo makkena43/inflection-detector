@@ -118,6 +118,7 @@ class BSEAnnouncements:
         rows: list[dict] = []
         notes: list[str] = []
         total: Optional[int] = None
+        inconsistent_count=False
         for page in range(1, self.max_pages + 1):
             q = urlencode({"pageno": page, "strCat": category, "strPrevDate": from_date.strftime("%Y%m%d"),
                            "strScrip": scrip, "strSearch": "P", "strToDate": to_date.strftime("%Y%m%d"),
@@ -129,7 +130,11 @@ class BSEAnnouncements:
                     return status, [], [f"{category}: {note}"]
                 return WindowStatus.PARTIAL, rows, notes + [f"{category} page {page}: {note}"]
             table = (data.get("Table") or []) if isinstance(data, dict) else (data or [])
-            total = _row_count(data) if total is None and isinstance(data, dict) else total
+            reported=_row_count(data) if isinstance(data,dict) else None
+            if reported is not None:
+                if reported<0 or (total is not None and reported!=total):
+                    inconsistent_count=True
+                if total is None and reported>=0:total=reported
             rows.extend(table)
             if not table or len(table) < PAGE_SIZE or (total is not None and len(rows) >= total):
                 break
@@ -138,6 +143,8 @@ class BSEAnnouncements:
                                                   f"({len(rows)} of {total if total is not None else '?'} rows)"]
         if not rows:
             return WindowStatus.EMPTY_UNVERIFIED, [], [f"{category}: no rows"]
+        if inconsistent_count or (total is not None and len(rows)>total):
+            return WindowStatus.PARTIAL,rows,[f'{category}: inconsistent row count during pagination']
         if total is not None and len(rows) < total:
             return WindowStatus.TRUNCATED, rows, [f"{category}: {len(rows)} of {total} rows"]
         ids = [str(r.get('NEWSID')) for r in rows if isinstance(r, dict) and r.get('NEWSID')]

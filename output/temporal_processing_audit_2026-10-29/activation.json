@@ -1,0 +1,57 @@
+{
+  "started_at": "2026-10-29T10:58:07.572982+00:00",
+  "migration": "0029_supplementary_timing",
+  "history_counts": {
+    "corporate_actions": 17016,
+    "govt_programmes": 51,
+    "pli_beneficiaries": 573,
+    "programme_mentions": 8194,
+    "shareholding_patterns": 44533
+  },
+  "history_started_at": "2026-10-29 16:28:07.619566+05:30",
+  "engine_sha256": "0fb5465d41ce323e8e731a6ec175b0708e72352827dd5f53fbd9069a95dbbdbd",
+  "backup": "/Users/makkenasrinivas/inflection-jobs/engine/engine.py.bak-temporal-processing-20261029",
+  "previous_analysis": {
+    "task": "analysis",
+    "state": "RUNNING",
+    "pid": 52438,
+    "first": "2024-10-29",
+    "last": "2026-10-28",
+    "started_at": "2026-10-29T10:45:00.863398+00:00",
+    "counts": {},
+    "issues": [],
+    "stage": "Refresh source-qualified order book and intake evidence",
+    "archive_bytes_added": 0,
+    "updated_at": "2026-10-29T10:47:55.006714+00:00"
+  },
+  "dashboard_pid": 60722,
+  "analysis_pid": 60728,
+  "analysis_before_final_drain_activation": {
+    "task": "analysis",
+    "state": "RUNNING",
+    "pid": 58214,
+    "first": "2024-10-29",
+    "last": "2026-10-28",
+    "started_at": "2026-10-29T10:58:47.867775+00:00",
+    "counts": {},
+    "issues": [],
+    "stage": "Refresh source-qualified order book and intake evidence",
+    "archive_bytes_added": 0,
+    "updated_at": "2026-10-29T11:01:24.929864+00:00"
+  },
+  "analysis_before_open_window_fix": {
+    "task": "analysis",
+    "state": "RUNNING",
+    "pid": 59330,
+    "first": "2024-10-29",
+    "last": "2026-10-29",
+    "started_at": "2026-10-29T11:04:34.338932+00:00",
+    "counts": {},
+    "issues": [],
+    "stage": "Refresh source-qualified order book and intake evidence",
+    "archive_bytes_added": 0,
+    "updated_at": "2026-10-29T11:07:11.398159+00:00"
+  },
+  "final_tests": "585 passed",
+  "final_code_activated_at": "2026-10-29T11:09:06.473167+00:00"
+}

@@ -1,0 +1,157 @@
+F.FF.......................................................              [100%]
+=================================== FAILURES ===================================
+____ test_removes_only_old_unreferenced_payloads_keeps_links_and_generation ____
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_80e3988d2c7e) at 0x10247a270>
+
+    def test_removes_only_old_unreferenced_payloads_keeps_links_and_generation(db):
+        it,a,b,c=versions(db)
+        # Bind the oldest version as recorded decision evidence.
+        db.execute('UPDATE triage_shortlist_items SET packet_id=%s WHERE shortlist_id=%s AND issuer_id=%s',
+                   (a['packet_id'],it['shortlist_id'],it['issuer_id']))
+>       rows=R.batch(db)
+             ^^^^^^^^^^^
+
+tests/test_packet_retention.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/inflection/packet_retention.py:31: in batch
+    row=conn.execute('''UPDATE triage_packets p SET payload_purged_at=%s::timestamptz,markdown='',
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_80e3988d2c7e) at 0x10247a270>
+query = "UPDATE triage_packets p SET payload_purged_at=%s::timestamptz,markdown='',\n                content=jsonb_build_objec...ket_payload_retirable(p)\n                RETURNING payload_purged_at,pg_column_size(content)+pg_column_size(markdown)"
+params = (datetime.datetime(2026, 10, 31, 13, 17, 5, 865253, tzinfo=datetime.timezone.utc), 'OWNER_REQUESTED_SUPERSEDED_PACKET_....datetime(2026, 10, 31, 13, 17, 5, 865253, tzinfo=datetime.timezone.utc), UUID('e14a72f0-e137-42aa-aa39-4fd1e03c7ae6'))
+prepare = None, binary = False
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -> Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.IndeterminateDatatype: could not determine data type of parameter $2
+
+.venv/lib/python3.12/site-packages/psycopg/connection.py:304: IndeterminateDatatype
+_ test_ordinary_mutation_stays_forbidden_and_removed_packets_cannot_bind_decisions _
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_e8e3bf99f888) at 0x10609b4a0>
+
+    def test_ordinary_mutation_stays_forbidden_and_removed_packets_cannot_bind_decisions(db):
+        it,a,b,c=versions(db)
+        with pytest.raises(psycopg.errors.RaiseException,match='append-only'):
+            db.execute('UPDATE triage_packets SET markdown=\'changed\' WHERE packet_id=%s',(c['packet_id'],))
+>       R.batch(db)
+
+tests/test_packet_retention.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/inflection/packet_retention.py:31: in batch
+    row=conn.execute('''UPDATE triage_packets p SET payload_purged_at=%s::timestamptz,markdown='',
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_e8e3bf99f888) at 0x10609b4a0>
+query = "UPDATE triage_packets p SET payload_purged_at=%s::timestamptz,markdown='',\n                content=jsonb_build_objec...ket_payload_retirable(p)\n                RETURNING payload_purged_at,pg_column_size(content)+pg_column_size(markdown)"
+params = (datetime.datetime(2026, 10, 31, 13, 17, 6, 784814, tzinfo=datetime.timezone.utc), 'OWNER_REQUESTED_SUPERSEDED_PACKET_....datetime(2026, 10, 31, 13, 17, 6, 784814, tzinfo=datetime.timezone.utc), UUID('1cdcb863-c717-4952-b0ae-31e478e8e94e'))
+prepare = None, binary = False
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -> Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.IndeterminateDatatype: could not determine data type of parameter $2
+
+.venv/lib/python3.12/site-packages/psycopg/connection.py:304: IndeterminateDatatype
+__________ test_concurrent_review_cannot_bind_a_payload_being_removed __________
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_c6abcb4fb23f) at 0x1024a7bf0>
+
+    def test_concurrent_review_cannot_bind_a_payload_being_removed(db):
+        it,a,b,c=versions(db);started=Event()
+        def competing():
+            with psycopg.connect(db.info.dsn,autocommit=True) as conn:
+                started.set();review(conn,it,C.content_hash(a['content']))
+        with ThreadPoolExecutor(max_workers=1) as pool:
+            with db.transaction():
+                db.execute('SELECT packet_id FROM triage_packets WHERE packet_id=%s FOR UPDATE',(a['packet_id'],))
+>               R.batch(db)
+
+tests/test_packet_retention.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/inflection/packet_retention.py:31: in batch
+    row=conn.execute('''UPDATE triage_packets p SET payload_purged_at=%s::timestamptz,markdown='',
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_c6abcb4fb23f) at 0x1024a7bf0>
+query = "UPDATE triage_packets p SET payload_purged_at=%s::timestamptz,markdown='',\n                content=jsonb_build_objec...ket_payload_retirable(p)\n                RETURNING payload_purged_at,pg_column_size(content)+pg_column_size(markdown)"
+params = (datetime.datetime(2026, 10, 31, 13, 17, 7, 142066, tzinfo=datetime.timezone.utc), 'OWNER_REQUESTED_SUPERSEDED_PACKET_....datetime(2026, 10, 31, 13, 17, 7, 142066, tzinfo=datetime.timezone.utc), UUID('56277044-da8c-4498-859d-4d7c4976dae4'))
+prepare = None, binary = False
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -> Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.IndeterminateDatatype: could not determine data type of parameter $2
+
+.venv/lib/python3.12/site-packages/psycopg/connection.py:304: IndeterminateDatatype
+=========================== short test summary info ============================
+FAILED tests/test_packet_retention.py::test_removes_only_old_unreferenced_payloads_keeps_links_and_generation
+FAILED tests/test_packet_retention.py::test_ordinary_mutation_stays_forbidden_and_removed_packets_cannot_bind_decisions
+FAILED tests/test_packet_retention.py::test_concurrent_review_cannot_bind_a_payload_being_removed
+3 failed, 56 passed in 16.80s

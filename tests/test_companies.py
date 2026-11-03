@@ -160,3 +160,31 @@ def test_an_existing_duplicate_company_is_merged_into_the_known_one(db):
     assert db.execute("SELECT issuer_id FROM securities WHERE isin = 'INE111A01003'").fetchone() == (real,)
     assert db.execute("SELECT action FROM audit_log").fetchall() == [("MERGE_DUPLICATE_ISSUER",)]
     assert companies.merge_filing_duplicates(db) == {}                           # nothing left to merge
+
+
+def test_an_older_isin_held_by_a_symbol_less_company_is_merged_by_issuer_code(db):
+    _load(db)
+    companies.build_from_master(db)
+    dup = db.execute("INSERT INTO issuers (legal_name) VALUES ('ABC Ltd') RETURNING issuer_id").fetchone()[0]
+    db.execute("INSERT INTO securities (issuer_id, isin, instrument_type) VALUES (%s, 'INE111A01003', 'EQUITY')", (dup,))
+    ingest.record_window(db, nse_window([{**nse_row(1, "https://x/a.pdf"), "symbol": "ZZZ", "sm_isin": "INE111A01003"}]))
+    db.execute("UPDATE document_publications SET issuer_id = %s", (dup,))           # a BSE-style filing, no symbol match
+    assert companies.merge_filing_duplicates(db) == {}
+    assert companies.merge_isin_twins(db) == dict(issuers_merged=1, filings_moved=1)
+    real = db.execute("SELECT issuer_id FROM securities WHERE isin = 'INE111A01011'").fetchone()[0]
+    assert db.execute("SELECT DISTINCT issuer_id FROM document_publications").fetchall() == [(real,)]
+    assert db.execute("SELECT details->>'rule' FROM audit_log").fetchone() == ("ISIN_ISSUER_CODE",)
+    assert companies.merge_isin_twins(db) == {}
+
+
+def test_an_isin_code_shared_by_two_listed_companies_is_not_merged(db):
+    _load(db)
+    companies.build_from_master(db)
+    other = db.execute("INSERT INTO issuers (legal_name) VALUES ('Other Ltd') RETURNING issuer_id").fetchone()[0]
+    sec = db.execute("INSERT INTO securities (issuer_id, isin, instrument_type) VALUES (%s, 'INE111A01029', 'EQUITY') "
+                     "RETURNING security_id", (other,)).fetchone()[0]
+    db.execute("""INSERT INTO identifier_history (security_id, exchange, kind, value, valid_from, source)
+                  VALUES (%s, 'NSE', 'SYMBOL', 'OTH', '2010-01-01', 'test')""", (sec,))
+    dup = db.execute("INSERT INTO issuers (legal_name) VALUES ('ABC Ltd') RETURNING issuer_id").fetchone()[0]
+    db.execute("INSERT INTO securities (issuer_id, isin, instrument_type) VALUES (%s, 'INE111A01003', 'EQUITY')", (dup,))
+    assert companies.merge_isin_twins(db) == {}

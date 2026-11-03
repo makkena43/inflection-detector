@@ -33,3 +33,20 @@ MakroGraph has no LICENSE file. It belongs to the same owner, so reusing it here
 | `earnings_inflection/discovery.py` | Principles kept: explicit deferred/partial coverage and a versioned universe. Lane scoring and orchestration are not imported. |
 | `fetcher/screener_fundamentals_fetcher.py` | Not copied: HTML scraping and mutable symbol-keyed snapshots conflict with the versioned-fact contract. |
 | MakroGraph DB (except the bhavcopy price tables, by owner decision; see open issue #12), credentials, historical labels, company/theme exceptions, report templates, full-statement regex stack | Excluded by the spec. |
+
+## Frozen MakroGraph reference data (`makrograph_ref`, copied 2026-11-03)
+
+Before MakroGraph was retired, these tables were copied verbatim from the `makrograph` database (opened read-only)
+into schema `makrograph_ref` of the inflection DB. They are frozen reference data: nothing writes to them, and they are
+not point-in-time safe unless a row's own dates say so. Triggers were dropped; keys and foreign keys were kept.
+
+| Tables | What |
+|---|---|
+| `mg_policy_events`, `mg_policy_targets`, `mg_tracked_schemes`, `mg_policy_documents` (the 803 India policy/government documents from `mg_documents`, with raw text) | Policy layer: PLI/budget/Economic Survey/PIB/SEBI/RBI events and targets |
+| `mg_capacity_gaps`, `mg_import_dependencies`, `mg_localization_opportunities`, `mg_domestic_production`, `mg_hs_products`, `mg_trade_flows`, `mg_product_hs_crosswalks` | Capacity and import-dependency layer |
+| `mg_constraint_*` (ledgers, ledger evidence, candidates, company candidates, company signals, signal activity, observation queue, evidence quarantine, product aliases and alias versions) | Point-in-time constraint ledger and discovery |
+| `mg_company_product_roles`, `mg_company_capabilities` | What companies make, with dated evidence |
+| `mg_causal_chains`, `mg_commodity_series` | Policy→bottleneck chains, commodity prices |
+
+Theme beneficiary history is in `theme_beneficiaries` (source `makrograph`, migration 0037); deals, insider trades and
+bhavcopy history were copied earlier (`inflection.deals copy-makrograph`, `inflection.prices import-makrograph`).

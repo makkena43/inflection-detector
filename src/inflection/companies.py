@@ -316,13 +316,13 @@ SELECT orphan_id, min(target_id::text)::uuid, sum(filings)
 HAVING count(*) = 1 AND bool_and(target_id IS NOT NULL AND target_id <> orphan_id)"""
 
 
-def merge_filing_duplicates(conn) -> dict:
+def merge_filing_duplicates(conn, query=None, rule="NSE_FILING_SYMBOL") -> dict:
     """Fold each PROVISIONAL company that only duplicates a known one (see ``_DUPLICATES``) into it: its
     securities (the older ISIN) and filings move over, and the merge is written to the audit log.
     Rows derived from the filings (passages, events, evaluations) keep the old company until the
     routes are re-run under new rules."""
     counts: Counter = Counter()
-    for orphan, target, n in conn.execute(_DUPLICATES).fetchall():
+    for orphan, target, n in conn.execute(query or _DUPLICATES).fetchall():
         with conn.transaction():
             isins = [r[0] for r in conn.execute("SELECT isin FROM securities WHERE issuer_id = %s", (orphan,))]
             conn.execute("UPDATE securities SET issuer_id = %s WHERE issuer_id = %s", (target, orphan))
@@ -330,11 +330,37 @@ def merge_filing_duplicates(conn) -> dict:
                                      WHERE issuer_id = %s""", (target, orphan)).rowcount
             conn.execute("""INSERT INTO audit_log (actor, actor_kind, action, target_table, target_id, details)
                             VALUES (%s, 'SYSTEM', 'MERGE_DUPLICATE_ISSUER', 'issuers', %s, %s)""",
-                         (CREATED_BY, str(target), Jsonb(dict(merged_issuer=str(orphan), isins=isins,
+                         (CREATED_BY, str(target), Jsonb(dict(merged_issuer=str(orphan), isins=isins, rule=rule,
                                                               filings_moved=moved, filings_resolved=int(n)))))
         counts["issuers_merged"] += 1
         counts["filings_moved"] += moved
     return dict(counts)
+
+
+# An older ISIN of a listed company (a face-value split or reissue: INE466L01020 -> INE466L01038) created as its
+# own PROVISIONAL company with no symbol: the ISIN's issuer code (its first 7 characters) names the company.
+# Only when exactly one company with a symbol carries that issuer code is it the same company.
+_ISIN_TWINS = """
+WITH orphan AS (
+    SELECT DISTINCT i.issuer_id, substr(s.isin, 1, 7) AS code FROM issuers i JOIN securities s USING (issuer_id)
+     WHERE i.identity_status = 'PROVISIONAL'
+       AND NOT EXISTS (SELECT 1 FROM securities x JOIN identifier_history h USING (security_id) WHERE x.issuer_id = i.issuer_id)
+       AND NOT EXISTS (SELECT 1 FROM audit_log a WHERE a.action = 'MERGE_DUPLICATE_ISSUER'
+                        AND a.details->>'merged_issuer' = i.issuer_id::text)
+), twin AS (
+    SELECT o.issuer_id AS orphan_id, array_agg(DISTINCT x.issuer_id) AS targets
+      FROM orphan o JOIN securities x ON substr(x.isin, 1, 7) = o.code AND x.issuer_id <> o.issuer_id
+      JOIN identifier_history h ON h.security_id = x.security_id
+     GROUP BY 1
+)
+SELECT orphan_id, targets[1], 0 FROM twin WHERE cardinality(targets) = 1"""
+
+
+def merge_isin_twins(conn) -> dict:
+    """Fold each symbol-less company holding only an older ISIN into the listed company with the same ISIN
+    issuer code, as ``merge_filing_duplicates`` does: securities and filings move, the merge is audited, and
+    derived rows wait for the routes to be re-run."""
+    return merge_filing_duplicates(conn, _ISIN_TWINS, rule="ISIN_ISSUER_CODE")
 
 
 def master_report(conn) -> dict:
@@ -372,7 +398,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     from .sources.http import HttpClient
 
     ap = argparse.ArgumentParser(prog="python -m inflection.companies")
-    ap.add_argument("command", choices=("fetch", "import", "build", "report"))
+    ap.add_argument("command", choices=("fetch", "import", "build", "report", "merge-isin-twins"))
     ap.add_argument("file", type=Path, nargs="?")
     ap.add_argument("--exchange", default="both", choices=("nse", "bse", "both"))
     ap.add_argument("--date", type=date.fromisoformat, default=None, help="snapshot date (default: today, IST)")
@@ -384,6 +410,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     snapshot = a.date or datetime.now(IST).date()
 
     with psycopg.connect(os.environ["INFLECTION_DSN"], autocommit=True) as conn:
+        if a.command == "merge-isin-twins":
+            print(json.dumps(merge_isin_twins(conn)))
+            return 0
         if a.command == "fetch":
             client = HttpClient(min_interval=a.interval)
             archive = Archive(a.archive) if a.archive else None

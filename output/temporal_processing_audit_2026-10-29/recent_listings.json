@@ -1,0 +1,17 @@
+[
+  {
+    "exchange": "nse",
+    "segment": "equities",
+    "exit_code": 0
+  },
+  {
+    "exchange": "nse",
+    "segment": "sme",
+    "exit_code": 0
+  },
+  {
+    "exchange": "bse",
+    "segment": null,
+    "exit_code": 0
+  }
+]

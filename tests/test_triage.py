@@ -197,3 +197,16 @@ def test_a_rerun_inherits_base_history_before_its_start(db, monkeypatch):
     monkeypatch.setenv("INFLECTION_RUN_BASE_UNTIL", nxt.isoformat())
     every = {i["symbol"]: i for i in pipeline.build(db, nxt, now=now, dry_run=True)["shortlist"]}
     assert "AAA" not in every                                               # triaged in the base run, nothing new since
+
+
+def test_a_company_merged_into_another_is_not_nominated(db):
+    t = lambda d: datetime.fromisoformat(d + "T18:00:00+05:30")             # noqa: E731
+    keep, ghost = _issuer(db, "AAA"), db.execute(
+        "INSERT INTO issuers (legal_name) VALUES ('AAA Ltd') RETURNING issuer_id").fetchone()[0]
+    _evaluation(db, keep, t("2026-10-06"), "P2")
+    _evaluation(db, ghost, t("2026-10-06"), "P1")
+    db.execute("""INSERT INTO audit_log (actor, actor_kind, action, target_table, target_id, details)
+                  VALUES ('test', 'SYSTEM', 'MERGE_DUPLICATE_ISSUER', 'issuers', %s, %s)""",
+               (str(keep), json.dumps(dict(merged_issuer=str(ghost)))))
+    out = pipeline.build(db, WEEK, now=datetime(2026, 10, 25, tzinfo=IST))
+    assert [i["symbol"] for i in out["shortlist"]] == ["AAA"] and len(out["shortlist"]) == 1

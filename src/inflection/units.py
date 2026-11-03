@@ -81,6 +81,11 @@ _SCALE_RE = r"(crores?|cr\.?|crs|lakhs?|lacs?|lac|mn|million|bn|billion|thousand
 _AMOUNT = re.compile(rf"(?:({_INR})|({_USD}))?\s*{_NUMBER}\s*{_SCALE_RE}\b", re.I)
 
 
+_QUANTITY_AFTER = re.compile(r"\s*(?:units?|kwh|mwh|mus?|mt|tonnes?|tons?|metric|nos\.?|numbers?|pieces?|pcs|litres?|"
+                             r"liters?|kl|sq\.?\s*ft|square|shares?|customers?|users?|subscribers?|doses?|vehicles?|"
+                             r"bags?|sets?|meters?|metres?|km|kgs?)\b", re.I)
+
+
 def parse_amount(text: str) -> Optional[Money]:
     """First amount in ``text`` with an explicit scale word.
 
@@ -96,6 +101,8 @@ def parse_amount(text: str) -> Optional[Money]:
             currency = "INR"
         else:
             continue
+        if not (inr or usd) and _QUANTITY_AFTER.match(text[m.end():]):
+            continue                    # "77 lakh units of power", "10 lakh MT": a quantity, not money
         return Money(Decimal(num.replace(",", "")), currency, scale, m.group(0).strip())
     return None
 
@@ -119,3 +126,28 @@ def growth(current: Money, base: Money, min_base: Optional[Money] = None) -> Gro
     if min_base is not None and b < min_base.to_base():
         return Growth(None, "base below materiality floor: percentage growth would mislead")
     return Growth((current.to_base() / b - 1) * 100, "ok")
+
+
+def finite_decimal(value) -> Optional[Decimal]:
+    """A numeric source value suitable for arithmetic; NaN/Infinity are missing proof."""
+    from decimal import InvalidOperation
+    try:
+        amount=Decimal(str(value))
+        return amount if amount.is_finite() else None
+    except (InvalidOperation,ValueError,TypeError):
+        return None
+
+
+def inr_base(value,currency,scale,value_kind='MONEY') -> Optional[Decimal]:
+    """Exact rupees from a proved INR monetary unit; never assume currency or scale."""
+    if value_kind!='MONEY' or currency!='INR' or scale not in Scale._value2member_map_:return None
+    amount=finite_decimal(value)
+    return amount*Scale(scale).factor if amount is not None else None
+
+
+def canonical_inr_crore(text: str) -> Optional[Decimal]:
+    """Decode the internal value/currency/scale representation without partial matches."""
+    match=re.fullmatch(r'\s*([+]?\d[\d,]*(?:\.\d+)?)\s+([A-Z]{3})\s+([A-Z]+)\s*',text or '')
+    if not match:return None
+    amount=inr_base(match[1].replace(',',''),match[2],match[3])
+    return amount/Scale.CRORE.factor if amount is not None and amount>=0 else None

@@ -485,3 +485,28 @@ def test_the_queue_reads_a_filing_once_under_the_current_rules(db, monkeypatch):
     rows = queue.evaluation_rows(db)
     assert len(rows) == before                                                # the old read drops out
     assert len(queue.evaluation_rows(db, include_superseded=True)) == 2 * before
+
+
+def test_later_zip_members_cannot_borrow_an_earlier_standalone_pdf_date(db,tmp_path):
+    from inflection import ingest
+    from inflection.sources.download import Archive
+    from test_ingest import nse_row,nse_window
+    from test_sources import client,zip_of
+    from pdf_fixtures import make_pdf
+    iss,_=_seed(db)
+    a=make_pdf(tmp_path/'a.pdf',['The Company received an order of Rs 100 crore from NTPC Limited.']).read_bytes()
+    b=make_pdf(tmp_path/'b.pdf',['The Company received an order of Rs 200 crore from BHEL Limited.']).read_bytes()
+    archive=Archive(tmp_path/'archive')
+    w=nse_window([{**nse_row(990,'https://h/bundle.zip'),'an_dt':'10-Jan-2026 15:00:00'}])
+    ingest.record_window(db,w)
+    c,_=client({'bundle.zip':[(200,zip_of({'a.pdf':a,'b.pdf':b}))]})
+    ingest.download_pending(db,archive,c)
+    ingest.record_window(db,nse_window([{**nse_row(991,'https://h/a.pdf'),'an_dt':'05-Jan-2026 15:00:00'}]))
+    c,_=client({'a.pdf':[(200,a)]});ingest.download_pending(db,archive,c)
+    ingest.extract_pending(db,archive)
+    db.execute('UPDATE document_publications SET issuer_id=%s',(iss,))
+    out=pipeline.scan(db,date(2026,1,1),date(2026,1,7))
+    assert out['SCANNED']==1
+    scanned=db.execute('''SELECT cs.document_version_id,p.document_version_id FROM commercial_scans cs
+        JOIN document_publications p ON p.publication_id=cs.publication_id''').fetchall()
+    assert all(artifact_version==published_version for artifact_version,published_version in scanned)

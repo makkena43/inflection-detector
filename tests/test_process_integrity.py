@@ -15,7 +15,7 @@ def financials(ends=None):
     ends=ends or QUARTER_ENDS[-8:]
     facts=[]
     for end in ends:
-        for metric,v in [('revenue',100),('pbt',5),('finance_cost',1),('depreciation',2),('other_income',0)]:
+        for metric,v in [('revenue',100),('total_expenses',95),('pbt',5),('finance_cost',1),('depreciation',2),('other_income',0)]:
             facts.append(fact(metric,end,v))
     return C.financial_snapshot(facts)
 
@@ -26,8 +26,8 @@ def test_valuation_refuses_four_nonconsecutive_quarters():
     assert C.valuation(fin,{'market_cap_cr':'100'})['price_to_sales'] is None
 
 
-def test_missing_other_income_is_unknown_not_zero():
-    fin=financials();fin['rows']['other_income'][-1]['value']=None
+def test_missing_total_expenses_is_unknown_not_zero():
+    fin=financials();fin['rows']['total_expenses'][-1]['value']=None
     assert C.valuation(fin,{})['opm_ttm_pct'] is None
 
 
@@ -113,9 +113,13 @@ def test_mechanisms_survive_rule_rollover_until_their_source_is_reread(db,monkey
     assert F._mechanisms(db,iss,at+timedelta(days=1))
     monkeypatch.setattr(V,'RULES_VERSION','commercial-next')
     assert F._mechanisms(db,iss,at+timedelta(days=1))
-    # Source reread under the new rule retires the older interpretation even before resolution.
+    # A scan alone cannot create a gap before the replacement is resolved.
+    previous=F._mechanisms(db,iss,at+timedelta(days=1))[0].version_id
     P.scan(db)
-    assert F._mechanisms(db,iss,at+timedelta(days=1))==[]
+    assert F._mechanisms(db,iss,at+timedelta(days=1))[0].version_id==previous
+    P.resolve(db)
+    current=F._mechanisms(db,iss,at+timedelta(days=1))
+    assert current and current[0].version_id!=previous
 
 
 def test_effective_outcome_uses_latest_recomputation_not_the_highest(db):

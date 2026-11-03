@@ -1,0 +1,9 @@
+{
+  "financial_rules": "financial-5",
+  "analysis_pid": 36582,
+  "first": "2024-10-29",
+  "last": "2026-10-28",
+  "native_download_worker_unchanged": true,
+  "new_raw_downloads_started": false,
+  "deployed_at": "2026-10-29T09:26:58.299251+00:00"
+}

@@ -1,0 +1,277 @@
+...........FF.F.F....                                                    [100%]
+=================================== FAILURES ===================================
+_ test_ocr_preserves_native_artifact_and_blocks_low_confidence_completion[True] _
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_c3ae21d8e28b) at 0x106371be0>
+tmp_path = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-107/test_ocr_preserves_native_arti0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106370c20>
+low_confidence = True
+
+    @pytest.mark.parametrize('low_confidence',[True,False])
+    def test_ocr_preserves_native_artifact_and_blocks_low_confidence_completion(db,tmp_path,monkeypatch,low_confidence):
+        import json
+        from inflection import ingest
+        from inflection.sources.download import Archive
+        from test_ingest import nse_row,nse_window
+        from test_sources import client
+        from pdf_fixtures import make_pdf
+        body=make_pdf(tmp_path/'blank.pdf',['']).read_bytes()
+        ingest.record_window(db,nse_window([nse_row(1,'https://h/scan.pdf')]))
+        c,_=client({'scan.pdf':[(200,body)]});archive=Archive(tmp_path/'archive')
+        ingest.download_pending(db,archive,c);ingest.extract_pending(db,archive)
+        binary=tmp_path/'output/process_health/vision_ocr_v2';binary.parent.mkdir(parents=True);binary.write_bytes(b'fake')
+        monkeypatch.setattr(R,'ROOT',tmp_path)
+        data={'pages':['Recovered evidence'],'pages_expected':1,'low_confidence_pages':[1] if low_confidence else []}
+        monkeypatch.setattr(R.subprocess,'run',lambda *a,**k:SimpleNamespace(stdout=json.dumps(data)))
+        job=FakeJob();job.archive=archive
+>       R.ocr(job,db)
+
+tests/test_repair_jobs.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/inflection/repair_jobs.py:210: in ocr
+    _ocr_pass(job,conn,version,binary,counts,seen,deferred,unavailable,clients,method)
+src/inflection/repair_jobs.py:280: in _ocr_pass
+    aid=conn.execute("""INSERT INTO text_artifacts(document_version_id,extraction_method,extraction_version,status,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_c3ae21d8e28b) at 0x106371be0>
+query = "INSERT INTO text_artifacts(document_version_id,extraction_method,extraction_version,status,\n                  pages_...       VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,'inflection.repair_jobs')\n                  RETURNING text_artifact_id"
+params = (UUID('d66e5e49-cc5c-4862-bfa2-f957f6b4ca1e'), 'apple-vision', 'apple-vision-2', 'PARTIAL', 1, 1, ...)
+prepare = None, binary = False
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -> Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.ProgrammingError: the query has 11 placeholders but 10 parameters were passed
+
+.venv/lib/python3.12/site-packages/psycopg/connection.py:304: ProgrammingError
+_ test_ocr_preserves_native_artifact_and_blocks_low_confidence_completion[False] _
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_38f8bcd357d3) at 0x106357d40>
+tmp_path = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-107/test_ocr_preserves_native_arti1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106372120>
+low_confidence = False
+
+    @pytest.mark.parametrize('low_confidence',[True,False])
+    def test_ocr_preserves_native_artifact_and_blocks_low_confidence_completion(db,tmp_path,monkeypatch,low_confidence):
+        import json
+        from inflection import ingest
+        from inflection.sources.download import Archive
+        from test_ingest import nse_row,nse_window
+        from test_sources import client
+        from pdf_fixtures import make_pdf
+        body=make_pdf(tmp_path/'blank.pdf',['']).read_bytes()
+        ingest.record_window(db,nse_window([nse_row(1,'https://h/scan.pdf')]))
+        c,_=client({'scan.pdf':[(200,body)]});archive=Archive(tmp_path/'archive')
+        ingest.download_pending(db,archive,c);ingest.extract_pending(db,archive)
+        binary=tmp_path/'output/process_health/vision_ocr_v2';binary.parent.mkdir(parents=True);binary.write_bytes(b'fake')
+        monkeypatch.setattr(R,'ROOT',tmp_path)
+        data={'pages':['Recovered evidence'],'pages_expected':1,'low_confidence_pages':[1] if low_confidence else []}
+        monkeypatch.setattr(R.subprocess,'run',lambda *a,**k:SimpleNamespace(stdout=json.dumps(data)))
+        job=FakeJob();job.archive=archive
+>       R.ocr(job,db)
+
+tests/test_repair_jobs.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/inflection/repair_jobs.py:210: in ocr
+    _ocr_pass(job,conn,version,binary,counts,seen,deferred,unavailable,clients,method)
+src/inflection/repair_jobs.py:280: in _ocr_pass
+    aid=conn.execute("""INSERT INTO text_artifacts(document_version_id,extraction_method,extraction_version,status,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_38f8bcd357d3) at 0x106357d40>
+query = "INSERT INTO text_artifacts(document_version_id,extraction_method,extraction_version,status,\n                  pages_...       VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,'inflection.repair_jobs')\n                  RETURNING text_artifact_id"
+params = (UUID('2ef76e95-479f-407f-97e6-ef55c2fc748b'), 'apple-vision', 'apple-vision-2', 'COMPLETE', 1, 1, ...)
+prepare = None, binary = False
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -> Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.ProgrammingError: the query has 11 placeholders but 10 parameters were passed
+
+.venv/lib/python3.12/site-packages/psycopg/connection.py:304: ProgrammingError
+___________ test_ocr_does_not_complete_a_zip_with_an_unread_workbook ___________
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_2d4a918366d7) at 0x106372e70>
+tmp_path = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-107/test_ocr_does_not_complete_a_z0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1063730e0>
+
+    def test_ocr_does_not_complete_a_zip_with_an_unread_workbook(db,tmp_path,monkeypatch):
+        import json
+        from inflection import ingest
+        from inflection.sources.download import Archive
+        from test_ingest import nse_row,nse_window
+        from test_sources import client,zip_of
+        from pdf_fixtures import make_pdf
+        raw=zip_of({'scan.pdf':make_pdf(tmp_path/'blank.pdf',['']).read_bytes(),'unread.xlsx':b'workbook'})
+        ingest.record_window(db,nse_window([nse_row(1,'https://h/mixed.zip')]))
+        archive=Archive(tmp_path/'archive');c,_=client({'mixed.zip':[(200,raw)]})
+        ingest.download_pending(db,archive,c);ingest.extract_pending(db,archive)
+        assert db.execute('SELECT pipeline_state FROM document_publications').fetchone()[0]=='OCR_REQUIRED'
+        binary=tmp_path/'output/process_health/vision_ocr_v2';binary.parent.mkdir(parents=True);binary.write_bytes(b'fake')
+        monkeypatch.setattr(R,'ROOT',tmp_path)
+        data={'pages':['Recovered text'],'pages_expected':1,'low_confidence_pages':[]}
+        monkeypatch.setattr(R.subprocess,'run',lambda *a,**k:SimpleNamespace(stdout=json.dumps(data)))
+>       job=FakeJob();job.archive=archive;R.ocr(job,db)
+                                          ^^^^^^^^^^^^^
+
+tests/test_repair_jobs.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/inflection/repair_jobs.py:210: in ocr
+    _ocr_pass(job,conn,version,binary,counts,seen,deferred,unavailable,clients,method)
+src/inflection/repair_jobs.py:280: in _ocr_pass
+    aid=conn.execute("""INSERT INTO text_artifacts(document_version_id,extraction_method,extraction_version,status,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_2d4a918366d7) at 0x106372e70>
+query = "INSERT INTO text_artifacts(document_version_id,extraction_method,extraction_version,status,\n                  pages_...       VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,'inflection.repair_jobs')\n                  RETURNING text_artifact_id"
+params = (UUID('4aee4a49-5191-4b61-a620-09b051756ab2'), 'apple-vision', 'apple-vision-2', 'COMPLETE', 1, 1, ...)
+prepare = None, binary = False
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -> Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.ProgrammingError: the query has 11 placeholders but 10 parameters were passed
+
+.venv/lib/python3.12/site-packages/psycopg/connection.py:304: ProgrammingError
+_____ test_cached_ocr_rechecks_filings_that_arrive_from_a_running_producer _____
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_5e6c7af38ad7) at 0x106371610>
+tmp_path = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-107/test_cached_ocr_rechecks_filin0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106371c10>
+
+    def test_cached_ocr_rechecks_filings_that_arrive_from_a_running_producer(db,tmp_path,monkeypatch):
+        import json,os
+        from inflection import ingest
+        from inflection.sources.download import Archive
+        from test_ingest import nse_row,nse_window
+        from test_sources import client
+        from pdf_fixtures import make_pdf
+        raw=make_pdf(tmp_path/'scan.pdf',['']).read_bytes()
+        ingest.record_window(db,nse_window([nse_row(1,'https://h/scan.pdf')]))
+        archive=Archive(tmp_path/'archive');c,_=client({'scan.pdf':[(200,raw)]})
+        ingest.download_pending(db,archive,c);ingest.extract_pending(db,archive)
+        path=next(archive.root.glob('*/*'));path.unlink()
+        binary=tmp_path/'output/process_health/vision_ocr_v2';binary.parent.mkdir(parents=True);binary.write_bytes(b'fake')
+        producer=tmp_path/'output/process_health/jobs/attachments.json';producer.parent.mkdir()
+        producer.write_text(json.dumps({'state':'RUNNING','pid':os.getpid()}))
+        monkeypatch.setattr(R,'ROOT',tmp_path)
+        def incoming(*args):
+            path.write_bytes(raw)
+            producer.write_text(json.dumps({'state':'COMPLETE','pid':os.getpid()}))
+        monkeypatch.setattr(R.clock,'sleep',incoming)
+        monkeypatch.setattr(R,'client',lambda *a:pytest.fail('Cached-only OCR attempted network access'))
+        result={'pages':['Recovered cached evidence'],'pages_expected':1,'low_confidence_pages':[]}
+        monkeypatch.setattr(R.subprocess,'run',lambda *a,**k:SimpleNamespace(stdout=json.dumps(result)))
+        job=FakeJob();job.archive=archive;job.args.cached_only=True
+>       R.ocr(job,db)
+
+tests/test_repair_jobs.py:152: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/inflection/repair_jobs.py:210: in ocr
+    _ocr_pass(job,conn,version,binary,counts,seen,deferred,unavailable,clients,method)
+src/inflection/repair_jobs.py:280: in _ocr_pass
+    aid=conn.execute("""INSERT INTO text_artifacts(document_version_id,extraction_method,extraction_version,status,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_5e6c7af38ad7) at 0x106371610>
+query = "INSERT INTO text_artifacts(document_version_id,extraction_method,extraction_version,status,\n                  pages_...       VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,'inflection.repair_jobs')\n                  RETURNING text_artifact_id"
+params = (UUID('bf7b1632-77bc-4036-94e8-c9063a52d86f'), 'apple-vision', 'apple-vision-2', 'COMPLETE', 1, 1, ...)
+prepare = None, binary = False
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -> Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.ProgrammingError: the query has 11 placeholders but 10 parameters were passed
+
+.venv/lib/python3.12/site-packages/psycopg/connection.py:304: ProgrammingError
+=========================== short test summary info ============================
+FAILED tests/test_repair_jobs.py::test_ocr_preserves_native_artifact_and_blocks_low_confidence_completion[True]
+FAILED tests/test_repair_jobs.py::test_ocr_preserves_native_artifact_and_blocks_low_confidence_completion[False]
+FAILED tests/test_repair_jobs.py::test_ocr_does_not_complete_a_zip_with_an_unread_workbook
+FAILED tests/test_repair_jobs.py::test_cached_ocr_rechecks_filings_that_arrive_from_a_running_producer
+4 failed, 17 passed in 3.78s

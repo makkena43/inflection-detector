@@ -354,3 +354,12 @@ Results parser failures can be retried explicitly with `python -m inflection.fin
 --archive ~/inflection-archive --reparse-failed`. Verified archived bytes are reused; publication
 times are preserved, and a changed document version receives a new ingestion time. Both results
 loading and announcement download/extraction accept date bounds for repairing a specific period.
+
+Background repairs can be started with `python -m inflection.repair_jobs launch --from 2026-08-01
+--to 2026-10-28`. The workers cover reference identities, original results and comparables,
+announcement attachments, local macOS OCR, evidence inventories and derived rescanning. They
+save separate progress and logs and appear in **Data & process → Background repairs**.
+See [the repair runbook](ops/repair_background.md) for storage limits and resuming stopped work.
+Local OCR appends page-preserving artifacts; low-confidence text remains partial and original
+artifacts are retained. Missing original disclosures and conflicting corporate-action evidence
+remain unresolved rather than being repaired by guessed dates, scopes or ratios.

@@ -17,7 +17,7 @@ from __future__ import annotations
 import hashlib
 import re
 
-RULES_VERSION = "commercial-17"
+RULES_VERSION = "commercial-26"   # 2026-11-02: revenue, completed-work, cost and order-book figures; period totals; industry context; deadlines; GST forms
 
 I = re.I
 
@@ -82,7 +82,18 @@ FIRST_ORDER = re.compile(r"\bfirst (?:\w+ ){0,2}(?:order|purchase order|contract
 ANNEX_FIELD = re.compile(r"^\W*(?:\(?(?:\d{1,2}|[a-zA-Z]|[ivx]{1,4})[.)]\s*)?(?:whether|name of|nature of|broad "
                          r"consideration|size of|significant terms|time period|details of|brief details|quantity|"
                          r"date of)\b", I)
-ORDER_BOOK = re.compile(r"\border\s*(?:book|backlog|inflows?|intake|pipeline|position)\b|\bunexecuted orders?\b", I)
+ORDER_BOOK = re.compile(r"\border[\s-]*(?:book|backlog|inflows?|intake|pipeline|position)\b|\bunexecuted orders?\b", I)
+# A bundle of awards is demand evidence; its total does not establish the size of
+# any individual award. Preserve the extracted amount with its aggregate meaning.
+# "Secured ₹88.51 Crore in strategic contracts": amounts and symbols may sit between.
+MULTI_AWARD = re.compile(r"\b(?:secured|received|booked|bagged|won)\s+"
+                        r"(?:\S+\s+){0,5}(?:orders|contracts|work orders|LoAs)\b", I)
+MIXED_COMMITMENT = re.compile(r"\b(?:combination|mix|mixture)\s+of\b[^.]{0,120}"
+                              r"\b(?:forecast|pipeline|potential)\b|"
+                              r"\bfirm\s+(?:purchase\s+)?orders?\s+and\s+(?:a\s+)?forecast", I)
+# a span inside one sentence: "Rs." and decimals do not end it
+_FIG = r"(?:[^.]|\.(?=\s?\d)|(?<=\bRs)\.|(?<=\bNo)\.)"
+_FIG30, _FIG50, _FIG60, _FIG100 = (_FIG + "{0,%d}" % n for n in (30, 50, 60, 100))
 # A period's order inflow ("Infrastructure Segment secured orders of 45,574 crore during the quarter") is a total
 # across many orders, not one order: its value must not be sized as a single award
 PERIOD_INFLOW = re.compile(r"\b(?:secured|received|booked|bagged|won)\s+(?:new\s+)?orders\b[^.]{0,80}\b(?:during|in|for)\s+"
@@ -90,7 +101,58 @@ PERIOD_INFLOW = re.compile(r"\b(?:secured|received|booked|bagged|won)\s+(?:new\s
                            r"\bsegment\b[^.]{0,40}\b(?:secured|received|booked)\s+orders\b|"
                            r"\b(?:in|during|for)\s+(?:the\s+)?(?:(?:first|second|third|fourth)\s+)?"
                            r"(?:quarter|year|period|half[- ]year|Q[1-4]|FY\s*\d{2,4})\b[^.]{0,100}"
-                           r"\b(?:secured|received|booked|won|bagged)\s+(?:new\s+)?orders\b", I)
+                           r"\b(?:secured|received|booked|won|bagged)\s+(?:new\s+)?orders\b|"
+                           # the amount between verb and noun: "secured ₹15,920 million in new orders during the
+                           # quarter", "new orders worth Rs 1,333 crore during the current financial year",
+                           # "INR1,600 crores in orders over the last 4 quarters"
+                           r"\b(?:secured|received|booked|bagged|won)\b" + _FIG60 + r"\b(?:orders|contracts|inflows?)\b" + _FIG60 +
+                           r"\b(?:during|in|for|over)\s+(?:the\s+)?(?:(?:current\s+|last\s+|previous\s+|past\s+)?"
+                           r"(?:financial\s+|fiscal\s+)?(?:quarter|year|period|nine months|half[- ]year|first half|"
+                           r"FY\s*'?\d{2,4}|Q[1-4])|"
+                           # "over the last 4 quarters" is intake; "over 12 months" is an execution period
+                           r"(?:last|past|previous)\s+\d+\s+(?:quarters|months|days))\b|"
+                           # "In quarter 3, we secured INR1,318 crores of new orders", "this quarter itself, we have
+                           # secured about INR1,900 crores of orders"
+                           r"\b(?:in|during|for|this)\s+(?:the\s+)?(?:quarter(?:\s+[1-4])?|Q[1-4]|half[- ]year|"
+                           r"(?:current\s+)?(?:financial|fiscal)\s+year)\b" + _FIG100 +
+                           r"\b(?:secured|received|booked|won|bagged)\b" + _FIG60 + r"\b(?:orders|contracts)\b|"
+                           # "a new order of Rs 1,851 crore in the period of 2024-2025"
+                           r"\borders?\b" + _FIG50 + r"\bin the period (?:of|from)\b|"
+                           r"\btotal\s+(?:order\s+)?inflows?\b|\btotal\s+(?:value\s+of\s+)?orders\s+(?:received|secured|"
+                           r"booked|under)\b|\b(?:year[- ]to[- ]date|YTD)\b" + _FIG30 + r"\b(?:order\s+)?inflows?\b", I)
+# A figure in an order sentence that is not the value of an award (commercial-25 rechecks):
+# reported revenue ("Rs. 154.59 crores of revenue during Q4", "revenue for Q2 FY25 is Rs. 416.36 crore",
+# "Revenues crossed ₹300 Crores"), work already done ("completed 2 HAM projects worth INR1,605 crores"),
+# a project's own cost ("anticipated cost of the project is Rs. 26,076 Crore") and a backlog balance
+# ("order book stood at ₹ 955 Crores").  Each is read only in the words just before or after the amount.
+FIGURE_REVENUE_BEFORE = re.compile(r"\b(?:revenues?|turnover|top[- ]?line|(?<!order )sales|income from operations)\b"
+                                   r"(?!\s+(?:department|board|authority|tax|secretary|ministry))[^.]{0,30}$", I)
+FIGURE_REVENUE_AFTER = re.compile(r"^\s*(?:of\s+|in\s+)?(?:(?:consolidated|standalone|total|operating|net)\s+)?"
+                                  r"(?:revenues?|turnover|top[- ]?line|sales)\b", I)
+FIGURE_COMPLETED_BEFORE = re.compile(r"\b(?:completed|executed|delivered|handed over)\b[^.]{0,40}\b(?:projects?|orders?|"
+                                     r"works?|contracts?)\b[^.]{0,15}$|"
+                                     r"\b(?:cumulative|orders?\s+(?:executed|completed|delivered))\b[^.]{0,30}$", I)
+FIGURE_COST_BEFORE = re.compile(r"\b(?:project cost|cost of (?:the )?project|anticipated cost|estimated cost|capex|"
+                                r"capital expenditure|incurred|outlay)\b[^.]{0,30}$", I)
+FIGURE_BOOK_BEFORE = re.compile(r"\b(?:order[\s-]*(?:book|backlog)|unexecuted orders?|orders? in hand)\b[^.]{0,30}$", I)
+# an award verb or order noun between the context word and the amount restarts the reading
+FIGURE_RESTART = re.compile(r"\b(?:received|receives|bagged|bags|secured|won|awarded|signed|"
+                            r"(?:an?|single|new|another|largest|repeat)\s+(?:\w+\s+){0,2}(?:order|contract|LoA|work order))\b", I)
+# GST stated after the figure or in short forms ("₹ 142.31 crores (incl taxes)", "GST inclusive")
+TAX_INCL_ALT = re.compile(r"\b(?:gst|tax(?:es)?)[- ]inclusive\b|\bwith\s+(?:gst|taxes)\b|\(\s*incl\.?\s*(?:of\s+)?"
+                          r"(?:all\s+)?(?:gst|taxes|tax)", I)
+GST_ASSUMED_RATE = "0.18"           # packets estimate a net value at this rate; never a sizing fact
+
+# Industry and government context copied into presentations ("Department of Space (DoS) has got Rs. 13,700 crore
+# (US$ 1.83 billion) in 2022-23", "The Draft National Rail Plan outlines ... Rs 38.22 lakh crore"): not the
+# company's order or plant
+INDUSTRY_CONTEXT = re.compile(
+    r"\(\s*US\$\s*[\d.,]+\s*(?:trillion|billion|million|bn|mn)\s*\)|\blakh crores?\b|"
+    r"\b(?:union budget|budget(?:ary)? (?:allocation|outlay|support|estimates?)|has been allocated|allocated (?:an? )?"
+    r"(?:amount|outlay|budget)|national (?:rail|infrastructure|logistics|electricity) (?:plan|pipeline)|"
+    r"market (?:size|is expected|is projected)|industry is (?:expected|projected|estimated))\b|"
+    r"\b(?:government|ministry|department|centre|central government|indian railways)\b[^.]{0,40}"
+    r"\b(?:has got|has allocated|plans to (?:invest|spend)|aims to (?:invest|spend)|outlines)\b", I)
 
 # ---------------------------------------------------------------- order family (ported from MakroGraph)
 
@@ -102,13 +164,15 @@ ORDER_CUE = re.compile(
     r"\bmemorandum of understanding\b|\bframework agreement\b|\brate contract\b|"
     r"\bmaster (?:supply|service) agreement\b|\brelease orders?\b|"
     r"\b(?:orders?|contracts?|LoA|purchase orders?|work orders?)\b.{0,80}\b(?:cancell?ed|terminated|"
-    r"short[- ]closed|amended|revised|reduced|expired|lapsed|executed|delivered|completed)\b|"
+    r"short[- ]closed|amended|revised|reduced|expired|lapsed|executed|delivered|completed|awarded|received)\b|"
     r"\b(?:cancell?ation|termination|amendment|short[- ]closure|cancell?ed|terminated|short[- ]closed)\b.{0,60}"
     r"\b(?:orders?|contracts?|LoA)\b", I)
 BINDING = re.compile(r"\b(?:purchase order|work order|contract (?:signed|executed|awarded)|letter of award|LoA|"
                      r"(?:received|receives|bagged|bags|secured|secures|won|wins|booked)\b[^.]{0,60}?\b(?:orders?|"
                      r"contracts?)|bagged|secured|awarded|firm orders?|confirmed (?:\w+ ){0,2}orders?|"
-                     r"(?:receipt|bagging) of (?:an? )?(?:orders?|contracts?))\b", I)
+                     r"(?:receipt|bagging) of (?:an? )?(?:orders?|contracts?))\b|"
+                     r"\b(?:orders?|contracts?)\b[^.]{0,70}\b(?:which (?:we|the company) (?:have|has) received|"
+                     r"(?:has|have) been (?:received|secured|awarded))\b", I)
 PROVISIONAL = re.compile(r"(?-i:\bL-?1\b(?!\s*\d|/))|\blowest bidder\b|\bletter of intent\b|\bLoI\b|\bselected as\b|\bshortlisted\b", I)
 MOU = re.compile(r"(?-i:\bMo[Uu]s?\b|\bMOUs?\b)|\bmemorandum of understanding\b", I)
 FRAMEWORK = re.compile(r"\bframework agreement\b|\brate contract\b|\bmaster (?:supply|service) agreement\b", I)
@@ -195,6 +259,7 @@ SUBSIDIARY_RECIPIENT = re.compile(r"\b(?:(?:its|our|the company'?s|the company�
                                   r"material\s+)?subsidiary of the company)\b", I)
 JOINT_VENTURE_RECIPIENT = re.compile(r"\b(?:joint venture|JV|consortium)\b[^.]{0,60}\b(?:received|bagged|secured|won|"
                                      r"awarded)\b", I)
+COLLABORATIVE_RECIPIENT = re.compile(r'\bin (?:collaboration|association) with\b', I)
 FACILITY = re.compile(r"\b(?:at|in|of|for)\s+(?:the|our|its)\s+((?:[A-Z][\w-]*\s+){1,3})(?:plant|unit|facility|"
                       r"factory|works|site)\b")
 FACILITY_BARE = re.compile(r"\b((?:[A-Z][\w-]*\s+){1,2})(?:plant|unit|facility|factory)\b(?!\s+(?:of|for)\b)")

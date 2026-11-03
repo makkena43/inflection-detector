@@ -1,0 +1,91 @@
+{
+  "attachments": {
+    "pid": 93686,
+    "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/attachments.log",
+    "state": "STORAGE_LIMIT",
+    "first": "2026-08-01",
+    "last": "2026-10-29",
+    "cached_only": false,
+    "budget_mb": 256
+  },
+  "ocr": {
+    "pid": 93688,
+    "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/ocr.log",
+    "state": "STORAGE_LIMIT",
+    "first": "2024-10-29",
+    "last": "2026-10-29",
+    "cached_only": false,
+    "budget_mb": 128
+  },
+  "financials": {
+    "pid": 93687,
+    "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/financials.log",
+    "state": "SOURCE_UNAVAILABLE",
+    "first": "2024-10-29",
+    "last": "2026-10-29",
+    "cached_only": false,
+    "budget_mb": 128
+  },
+  "analysis": {
+    "pid": 18905,
+    "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/analysis.log",
+    "state": "FINISHED_WITH_GAPS",
+    "first": "2024-10-29",
+    "last": "2026-10-29",
+    "cached_only": false
+  },
+  "updated_at": "2026-11-01T09:05:28.318368+00:00",
+  "packet_rebuild": {
+    "pid": 20889,
+    "state": "RUNNING",
+    "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/packet_rebuild/worker.log",
+    "status": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/packet_rebuild/status.json",
+    "cached_only": true
+  },
+  "financial_parser_refresh": {
+    "pid": 44567,
+    "state": "RUNNING",
+    "cached_only": true,
+    "status": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/random_company_audit_2026-10-30/source_repair_status.json",
+    "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/random_company_audit_2026-10-30/repair_background.log"
+  },
+  "financial_source_recovery": {
+    "pid": 41117,
+    "state": "RUNNING",
+    "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/financial_source_recovery/worker.log",
+    "status": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/financial_source_recovery/status.json",
+    "budget_mb": 128,
+    "cumulative_budget": true,
+    "cached_only": false
+  },
+  "quality_repair": {
+    "pid": 81594,
+    "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/quality_repair/coordinator.log",
+    "state": "PAUSED",
+    "status": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/quality_repair/status.json",
+    "cached_only": true,
+    "automatic_storage_resume": true,
+    "statement_timeout_seconds": 300,
+    "packet_workers": 4,
+    "worker_status_directory": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/quality_repair/workers",
+    "reserve_gib": 5,
+    "prune_old_packets": true,
+    "packet_worker_jit": false,
+    "source_parse_cache_max_mib": 64,
+    "paused_by_owner": true,
+    "auto_resume": false
+  },
+  "cached_evidence_repair": {
+    "pid": 41118,
+    "log": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/quality_repair/cached_evidence.log",
+    "state": "RUNNING",
+    "status": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/quality_repair/evidence_status.json",
+    "cached_only": false,
+    "cumulative_budget": true
+  },
+  "packet_retention": {
+    "state": "COMPLETE",
+    "status": "/Users/makkenasrinivas/PycharmProjects/inflection-detector/output/process_health/jobs/packet_retention/status.json",
+    "automatic_between_weeks": true
+  }
+}

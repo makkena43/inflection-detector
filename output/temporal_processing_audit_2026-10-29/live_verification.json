@@ -1,0 +1,44 @@
+{
+  "checked_at": "2026-10-29 16:29:12.974658+05:30",
+  "eligible_revenue_period_coverage": [
+    4588,
+    4279
+  ],
+  "eligible_revenue_period_coverage_note": "Issuers with any eligible revenue period vs any period inside the age limit; not proof of complete TTM or comparable scope.",
+  "history_counts": {
+    "corporate_actions": 17016,
+    "govt_programmes": 51,
+    "pli_beneficiaries": 573,
+    "programme_mentions": 8194,
+    "shareholding_patterns": 44533
+  },
+  "history_backdated_to_before_observation": 0,
+  "analysis": {
+    "state": "RUNNING",
+    "pid": 60728,
+    "stage": "Link recovered identities and scan available commercial evidence",
+    "first": "2024-10-29",
+    "last": "2026-10-29",
+    "archive_bytes_added": 0,
+    "updated_at": "2026-10-29T11:09:06.963563+00:00"
+  },
+  "financials": {
+    "state": "FINISHED_WITH_GAPS",
+    "pid": 98381,
+    "stage": "Load remaining discovered results",
+    "first": "2026-08-01",
+    "last": "2026-10-28",
+    "archive_bytes_added": 171843911,
+    "updated_at": "2026-10-29T10:54:07.889931+00:00"
+  },
+  "backend_http_status": 200,
+  "attachments": {
+    "state": "RUNNING",
+    "pid": 59449,
+    "stage": "Download and extract NSE attachments across all companies",
+    "first": "2026-10-27",
+    "last": "2026-10-29",
+    "archive_bytes_added": 68702588,
+    "updated_at": "2026-10-29T11:09:08.334337+00:00"
+  }
+}

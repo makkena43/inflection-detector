@@ -1,0 +1,17 @@
+2026-10-26 WindowRecord(run_id='3056376b-8916-4554-b534-12fc434def81', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=540, inserted=536) []
+2026-10-27 WindowRecord(run_id='79f6f83e-48b0-4b5f-8b53-cf73e44365c1', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=694, inserted=0) []
+2026-10-28 WindowRecord(run_id='6214b7ed-eb8d-4222-aa27-85743243c2ff', coverage_status=<CoverageStatus.COMPLETE: 'COMPLETE'>, received=882, inserted=0) []
+{
+  "scope": "nse_announcements:equities announcement listings",
+  "first": "2026-10-26",
+  "last": "2026-10-28",
+  "state": "COMPLETE",
+  "total_days": 3,
+  "complete_days": 3,
+  "attempted_days": 3,
+  "received": 2116,
+  "inserted": 536,
+  "gaps": [],
+  "current_day": "2026-10-28",
+  "last_checked_day": "2026-10-28"
+}

@@ -185,7 +185,8 @@ def test_assemble_from_the_database_at_the_shortlist_cutoff(db, tmp_path):
     assert "2026-03-31" not in new["content"]["financials"]["quarters"]
     first, second = db.execute("""SELECT packet_id, supersedes_id FROM triage_packets ORDER BY created_at""").fetchall()
     assert second[1] == first[0]
-    with pytest.raises(psycopg.errors.IntegrityConstraintViolation):
+    # the retention guard (migration 0032/0033) reports the append-only rule as a raised exception
+    with pytest.raises((psycopg.errors.IntegrityConstraintViolation, psycopg.errors.RaiseException), match='append-only'):
         db.execute("UPDATE triage_packets SET markdown = 'x'")               # earlier packets stay as they were
 
     # export for a chat, then record the result against the packet it was given
@@ -200,7 +201,7 @@ def test_assemble_from_the_database_at_the_shortlist_cutoff(db, tmp_path):
     assert "Triage rules triage-rules-3.4" in md and "size estimated from quantity" in md
     assert "## Valuation and margin (computed)" in md and "## Order book and order inflow" in md
     assert "At most three" not in md                          # no weekly limit on picks
-    assert triage.record(db, date(2026, 3, 16), "ABC", "WATCH_MILESTONE")["triage_action"] == "WATCH_MILESTONE"
+    assert triage.record(db, date(2026, 3, 16), "ABC", "WATCH_MILESTONE",packet_hash=new['packet_hash'])["triage_action"] == "WATCH_MILESTONE"
     assert db.execute("SELECT packet_id::text FROM triage_shortlist_items").fetchone()[0] == new["packet_id"]
 
     # the bounded retrieval pass
@@ -212,3 +213,63 @@ def test_assemble_from_the_database_at_the_shortlist_cutoff(db, tmp_path):
 
 def test_assemble_needs_a_shortlist(db):
     assert "run triage build" in pipeline.assemble(db, date(2026, 3, 16))["error"]
+
+
+def test_share_count_unit_error_gives_no_share_count_or_market_cap():
+    facts = [fact("revenue", e, 100) for e in QUARTER_ENDS]
+    facts += [fact("paid_up_capital", "2024-12-31", 11.7108), fact("face_value", "2024-12-31", 10, kind="PER_SHARE"),
+              fact("paid_up_capital", "2025-12-31", 11.7108 * 100000), fact("face_value", "2025-12-31", 10, kind="PER_SHARE")]
+    shares = C.financial_snapshot(facts)["shares"]
+    assert shares["value"] is None and "unit error" in shares["why"] and "base" not in shares
+
+
+def test_amount_cell_reads_rupee_units_in_crore_and_estimates_net_of_gst():
+    assert C.amount_cell(dict(amount="705499997 INR UNITS")) == "70.55 INR CRORE (705499997 INR UNITS)"
+    cell = C.amount_cell(dict(amount="65.48 INR CRORE", details=dict(tax_basis="INCLUSIVE")))
+    assert cell == "65.48 INR CRORE incl. tax; about 55.49 INR CRORE net at an assumed 18% GST"
+    assert C.amount_cell(dict(amount=None)) == "–"
+
+
+def test_half_yearly_filer_gets_trailing_twelve_months_from_year_to_date():
+    facts = [fact("revenue", "2024-03-31", 100, ptype="ANNUAL"), fact("revenue", "2023-09-30", 40, ptype="HALF_YEAR"),
+             fact("revenue", "2024-09-30", 60, ptype="HALF_YEAR")]
+    ttm = C.financial_snapshot(facts)["ttm"]["revenue"]
+    assert ttm["value"] == "120.00" and ttm["period_end"] == "2024-09-30" and "year to date" in ttm["basis"]
+
+
+def test_four_quarters_still_win_when_they_are_as_recent():
+    facts = [fact("revenue", e, 10) for e in QUARTER_ENDS[-4:]]
+    facts += [fact("revenue", "2025-03-31", 999, ptype="ANNUAL")]
+    assert C.financial_snapshot(facts)["ttm"]["revenue"] == dict(value="40.00", period_end="2026-03-31")
+
+
+def test_amount_cell_reads_every_rupee_scale_in_crore_and_shows_the_dated_rate():
+    assert C.amount_cell(dict(amount="2300 INR MILLION")) == "230.00 INR CRORE (2300 INR MILLION)"
+    cell = C.amount_cell(dict(amount="24 USD MILLION", details=dict(fx=dict(
+        status="CONVERTED", currency="USD", rate="84.07", rate_date="2024-09-30", inr_crore="201.77"))))
+    assert cell == "201.77 INR CRORE (24 USD MILLION at 84.07 INR per USD, reference rate of 2024-09-30)"
+    assert "not converted" in C.amount_cell(dict(amount="8 EUR MILLION", details=dict(fx=dict(status="NO_DATED_RATE", currency="EUR"))))
+
+
+def test_unrecorded_split_withholds_returns_and_highs_across_it():
+    from datetime import timedelta as td
+    days = [date(2024, 6, 1) + td(days=i) for i in range(120)]
+    prices = [(d, 999 if d < date(2024, 7, 15) else 187, 1000) for d in days]
+    p = C.price_summary(prices, [], days[-1])
+    assert p["returns_pct"]["3m"]["value"] is None and p["high_low_52w"]["high"] is None
+    assert "no recorded split or bonus" in p["adjustment"]
+    steady = C.price_summary([(d, 100 + i % 3, 1000) for i, d in enumerate(days)], [], days[-1])
+    assert steady["returns_pct"]["1m"]["value"] is not None
+
+
+def test_market_cap_far_beyond_revenue_is_doubtful_not_a_valuation():
+    facts = [fact("revenue", e, 26) for e in QUARTER_ENDS[-4:]]
+    v = C.valuation(C.financial_snapshot(facts), dict(status="FOUND", market_cap_cr="14,330,606"))
+    assert v["status"] == "DOUBTFUL" and "unit needs checking" in v["reason"]
+
+
+def test_december_year_end_company_gets_trailing_revenue_from_its_own_year():
+    facts = [fact("revenue", "2023-12-31", 120, ptype="ANNUAL"), fact("revenue", "2023-06-30", 50, ptype="HALF_YEAR"),
+             fact("revenue", "2024-06-30", 70, ptype="HALF_YEAR")]
+    ttm = C.financial_snapshot(facts)["ttm"]["revenue"]
+    assert ttm["value"] == "140.00" and ttm["period_end"] == "2024-06-30"

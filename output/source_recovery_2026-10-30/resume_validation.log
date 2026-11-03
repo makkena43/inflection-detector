@@ -1,0 +1,317 @@
+F.FF..FF........                                                         [100%]
+=================================== FAILURES ===================================
+________ test_recovery_preserves_cumulative_allowance_and_deduplicates _________
+
+tmp_path = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-139/test_recovery_preserves_cumula0')
+
+    def test_recovery_preserves_cumulative_allowance_and_deduplicates(tmp_path):
+        s,l=store(tmp_path);body=b'1234';digest=sha256(body).hexdigest()
+>       assert s.store(body,digest)==4 and json.loads(l.read_text())['archive_bytes_added']==6
+               ^^^^^^^^^^^^^^^^^^^^
+
+tests/test_source_recovery.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/inflection/source_recovery.py:52: in store
+    write_json(self.ledger,data)
+src/inflection/timing_audit.py:37: in save
+    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+         ^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py:1162: in __init__
+    super().__init__(*args)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[AttributeError("'PosixPath' object has no attribute '_raw_paths'") raised in repr()] PosixPath object at 0x104aeb6f0>
+args = ({'archive_bytes_added': 6, 'updated_at': '2026-10-30T07:37:30.857271+00:00', 'source_recovery_reservations': {'03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4': {'bytes': 4, 'stored': False}}},)
+
+    def __init__(self, *args):
+        paths = []
+        for arg in args:
+            if isinstance(arg, PurePath):
+                if arg._flavour is ntpath and self._flavour is posixpath:
+                    # GH-103631: Convert separators for backwards compatibility.
+                    paths.extend(path.replace('\\', '/') for path in arg._raw_paths)
+                else:
+                    paths.extend(arg._raw_paths)
+            else:
+                try:
+                    path = os.fspath(arg)
+                except TypeError:
+                    path = arg
+                if not isinstance(path, str):
+>                   raise TypeError(
+                        "argument should be a str or an os.PathLike "
+                        "object where __fspath__ returns a str, "
+                        f"not {type(path).__name__!r}")
+E                   TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'dict'
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py:373: TypeError
+_____ test_interrupted_reservation_can_finish_without_resetting_allowance ______
+
+tmp_path = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-139/test_interrupted_reservation_c0')
+
+    def test_interrupted_reservation_can_finish_without_resetting_allowance(tmp_path):
+        s,l=store(tmp_path);body=b'1234';digest=sha256(body).hexdigest()
+        write_progress(l,dict(archive_bytes_added=6,source_recovery_reservations={digest:dict(bytes=4,stored=False)}))
+>       assert s.available(digest)==4 and s.store(body,digest)==4
+                                          ^^^^^^^^^^^^^^^^^^^^
+
+tests/test_source_recovery.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/inflection/source_recovery.py:55: in store
+    reservations[digest]['stored']=True;write_json(self.ledger,data);return len(body)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/inflection/timing_audit.py:37: in save
+    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+         ^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py:1162: in __init__
+    super().__init__(*args)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[AttributeError("'PosixPath' object has no attribute '_raw_paths'") raised in repr()] PosixPath object at 0x104c825e0>
+args = ({'archive_bytes_added': 6, 'source_recovery_reservations': {'03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4': {'bytes': 4, 'stored': True}}, 'updated_at': '2026-10-30T07:37:30.907671+00:00'},)
+
+    def __init__(self, *args):
+        paths = []
+        for arg in args:
+            if isinstance(arg, PurePath):
+                if arg._flavour is ntpath and self._flavour is posixpath:
+                    # GH-103631: Convert separators for backwards compatibility.
+                    paths.extend(path.replace('\\', '/') for path in arg._raw_paths)
+                else:
+                    paths.extend(arg._raw_paths)
+            else:
+                try:
+                    path = os.fspath(arg)
+                except TypeError:
+                    path = arg
+                if not isinstance(path, str):
+>                   raise TypeError(
+                        "argument should be a str or an os.PathLike "
+                        "object where __fspath__ returns a str, "
+                        f"not {type(path).__name__!r}")
+E                   TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'dict'
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py:373: TypeError
+______________ test_owner_cleanup_does_not_make_another_copy_free ______________
+
+tmp_path = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-139/test_owner_cleanup_does_not_ma0')
+
+    def test_owner_cleanup_does_not_make_another_copy_free(tmp_path):
+>       s,l=store(tmp_path);body=b'1234';digest=sha256(body).hexdigest();s.store(body,digest)
+                                                                         ^^^^^^^^^^^^^^^^^^^^
+
+tests/test_source_recovery.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/inflection/source_recovery.py:52: in store
+    write_json(self.ledger,data)
+src/inflection/timing_audit.py:37: in save
+    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+         ^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py:1162: in __init__
+    super().__init__(*args)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[AttributeError("'PosixPath' object has no attribute '_raw_paths'") raised in repr()] PosixPath object at 0x101f34c80>
+args = ({'archive_bytes_added': 6, 'updated_at': '2026-10-30T07:37:30.943994+00:00', 'source_recovery_reservations': {'03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4': {'bytes': 4, 'stored': False}}},)
+
+    def __init__(self, *args):
+        paths = []
+        for arg in args:
+            if isinstance(arg, PurePath):
+                if arg._flavour is ntpath and self._flavour is posixpath:
+                    # GH-103631: Convert separators for backwards compatibility.
+                    paths.extend(path.replace('\\', '/') for path in arg._raw_paths)
+                else:
+                    paths.extend(arg._raw_paths)
+            else:
+                try:
+                    path = os.fspath(arg)
+                except TypeError:
+                    path = arg
+                if not isinstance(path, str):
+>                   raise TypeError(
+                        "argument should be a str or an os.PathLike "
+                        "object where __fspath__ returns a str, "
+                        f"not {type(path).__name__!r}")
+E                   TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'dict'
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py:373: TypeError
+__ test_existing_bytes_finalize_interrupted_reservation_before_owner_cleanup ___
+
+tmp_path = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-139/test_existing_bytes_finalize_i0')
+
+    def test_existing_bytes_finalize_interrupted_reservation_before_owner_cleanup(tmp_path):
+        s,l=store(tmp_path);body=b'1234';digest=sha256(body).hexdigest()
+        s.archive.put(body,'source.xml')
+        write_progress(l,dict(archive_bytes_added=6,source_recovery_reservations={digest:dict(bytes=4,stored=False)}))
+>       assert s.store(body,digest)==0
+               ^^^^^^^^^^^^^^^^^^^^
+
+tests/test_source_recovery.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/inflection/source_recovery.py:46: in store
+    reservation['stored']=True;write_json(self.ledger,data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/inflection/timing_audit.py:37: in save
+    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+         ^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py:1162: in __init__
+    super().__init__(*args)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[AttributeError("'PosixPath' object has no attribute '_raw_paths'") raised in repr()] PosixPath object at 0x101f676f0>
+args = ({'archive_bytes_added': 6, 'source_recovery_reservations': {'03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4': {'bytes': 4, 'stored': True}}, 'updated_at': '2026-10-30T07:37:31.851275+00:00'},)
+
+    def __init__(self, *args):
+        paths = []
+        for arg in args:
+            if isinstance(arg, PurePath):
+                if arg._flavour is ntpath and self._flavour is posixpath:
+                    # GH-103631: Convert separators for backwards compatibility.
+                    paths.extend(path.replace('\\', '/') for path in arg._raw_paths)
+                else:
+                    paths.extend(arg._raw_paths)
+            else:
+                try:
+                    path = os.fspath(arg)
+                except TypeError:
+                    path = arg
+                if not isinstance(path, str):
+>                   raise TypeError(
+                        "argument should be a str or an os.PathLike "
+                        "object where __fspath__ returns a str, "
+                        f"not {type(path).__name__!r}")
+E                   TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'dict'
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py:373: TypeError
+__ test_complete_job_persists_list_checkpoints_and_resumes_without_redownload __
+
+conn = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_e3d83661e8a4) at 0x101f69670>
+job = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-139/test_complete_job_persists_lis0/job')
+archive = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-139/test_complete_job_persists_lis0/archive')
+
+    def run(conn,job=JOB,archive=None):
+        job=Path(job);job.mkdir(parents=True,exist_ok=True);archive=Path(archive or Path.home()/'inflection-archive')
+        if not conn.execute('SELECT pg_try_advisory_lock(20261029,1)').fetchone()[0]:raise RuntimeError('Financial source worker already active')
+        store=RecoveryArchive(archive,ledger=LEDGER,budget=BUDGET);state={};results={};queue=[]
+        def save(**kwargs):
+            state.update(kwargs,updated_at=datetime.now(timezone.utc).isoformat(),completed=len(results),
+              counts=dict(Counter(r['status'] for r in results.values())),remaining=state.get('total',0)-len(results),financial_allowance_used=json.loads(LEDGER.read_text())['archive_bytes_added'])
+            write_json(job/'status.json',state)
+        def drain():
+            if not queue:return
+            if not conn.execute('SELECT pg_try_advisory_lock(20261029,5)').fetchone()[0]:return
+            try:
+                storage_guard();save(stage='Re-evaluate recovered financial evidence')
+                scan=dict(F.scan(conn,publication_ids=queue));refresh=refresh_packets(conn,queue,job)
+                with (job/'processing.jsonl').open('a') as f:f.write(json.dumps(dict(publication_ids=queue,scan=scan,packet_checks=len(refresh),packet_errors=[r for r in refresh if r.get('error')]))+'\n')
+                queue.clear();write_json(job/'pending_analysis.json',queue)
+            finally:conn.execute('SELECT pg_advisory_unlock(20261029,5)')
+        try:
+            path=job/'plan.json'
+            if path.exists():entries=json.loads(path.read_text())
+>           else:storage_guard();entries=plan(conn,archive);write_json(path,entries)
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+src/inflection/source_recovery.py:166: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/inflection/timing_audit.py:37: in save
+    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+         ^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py:1162: in __init__
+    super().__init__(*args)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[AttributeError("'PosixPath' object has no attribute '_raw_paths'") raised in repr()] PosixPath object at 0x101f7c740>
+args = ([{'sha256': 'fb8d6bf7309468f6cb964ea5da93fcf4b47a602b3a14d32e12ab10dbe44cd4bb', 'url': 'https://nsearchives.nseindia.com/corporate/xbrl/INDAS_1.xml', 'size': 3969, 'publication_ids': ['4fa676b8-97b7-4ee5-85fb-dad677ba017c'], ...}],)
+
+    def __init__(self, *args):
+        paths = []
+        for arg in args:
+            if isinstance(arg, PurePath):
+                if arg._flavour is ntpath and self._flavour is posixpath:
+                    # GH-103631: Convert separators for backwards compatibility.
+                    paths.extend(path.replace('\\', '/') for path in arg._raw_paths)
+                else:
+                    paths.extend(arg._raw_paths)
+            else:
+                try:
+                    path = os.fspath(arg)
+                except TypeError:
+                    path = arg
+                if not isinstance(path, str):
+>                   raise TypeError(
+                        "argument should be a str or an os.PathLike "
+                        "object where __fspath__ returns a str, "
+                        f"not {type(path).__name__!r}")
+E                   TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'list'
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py:373: TypeError
+
+During handling of the above exception, another exception occurred:
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_e3d83661e8a4) at 0x101f69670>
+tmp_path = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-139/test_complete_job_persists_lis0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x104b43e30>
+
+    def test_complete_job_persists_list_checkpoints_and_resumes_without_redownload(db,tmp_path,monkeypatch):
+        from test_nonindas_source_audit import seeded_old_parser,nonindas
+        from inflection import source_recovery as R
+        archive=seeded_old_parser(db,tmp_path,monkeypatch);body=nonindas()
+        digest=sha256(body).hexdigest();(archive.root/digest[:2]/digest).unlink()
+        ledger=tmp_path/'ledger.json';write_progress(ledger,dict(archive_bytes_added=2))
+        monkeypatch.setattr(R,'LEDGER',ledger);monkeypatch.setattr(R,'BUDGET',len(body)+3)
+        monkeypatch.setattr(R,'storage_guard',lambda:None);monkeypatch.setattr(R.time,'sleep',lambda _:None)
+        calls=[]
+        monkeypatch.setattr(R,'download',lambda entry,capacity:calls.append(entry['sha256']) or body)
+        scans=[];monkeypatch.setattr(R.F,'scan',lambda c,publication_ids:scans.extend(publication_ids) or {})
+        monkeypatch.setattr(R,'refresh_packets',lambda *a:[])
+>       job=tmp_path/'job';state=R.run(db,job,archive.root)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_source_recovery.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/inflection/source_recovery.py:208: in run
+    save(state='STORAGE_LIMIT' if str(exc).startswith('STORAGE_LIMIT') else 'FAILED',error=str(exc));raise
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/inflection/source_recovery.py:153: in save
+    write_json(job/'status.json',state)
+src/inflection/timing_audit.py:37: in save
+    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+         ^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py:1162: in __init__
+    super().__init__(*args)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[AttributeError("'PosixPath' object has no attribute '_raw_paths'") raised in repr()] PosixPath object at 0x101f7c120>
+args = ({'state': 'FAILED', 'error': "argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'list'", 'updated_at': '2026-10-30T07:37:32.239161+00:00', 'completed': 0, ...},)
+
+    def __init__(self, *args):
+        paths = []
+        for arg in args:
+            if isinstance(arg, PurePath):
+                if arg._flavour is ntpath and self._flavour is posixpath:
+                    # GH-103631: Convert separators for backwards compatibility.
+                    paths.extend(path.replace('\\', '/') for path in arg._raw_paths)
+                else:
+                    paths.extend(arg._raw_paths)
+            else:
+                try:
+                    path = os.fspath(arg)
+                except TypeError:
+                    path = arg
+                if not isinstance(path, str):
+>                   raise TypeError(
+                        "argument should be a str or an os.PathLike "
+                        "object where __fspath__ returns a str, "
+                        f"not {type(path).__name__!r}")
+E                   TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'dict'
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py:373: TypeError
+=========================== short test summary info ============================
+FAILED tests/test_source_recovery.py::test_recovery_preserves_cumulative_allowance_and_deduplicates
+FAILED tests/test_source_recovery.py::test_interrupted_reservation_can_finish_without_resetting_allowance
+FAILED tests/test_source_recovery.py::test_owner_cleanup_does_not_make_another_copy_free
+FAILED tests/test_source_recovery.py::test_existing_bytes_finalize_interrupted_reservation_before_owner_cleanup
+FAILED tests/test_source_recovery.py::test_complete_job_persists_list_checkpoints_and_resumes_without_redownload
+5 failed, 11 passed in 3.10s

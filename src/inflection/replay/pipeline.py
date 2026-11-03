@@ -31,6 +31,7 @@ from psycopg.types.json import Jsonb
 
 from .. import queue
 from ..asof import IST
+from ..temporal import snapshot_sql
 from ..financials import SOURCE as XBRL_SOURCE
 from ..triage import rules as TR
 from . import rules as R
@@ -44,20 +45,22 @@ PROVIDER_ORDER = ("nse_bhavcopy", "bse_bhavcopy")
 # ---------------------------------------------------------------- weekly queue
 
 def _queue_weeks(rows: list[tuple], weeks: list[tuple[date, datetime]], mode: str, tp: dict,
-                 holdout_from: Optional[date]) -> tuple[list[dict], list[dict]]:
+                 holdout_from: Optional[date], checkpoint_history=(),commercial_history=None) -> tuple[list[dict], list[dict]]:
     """(week rows, item rows).  Items are the shortlisted companies and the companies with new
     evidence that week that were not shortlisted."""
     last: dict = {}
+    reviewed: dict = {}
     week_rows, kept = [], []
     for week_start, cutoff in weeks:
-        visible = [r for r in rows if r[4] < cutoff and (mode != "ACTUAL_SYSTEM_REPLAY" or r[14] <= cutoff)]
-        lines = queue.from_rows(visible, since={k: v.cutoff for k, v in last.items()})
+        visible = queue.actual_rows(rows,cutoff,checkpoint_history,commercial_history) if mode=='ACTUAL_SYSTEM_REPLAY' else [r for r in rows if r[4]<cutoff]
+        lines = queue.from_rows(visible, since={k: v.cutoff for k, v in last.items()},reviewed=reviewed)
         items = TR.allocate(lines, week_start, cutoff, tp, last)
         start = datetime.combine(week_start, datetime.min.time(), tzinfo=IST)
         per = R.period(week_start, holdout_from)
         for it in items:
             shortlisted = it["slot"] in TR.SHORTLISTED
             if shortlisted:
+                reviewed.setdefault(it["issuer_id"],set()).update(it["evaluation_ids"])
                 last[it["issuer_id"]] = TR.Triaged(cutoff, it["priority"], set(it["trigger_event_version_ids"]))
             if shortlisted or it["latest"] >= start:
                 kept.append(dict(week_start=week_start, cutoff=cutoff, period=per, issuer_id=it["issuer_id"],
@@ -97,7 +100,8 @@ def _coverage(conn, first: date, last: date, mode: str = 'PUBLIC_INFORMATION_REC
         out[f"{provider}_days"] = _weekly_counts(
             conn, """SELECT date_trunc('week', trade_date)::date, count(DISTINCT trade_date) FROM prices
                       WHERE provider = %(p)s AND adjustment = 'UNADJUSTED' AND trade_date BETWEEN %(a)s AND %(b)s
-                      GROUP BY 1""", dict(p=provider, a=first, b=last + timedelta(days=6)))
+                        AND (NOT %(actual)s OR recorded_at<(date_trunc('week',trade_date)::date+7)::timestamp AT TIME ZONE 'Asia/Kolkata')
+                      GROUP BY 1""", dict(p=provider, a=first, b=last + timedelta(days=6),actual=mode=='ACTUAL_SYSTEM_REPLAY'))
     return out
 
 
@@ -131,17 +135,21 @@ class Prices:
 
     def __init__(self, conn):
         self.conn = conn
+        self.observed_at=conn.execute("SELECT clock_timestamp()").fetchone()[0]
         self.series: dict = {}
         self.actions: dict = {}
         self.bench: dict = {}
         self.benchmark_coverage: dict = {}
         self.last_day = dict(conn.execute(
-            "SELECT provider, max(trade_date) FROM prices WHERE adjustment = 'UNADJUSTED' GROUP BY 1").fetchall())
+            """SELECT provider,max(trade_date) FROM prices WHERE adjustment='UNADJUSTED' AND close>0
+              AND recorded_at<=%s AND (trade_date+1)::timestamp AT TIME ZONE 'Asia/Kolkata' - interval '1 microsecond'<=%s
+              GROUP BY 1""",(self.observed_at,self.observed_at)).fetchall())
 
     def candidates(self, issuer_id) -> list[tuple]:
         rows = self.conn.execute(
             """SELECT DISTINCT p.security_id, p.provider FROM prices p JOIN securities s USING (security_id)
-                WHERE s.issuer_id = %s AND p.adjustment = 'UNADJUSTED'""", (issuer_id,)).fetchall()
+                WHERE s.issuer_id = %s AND p.adjustment = 'UNADJUSTED' AND p.close>0
+                  AND p.recorded_at<=%s AND (p.trade_date+1)::timestamp AT TIME ZONE 'Asia/Kolkata' - interval '1 microsecond'<=%s""", (issuer_id,self.observed_at,self.observed_at)).fetchall()
         return sorted(rows, key=lambda r: (PROVIDER_ORDER.index(r[1]) if r[1] in PROVIDER_ORDER else 9, str(r[0])))
 
     def closes(self, security_id, provider, start: Optional[date] = None, end: Optional[date] = None) -> list[tuple]:
@@ -149,8 +157,10 @@ class Prices:
         key = (security_id, provider)
         if key not in self.series:
             rows = self.conn.execute(
-                """SELECT trade_date, close FROM prices WHERE security_id = %s AND provider = %s
-                      AND adjustment = 'UNADJUSTED' AND close > 0 ORDER BY trade_date""", key).fetchall()
+                """SELECT DISTINCT ON(trade_date) trade_date,close FROM prices WHERE security_id=%s AND provider=%s
+                      AND adjustment='UNADJUSTED' AND close>0 AND recorded_at<=%s
+                      AND (trade_date+1)::timestamp AT TIME ZONE 'Asia/Kolkata' - interval '1 microsecond'<=%s
+                      ORDER BY trade_date,recorded_at DESC,provider_version DESC""", (*key,self.observed_at,self.observed_at)).fetchall()
             self.series[key] = ([d for d, _ in rows], rows)
         dates, rows = self.series[key]
         lo = bisect_left(dates, start) if start else 0
@@ -158,13 +168,12 @@ class Prices:
         return rows[lo:hi]
 
     def corporate_actions(self, security_id) -> list[dict]:
-        if security_id not in self.actions:
-            self.actions[security_id] = [
-                dict(kind=k, ex_date=d, multiplier=Decimal(m) if m is not None else None, reconciled=ok)
-                for k, d, m, ok in self.conn.execute(
-                    """SELECT kind, ex_date, details->>'price_multiplier', reconciled FROM corporate_actions
-                        WHERE security_id = %s ORDER BY ex_date""", (security_id,)).fetchall()]
-        return self.actions[security_id]
+        if '_loaded' not in self.actions:
+            for sec,k,d,m,ok in self.conn.execute(_ACTION_ROWS+"SELECT security_id,kind,ex_date,multiplier,reconciled FROM action_groups ORDER BY security_id,ex_date,kind",
+                                                 dict(cutoff=self.observed_at)).fetchall():
+                self.actions.setdefault(sec,[]).append(dict(kind=k,ex_date=d,multiplier=m,reconciled=ok))
+            self.actions['_loaded']=True
+        return self.actions.get(security_id,[])
 
     def pick(self, issuer_id, target: date, p: dict) -> Optional[tuple]:
         """The security and exchange to measure: NSE first, the first with a close near the entry."""
@@ -180,7 +189,7 @@ class Prices:
                 SELECT percentile_cont(0.5) WITHIN GROUP (ORDER BY r) FILTER (WHERE NOT bad),
                        count(*) FILTER (WHERE NOT bad), count(*), count(*) FILTER (WHERE c2 IS NULL),
                        count(*) FILTER (WHERE bad AND c2 IS NOT NULL) FROM j""",
-                dict(p=provider, d1=d1, d2=d2)).fetchone()
+                dict(p=provider, d1=d1, d2=d2,cutoff=self.observed_at)).fetchone()
             self.bench[key] = (median_, measured)
             self.benchmark_coverage[key] = dict(entry_securities=entered, measured=measured,
                                                missing_exit=missing, uncertain_actions=invalid)
@@ -190,34 +199,53 @@ class Prices:
 
 # Every security of one exchange with a close on both days: its split/bonus-adjusted price return,
 # and ``bad`` when a split or bonus in between has no multiplier or is not reconciled.
-_UNIVERSE = """
-WITH a AS (SELECT DISTINCT ON (security_id) security_id, close FROM prices
+_ACTION_ROWS = f"""WITH action_values AS (
+    SELECT security_id,kind,ex_date,reconciled,
+      CASE WHEN details->>'price_multiplier' ~ '^[+]?[0-9]+([.][0-9]+)?([eE][+-]?[0-9]+)?$'
+           THEN (details->>'price_multiplier')::numeric END multiplier
+    FROM {snapshot_sql('corporate_actions')} a),
+    action_groups AS (SELECT security_id,kind,ex_date,
+      CASE WHEN count(multiplier)=count(*) AND count(DISTINCT multiplier)=1 AND bool_and(reconciled)
+           AND min(multiplier)>0 THEN min(multiplier) END multiplier,
+      bool_and(reconciled) AND count(multiplier)=count(*) AND count(DISTINCT multiplier)=1
+        AND coalesce(min(multiplier)>0,false) reconciled
+    FROM action_values GROUP BY security_id,kind,ex_date)
+"""
+
+_UNIVERSE = _ACTION_ROWS + """
+, a AS (SELECT DISTINCT ON (security_id) security_id, close FROM prices
             WHERE provider = %(p)s AND adjustment = 'UNADJUSTED' AND trade_date = %(d1)s AND close > 0
+              AND recorded_at<=%(cutoff)s
+              AND (trade_date+1)::timestamp AT TIME ZONE 'Asia/Kolkata' - interval '1 microsecond'<=%(cutoff)s
             ORDER BY security_id, recorded_at DESC, provider_version DESC),
      b AS (SELECT DISTINCT ON (security_id) security_id, close FROM prices
             WHERE provider = %(p)s AND adjustment = 'UNADJUSTED' AND trade_date = %(d2)s AND close > 0
+              AND recorded_at<=%(cutoff)s
+              AND (trade_date+1)::timestamp AT TIME ZONE 'Asia/Kolkata' - interval '1 microsecond'<=%(cutoff)s
             ORDER BY security_id, recorded_at DESC, provider_version DESC),
      j AS (SELECT a.security_id, a.close AS c1, b.close AS c2,
                   b.close / (a.close * coalesce(f.m, 1)) - 1 AS r,
                   b.close IS NULL OR coalesce(f.bad, false) AS bad
              FROM a LEFT JOIN b USING (security_id)
              LEFT JOIN LATERAL (
-                  SELECT exp(sum(CASE WHEN x.kind IN ('SPLIT','BONUS') AND
-                         (x.details->>'price_multiplier')::numeric > 0
-                         THEN ln((x.details->>'price_multiplier')::numeric) END)) AS m,
+                  SELECT exp(sum(CASE WHEN x.kind IN ('SPLIT','BONUS') AND x.multiplier>0
+                         THEN ln(x.multiplier) END)) AS m,
                          bool_or(x.kind IN ('RIGHTS','MERGER','DELISTING','DEMERGER') OR
                              (x.kind IN ('SPLIT','BONUS') AND (NOT x.reconciled OR
-                              coalesce((x.details->>'price_multiplier')::numeric,0) <= 0))) AS bad
-                    FROM corporate_actions x
+                              coalesce(x.multiplier,0)<=0))) AS bad
+                    FROM action_groups x
                    WHERE x.security_id = a.security_id AND x.kind IN ('SPLIT','BONUS','RIGHTS','MERGER','DELISTING','DEMERGER')
                      AND x.ex_date > %(d1)s AND x.ex_date <= %(d2)s) f ON true)"""
 
 
-def _session(conn, provider: str, target: date, after: bool) -> Optional[date]:
+def _session(conn, provider: str, target: date, after: bool, observed_at=None) -> Optional[date]:
+    observed_at=observed_at or datetime.now(timezone.utc)
     op, order = (">=", "ASC") if after else ("<=", "DESC")
     row = conn.execute(f"""SELECT trade_date FROM prices WHERE provider = %s AND adjustment = 'UNADJUSTED'
-                             AND trade_date {op} %s ORDER BY trade_date {order} LIMIT 1""",
-                       (provider, target)).fetchone()
+                             AND trade_date {op} %s AND close>0 AND recorded_at<=%s
+                             AND (trade_date+1)::timestamp AT TIME ZONE 'Asia/Kolkata' - interval '1 microsecond'<=%s
+                             ORDER BY trade_date {order} LIMIT 1""",
+                       (provider,target,observed_at,observed_at)).fetchone()
     return row[0] if row else None
 
 
@@ -268,18 +296,20 @@ def _winners(conn, px: Prices, items: list[dict], all_lines: dict, first: date, 
     while q <= last:
         for provider in PROVIDER_ORDER:
             last_day = px.last_day.get(provider)
-            d1 = _session(conn, provider, q, after=True)
+            d1 = _session(conn, provider, q, after=True,observed_at=px.observed_at)
             if last_day is None or d1 is None or d1 + timedelta(days=days) > last_day:
                 continue
-            d2 = _session(conn, provider, d1 + timedelta(days=days), after=False)
+            d2 = _session(conn, provider, d1 + timedelta(days=days), after=False,observed_at=px.observed_at)
             rows = conn.execute(
                 _UNIVERSE + """
                 SELECT j.security_id, s.issuer_id, j.r FROM j JOIN securities s USING (security_id)
                  WHERE NOT j.bad AND j.r >= %(big)s
-                   AND (SELECT avg(x.close * x.volume) FROM prices x
-                         WHERE x.security_id = j.security_id AND x.provider = %(p)s AND x.adjustment = 'UNADJUSTED'
-                           AND x.trade_date BETWEEN %(d1)s::date - 30 AND %(d1)s) >= %(liq)s""",
-                dict(p=provider, d1=d1, d2=d2, big=Decimal(p["big_move"]),
+                   AND (SELECT avg(x.close*x.volume) FROM (
+                         SELECT DISTINCT ON(trade_date) trade_date,close,volume FROM prices z
+                         WHERE z.security_id=j.security_id AND z.provider=%(p)s AND z.adjustment='UNADJUSTED'
+                           AND z.recorded_at<=%(cutoff)s AND z.trade_date BETWEEN %(d1)s::date-30 AND %(d1)s
+                         ORDER BY trade_date,recorded_at DESC,provider_version DESC) x) >= %(liq)s""",
+                dict(p=provider, d1=d1, d2=d2,cutoff=px.observed_at, big=Decimal(p["big_move"]),
                      liq=Decimal(p["winner_min_traded_value"]))).fetchall()
             for sec, issuer, r in rows:
                 if (issuer, q) in seen:
@@ -332,7 +362,9 @@ def run(conn, first: date, last: date, mode: str = "PUBLIC_INFORMATION_RECONSTRU
     if not weeks:
         raise ValueError("no complete week in the interval")
     rows = queue.evaluation_rows(conn, None, weeks[-1][1], include_superseded=mode == "ACTUAL_SYSTEM_REPLAY")
-    week_rows, items = _queue_weeks(rows, weeks, mode, tp, holdout_from)
+    checkpoint_history=queue.financial_checkpoint_history(conn,weeks[-1][1]) if mode=='ACTUAL_SYSTEM_REPLAY' else ()
+    commercial_history=queue.commercial_checkpoint_history(conn,weeks[-1][1]) if mode=='ACTUAL_SYSTEM_REPLAY' else None
+    week_rows, items = _queue_weeks(rows, weeks, mode, tp, holdout_from,checkpoint_history,commercial_history)
     cov = _coverage(conn, weeks[0][0], weeks[-1][0], mode)
     for w in week_rows:
         w["coverage"] = dict(evaluations=w.pop("evaluations"),
@@ -343,7 +375,9 @@ def run(conn, first: date, last: date, mode: str = "PUBLIC_INFORMATION_RECONSTRU
     for i in items:
         queued[i["issuer_id"]].append(i["week_start"])
     winners = _winners(conn, px, items, queued, weeks[0][0], weeks[-1][0], p, mode)
-    coverage = _coverage_summary(week_rows, [r for r in rows if r[4] < weeks[-1][1]])
+    coverage = _coverage_summary(week_rows, [r for r in rows if r[4] < weeks[-1][1]
+        and (mode!='ACTUAL_SYSTEM_REPLAY' or r[14]<=weeks[-1][1])])
+    coverage["price_measurement_snapshot_at"]=px.observed_at.isoformat()
     coverage["prices_last_day"] = {k: v.isoformat() for k, v in px.last_day.items()}
     summary = dict(
         weeks=len(week_rows), shortlisted=sum(1 for i in items if i["shortlisted"]),

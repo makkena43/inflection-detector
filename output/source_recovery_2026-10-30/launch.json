@@ -1,0 +1,10 @@
+{
+  "started_at": "2026-10-30T07:36:07.179182+00:00",
+  "pid": 57642,
+  "original_financial_allowance": 134217728,
+  "already_spent": 1001113,
+  "available_at_launch": 133216615,
+  "retention_policy": "Owner regularly clears raw documents; preserve derived facts and verification receipts",
+  "archive_budgets_changed": false,
+  "tests": "15 passed"
+}

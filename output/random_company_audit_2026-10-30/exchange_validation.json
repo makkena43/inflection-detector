@@ -1,0 +1,500 @@
+[
+  {
+    "label": "AXITA",
+    "url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1575697_14112025073821_WEB.xml",
+    "stored_sha256": "2f72857b92a8604da704f8d8ab9de9db5802ce11c499208290478b7218a5c82c",
+    "bytes": 94668,
+    "sha256": "2f72857b92a8604da704f8d8ab9de9db5802ce11c499208290478b7218a5c82c",
+    "matches_archived_hash": true,
+    "units": [
+      "<ns0:unit xmlns:ns0=\"http://www.xbrl.org/2003/instance\" id=\"INR\"><ns0:measure>iso4217:INR</ns0:measure></ns0:unit>",
+      "<ns0:unit xmlns:ns0=\"http://www.xbrl.org/2003/instance\" id=\"pure\"><ns0:measure>xbrli:pure</ns0:measure></ns0:unit>",
+      "<ns0:unit xmlns:ns0=\"http://www.xbrl.org/2003/instance\" id=\"INRPerShare\"><ns0:divide><ns0:unitNumerator><ns0:measure>iso4217:INR</ns0:measure></ns0:unitNumerator><ns0:unitDenominator><ns0:measure>xbrli:shares</ns0:measure></ns0:unitDenominator></ns0:divide></ns0:unit>"
+    ],
+    "critical_facts": [
+      {
+        "tag": "Symbol",
+        "text": "AXITA",
+        "attrs": {
+          "contextRef": "OneD"
+        }
+      },
+      {
+        "tag": "NameOfTheCompany",
+        "text": "AXITA COTTON LIMITED",
+        "attrs": {
+          "contextRef": "OneD"
+        }
+      },
+      {
+        "tag": "DateOfStartOfReportingPeriod",
+        "text": "2025-07-01",
+        "attrs": {
+          "contextRef": "OneD"
+        }
+      },
+      {
+        "tag": "DateOfEndOfReportingPeriod",
+        "text": "2025-09-30",
+        "attrs": {
+          "contextRef": "OneD"
+        }
+      },
+      {
+        "tag": "RevenueFromOperations",
+        "text": "632702000",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "ProfitBeforeTax",
+        "text": "1577000",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "ProfitLossForPeriod",
+        "text": "362000",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "PaidUpValueOfEquityShareCapital",
+        "text": "347773000",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "FaceValueOfEquityShareCapital",
+        "text": "1",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "INF",
+          "unitRef": "INRPerShare"
+        }
+      },
+      {
+        "tag": "DateOfStartOfReportingPeriod",
+        "text": "2025-04-01",
+        "attrs": {
+          "contextRef": "FourD"
+        }
+      },
+      {
+        "tag": "DateOfEndOfReportingPeriod",
+        "text": "2025-09-30",
+        "attrs": {
+          "contextRef": "FourD"
+        }
+      },
+      {
+        "tag": "RevenueFromOperations",
+        "text": "2199675000",
+        "attrs": {
+          "contextRef": "FourD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "ProfitBeforeTax",
+        "text": "21207000",
+        "attrs": {
+          "contextRef": "FourD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "ProfitLossForPeriod",
+        "text": "16480000",
+        "attrs": {
+          "contextRef": "FourD",
+          "decimals": "-4",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "PaidUpValueOfEquityShareCapital",
+        "text": "347773000",
+        "attrs": {
+          "contextRef": "FourD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "FaceValueOfEquityShareCapital",
+        "text": "1",
+        "attrs": {
+          "contextRef": "FourD",
+          "decimals": "INF",
+          "unitRef": "INRPerShare"
+        }
+      }
+    ]
+  },
+  {
+    "label": "INFINIUM",
+    "url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NONINDAS_1676577_29052026080259_WEB.xml",
+    "stored_sha256": "555bbacd4c373ee0f0aa1ebc282468213a67be1c6348d7e9685b53ac00938f9b",
+    "bytes": 40340,
+    "sha256": "555bbacd4c373ee0f0aa1ebc282468213a67be1c6348d7e9685b53ac00938f9b",
+    "matches_archived_hash": true,
+    "units": [
+      "<ns0:unit xmlns:ns0=\"http://www.xbrl.org/2003/instance\" id=\"INR\"><ns0:measure>iso4217:INR</ns0:measure></ns0:unit>",
+      "<ns0:unit xmlns:ns0=\"http://www.xbrl.org/2003/instance\" id=\"INRPerShare\"><ns0:divide><ns0:unitNumerator><ns0:measure>iso4217:INR</ns0:measure></ns0:unitNumerator><ns0:unitDenominator><ns0:measure>xbrli:shares</ns0:measure></ns0:unitDenominator></ns0:divide></ns0:unit>"
+    ],
+    "critical_facts": [
+      {
+        "tag": "Symbol",
+        "text": "INFINIUM",
+        "attrs": {
+          "contextRef": "OneD"
+        }
+      },
+      {
+        "tag": "NameOfTheCompany",
+        "text": "INFINIUM PHARMACHEM LIMITED",
+        "attrs": {
+          "contextRef": "OneD"
+        }
+      },
+      {
+        "tag": "DateOfStartOfReportingPeriod",
+        "text": "2025-10-01",
+        "attrs": {
+          "contextRef": "OneD"
+        }
+      },
+      {
+        "tag": "DateOfEndOfReportingPeriod",
+        "text": "2026-03-31",
+        "attrs": {
+          "contextRef": "OneD"
+        }
+      },
+      {
+        "tag": "RevenueFromOperations",
+        "text": "1055809000",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "ProfitBeforeTax",
+        "text": "95100000",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "-5",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "PaidUpValueOfEquityShareCapital",
+        "text": "155831000",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "FaceValueOfEquityShareCapital",
+        "text": "10",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "INF",
+          "unitRef": "INRPerShare"
+        }
+      },
+      {
+        "tag": "DateOfStartOfReportingPeriod",
+        "text": "2025-04-01",
+        "attrs": {
+          "contextRef": "FourD"
+        }
+      },
+      {
+        "tag": "DateOfEndOfReportingPeriod",
+        "text": "2026-03-31",
+        "attrs": {
+          "contextRef": "FourD"
+        }
+      },
+      {
+        "tag": "RevenueFromOperations",
+        "text": "1896317000",
+        "attrs": {
+          "contextRef": "FourD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "ProfitBeforeTax",
+        "text": "178404000",
+        "attrs": {
+          "contextRef": "FourD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "PaidUpValueOfEquityShareCapital",
+        "text": "155831000",
+        "attrs": {
+          "contextRef": "FourD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "FaceValueOfEquityShareCapital",
+        "text": "10",
+        "attrs": {
+          "contextRef": "FourD",
+          "decimals": "INF",
+          "unitRef": "INRPerShare"
+        }
+      }
+    ]
+  },
+  {
+    "label": "INTLCONV",
+    "url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1715174_14082026094952_WEB.xml",
+    "stored_sha256": "3ffa9f9ff3e245804024997f2454b4a50ef42898dc25a325a47070b710363c1a",
+    "bytes": 34427,
+    "sha256": "3ffa9f9ff3e245804024997f2454b4a50ef42898dc25a325a47070b710363c1a",
+    "matches_archived_hash": true,
+    "units": [
+      "<ns0:unit xmlns:ns0=\"http://www.xbrl.org/2003/instance\" id=\"INR\"><ns0:measure>iso4217:INR</ns0:measure></ns0:unit>",
+      "<ns0:unit xmlns:ns0=\"http://www.xbrl.org/2003/instance\" id=\"INRPerShare\"><ns0:divide><ns0:unitNumerator><ns0:measure>iso4217:INR</ns0:measure></ns0:unitNumerator><ns0:unitDenominator><ns0:measure>xbrli:shares</ns0:measure></ns0:unitDenominator></ns0:divide></ns0:unit>"
+    ],
+    "critical_facts": [
+      {
+        "tag": "Symbol",
+        "text": "INTLCONV",
+        "attrs": {
+          "contextRef": "OneD"
+        }
+      },
+      {
+        "tag": "NameOfTheCompany",
+        "text": "International Conveyors Limited",
+        "attrs": {
+          "contextRef": "OneD"
+        }
+      },
+      {
+        "tag": "DateOfStartOfReportingPeriod",
+        "text": "2026-04-01",
+        "attrs": {
+          "contextRef": "OneD"
+        }
+      },
+      {
+        "tag": "DateOfEndOfReportingPeriod",
+        "text": "2026-06-30",
+        "attrs": {
+          "contextRef": "OneD"
+        }
+      },
+      {
+        "tag": "RevenueFromOperations",
+        "text": "353200000",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "-5",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "ProfitBeforeTax",
+        "text": "1518500000",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "-5",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "ProfitLossForPeriod",
+        "text": "1198200000",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "-5",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "PaidUpValueOfEquityShareCapital",
+        "text": "63800000",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "-5",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "FaceValueOfEquityShareCapital",
+        "text": "1",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "INF",
+          "unitRef": "INRPerShare"
+        }
+      }
+    ]
+  },
+  {
+    "label": "PURPLEUTED",
+    "url": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NONINDAS_1683084_20062026074435_WEB.xml",
+    "stored_sha256": "9f6fb673253eeec51bcd78df59807fca9ee9da4beb711c838cba899291f835bf",
+    "bytes": 110066,
+    "sha256": "9f6fb673253eeec51bcd78df59807fca9ee9da4beb711c838cba899291f835bf",
+    "matches_archived_hash": true,
+    "units": [
+      "<ns0:unit xmlns:ns0=\"http://www.xbrl.org/2003/instance\" id=\"INR\"><ns0:measure>iso4217:INR</ns0:measure></ns0:unit>",
+      "<ns0:unit xmlns:ns0=\"http://www.xbrl.org/2003/instance\" id=\"pure\"><ns0:measure>xbrli:pure</ns0:measure></ns0:unit>",
+      "<ns0:unit xmlns:ns0=\"http://www.xbrl.org/2003/instance\" id=\"INRPerShare\"><ns0:divide><ns0:unitNumerator><ns0:measure>iso4217:INR</ns0:measure></ns0:unitNumerator><ns0:unitDenominator><ns0:measure>xbrli:shares</ns0:measure></ns0:unitDenominator></ns0:divide></ns0:unit>"
+    ],
+    "critical_facts": [
+      {
+        "tag": "Symbol",
+        "text": "PURPLEUTED",
+        "attrs": {
+          "contextRef": "OneD"
+        }
+      },
+      {
+        "tag": "NameOfTheCompany",
+        "text": "Purple United Sales Limited",
+        "attrs": {
+          "contextRef": "OneD"
+        }
+      },
+      {
+        "tag": "DateOfStartOfReportingPeriod",
+        "text": "2025-10-01",
+        "attrs": {
+          "contextRef": "OneD"
+        }
+      },
+      {
+        "tag": "DateOfEndOfReportingPeriod",
+        "text": "2026-03-31",
+        "attrs": {
+          "contextRef": "OneD"
+        }
+      },
+      {
+        "tag": "RevenueFromOperations",
+        "text": "1099045000",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "ProfitBeforeTax",
+        "text": "139441000",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "PaidUpValueOfEquityShareCapital",
+        "text": "96098000",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "FaceValueOfEquityShareCapital",
+        "text": "10",
+        "attrs": {
+          "contextRef": "OneD",
+          "decimals": "INF",
+          "unitRef": "INRPerShare"
+        }
+      },
+      {
+        "tag": "DateOfStartOfReportingPeriod",
+        "text": "2025-04-01",
+        "attrs": {
+          "contextRef": "FourD"
+        }
+      },
+      {
+        "tag": "DateOfEndOfReportingPeriod",
+        "text": "2026-03-31",
+        "attrs": {
+          "contextRef": "FourD"
+        }
+      },
+      {
+        "tag": "RevenueFromOperations",
+        "text": "1706321000",
+        "attrs": {
+          "contextRef": "FourD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "ProfitBeforeTax",
+        "text": "204515000",
+        "attrs": {
+          "contextRef": "FourD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "PaidUpValueOfEquityShareCapital",
+        "text": "96098000",
+        "attrs": {
+          "contextRef": "FourD",
+          "decimals": "-3",
+          "unitRef": "INR"
+        }
+      },
+      {
+        "tag": "FaceValueOfEquityShareCapital",
+        "text": "10",
+        "attrs": {
+          "contextRef": "FourD",
+          "decimals": "INF",
+          "unitRef": "INRPerShare"
+        }
+      },
+      {
+        "tag": "DateOfEndOfReportingPeriod",
+        "text": "2026-03-31",
+        "attrs": {
+          "contextRef": "StatementStatic1D"
+        }
+      }
+    ]
+  }
+]

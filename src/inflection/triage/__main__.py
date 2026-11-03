@@ -40,18 +40,19 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--note")
     ap.add_argument("--by", default="investor")
+    ap.add_argument('--packet-hash',help='Hash of the reviewed packet; required when multiple packet versions exist')
     ap.add_argument("--model", action="store_true", help="the result came from a model, named by --by")
     a = ap.parse_args(argv)
     if a.command == "record" and not (a.symbol and a.action):
         ap.error("record needs SYMBOL and ACTION")
     with psycopg.connect(os.environ["INFLECTION_DSN"], autocommit=True) as conn:
         if a.command == "build":
-            out = pipeline.build(conn, a.week, mode=a.mode, dry_run=a.dry_run, ranked_cap=a.ranked_cap,
-                                 exploration=a.exploration, audit=a.audit)
+            overrides={k:v for k,v in dict(ranked_cap=a.ranked_cap,exploration=a.exploration,audit=a.audit).items() if v is not None}
+            out = pipeline.build(conn,a.week,mode=a.mode,dry_run=a.dry_run,**overrides)
         elif a.command == "show":
             out = pipeline.show(conn, a.week, everything=a.all)
         else:
-            out = pipeline.record(conn, a.week, a.symbol, a.action, a.note, a.by, "MODEL" if a.model else "HUMAN")
+            out = pipeline.record(conn, a.week, a.symbol, a.action, a.note, a.by, "MODEL" if a.model else "HUMAN",a.packet_hash)
     print(json.dumps(out, indent=2, default=str))
     return 1 if "error" in out else 0
 

@@ -1,0 +1,3845 @@
+[
+  {
+    "label": "BEL",
+    "week": "2024-11-04",
+    "review_id": "9185cd9f-8912-48bc-a484-09e009b17cb5",
+    "packet_id": "083be4fd-ee8c-4236-b147-a9c7fec072b0",
+    "action": "REJECT_WITH_REASON",
+    "size": "2.3",
+    "rationale": "ORDER BINDING_DEMAND 500 INR CRORE = 2.3% of revenue; firm=True; routine=True; disq=None",
+    "decided_by": "local engine rules-3.3+qwen2.5-3b",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "4,540.99",
+          "period_end": "2024-09-30"
+        },
+        "revenue": {
+          "value": "21,574.71",
+          "period_end": "2024-09-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "21,574.71",
+          "period_end": "2024-09-30"
+        },
+        "pat": {
+          "value": "4,540.99",
+          "period_end": "2024-09-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 607,
+      "original_linked_facts": 607
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": 2.3,
+      "size_basis": "STATED",
+      "firm": true,
+      "routine": false,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND 500 INR CRORE = 2.3% of revenue; firm=True; routine=False; disq=None; not routine: firm awards 255722 cr in the last 12 months vs 117340 cr the 12 months before; cycle research watch: order backlog growing year on year; operating margin improving; trailing revenue growing",
+      "order_cycle_acceleration": "firm awards 255722 cr in the last 12 months vs 117340 cr the 12 months before",
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "227338a2-486c-4688-be4c-c08e8f3e9c7c",
+      "excluded_events": [],
+      "cycle_signals": [
+        "order backlog growing year on year",
+        "operating margin improving",
+        "trailing revenue growing"
+      ],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": []
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2024-11-10T18:30:00+00:00",
+        "eligible_facts": 607,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "4,540.99",
+            "period_end": "2024-09-30"
+          },
+          "revenue": {
+            "value": "21,574.71",
+            "period_end": "2024-09-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "21,574.71",
+            "period_end": "2024-09-30"
+          },
+          "pat": {
+            "value": "4,540.99",
+            "period_end": "2024-09-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "BEL",
+    "week": "2026-10-19",
+    "review_id": "dfd09edd-a7b4-4917-ae59-cc95e635449c",
+    "packet_id": "fd72f860-d150-45d0-863d-d3023111fb12",
+    "action": "REJECT_WITH_REASON",
+    "size": "3.5",
+    "rationale": "ORDER BINDING_DEMAND 1011 INR CRORE = 3.5% of revenue; firm=True; routine=True; disq=None",
+    "decided_by": "local engine rules-3.5+qwen2.5-3b",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "6,147.74",
+          "period_end": "2026-06-30"
+        },
+        "revenue": {
+          "value": "28,717.35",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "28,717.35",
+          "period_end": "2026-06-30"
+        },
+        "pat": {
+          "value": "6,147.74",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 814,
+      "original_linked_facts": 814
+    },
+    "current_screen": {
+      "triage_action": "REJECT_WITH_REASON",
+      "size_pct_of_revenue": 3.5,
+      "size_basis": "STATED",
+      "firm": true,
+      "routine": false,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND 1011 INR CRORE = 3.5% of revenue; firm=True; routine=False; disq=None; not routine: order book 74000 cr (2.6x TTM revenue) to 2026-03-31, up from 27000 cr",
+      "order_cycle_acceleration": "order book 74000 cr (2.6x TTM revenue) to 2026-03-31, up from 27000 cr",
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "92a7163e-5157-4a64-913a-acfa51b36217",
+      "excluded_events": [],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": []
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2026-10-25T18:30:00+00:00",
+        "eligible_facts": 814,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "6,147.74",
+            "period_end": "2026-06-30"
+          },
+          "revenue": {
+            "value": "28,717.35",
+            "period_end": "2026-06-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "28,717.35",
+            "period_end": "2026-06-30"
+          },
+          "pat": {
+            "value": "6,147.74",
+            "period_end": "2026-06-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "HFCL",
+    "week": "2025-02-03",
+    "review_id": "72283772-b281-4fb9-b6bb-96fbd5230d6d",
+    "packet_id": "bc34f25e-708e-4dc1-8d2f-5796e41b361e",
+    "action": "REJECT_WITH_REASON",
+    "size": "54.5",
+    "rationale": "ORDER BINDING_DEMAND 2501 INR CRORE = 54.5% of revenue; firm=True; routine=True; disq=None",
+    "decided_by": "local engine rules-3.3+qwen2.5-3b",
+    "changes": [
+      {
+        "event_id": "ea3d0c31-f1c8-4573-9fb8-230253d1ee7f",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      },
+      {
+        "event_id": "47771228-cadc-4a7d-84a1-7bdd7f95bf73",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "365.92",
+          "period_end": "2024-12-31"
+        },
+        "revenue": {
+          "value": "4,589.86",
+          "period_end": "2024-12-31"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "4,589.86",
+          "period_end": "2024-12-31"
+        },
+        "pat": {
+          "value": "365.92",
+          "period_end": "2024-12-31"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 621,
+      "original_linked_facts": 621
+    },
+    "current_screen": {
+      "triage_action": "REJECT_WITH_REASON",
+      "size_pct_of_revenue": 54.5,
+      "size_basis": "STATED",
+      "firm": true,
+      "routine": true,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND 2501 INR CRORE = 54.5% of revenue; firm=True; routine=True; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "b92250d1-fd80-46a1-8812-18c497b1d44a",
+      "excluded_events": [
+        {
+          "event_id": "b1de2657-32fc-475e-959d-6421b3d82e1c",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "43cc5350-045b-4fbe-bb85-d2666c081961",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "5ee849ff-5bb2-442f-a1dc-f8fd63574b53",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "ea3d0c31-f1c8-4573-9fb8-230253d1ee7f",
+          "reason": "aggregate intake/backlog is not a single award"
+        },
+        {
+          "event_id": "47771228-cadc-4a7d-84a1-7bdd7f95bf73",
+          "reason": "aggregate intake/backlog is not a single award"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "ea3d0c31-f1c8-4573-9fb8-230253d1ee7f",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          },
+          {
+            "event_id": "47771228-cadc-4a7d-84a1-7bdd7f95bf73",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2025-02-09T18:30:00+00:00",
+        "eligible_facts": 621,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "365.92",
+            "period_end": "2024-12-31"
+          },
+          "revenue": {
+            "value": "4,589.86",
+            "period_end": "2024-12-31"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "4,589.86",
+            "period_end": "2024-12-31"
+          },
+          "pat": {
+            "value": "365.92",
+            "period_end": "2024-12-31"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "HFCL",
+    "week": "2026-01-05",
+    "review_id": "1f283e96-00c7-4a3b-87c7-d5b0f3cbb4bd",
+    "packet_id": "d10a1847-27ab-4edb-8441-e526b42aa1ba",
+    "action": "WATCH_MILESTONE",
+    "size": "14.3",
+    "rationale": "ORDER BINDING_DEMAND 72.96 USD MILLION = 14.3% of revenue; firm=True; routine=True; disq=None",
+    "decided_by": "local engine rules-3.5+qwen2.5-3b",
+    "changes": [
+      {
+        "event_id": "3bd94ffe-21fe-4f65-98b9-003c0d7b293e",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "31.90",
+          "period_end": "2025-09-30"
+        },
+        "revenue": {
+          "value": "3,727.03",
+          "period_end": "2025-09-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "3,727.03",
+          "period_end": "2025-09-30"
+        },
+        "pat": {
+          "value": "31.90",
+          "period_end": "2025-09-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 713,
+      "original_linked_facts": 713
+    },
+    "current_screen": {
+      "triage_action": "DEEP_RESEARCH",
+      "size_pct_of_revenue": 14.3,
+      "size_basis": "STATED",
+      "firm": true,
+      "routine": false,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND 72.96 USD MILLION = 14.3% of revenue; firm=True; routine=False; disq=None; not routine: order book 9981 cr (2.7x TTM revenue) to 2025-09-30, up from 6151 cr",
+      "order_cycle_acceleration": "order book 9981 cr (2.7x TTM revenue) to 2025-09-30, up from 6151 cr",
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "4ac1ca28-22ad-4e35-b325-bc07229bd43f",
+      "excluded_events": [
+        {
+          "event_id": "3bd94ffe-21fe-4f65-98b9-003c0d7b293e",
+          "reason": "aggregate intake/backlog is not a single award"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "3bd94ffe-21fe-4f65-98b9-003c0d7b293e",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2026-01-11T18:30:00+00:00",
+        "eligible_facts": 713,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "31.90",
+            "period_end": "2025-09-30"
+          },
+          "revenue": {
+            "value": "3,727.03",
+            "period_end": "2025-09-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "3,727.03",
+            "period_end": "2025-09-30"
+          },
+          "pat": {
+            "value": "31.90",
+            "period_end": "2025-09-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "HFCL",
+    "week": "2026-10-19",
+    "review_id": "c56e357f-df5b-474f-aa78-0aa420514298",
+    "packet_id": "7c293912-7003-44af-8db3-3ca1eebf91da",
+    "action": "REJECT_WITH_REASON",
+    "size": "30",
+    "rationale": "ORDER BINDING_DEMAND no value = 30.0% of revenue; firm=True; routine=True; disq=None",
+    "decided_by": "local engine rules-3.5+qwen2.5-3b",
+    "changes": [
+      {
+        "event_id": "b7c7cbb6-bf6a-4ee5-bf24-dbeb6954eb6b",
+        "fields": {
+          "stage": {
+            "before": "BINDING_DEMAND",
+            "after": "QUALIFIED"
+          }
+        },
+        "aggregate": false,
+        "mixed": false
+      },
+      {
+        "event_id": "b7c7cbb6-bf6a-4ee5-bf24-dbeb6954eb6b",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "604.38",
+          "period_end": "2026-06-30"
+        },
+        "revenue": {
+          "value": "5,993.23",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "5,993.23",
+          "period_end": "2026-06-30"
+        },
+        "pat": {
+          "value": "604.38",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 805,
+      "original_linked_facts": 805
+    },
+    "current_screen": {
+      "triage_action": "REJECT_WITH_REASON",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": false,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER AMBITION no value; firm=False; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "2db83d29-37f3-4122-88df-f8ebd295583b",
+      "excluded_events": [
+        {
+          "event_id": "f5e33345-b15a-4750-9e2c-99e2a8cbbd63",
+          "reason": "forecast"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "b7c7cbb6-bf6a-4ee5-bf24-dbeb6954eb6b",
+            "field": "stage",
+            "before": "BINDING_DEMAND",
+            "after": "QUALIFIED"
+          },
+          {
+            "event_id": "b7c7cbb6-bf6a-4ee5-bf24-dbeb6954eb6b",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2026-10-25T18:30:00+00:00",
+        "eligible_facts": 805,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "604.38",
+            "period_end": "2026-06-30"
+          },
+          "revenue": {
+            "value": "5,993.23",
+            "period_end": "2026-06-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "5,993.23",
+            "period_end": "2026-06-30"
+          },
+          "pat": {
+            "value": "604.38",
+            "period_end": "2026-06-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "WABAG",
+    "week": "2024-11-04",
+    "review_id": "e6a643db-3203-4c4a-b4c3-cc5feb974482",
+    "packet_id": "1819771a-6073-4d7f-9287-a14fcdbcfdf2",
+    "action": "REJECT_WITH_REASON",
+    "size": "91.1",
+    "rationale": "The Saudi Water Authority EPCC contract is firm and stated at about INR 2,700 crore, roughly 91% of TTM revenue of INR 2,965 crore, so the size test passes. It is not clearly beyond the company's disclosed history: the INR 4,400 crore Chennai 400 MLD DBO (March 2023) and a stream of INR 400-800 crore desalination and wastewater orders show that large orders are a regular flow for this company. The trigger's INR 60 billion firm figure is a preferred-bidder pipeline, so the event is rejected as routine; a reviewer who treats Saudi municipal work as a new market could reasonably move it to WATCH_MILESTONE.",
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "changes": [
+      {
+        "event_id": "da588037-9964-4133-a2c1-c3b5d0f73044",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "258.40",
+          "period_end": "2024-09-30"
+        },
+        "revenue": {
+          "value": "2,965.40",
+          "period_end": "2024-09-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "2,965.40",
+          "period_end": "2024-09-30"
+        },
+        "pat": {
+          "value": "258.40",
+          "period_end": "2024-09-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 621,
+      "original_linked_facts": 621
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "1e844011-7fd4-49f2-917c-b8ec689e95e6",
+      "excluded_events": [
+        {
+          "event_id": "31043901-a0ee-45ae-a974-e88a3b1fbd9b",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "da588037-9964-4133-a2c1-c3b5d0f73044",
+          "reason": "aggregate intake/backlog is not a single award"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "da588037-9964-4133-a2c1-c3b5d0f73044",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2024-11-10T18:30:00+00:00",
+        "eligible_facts": 621,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "258.40",
+            "period_end": "2024-09-30"
+          },
+          "revenue": {
+            "value": "2,965.40",
+            "period_end": "2024-09-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "2,965.40",
+            "period_end": "2024-09-30"
+          },
+          "pat": {
+            "value": "258.40",
+            "period_end": "2024-09-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "WABAG",
+    "week": "2025-02-03",
+    "review_id": "fdfd8f97-116a-4cb5-9b24-32afa9f95711",
+    "packet_id": "8e32ad9d-df11-4c61-ab18-0a246370cd03",
+    "action": "WATCH_MILESTONE",
+    "size": null,
+    "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+    "decided_by": "local engine rules-3.3+qwen2.5-3b",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "258.40",
+          "period_end": "2024-09-30"
+        },
+        "revenue": {
+          "value": "2,965.40",
+          "period_end": "2024-09-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "3,072.00",
+          "period_end": "2024-12-31"
+        },
+        "pat": {
+          "value": "266.00",
+          "period_end": "2024-12-31"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 643,
+      "original_linked_facts": 643
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "f8a32c26-310c-4b92-b42f-f6b09bdc9939",
+      "excluded_events": [
+        {
+          "event_id": "4f315d68-2d54-4cae-8256-a9efe97c0c2f",
+          "reason": "forecast"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": []
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2025-02-09T18:30:00+00:00",
+        "eligible_facts": 643,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "258.40",
+            "period_end": "2024-09-30"
+          },
+          "revenue": {
+            "value": "2,965.40",
+            "period_end": "2024-09-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "3,072.00",
+            "period_end": "2024-12-31"
+          },
+          "pat": {
+            "value": "266.00",
+            "period_end": "2024-12-31"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "WABAG",
+    "week": "2026-09-07",
+    "review_id": "7925740a-911b-4dac-afe4-53bf60e93baf",
+    "packet_id": "149d5cdc-6575-4964-acac-d78f443c8504",
+    "action": "REJECT_WITH_REASON",
+    "size": "2.4",
+    "rationale": "ORDER BINDING_DEMAND no value = 2.4% of revenue; firm=True; routine=True; disq=None",
+    "decided_by": "local engine rules-3.5+qwen2.5-3b",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "394.20",
+          "period_end": "2026-06-30"
+        },
+        "revenue": {
+          "value": "4,097.00",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "4,097.00",
+          "period_end": "2026-06-30"
+        },
+        "pat": {
+          "value": "394.20",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 827,
+      "original_linked_facts": 827
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "d39df72b-0cc9-4e36-bae5-f795ad51588b",
+      "excluded_events": [],
+      "cycle_signals": [
+        "order backlog growing year on year",
+        "trailing revenue growing"
+      ],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": []
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2026-09-13T18:30:00+00:00",
+        "eligible_facts": 827,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "394.20",
+            "period_end": "2026-06-30"
+          },
+          "revenue": {
+            "value": "4,097.00",
+            "period_end": "2026-06-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "4,097.00",
+            "period_end": "2026-06-30"
+          },
+          "pat": {
+            "value": "394.20",
+            "period_end": "2026-06-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "REFEX",
+    "week": "2025-04-28",
+    "review_id": "8220c232-238f-4f7d-8392-88e2aef65952",
+    "packet_id": "7a3da7ce-9cda-41f2-a106-413c9cb0da80",
+    "action": "DEEP_RESEARCH",
+    "size": "30.4",
+    "rationale": "Stated value INR 750 crore against FY25 revenue of INR 2,467.66 crore (TTM equal to FY25) is about 30.4%, to be executed in FY26. It is a received order from an external utility (Torrent Power), so firm, though the packet's record conflicts on this and the value is management-stated. It is not routine: the release calls it the first major order for wind turbine supply, a new product line for the group. Pre-existing earnings are strong (FY25 PAT INR 158 crore), and equity raised in the preferential issue, so no stress or fatal-flaw disqualifier applies.",
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "changes": [
+      {
+        "event_id": "1f6121e3-40a4-456e-95dc-fe678e486320",
+        "fields": {
+          "amount_basis": {
+            "before": "NON_BINDING",
+            "after": "FIRM"
+          }
+        },
+        "aggregate": false,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "158.38",
+          "period_end": "2025-03-31"
+        },
+        "revenue": {
+          "value": "2,467.66",
+          "period_end": "2025-03-31"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "2,467.66",
+          "period_end": "2025-03-31"
+        },
+        "pat": {
+          "value": "158.38",
+          "period_end": "2025-03-31"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 440,
+      "original_linked_facts": 440
+    },
+    "current_screen": {
+      "triage_action": "DEEP_RESEARCH",
+      "size_pct_of_revenue": 30.4,
+      "size_basis": "STATED",
+      "firm": true,
+      "routine": false,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND 750 INR CRORE = 30.4% of revenue; firm=True; routine=False; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "1f6121e3-40a4-456e-95dc-fe678e486320",
+      "excluded_events": [],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "1f6121e3-40a4-456e-95dc-fe678e486320",
+            "field": "amount_basis",
+            "before": "NON_BINDING",
+            "after": "FIRM"
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2025-05-04T18:30:00+00:00",
+        "eligible_facts": 440,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "158.38",
+            "period_end": "2025-03-31"
+          },
+          "revenue": {
+            "value": "2,467.66",
+            "period_end": "2025-03-31"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "2,467.66",
+            "period_end": "2025-03-31"
+          },
+          "pat": {
+            "value": "158.38",
+            "period_end": "2025-03-31"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "REFEX",
+    "week": "2025-04-14",
+    "review_id": "d22399f4-6c33-4833-86d3-ce4f8712c39d",
+    "packet_id": "7346e878-efae-4d78-983e-0573d571fe65",
+    "action": "REJECT_WITH_REASON",
+    "size": null,
+    "rationale": "ORDER AMBITION no value; firm=False; routine=None; disq=None",
+    "decided_by": "local engine rules-3.3+qwen2.5-3b",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "110.68",
+          "period_end": "2024-09-30"
+        },
+        "revenue": {
+          "value": "1,771.11",
+          "period_end": "2024-09-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "2,182.25",
+          "period_end": "2024-12-31"
+        },
+        "pat": {
+          "value": "143.84",
+          "period_end": "2024-12-31"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 394,
+      "original_linked_facts": 394
+    },
+    "current_screen": {
+      "triage_action": "REJECT_WITH_REASON",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": false,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER AMBITION no value; firm=False; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "38f5327f-460b-4de8-bc93-5578091f716a",
+      "excluded_events": [],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": []
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2025-04-20T18:30:00+00:00",
+        "eligible_facts": 394,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "110.68",
+            "period_end": "2024-09-30"
+          },
+          "revenue": {
+            "value": "1,771.11",
+            "period_end": "2024-09-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "2,182.25",
+            "period_end": "2024-12-31"
+          },
+          "pat": {
+            "value": "143.84",
+            "period_end": "2024-12-31"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "REFEX",
+    "week": "2025-08-18",
+    "review_id": "562f0caa-6875-4e92-8ee7-a76908327539",
+    "packet_id": "e24afc02-ae9b-4ed3-986c-54622ab1bd45",
+    "action": "WATCH_MILESTONE",
+    "size": null,
+    "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+    "decided_by": "local engine rules-3.3+qwen2.5-3b",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "110.68",
+          "period_end": "2024-09-30"
+        },
+        "revenue": {
+          "value": "1,771.11",
+          "period_end": "2024-09-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "2,255.79",
+          "period_end": "2025-06-30"
+        },
+        "pat": {
+          "value": "149.41",
+          "period_end": "2025-06-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 463,
+      "original_linked_facts": 463
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "4fd69731-e670-4598-9e0f-c5be78dbb643",
+      "excluded_events": [],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": []
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2025-08-24T18:30:00+00:00",
+        "eligible_facts": 463,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "110.68",
+            "period_end": "2024-09-30"
+          },
+          "revenue": {
+            "value": "1,771.11",
+            "period_end": "2024-09-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "2,255.79",
+            "period_end": "2025-06-30"
+          },
+          "pat": {
+            "value": "149.41",
+            "period_end": "2025-06-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "REFEX",
+    "week": "2026-10-19",
+    "review_id": "280ac5f4-f7c2-4a0b-a258-c7d888e96032",
+    "packet_id": "b55e815e-e061-4b5a-b4bc-45dbd46796d7",
+    "action": "REJECT_WITH_REASON",
+    "size": null,
+    "rationale": "ORDER QUALIFIED no value; firm=False; routine=None; disq=None",
+    "decided_by": "local engine rules-3.5+qwen2.5-3b",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "247.90",
+          "period_end": "2026-06-30"
+        },
+        "revenue": {
+          "value": "2,853.34",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "2,853.34",
+          "period_end": "2026-06-30"
+        },
+        "pat": {
+          "value": "247.90",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 578,
+      "original_linked_facts": 578
+    },
+    "current_screen": {
+      "triage_action": "REJECT_WITH_REASON",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": false,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER QUALIFIED no value; firm=False; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "c08a62b6-142e-4be3-a14a-c9885f26fe90",
+      "excluded_events": [],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": []
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2026-10-25T18:30:00+00:00",
+        "eligible_facts": 578,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "247.90",
+            "period_end": "2026-06-30"
+          },
+          "revenue": {
+            "value": "2,853.34",
+            "period_end": "2026-06-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "2,853.34",
+            "period_end": "2026-06-30"
+          },
+          "pat": {
+            "value": "247.90",
+            "period_end": "2026-06-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "DHRUV",
+    "week": "2024-11-11",
+    "review_id": "a824d4ba-a76f-4c89-b87b-362ab43c147d",
+    "packet_id": "8c797968-c13d-422e-95be-1b8629f92569",
+    "action": "DEEP_RESEARCH",
+    "size": "28.8",
+    "rationale": "The MSIDC letter of award is firm and its stated fee of Rs 23.46 crore over 90 months is 28.8% of FY24 revenue of Rs 81.50 crore (total against annual revenue, as the rules require; about 3.8% a year). It is not routine: the ticket is about 1.7x the largest contract disclosed before, and the company's typical awards were Rs 3-11 crore. The fee is for a consortium project, and the company's JV share is unstated, so the size is an upper bound that stays above 10% only if its share is at least about 35%. No disqualifier applies: the company is profitable and has just completed an equity raise.",
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "changes": [
+      {
+        "event_id": "6357c283-2ba8-4cc9-8494-bc4902eb982d",
+        "fields": {
+          "amount": {
+            "before": "33.24 INR CRORE",
+            "after": "5.7 INR CRORE"
+          }
+        },
+        "aggregate": false,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "why": "four consecutive quarters not available",
+          "value": null
+        },
+        "revenue": {
+          "why": "four consecutive quarters not available",
+          "value": null
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": null,
+          "why": "four consecutive quarters not available"
+        },
+        "pat": {
+          "value": null,
+          "why": "four consecutive quarters not available"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 212,
+      "original_linked_facts": 212
+    },
+    "current_screen": {
+      "triage_action": "REJECT_WITH_REASON",
+      "size_pct_of_revenue": 7.0,
+      "size_basis": "STATED",
+      "firm": true,
+      "routine": true,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND 5.7 INR CRORE = 7.0% of revenue; firm=True; routine=True; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "6357c283-2ba8-4cc9-8494-bc4902eb982d",
+      "excluded_events": [],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "6357c283-2ba8-4cc9-8494-bc4902eb982d",
+            "field": "amount",
+            "before": "33.24 INR CRORE",
+            "after": "5.7 INR CRORE"
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2024-11-17T18:30:00+00:00",
+        "eligible_facts": 212,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "why": "four consecutive quarters not available",
+            "value": null
+          },
+          "revenue": {
+            "why": "four consecutive quarters not available",
+            "value": null
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": null,
+            "why": "four consecutive quarters not available"
+          },
+          "pat": {
+            "value": null,
+            "why": "four consecutive quarters not available"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "DHRUV",
+    "week": "2024-11-18",
+    "review_id": "49acbff8-79b2-447f-91d4-aac01d566526",
+    "packet_id": "9f3b493a-354a-4347-ade7-ab3c57c6a518",
+    "action": "REJECT_WITH_REASON",
+    "size": "4.5",
+    "rationale": "ORDER BINDING_DEMAND 5 USD LAKH = 4.5% of revenue; firm=True; routine=True; disq=None",
+    "decided_by": "local engine rules-3.3+qwen2.5-3b",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "why": "four consecutive quarters not available",
+          "value": null
+        },
+        "revenue": {
+          "why": "four consecutive quarters not available",
+          "value": null
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": null,
+          "why": "four consecutive quarters not available"
+        },
+        "pat": {
+          "value": null,
+          "why": "four consecutive quarters not available"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 212,
+      "original_linked_facts": 212
+    },
+    "current_screen": {
+      "triage_action": "REJECT_WITH_REASON",
+      "size_pct_of_revenue": 4.5,
+      "size_basis": "STATED",
+      "firm": true,
+      "routine": true,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND 5 USD LAKH = 4.5% of revenue; firm=True; routine=True; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "7fdbc509-b580-4009-88b0-2a32d8c9e222",
+      "excluded_events": [],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": []
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2024-11-24T18:30:00+00:00",
+        "eligible_facts": 212,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "why": "four consecutive quarters not available",
+            "value": null
+          },
+          "revenue": {
+            "why": "four consecutive quarters not available",
+            "value": null
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": null,
+            "why": "four consecutive quarters not available"
+          },
+          "pat": {
+            "value": null,
+            "why": "four consecutive quarters not available"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "DHRUV",
+    "week": "2025-01-13",
+    "review_id": "039b0fb8-6a8f-4463-8322-e978c2790cb6",
+    "packet_id": "8aff7f07-d9e0-446c-aff0-0d2b10c64070",
+    "action": "WATCH_MILESTONE",
+    "size": null,
+    "rationale": "ORDER BINDING_DEMAND 4400000 INR UNITS; firm=True; routine=None; disq=None",
+    "decided_by": "local engine rules-3.3+qwen2.5-3b",
+    "changes": [
+      {
+        "event_id": "0bb540dc-f7f7-4ce8-8450-f63ffd77afd4",
+        "fields": {
+          "amount": {
+            "before": null,
+            "after": "78501500 INR UNITS"
+          },
+          "amount_basis": {
+            "before": "UNQUANTIFIED",
+            "after": "FIRM"
+          }
+        },
+        "aggregate": false,
+        "mixed": false
+      },
+      {
+        "event_id": "d9d74112-9456-43e2-a7b2-25b408ddc4e2",
+        "fields": {
+          "amount": {
+            "before": "93623500 INR UNITS",
+            "after": "92700000 INR UNITS"
+          }
+        },
+        "aggregate": false,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "why": "four consecutive quarters not available",
+          "value": null
+        },
+        "revenue": {
+          "why": "four consecutive quarters not available",
+          "value": null
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": null,
+          "why": "four consecutive quarters not available"
+        },
+        "pat": {
+          "value": null,
+          "why": "four consecutive quarters not available"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 212,
+      "original_linked_facts": 212
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND 4400000 INR UNITS; firm=True; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "21f58dc6-82c4-4bfb-9edc-5402f5ae7d4a",
+      "excluded_events": [],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "0bb540dc-f7f7-4ce8-8450-f63ffd77afd4",
+            "field": "amount",
+            "before": null,
+            "after": "78501500 INR UNITS"
+          },
+          {
+            "event_id": "0bb540dc-f7f7-4ce8-8450-f63ffd77afd4",
+            "field": "amount_basis",
+            "before": "UNQUANTIFIED",
+            "after": "FIRM"
+          },
+          {
+            "event_id": "d9d74112-9456-43e2-a7b2-25b408ddc4e2",
+            "field": "amount",
+            "before": "93623500 INR UNITS",
+            "after": "92700000 INR UNITS"
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2025-01-19T18:30:00+00:00",
+        "eligible_facts": 212,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "why": "four consecutive quarters not available",
+            "value": null
+          },
+          "revenue": {
+            "why": "four consecutive quarters not available",
+            "value": null
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": null,
+            "why": "four consecutive quarters not available"
+          },
+          "pat": {
+            "value": null,
+            "why": "four consecutive quarters not available"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "DHRUV",
+    "week": "2026-10-19",
+    "review_id": "3015a0b6-a6f6-4dd4-acaa-8e3132a15928",
+    "packet_id": "2958db43-2ad6-47ac-859a-e848b13c6789",
+    "action": "WATCH_MILESTONE",
+    "size": null,
+    "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+    "decided_by": "local engine rules-3.5+qwen2.5-3b",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "-34.84",
+          "period_end": "2026-06-30"
+        },
+        "revenue": {
+          "value": "37.42",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "37.42",
+          "period_end": "2026-06-30"
+        },
+        "pat": {
+          "value": "-34.84",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 417,
+      "original_linked_facts": 417
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "9232cc0a-8a3c-4b15-a19f-8508e4ec26b8",
+      "excluded_events": [],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": []
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2026-10-25T18:30:00+00:00",
+        "eligible_facts": 417,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "-34.84",
+            "period_end": "2026-06-30"
+          },
+          "revenue": {
+            "value": "37.42",
+            "period_end": "2026-06-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "37.42",
+            "period_end": "2026-06-30"
+          },
+          "pat": {
+            "value": "-34.84",
+            "period_end": "2026-06-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "EXICOM",
+    "week": "2025-02-03",
+    "review_id": "5debbfbe-9f55-4aa3-9c59-6201e620a844",
+    "packet_id": "a98843da-5693-495a-b418-2fe2446f1aa3",
+    "action": "DEEP_RESEARCH",
+    "size": "186.1",
+    "rationale": "Stated value INR 1,680 crore is a multi-year total (about 3 years of equipment plus 10 years of services) and is about 186% of TTM revenue of INR 902.98 crore (1,680 / 902.98). It is an advance purchase order received from system integrators, so firm, and it is the largest order the company has disclosed, a step-change from a critical power business described as sluggish, so not routine. Losses (TTM PAT -20.30 crore) and dilution are noted, but the packet shows no default or going-concern signal; funding is unresolved and the period is contradictory across filings.",
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "changes": [
+      {
+        "event_id": "d4be6716-5de2-4de0-a097-81137901663e",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "-20.30",
+          "period_end": "2024-12-31"
+        },
+        "revenue": {
+          "value": "902.98",
+          "period_end": "2024-12-31"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "902.98",
+          "period_end": "2024-12-31"
+        },
+        "pat": {
+          "value": "-20.30",
+          "period_end": "2024-12-31"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 138,
+      "original_linked_facts": 138
+    },
+    "current_screen": {
+      "triage_action": "DEEP_RESEARCH",
+      "size_pct_of_revenue": 186.1,
+      "size_basis": "STATED",
+      "firm": true,
+      "routine": true,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND 1680 INR CRORE = 186.1% of revenue; firm=True; routine=True; disq=None; size flag OVER_100PCT",
+      "order_cycle_acceleration": null,
+      "size_flag": "OVER_100PCT",
+      "screen_version": "local-screen-3",
+      "selected_event_id": "a7702098-d50e-4444-a26d-05651d04b1f2",
+      "excluded_events": [
+        {
+          "event_id": "ff2073d7-ebb6-429b-b286-a4016755e8e9",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "d4be6716-5de2-4de0-a097-81137901663e",
+          "reason": "aggregate intake/backlog is not a single award"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "d4be6716-5de2-4de0-a097-81137901663e",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2025-02-09T18:30:00+00:00",
+        "eligible_facts": 138,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "-20.30",
+            "period_end": "2024-12-31"
+          },
+          "revenue": {
+            "value": "902.98",
+            "period_end": "2024-12-31"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "902.98",
+            "period_end": "2024-12-31"
+          },
+          "pat": {
+            "value": "-20.30",
+            "period_end": "2024-12-31"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "EXICOM",
+    "week": "2025-08-11",
+    "review_id": "2de48df3-e85c-4094-86b8-ab6df2596444",
+    "packet_id": "92ac928d-f74b-4b48-acaa-85ebf7d2f249",
+    "action": "REJECT_WITH_REASON",
+    "size": "166.1",
+    "rationale": "ORDER BINDING_DEMAND 1500 INR CRORE = 166.1% of revenue; firm=True; routine=True; disq=None",
+    "decided_by": "local engine rules-3.3+qwen2.5-3b",
+    "changes": [
+      {
+        "event_id": "9f109191-b4e1-4086-be0e-ad303e2b163d",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "-20.30",
+          "period_end": "2024-12-31"
+        },
+        "revenue": {
+          "value": "902.98",
+          "period_end": "2024-12-31"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "820.84",
+          "period_end": "2025-06-30"
+        },
+        "pat": {
+          "value": "-211.41",
+          "period_end": "2025-06-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 207,
+      "original_linked_facts": 207
+    },
+    "current_screen": {
+      "triage_action": "REJECT_WITH_REASON",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": "STRESSED",
+      "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=STRESSED",
+      "screen_version": "local-screen-3",
+      "selected_event_id": "d4309875-dbf1-476e-885e-0d86c1ad06e3",
+      "cycle_signals": [],
+      "evidence_conflict": false,
+      "excluded_events": [
+        {
+          "event_id": "9f77ee92-ac3d-4d21-9d18-4ff8b2162bd8",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "9f109191-b4e1-4086-be0e-ad303e2b163d",
+          "reason": "aggregate intake/backlog is not a single award"
+        }
+      ],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "9f109191-b4e1-4086-be0e-ad303e2b163d",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2025-08-17T18:30:00+00:00",
+        "eligible_facts": 207,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "-20.30",
+            "period_end": "2024-12-31"
+          },
+          "revenue": {
+            "value": "902.98",
+            "period_end": "2024-12-31"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "820.84",
+            "period_end": "2025-06-30"
+          },
+          "pat": {
+            "value": "-211.41",
+            "period_end": "2025-06-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "EXICOM",
+    "week": "2024-11-11",
+    "review_id": "21ea1518-6964-4630-a86d-a26159ec009f",
+    "packet_id": "37503813-670b-4fde-8561-45c095a0d3fb",
+    "action": "WATCH_MILESTONE",
+    "size": null,
+    "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+    "decided_by": "local engine rules-3.3+qwen2.5-3b",
+    "changes": [
+      {
+        "event_id": "63466c5f-541c-4fea-80af-3c6c05d278e3",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "37.66",
+          "period_end": "2024-09-30"
+        },
+        "revenue": {
+          "value": "970.01",
+          "period_end": "2024-09-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "970.01",
+          "period_end": "2024-09-30"
+        },
+        "pat": {
+          "value": "37.66",
+          "period_end": "2024-09-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 115,
+      "original_linked_facts": 115
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "firm": false,
+      "routine": null,
+      "disqualifier": null,
+      "screen_version": "local-screen-3",
+      "cycle_signals": [],
+      "excluded_events": [
+        {
+          "event_id": "63466c5f-541c-4fea-80af-3c6c05d278e3",
+          "reason": "aggregate intake/backlog is not a single award"
+        }
+      ],
+      "rationale": "No eligible current operating award. aggregate intake/backlog is not a single award",
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "63466c5f-541c-4fea-80af-3c6c05d278e3",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2024-11-17T18:30:00+00:00",
+        "eligible_facts": 115,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "37.66",
+            "period_end": "2024-09-30"
+          },
+          "revenue": {
+            "value": "970.01",
+            "period_end": "2024-09-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "970.01",
+            "period_end": "2024-09-30"
+          },
+          "pat": {
+            "value": "37.66",
+            "period_end": "2024-09-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "EXICOM",
+    "week": "2026-08-10",
+    "review_id": "975dc422-1920-4dea-8b63-228ce5b31bf1",
+    "packet_id": "06622406-dbfd-46bb-b213-c55742017ca0",
+    "action": "WATCH_MILESTONE",
+    "size": "6.6",
+    "rationale": "The firm telco DC-power order of about INR 85 crore is 6.6% of TTM revenue of INR 1,277 crore (STATED); the 1,500 crore figure in the packet is backlog and does not size an event. Exicom wins telco orders of this size regularly (about 100 crore in Feb 2026, 113 crore in May 2026), so it is routine, but TTM operating margin of -7.1% (below 10%) and TTM revenue growth of 55.6% (above 0%) trigger the thin-margin exception, so it is judged as non-routine. Below the 10% threshold with a plausible path to material via repeated quarterly telco wins and a BSNL FY27 program, so WATCH_MILESTONE; no disqualifier, though the company is loss-making.",
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "changes": [
+      {
+        "event_id": "00573fee-1152-411e-8831-1d9ccb4671e3",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      },
+      {
+        "event_id": "933aaec9-e4d2-4f52-80a8-b04c6d8b5a34",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      },
+      {
+        "event_id": "9f109191-b4e1-4086-be0e-ad303e2b163d",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      },
+      {
+        "event_id": "32d5ea26-a710-4236-a229-c9c0d37d0769",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      },
+      {
+        "event_id": "52e0b040-b777-4960-93ec-7d47a14eac4c",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      },
+      {
+        "event_id": "31c22738-d926-4c1a-aa6a-f921e0b04e8a",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      },
+      {
+        "event_id": "e84a8099-fc4d-445a-bc49-1f2721d51061",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      },
+      {
+        "event_id": "5156a1ec-f5c0-409e-ad0f-d8da739e10ca",
+        "fields": {
+          "amount_basis": {
+            "before": "FIRM",
+            "after": "NON_BINDING"
+          }
+        },
+        "aggregate": false,
+        "mixed": true
+      },
+      {
+        "event_id": "0962bf94-c254-48fb-aeee-77a59a312f5f",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      },
+      {
+        "event_id": "78370e28-6df0-4ca3-ae47-4edcdfaa96cc",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      },
+      {
+        "event_id": "5ea16852-b7e1-4c33-9d56-fd1676f698ec",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "-264.56",
+          "period_end": "2026-06-30"
+        },
+        "revenue": {
+          "value": "1,277.48",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "1,277.48",
+          "period_end": "2026-06-30"
+        },
+        "pat": {
+          "value": "-264.56",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 321,
+      "original_linked_facts": 321
+    },
+    "current_screen": {
+      "triage_action": "REJECT_WITH_REASON",
+      "size_pct_of_revenue": 8.8,
+      "size_basis": "STATED",
+      "firm": true,
+      "routine": true,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND 113 INR CRORE = 8.8% of revenue; firm=True; routine=True; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "b1b80b0a-1b93-450b-a111-dfcf03f6124f",
+      "excluded_events": [
+        {
+          "event_id": "00573fee-1152-411e-8831-1d9ccb4671e3",
+          "reason": "aggregate intake/backlog is not a single award"
+        },
+        {
+          "event_id": "933aaec9-e4d2-4f52-80a8-b04c6d8b5a34",
+          "reason": "aggregate intake/backlog is not a single award"
+        },
+        {
+          "event_id": "9f109191-b4e1-4086-be0e-ad303e2b163d",
+          "reason": "aggregate intake/backlog is not a single award"
+        },
+        {
+          "event_id": "32d5ea26-a710-4236-a229-c9c0d37d0769",
+          "reason": "aggregate intake/backlog is not a single award"
+        },
+        {
+          "event_id": "52e0b040-b777-4960-93ec-7d47a14eac4c",
+          "reason": "aggregate intake/backlog is not a single award"
+        },
+        {
+          "event_id": "31c22738-d926-4c1a-aa6a-f921e0b04e8a",
+          "reason": "aggregate intake/backlog is not a single award"
+        },
+        {
+          "event_id": "e84a8099-fc4d-445a-bc49-1f2721d51061",
+          "reason": "aggregate intake/backlog is not a single award"
+        },
+        {
+          "event_id": "3a9f15bb-9d25-427b-a0db-96059855c6b2",
+          "reason": "stated completion date has passed; require a fresh execution update"
+        },
+        {
+          "event_id": "0962bf94-c254-48fb-aeee-77a59a312f5f",
+          "reason": "aggregate intake/backlog is not a single award"
+        },
+        {
+          "event_id": "78370e28-6df0-4ca3-ae47-4edcdfaa96cc",
+          "reason": "aggregate intake/backlog is not a single award"
+        },
+        {
+          "event_id": "f0c331fe-5fb8-47d9-98b8-6051b7b9aaa2",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "5ea16852-b7e1-4c33-9d56-fd1676f698ec",
+          "reason": "aggregate intake/backlog is not a single award"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "00573fee-1152-411e-8831-1d9ccb4671e3",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          },
+          {
+            "event_id": "933aaec9-e4d2-4f52-80a8-b04c6d8b5a34",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          },
+          {
+            "event_id": "9f109191-b4e1-4086-be0e-ad303e2b163d",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          },
+          {
+            "event_id": "32d5ea26-a710-4236-a229-c9c0d37d0769",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          },
+          {
+            "event_id": "52e0b040-b777-4960-93ec-7d47a14eac4c",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          },
+          {
+            "event_id": "31c22738-d926-4c1a-aa6a-f921e0b04e8a",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          },
+          {
+            "event_id": "e84a8099-fc4d-445a-bc49-1f2721d51061",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          },
+          {
+            "event_id": "5156a1ec-f5c0-409e-ad0f-d8da739e10ca",
+            "field": "amount_basis",
+            "before": "FIRM",
+            "after": "NON_BINDING"
+          },
+          {
+            "event_id": "0962bf94-c254-48fb-aeee-77a59a312f5f",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          },
+          {
+            "event_id": "78370e28-6df0-4ca3-ae47-4edcdfaa96cc",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          },
+          {
+            "event_id": "5ea16852-b7e1-4c33-9d56-fd1676f698ec",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2026-08-16T18:30:00+00:00",
+        "eligible_facts": 321,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "-264.56",
+            "period_end": "2026-06-30"
+          },
+          "revenue": {
+            "value": "1,277.48",
+            "period_end": "2026-06-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "1,277.48",
+            "period_end": "2026-06-30"
+          },
+          "pat": {
+            "value": "-264.56",
+            "period_end": "2026-06-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "WEBELSOLAR",
+    "week": "2025-05-12",
+    "review_id": "d7ba5bf9-0912-478b-9302-fe8aa17b3409",
+    "packet_id": "bf671f42-6b89-45f0-a49a-edb8bfea8cbd",
+    "action": "DEEP_RESEARCH",
+    "size": "10.8",
+    "rationale": "Stated INR 623 million (INR 62.3 crore) against TTM revenue of INR 575.45 crore is about 10.8%, just above the 10% threshold; the packet's 22.2% figure does not reconcile. The order is firm (secured orders with stated value), and it is not clearly routine, since the company had no quantified orders before and its shipments reach export markets not shown earlier. Confidence is low: order counterparty, timing and whether it is one contract or several are unknown, and recent orders are arriving in quick succession.",
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "changes": [
+      {
+        "event_id": "5dbdd32f-8a01-4899-aeda-90a2e740a79e",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "154.74",
+          "period_end": "2025-03-31"
+        },
+        "revenue": {
+          "value": "575.45",
+          "period_end": "2025-03-31"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "575.45",
+          "period_end": "2025-03-31"
+        },
+        "pat": {
+          "value": "154.74",
+          "period_end": "2025-03-31"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 243,
+      "original_linked_facts": 243
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "e827d1c3-1d7d-4517-acdf-a5893eed64f5",
+      "excluded_events": [
+        {
+          "event_id": "5dbdd32f-8a01-4899-aeda-90a2e740a79e",
+          "reason": "aggregate intake/backlog is not a single award"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "5dbdd32f-8a01-4899-aeda-90a2e740a79e",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2025-05-18T18:30:00+00:00",
+        "eligible_facts": 243,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "154.74",
+            "period_end": "2025-03-31"
+          },
+          "revenue": {
+            "value": "575.45",
+            "period_end": "2025-03-31"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "575.45",
+            "period_end": "2025-03-31"
+          },
+          "pat": {
+            "value": "154.74",
+            "period_end": "2025-03-31"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "WEBELSOLAR",
+    "week": "2025-03-31",
+    "review_id": "e178e3eb-26df-46d3-b20a-e39ba289276d",
+    "packet_id": "74ae2ac5-8a23-479b-896b-ae220f7fbf3c",
+    "action": "REJECT_WITH_REASON",
+    "size": "8.2",
+    "rationale": "ORDER BINDING_DEMAND no value = 8.2% of revenue; firm=True; routine=False; disq=None",
+    "decided_by": "local engine rules-3.3+qwen2.5-3b",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "47.90",
+          "period_end": "2024-12-31"
+        },
+        "revenue": {
+          "value": "427.33",
+          "period_end": "2024-12-31"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "427.33",
+          "period_end": "2024-12-31"
+        },
+        "pat": {
+          "value": "47.90",
+          "period_end": "2024-12-31"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 221,
+      "original_linked_facts": 221
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "66960efd-8004-4b35-8ee9-58f462c4a527",
+      "excluded_events": [
+        {
+          "event_id": "b79f50e1-bcda-4cdd-a2c2-19ee17646c48",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "80652140-21b6-4d1a-b3bd-fd14e82c404b",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "9b70bb3a-f523-447b-9554-8e2372a0a0fc",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "8d97f740-4358-49ac-bf47-58e45a222f03",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "adfdea18-1138-4a16-949b-ffea9a4d1217",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "02f78458-d9c8-46ce-b613-19e321896d1d",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "ab20d9b6-c6e7-4d7d-a162-c4f13805452f",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "6bd08e9f-4f7c-4546-8e4b-9073802b1874",
+          "reason": "forecast"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": []
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2025-04-06T18:30:00+00:00",
+        "eligible_facts": 221,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "47.90",
+            "period_end": "2024-12-31"
+          },
+          "revenue": {
+            "value": "427.33",
+            "period_end": "2024-12-31"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "427.33",
+            "period_end": "2024-12-31"
+          },
+          "pat": {
+            "value": "47.90",
+            "period_end": "2024-12-31"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "WEBELSOLAR",
+    "week": "2026-01-26",
+    "review_id": "d518756d-b38c-4798-be41-6680ed58526a",
+    "packet_id": "d4ff703e-0db5-49d4-b060-f1b022cbbc86",
+    "action": "WATCH_MILESTONE",
+    "size": null,
+    "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+    "decided_by": "local engine rules-3.5+qwen2.5-3b",
+    "changes": [
+      {
+        "event_id": "5dbdd32f-8a01-4899-aeda-90a2e740a79e",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      },
+      {
+        "event_id": "480dd781-6248-4636-8d5a-01aaf8e0c868",
+        "fields": {
+          "stage": {
+            "before": "FUNDED_PLAN",
+            "after": "AMBITION"
+          }
+        },
+        "aggregate": false,
+        "mixed": false
+      },
+      {
+        "event_id": "480dd781-6248-4636-8d5a-01aaf8e0c868",
+        "fields": {
+          "amount": {
+            "before": "3000 INR CRORE",
+            "after": null
+          },
+          "amount_basis": {
+            "before": "NON_BINDING",
+            "after": "UNQUANTIFIED"
+          },
+          "stage": {
+            "before": "FUNDED_PLAN",
+            "after": "AMBITION"
+          }
+        },
+        "aggregate": false,
+        "mixed": false
+      },
+      {
+        "event_id": "0f4dc93b-94bb-45ac-9277-8b532941bc4a",
+        "fields": {
+          "stage": {
+            "before": "FUNDED_PLAN",
+            "after": "AMBITION"
+          }
+        },
+        "aggregate": false,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "why": "four consecutive quarters not available",
+          "value": null
+        },
+        "revenue": {
+          "why": "four consecutive quarters not available",
+          "value": null
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": null,
+          "why": "four consecutive quarters not available"
+        },
+        "pat": {
+          "value": null,
+          "why": "four consecutive quarters not available"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 288,
+      "original_linked_facts": 288
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "66960efd-8004-4b35-8ee9-58f462c4a527",
+      "excluded_events": [
+        {
+          "event_id": "5dbdd32f-8a01-4899-aeda-90a2e740a79e",
+          "reason": "aggregate intake/backlog is not a single award"
+        },
+        {
+          "event_id": "de4f0e17-6741-474c-88d4-be779f3e38b7",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "480dd781-6248-4636-8d5a-01aaf8e0c868",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "4193c562-2fe3-4a04-a90b-108ee969b066",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "afed4827-53e9-4bb3-805c-cf768218017c",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "d26fb88f-2194-4f50-91cc-69b8e067b4cd",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "ebed306d-43d4-42c7-8ef5-60ab6ddf4f55",
+          "reason": "stated completion date has passed; require a fresh execution update"
+        },
+        {
+          "event_id": "0f4dc93b-94bb-45ac-9277-8b532941bc4a",
+          "reason": "forecast"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "5dbdd32f-8a01-4899-aeda-90a2e740a79e",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          },
+          {
+            "event_id": "de4f0e17-6741-474c-88d4-be779f3e38b7",
+            "field": "observation_status",
+            "before": "OBSERVED",
+            "after": "FORECAST"
+          },
+          {
+            "event_id": "de4f0e17-6741-474c-88d4-be779f3e38b7",
+            "field": "deadline",
+            "before": "2025-09-30",
+            "after": "2028-06-30"
+          },
+          {
+            "event_id": "480dd781-6248-4636-8d5a-01aaf8e0c868",
+            "field": "stage",
+            "before": "FUNDED_PLAN",
+            "after": "AMBITION"
+          },
+          {
+            "event_id": "480dd781-6248-4636-8d5a-01aaf8e0c868",
+            "field": "observation_status",
+            "before": "OBSERVED",
+            "after": "FORECAST"
+          },
+          {
+            "event_id": "480dd781-6248-4636-8d5a-01aaf8e0c868",
+            "field": "amount",
+            "before": "3000 INR CRORE",
+            "after": null
+          },
+          {
+            "event_id": "480dd781-6248-4636-8d5a-01aaf8e0c868",
+            "field": "amount_basis",
+            "before": "NON_BINDING",
+            "after": "UNQUANTIFIED"
+          },
+          {
+            "event_id": "480dd781-6248-4636-8d5a-01aaf8e0c868",
+            "field": "stage",
+            "before": "FUNDED_PLAN",
+            "after": "AMBITION"
+          },
+          {
+            "event_id": "480dd781-6248-4636-8d5a-01aaf8e0c868",
+            "field": "observation_status",
+            "before": "OBSERVED",
+            "after": "FORECAST"
+          },
+          {
+            "event_id": "0f4dc93b-94bb-45ac-9277-8b532941bc4a",
+            "field": "stage",
+            "before": "FUNDED_PLAN",
+            "after": "AMBITION"
+          },
+          {
+            "event_id": "0f4dc93b-94bb-45ac-9277-8b532941bc4a",
+            "field": "observation_status",
+            "before": "OBSERVED",
+            "after": "FORECAST"
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2026-02-01T18:30:00+00:00",
+        "eligible_facts": 288,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "why": "four consecutive quarters not available",
+            "value": null
+          },
+          "revenue": {
+            "why": "four consecutive quarters not available",
+            "value": null
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": null,
+            "why": "four consecutive quarters not available"
+          },
+          "pat": {
+            "value": null,
+            "why": "four consecutive quarters not available"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "WEBELSOLAR",
+    "week": "2026-07-06",
+    "review_id": "47005e2d-b112-4f09-a392-782ae177335b",
+    "packet_id": "3d7f894a-06d9-4771-a0e7-8def60fe96b5",
+    "action": "DEEP_RESEARCH",
+    "size": "39.3",
+    "rationale": "ORDER BINDING_DEMAND 412 INR CRORE = 39.3% of revenue; firm=True; routine=False; disq=None",
+    "decided_by": "local engine rules-3.5+qwen2.5-3b",
+    "changes": [
+      {
+        "event_id": "5dbdd32f-8a01-4899-aeda-90a2e740a79e",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      },
+      {
+        "event_id": "480dd781-6248-4636-8d5a-01aaf8e0c868",
+        "fields": {
+          "amount": {
+            "before": "3000 INR CRORE",
+            "after": null
+          },
+          "amount_basis": {
+            "before": "NON_BINDING",
+            "after": "UNQUANTIFIED"
+          },
+          "stage": {
+            "before": "FUNDED_PLAN",
+            "after": "AMBITION"
+          }
+        },
+        "aggregate": false,
+        "mixed": false
+      },
+      {
+        "event_id": "a58e52bd-c7f9-4357-9c65-2317c442a598",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "why": "four consecutive quarters not available",
+          "value": null
+        },
+        "revenue": {
+          "why": "four consecutive quarters not available",
+          "value": null
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": null,
+          "why": "four consecutive quarters not available"
+        },
+        "pat": {
+          "value": null,
+          "why": "four consecutive quarters not available"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 334,
+      "original_linked_facts": 334
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "e827d1c3-1d7d-4517-acdf-a5893eed64f5",
+      "excluded_events": [
+        {
+          "event_id": "66960efd-8004-4b35-8ee9-58f462c4a527",
+          "reason": "old disclosure without a current execution update"
+        },
+        {
+          "event_id": "5dbdd32f-8a01-4899-aeda-90a2e740a79e",
+          "reason": "aggregate intake/backlog is not a single award"
+        },
+        {
+          "event_id": "de4f0e17-6741-474c-88d4-be779f3e38b7",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "480dd781-6248-4636-8d5a-01aaf8e0c868",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "4193c562-2fe3-4a04-a90b-108ee969b066",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "afed4827-53e9-4bb3-805c-cf768218017c",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "d26fb88f-2194-4f50-91cc-69b8e067b4cd",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "ebed306d-43d4-42c7-8ef5-60ab6ddf4f55",
+          "reason": "stated completion date has passed; require a fresh execution update"
+        },
+        {
+          "event_id": "4e97d70c-d723-4a64-b626-485c80424968",
+          "reason": "stated completion date has passed; require a fresh execution update"
+        },
+        {
+          "event_id": "a58e52bd-c7f9-4357-9c65-2317c442a598",
+          "reason": "aggregate intake/backlog is not a single award"
+        },
+        {
+          "event_id": "bebaa24a-e807-4c62-971e-2176d2e2438f",
+          "reason": "forecast"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "5dbdd32f-8a01-4899-aeda-90a2e740a79e",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          },
+          {
+            "event_id": "de4f0e17-6741-474c-88d4-be779f3e38b7",
+            "field": "observation_status",
+            "before": "OBSERVED",
+            "after": "FORECAST"
+          },
+          {
+            "event_id": "de4f0e17-6741-474c-88d4-be779f3e38b7",
+            "field": "deadline",
+            "before": "2025-09-30",
+            "after": "2028-06-30"
+          },
+          {
+            "event_id": "480dd781-6248-4636-8d5a-01aaf8e0c868",
+            "field": "amount",
+            "before": "3000 INR CRORE",
+            "after": null
+          },
+          {
+            "event_id": "480dd781-6248-4636-8d5a-01aaf8e0c868",
+            "field": "amount_basis",
+            "before": "NON_BINDING",
+            "after": "UNQUANTIFIED"
+          },
+          {
+            "event_id": "480dd781-6248-4636-8d5a-01aaf8e0c868",
+            "field": "stage",
+            "before": "FUNDED_PLAN",
+            "after": "AMBITION"
+          },
+          {
+            "event_id": "480dd781-6248-4636-8d5a-01aaf8e0c868",
+            "field": "observation_status",
+            "before": "OBSERVED",
+            "after": "FORECAST"
+          },
+          {
+            "event_id": "a58e52bd-c7f9-4357-9c65-2317c442a598",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2026-07-12T18:30:00+00:00",
+        "eligible_facts": 334,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "why": "four consecutive quarters not available",
+            "value": null
+          },
+          "revenue": {
+            "why": "four consecutive quarters not available",
+            "value": null
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": null,
+            "why": "four consecutive quarters not available"
+          },
+          "pat": {
+            "value": null,
+            "why": "four consecutive quarters not available"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "AARON",
+    "week": "2025-05-19",
+    "review_id": "c8cdffba-7abf-4fba-b560-c806ee469fb2",
+    "packet_id": "006dbba3-bb53-40fe-8b0f-930b322f5586",
+    "action": "DEEP_RESEARCH",
+    "size": "192.5",
+    "rationale": "The company's own estimate of Rs 150 Cr additional revenue from the capacity expansion is about 192% of TTM revenue of Rs 77.93 Cr, although the period is unstated and the packet flags it as non-binding. The expansion is firm in the sense that capacity has been commissioned and Unit 3 has started commercial operations, and a doubling of the plant base is clearly bigger than the company's disclosed history (revenue Rs 55.85 Cr in FY23, Rs 63.23 Cr in FY24). The Rs 419 Cr order tag is a misread of market cap, and no disqualifier applies (PAT Rs 8.24 Cr, debt-equity 0.19).",
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "8.24",
+          "period_end": "2025-03-31"
+        },
+        "revenue": {
+          "value": "77.93",
+          "period_end": "2025-03-31"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "77.93",
+          "period_end": "2025-03-31"
+        },
+        "pat": {
+          "value": "8.24",
+          "period_end": "2025-03-31"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 247,
+      "original_linked_facts": 247
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "COMMERCIAL_START COMMERCIAL_SHIPMENT no value; firm=True; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "19321c50-cab0-4d66-81f4-081a957f1fdd",
+      "excluded_events": [
+        {
+          "event_id": "2523090d-e88a-4cd2-bb1b-e512c0fcedcd",
+          "reason": "forecast"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": []
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2025-05-25T18:30:00+00:00",
+        "eligible_facts": 247,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "8.24",
+            "period_end": "2025-03-31"
+          },
+          "revenue": {
+            "value": "77.93",
+            "period_end": "2025-03-31"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "77.93",
+            "period_end": "2025-03-31"
+          },
+          "pat": {
+            "value": "8.24",
+            "period_end": "2025-03-31"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "AARON",
+    "week": "2026-10-12",
+    "review_id": "e0da8432-a586-422d-bde0-4fbee5a9b862",
+    "packet_id": "3c93054b-4875-4613-ad7f-34733bf8811d",
+    "action": "REJECT_WITH_REASON",
+    "size": "2.1",
+    "rationale": "ORDER BINDING_DEMAND 20000000 INR UNITS = 2.1% of revenue; firm=True; routine=False; disq=None",
+    "decided_by": "local engine rules-3.5+qwen2.5-3b",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "8.30",
+          "period_end": "2026-06-30"
+        },
+        "revenue": {
+          "value": "97.20",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "97.20",
+          "period_end": "2026-06-30"
+        },
+        "pat": {
+          "value": "8.30",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 313,
+      "original_linked_facts": 313
+    },
+    "current_screen": {
+      "triage_action": "REJECT_WITH_REASON",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": false,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER QUALIFIED 20000000 INR UNITS; firm=False; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "9f89ff2c-9377-4911-8125-8fb56a85dbe2",
+      "excluded_events": [],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "9f89ff2c-9377-4911-8125-8fb56a85dbe2",
+            "field": "deadline",
+            "before": null,
+            "after": "2027-09-30"
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2026-10-18T18:30:00+00:00",
+        "eligible_facts": 313,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "8.30",
+            "period_end": "2026-06-30"
+          },
+          "revenue": {
+            "value": "97.20",
+            "period_end": "2026-06-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "97.20",
+            "period_end": "2026-06-30"
+          },
+          "pat": {
+            "value": "8.30",
+            "period_end": "2026-06-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "AARON",
+    "week": "2026-02-02",
+    "review_id": "e69b1769-812d-4729-8fa6-15ffa16b3e94",
+    "packet_id": "71edbe8c-10d8-45dc-84ce-ccda907d96ca",
+    "action": "WATCH_MILESTONE",
+    "size": null,
+    "rationale": "COMMERCIAL_START COMMERCIAL_SHIPMENT no value; firm=True; routine=None; disq=None",
+    "decided_by": "local engine rules-3.5+qwen2.5-3b",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "7.23",
+          "period_end": "2025-12-31"
+        },
+        "revenue": {
+          "value": "88.79",
+          "period_end": "2025-12-31"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "88.79",
+          "period_end": "2025-12-31"
+        },
+        "pat": {
+          "value": "7.23",
+          "period_end": "2025-12-31"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 280,
+      "original_linked_facts": 280
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "COMMERCIAL_START COMMERCIAL_SHIPMENT no value; firm=True; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "19321c50-cab0-4d66-81f4-081a957f1fdd",
+      "excluded_events": [
+        {
+          "event_id": "08e83b90-7628-41dc-83ee-33994042c1c2",
+          "reason": "stated completion date has passed; require a fresh execution update"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": []
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2026-02-08T18:30:00+00:00",
+        "eligible_facts": 280,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "7.23",
+            "period_end": "2025-12-31"
+          },
+          "revenue": {
+            "value": "88.79",
+            "period_end": "2025-12-31"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "88.79",
+            "period_end": "2025-12-31"
+          },
+          "pat": {
+            "value": "7.23",
+            "period_end": "2025-12-31"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "MANAKCOAT",
+    "week": "2024-11-04",
+    "review_id": "45c2e819-9d2b-43bc-8801-029fc7787970",
+    "packet_id": "3250bf73-8056-412e-b153-d69f7c2f73ea",
+    "action": "DEEP_RESEARCH",
+    "size": "27",
+    "rationale": "The Rs 200 crore European contract is stated, firm and equal to 27.0% of TTM revenue of Rs 742.11 crore. It is not routine: the packet shows no comparable single export contract, and the company describes it as landmark, so it is a first large export order of this size. The company is profitable with a recent rating upgrade and no stressed-company factor, though the contract's delivery period is not yet known.",
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "14.45",
+          "period_end": "2024-09-30"
+        },
+        "revenue": {
+          "value": "742.11",
+          "period_end": "2024-09-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "742.11",
+          "period_end": "2024-09-30"
+        },
+        "pat": {
+          "value": "14.45",
+          "period_end": "2024-09-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 415,
+      "original_linked_facts": 415
+    },
+    "current_screen": {
+      "triage_action": "DEEP_RESEARCH",
+      "size_pct_of_revenue": 27.0,
+      "size_basis": "STATED",
+      "firm": true,
+      "routine": false,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND 200 INR CRORE = 27.0% of revenue; firm=True; routine=False; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "05e3884b-1ff4-476d-b947-32c6b7a48ce1",
+      "excluded_events": [],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": []
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2024-11-10T18:30:00+00:00",
+        "eligible_facts": 415,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "14.45",
+            "period_end": "2024-09-30"
+          },
+          "revenue": {
+            "value": "742.11",
+            "period_end": "2024-09-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "742.11",
+            "period_end": "2024-09-30"
+          },
+          "pat": {
+            "value": "14.45",
+            "period_end": "2024-09-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "MANAKCOAT",
+    "week": "2025-02-10",
+    "review_id": "336f93ba-4763-4c12-a5eb-9e7765d34f2d",
+    "packet_id": "ddb384e0-eccc-4bf4-b585-1f06876c3602",
+    "action": "REJECT_WITH_REASON",
+    "size": "47.2",
+    "rationale": "ORDER BINDING_DEMAND 350 INR CRORE = 47.2% of revenue; firm=True; routine=True; disq=None",
+    "decided_by": "local engine rules-3.3+qwen2.5-3b",
+    "changes": [
+      {
+        "event_id": "8f1db06a-572f-45d0-85dd-e6716c2ef4f9",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "14.45",
+          "period_end": "2024-09-30"
+        },
+        "revenue": {
+          "value": "742.11",
+          "period_end": "2024-09-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "756.30",
+          "period_end": "2024-12-31"
+        },
+        "pat": {
+          "value": "15.41",
+          "period_end": "2024-12-31"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 437,
+      "original_linked_facts": 437
+    },
+    "current_screen": {
+      "triage_action": "DEEP_RESEARCH",
+      "size_pct_of_revenue": 26.4,
+      "size_basis": "STATED",
+      "firm": true,
+      "routine": true,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND 200 INR CRORE = 26.4% of revenue; firm=True; routine=True; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "207cc347-df67-4334-97ba-0751fe6c6910",
+      "excluded_events": [
+        {
+          "event_id": "03bb23a0-21fe-413f-8ddd-472630f03017",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "de5f8e78-7605-4b8c-82da-0c32b963e2d5",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "8f1db06a-572f-45d0-85dd-e6716c2ef4f9",
+          "reason": "aggregate intake/backlog is not a single award"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "8f1db06a-572f-45d0-85dd-e6716c2ef4f9",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2025-02-16T18:30:00+00:00",
+        "eligible_facts": 437,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "14.45",
+            "period_end": "2024-09-30"
+          },
+          "revenue": {
+            "value": "742.11",
+            "period_end": "2024-09-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "756.30",
+            "period_end": "2024-12-31"
+          },
+          "pat": {
+            "value": "15.41",
+            "period_end": "2024-12-31"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "MANAKCOAT",
+    "week": "2026-01-05",
+    "review_id": "7c210bc1-4674-41ae-99ad-919977866f3e",
+    "packet_id": "0a0d1b19-3a3c-4099-9c1f-b1f4c40299a8",
+    "action": "WATCH_MILESTONE",
+    "size": null,
+    "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+    "decided_by": "local engine rules-3.5+qwen2.5-3b",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "38.01",
+          "period_end": "2025-09-30"
+        },
+        "revenue": {
+          "value": "883.06",
+          "period_end": "2025-09-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "883.06",
+          "period_end": "2025-09-30"
+        },
+        "pat": {
+          "value": "38.01",
+          "period_end": "2025-09-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 526,
+      "original_linked_facts": 526
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "26c091de-8570-44a3-9bef-124434fc61cb",
+      "excluded_events": [
+        {
+          "event_id": "fe62d669-a4e8-4972-b633-ff6a32c3f386",
+          "reason": "forecast"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": []
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2026-01-11T18:30:00+00:00",
+        "eligible_facts": 526,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "38.01",
+            "period_end": "2025-09-30"
+          },
+          "revenue": {
+            "value": "883.06",
+            "period_end": "2025-09-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "883.06",
+            "period_end": "2025-09-30"
+          },
+          "pat": {
+            "value": "38.01",
+            "period_end": "2025-09-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "MANAKCOAT",
+    "week": "2026-07-13",
+    "review_id": "59775bd7-3453-4b41-88fb-622b6a7ba48b",
+    "packet_id": "c55df7ce-a37f-4ff3-942d-2e4b80f582d0",
+    "action": "WATCH_MILESTONE",
+    "size": "37.6",
+    "rationale": "Size: the second colour coating line adds 1,50,000 tpa of capacity, estimated at about Rs 338 cr of revenue at 50% year-one utilisation and an assumed Rs 45,000/t realisation, which is 37.6% of TTM revenue of Rs 896.82 cr. It is not firm because the line is not yet commissioned (commercial production guided for Q2 FY27), so the milestone is commercial production. It is company-specific and a real step-change in capacity, but the price and utilisation inputs are assumptions, and no disqualifier applies.",
+    "decided_by": "claude-haiku-5-5 (second opinion on local engine)",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "40.78",
+          "period_end": "2026-06-30"
+        },
+        "revenue": {
+          "value": "896.82",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "896.82",
+          "period_end": "2026-06-30"
+        },
+        "pat": {
+          "value": "40.78",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 617,
+      "original_linked_facts": 617
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "56016935-b971-4709-b471-9812d9e46f69",
+      "excluded_events": [
+        {
+          "event_id": "54e72a7f-47a4-45f4-92cf-106a69e4cb7d",
+          "reason": "stated completion date has passed; require a fresh execution update"
+        },
+        {
+          "event_id": "aefd07cf-9fb1-4848-9774-fb866ae5f6b5",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "f0ebe0dd-4d92-4a35-a622-2ba8527f204f",
+          "reason": "forecast"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": []
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2026-07-19T18:30:00+00:00",
+        "eligible_facts": 617,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "40.78",
+            "period_end": "2026-06-30"
+          },
+          "revenue": {
+            "value": "896.82",
+            "period_end": "2026-06-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "896.82",
+            "period_end": "2026-06-30"
+          },
+          "pat": {
+            "value": "40.78",
+            "period_end": "2026-06-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "HECPROJECT",
+    "week": "2025-08-18",
+    "review_id": "4def3b8a-5cc7-4a94-903f-61d4c5218066",
+    "packet_id": "289be181-8ff1-46fd-949a-cd8eb69355cd",
+    "action": "DEEP_RESEARCH",
+    "size": "59.5",
+    "rationale": "ORDER BINDING_DEMAND 55.77 INR CRORE = 59.5% of revenue; firm=True; routine=False; disq=None",
+    "decided_by": "local engine rules-3.3+qwen2.5-3b",
+    "changes": [
+      {
+        "event_id": "99f85d89-d1fc-4251-9f04-a3160353a036",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "3.75",
+          "period_end": "2024-12-31"
+        },
+        "revenue": {
+          "value": "93.78",
+          "period_end": "2024-12-31"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "121.98",
+          "period_end": "2025-06-30"
+        },
+        "pat": {
+          "value": "9.66",
+          "period_end": "2025-06-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 212,
+      "original_linked_facts": 212
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "75480fcb-ada7-4c8b-afd3-0ac056b9a229",
+      "excluded_events": [
+        {
+          "event_id": "e14edad4-7f1b-42a3-b96f-e6814ed70b88",
+          "reason": "forecast"
+        },
+        {
+          "event_id": "99f85d89-d1fc-4251-9f04-a3160353a036",
+          "reason": "aggregate intake/backlog is not a single award"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "99f85d89-d1fc-4251-9f04-a3160353a036",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2025-08-24T18:30:00+00:00",
+        "eligible_facts": 212,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "3.75",
+            "period_end": "2024-12-31"
+          },
+          "revenue": {
+            "value": "93.78",
+            "period_end": "2024-12-31"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "121.98",
+            "period_end": "2025-06-30"
+          },
+          "pat": {
+            "value": "9.66",
+            "period_end": "2025-06-30"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "HECPROJECT",
+    "week": "2025-05-26",
+    "review_id": "26bffaab-5e7b-4747-89ee-bee453627371",
+    "packet_id": "25974b09-f88f-43d7-9ee7-b2d43469569c",
+    "action": "REJECT_WITH_REASON",
+    "size": "6.5",
+    "rationale": "ORDER BINDING_DEMAND 6.07 INR CRORE = 6.5% of revenue; firm=True; routine=False; disq=None",
+    "decided_by": "local engine rules-3.3+qwen2.5-3b",
+    "changes": [
+      {
+        "event_id": "338135e6-8deb-40e6-8254-790ac7158b6f",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      },
+      {
+        "event_id": "609a1ce6-1447-4c73-b1e0-e8920b107aac",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "3.75",
+          "period_end": "2024-12-31"
+        },
+        "revenue": {
+          "value": "93.78",
+          "period_end": "2024-12-31"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "112.10",
+          "period_end": "2025-03-31"
+        },
+        "pat": {
+          "value": "9.17",
+          "period_end": "2025-03-31"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 201,
+      "original_linked_facts": 201
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": null,
+      "size_basis": "UNKNOWN",
+      "firm": true,
+      "routine": null,
+      "disqualifier": null,
+      "rationale": "ORDER COMMERCIAL_SHIPMENT no value; firm=True; routine=None; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "a46cc4bf-dd5c-453e-b8b1-8db861736d89",
+      "excluded_events": [
+        {
+          "event_id": "338135e6-8deb-40e6-8254-790ac7158b6f",
+          "reason": "aggregate intake/backlog is not a single award"
+        },
+        {
+          "event_id": "609a1ce6-1447-4c73-b1e0-e8920b107aac",
+          "reason": "aggregate intake/backlog is not a single award"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "338135e6-8deb-40e6-8254-790ac7158b6f",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          },
+          {
+            "event_id": "609a1ce6-1447-4c73-b1e0-e8920b107aac",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2025-06-01T18:30:00+00:00",
+        "eligible_facts": 201,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "3.75",
+            "period_end": "2024-12-31"
+          },
+          "revenue": {
+            "value": "93.78",
+            "period_end": "2024-12-31"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "112.10",
+            "period_end": "2025-03-31"
+          },
+          "pat": {
+            "value": "9.17",
+            "period_end": "2025-03-31"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "HECPROJECT",
+    "week": "2025-05-19",
+    "review_id": "61eca948-4ea4-4588-9443-b5b6a96aa985",
+    "packet_id": "fdf519bb-cb1a-4b8a-98e7-6603b8aae573",
+    "action": "WATCH_MILESTONE",
+    "size": null,
+    "rationale": "ORDER BINDING_DEMAND no value; firm=True; routine=None; disq=None",
+    "decided_by": "local engine rules-3.3+qwen2.5-3b",
+    "changes": [
+      {
+        "event_id": "2249c478-c17a-40f3-8d11-6f0ac3118513",
+        "fields": {},
+        "aggregate": true,
+        "mixed": false
+      }
+    ],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "3.75",
+          "period_end": "2024-12-31"
+        },
+        "revenue": {
+          "value": "93.78",
+          "period_end": "2024-12-31"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "112.10",
+          "period_end": "2025-03-31"
+        },
+        "pat": {
+          "value": "9.17",
+          "period_end": "2025-03-31"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 201,
+      "original_linked_facts": 201
+    },
+    "current_screen": {
+      "triage_action": "WATCH_MILESTONE",
+      "size_pct_of_revenue": 31.2,
+      "size_basis": "STATED",
+      "firm": false,
+      "routine": false,
+      "disqualifier": null,
+      "rationale": "ORDER QUALIFIED 35.00 INR CRORE = 31.2% of revenue; firm=False; routine=False; disq=None",
+      "order_cycle_acceleration": null,
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "4e0097e2-ad3e-4fc2-afd5-5b3662918739",
+      "excluded_events": [
+        {
+          "event_id": "2249c478-c17a-40f3-8d11-6f0ac3118513",
+          "reason": "aggregate intake/backlog is not a single award"
+        },
+        {
+          "event_id": "19e36cef-47cb-4be6-bf13-db2c3345bfe9",
+          "reason": "forecast"
+        }
+      ],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": [
+          {
+            "event_id": "2249c478-c17a-40f3-8d11-6f0ac3118513",
+            "field": "aggregate_order_total",
+            "before": false,
+            "after": true
+          }
+        ]
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2025-05-25T18:30:00+00:00",
+        "eligible_facts": 201,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "3.75",
+            "period_end": "2024-12-31"
+          },
+          "revenue": {
+            "value": "93.78",
+            "period_end": "2024-12-31"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "112.10",
+            "period_end": "2025-03-31"
+          },
+          "pat": {
+            "value": "9.17",
+            "period_end": "2025-03-31"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "HECPROJECT",
+    "week": "2026-10-12",
+    "review_id": "5dd556d5-404e-4913-84b2-63e8b0d11b5c",
+    "packet_id": "ca9e522c-81af-42eb-a70f-c3d655360bb4",
+    "action": "REJECT_WITH_REASON",
+    "size": "3.8",
+    "rationale": "ORDER BINDING_DEMAND 6.75 INR CRORE = 3.8% of revenue; firm=True; routine=True; disq=None",
+    "decided_by": "local engine rules-3.5+qwen2.5-3b",
+    "changes": [],
+    "financial": {
+      "stored_ttm": {
+        "pat": {
+          "value": "12.61",
+          "period_end": "2026-06-30"
+        },
+        "revenue": {
+          "value": "179.70",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_ttm": {
+        "revenue": {
+          "value": "179.70",
+          "period_end": "2026-06-30"
+        },
+        "pat": {
+          "value": "12.61",
+          "period_end": "2026-06-30"
+        }
+      },
+      "current_asof_status": "FOUND",
+      "eligible_facts": 267,
+      "original_linked_facts": 267
+    },
+    "current_screen": {
+      "triage_action": "REJECT_WITH_REASON",
+      "size_pct_of_revenue": 3.8,
+      "size_basis": "STATED",
+      "firm": true,
+      "routine": false,
+      "disqualifier": null,
+      "rationale": "ORDER BINDING_DEMAND 6.75 INR CRORE = 3.8% of revenue; firm=True; routine=False; disq=None; not routine: firm awards 475 cr in the last 12 months vs 180 cr the 12 months before",
+      "order_cycle_acceleration": "firm awards 475 cr in the last 12 months vs 180 cr the 12 months before",
+      "size_flag": null,
+      "screen_version": "local-screen-3",
+      "selected_event_id": "6465be29-a599-4be0-86a1-80ca4127584e",
+      "excluded_events": [],
+      "cycle_signals": [],
+      "source_recheck": {
+        "version": "detection-audit-2",
+        "commercial_version": "commercial-19",
+        "changes": []
+      },
+      "financial_recheck": {
+        "version": "detection-audit-2",
+        "mode": "PUBLIC_INFORMATION_RECONSTRUCTION",
+        "cutoff": "2026-10-18T18:30:00+00:00",
+        "eligible_facts": 267,
+        "changed": true,
+        "before_ttm": {
+          "pat": {
+            "value": "12.61",
+            "period_end": "2026-06-30"
+          },
+          "revenue": {
+            "value": "179.70",
+            "period_end": "2026-06-30"
+          }
+        },
+        "after_ttm": {
+          "revenue": {
+            "value": "179.70",
+            "period_end": "2026-06-30"
+          },
+          "pat": {
+            "value": "12.61",
+            "period_end": "2026-06-30"
+          }
+        }
+      }
+    }
+  }
+]

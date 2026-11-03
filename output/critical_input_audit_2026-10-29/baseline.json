@@ -1,0 +1,25 @@
+{
+  "revenue_unit_inventory": [
+    {
+      "provider": "bse_results_snapshot",
+      "currency": "INR",
+      "scale": "UNITS",
+      "value_kind": "MONEY",
+      "rows": 10325,
+      "missing": 0
+    },
+    {
+      "provider": "nse_xbrl",
+      "currency": "INR",
+      "scale": "UNITS",
+      "value_kind": "MONEY",
+      "rows": 75340,
+      "missing": 0
+    }
+  ],
+  "nonfinite_money_rows": 0,
+  "latest_unverified_revenue_periods": [
+    0,
+    0
+  ]
+}

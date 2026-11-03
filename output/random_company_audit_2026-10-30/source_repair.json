@@ -1,0 +1,5919 @@
+{
+  "started_at": "2026-10-30T05:14:22.689485+00:00",
+  "state": "FINISHED_WITH_GAPS",
+  "restored": [
+    {
+      "publication_id": "a40854f0-8718-4488-9c68-9e0e61d45977",
+      "bytes": 94668,
+      "sha256": "2f72857b92a8604da704f8d8ab9de9db5802ce11c499208290478b7218a5c82c"
+    },
+    {
+      "publication_id": "b15ad3f5-54a2-4950-a31a-337a3e453d3a",
+      "bytes": 40340,
+      "sha256": "555bbacd4c373ee0f0aa1ebc282468213a67be1c6348d7e9685b53ac00938f9b"
+    },
+    {
+      "publication_id": "92aa5ecf-c857-4228-a4f8-8b4a7294a7df",
+      "bytes": 34427,
+      "sha256": "3ffa9f9ff3e245804024997f2454b4a50ef42898dc25a325a47070b710363c1a"
+    },
+    {
+      "publication_id": "e86b5f86-2a32-42c8-863c-9f13250e8743",
+      "bytes": 110066,
+      "sha256": "9f6fb673253eeec51bcd78df59807fca9ee9da4beb711c838cba899291f835bf"
+    }
+  ],
+  "archive_bytes_added": 279501,
+  "financial_archive_bytes_before": 721612,
+  "financial_archive_bytes_after": 1001113,
+  "stage": "Refresh affected packets: 174/175",
+  "reparsed": 1352,
+  "source_recovery_pending": 87092,
+  "financial_scan": {
+    "NO_COMPARABLE": 446,
+    "MARGIN_EXPANSION:NOT_FIRED": 449,
+    "OPERATING_PROFIT_GROWTH:NOT_FIRED": 290,
+    "SEGMENT_LOSS_REDUCTION:NOT_MEASURABLE": 767,
+    "FINANCE_COST_DROP:NOT_FIRED": 413,
+    "WORKING_CAPITAL_DAYS:NOT_MEASURABLE": 802,
+    "NOT_NOMINATED": 362,
+    "MARGIN_EXPANSION:NOT_MEASURABLE": 55,
+    "OPERATING_PROFIT_GROWTH:NOT_MEASURABLE": 241,
+    "FINANCE_COST_DROP:NOT_MEASURABLE": 253,
+    "FINANCE_COST_DROP:FIRED": 88,
+    "class:P3": 146,
+    "EVALUATED": 440,
+    "SKIPPED_STANDALONE": 104,
+    "OPERATING_PROFIT_GROWTH:FIRED": 223,
+    "MARGIN_EXPANSION:FIRED": 250,
+    "class:P2": 246,
+    "SEGMENT_LOSS_REDUCTION:FIRED": 22,
+    "MARGIN_EXPANSION:UNVERIFIED": 48,
+    "OPERATING_PROFIT_GROWTH:UNVERIFIED": 48,
+    "FINANCE_COST_DROP:UNVERIFIED": 48,
+    "class:D": 48,
+    "SEGMENT_LOSS_REDUCTION:NOT_FIRED": 13
+  },
+  "affected_current_packets": 175,
+  "packet_refreshes": [
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "0909fb52-e095-4212-a088-3e63824b89e6",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UPDATED": 1
+        },
+        "packets": [
+          {
+            "position": 25,
+            "symbol": "HFCL",
+            "slot": "RANKED",
+            "status": "UPDATED",
+            "packet_id": "0e8fa6bd-5cb1-4e99-81c2-f0c63f1a6128",
+            "tokens": 11378,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "DILUTION"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "0aef6b69-c975-42f5-81a9-2a697e414e1a",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 50,
+            "symbol": "STLTECH",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "45be4097-79e9-42c1-ae6b-c13f2b129af0",
+            "tokens": 11865,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "DILUTION"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "0db91318-4d90-4e38-91d2-885ad48ee93d",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1,
+            "symbol": "TINNARUBR",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "33533be1-b9ae-4210-a4eb-f3b0e1f23ea3",
+            "tokens": 11507,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "1dd33bdb-c265-4337-8cb5-a4cbbc0d2046",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 61,
+            "symbol": "ADANIGREEN",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "3fe947f3-d11a-4931-81ca-a1f9a421b3c4",
+            "tokens": 11976,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "2c0d5f1d-54e4-4ee5-8bdf-5f78a8a9cedb",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 18,
+            "symbol": "JKCEMENT",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "1312314e-0853-4c61-af5a-74c4afe32567",
+            "tokens": 9636,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "TEXT_INCOMPLETE"
+            ],
+            "missing": [
+              "Nomination filing attachments do not have complete verified text",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "3481f656-3fa4-4d19-89cb-3daac885416e",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 12,
+            "symbol": "BANSALWIRE",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "5d8a7244-4335-4c9e-9e93-ee9bd815b889",
+            "tokens": 7618,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "DILUTION",
+              "PRICE_STALE"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "39fe7392-d27e-4b90-954f-417a78300a7b",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 17,
+            "symbol": "SHAKTIPUMP",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "2486381a-14c8-4332-9ebd-521e3c646e12",
+            "tokens": 11444,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "3d541e9f-e03a-4e5a-a85d-b32bf02c3bc9",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 32,
+            "symbol": "LTTS",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "8f298918-caa5-46f6-b10e-0785007600ee",
+            "tokens": 7178,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "421e9ef4-c8f6-4479-9ef3-b6638f9dac39",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 4,
+            "symbol": "ADANIPOWER",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "850e0106-559f-4bb1-8ecc-c890a7e8eca4",
+            "tokens": 11880,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "UNADJUSTED_ACTION"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "4ada5db3-36da-4893-b00a-66cf19f79540",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 7,
+            "symbol": "CROMPTON",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "ee5a7896-797c-4b55-8914-f4cbaac3f267",
+            "tokens": 11738,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "TEXT_INCOMPLETE",
+              "LOSS_MAKING"
+            ],
+            "missing": [
+              "Nomination filing attachments do not have complete verified text",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "77f696fb-04e2-4ab2-ac91-4858fe08d0d6",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 34,
+            "symbol": "SOBHA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "446f8c3e-ef28-4e3e-8d3b-62124e82ec72",
+            "tokens": 8350,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "874f6bb9-6b33-4bf6-9425-28f8d282e80b",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 5,
+            "symbol": "SPLPETRO",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "fb89c4a4-c590-4e35-91c0-0a68a2d22212",
+            "tokens": 6175,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "8f1b0470-3ed9-42fe-b8cd-a341336e34cc",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 19,
+            "symbol": "APOLLO",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "98a0f91e-9d42-44b0-ab00-f564e559841e",
+            "tokens": 11362,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "DILUTION"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "b90ec0c8-85dd-47c2-b787-5d01d62e7113",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 36,
+            "symbol": "RAILTEL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "f9d633e3-46c1-4a76-ae32-830f6c0fdf04",
+            "tokens": 11627,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "c41348b3-ae3c-4217-b48a-1ab982c33399",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 28,
+            "symbol": "WAAREERTL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "7178995c-ee3a-4175-83e0-563c70cc158d",
+            "tokens": 11245,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "FORECAST_ONLY"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "d2db8558-2d2e-4c92-a36d-72447ebae7a5",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 16,
+            "symbol": "UNIECOM",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "eadb536f-47e5-4402-b14f-8d2d26a54f35",
+            "tokens": 9216,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "dcf71075-49f4-461e-8652-7620f90397a4",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 68,
+            "symbol": "GAEL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "a57e6456-2b0d-493b-a4a0-8d74a1569d07",
+            "tokens": 7668,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING"
+            ],
+            "missing": [
+              "Current evidence priority differs from the frozen shortlist priority",
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-19",
+      "run_tag": "base",
+      "issuer_id": "e28cde1e-4764-4617-bec1-6608e8535a79",
+      "result": {
+        "week_start": "2026-10-19",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 71,
+            "symbol": "REPRO",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "d5eb430d-5296-4b14-a608-8bd88229cd18",
+            "tokens": 3819,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-12",
+      "run_tag": "base",
+      "issuer_id": "bdd8870b-1b80-4195-9776-48865046a83a",
+      "result": {
+        "week_start": "2026-10-12",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 53,
+            "symbol": "VR",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "a3e6922f-027c-432f-abee-cfd3a779a3af",
+            "tokens": 5847,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-10-12",
+      "run_tag": "base",
+      "issuer_id": "c639d301-1212-42f5-a0cb-eee8b6b54621",
+      "result": {
+        "week_start": "2026-10-12",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 3,
+            "symbol": "DANISH",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "7c5006cc-5dd4-4e89-b7de-3ef49933f861",
+            "tokens": 7004,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "TEXT_INCOMPLETE",
+              "DILUTION"
+            ],
+            "missing": [
+              "Nomination filing attachments do not have complete verified text",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-09-28",
+      "run_tag": "base",
+      "issuer_id": "4c1359db-2f44-455c-9e59-3404535b98ec",
+      "result": {
+        "week_start": "2026-09-28",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 93,
+            "symbol": "BFUTILITIE",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "58034d04-a20a-4687-9e6f-f9249fb4cdd0",
+            "tokens": 3387,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-09-28",
+      "run_tag": "base",
+      "issuer_id": "70babc53-af74-4cb7-a130-e3388c38e527",
+      "result": {
+        "week_start": "2026-09-28",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 77,
+            "symbol": "SSEGL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "8b0b006a-126e-4ed1-9259-b90bb8d2de28",
+            "tokens": 11868,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-09-28",
+      "run_tag": "base",
+      "issuer_id": "ab53f440-7b08-4c70-a6a4-8a128c10a0f1",
+      "result": {
+        "week_start": "2026-09-28",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 21,
+            "symbol": "SIGNORIA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "7b2cf00d-cfe6-47d3-a223-217f87180f76",
+            "tokens": 3863,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FORECAST_ONLY",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-09-28",
+      "run_tag": "base",
+      "issuer_id": "af33ce1c-45f4-4b7d-a000-f0d03a5d4d2f",
+      "result": {
+        "week_start": "2026-09-28",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 22,
+            "symbol": "PFOCUS",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "b07d8a54-10ae-4283-885c-b43a393b4282",
+            "tokens": 8266,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "EQUITY_FINANCING",
+              "TEXT_INCOMPLETE",
+              "TEXT_INCOMPLETE",
+              "DILUTION"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Nomination filing attachments do not have complete verified text",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-09-21",
+      "run_tag": "base",
+      "issuer_id": "1a67d2af-789c-4977-841c-88cb13444348",
+      "result": {
+        "week_start": "2026-09-21",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 118,
+            "symbol": "RAJPUTANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "8ee7d885-9968-4da8-80ae-8c6829346ae8",
+            "tokens": 6562,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-09-07",
+      "run_tag": "base",
+      "issuer_id": "70babc53-af74-4cb7-a130-e3388c38e527",
+      "result": {
+        "week_start": "2026-09-07",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 21,
+            "symbol": "SSEGL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "b2996967-09ff-42f2-9466-19d637fa713a",
+            "tokens": 11873,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-09-07",
+      "run_tag": "base",
+      "issuer_id": "fd410727-307c-4448-86cd-43f934f9fb71",
+      "result": {
+        "week_start": "2026-09-07",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 83,
+            "symbol": "SUPREMEENG",
+            "slot": "EXPLORATION",
+            "status": "UNCHANGED",
+            "packet_id": "c580360b-b18a-42e9-bceb-173a33e7c735",
+            "tokens": 4280,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FINANCIAL_CAUTION",
+              "LOSS_MAKING",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-08-31",
+      "run_tag": "base",
+      "issuer_id": "73f603e7-486e-4aa9-8adc-f0e69f7aa564",
+      "result": {
+        "week_start": "2026-08-31",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 79,
+            "symbol": "DHTL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "ef449d60-0a82-4eb2-8bd8-33f1ea1e6ad7",
+            "tokens": 3647,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-08-24",
+      "run_tag": "base",
+      "issuer_id": "a0ae766e-842e-48ce-8cf4-c97b4df84886",
+      "result": {
+        "week_start": "2026-08-24",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 74,
+            "symbol": "WINSOL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "718c4a11-d2d0-4d7a-89d7-b754fad59a50",
+            "tokens": 8330,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-08-24",
+      "run_tag": "base",
+      "issuer_id": "f4ec296c-fc5a-43cd-b3a1-b3825cbff239",
+      "result": {
+        "week_start": "2026-08-24",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 86,
+            "symbol": "TAKE",
+            "slot": "EXPLORATION",
+            "status": "UNCHANGED",
+            "packet_id": "82922e99-9bdf-4742-a615-7c210cca316d",
+            "tokens": 3628,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FINANCIAL_CAUTION"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-08-17",
+      "run_tag": "base",
+      "issuer_id": "191ceba3-9c3b-470f-9489-ff1ecbcd0bd7",
+      "result": {
+        "week_start": "2026-08-17",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 118,
+            "symbol": "ORIANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "40982a64-d960-452d-9bd5-21be0300686c",
+            "tokens": 11881,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "RELATED_OR_GROUP",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "PRICE_STALE"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-08-17",
+      "run_tag": "base",
+      "issuer_id": "c639d301-1212-42f5-a0cb-eee8b6b54621",
+      "result": {
+        "week_start": "2026-08-17",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 20,
+            "symbol": "DANISH",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "8f683979-e2d5-4ae7-97b0-fe14865bbe67",
+            "tokens": 6183,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "TEXT_INCOMPLETE",
+              "DILUTION"
+            ],
+            "missing": [
+              "Nomination filing attachments do not have complete verified text",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-08-10",
+      "run_tag": "base",
+      "issuer_id": "6703dc39-10b3-429a-b985-2d18459cbcf5",
+      "result": {
+        "week_start": "2026-08-10",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 402,
+            "symbol": "INTLCONV",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "0eb17d6c-be66-4be9-a5ea-d846be6560c9",
+            "tokens": 4896,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-08-10",
+      "run_tag": "base",
+      "issuer_id": "6875984e-dab1-495d-8aa3-818ac9be32e2",
+      "result": {
+        "week_start": "2026-08-10",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 453,
+            "symbol": "CMRSL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "95bd3146-b8ab-468c-8138-b7c75fd53723",
+            "tokens": 3769,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "FINANCIAL_CAUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-08-10",
+      "run_tag": "base",
+      "issuer_id": "70babc53-af74-4cb7-a130-e3388c38e527",
+      "result": {
+        "week_start": "2026-08-10",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 169,
+            "symbol": "SSEGL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "3071b9f2-c8f9-4b3d-a628-41f73322e857",
+            "tokens": 11771,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-08-10",
+      "run_tag": "base",
+      "issuer_id": "a0ae766e-842e-48ce-8cf4-c97b4df84886",
+      "result": {
+        "week_start": "2026-08-10",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 210,
+            "symbol": "WINSOL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "3764b654-d378-43b6-86ea-ca505a6ea492",
+            "tokens": 7722,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-08-10",
+      "run_tag": "base",
+      "issuer_id": "e0d95f97-6971-4bcc-a9c6-39421a8904af",
+      "result": {
+        "week_start": "2026-08-10",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 490,
+            "symbol": "JFLLIFE",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "c6d945d5-a91e-4f04-a931-61d9f4445beb",
+            "tokens": 5801,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "DILUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-08-03",
+      "run_tag": "base",
+      "issuer_id": "1a67d2af-789c-4977-841c-88cb13444348",
+      "result": {
+        "week_start": "2026-08-03",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 173,
+            "symbol": "RAJPUTANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "7690b754-baae-43f2-a206-779ef12d2c7d",
+            "tokens": 6324,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-08-03",
+      "run_tag": "base",
+      "issuer_id": "70babc53-af74-4cb7-a130-e3388c38e527",
+      "result": {
+        "week_start": "2026-08-03",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 115,
+            "symbol": "SSEGL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "58a44080-0388-4f89-b5da-e9ba755f35ae",
+            "tokens": 11786,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-27",
+      "run_tag": "base",
+      "issuer_id": "1a67d2af-789c-4977-841c-88cb13444348",
+      "result": {
+        "week_start": "2026-07-27",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 126,
+            "symbol": "RAJPUTANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "e090e79b-7c3e-44ee-a6b0-a0009cb4ee77",
+            "tokens": 6964,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-27",
+      "run_tag": "base",
+      "issuer_id": "6381aa84-204b-4edc-9c39-e5e322bb7bd4",
+      "result": {
+        "week_start": "2026-07-27",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 95,
+            "symbol": "GANESHIN",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "73a1a460-5354-449c-b254-7ab8e096abb3",
+            "tokens": 7626,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-27",
+      "run_tag": "base",
+      "issuer_id": "70babc53-af74-4cb7-a130-e3388c38e527",
+      "result": {
+        "week_start": "2026-07-27",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 8,
+            "symbol": "SSEGL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "32a8e4e0-349f-4cad-adee-0e1b945724f6",
+            "tokens": 11672,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-27",
+      "run_tag": "base",
+      "issuer_id": "98e015a4-27f3-4fde-a2d9-9db57d6e67d0",
+      "result": {
+        "week_start": "2026-07-27",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 138,
+            "symbol": "SAHANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "175d04a9-c718-4cbc-8ac8-74c1f7f0c118",
+            "tokens": 9998,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-20",
+      "run_tag": "base",
+      "issuer_id": "1a67d2af-789c-4977-841c-88cb13444348",
+      "result": {
+        "week_start": "2026-07-20",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 103,
+            "symbol": "RAJPUTANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "0a47cdd3-bb40-45ba-81be-4e578d0e0d2a",
+            "tokens": 5832,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-20",
+      "run_tag": "base",
+      "issuer_id": "674fc6ef-8015-4970-9e35-718ec8bdc5d3",
+      "result": {
+        "week_start": "2026-07-20",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 69,
+            "symbol": "SOTAC",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "18ccda3d-06ac-4320-a591-962fd179a043",
+            "tokens": 5611,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "PRICE_STALE",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-13",
+      "run_tag": "base",
+      "issuer_id": "2915e0a5-e294-4e64-b36f-13b4ca0e930f",
+      "result": {
+        "week_start": "2026-07-13",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 43,
+            "symbol": "DPEL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "fcc894ee-9496-4308-8b2b-3bfa588e0685",
+            "tokens": 5521,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-13",
+      "run_tag": "base",
+      "issuer_id": "ce71a98e-701b-4d29-9794-1ffecf00224f",
+      "result": {
+        "week_start": "2026-07-13",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 46,
+            "symbol": "MANAV",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "ddb0bf7a-0d2b-4eeb-bc60-442f05177239",
+            "tokens": 8144,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "FINANCIAL_CAUTION",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "191ceba3-9c3b-470f-9489-ff1ecbcd0bd7",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 167,
+            "symbol": "ORIANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "157d297d-39fa-47f4-a9e3-0914d36a4c5c",
+            "tokens": 11363,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "PRICE_STALE"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "1a67d2af-789c-4977-841c-88cb13444348",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 822,
+            "symbol": "RAJPUTANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "10223a4a-6c0f-4848-bf25-1510964574cc",
+            "tokens": 8117,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FORECAST_ONLY",
+              "RELATED_OR_GROUP",
+              "FORECAST_ONLY",
+              "FORECAST_ONLY",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "2915e0a5-e294-4e64-b36f-13b4ca0e930f",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 951,
+            "symbol": "DPEL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "801582af-aa3c-4c72-b562-3d28f41f3e57",
+            "tokens": 6962,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "3768b7f1-8a8d-4f2d-b943-94f2e0dbe8f9",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UPDATED": 1
+        },
+        "packets": [
+          {
+            "position": 934,
+            "symbol": "RICHA",
+            "slot": "RANKED",
+            "status": "UPDATED",
+            "packet_id": "1a177695-51d0-4e2b-868b-ecfc94dc223a",
+            "tokens": 7431,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "EQUITY_FINANCING",
+              "DILUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "465f4556-28cf-4e71-b0d6-59bd44e1e01e",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 953,
+            "symbol": "KHFM",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "9f3c962a-8fce-4a6c-ad0d-8caedc2bfdca",
+            "tokens": 3842,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "DILUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "6381aa84-204b-4edc-9c39-e5e322bb7bd4",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1195,
+            "symbol": "GANESHIN",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "ac8cd84c-3833-4c80-af24-26c27d3ffe17",
+            "tokens": 7236,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "674fc6ef-8015-4970-9e35-718ec8bdc5d3",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1157,
+            "symbol": "SOTAC",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "c7f3fe91-9e96-4e0e-91a3-c5089eebbfdb",
+            "tokens": 6204,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "6875984e-dab1-495d-8aa3-818ac9be32e2",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1073,
+            "symbol": "CMRSL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "8f8d04d5-d59b-4788-9e70-9ad869acb2d0",
+            "tokens": 3934,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "693469fb-e9dd-4a85-acd2-5dd3d9e94099",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 897,
+            "symbol": "VLINFRA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "338745b7-4de8-4e83-b936-e3ed89549c80",
+            "tokens": 7706,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "EQUITY_FINANCING",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "70babc53-af74-4cb7-a130-e3388c38e527",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 161,
+            "symbol": "SSEGL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "94a03f22-6e5c-4db2-8d53-dd2f1314f7c5",
+            "tokens": 12001,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "73f603e7-486e-4aa9-8adc-f0e69f7aa564",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1351,
+            "symbol": "DHTL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "18fd601e-7892-4e52-8b29-0f5b42000ed9",
+            "tokens": 3541,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "7465915c-2326-476a-8bb8-97d0a7fe23f7",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1205,
+            "symbol": "DUGLOBAL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "b7a1f9af-9a4f-4736-979d-9059182fab09",
+            "tokens": 8610,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "8cbafa0c-2d79-4331-8b4c-ad1efff2e264",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1216,
+            "symbol": "MASTER",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "3a3608e6-4fde-4197-ab22-e578a132a2f5",
+            "tokens": 5958,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "FINANCIAL_CAUTION",
+              "MATERIALITY_UNKNOWN",
+              "EQUITY_FINANCING",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "936662cb-b5e0-47cb-b82c-7aff5bbc2f92",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UPDATED": 1
+        },
+        "packets": [
+          {
+            "position": 829,
+            "symbol": "PURPLEUTED",
+            "slot": "RANKED",
+            "status": "UPDATED",
+            "packet_id": "332509c5-4765-4c56-8ded-4febbd6fd7a3",
+            "tokens": 6653,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "EQUITY_FINANCING",
+              "FINANCIAL_CAUTION",
+              "TEXT_INCOMPLETE"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Nomination filing attachments do not have complete verified text",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "98e015a4-27f3-4fde-a2d9-9db57d6e67d0",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1124,
+            "symbol": "SAHANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "fca8e91a-e274-4cf4-9944-b8c1c83fc591",
+            "tokens": 11941,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "EQUITY_FINANCING",
+              "FINANCIAL_CAUTION"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "9d1ab45e-7129-41a8-9b6d-172b04d252b4",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 495,
+            "symbol": "DUCOL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "768ec5c1-e192-4522-b7dc-8f1ebfc14587",
+            "tokens": 4672,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "TEXT_INCOMPLETE",
+              "TEXT_INCOMPLETE",
+              "TEXT_INCOMPLETE",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Nomination filing attachments do not have complete verified text",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "a0ae766e-842e-48ce-8cf4-c97b4df84886",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1185,
+            "symbol": "WINSOL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "8a71a50e-1fff-4b07-8b37-45752f9f7d34",
+            "tokens": 11746,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "a1642624-2325-4333-aa3f-1d9a8f682875",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UPDATED": 1
+        },
+        "packets": [
+          {
+            "position": 1096,
+            "symbol": "SYNOPTICS",
+            "slot": "RANKED",
+            "status": "UPDATED",
+            "packet_id": "2ae0e3bf-5692-4236-a5c5-478f176b0824",
+            "tokens": 4038,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "a2e5e95e-f200-456f-a60f-01db126c3cd0",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1824,
+            "symbol": "SABAR",
+            "slot": "AUDIT",
+            "status": "UNCHANGED",
+            "packet_id": "bf55f1e2-6617-4d36-80b3-95302507ebd5",
+            "tokens": 3735,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "a749e174-0a1e-4fba-ae54-ada7391a0033",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UPDATED": 1
+        },
+        "packets": [
+          {
+            "position": 1608,
+            "symbol": "INFINIUM",
+            "slot": "RANKED",
+            "status": "UPDATED",
+            "packet_id": "d19d727d-6f4a-4183-ae7e-69d1a10eec36",
+            "tokens": 4822,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "NOT_FIRM_AMOUNT",
+              "FORECAST_ONLY",
+              "NOT_FIRM_AMOUNT",
+              "FORECAST_ONLY",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Current evidence priority differs from the frozen shortlist priority",
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "b054b427-c7d5-47ba-856d-3d8b7f8f7674",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1350,
+            "symbol": "QUICKTOUCH",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "f339eff5-c414-42f0-922e-2ccd9e50b57a",
+            "tokens": 3436,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "DILUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "b35943ae-ff13-44e8-9439-ad974dcf21bc",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1694,
+            "symbol": "SAHASRA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "69cf94a4-0dde-4e20-83be-18430ac590b1",
+            "tokens": 6680,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "FINANCIAL_CAUTION",
+              "TEXT_INCOMPLETE"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Nomination filing attachments do not have complete verified text",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "b85cdcee-6a7c-40e2-91f9-cf4cdd61b2be",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 240,
+            "symbol": "BABAFP",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "6a6e697b-379b-476d-bdf1-8248de540fa8",
+            "tokens": 5263,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "NOT_FIRM_AMOUNT",
+              "FORECAST_ONLY",
+              "MATERIALITY_UNKNOWN",
+              "EQUITY_FINANCING",
+              "TEXT_INCOMPLETE",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Current evidence priority differs from the frozen shortlist priority",
+              "Nomination filing attachments do not have complete verified text",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "b9b1b53e-b476-4a8e-85c5-c999f3ea06af",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1219,
+            "symbol": "TAPIFRUIT",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "96201381-8283-48a7-a3ad-9d30607f41ad",
+            "tokens": 3935,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "FINANCIAL_CAUTION",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "bdd8870b-1b80-4195-9776-48865046a83a",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1142,
+            "symbol": "VR",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "05a6aba6-bd53-44ec-a3f4-4afacb01b268",
+            "tokens": 7425,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "c22a6702-4fa8-4f1f-8800-2f74178eb2ce",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 841,
+            "symbol": "DIGIKORE",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "285c410a-b810-44b1-89de-f44d72d061df",
+            "tokens": 11894,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "FINANCIAL_CAUTION",
+              "DILUTION"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "c54dc12e-012f-4500-a270-dde1515a4709",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 834,
+            "symbol": "SERVICE",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "10de80c8-9b98-46e5-841e-6a9891b9aede",
+            "tokens": 3874,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "DILUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "c639d301-1212-42f5-a0cb-eee8b6b54621",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1176,
+            "symbol": "DANISH",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "4d5d2ee3-d2f8-463e-bd97-b36250290237",
+            "tokens": 6135,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FORECAST_ONLY",
+              "MATERIALITY_UNKNOWN",
+              "DILUTION"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "ce71a98e-701b-4d29-9794-1ffecf00224f",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1179,
+            "symbol": "MANAV",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "d345c0a7-c57a-4d50-aff1-601e81263715",
+            "tokens": 11897,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "FINANCIAL_CAUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "e0d95f97-6971-4bcc-a9c6-39421a8904af",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1782,
+            "symbol": "JFLLIFE",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "96ae2458-ec8f-4ac7-893a-eba5df2271ac",
+            "tokens": 5952,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "FINANCIAL_CAUTION",
+              "DILUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "ee1cbb40-2738-4965-9141-f716b13332dc",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1308,
+            "symbol": "MADHAVBAUG",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "88b4a46e-f704-4942-b390-fdd843ee2428",
+            "tokens": 7152,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FORECAST_ONLY",
+              "FORECAST_ONLY",
+              "FORECAST_ONLY",
+              "MATERIALITY_UNKNOWN",
+              "EQUITY_FINANCING",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "fdd7593d-b9ae-4cd0-8eb7-2b000aedcc16",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 814,
+            "symbol": "APRAMEYA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "f9c917f7-376d-4f72-9349-b62317618dc4",
+            "tokens": 4019,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FORECAST_ONLY",
+              "MATERIALITY_UNKNOWN",
+              "SCOPE",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-07-06",
+      "run_tag": "base",
+      "issuer_id": "ff7694c0-098e-46c0-8bba-98526cfe6067",
+      "result": {
+        "week_start": "2026-07-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1318,
+            "symbol": "KONTOR",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "8515e8ee-5e3c-463b-b41b-fc3362d2c8a1",
+            "tokens": 3613,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "DILUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-29",
+      "run_tag": "base",
+      "issuer_id": "693469fb-e9dd-4a85-acd2-5dd3d9e94099",
+      "result": {
+        "week_start": "2026-06-29",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 131,
+            "symbol": "VLINFRA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "e45ccdf7-973d-48e0-a9d6-a0e42c874341",
+            "tokens": 6863,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-29",
+      "run_tag": "base",
+      "issuer_id": "8cbafa0c-2d79-4331-8b4c-ad1efff2e264",
+      "result": {
+        "week_start": "2026-06-29",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 80,
+            "symbol": "MASTER",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "c2afe7f6-3fbb-4986-a379-5f5ece9e804d",
+            "tokens": 4855,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "EQUITY_FINANCING",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-29",
+      "run_tag": "base",
+      "issuer_id": "b054b427-c7d5-47ba-856d-3d8b7f8f7674",
+      "result": {
+        "week_start": "2026-06-29",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 136,
+            "symbol": "QUICKTOUCH",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "28d75594-2b9d-4113-9f2f-2fdf9ee8d800",
+            "tokens": 3215,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "DILUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-29",
+      "run_tag": "base",
+      "issuer_id": "b85cdcee-6a7c-40e2-91f9-cf4cdd61b2be",
+      "result": {
+        "week_start": "2026-06-29",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 7,
+            "symbol": "BABAFP",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "a8fe3dfe-3760-4c7e-a25f-55089850d9f0",
+            "tokens": 5262,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "NOT_FIRM_AMOUNT",
+              "FORECAST_ONLY",
+              "MATERIALITY_UNKNOWN",
+              "EQUITY_FINANCING",
+              "TEXT_INCOMPLETE",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Current evidence priority differs from the frozen shortlist priority",
+              "Nomination filing attachments do not have complete verified text",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-29",
+      "run_tag": "base",
+      "issuer_id": "b9b1b53e-b476-4a8e-85c5-c999f3ea06af",
+      "result": {
+        "week_start": "2026-06-29",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 74,
+            "symbol": "TAPIFRUIT",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "ac6396f0-3416-4a6a-8d4e-1f3d57eb1a3a",
+            "tokens": 3349,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-22",
+      "run_tag": "base",
+      "issuer_id": "191ceba3-9c3b-470f-9489-ff1ecbcd0bd7",
+      "result": {
+        "week_start": "2026-06-22",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 44,
+            "symbol": "ORIANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "0ecf95ba-333f-4d1b-91d8-c0bebb1d3c30",
+            "tokens": 11965,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-22",
+      "run_tag": "base",
+      "issuer_id": "8cbafa0c-2d79-4331-8b4c-ad1efff2e264",
+      "result": {
+        "week_start": "2026-06-22",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 121,
+            "symbol": "MASTER",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "ec790a38-81e6-4678-b0b8-7fd44b37e594",
+            "tokens": 4279,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-22",
+      "run_tag": "base",
+      "issuer_id": "936662cb-b5e0-47cb-b82c-7aff5bbc2f92",
+      "result": {
+        "week_start": "2026-06-22",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UPDATED": 1
+        },
+        "packets": [
+          {
+            "position": 140,
+            "symbol": "PURPLEUTED",
+            "slot": "RANKED",
+            "status": "UPDATED",
+            "packet_id": "f21b0d99-5975-46f3-8c57-afbc3aa83bf7",
+            "tokens": 6140,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "FINANCIAL_CAUTION",
+              "TEXT_INCOMPLETE"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Nomination filing attachments do not have complete verified text",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-22",
+      "run_tag": "base",
+      "issuer_id": "98e015a4-27f3-4fde-a2d9-9db57d6e67d0",
+      "result": {
+        "week_start": "2026-06-22",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 50,
+            "symbol": "SAHANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "6e1877cc-f2a7-4e71-9913-c62309922eaf",
+            "tokens": 8688,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-22",
+      "run_tag": "base",
+      "issuer_id": "b85cdcee-6a7c-40e2-91f9-cf4cdd61b2be",
+      "result": {
+        "week_start": "2026-06-22",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 7,
+            "symbol": "BABAFP",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "e7086491-73ca-4f5f-96ee-39cdc4df1fbb",
+            "tokens": 5262,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "NOT_FIRM_AMOUNT",
+              "FORECAST_ONLY",
+              "MATERIALITY_UNKNOWN",
+              "EQUITY_FINANCING",
+              "TEXT_INCOMPLETE",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Current evidence priority differs from the frozen shortlist priority",
+              "Nomination filing attachments do not have complete verified text",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-22",
+      "run_tag": "base",
+      "issuer_id": "b9b1b53e-b476-4a8e-85c5-c999f3ea06af",
+      "result": {
+        "week_start": "2026-06-22",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 117,
+            "symbol": "TAPIFRUIT",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "375054f7-0f77-448f-891d-8feeaa64b1be",
+            "tokens": 3350,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-22",
+      "run_tag": "base",
+      "issuer_id": "c22a6702-4fa8-4f1f-8800-2f74178eb2ce",
+      "result": {
+        "week_start": "2026-06-22",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 137,
+            "symbol": "DIGIKORE",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "a248958b-8e34-433a-9735-82b748bb100a",
+            "tokens": 9311,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "FINANCIAL_CAUTION",
+              "DILUTION"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-22",
+      "run_tag": "base",
+      "issuer_id": "f4ec296c-fc5a-43cd-b3a1-b3825cbff239",
+      "result": {
+        "week_start": "2026-06-22",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 149,
+            "symbol": "TAKE",
+            "slot": "EXPLORATION",
+            "status": "UNCHANGED",
+            "packet_id": "a9fff096-9167-4ea8-ab15-b8929e9020d7",
+            "tokens": 3492,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FINANCIAL_CAUTION"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-15",
+      "run_tag": "base",
+      "issuer_id": "191ceba3-9c3b-470f-9489-ff1ecbcd0bd7",
+      "result": {
+        "week_start": "2026-06-15",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 24,
+            "symbol": "ORIANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "6125c8ab-d41d-42e6-b75b-1784e30a24f1",
+            "tokens": 11965,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-15",
+      "run_tag": "base",
+      "issuer_id": "936662cb-b5e0-47cb-b82c-7aff5bbc2f92",
+      "result": {
+        "week_start": "2026-06-15",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UPDATED": 1
+        },
+        "packets": [
+          {
+            "position": 90,
+            "symbol": "PURPLEUTED",
+            "slot": "RANKED",
+            "status": "UPDATED",
+            "packet_id": "39750ba4-c7fd-4be9-bfd9-69b9938b91fa",
+            "tokens": 6140,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "FINANCIAL_CAUTION",
+              "TEXT_INCOMPLETE"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Nomination filing attachments do not have complete verified text",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-15",
+      "run_tag": "base",
+      "issuer_id": "98e015a4-27f3-4fde-a2d9-9db57d6e67d0",
+      "result": {
+        "week_start": "2026-06-15",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 30,
+            "symbol": "SAHANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "f037c935-3c34-4b08-9cb8-38a7015cf017",
+            "tokens": 8688,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-15",
+      "run_tag": "base",
+      "issuer_id": "c22a6702-4fa8-4f1f-8800-2f74178eb2ce",
+      "result": {
+        "week_start": "2026-06-15",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 87,
+            "symbol": "DIGIKORE",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "8d962410-693f-4d00-b43c-67745b046055",
+            "tokens": 9311,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "FINANCIAL_CAUTION",
+              "DILUTION"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-15",
+      "run_tag": "base",
+      "issuer_id": "f4ec296c-fc5a-43cd-b3a1-b3825cbff239",
+      "result": {
+        "week_start": "2026-06-15",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 98,
+            "symbol": "TAKE",
+            "slot": "EXPLORATION",
+            "status": "UNCHANGED",
+            "packet_id": "a85d7394-1f73-4240-957d-52a0f3f60705",
+            "tokens": 3492,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FINANCIAL_CAUTION"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-08",
+      "run_tag": "base",
+      "issuer_id": "3768b7f1-8a8d-4f2d-b943-94f2e0dbe8f9",
+      "result": {
+        "week_start": "2026-06-08",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UPDATED": 1
+        },
+        "packets": [
+          {
+            "position": 42,
+            "symbol": "RICHA",
+            "slot": "RANKED",
+            "status": "UPDATED",
+            "packet_id": "99937931-82bc-408e-9fa4-7fff6e845830",
+            "tokens": 6597,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "DILUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-08",
+      "run_tag": "base",
+      "issuer_id": "8cbafa0c-2d79-4331-8b4c-ad1efff2e264",
+      "result": {
+        "week_start": "2026-06-08",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 77,
+            "symbol": "MASTER",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "d840eda2-b303-4b19-aa97-f2d5f763114f",
+            "tokens": 4051,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-08",
+      "run_tag": "base",
+      "issuer_id": "a0ae766e-842e-48ce-8cf4-c97b4df84886",
+      "result": {
+        "week_start": "2026-06-08",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 59,
+            "symbol": "WINSOL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "edc30da3-62b7-4c26-8dee-bd47473856ec",
+            "tokens": 8087,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-01",
+      "run_tag": "base",
+      "issuer_id": "693469fb-e9dd-4a85-acd2-5dd3d9e94099",
+      "result": {
+        "week_start": "2026-06-01",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 83,
+            "symbol": "VLINFRA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "60355d40-7d94-4586-ac28-bce224dc158d",
+            "tokens": 5137,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-01",
+      "run_tag": "base",
+      "issuer_id": "70babc53-af74-4cb7-a130-e3388c38e527",
+      "result": {
+        "week_start": "2026-06-01",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 81,
+            "symbol": "SSEGL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "34633b40-1089-4216-8be2-5da3b43ce9ab",
+            "tokens": 11663,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-01",
+      "run_tag": "base",
+      "issuer_id": "8cbafa0c-2d79-4331-8b4c-ad1efff2e264",
+      "result": {
+        "week_start": "2026-06-01",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 108,
+            "symbol": "MASTER",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "36ef3550-7f66-4276-a008-65eaf83b95ba",
+            "tokens": 3973,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-01",
+      "run_tag": "base",
+      "issuer_id": "ce71a98e-701b-4d29-9794-1ffecf00224f",
+      "result": {
+        "week_start": "2026-06-01",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 64,
+            "symbol": "MANAV",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "3291b86b-59e8-46d4-bc9e-ae2aa6556dd9",
+            "tokens": 9374,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "FINANCIAL_CAUTION",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-06-01",
+      "run_tag": "base",
+      "issuer_id": "ff902032-e12a-413c-9cba-f83eee3c2165",
+      "result": {
+        "week_start": "2026-06-01",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 174,
+            "symbol": "MANDEEP",
+            "slot": "AUDIT",
+            "status": "UNCHANGED",
+            "packet_id": "b9d15031-ea7b-4f0f-815e-4a0a7120e92a",
+            "tokens": 3501,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "DILUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-25",
+      "run_tag": "base",
+      "issuer_id": "6381aa84-204b-4edc-9c39-e5e322bb7bd4",
+      "result": {
+        "week_start": "2026-05-25",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 245,
+            "symbol": "GANESHIN",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "f17634fd-3034-4a4e-89b1-939b3ca47d00",
+            "tokens": 5618,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-25",
+      "run_tag": "base",
+      "issuer_id": "693469fb-e9dd-4a85-acd2-5dd3d9e94099",
+      "result": {
+        "week_start": "2026-05-25",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 236,
+            "symbol": "VLINFRA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "31a26974-cc66-402d-9c6b-4897f9f50f06",
+            "tokens": 5915,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-25",
+      "run_tag": "base",
+      "issuer_id": "70babc53-af74-4cb7-a130-e3388c38e527",
+      "result": {
+        "week_start": "2026-05-25",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 229,
+            "symbol": "SSEGL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "6ecbcabd-0198-4b7b-be52-bdf92c3418f7",
+            "tokens": 11891,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-25",
+      "run_tag": "base",
+      "issuer_id": "8cbafa0c-2d79-4331-8b4c-ad1efff2e264",
+      "result": {
+        "week_start": "2026-05-25",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 158,
+            "symbol": "MASTER",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "e7ba0239-b7f1-4bf6-83a5-65e26eed783d",
+            "tokens": 4056,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "FINANCIAL_CAUTION",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-25",
+      "run_tag": "base",
+      "issuer_id": "98e015a4-27f3-4fde-a2d9-9db57d6e67d0",
+      "result": {
+        "week_start": "2026-05-25",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 336,
+            "symbol": "SAHANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "5eee502b-e7dd-4ddd-8bcf-7872f2bb1ab6",
+            "tokens": 11209,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "FINANCIAL_CAUTION"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-25",
+      "run_tag": "base",
+      "issuer_id": "a0ae766e-842e-48ce-8cf4-c97b4df84886",
+      "result": {
+        "week_start": "2026-05-25",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 403,
+            "symbol": "WINSOL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "cdc90a18-02f2-4364-9316-41a2678b9b05",
+            "tokens": 11102,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-25",
+      "run_tag": "base",
+      "issuer_id": "a749e174-0a1e-4fba-ae54-ada7391a0033",
+      "result": {
+        "week_start": "2026-05-25",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UPDATED": 1
+        },
+        "packets": [
+          {
+            "position": 347,
+            "symbol": "INFINIUM",
+            "slot": "RANKED",
+            "status": "UPDATED",
+            "packet_id": "17e049f1-ccae-4cd0-b07a-db383f466621",
+            "tokens": 4822,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "NOT_FIRM_AMOUNT",
+              "FORECAST_ONLY",
+              "NOT_FIRM_AMOUNT",
+              "FORECAST_ONLY",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Current evidence priority differs from the frozen shortlist priority",
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-25",
+      "run_tag": "base",
+      "issuer_id": "b054b427-c7d5-47ba-856d-3d8b7f8f7674",
+      "result": {
+        "week_start": "2026-05-25",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 375,
+            "symbol": "QUICKTOUCH",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "ae4c8f4b-873c-47b7-9191-1cffe141a0c0",
+            "tokens": 3215,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "DILUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-25",
+      "run_tag": "base",
+      "issuer_id": "b35943ae-ff13-44e8-9439-ad974dcf21bc",
+      "result": {
+        "week_start": "2026-05-25",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 359,
+            "symbol": "SAHASRA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "aa57b621-d6ed-4468-90a5-318e8e68035b",
+            "tokens": 6349,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "FINANCIAL_CAUTION",
+              "TEXT_INCOMPLETE"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Nomination filing attachments do not have complete verified text",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-25",
+      "run_tag": "base",
+      "issuer_id": "b9b1b53e-b476-4a8e-85c5-c999f3ea06af",
+      "result": {
+        "week_start": "2026-05-25",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 364,
+            "symbol": "TAPIFRUIT",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "d88cbb4f-d65f-4778-9671-a36aa3456852",
+            "tokens": 3435,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "FINANCIAL_CAUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-25",
+      "run_tag": "base",
+      "issuer_id": "e0d95f97-6971-4bcc-a9c6-39421a8904af",
+      "result": {
+        "week_start": "2026-05-25",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 437,
+            "symbol": "JFLLIFE",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "6520b36a-d1c4-4978-a47a-bca00f86c9ed",
+            "tokens": 6008,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "FINANCIAL_CAUTION",
+              "DILUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-18",
+      "run_tag": "base",
+      "issuer_id": "3768b7f1-8a8d-4f2d-b943-94f2e0dbe8f9",
+      "result": {
+        "week_start": "2026-05-18",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UPDATED": 1
+        },
+        "packets": [
+          {
+            "position": 159,
+            "symbol": "RICHA",
+            "slot": "RANKED",
+            "status": "UPDATED",
+            "packet_id": "305bf760-3038-4889-8121-fb4595de4836",
+            "tokens": 5055,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-18",
+      "run_tag": "base",
+      "issuer_id": "9d1ab45e-7129-41a8-9b6d-172b04d252b4",
+      "result": {
+        "week_start": "2026-05-18",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 28,
+            "symbol": "DUCOL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "1f95a76e-0063-41bb-905b-ef2756a2008e",
+            "tokens": 4637,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "TEXT_INCOMPLETE",
+              "TEXT_INCOMPLETE",
+              "TEXT_INCOMPLETE",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Nomination filing attachments do not have complete verified text",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-11",
+      "run_tag": "base",
+      "issuer_id": "6875984e-dab1-495d-8aa3-818ac9be32e2",
+      "result": {
+        "week_start": "2026-05-11",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 259,
+            "symbol": "CMRSL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "d46b0b78-9097-49ad-9a61-b9c6a530a012",
+            "tokens": 3712,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-11",
+      "run_tag": "base",
+      "issuer_id": "c22a6702-4fa8-4f1f-8800-2f74178eb2ce",
+      "result": {
+        "week_start": "2026-05-11",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 266,
+            "symbol": "DIGIKORE",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "89e5470e-f50a-4cd0-bcbb-b66b886d461e",
+            "tokens": 8766,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "FINANCIAL_CAUTION",
+              "DILUTION"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-11",
+      "run_tag": "base",
+      "issuer_id": "c639d301-1212-42f5-a0cb-eee8b6b54621",
+      "result": {
+        "week_start": "2026-05-11",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 80,
+            "symbol": "DANISH",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "ebb7e4a2-fee6-4414-86f6-b5acc5d406e6",
+            "tokens": 5408,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "FORECAST_ONLY",
+              "MATERIALITY_UNKNOWN",
+              "DILUTION"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-11",
+      "run_tag": "base",
+      "issuer_id": "ce71a98e-701b-4d29-9794-1ffecf00224f",
+      "result": {
+        "week_start": "2026-05-11",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 74,
+            "symbol": "MANAV",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "67427441-a803-494b-9bb5-9be08618e6d2",
+            "tokens": 7497,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-05-04",
+      "run_tag": "base",
+      "issuer_id": "ce71a98e-701b-4d29-9794-1ffecf00224f",
+      "result": {
+        "week_start": "2026-05-04",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 85,
+            "symbol": "MANAV",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "9e7e7022-1a80-4f8c-b606-00bdfc961665",
+            "tokens": 6280,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-20",
+      "run_tag": "base",
+      "issuer_id": "7465915c-2326-476a-8bb8-97d0a7fe23f7",
+      "result": {
+        "week_start": "2026-04-20",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 39,
+            "symbol": "DUGLOBAL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "68aee244-aec3-4578-a8e3-2c8b2857b149",
+            "tokens": 7903,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-13",
+      "run_tag": "base",
+      "issuer_id": "ce71a98e-701b-4d29-9794-1ffecf00224f",
+      "result": {
+        "week_start": "2026-04-13",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 13,
+            "symbol": "MANAV",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "ea853a56-57a7-4e14-8aa6-adc3e57bafcd",
+            "tokens": 6101,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "191ceba3-9c3b-470f-9489-ff1ecbcd0bd7",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 109,
+            "symbol": "ORIANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "b32eeec4-b8f7-4710-a89f-31c1672113d7",
+            "tokens": 11893,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "DILUTION"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "1a67d2af-789c-4977-841c-88cb13444348",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 590,
+            "symbol": "RAJPUTANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "c1e80baf-7bca-4784-8945-315ec1417e81",
+            "tokens": 8092,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FORECAST_ONLY",
+              "RELATED_OR_GROUP",
+              "FORECAST_ONLY",
+              "FORECAST_ONLY",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "2915e0a5-e294-4e64-b36f-13b4ca0e930f",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 721,
+            "symbol": "DPEL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "fc606b6b-51f8-4941-8776-2d322131da42",
+            "tokens": 6946,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "3768b7f1-8a8d-4f2d-b943-94f2e0dbe8f9",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UPDATED": 1
+        },
+        "packets": [
+          {
+            "position": 701,
+            "symbol": "RICHA",
+            "slot": "RANKED",
+            "status": "UPDATED",
+            "packet_id": "4783b87d-2fce-4595-91e0-f98e01b443a9",
+            "tokens": 5329,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "EQUITY_FINANCING",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "465f4556-28cf-4e71-b0d6-59bd44e1e01e",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 724,
+            "symbol": "KHFM",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "104b4467-00c0-47d2-808f-1463cbd794bd",
+            "tokens": 3824,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "DILUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "6381aa84-204b-4edc-9c39-e5e322bb7bd4",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1014,
+            "symbol": "GANESHIN",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "82f6cb75-057d-407b-8a7b-43bb782f1a08",
+            "tokens": 5598,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "674fc6ef-8015-4970-9e35-718ec8bdc5d3",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 974,
+            "symbol": "SOTAC",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "63b990c5-deaf-46de-a218-c2dc63791aa4",
+            "tokens": 6136,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "6875984e-dab1-495d-8aa3-818ac9be32e2",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 872,
+            "symbol": "CMRSL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "e848c8af-63d3-405e-9cb7-37e4f713e4fd",
+            "tokens": 3804,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "693469fb-e9dd-4a85-acd2-5dd3d9e94099",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 664,
+            "symbol": "VLINFRA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "f9de89de-7540-49fe-9b61-e137d4c07308",
+            "tokens": 4475,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "70babc53-af74-4cb7-a130-e3388c38e527",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 106,
+            "symbol": "SSEGL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "a7b1be36-def6-40b2-bed6-c7d3a652a028",
+            "tokens": 11942,
+            "completeness": "PARTIAL",
+            "truncated": true,
+            "risk_flags": [
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "73f603e7-486e-4aa9-8adc-f0e69f7aa564",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1114,
+            "symbol": "DHTL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "fa8cdbd1-6f38-478c-9a4c-5db1f3ed25e2",
+            "tokens": 3541,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "98e015a4-27f3-4fde-a2d9-9db57d6e67d0",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 935,
+            "symbol": "SAHANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "3ab5ec6a-c38a-4bd6-b416-70c3c994479b",
+            "tokens": 9670,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "DILUTION"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "a0ae766e-842e-48ce-8cf4-c97b4df84886",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1004,
+            "symbol": "WINSOL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "03b7a5c6-7c19-4942-9bb8-222ada24d1a1",
+            "tokens": 7564,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "a1642624-2325-4333-aa3f-1d9a8f682875",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UPDATED": 1
+        },
+        "packets": [
+          {
+            "position": 900,
+            "symbol": "SYNOPTICS",
+            "slot": "RANKED",
+            "status": "UPDATED",
+            "packet_id": "acce75c4-b1a0-4e71-b0ab-7dbafcdf1b45",
+            "tokens": 4015,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "b054b427-c7d5-47ba-856d-3d8b7f8f7674",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1113,
+            "symbol": "QUICKTOUCH",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "9d12f5a8-d5c0-4157-a403-96b604ec4f41",
+            "tokens": 3138,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "bdd8870b-1b80-4195-9776-48865046a83a",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 957,
+            "symbol": "VR",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "9e6802a2-64b0-40d5-8527-50969b503e04",
+            "tokens": 7249,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "c22a6702-4fa8-4f1f-8800-2f74178eb2ce",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 610,
+            "symbol": "DIGIKORE",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "d07d8400-74ed-4a44-bf10-504598380326",
+            "tokens": 11233,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "c54dc12e-012f-4500-a270-dde1515a4709",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 603,
+            "symbol": "SERVICE",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "d1921389-4417-4f09-8bfb-10bbfb6768fc",
+            "tokens": 3834,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "c639d301-1212-42f5-a0cb-eee8b6b54621",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 993,
+            "symbol": "DANISH",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "371493b0-53dd-4272-ad38-7123e07ea21f",
+            "tokens": 4573,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "ce71a98e-701b-4d29-9794-1ffecf00224f",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 997,
+            "symbol": "MANAV",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "540ef0f6-5c3e-4e7b-ac73-f8a19c3f3fd7",
+            "tokens": 7672,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "ee1cbb40-2738-4965-9141-f716b13332dc",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1072,
+            "symbol": "MADHAVBAUG",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "ab3d79d6-2cdd-4d5a-93e9-396cde490d67",
+            "tokens": 7044,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FORECAST_ONLY",
+              "FORECAST_ONLY",
+              "FORECAST_ONLY",
+              "MATERIALITY_UNKNOWN",
+              "EQUITY_FINANCING",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "fdd7593d-b9ae-4cd0-8eb7-2b000aedcc16",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 581,
+            "symbol": "APRAMEYA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "62749529-6fb6-4555-a93c-a11d526f094f",
+            "tokens": 3812,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FORECAST_ONLY",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-04-06",
+      "run_tag": "base",
+      "issuer_id": "ff7694c0-098e-46c0-8bba-98526cfe6067",
+      "result": {
+        "week_start": "2026-04-06",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1082,
+            "symbol": "KONTOR",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "92e068cd-b700-4520-af8d-57fca30fecc8",
+            "tokens": 3122,
+            "completeness": "COMPLETE",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": []
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-03-30",
+      "run_tag": "base",
+      "issuer_id": "191ceba3-9c3b-470f-9489-ff1ecbcd0bd7",
+      "result": {
+        "week_start": "2026-03-30",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 1,
+            "symbol": "ORIANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "41750c56-0670-43b5-a2e9-0db54d6c9fcf",
+            "tokens": 11311,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "DILUTION"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-03-30",
+      "run_tag": "base",
+      "issuer_id": "3768b7f1-8a8d-4f2d-b943-94f2e0dbe8f9",
+      "result": {
+        "week_start": "2026-03-30",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UPDATED": 1
+        },
+        "packets": [
+          {
+            "position": 57,
+            "symbol": "RICHA",
+            "slot": "RANKED",
+            "status": "UPDATED",
+            "packet_id": "d8f761b5-7ebf-475f-896f-038e3b7a38c4",
+            "tokens": 4913,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-03-30",
+      "run_tag": "base",
+      "issuer_id": "6381aa84-204b-4edc-9c39-e5e322bb7bd4",
+      "result": {
+        "week_start": "2026-03-30",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 61,
+            "symbol": "GANESHIN",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "48d5805e-e48b-4d92-af76-2a3dcb9d2540",
+            "tokens": 5597,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-03-30",
+      "run_tag": "base",
+      "issuer_id": "70babc53-af74-4cb7-a130-e3388c38e527",
+      "result": {
+        "week_start": "2026-03-30",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 58,
+            "symbol": "SSEGL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "a39c937e-f338-4d2f-b680-a543a92df68b",
+            "tokens": 11242,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-03-30",
+      "run_tag": "base",
+      "issuer_id": "78ad2b2d-6522-43c8-93db-a97032fdcdca",
+      "result": {
+        "week_start": "2026-03-30",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 81,
+            "symbol": "KALYANI",
+            "slot": "AUDIT",
+            "status": "UNCHANGED",
+            "packet_id": "2f8564f4-2273-4bde-9502-08a994e78e86",
+            "tokens": 3872,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "EQUITY_FINANCING",
+              "PRICE_STALE",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-03-30",
+      "run_tag": "base",
+      "issuer_id": "ce71a98e-701b-4d29-9794-1ffecf00224f",
+      "result": {
+        "week_start": "2026-03-30",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 51,
+            "symbol": "MANAV",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "e013135d-e0dd-46a2-8f9c-1788ffbe9306",
+            "tokens": 5745,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-03-23",
+      "run_tag": "base",
+      "issuer_id": "191ceba3-9c3b-470f-9489-ff1ecbcd0bd7",
+      "result": {
+        "week_start": "2026-03-23",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 33,
+            "symbol": "ORIANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "c7637d79-ee6f-4222-8828-560f30040ef0",
+            "tokens": 10926,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "DILUTION"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-03-16",
+      "run_tag": "base",
+      "issuer_id": "bdd8870b-1b80-4195-9776-48865046a83a",
+      "result": {
+        "week_start": "2026-03-16",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 36,
+            "symbol": "VR",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "ac0903f2-8a6f-400d-82ef-d1b510fb41e5",
+            "tokens": 5573,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "PRICE_STALE",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-03-16",
+      "run_tag": "base",
+      "issuer_id": "c639d301-1212-42f5-a0cb-eee8b6b54621",
+      "result": {
+        "week_start": "2026-03-16",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 25,
+            "symbol": "DANISH",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "54e9caa9-189c-4332-82be-f59a58378278",
+            "tokens": 4220,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-03-09",
+      "run_tag": "base",
+      "issuer_id": "a0ae766e-842e-48ce-8cf4-c97b4df84886",
+      "result": {
+        "week_start": "2026-03-09",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 43,
+            "symbol": "WINSOL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "3e528cf8-a368-49a8-88be-d5198d9847c8",
+            "tokens": 7565,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-03-09",
+      "run_tag": "base",
+      "issuer_id": "bdd8870b-1b80-4195-9776-48865046a83a",
+      "result": {
+        "week_start": "2026-03-09",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 58,
+            "symbol": "VR",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "737a2180-50f6-458d-99f4-22230dde607c",
+            "tokens": 5154,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-03-09",
+      "run_tag": "base",
+      "issuer_id": "ce71a98e-701b-4d29-9794-1ffecf00224f",
+      "result": {
+        "week_start": "2026-03-09",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 20,
+            "symbol": "MANAV",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "525b97a2-8bc7-4a19-a600-bce69827798d",
+            "tokens": 5891,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-03-02",
+      "run_tag": "base",
+      "issuer_id": "191ceba3-9c3b-470f-9489-ff1ecbcd0bd7",
+      "result": {
+        "week_start": "2026-03-02",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 43,
+            "symbol": "ORIANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "384d6b6f-36e8-4a82-976c-dced91aab639",
+            "tokens": 10855,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "FORECAST_ONLY",
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "DILUTION"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-03-02",
+      "run_tag": "base",
+      "issuer_id": "ce71a98e-701b-4d29-9794-1ffecf00224f",
+      "result": {
+        "week_start": "2026-03-02",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 21,
+            "symbol": "MANAV",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "4174df90-85d4-4d54-b0bc-7a96ed8839cd",
+            "tokens": 5196,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "PRICE_STALE",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-02-23",
+      "run_tag": "base",
+      "issuer_id": "674fc6ef-8015-4970-9e35-718ec8bdc5d3",
+      "result": {
+        "week_start": "2026-02-23",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 54,
+            "symbol": "SOTAC",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "d6159370-e414-456f-b535-d8b22a45fe46",
+            "tokens": 5059,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-02-23",
+      "run_tag": "base",
+      "issuer_id": "98e015a4-27f3-4fde-a2d9-9db57d6e67d0",
+      "result": {
+        "week_start": "2026-02-23",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 30,
+            "symbol": "SAHANA",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "d007ccef-3aca-4649-a779-54714c062d2a",
+            "tokens": 9090,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "DILUTION"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-02-23",
+      "run_tag": "base",
+      "issuer_id": "ce71a98e-701b-4d29-9794-1ffecf00224f",
+      "result": {
+        "week_start": "2026-02-23",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 69,
+            "symbol": "MANAV",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "e7d6f839-0e54-4c9e-8634-0f8e276209a6",
+            "tokens": 5012,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "PRICE_STALE",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-02-16",
+      "run_tag": "base",
+      "issuer_id": "70babc53-af74-4cb7-a130-e3388c38e527",
+      "result": {
+        "week_start": "2026-02-16",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 126,
+            "symbol": "SSEGL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "a55b1224-76c3-4f11-89c5-085e5abecced",
+            "tokens": 11040,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-02-16",
+      "run_tag": "base",
+      "issuer_id": "bdd8870b-1b80-4195-9776-48865046a83a",
+      "result": {
+        "week_start": "2026-02-16",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 68,
+            "symbol": "VR",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "fe4952ec-9e1f-4662-b42c-ba6deec21f27",
+            "tokens": 4586,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-02-16",
+      "run_tag": "base",
+      "issuer_id": "c639d301-1212-42f5-a0cb-eee8b6b54621",
+      "result": {
+        "week_start": "2026-02-16",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 127,
+            "symbol": "DANISH",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "1c7842f3-f16b-471a-9b36-f25a940ce5a1",
+            "tokens": 4070,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-02-09",
+      "run_tag": "base",
+      "issuer_id": "674fc6ef-8015-4970-9e35-718ec8bdc5d3",
+      "result": {
+        "week_start": "2026-02-09",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 144,
+            "symbol": "SOTAC",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "7811a3c1-a76b-459a-872e-db55d050ff24",
+            "tokens": 4938,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-02-09",
+      "run_tag": "base",
+      "issuer_id": "6875984e-dab1-495d-8aa3-818ac9be32e2",
+      "result": {
+        "week_start": "2026-02-09",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 415,
+            "symbol": "CMRSL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "f93e6600-7913-487a-a5c3-1e29beebd762",
+            "tokens": 3700,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-02-09",
+      "run_tag": "base",
+      "issuer_id": "70babc53-af74-4cb7-a130-e3388c38e527",
+      "result": {
+        "week_start": "2026-02-09",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 13,
+            "symbol": "SSEGL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "03e93971-d454-414d-bd16-ccbe757b4e64",
+            "tokens": 11376,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-02-02",
+      "run_tag": "base",
+      "issuer_id": "70babc53-af74-4cb7-a130-e3388c38e527",
+      "result": {
+        "week_start": "2026-02-02",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 137,
+            "symbol": "SSEGL",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "0967c9c0-ff39-40ec-a509-9fc6c4f3a5a9",
+            "tokens": 10657,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-02-02",
+      "run_tag": "base",
+      "issuer_id": "ac2fc5f0-9d13-4238-8521-6c85b6afff55",
+      "result": {
+        "week_start": "2026-02-02",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 303,
+            "symbol": "STARTECK",
+            "slot": "EXPLORATION",
+            "status": "UNCHANGED",
+            "packet_id": "a4680bf4-51af-40bd-98ff-0c212f07af8e",
+            "tokens": 3630,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "STALE_UNRESEARCHED",
+              "FINANCIAL_CAUTION",
+              "FINANCIAL_CAUTION",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Financial nomination inputs changed and require reprocessing",
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": "2026-02-02",
+      "run_tag": "base",
+      "issuer_id": "bdd8870b-1b80-4195-9776-48865046a83a",
+      "result": {
+        "week_start": "2026-02-02",
+        "packet_version": "triage-packet-13",
+        "token_budget": 12000,
+        "counts": {
+          "UNCHANGED": 1
+        },
+        "packets": [
+          {
+            "position": 86,
+            "symbol": "VR",
+            "slot": "RANKED",
+            "status": "UNCHANGED",
+            "packet_id": "75429576-1869-4a46-9e93-471a77be2cfc",
+            "tokens": 4129,
+            "completeness": "PARTIAL",
+            "truncated": false,
+            "risk_flags": [
+              "EQUITY_FINANCING",
+              "MATERIALITY_UNKNOWN",
+              "ILLIQUID"
+            ],
+            "missing": [
+              "Original nomination assessments have been replaced or withdrawn; reassess the shortlist"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "updated_at": "2026-10-30T05:28:04.170288+00:00",
+  "pid": 44567,
+  "finished_at": "2026-10-30T05:28:04.170244+00:00"
+}

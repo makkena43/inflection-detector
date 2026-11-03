@@ -1,0 +1,25 @@
+{
+  "backend_http_status": 200,
+  "analysis": {
+    "state": "RUNNING",
+    "pid": 75903,
+    "stage": "Link recovered identities and scan available commercial evidence",
+    "updated_at": "2026-10-29T14:36:08.347248+00:00"
+  },
+  "attachments": {
+    "state": "STORAGE_LIMIT",
+    "pid": 59449,
+    "stage": "Download and extract NSE attachments across all companies",
+    "updated_at": "2026-10-29T11:13:39.778831+00:00"
+  },
+  "ocr": {
+    "state": "FINISHED_WITH_GAPS",
+    "pid": 62928,
+    "stage": "OCR archived PDF fc982b95-73ee-4c17-a420-6273f31cd16e",
+    "updated_at": "2026-10-29T11:31:06.533234+00:00"
+  },
+  "tax_inclusive_order_exposure": [
+    1001,
+    230
+  ]
+}

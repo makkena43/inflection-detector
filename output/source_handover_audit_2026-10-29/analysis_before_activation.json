@@ -1,0 +1,21 @@
+{
+  "task": "analysis",
+  "state": "RUNNING",
+  "pid": 99891,
+  "first": "2024-10-29",
+  "last": "2026-10-29",
+  "started_at": "2026-10-29T17:23:47.947244+00:00",
+  "counts": {
+    "historical_packets_refreshed": 46
+  },
+  "issues": [
+    {
+      "stage": "historical_source_packets",
+      "status": "EVIDENCE_REQUIRED",
+      "pending": 3
+    }
+  ],
+  "stage": "Refresh health report",
+  "archive_bytes_added": 0,
+  "updated_at": "2026-10-29T17:59:35.842103+00:00"
+}

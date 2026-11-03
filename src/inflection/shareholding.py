@@ -149,10 +149,15 @@ def detail(conn, client: HttpClient, shortlisted: bool = True, limit: Optional[i
 
 def series(conn, issuer_id, cutoff: Optional[datetime] = None, quarters: int = 8) -> list[dict]:
     """Quarters public by the cutoff (latest last), with the change in promoter, MF and FII holdings on a year earlier."""
+    from .temporal import snapshot_sql, cutoff_or_now
+    cutoff=cutoff_or_now(cutoff)
     rows = conn.execute(
-        """SELECT DISTINCT ON (period_end) period_end, promoter_pct, mf_pct, fii_pct, dii_pct, retail_pct, promoter_pledged_pct
-             FROM shareholding_patterns WHERE issuer_id = %s AND (%s::timestamptz IS NULL OR broadcast_at <= %s)
-            ORDER BY period_end, broadcast_at DESC""", (issuer_id, cutoff, cutoff)).fetchall()
+        f"""SELECT DISTINCT ON (period_end) period_end, promoter_pct, mf_pct, fii_pct, dii_pct, retail_pct, promoter_pledged_pct
+             FROM {snapshot_sql('shareholding_patterns')} sp
+             WHERE issuer_id = %(issuer)s AND broadcast_at <= %(cutoff)s
+               AND period_end <= (%(cutoff)s AT TIME ZONE 'Asia/Kolkata')::date
+            ORDER BY period_end, broadcast_at DESC, recorded_at DESC, source_ref DESC""",
+        dict(issuer=issuer_id,cutoff=cutoff)).fetchall()
     keys = ("promoter_pct", "mf_pct", "fii_pct", "dii_pct", "retail_pct", "promoter_pledged_pct")
     out, by = [], {}
     for r in rows:

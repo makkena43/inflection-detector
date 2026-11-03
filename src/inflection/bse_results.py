@@ -5,7 +5,8 @@ the latest five quarters and five financial years of the main income-statement l
 dates and no history beyond those windows, so:
 
 * ``available_at`` is when this snapshot was observed, never an inferred filing deadline. A current restated
-  snapshot cannot prove what was public historically;
+  snapshot cannot prove what was public historically; ``time`` links each figure to the company's own results
+  announcement for that period (owner decision 2026-11-01), which the as-of view then uses;
 * figures are BSE's latest presentation (restated if the company restated);
 * only companies with no NSE symbol are loaded, and an existing (issuer, metric, period, scope, provider) fact is
   never written twice.
@@ -165,14 +166,47 @@ def load(conn, client: HttpClient, scrips: Optional[list[str]] = None, limit: Op
     return out
 
 
+TIMING_RULE = "first-results-filing-75d-2"
+RESULTS_TITLE = r"results?"
+NOT_RESULTS_TITLE = (r"intimation|board meeting|newspaper|trading window|advertis|publication|postponement|clarification|"
+                     r"voting|ballot|scrutini|annual general|\bagm\b|election|buy-?back|open offer|tender offer|allotment")
+MONTHS = r"january|february|march|april|may|june|july|august|september|october|november|december"
+
+
+def time_from_filings(conn) -> dict:
+    """Owner decision (2026-11-01): a snapshot figure is public from the company's results announcement
+    for its period: the earliest results filing of the issuer after the period ended and within 75 days,
+    whose title names that period's month (or no month).  Recorded once per fact in
+    ``financial_snapshot_timing``; figures without such a filing keep the observation time."""
+    n = conn.execute(f"""INSERT INTO financial_snapshot_timing(fact_id, publication_id, available_at, rule)
+        SELECT DISTINCT ON (f.fact_id) f.fact_id, p.publication_id, p.published_at, %(rule)s
+          FROM financial_facts f JOIN document_publications p ON p.issuer_id = f.issuer_id
+           AND p.published_at >= ((f.period_end + 1)::timestamp AT TIME ZONE 'Asia/Kolkata')
+           AND p.published_at < ((f.period_end + 76)::timestamp AT TIME ZONE 'Asia/Kolkata')
+           AND p.title ~* %(yes)s AND p.title !~* %(no)s
+           AND (p.title ~* trim(to_char(f.period_end, 'FMMonth')) OR p.title !~* %(months)s)
+         WHERE f.provider = %(provider)s AND f.provider_version = 'bse-results-snapshot-1'
+           AND NOT EXISTS (SELECT 1 FROM financial_snapshot_timing t WHERE t.fact_id = f.fact_id)
+         ORDER BY f.fact_id, p.published_at, p.publication_id
+        ON CONFLICT DO NOTHING""", dict(rule=TIMING_RULE, yes=RESULTS_TITLE, no=NOT_RESULTS_TITLE, months=MONTHS,
+                                        provider=PROVIDER)).rowcount
+    total = conn.execute("SELECT count(*) FROM financial_facts WHERE provider=%s AND provider_version='bse-results-snapshot-1'",
+                         (PROVIDER,)).fetchone()[0]
+    timed = conn.execute("SELECT count(*) FROM financial_snapshot_timing").fetchone()[0]
+    return dict(timed_now=n, timed_total=timed, snapshot_facts=total, rule=TIMING_RULE)
+
+
 def main(argv: Optional[list[str]] = None) -> int:
     ap = argparse.ArgumentParser(prog="python -m inflection.bse_results")
-    ap.add_argument("command", choices=["load"])
+    ap.add_argument("command", choices=["load", "time"])
     ap.add_argument("--scrips", help="comma-separated BSE scrip codes (default: every BSE-only company)")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--interval", type=float, default=1.5)
     a = ap.parse_args(argv)
     with psycopg.connect(os.environ["INFLECTION_DSN"], autocommit=True) as conn:
+        if a.command == "time":
+            print(json.dumps(time_from_filings(conn), indent=2))
+            return 0
         res = load(conn, HttpClient(min_interval=a.interval), a.scrips.split(",") if a.scrips else None, a.limit,
                    progress=lambda n, o: print(f"{n}: {json.dumps(o)}", flush=True))
     print(json.dumps(res, indent=2))

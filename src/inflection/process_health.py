@@ -13,6 +13,7 @@ from pathlib import Path
 import tempfile
 import psycopg
 from .asof import IST
+from .documents import publication_member_sql
 from .commercial.vocabulary import RULES_VERSION as COMMERCIAL
 from .financial.rules import RULES_VERSION as FINANCIAL
 
@@ -27,9 +28,14 @@ def _unresolved_windows(conn, lo, hi):
         WHERE s.name IN ('nse_announcements','bse_announcements') AND r.window_start<%s AND r.window_end>%s
         ORDER BY r.source_id,r.segment,r.window_start,r.window_end,r.started_at DESC,r.run_id DESC""", (hi,lo)).fetchall()
     complete = defaultdict(list)
+    normalized=[]
     for source, segment, start, end, name, status, finished in rows:
         if status == 'COMPLETE' and finished is not None:
-            complete[(source,segment)].append((max(start,lo),min(end,hi)))
+            verified_end=min(end,finished,hi)
+            if verified_end>max(start,lo):complete[(source,segment)].append((max(start,lo),verified_end))
+        effective='PARTIAL' if status=='COMPLETE' and (finished is None or finished<end) else status
+        normalized.append((source,segment,start,end,name,effective,finished))
+    rows=normalized
     merged = {}
     for key, intervals in complete.items():
         spans = []
@@ -140,10 +146,10 @@ def collect(conn, first: date, last: date):
            GROUP BY s.name,p.pipeline_state''',(lo,hi),blocking=True,
         description='Includes undispatched downloads, partial text and OCR. Download-policy exclusions remain visible; analysis of available text alone does not prove full filing coverage.')
     check('commercial_backlog','Extracted filings not scanned under the active rules',
-        '''SELECT count(*) affected FROM text_artifacts a
+        f'''SELECT count(*) affected FROM text_artifacts a
            WHERE a.status IN ('COMPLETE','PARTIAL') AND EXISTS(SELECT 1 FROM document_publications p
              JOIN document_versions root ON root.document_version_id=p.document_version_id
-             JOIN document_versions member ON member.document_id=root.document_id
+             JOIN document_versions member ON {publication_member_sql('root','member')}
              WHERE member.document_version_id=a.document_version_id AND p.published_at >= %s AND p.published_at < %s)
            AND NOT EXISTS(SELECT 1 FROM text_artifacts newer WHERE newer.document_version_id=a.document_version_id
              AND newer.status IN ('COMPLETE','PARTIAL') AND newer.created_at>a.created_at)
@@ -208,6 +214,17 @@ def save(report,output):
     (output/'report.md').write_text('\n'.join(lines)+'\n')
 
 
+def read_worker_status(path):
+    status=json.loads(Path(path).read_text())
+    pid=status.get('pid')
+    if os.name=='posix' and status.get('state') in ('RUNNING','STARTING','WAITING_FOR_STORAGE','WAITING_FOR_SOURCE') and isinstance(pid,int) and pid>0:
+        try:os.kill(pid,0)
+        except ProcessLookupError:
+            status=dict(status,stored_state=status['state'],state='STOPPED')
+        except PermissionError:pass
+    return status
+
+
 def load_report(path=DEFAULT_REPORT):
     if not Path(path).exists():
         return dict(summary={},checks=[],message='No process-health report has been generated yet.')
@@ -218,6 +235,12 @@ def load_report(path=DEFAULT_REPORT):
             report['coverage_repair'] = json.loads(progress_path.read_text())
         except (OSError, ValueError):
             report['coverage_repair'] = {'state':'STATUS_UNAVAILABLE'}
+    report['repair_jobs'] = []
+    for task in ('references','financials','attachments','ocr','evidence','analysis'):
+        status_path=Path(path).parent/'jobs'/f'{task}.json'
+        if status_path.exists():
+            try:report['repair_jobs'].append(read_worker_status(status_path))
+            except (OSError,ValueError):report['repair_jobs'].append({'task':task,'state':'STATUS_UNAVAILABLE'})
     return report
 
 

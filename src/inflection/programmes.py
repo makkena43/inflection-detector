@@ -110,19 +110,26 @@ def scan(conn, start: Optional[date] = None) -> dict:
 
 def exposure(conn, issuer_id, cutoff: Optional[datetime] = None) -> list[dict]:
     """Programmes the company had named in its filings by the cutoff: first mention, first order mention, counts."""
+    from .temporal import snapshot_sql, cutoff_or_now
+    cutoff=cutoff_or_now(cutoff)
     rows = conn.execute(
-        """SELECT g.name, g.announced_date, g.outlay_cr, min(m.published_at), min(m.published_at) FILTER (WHERE m.is_order),
+        f"""SELECT g.name, g.announced_date, g.outlay_cr, min(m.published_at), min(m.published_at) FILTER (WHERE m.is_order),
                   count(*), count(*) FILTER (WHERE m.is_order),
                   (array_agg(m.snippet ORDER BY m.is_order DESC, m.published_at DESC) FILTER (WHERE m.snippet IS NOT NULL))[1]
-             FROM programme_mentions m JOIN govt_programmes g USING (programme_id)
-            WHERE m.issuer_id = %s AND (%s::timestamptz IS NULL OR m.published_at <= %s)
+             FROM {snapshot_sql('programme_mentions')} m
+             JOIN {snapshot_sql('govt_programmes')} g USING (programme_id)
+             JOIN document_publications p USING(publication_id)
+            WHERE m.issuer_id = %(issuer)s AND m.published_at <= %(cutoff)s
+              AND p.published_at <= %(cutoff)s AND p.ingested_at <= %(cutoff)s
+              AND (g.announced_date+1)::timestamp AT TIME ZONE 'Asia/Kolkata' - interval '1 microsecond' <= %(cutoff)s
+              AND g.source_url <> 'UNVERIFIED'
             GROUP BY g.programme_id, g.name, g.announced_date, g.outlay_cr
-            ORDER BY count(*) FILTER (WHERE m.is_order) DESC, count(*) DESC LIMIT 8""", (issuer_id, cutoff, cutoff)).fetchall()
+            ORDER BY count(*) FILTER (WHERE m.is_order) DESC, count(*) DESC LIMIT 8""", dict(issuer=issuer_id,cutoff=cutoff)).fetchall()
     # early cycle: the company's first order under the programme came within two years of its announcement (in the
     # 2021-23 decisions these picks beat the rest by far; 2024-25 held on excess return but is a small sample)
     return [dict(programme=n, announced=a.isoformat(), outlay_cr=float(o) if o is not None else None,
                  first_mention=f.date().isoformat() if f else None, first_order_mention=fo.date().isoformat() if fo else None,
-                 early_cycle=bool(fo and (fo.date() - a).days <= 730), documents=d, order_documents=od, snippet=(s or "")[:300])
+                 early_cycle=bool(fo and 0 <= (fo.date() - a).days <= 730), documents=d, order_documents=od, snippet=(s or "")[:300])
             for n, a, o, f, fo, d, od, s in rows]
 
 

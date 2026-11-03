@@ -1,0 +1,10 @@
+{
+  "started_at": "2026-10-29T11:34:33.894852+00:00",
+  "migration": "0030_financial_checkpoint_history",
+  "financial_checkpoint_versions": 236105,
+  "engine_sha256": "5b3fe09b5586ae78b2d5c58d27a24660e1bfc287318e2c1ae972a293cb6662ee",
+  "backup": "/Users/makkenasrinivas/inflection-jobs/engine/engine.py.bak-decision-state-20261029",
+  "dashboard_pid": 67122,
+  "native_ocr_version": "apple-vision-2",
+  "native_ocr_backend": "UNAVAILABLE_ON_TEST_SOURCE_EVEN_WITH_CPU_FALLBACK"
+}

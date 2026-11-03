@@ -1,0 +1,54 @@
+....F........................                                            [100%]
+=================================== FAILURES ===================================
+_ test_plan_excludes_future_financial_publications_and_prioritizes_recent_weeks _
+
+db = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_6ae7f32512c2) at 0x107978230>
+tmp_path = PosixPath('/private/var/folders/vw/zhs88w6d6v10xdzmy8_qfl4h0000gn/T/pytest-of-makkenasrinivas/pytest-142/test_plan_excludes_future_fina0')
+
+    def test_plan_excludes_future_financial_publications_and_prioritizes_recent_weeks(db,tmp_path):
+        it,_,_=scenario(db,tmp_path)
+        from inflection.financials import ensure_source
+        src=ensure_source(db)
+        for key,at in [('before',CUTOFF-timedelta(days=1)),('after',CUTOFF+timedelta(days=1))]:
+>           db.execute('''INSERT INTO document_publications(source_id,external_id,source_url,published_at,publication_basis,pipeline_state,issuer_id)
+               VALUES(%s,%s,'https://source/results.xml',%s,'EXCHANGE_TIMESTAMP','TEXT_READY',%s)''',(src,key,at,it['issuer_id']))
+
+tests/test_quality_repair.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Connection [IDLE] (user=makkenasrinivas database=inflection_test_6ae7f32512c2) at 0x107978230>
+query = "INSERT INTO document_publications(source_id,external_id,source_url,published_at,publication_basis,pipeline_state,issuer_id)\n           VALUES(%s,%s,'https://source/results.xml',%s,'EXCHANGE_TIMESTAMP','TEXT_READY',%s)"
+params = (UUID('5961f912-3cf3-4045-9c3b-ba920e1a70ae'), 'before', datetime.datetime(2026, 3, 22, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Asia/Kolkata')), UUID('58b640b2-be8f-4080-a46f-695d01244796'))
+prepare = None, binary = False
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -> Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.CheckViolation: new row for relation "document_publications" violates check constraint "document_publications_bytes_after_download"
+E           DETAIL:  Failing row contains (e4c59b45-cccf-4f8b-9abd-97766709ca84, null, 5961f912-3cf3-4045-9c3b-ba920e1a70ae, before, , https://source/results.xml, 2026-03-22 00:00:00+05:30, null, EXCHANGE_TIMESTAMP, 2026-10-30 17:51:34.671684+05:30, null, 58b640b2-be8f-4080-a46f-695d01244796, null, null, null, null, null, null, null, null, TEXT_READY, null, 1, null, {}, {}).
+
+.venv/lib/python3.12/site-packages/psycopg/connection.py:304: CheckViolation
+=========================== short test summary info ============================
+FAILED tests/test_quality_repair.py::test_plan_excludes_future_financial_publications_and_prioritizes_recent_weeks
+1 failed, 28 passed in 5.51s
