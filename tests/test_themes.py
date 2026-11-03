@@ -136,6 +136,21 @@ def test_tag_discover_and_packet_exposure(db):
     assert D.exposure(db, abc, cut)["themes"][0]["company_role"] == "SUPPLIER"     # dated after the cutoff
     db.execute("INSERT INTO makrograph_ref.mg_company_capabilities VALUES ('2025-12-31', 'ABCT', 'CRGO Steel', true)")
     assert D.exposure(db, abc, cut)["themes"][0]["company_role"] == "MAKER"
+    # ...unless its own order passages mostly describe EPC work
+    mid = db.execute("""INSERT INTO commercial_mentions (rules_version, text_artifact_id, document_version_id,
+                            publication_id, issuer_id, published_at, source_url, page_no, span_start, span_end, quote,
+                            family, event_type, commercial_stage, modality, observation_status, relationship,
+                            amount, currency, scale, amount_basis)
+                        SELECT 'r', a.text_artifact_id, p.document_version_id, p.publication_id, p.issuer_id,
+                               p.published_at, 'u', 1, 0, 1, 'q', 'ORDER', 'ORDER', 'BINDING_DEMAND', 'REALIZED',
+                               'OBSERVED', 'UNKNOWN', 100, 'INR', 'CRORE', 'FIRM'
+                          FROM document_publications p JOIN text_artifacts a USING (document_version_id)
+                         WHERE p.issuer_id = %s LIMIT 1 RETURNING mention_id""", (abc,)).fetchone()[0]
+    for n in range(2):
+        db.execute("""INSERT INTO theme_phrase_mentions (mention_id, issuer_id, source_key, quote_md5, published_at,
+                          family, phrases, version, role) VALUES (%s,%s,%s,%s,'2025-10-01','ORDER','{}',%s,'EPC')""",
+                   (mid, abc, f"k{n}", f"m{n}", E.VERSION))
+    assert D.exposure(db, abc, cut)["themes"][0]["company_role"] == "EPC"
 
     with pytest.raises(Exception):
         db.execute("UPDATE theme_beneficiaries SET conviction_score = 0")
