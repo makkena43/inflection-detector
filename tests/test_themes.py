@@ -127,9 +127,11 @@ from inflection.themes import emergent as E
 
 
 def test_phrases_are_content_word_runs():
-    p = E.phrases("Received an order worth Rs 120 crore for supply of 765 kV power transformers to PGCIL.")
-    assert "power transformers" in p and "pgcil" in p and "supply" in p
-    assert not any(ch.isdigit() for x in p for ch in x) and "of" not in p and "an order worth rs" not in p
+    q = ("Dear Sir/Madam, BSE Limited. The Company has received an order worth Rs 120 crore for supply of 765 kV "
+         "power transformers to PGCIL. The equity shares are listed.")
+    p = E.phrases(q)
+    assert p == ["power", "transformers", "power transformers"]          # only the object of the order
+    assert "bse limited" in E.phrases(q, objects_only=False)              # what the old method picked up
 
 
 def _rows(as_of):
