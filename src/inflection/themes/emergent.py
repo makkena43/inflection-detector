@@ -104,6 +104,18 @@ modernization operation maintenance o&m epc delivery export launch launched laun
 qualified qualification approval capacity plant facility facilities line order orders contract contracts loa letter
 award intent work purchase
 """.split())
+# Words that describe an expansion or a launch without saying what it is about. A phrase made only of these and cue
+# words ("new manufacturing facility", "greenfield expansion", "several new products") cannot be a theme.
+GENERIC_WORDS = frozenset("""
+new facility facilities plant plants unit units factory factories product products line lines range launch launches
+greenfield brownfield several innovative premium commercial production manufacturing expansion expansions sku skus
+model models variant variants two three four five six multiple various speciality specialty assets capacity
+capacities additional dedicated state-of-the-art modern advanced integrated next generation portfolio offerings
+""".split())
+
+
+def _generic(p: str) -> bool:
+    return all(w in CUE_WORDS or w in GENERIC_WORDS for w in p.split())
 
 
 def object_text(text: str) -> str:
@@ -323,7 +335,7 @@ def build(rows: Iterable[tuple], as_of: date, background: Optional[tuple[dict, i
 
     cand = sorted(p for p, cos in rec_cos.items() if len(cos) >= MIN_COMPANIES and len(win_cos[p]) <= generic
                   and len(win_cos[p]) >= MIN_COMPANIES and (background is None or spec(p) >= spec_min)
-                  and (allowed is None or p in allowed))
+                  and (allowed is None or p in allowed) and not _generic(p))
     specs = {p: spec(p) for p in cand}
     # group phrases that occur in the same passages (same sentences), or where one contains the other and most of
     # the shorter one's passages are shared; sharing companies alone is not enough (a company names many things)
