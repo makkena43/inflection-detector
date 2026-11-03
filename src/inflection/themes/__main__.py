@@ -82,7 +82,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             res = emergent.snapshot(conn, a.as_of, write=not a.dry_run, spec_min=a.spec_min,
                                    use_labels=not a.no_labels)
         elif a.command == "label-phrases":
-            res = labels.label(conn, a.limit, a.model, a.spec_min, stop_file=a.stop_file)
+            res = labels.label(conn, a.limit, a.model, a.spec_min * labels.LABEL_SPEC_FACTOR, stop_file=a.stop_file)
         else:
             if not a.symbol:
                 ap.error("show needs SYMBOL")

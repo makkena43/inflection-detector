@@ -18,7 +18,7 @@ from typing import Callable, Optional
 
 from . import emergent
 
-PROMPT_VERSION = "theme-phrase-v3"
+PROMPT_VERSION = "theme-phrase-v4"
 LABEL_SPEC_FACTOR = 0.25   # label phrases down to a quarter of the snapshot threshold: a phrase can be far more
                            # concentrated in one 2-year window than over the whole index
 DEFAULT_MODEL = os.environ.get("OLLAMA_MODEL", "qwen2.5:3b")
@@ -39,6 +39,10 @@ or letter word. Examples of no: commissioned, wins, underway, terminated, ramp-u
 variants, skus, tailored, documents mentioned, enclosed press release, investor correspondence, pipeline, \
 capex, saudi arabia, strategic, platform, new product, product launch, product range, power order, greenfield, \
 brownfield, capacity addition, factory shed, plant assets, epc project.
+A plant, facility, project or product phrase must say WHAT it makes or builds: "water treatment plant", \
+"solar power plant", "seamless pipe" are yes; "new facility", "new manufacturing", "manufacturing lines", \
+"new plants", "plant assets", "new models", "four new products", "speciality products", "brownfield facility", \
+"module capacity" are no.
 If unsure, answer yes.
 Phrase: "{phrase}"
 Answer with one word: yes or no."""

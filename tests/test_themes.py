@@ -269,6 +269,13 @@ def test_label_phrases_cached(db):
     E._LABEL_CACHE.clear()
 
 
+def test_generic_expansion_phrases_are_not_themes():
+    as_of = date(2025, 12, 31)
+    rows = [(c, as_of - timedelta(days=10), ["new manufacturing facility", "greenfield expansion", "water treatment plant"],
+             None) for c in "ABC"]
+    assert [t["phrases"] for t in E.build(rows, as_of)] == [["water treatment plant"]]
+
+
 def test_stage_thresholds():
     assert [E._stage(n, g) for n, g in ((3, None), (5, 50.0), (12, 10.0), (30, 5.0), (30, 0.0), (8, -40.0))] == \
         [0, 1, 2, 3, 4, 5]
