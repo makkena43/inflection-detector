@@ -6,7 +6,7 @@
     weekly --as-of D                        # tag the last 400 days not yet tagged, then discover for D,
                                             # then index new commercial passages and build the emergent snapshot
     emergent-index [--from D] [--to D]      # key phrases of commercial passages not yet indexed
-    emergent --as-of D                      # emergent-theme snapshot for D (append-only)
+    emergent --as-of D [--dry-run]          # emergent-theme snapshot for D (append-only); --dry-run only reports
     show SYMBOL [--cutoff D]                # what a packet with that cutoff would show
 """
 from __future__ import annotations
@@ -33,6 +33,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--as-of", dest="as_of", type=date.fromisoformat)
     ap.add_argument("--lookback", type=int, default=discovery.DEFAULT_LOOKBACK)
     ap.add_argument("--cutoff", type=date.fromisoformat)
+    ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args(argv)
     with psycopg.connect(os.environ["INFLECTION_DSN"], autocommit=True) as conn:
         if a.command == "import-makrograph":
@@ -57,7 +58,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         elif a.command == "emergent":
             if not a.as_of:
                 ap.error("emergent needs --as-of")
-            res = emergent.snapshot(conn, a.as_of)
+            res = emergent.snapshot(conn, a.as_of, write=not a.dry_run)
         else:
             if not a.symbol:
                 ap.error("show needs SYMBOL")

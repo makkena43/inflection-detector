@@ -31,17 +31,19 @@ from typing import Iterable, Optional
 from zoneinfo import ZoneInfo
 
 IST = ZoneInfo("Asia/Kolkata")
-VERSION = "emergent-1"
+VERSION = "emergent-2"
 FAMILIES = ("ORDER", "COMMERCIAL_START", "QUALIFICATION", "CAPACITY", "PRODUCT_LAUNCH")
 RECENT_DAYS = 180
 WINDOW_DAYS = 730            # phrases and company sets for grouping come from the two years before as_of
 GENERIC_SHARE = 0.08         # a phrase used by more than 8% of companies in the window is generic language
 GENERIC_FLOOR = 25           # ...but never below 25 companies (small samples)
 MIN_COMPANIES = 3            # a theme needs at least this many companies in the recent window
-JOIN = 0.5                   # company-set Jaccard for merging two phrases
 CONTAIN_SHARE = 0.6          # "transformer" absorbs "power transformer" when 60% of the smaller set is shared
 KEEP_KEY = 0.3               # phrase-set Jaccard to keep a theme's key from the previous snapshot
-MAX_PHRASE_WORDS = 4
+MAX_PHRASE_WORDS = 3
+JOIN_PASSAGES = 0.3          # phrases merge when they share >= 30% of their passages (same sentences, not same firms)
+MAX_THEMES = 300             # themes kept per snapshot, ranked by breadth x growth
+VALUE_CAP_PCTL = 0.99        # one passage's value is capped at the 99th percentile of the window's passage values
 SCALE_TO_CRORE = {"UNITS": Decimal("1e-7"), "THOUSAND": Decimal("1e-4"), "LAKH": Decimal("0.01"),
                   "MILLION": Decimal("0.1"), "CRORE": Decimal(1), "BILLION": Decimal(100)}
 
@@ -59,14 +61,46 @@ _TOKEN = re.compile(r"[a-z][a-z\-&/]*[a-z]|[a-z]")
 _SPLIT = re.compile(r"[.,;:()\[\]{}\"'“”‘’!?|\n\r\t]+")
 
 
-def phrases(text: str) -> list[str]:
-    """Candidate key phrases: maximal runs of content words (no digits, no stop words), 1-4 words, deduplicated."""
+# What an order / capacity / launch sentence is ABOUT follows these words: "order for supply of X",
+# "capacity of X", "commenced production of X", "launched X".  Only that object window is read, so letter
+# headings, exchange names and legal phrases elsewhere in the passage never become themes.
+_OBJECT_CUE = re.compile(
+    r"\b(?:supply(?:ing)?|manufactur(?:e|ing)|production|producing|design(?:ing)?|installation|commissioning|"
+    r"construction|erection|execution|procurement|development|setting\s+up|establishment|expansion|"
+    r"upgradation|modernisation|modernization|operation\s+and\s+maintenance|o&m|epc|delivery|export|"
+    r"launch(?:ed|ing)?|introduc(?:ed|ing)|qualified|qualification|approval|capacity|plant|facility|line|"
+    r"orders?|contracts?|loa|letter\s+of\s+(?:award|intent)|work\s+orders?|purchase\s+orders?)"
+    r"\s+(?:of|for|to\s+supply|to\s+manufacture)?\s*", re.I)
+_OBJECT_END = re.compile(
+    r"\b(?:to|from|worth|valued|value|amounting|aggregating|aggregate|at|by|with|on|under|through|having|"
+    r"which|that|received|awarded|placed|issued|dated|vide|inr|rs|usd|crores?|lakhs?|million|billion)\b|[.;:()]",
+    re.I)
+OBJECT_WORDS = 10
+
+
+def object_text(text: str) -> str:
+    """The object windows of a passage: up to OBJECT_WORDS words after each cue, stopped at the next boundary."""
+    out = []
+    for m in _OBJECT_CUE.finditer(text or ""):
+        tail = text[m.end():m.end() + 160]
+        e = _OBJECT_END.search(tail)
+        win = " ".join((tail[:e.start()] if e else tail).split()[:OBJECT_WORDS])
+        if win:
+            out.append(win)
+    return " | ".join(out)
+
+
+def phrases(text: str, objects_only: bool = True) -> list[str]:
+    """Key phrases: maximal runs of content words (no digits, no stop words, 3+ letters), 1-3 words, deduplicated.
+    By default only the object windows of the passage are read."""
+    if objects_only:
+        text = object_text(text)
     out, seen = [], set()
     for chunk in _SPLIT.split((text or "").lower()):
         run: list[str] = []
         for raw in chunk.split():
             tok = raw.strip("-&/")
-            if not tok or any(ch.isdigit() for ch in tok) or tok in STOP or not _TOKEN.fullmatch(tok) or len(tok) < 2:
+            if not tok or any(ch.isdigit() for ch in tok) or tok in STOP or not _TOKEN.fullmatch(tok) or len(tok) < 3:
                 if run:
                     _emit(run, out, seen)
                 run = []
@@ -106,11 +140,11 @@ def index(conn, start: Optional[date] = None, end: Optional[date] = None) -> dic
               AND (%(s)s::date IS NULL OR m.published_at >= %(s)s::timestamp AT TIME ZONE 'Asia/Kolkata')
               AND (%(e)s::date IS NULL OR m.published_at <  %(e)s::timestamp AT TIME ZONE 'Asia/Kolkata')
               AND NOT EXISTS (SELECT 1 FROM theme_phrase_mentions t
-                               WHERE t.issuer_id = m.issuer_id AND t.quote_md5 = md5(m.quote)
+                               WHERE t.version = %(v)s AND t.issuer_id = m.issuer_id AND t.quote_md5 = md5(m.quote)
                                  AND t.source_key = coalesce(m.publication_id::text, m.document_version_id::text))
             ORDER BY m.issuer_id, coalesce(m.publication_id::text, m.document_version_id::text), m.quote,
                      m.created_at DESC, m.mention_id""",
-        dict(f=list(FAMILIES), s=start, e=end)).fetchall()
+        dict(f=list(FAMILIES), s=start, e=end, v=VERSION)).fetchall()
     n = 0
     for mid, iss, key, at, fam, quote, amt, cur, sc, basis, modality in rows:
         if modality == "NEGATED":
@@ -166,7 +200,14 @@ def build(rows: Iterable[tuple], as_of: date) -> list[dict]:
     rec_cos: dict[str, set] = defaultdict(set)
     pri_cos: dict[str, set] = defaultdict(set)
     rec_passages: dict = defaultdict(list)       # company -> [(phrase set, value)] in the recent window
+    win_pass: dict[str, set] = defaultdict(set)  # phrase -> passage numbers in the window
+    passages: list[set] = []
     first: dict[tuple, date] = {}
+    values = []
+    for iss, d, phs, val in rows:
+        if window_from <= d < as_of_dt and val is not None:
+            values.append(Decimal(val))
+    cap = sorted(values)[int(VALUE_CAP_PCTL * (len(values) - 1))] if values else None
     for iss, d, phs, val in rows:
         if d >= as_of_dt:
             continue
@@ -174,9 +215,12 @@ def build(rows: Iterable[tuple], as_of: date) -> list[dict]:
             continue
         total += 1
         phs = set(phs or ())
+        v = min(Decimal(val), cap) if val is not None and cap is not None else None
         if d >= recent_from:
-            rec_passages[iss].append((phs, Decimal(val) if val is not None else None))
+            rec_passages[iss].append((phs, v))
+        passages.append(phs)
         for p in phs:
+            win_pass[p].add(len(passages) - 1)
             win_cos[p].add(iss)
             first[(p, iss)] = min(first.get((p, iss), d), d)
             if d >= recent_from:
@@ -189,27 +233,26 @@ def build(rows: Iterable[tuple], as_of: date) -> list[dict]:
     generic = max(GENERIC_SHARE * len(all_cos), GENERIC_FLOOR)
     cand = sorted(p for p, cos in rec_cos.items() if len(cos) >= MIN_COMPANIES and len(win_cos[p]) <= generic
                   and len(win_cos[p]) >= MIN_COMPANIES)
-    # group: shared companies, or containment with most companies shared
+    # group phrases that occur in the same passages (same sentences), or where one contains the other and most of
+    # the shorter one's passages are shared; sharing companies alone is not enough (a company names many things)
     uf = _UF()
+    cset = set(cand)
     for p in cand:
         uf.find(p)
-    by_co: dict = defaultdict(list)
-    for p in cand:
-        for c in win_cos[p]:
-            by_co[c].append(p)
     pairs = set()
-    for ps in by_co.values():
-        if len(ps) > 400:          # a company naming hundreds of phrases says nothing about which belong together
+    for phs in passages:
+        ps = sorted(phs & cset)
+        if len(ps) > 60:
             continue
         for i, a in enumerate(ps):
             for b in ps[i + 1:]:
-                pairs.add((a, b) if a < b else (b, a))
+                pairs.add((a, b))
     for a, b in sorted(pairs):
-        A, B = win_cos[a], win_cos[b]
+        A, B = win_pass[a], win_pass[b]
         inter = len(A & B)
         jac = inter / len(A | B)
         contained = (f" {a} " in f" {b} " or f" {b} " in f" {a} ") and inter >= CONTAIN_SHARE * min(len(A), len(B))
-        if jac >= JOIN or contained:
+        if jac >= JOIN_PASSAGES or contained:
             uf.union(a, b)
     groups: dict[str, list[str]] = defaultdict(list)
     for p in cand:
@@ -235,8 +278,12 @@ def build(rows: Iterable[tuple], as_of: date) -> list[dict]:
                         companies=len(rec), companies_prior=len(pri), growth_pct=growth,
                         order_value_cr=sum((x["value_cr"] for x in comps), Decimal(0)),
                         stage=_stage(len(rec), growth), members=comps))
-    out.sort(key=lambda t: (-t["companies"], t["name"]))
-    return out
+    # rank by breadth and year-on-year growth; keep the top MAX_THEMES
+    def score(t):
+        g = 100.0 if t["growth_pct"] is None else max(-50.0, min(t["growth_pct"], 300.0))
+        return t["companies"] * (1.0 + g / 100.0)
+    out.sort(key=lambda t: (-score(t), t["name"]))
+    return out[:MAX_THEMES]
 
 
 def _carry_keys(themes: list[dict], previous: list[tuple]) -> None:
@@ -257,40 +304,53 @@ def _carry_keys(themes: list[dict], previous: list[tuple]) -> None:
 
 
 def snapshot(conn, as_of: date, write: bool = True) -> dict:
-    """Compute and store the emergent-theme snapshot for as_of (append-only; an existing as_of is left as it is)."""
-    if conn.execute("SELECT 1 FROM emergent_theme_snapshots WHERE as_of = %s LIMIT 1", (as_of,)).fetchone():
+    """Compute and store the emergent-theme snapshot for as_of, in one transaction (append-only; an existing as_of
+    for this VERSION is left as it is). write=False computes and reports without storing."""
+    if write and conn.execute("SELECT 1 FROM emergent_theme_snapshots WHERE as_of = %s AND version = %s LIMIT 1",
+                              (as_of, VERSION)).fetchone():
         return {"as_of": as_of.isoformat(), "skipped": "exists"}
     rows = conn.execute(
         """SELECT issuer_id, (published_at AT TIME ZONE 'Asia/Kolkata')::date, phrases, value_cr
              FROM theme_phrase_mentions
-            WHERE published_at < %(a)s::timestamp AT TIME ZONE 'Asia/Kolkata'
+            WHERE version = %(v)s
+              AND published_at < %(a)s::timestamp AT TIME ZONE 'Asia/Kolkata'
               AND published_at >= %(w)s::timestamp AT TIME ZONE 'Asia/Kolkata'""",
-        dict(a=as_of, w=as_of - timedelta(days=WINDOW_DAYS))).fetchall()
+        dict(a=as_of, w=as_of - timedelta(days=WINDOW_DAYS), v=VERSION)).fetchall()
     themes = build(rows, as_of)
-    prev_date = conn.execute("SELECT max(as_of) FROM emergent_theme_snapshots WHERE as_of < %s", (as_of,)).fetchone()[0]
+    prev_date = conn.execute("SELECT max(as_of) FROM emergent_theme_snapshots WHERE as_of < %s AND version = %s",
+                             (as_of, VERSION)).fetchone()[0]
     previous = conn.execute("""SELECT theme_key, phrases, first_detected FROM emergent_theme_snapshots
-                                WHERE as_of = %s ORDER BY companies DESC, theme_key""", (prev_date,)).fetchall() \
-        if prev_date else []
+                                WHERE as_of = %s AND version = %s ORDER BY companies DESC, theme_key""",
+                            (prev_date, VERSION)).fetchall() if prev_date else []
     _carry_keys(themes, previous)
+    keys = set()
     for t in themes:
-        t.setdefault("theme_key", f"{re.sub(r'[^a-z0-9]+', '-', t['name']).strip('-')}@{as_of.isoformat()}")
+        if "theme_key" not in t:
+            base = f"{re.sub(r'[^a-z0-9]+', '-', t['name']).strip('-')}@{as_of.isoformat()}#{VERSION}"
+            key, n = base, 1
+            while key in keys:
+                n += 1
+                key = f"{base}.{n}"
+            t["theme_key"] = key
+        keys.add(t["theme_key"])
         t.setdefault("first_detected", as_of)
     if write:
-        for t in themes:
-            conn.execute(
-                """INSERT INTO emergent_theme_snapshots (as_of, theme_key, name, phrases, companies, companies_prior,
-                       growth_pct, order_value_cr, stage, first_detected, version)
-                   VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
-                (as_of, t["theme_key"], t["name"], t["phrases"], t["companies"], t["companies_prior"], t["growth_pct"],
-                 t["order_value_cr"], t["stage"], t["first_detected"], VERSION))
-            for m in t["members"]:
+        with conn.transaction():
+            for t in themes:
                 conn.execute(
-                    """INSERT INTO emergent_theme_companies (as_of, theme_key, issuer_id, mentions, value_cr, first_seen)
-                       VALUES (%s,%s,%s,%s,%s,%s)""",
-                    (as_of, t["theme_key"], m["issuer_id"], m["mentions"], m["value_cr"], m["first_seen"]))
-    return {"as_of": as_of.isoformat(), "themes": len(themes),
+                    """INSERT INTO emergent_theme_snapshots (as_of, theme_key, name, phrases, companies,
+                           companies_prior, growth_pct, order_value_cr, stage, first_detected, version)
+                       VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                    (as_of, t["theme_key"], t["name"], t["phrases"], t["companies"], t["companies_prior"],
+                     t["growth_pct"], t["order_value_cr"], t["stage"], t["first_detected"], VERSION))
+                for m in t["members"]:
+                    conn.execute(
+                        """INSERT INTO emergent_theme_companies (as_of, theme_key, issuer_id, mentions, value_cr,
+                               first_seen) VALUES (%s,%s,%s,%s,%s,%s)""",
+                        (as_of, t["theme_key"], m["issuer_id"], m["mentions"], m["value_cr"], m["first_seen"]))
+    return {"as_of": as_of.isoformat(), "written": write, "passages": len(rows), "themes": len(themes),
             "by_stage": {s: sum(1 for t in themes if t["stage"] == s) for s in range(6)},
-            "top": [(t["name"], t["companies"], t["growth_pct"], t["stage"]) for t in themes[:15]]}
+            "top": [(t["name"], t["companies"], t["growth_pct"], t["stage"], t["phrases"][:5]) for t in themes[:40]]}
 
 
 def exposure(conn, issuer_id, cutoff: datetime, mode: str = "PUBLIC_INFORMATION", limit: int = 5) -> dict:
@@ -298,8 +358,10 @@ def exposure(conn, issuer_id, cutoff: datetime, mode: str = "PUBLIC_INFORMATION"
     if cutoff.tzinfo is None:
         raise ValueError("cutoff must be timezone-aware")
     p = dict(i=issuer_id, d=cutoff.astimezone(IST).date(), c=cutoff, replay=mode == "ACTUAL_SYSTEM_REPLAY")
+    p["v"] = VERSION
     latest = conn.execute("""SELECT max(as_of) FROM emergent_theme_snapshots
-                              WHERE as_of <= %(d)s AND (NOT %(replay)s OR recorded_at <= %(c)s)""", p).fetchone()[0]
+                              WHERE version = %(v)s AND as_of <= %(d)s AND (NOT %(replay)s OR recorded_at <= %(c)s)""",
+                          p).fetchone()[0]
     if latest is None:
         return {"snapshot": None, "themes": []}
     p["l"] = latest
@@ -307,7 +369,7 @@ def exposure(conn, issuer_id, cutoff: datetime, mode: str = "PUBLIC_INFORMATION"
         """SELECT s.name, s.stage, s.companies, s.companies_prior, s.growth_pct, s.first_detected, c.mentions,
                   c.value_cr, c.first_seen, s.phrases[1:5]
              FROM emergent_theme_companies c JOIN emergent_theme_snapshots s USING (as_of, theme_key)
-            WHERE c.as_of = %(l)s AND c.issuer_id = %(i)s
+            WHERE c.as_of = %(l)s AND c.issuer_id = %(i)s AND s.version = %(v)s
             ORDER BY c.value_cr DESC, c.mentions DESC, s.name LIMIT %(n)s""", dict(p, n=limit)).fetchall()
     return {"snapshot": latest.isoformat(), "themes": [
         dict(theme=r[0], stage=r[1], companies=r[2], companies_year_ago=r[3],
