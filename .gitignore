@@ -5,3 +5,7 @@ __pycache__/
 .venv/
 .env
 data/
+
+# Local job state (large, rewritten while jobs run)
+output/process_health/jobs/
+.DS_Store
