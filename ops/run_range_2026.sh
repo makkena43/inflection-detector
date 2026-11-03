@@ -18,6 +18,8 @@ nice -n 10 $PY $J/engine/month_local.py $F:$E >> $L 2>&1
 nice -n 10 zsh $J/xbrl_for.sh $F $T q_${F%-*} >> $L 2>&1
 nice -n 10 $PY -m inflection.companies build >> $L 2>&1
 nice -n 10 $PY -m inflection.financial scan --from $F --to $E >> $L 2>&1
+# MakroGraph supply-gap theme tags for filings in FROM..TO (inflection.themes); only untagged filings are read.
+nice -n 10 $PY -m inflection.themes tag --from $F --to $T >> $L 2>&1
 # Completion requires successful stage handoffs and explicit source coverage.
 $PY -m inflection.process_health --from $F --to $E --gate >> $L 2>&1
 # coverage guard on the triaged weeks whose Monday falls in FROM-6 .. TO (0 = OK)
