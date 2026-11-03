@@ -458,7 +458,9 @@ def _ownership(conn, it: dict) -> dict:
     if themes_enabled():
         # MakroGraph supply-gap themes (inflection.themes). Opt-in: adding the key changes every packet's hash.
         from ..themes.discovery import exposure as theme_exposure
+        from ..themes.emergent import exposure as emergent_exposure
         out['themes'] = theme_exposure(conn, it['issuer_id'], it['cutoff'], it['mode'])
+        out['emergent_themes'] = emergent_exposure(conn, it['issuer_id'], it['cutoff'], it['mode'])
     return out
 
 
