@@ -25,6 +25,10 @@ as_of date, so a packet for any past week reads what was knowable then.
    "projects" are common everywhere and drop out; "bess", "civil works", "mumbai metro" are not.  Phrases made only
    of the cue words that open an object window ("work order", "production capacity", "epc") are not themes either.
    A theme is named after its most specific widely used phrase, not its most common one.
+7. Role (emergent-4): which side of the theme each company is on, read from its own passage wording.  MAKER
+   (capacity, production, launch), SUPPLIER (order received, qualification), EPC (order received for erection /
+   installation / turnkey work), BUYER (order placed with someone else, captive use).  A shortage helps makers and
+   suppliers, is mixed for EPC contractors and hurts buyers, so packets show the role next to each theme.
 
 Everything is counts and set overlaps over the database; nothing is hand-listed except English stop words and the
 cue words that mark where an order's object starts.
@@ -39,7 +43,8 @@ from typing import Iterable, Optional
 from zoneinfo import ZoneInfo
 
 IST = ZoneInfo("Asia/Kolkata")
-VERSION = "emergent-3"
+VERSION = "emergent-4"
+BACKGROUND_VERSION = "emergent-3"   # phrase method unchanged since emergent-3, so its background counts still apply
 FAMILIES = ("ORDER", "COMMERCIAL_START", "QUALIFICATION", "CAPACITY", "PRODUCT_LAUNCH")
 RECENT_DAYS = 180
 WINDOW_DAYS = 730            # phrases and company sets for grouping come from the two years before as_of
@@ -145,6 +150,52 @@ def _emit(run: list[str], out: list, seen: set) -> None:
                 out.append(p)
 
 
+# ---------------------------------------------------------------------------------------------------- role
+_CAPTIVE = re.compile(r"\b(?:captive|own\s+(?:use|consumption|requirement|plants?|facilit(?:y|ies)|operations)|"
+                      r"in-house\s+use|self[- ]consumption|for\s+(?:its|our)\s+(?:own|existing|new)\b)", re.I)
+_PLACED = re.compile(r"\b(?:placed|has\s+placed|places|procur(?:e|ed|ement|ing)|purchas(?:e|ed|ing)\s+(?:of|from)|"
+                     r"(?:awarded|given|issued|granted)\s+(?:the\s+|a\s+|an\s+)?(?:contract|order|work|loa)s?\s+to|"
+                     r"order\s+(?:on|with)\s+[A-Z]|sourc(?:e|ed|ing)\s+from|buy(?:ing)?\s+from)", re.I)
+_RECEIVED = re.compile(r"\b(?:receiv(?:ed|es|ing)|receipt\s+of|bag(?:ged|s)|secur(?:ed|es)|w[io]ns?|bagging|"
+                       r"(?:has|have|been|was|were|is)\s+(?:been\s+)?(?:awarded|declared)|"
+                       r"l-?1\b|lowest\s+bidder|letter\s+of\s+(?:award|intent)|loa\b|work\s+orders?\s+from|"
+                       r"orders?\s+from|contract\s+from)", re.I)
+_CONTRACTING = re.compile(r"\b(?:epc|turnkey|erection|installation|civil\s+works?|construction\s+of|"
+                          r"engineering,\s+procurement)", re.I)
+
+
+def role(family: str, text: str) -> Optional[str]:
+    """Which side the filing company is on, from its own wording; None when the wording does not say."""
+    text = text or ""
+    if _CAPTIVE.search(text):
+        return "BUYER"
+    if family in ("CAPACITY", "COMMERCIAL_START", "PRODUCT_LAUNCH"):
+        return "MAKER"
+    if family == "QUALIFICATION":
+        return "SUPPLIER"
+    received, placed = bool(_RECEIVED.search(text)), bool(_PLACED.search(text))
+    if received and not placed:
+        return "EPC" if _CONTRACTING.search(text) else "SUPPLIER"
+    if placed and not received:
+        return "BUYER"
+    return None
+
+
+_ROLE_ORDER = ("MAKER", "SUPPLIER", "EPC", "BUYER")
+
+
+def company_role(roles: Iterable[Optional[str]]) -> Optional[str]:
+    """One role per company in a theme: the most common stated role; ties go to the supply side
+    (maker, then supplier, then EPC, then buyer)."""
+    counts: dict[str, int] = defaultdict(int)
+    for r in roles:
+        if r:
+            counts[r] += 1
+    if not counts:
+        return None
+    return max(_ROLE_ORDER, key=lambda r: (counts.get(r, 0), -_ROLE_ORDER.index(r)))
+
+
 def crore(amount, currency, scale) -> Optional[Decimal]:
     if amount is None or currency != "INR" or scale not in SCALE_TO_CRORE:
         return None
@@ -175,9 +226,9 @@ def index(conn, start: Optional[date] = None, end: Optional[date] = None) -> dic
         value = crore(amt, cur, sc) if basis in ("FIRM", "EXECUTABLE_RELEASE", "GUARANTEED_MINIMUM") else None
         n += conn.execute(
             """INSERT INTO theme_phrase_mentions (mention_id, issuer_id, source_key, quote_md5, published_at, family,
-                                                  phrases, value_cr, version)
-               SELECT %s,%s,%s,md5(%s),%s,%s,%s,%s,%s ON CONFLICT DO NOTHING""",
-            (mid, iss, key, quote, at, fam, phrases(quote), value, VERSION)).rowcount
+                                                  phrases, value_cr, version, role)
+               SELECT %s,%s,%s,md5(%s),%s,%s,%s,%s,%s,%s ON CONFLICT DO NOTHING""",
+            (mid, iss, key, quote, at, fam, phrases(quote), value, VERSION, role(fam, quote))).rowcount
     return {"indexed": n}
 
 
@@ -213,7 +264,8 @@ def _stage(cos: int, growth: Optional[float]) -> int:
 
 def build(rows: Iterable[tuple], as_of: date, background: Optional[tuple[dict, int]] = None,
           spec_min: float = SPEC_MIN) -> list[dict]:
-    """Pure part of a snapshot. rows = (issuer_id, filed_date, phrases, value_cr) for passages dated before as_of.
+    """Pure part of a snapshot. rows = (issuer_id, filed_date, phrases, value_cr[, role]) for passages dated before
+    as_of.
     background = ({phrase: background sentences containing it}, total background sentences); without it there is
     no specificity filter (tests of the other steps).
     Returns themes with their companies; no database access, so tests and backtests can call it directly."""
@@ -230,11 +282,12 @@ def build(rows: Iterable[tuple], as_of: date, background: Optional[tuple[dict, i
     passages: list[set] = []
     first: dict[tuple, date] = {}
     values = []
-    for iss, d, phs, val in rows:
+    rows = [tuple(r) + (None,) * (5 - len(r)) for r in rows]
+    for iss, d, phs, val, _ in rows:
         if window_from <= d < as_of_dt and val is not None:
             values.append(Decimal(val))
     cap = sorted(values)[int(VALUE_CAP_PCTL * (len(values) - 1))] if values else None
-    for iss, d, phs, val in rows:
+    for iss, d, phs, val, rl in rows:
         if d >= as_of_dt:
             continue
         if d < window_from:
@@ -243,7 +296,7 @@ def build(rows: Iterable[tuple], as_of: date, background: Optional[tuple[dict, i
         phs = set(phs or ())
         v = min(Decimal(val), cap) if val is not None and cap is not None else None
         if d >= recent_from:
-            rec_passages[iss].append((phs, v))
+            rec_passages[iss].append((phs, v, rl))
         passages.append(phs)
         for p in phs:
             win_pass[p].add(len(passages) - 1)
@@ -308,11 +361,12 @@ def build(rows: Iterable[tuple], as_of: date, background: Optional[tuple[dict, i
         comps = []
         mset = set(members)
         for c in rec:
-            hits = [(ph, v) for ph, v in rec_passages[c] if ph & mset]
+            hits = [(ph, v, rl) for ph, v, rl in rec_passages[c] if ph & mset]
             n = len(hits)
-            v = sum((v for _, v in hits if v is not None), Decimal(0))
+            v = sum((v for _, v, _ in hits if v is not None), Decimal(0))
             f = min(first[(p, c)] for p in members if (p, c) in first)
-            comps.append(dict(issuer_id=c, mentions=n, value_cr=v, first_seen=f))
+            comps.append(dict(issuer_id=c, mentions=n, value_cr=v, first_seen=f,
+                              role=company_role(rl for _, _, rl in hits)))
         comps.sort(key=lambda x: (-x["value_cr"], -x["mentions"], str(x["issuer_id"])))
         out.append(dict(name=name, phrases=sorted(members, key=lambda p: (-len(win_cos[p]), p))[:25],
                         companies=len(rec), companies_prior=len(pri), growth_pct=growth,
@@ -349,11 +403,12 @@ _BG_CACHE: dict = {}
 
 def load_background(conn) -> Optional[tuple[dict, int]]:
     if VERSION not in _BG_CACHE:
-        run = conn.execute("SELECT sentences FROM theme_background_runs WHERE version = %s", (VERSION,)).fetchone()
+        run = conn.execute("SELECT sentences FROM theme_background_runs WHERE version = %s",
+                           (BACKGROUND_VERSION,)).fetchone()
         if not run:
             return None
         bg = dict(conn.execute("SELECT phrase, sentences FROM theme_phrase_background WHERE version = %s",
-                               (VERSION,)).fetchall())
+                               (BACKGROUND_VERSION,)).fetchall())
         _BG_CACHE[VERSION] = (bg, int(run[0]))
     return _BG_CACHE[VERSION]
 
@@ -363,12 +418,13 @@ _SENTENCE = re.compile(r"(?<=[.!?;])\s+|\n\s*\n")
 
 def background(conn, start: date, end: date, docs: int = BACKGROUND_DOCS, chars: int = BACKGROUND_CHARS) -> dict:
     """Count, for every phrase the passages use, how many ordinary filing sentences contain it. Ordinary = a
-    deterministic sample of filings published in [start, end) that have no commercial passage. Built once per VERSION
-    (append-only); run after emergent-index."""
-    if conn.execute("SELECT 1 FROM theme_background_runs WHERE version = %s", (VERSION,)).fetchone():
-        return {"skipped": "exists", "version": VERSION}
+    deterministic sample of filings published in [start, end) that have no commercial passage. Built once per
+    BACKGROUND_VERSION (append-only); run after emergent-index."""
+    if conn.execute("SELECT 1 FROM theme_background_runs WHERE version = %s", (BACKGROUND_VERSION,)).fetchone():
+        return {"skipped": "exists", "version": BACKGROUND_VERSION}
     vocab = {r[0] for r in conn.execute(
-        "SELECT DISTINCT unnest(phrases) FROM theme_phrase_mentions WHERE version = %s", (VERSION,)).fetchall()}
+        "SELECT DISTINCT unnest(phrases) FROM theme_phrase_mentions WHERE version IN (%s, %s)",
+        (VERSION, BACKGROUND_VERSION)).fetchall()}
     if not vocab:
         return {"error": "no indexed passages for " + VERSION + "; run emergent-index first"}
     ids = [r[0] for r in conn.execute(
@@ -409,12 +465,12 @@ def background(conn, start: date, end: date, docs: int = BACKGROUND_DOCS, chars:
         return {"error": "no background text in the period"}
     with conn.transaction():
         conn.execute("""INSERT INTO theme_background_runs (version, built_from, built_to, documents, sentences)
-                        VALUES (%s,%s,%s,%s,%s)""", (VERSION, start, end, n_docs, n_sent))
+                        VALUES (%s,%s,%s,%s,%s)""", (BACKGROUND_VERSION, start, end, n_docs, n_sent))
         with conn.cursor().copy("COPY theme_phrase_background (version, phrase, sentences) FROM STDIN") as cp:
             for p, n in counts.items():
-                cp.write_row((VERSION, p, n))
+                cp.write_row((BACKGROUND_VERSION, p, n))
     _BG_CACHE.pop(VERSION, None)
-    return {"version": VERSION, "documents": n_docs, "sentences": n_sent, "vocab": len(vocab),
+    return {"version": BACKGROUND_VERSION, "documents": n_docs, "sentences": n_sent, "vocab": len(vocab),
             "phrases_seen": len(counts)}
 
 
@@ -425,7 +481,7 @@ def snapshot(conn, as_of: date, write: bool = True, spec_min: float = SPEC_MIN) 
                               (as_of, VERSION)).fetchone():
         return {"as_of": as_of.isoformat(), "skipped": "exists"}
     rows = conn.execute(
-        """SELECT issuer_id, (published_at AT TIME ZONE 'Asia/Kolkata')::date, phrases, value_cr
+        """SELECT issuer_id, (published_at AT TIME ZONE 'Asia/Kolkata')::date, phrases, value_cr, role
              FROM theme_phrase_mentions
             WHERE version = %(v)s
               AND published_at < %(a)s::timestamp AT TIME ZONE 'Asia/Kolkata'
@@ -433,7 +489,7 @@ def snapshot(conn, as_of: date, write: bool = True, spec_min: float = SPEC_MIN) 
         dict(a=as_of, w=as_of - timedelta(days=WINDOW_DAYS), v=VERSION)).fetchall()
     bg = load_background(conn)
     if bg is None:
-        return {"as_of": as_of.isoformat(), "error": "no background for " + VERSION + "; run emergent-background"}
+        return {"as_of": as_of.isoformat(), "error": "no background for " + BACKGROUND_VERSION + "; run emergent-background"}
     themes = build(rows, as_of, bg, spec_min)
     prev_date = conn.execute("SELECT max(as_of) FROM emergent_theme_snapshots WHERE as_of < %s AND version = %s",
                              (as_of, VERSION)).fetchone()[0]
@@ -464,8 +520,9 @@ def snapshot(conn, as_of: date, write: bool = True, spec_min: float = SPEC_MIN) 
                 for m in t["members"]:
                     conn.execute(
                         """INSERT INTO emergent_theme_companies (as_of, theme_key, issuer_id, mentions, value_cr,
-                               first_seen) VALUES (%s,%s,%s,%s,%s,%s)""",
-                        (as_of, t["theme_key"], m["issuer_id"], m["mentions"], m["value_cr"], m["first_seen"]))
+                               first_seen, role) VALUES (%s,%s,%s,%s,%s,%s,%s)""",
+                        (as_of, t["theme_key"], m["issuer_id"], m["mentions"], m["value_cr"], m["first_seen"],
+                         m["role"]))
     return {"as_of": as_of.isoformat(), "written": write, "passages": len(rows), "themes": len(themes),
             "by_stage": {s: sum(1 for t in themes if t["stage"] == s) for s in range(6)},
             "top": [(t["name"], t["companies"], t["growth_pct"], t["stage"], t["specificity"], t["phrases"][:5])
@@ -489,7 +546,7 @@ def exposure(conn, issuer_id, cutoff: datetime, mode: str = "PUBLIC_INFORMATION"
     p["l"] = latest
     rows = conn.execute(
         """SELECT s.name, s.stage, s.companies, s.companies_prior, s.growth_pct, s.first_detected, c.mentions,
-                  c.value_cr, c.first_seen, s.phrases[1:5]
+                  c.value_cr, c.first_seen, s.phrases[1:5], c.role
              FROM emergent_theme_companies c JOIN emergent_theme_snapshots s USING (as_of, theme_key)
             WHERE c.as_of = %(l)s AND c.issuer_id = %(i)s AND s.version = %(v)s
             ORDER BY c.value_cr DESC, c.mentions DESC, s.name LIMIT %(n)s""", dict(p, n=limit)).fetchall()
@@ -497,4 +554,4 @@ def exposure(conn, issuer_id, cutoff: datetime, mode: str = "PUBLIC_INFORMATION"
         dict(theme=r[0], stage=r[1], companies=r[2], companies_year_ago=r[3],
              growth_pct=float(r[4]) if r[4] is not None else None, theme_first_detected=r[5].isoformat(),
              company_mentions=r[6], company_value_cr=float(r[7]), company_first_seen=r[8].isoformat(),
-             phrases=list(r[9] or [])) for r in rows]}
+             phrases=list(r[9] or []), company_role=r[10]) for r in rows]}

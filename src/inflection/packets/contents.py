@@ -829,6 +829,9 @@ def themes_section(t: Optional[dict]) -> list[str]:
 STAGE_LABEL = {0: "forming", 1: "emerging", 2: "accelerating", 3: "consensus", 4: "saturating", 5: "declining"}
 
 
+ROLE_LABEL = {"MAKER": "maker", "SUPPLIER": "supplier", "EPC": "EPC contractor", "BUYER": "buyer/user"}
+
+
 def emergent_section(t: Optional[dict]) -> list[str]:
     """Emergent themes discovered from order / capacity / launch passages across all companies."""
     t = t or {}
@@ -842,10 +845,11 @@ def emergent_section(t: Optional[dict]) -> list[str]:
     return ([f"Emerging themes (snapshot {t['snapshot']}; phrases several companies used in order, capacity and "
              "launch filings in the last 180 days, compared with the same 180 days a year earlier):", ""]
             + _table(["theme (key phrases)", "stage", "companies now (a year ago)", "growth %", "theme first seen",
-                      "this company: passages, firm value INR crore, first seen"],
+                      "this company: role, passages, firm value INR crore, first seen"],
                      [[f"{x['theme']} ({', '.join(x['phrases'][:4])})", f"{x['stage']} {STAGE_LABEL.get(x['stage'], '')}",
                        f"{x['companies']} ({x['companies_year_ago']})", f(x["growth_pct"]), x["theme_first_detected"],
-                       f"{x['company_mentions']}, {x['company_value_cr']:.0f}, {x['company_first_seen']}"] for x in rows])
+                       f"{ROLE_LABEL.get(x.get('company_role'), 'role not stated')}, {x['company_mentions']}, "
+                       f"{x['company_value_cr']:.0f}, {x['company_first_seen']}"] for x in rows])
             + [""])
 
 
