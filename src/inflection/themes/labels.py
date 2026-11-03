@@ -17,7 +17,7 @@ from typing import Callable, Optional
 
 from . import emergent
 
-PROMPT_VERSION = "theme-phrase-v1"
+PROMPT_VERSION = "theme-phrase-v2"
 DEFAULT_MODEL = os.environ.get("OLLAMA_MODEL", "qwen2.5:3b")
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
 
@@ -30,7 +30,9 @@ water treatment plant, rolling stock.
 Answer "no" if it is an event or status word, a unit or quantity, a place or country on its own, a company or \
 brand name, a person, or a generic business, marketing or disclosure-template word. Examples of no: commissioned, \
 wins, marks, underway, progressing, terminated, ramp-up, mtpa, metric tons, new range, variants, skus, tailored, \
-documents mentioned, generic email address, pipeline, capex, saudi arabia, strategic, platform.
+documents mentioned, generic email address, pipeline, capex, saudi arabia, strategic, platform, new product, \
+new products, product range, greenfield, brownfield, capacity addition. A phrase that only says something is \
+new, a product or a project, without saying what it is, is "no".
 Phrase: "{phrase}"
 Answer with one word: yes or no."""
 
