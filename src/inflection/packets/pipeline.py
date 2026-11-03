@@ -448,13 +448,23 @@ def _ownership(conn, it: dict) -> dict:
           AND (lower(coalesce(p.original_category,''))=ANY(%(cats)s)
             OR lower(coalesce(p.original_subcategory,''))=ANY(%(cats)s))
         ORDER BY p.publication_id""",params).fetchall()
-    return dict(
+    out = dict(
         shareholding=shareholding.series(conn,it['issuer_id'],it['cutoff']),
         programmes=programmes.exposure(conn,it['issuer_id'],it['cutoff']),
         pli=[dict(approval_date=d.isoformat(),scheme=sc,tranche=t,committed_investment_cr=float(c) if c is not None else None,
                   product_segment=ps,source_url=u) for d,sc,t,c,ps,u in pli],
         timing_policy='Supplementary values require an observed revision by cutoff; missing history is unavailable, not negative.',
         signal_filings=_dedupe_signals(sig))
+    if themes_enabled():
+        # MakroGraph supply-gap themes (inflection.themes). Opt-in: adding the key changes every packet's hash.
+        from ..themes.discovery import exposure as theme_exposure
+        out['themes'] = theme_exposure(conn, it['issuer_id'], it['cutoff'], it['mode'])
+    return out
+
+
+def themes_enabled() -> bool:
+    import os
+    return os.environ.get('INFLECTION_PACKET_THEMES', '').strip().lower() in ('1', 'true', 'yes', 'on')
 
 
 def _dedupe_signals(rows) -> list[dict]:

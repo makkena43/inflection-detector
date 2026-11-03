@@ -796,12 +796,32 @@ def ownership_section(o: Optional[dict]) -> list[str]:
                      f(x["first_order_mention"]) + (" (early in the programme)" if x.get("early_cycle") else ""),
                      f"{x['documents']} ({x['order_documents']})", x["snippet"][:200]] for x in pr])
           if pr else ["Government programmes: the company's filings name none of the listed programmes by the cutoff.", ""])
+    if "themes" in o:
+        L += themes_section(o["themes"])
     sig = o.get("signal_filings") or []
     L += (["Capacity, production, rating, fund-raising and acquisition filings in the 12 months before the cutoff "
            "(read with the page command when they matter):"] + [
         f"- {x['published_at']} {x['category']}: {x.get('title') or ''} (text {x.get('text_artifact_id') or 'not extracted'})"
         for x in sig] + [""] if sig else ["Capacity, production, rating, fund-raising and acquisition filings: none in the 12 months before the cutoff.", ""])
     return L
+
+
+def themes_section(t: Optional[dict]) -> list[str]:
+    """MakroGraph supply-gap themes: the company's rows in the newest theme snapshot on or before the cutoff."""
+    t = t or {}
+    rows = t.get("themes") or []
+    if not t.get("snapshot"):
+        return ["Supply-gap themes: no theme snapshot on or before the cutoff.", ""]
+    if not rows:
+        return [f"Supply-gap themes (snapshot {t['snapshot']}): the company is not a flagged supplier to any tracked "
+                "supply gap.", ""]
+    return ([f"Supply-gap themes (MakroGraph method, snapshot {t['snapshot']}; filings in the year before it showed "
+             "capex / supply / demand language next to the product):", ""]
+            + _table(["constrained product (theme)", "role", "conviction 0-1", "signals", "order-book language",
+                      "import substitute", "flagged since (snapshots)"],
+                     [[f"{x['product']} ({x['theme']})", x["role"], f"{x['conviction']:.2f}", x["signals"],
+                       "yes" if x["order_book"] else "no", "yes" if x["import_substitution"] else "no",
+                       f"{x['first_flagged']} ({x['snapshots_flagged']})"] for x in rows]) + [""])
 
 
 def result_template(content: dict, packet_hash: str) -> dict:
