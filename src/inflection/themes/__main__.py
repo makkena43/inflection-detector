@@ -3,7 +3,10 @@
     import-makrograph [--mg-dsn DSN]        # one-off copy of MakroGraph's India theme history (read-only on makrograph)
     tag --from D [--to D] [--limit N]       # MakroGraph signal/entity tags for filings published in [from, to)
     discover --as-of D [--lookback 365]     # one beneficiary snapshot (append-only; existing as_of is left alone)
-    weekly --as-of D                        # tag the last 400 days not yet tagged, then discover for D
+    weekly --as-of D                        # tag the last 400 days not yet tagged, then discover for D,
+                                            # then index new commercial passages and build the emergent snapshot
+    emergent-index [--from D] [--to D]      # key phrases of commercial passages not yet indexed
+    emergent --as-of D                      # emergent-theme snapshot for D (append-only)
     show SYMBOL [--cutoff D]                # what a packet with that cutoff would show
 """
 from __future__ import annotations
@@ -16,12 +19,12 @@ from typing import Optional
 
 import psycopg
 
-from . import discovery, importer
+from . import discovery, emergent, importer
 
 
 def main(argv: Optional[list[str]] = None) -> int:
     ap = argparse.ArgumentParser(prog="python -m inflection.themes")
-    ap.add_argument("command", choices=["import-makrograph", "tag", "discover", "weekly", "show"])
+    ap.add_argument("command", choices=["import-makrograph", "tag", "discover", "weekly", "show", "emergent-index", "emergent"])
     ap.add_argument("symbol", nargs="?")
     ap.add_argument("--mg-dsn", default=os.environ.get("MAKROGRAPH_DSN", "postgresql://postgres@localhost:5432/makrograph"))
     ap.add_argument("--from", dest="start", type=date.fromisoformat)
@@ -46,7 +49,15 @@ def main(argv: Optional[list[str]] = None) -> int:
             if not a.as_of:
                 ap.error("weekly needs --as-of")
             res = {"tag": discovery.tag(conn, a.as_of - timedelta(days=a.lookback + 35), a.as_of),
-                   "discover": discovery.discover(conn, a.as_of, a.lookback)}
+                   "discover": discovery.discover(conn, a.as_of, a.lookback),
+                   "emergent_index": emergent.index(conn),
+                   "emergent": emergent.snapshot(conn, a.as_of)}
+        elif a.command == "emergent-index":
+            res = emergent.index(conn, a.start, a.end)
+        elif a.command == "emergent":
+            if not a.as_of:
+                ap.error("emergent needs --as-of")
+            res = emergent.snapshot(conn, a.as_of)
         else:
             if not a.symbol:
                 ap.error("show needs SYMBOL")
@@ -56,7 +67,8 @@ def main(argv: Optional[list[str]] = None) -> int:
                 res = {"error": "unknown symbol"}
             else:
                 day = a.cutoff or date.today()
-                res = discovery.exposure(conn, iss[0], datetime.combine(day, time(23, 59), discovery.IST))
+                cut = datetime.combine(day, time(23, 59), discovery.IST)
+                res = {"supply_gap": discovery.exposure(conn, iss[0], cut), "emergent": emergent.exposure(conn, iss[0], cut)}
         print(json.dumps(res, indent=2, default=str))
     return 0
 

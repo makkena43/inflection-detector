@@ -798,6 +798,8 @@ def ownership_section(o: Optional[dict]) -> list[str]:
           if pr else ["Government programmes: the company's filings name none of the listed programmes by the cutoff.", ""])
     if "themes" in o:
         L += themes_section(o["themes"])
+    if "emergent_themes" in o:
+        L += emergent_section(o["emergent_themes"])
     sig = o.get("signal_filings") or []
     L += (["Capacity, production, rating, fund-raising and acquisition filings in the 12 months before the cutoff "
            "(read with the page command when they matter):"] + [
@@ -822,6 +824,29 @@ def themes_section(t: Optional[dict]) -> list[str]:
                      [[f"{x['product']} ({x['theme']})", x["role"], f"{x['conviction']:.2f}", x["signals"],
                        "yes" if x["order_book"] else "no", "yes" if x["import_substitution"] else "no",
                        f"{x['first_flagged']} ({x['snapshots_flagged']})"] for x in rows]) + [""])
+
+
+STAGE_LABEL = {0: "forming", 1: "emerging", 2: "accelerating", 3: "consensus", 4: "saturating", 5: "declining"}
+
+
+def emergent_section(t: Optional[dict]) -> list[str]:
+    """Emergent themes discovered from order / capacity / launch passages across all companies."""
+    t = t or {}
+    rows = t.get("themes") or []
+    if not t.get("snapshot"):
+        return ["Emerging themes: no snapshot on or before the cutoff.", ""]
+    if not rows:
+        return [f"Emerging themes (snapshot {t['snapshot']}): the company's recent order, capacity and launch "
+                "passages fall in no theme shared by 3+ companies.", ""]
+    f = lambda v: "–" if v is None else v
+    return ([f"Emerging themes (snapshot {t['snapshot']}; phrases several companies used in order, capacity and "
+             "launch filings in the last 180 days, compared with the same 180 days a year earlier):", ""]
+            + _table(["theme (key phrases)", "stage", "companies now (a year ago)", "growth %", "theme first seen",
+                      "this company: passages, firm value INR crore, first seen"],
+                     [[f"{x['theme']} ({', '.join(x['phrases'][:4])})", f"{x['stage']} {STAGE_LABEL.get(x['stage'], '')}",
+                       f"{x['companies']} ({x['companies_year_ago']})", f(x["growth_pct"]), x["theme_first_detected"],
+                       f"{x['company_mentions']}, {x['company_value_cr']:.0f}, {x['company_first_seen']}"] for x in rows])
+            + [""])
 
 
 def result_template(content: dict, packet_hash: str) -> dict:

@@ -120,3 +120,90 @@ def test_tag_discover_and_packet_exposure(db):
 
     with pytest.raises(Exception):
         db.execute("UPDATE theme_beneficiaries SET conviction_score = 0")
+
+
+# ---------------- emergent themes ----------------
+from inflection.themes import emergent as E
+
+
+def test_phrases_are_content_word_runs():
+    p = E.phrases("Received an order worth Rs 120 crore for supply of 765 kV power transformers to PGCIL.")
+    assert "power transformers" in p and "pgcil" in p and "supply" in p
+    assert not any(ch.isdigit() for x in p for ch in x) and "of" not in p and "an order worth rs" not in p
+
+
+def _rows(as_of):
+    rows = []
+    d_recent, d_prior = as_of - timedelta(days=30), as_of - timedelta(days=400)
+    for c in ("A", "B", "C", "D", "E"):                       # five companies now win transformer orders
+        rows.append((c, d_recent, ["power transformers", "transformers", "letter of award"], 50))
+    rows.append(("A", d_prior, ["power transformers", "letter of award"], 10))   # one did a year ago
+    rows.append(("F", d_recent, ["power transformers", "letter of award"], None))
+    for i in range(300):                                      # generic language used by most companies
+        rows.append((f"Z{i}", d_prior, ["letter of award", f"product {i}"], None))
+    rows.append(("G", as_of, ["power transformers"], 999))    # filed on the as_of day: outside
+    return rows
+
+
+def test_build_finds_accelerating_theme_and_drops_generic_language():
+    as_of = date(2025, 12, 31)
+    themes = E.build(_rows(as_of), as_of)
+    assert [t["name"] for t in themes] == ["power transformers"]
+    t = themes[0]
+    assert set(t["phrases"]) == {"power transformers", "transformers"}    # merged: same companies
+    assert (t["companies"], t["companies_prior"], t["growth_pct"], t["stage"]) == (6, 1, 500.0, 1)
+    assert t["order_value_cr"] == 250 and t["members"][0]["first_seen"] in (as_of - timedelta(days=30), as_of - timedelta(days=400))
+    assert {m["issuer_id"] for m in t["members"]} == {"A", "B", "C", "D", "E", "F"}
+
+
+def test_stage_thresholds():
+    assert [E._stage(n, g) for n, g in ((3, None), (5, 50.0), (12, 10.0), (30, 5.0), (30, 0.0), (8, -40.0))] == \
+        [0, 1, 2, 3, 4, 5]
+
+
+def test_theme_key_carries_over_when_phrases_overlap():
+    themes = [dict(phrases=["power transformers", "transformers", "switchgear"])]
+    E._carry_keys(themes, [("power-transformers@2025-12-27", ["power transformers", "transformers"], date(2025, 6, 7))])
+    assert themes[0]["theme_key"] == "power-transformers@2025-12-27" and themes[0]["first_detected"] == date(2025, 6, 7)
+
+
+def test_emergent_section_render():
+    out = "\n".join(C.emergent_section({"snapshot": "2026-10-31", "themes": [dict(
+        theme="power transformers", stage=2, companies=14, companies_year_ago=6, growth_pct=133.3,
+        theme_first_detected="2025-06-07", company_mentions=3, company_value_cr=420.0, company_first_seen="2026-02-10",
+        phrases=["power transformers", "transformers"])]}))
+    assert "2 accelerating" in out and "14 (6)" in out and "3, 420, 2026-02-10" in out
+
+
+def test_emergent_index_snapshot_and_exposure(db):
+    src = db.execute("""INSERT INTO sources (name, kind, access_policy) VALUES ('nse_announcements', 'announcements',
+                        'test') RETURNING source_id""").fetchone()[0]
+    cos = [_company(db, f"Co {i} Limited", f"CO{i}", f"INE{i:03d}A01011") for i in range(6)]
+    when = datetime(2025, 11, 10, 18, 0, tzinfo=IST)
+    for i, iss in enumerate(cos):
+        pub = _filing(db, iss, src, 100 + i, when, "order")
+        ver, art = db.execute("""SELECT p.document_version_id, a.text_artifact_id FROM document_publications p
+                                  JOIN text_artifacts a USING (document_version_id) WHERE p.publication_id = %s""",
+                              (pub,)).fetchone()
+        quote = "Received order for supply of power transformers and switchgear to a state utility."
+        for rules in ("r1", "r2"):                       # two rules versions of one passage: indexed once
+            db.execute("""INSERT INTO commercial_mentions (rules_version, text_artifact_id, document_version_id,
+                              publication_id, issuer_id, published_at, source_url, page_no, span_start, span_end,
+                              quote, family, event_type, commercial_stage, modality, observation_status, amount,
+                              currency, scale, amount_basis, relationship)
+                          VALUES (%s,%s,%s,%s,%s,%s,'u',1,0,10,%s,'ORDER','ORDER','BINDING_DEMAND','REALIZED',
+                                  'OBSERVED',100,'INR','CRORE','FIRM','UNKNOWN')""",
+                       (rules, art, ver, pub, iss, when, quote))
+    assert E.index(db) == {"indexed": 6}
+    assert E.index(db) == {"indexed": 0}
+    res = E.snapshot(db, date(2025, 11, 15))
+    assert res["themes"] >= 1
+    assert E.snapshot(db, date(2025, 11, 15)) == {"as_of": "2025-11-15", "skipped": "exists"}
+    ex = E.exposure(db, cos[0], datetime(2025, 11, 20, 9, 0, tzinfo=IST))
+    assert ex["snapshot"] == "2025-11-15" and ex["themes"]
+    top = ex["themes"][0]
+    assert top["companies"] == 6 and top["company_value_cr"] == 100.0 and top["stage"] == 1
+    assert E.exposure(db, cos[0], datetime(2025, 11, 1, tzinfo=IST)) == {"snapshot": None, "themes": []}
+    nxt = E.snapshot(db, date(2025, 11, 22))                 # next week keeps the theme key
+    keys = db.execute("SELECT as_of, theme_key FROM emergent_theme_snapshots ORDER BY as_of, theme_key").fetchall()
+    assert {k for d, k in keys if d == date(2025, 11, 15)} == {k for d, k in keys if d == date(2025, 11, 22)}
