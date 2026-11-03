@@ -375,6 +375,8 @@ def test_amount_is_not_a_counterparty():
     from inflection.commercial.extract import clean_counterparty
     assert clean_counterparty('200 Million') == '' and clean_counterparty('Million from one') == ''
     assert clean_counterparty('Tata Power') == 'Tata Power'
+    assert clean_counterparty('June') == '' and clean_counterparty('July 2025') == ''
+    assert clean_counterparty('Mayur Industries') == 'Mayur Industries'
 
 
 def test_short_tax_inclusive_forms_are_read():

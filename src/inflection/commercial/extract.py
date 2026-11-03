@@ -360,6 +360,9 @@ def clean_counterparty(raw: str) -> str:
         return ""
     if re.match(r"[\d₹$]", name) or re.fullmatch(r"(?:[\d,.]+\s*)?(?:Million|Billion|Crores?|Lakhs?|Mn|Cr|Bn)\b.*", name, re.I):
         return ""                                 # "200 Million": an amount, not a customer
+    if re.fullmatch(r"(?:January|February|March|April|May|June|July|August|September|October|November|December|"
+                    r"Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)\.?(?:\s+\d{1,4})*", name, re.I):
+        return ""                                 # "orders of June": a date, not a customer
     return name
 
 
