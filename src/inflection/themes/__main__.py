@@ -6,7 +6,9 @@
     weekly --as-of D                        # tag the last 400 days not yet tagged, then discover for D,
                                             # then index new commercial passages and build the emergent snapshot
     emergent-index [--from D] [--to D]      # key phrases of commercial passages not yet indexed
-    emergent --as-of D [--dry-run]          # emergent-theme snapshot for D (append-only); --dry-run only reports
+    emergent-background --from D --to D [--limit N]   # once per method version, after emergent-index: phrase
+                                            # counts in ordinary filing sentences (filings with no commercial passage)
+    emergent --as-of D [--dry-run] [--spec-min X]   # emergent-theme snapshot for D (append-only); --dry-run only reports
     show SYMBOL [--cutoff D]                # what a packet with that cutoff would show
 """
 from __future__ import annotations
@@ -24,7 +26,7 @@ from . import discovery, emergent, importer
 
 def main(argv: Optional[list[str]] = None) -> int:
     ap = argparse.ArgumentParser(prog="python -m inflection.themes")
-    ap.add_argument("command", choices=["import-makrograph", "tag", "discover", "weekly", "show", "emergent-index", "emergent"])
+    ap.add_argument("command", choices=["import-makrograph", "tag", "discover", "weekly", "show", "emergent-index", "emergent-background", "emergent"])
     ap.add_argument("symbol", nargs="?")
     ap.add_argument("--mg-dsn", default=os.environ.get("MAKROGRAPH_DSN", "postgresql://postgres@localhost:5432/makrograph"))
     ap.add_argument("--from", dest="start", type=date.fromisoformat)
@@ -34,6 +36,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--lookback", type=int, default=discovery.DEFAULT_LOOKBACK)
     ap.add_argument("--cutoff", type=date.fromisoformat)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--spec-min", type=float, default=emergent.SPEC_MIN)
     a = ap.parse_args(argv)
     with psycopg.connect(os.environ["INFLECTION_DSN"], autocommit=True) as conn:
         if a.command == "import-makrograph":
@@ -55,10 +58,14 @@ def main(argv: Optional[list[str]] = None) -> int:
                    "emergent": emergent.snapshot(conn, a.as_of)}
         elif a.command == "emergent-index":
             res = emergent.index(conn, a.start, a.end)
+        elif a.command == "emergent-background":
+            if not (a.start and a.end):
+                ap.error("emergent-background needs --from and --to")
+            res = emergent.background(conn, a.start, a.end, a.limit or emergent.BACKGROUND_DOCS)
         elif a.command == "emergent":
             if not a.as_of:
                 ap.error("emergent needs --as-of")
-            res = emergent.snapshot(conn, a.as_of, write=not a.dry_run)
+            res = emergent.snapshot(conn, a.as_of, write=not a.dry_run, spec_min=a.spec_min)
         else:
             if not a.symbol:
                 ap.error("show needs SYMBOL")
