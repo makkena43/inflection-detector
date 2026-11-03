@@ -81,6 +81,11 @@ _SCALE_RE = r"(crores?|cr\.?|crs|lakhs?|lacs?|lac|mn|million|bn|billion|thousand
 _AMOUNT = re.compile(rf"(?:({_INR})|({_USD}))?\s*{_NUMBER}\s*{_SCALE_RE}\b", re.I)
 
 
+_QUANTITY_AFTER = re.compile(r"\s*(?:units?|kwh|mwh|mus?|mt|tonnes?|tons?|metric|nos\.?|numbers?|pieces?|pcs|litres?|"
+                             r"liters?|kl|sq\.?\s*ft|square|shares?|customers?|users?|subscribers?|doses?|vehicles?|"
+                             r"bags?|sets?|meters?|metres?|km|kgs?)\b", re.I)
+
+
 def parse_amount(text: str) -> Optional[Money]:
     """First amount in ``text`` with an explicit scale word.
 
@@ -96,6 +101,8 @@ def parse_amount(text: str) -> Optional[Money]:
             currency = "INR"
         else:
             continue
+        if not (inr or usd) and _QUANTITY_AFTER.match(text[m.end():]):
+            continue                    # "77 lakh units of power", "10 lakh MT": a quantity, not money
         return Money(Decimal(num.replace(",", "")), currency, scale, m.group(0).strip())
     return None
 
