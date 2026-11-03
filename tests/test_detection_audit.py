@@ -498,3 +498,10 @@ def test_one_disclosure_split_into_two_events_is_marked(db):
     p['events'].append(dict(p['events'][0], event_id='twin'))
     fixed = recheck_packet(db, p)
     assert fixed['events'][1]['details']['duplicate_of'] == 'external'
+
+
+def test_an_order_beside_an_order_book_balance_is_not_annotated_as_the_balance():
+    from inflection.audit import _book_figure
+    q = ('Well, the export order book currently which is Rs. 350 crores is on a higher side on account of the recent '
+         'landmark export order that we bagged which was a single order of Rs. 200 crores.')
+    assert _book_figure(q, '200 INR CRORE') is None and _book_figure(q, '350 INR CRORE') == 'ORDER_BOOK'

@@ -206,10 +206,12 @@ def recheck_packet(conn, packet):
             e['details']['quote'] = aggregate['quote']
             if not (original.get('details') or {}).get('aggregate_order_total'):
                 changes.append(dict(event_id=e.get('event_id'), field='aggregate_order_total', before=False, after=True))
-                if original.get('amount'):
-                    corrections.append(dict(event_id=e.get('event_id'), amount=original['amount'],
-                                            kind='ORDER_BOOK' if V.ORDER_BOOK.search(aggregate['quote'])
-                                            and not V.PERIOD_INFLOW.search(aggregate['quote']) else 'PERIOD_TOTAL'))
+                kind = 'PERIOD_TOTAL' if V.PERIOD_INFLOW.search(aggregate['quote']) or V.MULTI_AWARD.search(aggregate['quote']) \
+                    else _book_figure(aggregate['quote'], original.get('amount'))
+                if original.get('amount') and kind:
+                    # "export order book is at Rs 350 crore ... a single order of Rs 200 crore": the 200 crore order is
+                    # an order; only a figure that is itself the book balance is corrected
+                    corrections.append(dict(event_id=e.get('event_id'), amount=original['amount'], kind=kind))
         # Any passage of this event stating a tax-inclusive value keeps the event tax-inclusive: a
         # restatement that drops the words does not make the figure net revenue.
         stated = [x for x in passages + p.get('prior_passages', []) if x.get('event_id') == e.get('event_id')
@@ -366,6 +368,18 @@ def convert_foreign_amounts(conn, p, cutoff):
         crore = (value * FX_SCALE[parts[2]] * Decimal(row[1]) / Decimal(10) ** 7).quantize(Decimal('0.01'))
         details['fx'] = dict(status='CONVERTED', currency=parts[1], rate=str(row[1]), rate_date=row[0].isoformat(),
                              source=row[2], inr_crore=str(crore))
+
+
+def _book_figure(quote, amount):
+    """'ORDER_BOOK' when the event's own amount is the order-book balance in the quote, else None."""
+    from .commercial.extract import amounts as find, figure_kind
+    head = _leading_number(amount)
+    if not head:
+        return None
+    for m in find(quote):
+        if m.value == head[0] and figure_kind(quote, m) == 'ORDER_BOOK':
+            return 'ORDER_BOOK'
+    return None
 
 
 FIGURE_NOTES = dict(
