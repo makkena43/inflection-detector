@@ -4,7 +4,8 @@ The background contrast in `emergent` removes ordinary filing language, but some
 order and capacity sentences without naming a theme: event and status words ("commissioned", "wins", "underway"),
 units ("mtpa", "metric tons") and template or marketing words ("documents mentioned", "new range", "skus").  A small
 local model answers one yes/no question per candidate phrase.  Answers go to theme_phrase_labels, and snapshots read
-only that table: no model call during a weekly run, and a rerun reads the same labels.  Unlabelled phrases are kept.
+only that table: no model call during a weekly run, and a rerun reads the same labels.  Once labels exist, only phrases labelled yes can form themes; a new phrase waits until it is labelled (the weekly
+run labels new phrases first when the local model is available).
 """
 from __future__ import annotations
 
@@ -17,22 +18,28 @@ from typing import Callable, Optional
 
 from . import emergent
 
-PROMPT_VERSION = "theme-phrase-v2"
+PROMPT_VERSION = "theme-phrase-v3"
+LABEL_SPEC_FACTOR = 0.25   # label phrases down to a quarter of the snapshot threshold: a phrase can be far more
+                           # concentrated in one 2-year window than over the whole index
 DEFAULT_MODEL = os.environ.get("OLLAMA_MODEL", "qwen2.5:3b")
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
 
 PROMPT = """You label short phrases taken from Indian listed companies' announcements of orders received, \
 capacity added and products launched.
-Answer "yes" if the phrase names a product, material, component, technology, industry or sector, \
-infrastructure asset or project type. Examples of yes: power transformers, bess, battery energy storage, \
-civil works, green hydrogen, mumbai metro, sulphuric acid, substation, solar modules, injection moulding, \
-water treatment plant, rolling stock.
-Answer "no" if it is an event or status word, a unit or quantity, a place or country on its own, a company or \
-brand name, a person, or a generic business, marketing or disclosure-template word. Examples of no: commissioned, \
-wins, marks, underway, progressing, terminated, ramp-up, mtpa, metric tons, new range, variants, skus, tailored, \
-documents mentioned, generic email address, pipeline, capex, saudi arabia, strategic, platform, new product, \
-new products, product range, greenfield, brownfield, capacity addition. A phrase that only says something is \
-new, a product or a project, without saying what it is, is "no".
+Question: could this phrase name a specific kind of thing a company makes, sells, supplies or builds? That \
+includes any product, material, chemical, drug, component, equipment, technology, industry or sector, type of \
+plant or power plant, infrastructure asset, or type of construction or service work.
+Examples of yes: power transformers, bess, battery energy storage, civil works, green hydrogen, mumbai metro, \
+sulphuric acid, substation, solar modules, solar power plant, nuclear power, waste water treatment, artillery \
+shells, light metal casting, access control, toothpaste, deodorants, rolling stock, injection moulding, \
+large-scale renewable energy, power plants.
+Answer "no" only when the phrase clearly names no specific kind of thing: an event or status word, a unit or \
+quantity, a place or country on its own, a company or person's name, a date, or a generic business, marketing \
+or letter word. Examples of no: commissioned, wins, underway, terminated, ramp-up, mtpa, metric tons, new range, \
+variants, skus, tailored, documents mentioned, enclosed press release, investor correspondence, pipeline, \
+capex, saudi arabia, strategic, platform, new product, product launch, product range, power order, greenfield, \
+brownfield, capacity addition, factory shed, plant assets, epc project.
+If unsure, answer yes.
 Phrase: "{phrase}"
 Answer with one word: yes or no."""
 
@@ -55,9 +62,10 @@ def parse(answer: str) -> Optional[bool]:
     return None
 
 
-def candidates(conn, spec_min: float = emergent.SPEC_MIN) -> list[str]:
-    """Phrases that could become themes in some week: used by MIN_COMPANIES+ companies over the whole index, specific
-    enough against the background, and not yet labelled under this prompt version. Most used first."""
+def candidates(conn, spec_min: float = emergent.SPEC_MIN * LABEL_SPEC_FACTOR) -> list[str]:
+    """Phrases that could become themes in some week: used by MIN_COMPANIES+ companies over the whole index, at least
+    LABEL_SPEC_FACTOR of the snapshot specificity threshold, and not yet labelled under this prompt version. Most
+    used first."""
     bg = emergent.load_background(conn)
     if bg is None:
         raise RuntimeError("no background counts; run emergent-background first")
@@ -79,7 +87,8 @@ def candidates(conn, spec_min: float = emergent.SPEC_MIN) -> list[str]:
     return out
 
 
-def label(conn, limit: Optional[int] = None, model: str = DEFAULT_MODEL, spec_min: float = emergent.SPEC_MIN,
+def label(conn, limit: Optional[int] = None, model: str = DEFAULT_MODEL,
+          spec_min: float = emergent.SPEC_MIN * LABEL_SPEC_FACTOR,
           ask: Callable[[str], str] = None, stop_file: Optional[str] = None) -> dict:
     """Ask the model about each unlabelled candidate phrase and store the answer (one row per phrase). Unclear answers
     are not stored, so they are asked again next time. Stops early when `stop_file` exists."""

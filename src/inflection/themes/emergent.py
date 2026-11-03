@@ -29,8 +29,9 @@ as_of date, so a packet for any past week reads what was knowable then.
    (capacity, production, launch), SUPPLIER (order received, qualification), EPC (order received for erection /
    installation / turnkey work), BUYER (order placed with someone else, captive use).  A shortage helps makers and
    suppliers, is mixed for EPC contractors and hurts buyers, so packets show the role next to each theme.
-8. Meaning labels (optional): phrases a local model labelled as not naming a product, material, technology, sector
-   or project type (theme_phrase_labels, see inflection.themes.labels) are dropped; unlabelled phrases are kept.
+8. Meaning labels (optional): once a local model has labelled phrases (theme_phrase_labels, see
+   inflection.themes.labels), only phrases it said could name a product, material, technology, sector or project
+   type can form themes, so every theme is named after such a phrase.
 
 Everything is counts and set overlaps over the database; nothing is hand-listed except English stop words and the
 cue words that mark where an order's object starts.
@@ -265,7 +266,7 @@ def _stage(cos: int, growth: Optional[float]) -> int:
 
 
 def build(rows: Iterable[tuple], as_of: date, background: Optional[tuple[dict, int]] = None,
-          spec_min: float = SPEC_MIN, rejected: frozenset = frozenset()) -> list[dict]:
+          spec_min: float = SPEC_MIN, allowed: Optional[frozenset] = None) -> list[dict]:
     """Pure part of a snapshot. rows = (issuer_id, filed_date, phrases, value_cr[, role]) for passages dated before
     as_of.
     background = ({phrase: background sentences containing it}, total background sentences); without it there is
@@ -322,7 +323,7 @@ def build(rows: Iterable[tuple], as_of: date, background: Optional[tuple[dict, i
 
     cand = sorted(p for p, cos in rec_cos.items() if len(cos) >= MIN_COMPANIES and len(win_cos[p]) <= generic
                   and len(win_cos[p]) >= MIN_COMPANIES and (background is None or spec(p) >= spec_min)
-                  and p not in rejected)
+                  and (allowed is None or p in allowed))
     specs = {p: spec(p) for p in cand}
     # group phrases that occur in the same passages (same sentences), or where one contains the other and most of
     # the shorter one's passages are shared; sharing companies alone is not enough (a company names many things)
@@ -405,17 +406,17 @@ _BG_CACHE: dict = {}
 _LABEL_CACHE: dict = {}
 
 
-def load_rejected(conn) -> frozenset:
-    """Phrases labelled as not naming a theme (latest prompt version in theme_phrase_labels); empty if none."""
-    if "rejected" not in _LABEL_CACHE:
-        if conn.execute("SELECT to_regclass('theme_phrase_labels')").fetchone()[0] is None:
-            _LABEL_CACHE["rejected"] = frozenset()
-        else:
+def load_allowed(conn) -> Optional[frozenset]:
+    """Phrases labelled as naming a theme under the current prompt version, or None when there are no labels at all
+    for it (then no meaning filter is applied)."""
+    if "allowed" not in _LABEL_CACHE:
+        rows = []
+        if conn.execute("SELECT to_regclass('theme_phrase_labels')").fetchone()[0] is not None:
             from .labels import PROMPT_VERSION
-            _LABEL_CACHE["rejected"] = frozenset(r[0] for r in conn.execute(
-                "SELECT phrase FROM theme_phrase_labels WHERE prompt_version = %s AND NOT is_theme",
-                (PROMPT_VERSION,)).fetchall())
-    return _LABEL_CACHE["rejected"]
+            rows = conn.execute("SELECT phrase, is_theme FROM theme_phrase_labels WHERE prompt_version = %s",
+                                (PROMPT_VERSION,)).fetchall()
+        _LABEL_CACHE["allowed"] = frozenset(p for p, ok in rows if ok) if rows else None
+    return _LABEL_CACHE["allowed"]
 
 
 def load_background(conn) -> Optional[tuple[dict, int]]:
@@ -507,8 +508,8 @@ def snapshot(conn, as_of: date, write: bool = True, spec_min: float = SPEC_MIN, 
     bg = load_background(conn)
     if bg is None:
         return {"as_of": as_of.isoformat(), "error": "no background for " + BACKGROUND_VERSION + "; run emergent-background"}
-    rejected = load_rejected(conn) if use_labels else frozenset()
-    themes = build(rows, as_of, bg, spec_min, rejected)
+    allowed = load_allowed(conn) if use_labels else None
+    themes = build(rows, as_of, bg, spec_min, allowed)
     prev_date = conn.execute("SELECT max(as_of) FROM emergent_theme_snapshots WHERE as_of < %s AND version = %s",
                              (as_of, VERSION)).fetchone()[0]
     previous = conn.execute("""SELECT theme_key, phrases, first_detected FROM emergent_theme_snapshots
@@ -542,7 +543,7 @@ def snapshot(conn, as_of: date, write: bool = True, spec_min: float = SPEC_MIN, 
                         (as_of, t["theme_key"], m["issuer_id"], m["mentions"], m["value_cr"], m["first_seen"],
                          m["role"]))
     return {"as_of": as_of.isoformat(), "written": write, "passages": len(rows), "themes": len(themes),
-            "labels_rejected": len(rejected),
+            "labels_allowed": None if allowed is None else len(allowed),
             "by_stage": {s: sum(1 for t in themes if t["stage"] == s) for s in range(6)},
             "top": [(t["name"], t["companies"], t["growth_pct"], t["stage"], t["specificity"], t["phrases"][:5])
                     for t in themes[:40]],
