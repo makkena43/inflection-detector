@@ -117,6 +117,25 @@ def test_tag_discover_and_packet_exposure(db):
     assert D.exposure(db, abc, datetime(2024, 6, 1, tzinfo=IST)) == {"snapshot": None, "themes": []}
     # system replay: rows recorded after the cutoff are invisible
     assert D.exposure(db, abc, cut, "ACTUAL_SYSTEM_REPLAY")["snapshot"] is None
+    assert ex["themes"][0]["company_role"] is None                       # no makrograph_ref tables: unknown
+
+    # evidence of what the company makes, from MakroGraph's capability / role ledgers (point in time)
+    db.execute("""CREATE SCHEMA makrograph_ref;
+                  CREATE TABLE makrograph_ref.mg_company_capabilities (as_of_date date, ticker text, product text,
+                                                                       manufacturer bool);
+                  CREATE TABLE makrograph_ref.mg_company_product_roles (country text, as_of_date date, ticker text,
+                      normalized_product text, role_type text, adjudication_state text, last_evidence_date date)""")
+    assert D.exposure(db, abc, cut)["themes"][0]["company_role"] == "MENTION_ONLY"
+    db.execute("""INSERT INTO makrograph_ref.mg_company_product_roles VALUES
+                  ('IN', '2025-06-30', 'ABCT', 'crgo electrical steel', 'DIRECT_PRODUCT_SUPPLIER',
+                   'EARNINGS_CAPTURE_EVIDENCED', '2025-06-01'),
+                  ('IN', '2025-06-30', 'ABCT', 'crgo lamination', 'MANUFACTURER', 'QUARANTINED_AMBIGUOUS_ROLE',
+                   '2025-06-01')""")
+    assert D.exposure(db, abc, cut)["themes"][0]["company_role"] == "SUPPLIER"
+    db.execute("INSERT INTO makrograph_ref.mg_company_capabilities VALUES ('2026-06-30', 'ABCT', 'CRGO Steel', true)")
+    assert D.exposure(db, abc, cut)["themes"][0]["company_role"] == "SUPPLIER"     # dated after the cutoff
+    db.execute("INSERT INTO makrograph_ref.mg_company_capabilities VALUES ('2025-12-31', 'ABCT', 'CRGO Steel', true)")
+    assert D.exposure(db, abc, cut)["themes"][0]["company_role"] == "MAKER"
 
     with pytest.raises(Exception):
         db.execute("UPDATE theme_beneficiaries SET conviction_score = 0")
