@@ -19,7 +19,15 @@ as_of date, so a packet for any past week reads what was knowable then.
    (4-9), 2 accelerating (10-24), 3 consensus (25+), 4 saturating (25+ and growth <= 0), 5 declining (shrinking
    year on year by a third or more).
 
-Everything is counts and set overlaps over the database; nothing is hand-listed except English stop words.
+6. Specificity (emergent-3): a phrase is a candidate only when it is at least SPEC_MIN times more common in the
+   object windows of order / capacity / launch passages than in ordinary filing sentences (a fixed sample of
+   filings with no commercial passage, `background`).  Words like "months", "strong", "time", "strategic" and
+   "projects" are common everywhere and drop out; "bess", "civil works", "mumbai metro" are not.  Phrases made only
+   of the cue words that open an object window ("work order", "production capacity", "epc") are not themes either.
+   A theme is named after its most specific widely used phrase, not its most common one.
+
+Everything is counts and set overlaps over the database; nothing is hand-listed except English stop words and the
+cue words that mark where an order's object starts.
 """
 from __future__ import annotations
 
@@ -31,7 +39,7 @@ from typing import Iterable, Optional
 from zoneinfo import ZoneInfo
 
 IST = ZoneInfo("Asia/Kolkata")
-VERSION = "emergent-2"
+VERSION = "emergent-3"
 FAMILIES = ("ORDER", "COMMERCIAL_START", "QUALIFICATION", "CAPACITY", "PRODUCT_LAUNCH")
 RECENT_DAYS = 180
 WINDOW_DAYS = 730            # phrases and company sets for grouping come from the two years before as_of
@@ -44,6 +52,9 @@ MAX_PHRASE_WORDS = 3
 JOIN_PASSAGES = 0.3          # phrases merge when they share >= 30% of their passages (same sentences, not same firms)
 MAX_THEMES = 300             # themes kept per snapshot, ranked by breadth x growth
 VALUE_CAP_PCTL = 0.99        # one passage's value is capped at the 99th percentile of the window's passage values
+SPEC_MIN = 8.0               # a phrase must be 8x more common in object windows than in ordinary filing sentences
+BACKGROUND_DOCS = 20000      # filings sampled for the background
+BACKGROUND_CHARS = 12000     # characters read from each (first pages)
 SCALE_TO_CRORE = {"UNITS": Decimal("1e-7"), "THOUSAND": Decimal("1e-4"), "LAKH": Decimal("0.01"),
                   "MILLION": Decimal("0.1"), "CRORE": Decimal(1), "BILLION": Decimal(100)}
 
@@ -76,6 +87,15 @@ _OBJECT_END = re.compile(
     r"which|that|received|awarded|placed|issued|dated|vide|inr|rs|usd|crores?|lakhs?|million|billion)\b|[.;:()]",
     re.I)
 OBJECT_WORDS = 10
+# The cue words above, as words: a phrase made only of these ("work order", "production capacity", "epc") says what
+# kind of event it is, not what it is about.
+CUE_WORDS = frozenset("""
+supply supplying manufacture manufacturing production producing design designing installation commissioning
+construction erection execution procurement development setting establishment expansion upgradation modernisation
+modernization operation maintenance o&m epc delivery export launch launched launching introduced introducing
+qualified qualification approval capacity plant facility facilities line order orders contract contracts loa letter
+award intent work purchase
+""".split())
 
 
 def object_text(text: str) -> str:
@@ -116,7 +136,10 @@ def _emit(run: list[str], out: list, seen: set) -> None:
     n = len(run)
     for size in range(1, min(MAX_PHRASE_WORDS, n) + 1):
         for i in range(n - size + 1):
-            p = " ".join(run[i:i + size])
+            words = run[i:i + size]
+            if all(w in CUE_WORDS for w in words):
+                continue
+            p = " ".join(words)
             if p not in seen:
                 seen.add(p)
                 out.append(p)
@@ -188,8 +211,11 @@ def _stage(cos: int, growth: Optional[float]) -> int:
     return 0
 
 
-def build(rows: Iterable[tuple], as_of: date) -> list[dict]:
+def build(rows: Iterable[tuple], as_of: date, background: Optional[tuple[dict, int]] = None,
+          spec_min: float = SPEC_MIN) -> list[dict]:
     """Pure part of a snapshot. rows = (issuer_id, filed_date, phrases, value_cr) for passages dated before as_of.
+    background = ({phrase: background sentences containing it}, total background sentences); without it there is
+    no specificity filter (tests of the other steps).
     Returns themes with their companies; no database access, so tests and backtests can call it directly."""
     as_of_dt = as_of
     recent_from = as_of_dt - timedelta(days=RECENT_DAYS)
@@ -231,8 +257,17 @@ def build(rows: Iterable[tuple], as_of: date) -> list[dict]:
         return []
     all_cos = set().union(*win_cos.values()) if win_cos else set()
     generic = max(GENERIC_SHARE * len(all_cos), GENERIC_FLOOR)
+    n_pass = len(passages)
+
+    def spec(p: str) -> Optional[float]:
+        if background is None:
+            return None
+        bg, n_bg = background
+        return (len(win_pass[p]) / n_pass) / ((bg.get(p, 0) + 1) / (n_bg + 1))
+
     cand = sorted(p for p, cos in rec_cos.items() if len(cos) >= MIN_COMPANIES and len(win_cos[p]) <= generic
-                  and len(win_cos[p]) >= MIN_COMPANIES)
+                  and len(win_cos[p]) >= MIN_COMPANIES and (background is None or spec(p) >= spec_min))
+    specs = {p: spec(p) for p in cand}
     # group phrases that occur in the same passages (same sentences), or where one contains the other and most of
     # the shorter one's passages are shared; sharing companies alone is not enough (a company names many things)
     uf = _UF()
@@ -264,7 +299,12 @@ def build(rows: Iterable[tuple], as_of: date) -> list[dict]:
         if len(rec) < MIN_COMPANIES:
             continue
         growth = None if not pri else round(100.0 * (len(rec) - len(pri)) / len(pri), 1)
-        name = max(members, key=lambda p: (len(win_cos[p]), len(p.split()) >= 2, -len(p), p))
+        if background is None:
+            name = max(members, key=lambda p: (len(win_cos[p]), len(p.split()) >= 2, -len(p), p))
+        else:   # most specific among the phrases used by at least half as many companies as the widest one
+            wide = max(len(win_cos[p]) for p in members)
+            name = max((p for p in members if 2 * len(win_cos[p]) >= wide),
+                       key=lambda p: (specs[p], len(win_cos[p]), -len(p), p))
         comps = []
         mset = set(members)
         for c in rec:
@@ -277,7 +317,8 @@ def build(rows: Iterable[tuple], as_of: date) -> list[dict]:
         out.append(dict(name=name, phrases=sorted(members, key=lambda p: (-len(win_cos[p]), p))[:25],
                         companies=len(rec), companies_prior=len(pri), growth_pct=growth,
                         order_value_cr=sum((x["value_cr"] for x in comps), Decimal(0)),
-                        stage=_stage(len(rec), growth), members=comps))
+                        stage=_stage(len(rec), growth), members=comps,
+                        specificity=None if specs[name] is None else round(specs[name], 1)))
     # rank by breadth and year-on-year growth; keep the top MAX_THEMES
     def score(t):
         g = 100.0 if t["growth_pct"] is None else max(-50.0, min(t["growth_pct"], 300.0))
@@ -303,7 +344,81 @@ def _carry_keys(themes: list[dict], previous: list[tuple]) -> None:
             used.add(best[0])
 
 
-def snapshot(conn, as_of: date, write: bool = True) -> dict:
+_BG_CACHE: dict = {}
+
+
+def load_background(conn) -> Optional[tuple[dict, int]]:
+    if VERSION not in _BG_CACHE:
+        run = conn.execute("SELECT sentences FROM theme_background_runs WHERE version = %s", (VERSION,)).fetchone()
+        if not run:
+            return None
+        bg = dict(conn.execute("SELECT phrase, sentences FROM theme_phrase_background WHERE version = %s",
+                               (VERSION,)).fetchall())
+        _BG_CACHE[VERSION] = (bg, int(run[0]))
+    return _BG_CACHE[VERSION]
+
+
+_SENTENCE = re.compile(r"(?<=[.!?;])\s+|\n\s*\n")
+
+
+def background(conn, start: date, end: date, docs: int = BACKGROUND_DOCS, chars: int = BACKGROUND_CHARS) -> dict:
+    """Count, for every phrase the passages use, how many ordinary filing sentences contain it. Ordinary = a
+    deterministic sample of filings published in [start, end) that have no commercial passage. Built once per VERSION
+    (append-only); run after emergent-index."""
+    if conn.execute("SELECT 1 FROM theme_background_runs WHERE version = %s", (VERSION,)).fetchone():
+        return {"skipped": "exists", "version": VERSION}
+    vocab = {r[0] for r in conn.execute(
+        "SELECT DISTINCT unnest(phrases) FROM theme_phrase_mentions WHERE version = %s", (VERSION,)).fetchall()}
+    if not vocab:
+        return {"error": "no indexed passages for " + VERSION + "; run emergent-index first"}
+    ids = [r[0] for r in conn.execute(
+        """SELECT p.publication_id FROM document_publications p
+            WHERE p.issuer_id IS NOT NULL
+              AND coalesce(p.published_at, p.published_date::timestamp AT TIME ZONE 'Asia/Kolkata')
+                  >= %(s)s::timestamp AT TIME ZONE 'Asia/Kolkata'
+              AND coalesce(p.published_at, p.published_date::timestamp AT TIME ZONE 'Asia/Kolkata')
+                  <  %(e)s::timestamp AT TIME ZONE 'Asia/Kolkata'
+              AND EXISTS (SELECT 1 FROM text_artifacts a WHERE a.document_version_id = p.document_version_id
+                             AND a.status IN ('COMPLETE','PARTIAL'))
+              AND NOT EXISTS (SELECT 1 FROM commercial_mentions m WHERE m.publication_id = p.publication_id
+                                 AND m.family = ANY(%(f)s))
+            ORDER BY md5(p.publication_id::text) LIMIT %(n)s""",
+        dict(s=start, e=end, f=list(FAMILIES), n=docs)).fetchall()]
+    counts: dict[str, int] = defaultdict(int)
+    n_docs = n_sent = 0
+    for i in range(0, len(ids), 500):
+        for (text,) in conn.execute(
+                """SELECT left((SELECT string_agg(tp.body, E'\\n' ORDER BY tp.page_no) FROM text_pages tp
+                                 WHERE tp.text_artifact_id = ta.text_artifact_id AND tp.page_no <= 6), %(c)s)
+                     FROM document_publications p
+                     JOIN LATERAL (SELECT a.text_artifact_id FROM text_artifacts a
+                                    WHERE a.document_version_id = p.document_version_id
+                                      AND a.status IN ('COMPLETE','PARTIAL')
+                                    ORDER BY a.created_at DESC, a.text_artifact_id DESC LIMIT 1) ta ON true
+                    WHERE p.publication_id = ANY(%(ids)s)""", dict(c=chars, ids=ids[i:i + 500])).fetchall():
+            if not text:
+                continue
+            n_docs += 1
+            for sent in _SENTENCE.split(text):
+                if not sent.strip():
+                    continue
+                n_sent += 1
+                for p in set(phrases(sent, objects_only=False)) & vocab:
+                    counts[p] += 1
+    if not n_sent:
+        return {"error": "no background text in the period"}
+    with conn.transaction():
+        conn.execute("""INSERT INTO theme_background_runs (version, built_from, built_to, documents, sentences)
+                        VALUES (%s,%s,%s,%s,%s)""", (VERSION, start, end, n_docs, n_sent))
+        with conn.cursor().copy("COPY theme_phrase_background (version, phrase, sentences) FROM STDIN") as cp:
+            for p, n in counts.items():
+                cp.write_row((VERSION, p, n))
+    _BG_CACHE.pop(VERSION, None)
+    return {"version": VERSION, "documents": n_docs, "sentences": n_sent, "vocab": len(vocab),
+            "phrases_seen": len(counts)}
+
+
+def snapshot(conn, as_of: date, write: bool = True, spec_min: float = SPEC_MIN) -> dict:
     """Compute and store the emergent-theme snapshot for as_of, in one transaction (append-only; an existing as_of
     for this VERSION is left as it is). write=False computes and reports without storing."""
     if write and conn.execute("SELECT 1 FROM emergent_theme_snapshots WHERE as_of = %s AND version = %s LIMIT 1",
@@ -316,7 +431,10 @@ def snapshot(conn, as_of: date, write: bool = True) -> dict:
               AND published_at < %(a)s::timestamp AT TIME ZONE 'Asia/Kolkata'
               AND published_at >= %(w)s::timestamp AT TIME ZONE 'Asia/Kolkata'""",
         dict(a=as_of, w=as_of - timedelta(days=WINDOW_DAYS), v=VERSION)).fetchall()
-    themes = build(rows, as_of)
+    bg = load_background(conn)
+    if bg is None:
+        return {"as_of": as_of.isoformat(), "error": "no background for " + VERSION + "; run emergent-background"}
+    themes = build(rows, as_of, bg, spec_min)
     prev_date = conn.execute("SELECT max(as_of) FROM emergent_theme_snapshots WHERE as_of < %s AND version = %s",
                              (as_of, VERSION)).fetchone()[0]
     previous = conn.execute("""SELECT theme_key, phrases, first_detected FROM emergent_theme_snapshots
@@ -350,7 +468,11 @@ def snapshot(conn, as_of: date, write: bool = True) -> dict:
                         (as_of, t["theme_key"], m["issuer_id"], m["mentions"], m["value_cr"], m["first_seen"]))
     return {"as_of": as_of.isoformat(), "written": write, "passages": len(rows), "themes": len(themes),
             "by_stage": {s: sum(1 for t in themes if t["stage"] == s) for s in range(6)},
-            "top": [(t["name"], t["companies"], t["growth_pct"], t["stage"], t["phrases"][:5]) for t in themes[:40]]}
+            "top": [(t["name"], t["companies"], t["growth_pct"], t["stage"], t["specificity"], t["phrases"][:5])
+                    for t in themes[:40]],
+            "early": [(t["name"], t["companies"], t["growth_pct"], t["stage"], t["specificity"], t["phrases"][:5])
+                      for t in sorted((t for t in themes if t["stage"] <= 1),
+                                      key=lambda t: (-t["companies"], -(t["specificity"] or 0), t["name"]))[:15]]}
 
 
 def exposure(conn, issuer_id, cutoff: datetime, mode: str = "PUBLIC_INFORMATION", limit: int = 5) -> dict:

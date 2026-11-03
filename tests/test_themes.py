@@ -158,6 +158,24 @@ def test_build_finds_accelerating_theme_and_drops_generic_language():
     assert {m["issuer_id"] for m in t["members"]} == {"A", "B", "C", "D", "E", "F"}
 
 
+def test_cue_word_only_phrases_are_dropped():
+    p = E.phrases("Received a work order for supply of civil works and production capacity expansion.")
+    assert "civil works" in p and "work order" not in p and "production capacity" not in p
+
+
+def test_specificity_drops_words_common_in_ordinary_filings():
+    as_of = date(2025, 12, 31)
+    rows = []
+    for c in ("A", "B", "C", "D"):
+        rows.append((c, as_of - timedelta(days=20), ["bess", "months"], 10))
+    for i in range(40):                                       # other order passages
+        rows.append((f"Y{i}", as_of - timedelta(days=50), [f"widget {i}"], None))
+    bg = ({"months": 5000, "bess": 2}, 100000)               # "months" is everywhere in ordinary filings
+    themes = E.build(rows, as_of, bg)
+    assert [(t["name"], t["phrases"]) for t in themes] == [("bess", ["bess"])] and themes[0]["specificity"] > 8
+    assert set(E.build(rows, as_of)[0]["phrases"]) == {"bess", "months"}   # without a background "months" joins
+
+
 def test_stage_thresholds():
     assert [E._stage(n, g) for n, g in ((3, None), (5, 50.0), (12, 10.0), (30, 5.0), (30, 0.0), (8, -40.0))] == \
         [0, 1, 2, 3, 4, 5]
@@ -198,6 +216,13 @@ def test_emergent_index_snapshot_and_exposure(db):
                        (rules, art, ver, pub, iss, when, quote))
     assert E.index(db) == {"indexed": 6}
     assert E.index(db) == {"indexed": 0}
+    assert "error" in E.snapshot(db, date(2025, 11, 15))          # no background yet: nothing written
+    for i in range(3):                                            # ordinary filings: board meeting language
+        _filing(db, cos[i], src, 200 + i, datetime(2025, 3, 1, 18, 0, tzinfo=IST),
+                "The board approved the results. The meeting ended at 5 pm. Power transformers were not discussed.")
+    bg = E.background(db, date(2025, 1, 1), date(2025, 6, 1))
+    assert bg["documents"] == 3 and bg["sentences"] == 9 and bg["phrases_seen"] >= 1
+    assert E.background(db, date(2025, 1, 1), date(2025, 6, 1))["skipped"] == "exists"
     res = E.snapshot(db, date(2025, 11, 15))
     assert res["themes"] >= 1
     assert E.snapshot(db, date(2025, 11, 15)) == {"as_of": "2025-11-15", "skipped": "exists"}
