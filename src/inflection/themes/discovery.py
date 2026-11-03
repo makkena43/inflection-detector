@@ -297,6 +297,51 @@ def discover(conn, as_of: date, lookback_days: int = DEFAULT_LOOKBACK, themes: O
 
 
 # ---- packet read ----------------------------------------------------------------------------------------------------
+# ---- company role (maker / supplier / mention only) -------------------------------------------------------------------
+# MakroGraph's capability table (makrograph_ref.mg_company_capabilities, manufacturer rows only) uses the same product
+# names for most products; its product-role ledger (mg_company_product_roles) uses free text, so each product gets a
+# pattern. Only role rows that MakroGraph's adjudication marked as evidenced are used (the rest are mostly junk).
+_CAP_ALIASES = {"PCB / Printed Circuit Board": ("Printed Circuit Boards", "Circuits; printed")}
+_ROLE_PRODUCT_RE = {
+    "Power Transformer": r"\mtransformer", "Solar Module": r"solar (module|panel)", "Solar Cell": r"solar cell",
+    "Solar Wafer": r"wafer", "Battery Cell (Li-ion)": r"(lithium|li-ion).*cell|battery cell",
+    "EV Battery Pack": r"battery pack", "PCB / Printed Circuit Board": r"printed circuit|\mpcb",
+    "Optical Fiber Cable": r"optical fib", "Rolling Stock / Locomotives": r"rolling stock|locomotive|railway wheel|coach|wagon",
+    "CRGO Steel": r"crgo|grain oriented", "Semiconductor IC": r"semiconductor|\mic\M|chip",
+    "EMS / Contract Manufacturing": r"electronics? manufacturing service|\mems\M|contract manufactur",
+    "Defense electronics": r"defen[cs]e electronic|radar|avionic", "HV Cable": r"(hv|high voltage|ehv).*cable",
+    "Traction Motor": r"traction motor", "5G BTS / Radio Unit": r"\mbts\M|radio unit|5g",
+}
+_ROLE_MAP = {"MANUFACTURER": "MAKER", "DIRECT_PRODUCT_SUPPLIER": "SUPPLIER"}
+
+
+def company_roles(conn, issuer_id, day: date, products: list[str]) -> dict[str, str]:
+    """{product: MAKER | SUPPLIER | MENTION_ONLY} from MakroGraph's capability and evidenced role rows dated on or
+    before `day`; {} when the makrograph_ref tables are not present."""
+    if not products or conn.execute("SELECT to_regclass('makrograph_ref.mg_company_capabilities')").fetchone()[0] is None:
+        return {}
+    syms = [r[0] for r in conn.execute(
+        """SELECT DISTINCT upper(h.value) FROM securities s JOIN identifier_history h USING (security_id)
+            WHERE s.issuer_id = %s AND h.kind = 'SYMBOL'""", (issuer_id,)).fetchall()]
+    out = {}
+    for prod in products:
+        names = [prod, *_CAP_ALIASES.get(prod, ())]
+        if conn.execute("""SELECT 1 FROM makrograph_ref.mg_company_capabilities
+                            WHERE upper(ticker) = ANY(%s) AND product = ANY(%s) AND manufacturer
+                              AND as_of_date <= %s LIMIT 1""", (syms, names, day)).fetchone():
+            out[prod] = "MAKER"
+            continue
+        rx = _ROLE_PRODUCT_RE.get(prod)
+        r = conn.execute(
+            """SELECT role_type FROM makrograph_ref.mg_company_product_roles
+                WHERE country = 'IN' AND upper(ticker) = ANY(%s) AND normalized_product ~* %s
+                  AND role_type IN ('MANUFACTURER', 'DIRECT_PRODUCT_SUPPLIER')
+                  AND adjudication_state LIKE '%%EVIDENCED%%' AND as_of_date <= %s AND last_evidence_date <= %s
+                ORDER BY role_type = 'MANUFACTURER' DESC LIMIT 1""", (syms, rx, day, day)).fetchone() if rx else None
+        out[prod] = _ROLE_MAP[r[0]] if r else "MENTION_ONLY"
+    return out
+
+
 def exposure(conn, issuer_id, cutoff: datetime, mode: str = "PUBLIC_INFORMATION", limit: int = 5) -> dict:
     """The company's themes in the newest snapshot dated on or before the cutoff (IST date), one per constrained
     product (highest conviction), with how long it has been flagged. ACTUAL_SYSTEM_REPLAY also needs the row to have
@@ -327,4 +372,8 @@ def exposure(conn, issuer_id, cutoff: datetime, mode: str = "PUBLIC_INFORMATION"
                    import_substitution=bool(r[6]), source=r[7], first_flagged=r[8].isoformat(), snapshots_flagged=r[9])
               for r in rows]
     themes.sort(key=lambda t: (-t["conviction"], t["product"]))
-    return {"snapshot": latest.isoformat(), "themes": themes[:limit]}
+    themes = themes[:limit]
+    roles = company_roles(conn, issuer_id, day, [t["product"] for t in themes])
+    for t in themes:
+        t["company_role"] = roles.get(t["product"])
+    return {"snapshot": latest.isoformat(), "themes": themes}

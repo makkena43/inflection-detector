@@ -808,6 +808,10 @@ def ownership_section(o: Optional[dict]) -> list[str]:
     return L
 
 
+SUPPLY_ROLE_LABEL = {"MAKER": "maker (manufacturing evidence)", "SUPPLIER": "supplier (evidenced)",
+                     "MENTION_ONLY": "mention only (no maker/supplier evidence)"}
+
+
 def themes_section(t: Optional[dict]) -> list[str]:
     """MakroGraph supply-gap themes: the company's rows in the newest theme snapshot on or before the cutoff."""
     t = t or {}
@@ -819,9 +823,10 @@ def themes_section(t: Optional[dict]) -> list[str]:
                 "supply gap.", ""]
     return ([f"Supply-gap themes (MakroGraph method, snapshot {t['snapshot']}; filings in the year before it showed "
              "capex / supply / demand language next to the product):", ""]
-            + _table(["constrained product (theme)", "role", "conviction 0-1", "signals", "order-book language",
-                      "import substitute", "flagged since (snapshots)"],
-                     [[f"{x['product']} ({x['theme']})", x["role"], f"{x['conviction']:.2f}", x["signals"],
+            + _table(["constrained product (theme)", "role", "evidenced company role", "conviction 0-1", "signals",
+                      "order-book language", "import substitute", "flagged since (snapshots)"],
+                     [[f"{x['product']} ({x['theme']})", x["role"], SUPPLY_ROLE_LABEL.get(x.get("company_role"), "–"),
+                       f"{x['conviction']:.2f}", x["signals"],
                        "yes" if x["order_book"] else "no", "yes" if x["import_substitution"] else "no",
                        f"{x['first_flagged']} ({x['snapshots_flagged']})"] for x in rows]) + [""])
 
