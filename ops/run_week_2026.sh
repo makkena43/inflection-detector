@@ -45,6 +45,9 @@ F=$( [[ -n $LAST ]] && date -j -v+1d -f %Y-%m-%d $LAST +%Y-%m-%d || date +%Y-%m-
 log "processed $F..$D"
 # 2b. theme beneficiary snapshot as of today (append-only; filings dated today are outside its window)
 nice -n 10 $PY -m inflection.themes discover --as-of $D >> $L 2>&1
+# emergent themes: index new commercial passages, then a snapshot of themes discovered from them
+nice -n 10 $PY -m inflection.themes emergent-index >> $L 2>&1
+nice -n 10 $PY -m inflection.themes emergent --as-of $D >> $L 2>&1
 # 3. triage the week once (same steps as weekly_2026_stream.sh)
 if ! grep -q "^$W done" $WL 2>/dev/null; then
   [[ -d $J/triage/$W ]] || zsh $J/triage_week.sh $W > /dev/null 2>&1
