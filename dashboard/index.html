@@ -59,7 +59,7 @@ a { color:var(--accent) }
 <body>
 <header>
   <h1>Inflection Backtest</h1>
-  <nav><button data-tab="progress" class="on">Run progress</button><button data-tab="picks">Picks by year</button><button data-tab="buy">Buy now</button><button data-tab="engine">Unreviewed engine candidates</button><button data-tab="audit">Detection audit</button><button data-tab="health">Data &amp; process</button></nav>
+  <nav><button data-tab="progress" class="on">Run progress</button><button data-tab="picks">Picks by year</button><button data-tab="buy">Buy now</button><button data-tab="engine">Unreviewed engine candidates</button><button data-tab="themes">Themes</button><button data-tab="audit">Detection audit</button><button data-tab="health">Data &amp; process</button></nav>
   <span class="muted" id="gen"></span>
 </header>
 <main>
@@ -96,6 +96,12 @@ a { color:var(--accent) }
       <span class="muted" id="enginecount"></span></div>
     <div class="wrap"><table id="enginetable"></table></div>
   </section>
+  <section id="themes" hidden>
+    <div class="controls"><label>Snapshot <select id="theme-date"></select></label><input id="theme-search" placeholder="Search theme or company">
+      <span class="muted" id="theme-count"></span></div>
+    <p class="muted" id="theme-grades"></p>
+    <div class="wrap"><table id="themetable"></table></div>
+  </section>
   <section id="audit" hidden>
     <h2>Detection audit</h2>
     <p>Source conflicts, missed review handoffs and questionable award sizing. Entries need verification; they are research tasks.</p>
@@ -127,6 +133,12 @@ const SCORE_LABELS = {order_mcap_25:'Order ≥25% of mcap', mcap_lt_2000:'Mcap <
   mgmt_target_1_5x:'Mgmt target ≥1.5x rev', tech_2_of_3:'Technicals ≥2/3', revenue_growing:'Revenue growing', order_book_growing:'Order book growing',
   illiquid_penalty:'Illiquid (−2)', expensive_penalty:'P/S > 3 (−1)'};
 const scoreTitle = r => Object.entries(r.score_inputs || {}).map(([k, v]) => `${SCORE_LABELS[k] || k}: ${v == null ? '?' : v ? 'yes' : 'no'}`).join('\n');
+const STAGE = ['forming', 'emerging', 'accelerating', 'consensus', 'saturating', 'declining'];
+const GRADE_RANK = {A:5, B:4, NONE:2, CROWDED:1, HEADWIND:0};
+const gradeChip = g => `<span class="chip ${g === 'A' || g === 'B' ? 'good' : g === 'CROWDED' || g === 'HEADWIND' ? 'bad' : 'muted'}">${esc(g)}</span>`;
+const themeCell = t => !t ? unk : !t.themes.length ? '<span class="muted">none</span>'
+  : t.themes.map(x => `<span title="${esc(STAGE[x.stage] + (x.role ? ' · ' + x.role.toLowerCase() : '') + '\n' + (x.reasons || []).join('\n'))}">${gradeChip(x.grade)} ${esc(x.theme)}</span>`).join('<br>')
+    + `<br><span class="muted">snapshot ${esc(t.snapshot)}</span>`;
 const esc = s => (s ?? '').toString().replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const get = async u => {
   const r = await fetch(u);
@@ -198,6 +210,7 @@ async function loadPicks() {
     $('#picktable').innerHTML = `<tr><td>Unable to load picks: ${esc(error.message)}. Refresh to retry.</td></tr>`;
     return;
   }
+  rows.forEach(r => r.theme_rank = r.theme ? GRADE_RANK[r.theme.best] ?? -1 : -2);
   const cats = [...new Set(rows.map(r => r.category))].sort();
   const selected = new Set(selectedCategories());
   const options = [['promoter-up','Promoter holding increased (QoQ)'], ['fii-up','FII holding increased (QoQ)']].concat(cats.map(c => [c,c]),[
@@ -274,7 +287,7 @@ function renderPicks() {
   renderHoldingImpact(v);
   $('#pickcount').textContent = `${v.length} shown`;
   const cols = [['week_start','Week'],['label','Symbol'],['legal_name','Company'],['category','Category'],['size_pct_of_revenue','Order % rev'],['orders_12m_pct','12m orders % rev'],['orders_y1_pct','Yr-1 executable % rev'],
-    ['order_to_mcap','Order % mcap'],['mgmt_target_x','Mgmt target ×rev'],['score','Score'],['combos','Combos'],['ps','P/S'],['opm','Operating margin %'],['tech_score','Technicals'],['signals','Signals'],['promoter_change_pp','Promoter QoQ (pp)'],['fii_change_pp','FII QoQ (pp)'],['promoter_yoy_pp','Promoter YoY (pp)'],['fii_yoy_pp','FII YoY (pp)'],
+    ['order_to_mcap','Order % mcap'],['mgmt_target_x','Mgmt target ×rev'],['score','Score'],['combos','Combos'],['theme_rank','Theme'],['ps','P/S'],['opm','Operating margin %'],['tech_score','Technicals'],['signals','Signals'],['promoter_change_pp','Promoter QoQ (pp)'],['fii_change_pp','FII QoQ (pp)'],['promoter_yoy_pp','Promoter YoY (pp)'],['fii_yoy_pp','FII YoY (pp)'],
     ['runup_6m','6m run-up'],['margin_ttm','PAT margin'],['excess_6m','6m vs mkt'],['excess_12m','12m vs mkt'],['excess_24m','24m vs mkt'],['excess_36m','36m vs mkt'],['rationale','Reasoning']];
   let h = '<tr>' + cols.map(([k, t]) => `<th data-k="${k}">${t}${sortKey === k ? (sortDir > 0 ? ' ▲' : ' ▼') : ''}</th>`).join('') + '</tr>';
   for (const r of v) h += `<tr class="click" data-id="${r.issuer_id}"><td>${r.week_start}</td><td><b>${esc(r.label)}</b></td><td>${esc(r.legal_name)}</td>
@@ -283,7 +296,7 @@ function renderPicks() {
     <td class="num">${r.orders_y1_pct == null ? unk : n(r.orders_y1_pct) + '%'}</td>
     <td class="num">${r.order_to_mcap == null ? unk : (100*r.order_to_mcap).toFixed(0) + '%'}</td>
     <td class="num">${r.mgmt_target_x == null ? '–' : r.mgmt_target_x.toFixed(1) + 'x'}</td>
-    <td class="num" title="${esc(scoreTitle(r))}"><b>${r.score ?? '–'}</b>${r.score_n ? ` <span class="muted">(${r.score_known}/${r.score_n} known)</span>` : ''}</td><td>${(r.combos || []).join(' ') || '–'}</td><td class="num">${r.ps == null ? unk : r.ps.toFixed(2)}</td>
+    <td class="num" title="${esc(scoreTitle(r))}"><b>${r.score ?? '–'}</b>${r.score_n ? ` <span class="muted">(${r.score_known}/${r.score_n} known)</span>` : ''}</td><td>${(r.combos || []).join(' ') || '–'}</td><td style="white-space:nowrap">${themeCell(r.theme)}</td><td class="num">${r.ps == null ? unk : r.ps.toFixed(2)}</td>
     <td class="num">${r.opm == null ? unk : (100*r.opm).toFixed(1) + '%'}</td>
     <td class="num" title="${r.price_date ? esc(r.exchange) + ' close ' + r.price_date : ''}">${r.tech_score == null ? unk : r.tech_score + '/3'}</td>
     <td class="wide">${(r.signals || []).filter(f => !f.startsWith('Technicals') && !f.startsWith('Data ')).map(f => `<span class="chip">${esc(f)}</span>`).join(' ')}</td>
@@ -394,6 +407,32 @@ async function loadEngine() {
   $('#enginetable').querySelectorAll('tr.click').forEach(tr => tr.onclick = () => openCompany(tr.dataset.id));
 }
 $('#enginedays').onchange = loadEngine;
+
+let themeData = null;
+async function loadThemes() {
+  $('#themetable').innerHTML = '<tr><td class="muted">Loading…</td></tr>';
+  try { themeData = await get('/api/themes' + ($('#theme-date').value ? '?as_of=' + $('#theme-date').value : '')) }
+  catch (error) { $('#themetable').innerHTML = `<tr><td>Unable to load themes: ${esc(error.message)}. Refresh to retry.</td></tr>`; return }
+  if (!$('#theme-date').options.length) $('#theme-date').innerHTML = themeData.dates.map(d => `<option>${esc(d)}</option>`).join('');
+  $('#theme-grades').innerHTML = 'Grades are per company and per packet, shown in the Picks table: '
+    + Object.entries(themeData.grades).map(([g, t]) => `${gradeChip(g)} ${esc(t)}`).join(' · ');
+  renderThemes();
+}
+function renderThemes() {
+  const s = $('#theme-search').value.toLowerCase();
+  const v = (themeData?.themes || []).filter(t => !s || (t.name + ' ' + (t.members || []).map(m => m.name).join(' ')).toLowerCase().includes(s));
+  $('#theme-count').textContent = `${v.length} themes`;
+  let h = '<tr><th>Theme</th><th>Stage</th><th class="num">Companies</th><th class="num">A year ago</th><th class="num">Growth</th><th class="num">13-week change</th><th>First detected</th><th class="num">Order value ₹ cr</th><th>Members (role, ₹ cr)</th><th>Phrases</th></tr>';
+  for (const t of v) h += `<tr><td><b>${esc(t.name)}</b></td><td>${t.stage} ${esc(STAGE[t.stage])}</td><td class="num">${t.companies}</td><td class="num">${t.companies_prior}</td>
+    <td class="num">${t.growth_pct == null ? '–' : n(t.growth_pct, 0) + '%'}</td><td class="num">${t.momentum_13w == null ? '–' : (t.momentum_13w > 0 ? '+' : '') + t.momentum_13w}</td>
+    <td>${esc(t.first_detected)}</td><td class="num">${n(t.order_value_cr, 0)}</td>
+    <td class="wide">${(t.members || []).map(m => `<span class="chip click" data-id="${m.issuer_id}" title="first seen ${esc(m.first_seen)}">${esc(m.name)}${m.role ? ' · ' + esc(m.role.toLowerCase()) : ''}${Number(m.value_cr) ? ' · ' + n(m.value_cr, 0) : ''}</span>`).join(' ')}</td>
+    <td class="wide muted">${esc((t.phrases || []).slice(0, 6).join(', '))}</td></tr>`;
+  $('#themetable').innerHTML = h;
+  $('#themetable').querySelectorAll('.chip.click').forEach(c => { c.style.cursor = 'pointer'; c.onclick = () => openCompany(c.dataset.id) });
+}
+$('#theme-date').onchange = loadThemes; $('#theme-search').oninput = renderThemes;
+loadThemes();
 loadEngine();
 loadBuy();
 loadProgress().catch(error => { $('#progress').innerHTML = `<p>Unable to load progress: ${esc(error.message)}. Refresh to retry. Picks remain available.</p>` });

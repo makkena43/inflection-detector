@@ -14,6 +14,7 @@ import combo_flags
 import sys
 sys.path.insert(0, os.path.expanduser("~/PycharmProjects/inflection-detector/src"))
 from inflection import orderbook, shareholding, audit, process_health, snapshots   # noqa: E402
+from inflection.themes import context as theme_context, emergent   # noqa: E402
 
 DSN = os.environ.get("INFLECTION_DSN", "postgresql:///inflection")
 J = os.path.expanduser(os.environ.get("INFLECTION_JOB_ROOT", "~/inflection-jobs")) + "/"
@@ -565,11 +566,46 @@ def picks(year, include, view="year"):
         flags.append(f"Data {r['score_known']}/{r['score_n']} known")
         r["ps"], r["opm"] = ps, opm
         r["signals"] = flags
+        r["theme"] = themes_at(r["review_id"])
         with psycopg.connect(DSN) as cc:
             r["combos"], r["combo_checks"] = combo_flags.flags(cc, r, psec, e, t=t) if t else ([], None)
         r.pop("sec")
     rows.sort(key=lambda r: r["week_start"])
     return rows
+
+
+def themes_at(review_id):
+    """The company's themes and grades as of the review's packet (rules 3.6.1 Theme assessment): the packet's own stored
+    assessment when it has one, else recomputed from the packet's cutoff and passages. None when there is no packet."""
+    with psycopg.connect(DSN) as c:
+        x = c.execute("""SELECT p.issuer_id, p.cutoff, p.mode, p.content #> '{ownership,theme_assessment}',
+                                coalesce(p.content->'trigger_passages', '[]') || coalesce(p.content->'prior_passages', '[]')
+                                  || coalesce(p.content->'contradicting_passages', '[]')
+                           FROM triage_reviews r JOIN triage_packets p USING (packet_id) WHERE r.review_id = %s""",
+                      (review_id,)).fetchone()
+        if not x: return None
+        a = x[3] or theme_context.assess(c, x[0], x[1], x[4] or [], None, x[2])
+    return {"best": a["best_grade"], "snapshot": a["snapshot"],
+            "themes": [{"theme": t["theme"], "grade": t["grade"], "stage": t["stage"], "role": t["role"],
+                        "reasons": t.get("reasons") or []} for t in a["themes"]]}
+
+
+def themes(as_of=None):
+    """Emergent themes in one snapshot (default the newest): strength, stage and members with their role."""
+    dates = [r["as_of"] for r in q("SELECT DISTINCT as_of FROM emergent_theme_snapshots WHERE version=%s ORDER BY as_of DESC",
+                                   (emergent.VERSION,))]
+    d = date.fromisoformat(as_of) if as_of else (dates[0] if dates else None)
+    rows = q("""SELECT s.theme_key, s.name, s.stage, s.companies, s.companies_prior, s.growth_pct, s.first_detected,
+                       s.order_value_cr, s.phrases,
+                       s.companies - (SELECT b.companies FROM emergent_theme_snapshots b WHERE b.theme_key = s.theme_key
+                          AND b.version = s.version AND b.as_of <= s.as_of - %s ORDER BY b.as_of DESC LIMIT 1) momentum_13w,
+                       (SELECT json_agg(json_build_object('issuer_id', c.issuer_id, 'name', i.legal_name, 'role', c.role,
+                               'value_cr', c.value_cr, 'first_seen', c.first_seen) ORDER BY c.value_cr DESC, i.legal_name)
+                          FROM emergent_theme_companies c JOIN issuers i USING (issuer_id)
+                         WHERE c.as_of = s.as_of AND c.theme_key = s.theme_key) members
+                  FROM emergent_theme_snapshots s WHERE s.version = %s AND s.as_of = %s
+                 ORDER BY s.companies DESC, s.growth_pct DESC NULLS LAST, s.name""", (theme_context.MOMENTUM_DAYS, emergent.VERSION, d))
+    return {"as_of": d, "dates": dates, "grades": theme_context.GRADES, "themes": rows}
 
 
 def engine_queue(days=90):
@@ -681,6 +717,9 @@ class H(BaseHTTPRequestHandler):
                 sys.path.insert(0, os.path.join(J, "autobuy")); import buy_candidates
                 days = int(a.get("days", ["28"])[0])
                 data = cached(f"buy{days}", 1800, lambda: buy_candidates.candidates(days))
+            elif u.path == "/api/themes":
+                d = a.get("as_of", [""])[0] or None
+                data = cached(f"themes{d}", 1800, lambda: themes(d))
             elif u.path == "/api/combos":
                 data = combo_flags.COMBOS
             elif u.path == "/api/company":
