@@ -380,8 +380,12 @@ def exposure(conn, issuer_id, cutoff: datetime, mode: str = "PUBLIC_INFORMATION"
     rows = conn.execute(
         """WITH syms AS (SELECT DISTINCT upper(h.value) v FROM securities s JOIN identifier_history h USING (security_id)
                           WHERE s.issuer_id = %(i)s AND h.exchange = 'NSE' AND h.kind = 'SYMBOL'),
-                mine AS (SELECT b.* FROM theme_beneficiaries b
-                          WHERE (b.issuer_id = %(i)s OR upper(b.ticker) IN (SELECT v FROM syms))
+                mine AS (SELECT b.* FROM theme_beneficiaries b               -- two index lookups, not an OR scan
+                          WHERE b.issuer_id = %(i)s
+                            AND b.as_of_date <= %(d)s AND (NOT %(replay)s OR b.recorded_at <= %(c)s)
+                         UNION
+                         SELECT b.* FROM theme_beneficiaries b
+                          WHERE upper(b.ticker) IN (SELECT v FROM syms)
                             AND b.as_of_date <= %(d)s AND (NOT %(replay)s OR b.recorded_at <= %(c)s))
            SELECT DISTINCT ON (m.constrained_product) m.constrained_product, m.theme_name, m.role, m.conviction_score,
                   m.signal_count, m.has_order_book, m.import_substitution, m.source,
