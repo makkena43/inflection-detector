@@ -422,11 +422,19 @@ def packet_for(conn, it: dict, budget: int = C.TOKEN_BUDGET) -> tuple[dict, str]
         rev = packet_revenue({'financials': fin, 'manifest': {'cutoff': it['cutoff']}})
         own['theme_assessment'] = assess(conn, it['issuer_id'], it['cutoff'], passages, own.get('themes'), it['mode'],
                                          ttm_revenue_cr=rev)
+    flow = None
+    if C.R.WITH_ORDER_FLOW:
+        # 3.6.2: computed order flow (context only); other rule versions keep their packets and hashes unchanged
+        from .. import orderflow
+        from ..freshness import packet_revenue
+        flow = orderflow.compute(conn, it['issuer_id'], it['cutoff'],
+                                 packet_revenue({'financials': fin, 'manifest': {'cutoff': it['cutoff']}}),
+                                 C.valuation(fin, {}).get('revenue_growth_ttm_pct'), ob, it['mode'])
     documents=_documents(conn,it,evaluations,passages)
     issues.extend(source_issues(evaluations,passages,documents))
     it['nomination_issues']=sorted(set(issues))
     return C.build(it, _identity(conn, it), evaluations, _prior_triage(conn, it), events, passages,
-                   documents, fin, price, excluded, budget, order_book=ob, ownership=own)
+                   documents, fin, price, excluded, budget, order_book=ob, ownership=own, order_flow=flow)
 
 
 SIGNAL_CATEGORIES = ["capacity addition", "commencement of commercial production/operations", "credit rating",

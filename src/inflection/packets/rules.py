@@ -188,15 +188,30 @@ Add two fields: theme_signal (STRENGTHENS if an A or B theme supported the decis
 HEADWIND theme counted against it, otherwise NEUTRAL) and theme_used (the theme name, or null)."""
 RULES_3_5_2 = RULES_3_5 + _THEMES
 RULES_3_6_1 = RULES_3_6 + _THEMES
+# 3.6.2 (2026-11-04, owner: "context line only"): a computed order-flow section; it changes no action rule.
+_ORDER_FLOW = """
+
+### Order flow (computed, context only)
+
+The "Order flow" section compares the company's firm orders over the last 12 months with the 12 months before, and
+shows the latest order-book and inflow growth, TTM revenue growth and the credibility checks that could be made. It is
+context only: it never makes an order firm, large or non-routine, and it does not change any action rule above.
+- If its status is ACCELERATING and you still mark an order routine, say in the rationale why the accelerating order
+  flow does not change the earnings path.
+- ACCELERATING_WITH_FLAGS is a caution: order flow is rising but a credibility check failed; say so.
+- STEADY or UNKNOWN: nothing to add.
+Add the field order_flow_noted: true if the order-flow section influenced your rationale, otherwise false."""
+RULES_3_6_2 = RULES_3_6_1 + _ORDER_FLOW
 
 VERSIONS = {"3.3": ("triage-rules-3.3", RULES_3_3), "3.4": ("triage-rules-3.4", RULES_3_4),
             "3.5.0": ("triage-rules-3.5", RULES_3_5_0), "3.5": ("triage-rules-3.5.1", RULES_3_5),
             "3.6": ("triage-rules-3.6", RULES_3_6), "3.5.2": ("triage-rules-3.5.2", RULES_3_5_2),
-            "3.6.1": ("triage-rules-3.6.1", RULES_3_6_1)}
+            "3.6.1": ("triage-rules-3.6.1", RULES_3_6_1), "3.6.2": ("triage-rules-3.6.2", RULES_3_6_2)}
 ACTIVE = os.environ.get("INFLECTION_TRIAGE_RULES", "3.4")
 if ACTIVE not in VERSIONS:
     raise ValueError(f"INFLECTION_TRIAGE_RULES must be one of {sorted(VERSIONS)}, not {ACTIVE!r}")
 TRIAGE_RULES_VERSION, RULES = VERSIONS[ACTIVE]
 WITH_VALUATION = ACTIVE != "3.3"          # 3.4 packets carry the computed valuation-and-margin section
 WITH_SOURCES = ACTIVE not in ("3.3", "3.4")   # 3.5 packets also carry the ownership-and-other-signals section
-WITH_THEMES = ACTIVE in ("3.5.2", "3.6.1")    # theme rules need the theme sections in the packet
+WITH_THEMES = ACTIVE in ("3.5.2", "3.6.1", "3.6.2")    # theme rules need the theme sections in the packet
+WITH_ORDER_FLOW = ACTIVE == "3.6.2"           # 3.6.2 packets carry the computed order-flow section
