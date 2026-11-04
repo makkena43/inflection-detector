@@ -9,7 +9,10 @@ For each emergent theme the company belongs to in the newest snapshot on or befo
   * the link to this packet: which of the packet's own events have a passage that uses one of the theme's phrases;
   * supply-gap confirmation: a MakroGraph supply-gap product of the company with an evidenced maker/supplier/EPC role
     whose words match the theme's phrases.
-Then a grade with its reasons (see GRADES). The grade is a summary for the reviewer and for backtests; the rules
+Informational, not yet used by the grade: crowding (the equal-weight 3- and 6-month return of the theme's companies,
+split/bonus adjusted, minus the Nifty Smallcap 250 over the same days, priced on or before the snapshot date) and
+the company's firm theme order value as % of its trailing-twelve-month revenue (when the caller passes a current
+revenue). Then a grade with its reasons (see GRADES). The grade is a summary for the reviewer and for backtests; the rules
 decide how much it may count. Everything uses only snapshots and passages public by the cutoff.
 """
 from __future__ import annotations
@@ -24,6 +27,9 @@ from . import emergent
 EARLY_DAYS = 90
 MOMENTUM_DAYS = 91
 SUPPLY_ROLES = ("MAKER", "SUPPLIER", "EPC")
+CROWD_INDEX = "Nifty Smallcap 250"
+CROWD_DAYS = (91, 182)          # 3 and 6 months
+CROWD_GAP = 10                  # a member's or the index's close must fall within this many days before each anchor
 GRADES = {
     "A": "strong tailwind: maker/supplier/EPC in an emerging or accelerating theme (or consensus still growing 50%+), "
          "not losing companies over 13 weeks, and one of this packet's events is in the theme",
@@ -69,9 +75,62 @@ def grade(stage: int, growth: Optional[float], momentum: Optional[int], role: Op
     return "B", why
 
 
+_CROWD_CACHE: dict = {}
+
+
+def _last_close(rows, anchor: date) -> Optional[float]:
+    """Close of the last row on or before anchor, within CROWD_GAP days. rows: (trade_date, close) sorted by date."""
+    best = None
+    for d, c in rows:
+        if d > anchor:
+            break
+        if (anchor - d).days <= CROWD_GAP:
+            best = float(c)
+    return best
+
+
+def crowding(conn, as_of: date, theme_key: str) -> dict:
+    """Equal-weight 3/6-month return of the theme's companies at as_of minus the Smallcap 250 return, in % points.
+    Members whose adjusted price is unverified (an unreconciled split/bonus) or missing at either end are left out."""
+    k = (as_of, theme_key)
+    if k in _CROWD_CACHE:
+        return _CROWD_CACHE[k]
+    start = as_of - timedelta(days=max(CROWD_DAYS) + CROWD_GAP)
+    px = conn.execute(
+        """SELECT DISTINCT ON (s.issuer_id, p.trade_date) s.issuer_id, p.trade_date, p.close, p.unverified
+             FROM emergent_theme_companies c JOIN securities s USING (issuer_id)
+             JOIN prices_split_bonus_adjusted p USING (security_id)
+            WHERE c.as_of = %s AND c.theme_key = %s AND p.trade_date BETWEEN %s AND %s AND p.close > 0
+            ORDER BY s.issuer_id, p.trade_date, (p.provider = 'nse_bhavcopy') DESC, p.provider_version DESC""",
+        (as_of, theme_key, start, as_of)).fetchall()
+    idx = conn.execute("SELECT trade_date, close FROM index_closes WHERE index_name = %s AND trade_date BETWEEN %s AND %s"
+                       " ORDER BY trade_date", (CROWD_INDEX, start, as_of)).fetchall()
+    by: dict = {}
+    bad = {i for i, _, _, u in px if u}
+    for i, d, c, _ in px:
+        if i not in bad:
+            by.setdefault(i, []).append((d, c))
+    out = {}
+    for days in CROWD_DAYS:
+        a0 = as_of - timedelta(days=days)
+        i0, i1 = _last_close(idx, a0), _last_close(idx, as_of)
+        rets = []
+        for rows in by.values():
+            c0, c1 = _last_close(rows, a0), _last_close(rows, as_of)
+            if c0 and c1:
+                rets.append(c1 / c0 - 1)
+        m = f"{round(days / 30.4)}m"
+        out[f"crowding_return_{m}"] = (round(100 * (sum(rets) / len(rets) - (i1 / i0 - 1)), 1)
+                                       if rets and i0 and i1 else None)
+        out[f"crowding_priced_{m}"] = len(rets)
+    _CROWD_CACHE[k] = out
+    return out
+
+
 def assess(conn, issuer_id, cutoff: datetime, passages: list[dict], supply_gap: Optional[dict] = None,
-           mode: str = "PUBLIC_INFORMATION", limit: int = 5) -> dict:
-    """Theme assessment for a packet. passages: the packet's passages (dicts with event_id and quote)."""
+           mode: str = "PUBLIC_INFORMATION", limit: int = 5, ttm_revenue_cr: Optional[float] = None) -> dict:
+    """Theme assessment for a packet. passages: the packet's passages (dicts with event_id and quote).
+    ttm_revenue_cr: the packet's current trailing-twelve-month revenue, if known."""
     if cutoff.tzinfo is None:
         raise ValueError("cutoff must be timezone-aware")
     p = dict(i=issuer_id, d=cutoff.astimezone(emergent.IST).date(), c=cutoff, v=emergent.VERSION,
@@ -114,6 +173,9 @@ def assess(conn, issuer_id, cutoff: datetime, passages: list[dict], supply_gap: 
             company_value_share_pct=round(float(Decimal(val) / tval * 100), 1) if tval else None,
             entrant="EARLY" if first_seen <= first_det + timedelta(days=EARLY_DAYS) else "LATER",
             company_first_seen=first_seen.isoformat(), packet_events_in_theme=events,
+            company_value_pct_ttm_revenue=(round(float(val) / ttm_revenue_cr * 100, 1)
+                                           if ttm_revenue_cr and ttm_revenue_cr > 0 and val is not None else None),
+            **crowding(conn, latest, key),
             supply_gap_confirmed=confirmed, grade=g, reasons=why, phrases=list(phrases or [])[:5]))
     out.sort(key=lambda t: (GRADE_ORDER.index(t["grade"]), -t["company_value_cr"], t["theme"]))
     best = out[0]["grade"] if out else "NONE"

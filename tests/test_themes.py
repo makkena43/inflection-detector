@@ -358,3 +358,12 @@ def test_emergent_index_snapshot_and_exposure(db):
     assert "Overall theme grade: **A**" in out and "supplier, #1" in out
     keys = db.execute("SELECT as_of, theme_key FROM emergent_theme_snapshots ORDER BY as_of, theme_key").fetchall()
     assert {k for d, k in keys if d == date(2025, 11, 15)} == {k for d, k in keys if d == date(2025, 11, 22)}
+
+
+def test_crowding_last_close_within_gap():
+    from datetime import date
+    from inflection.themes.context import _last_close
+    rows = [(date(2025, 1, 1), 100), (date(2025, 3, 25), 110), (date(2025, 4, 3), 120)]
+    assert _last_close(rows, date(2025, 3, 31)) == 110.0          # last close on or before the anchor
+    assert _last_close(rows, date(2025, 2, 28)) is None           # nothing within 10 days before
+    assert _last_close(rows, date(2025, 4, 3)) == 120.0
