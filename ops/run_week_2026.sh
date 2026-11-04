@@ -9,7 +9,7 @@ J=~/inflection-jobs; L=$J/logs/week_2026.log; B=$J/logs/backfill.log; WL=$J/logs
 D=$(date +%Y-%m-%d)
 W=${1:-$(date -j -v-$(( ($(date +%u) + 6) % 7 ))d -f %Y-%m-%d $D +%Y-%m-%d)}
 cd ${INFLECTION_PROJECT_ROOT:-$HOME/PycharmProjects/inflection-detector}; PY=${INFLECTION_PYTHON:-.venv/bin/python}
-export INFLECTION_DSN=postgresql:///inflection INFLECTION_TRIAGE_RULES=3.6
+export INFLECTION_DSN=postgresql:///inflection INFLECTION_TRIAGE_RULES=3.6.1   # owner 2026-11-04: 3.6 + theme context for Haiku (packets carry theme sections)
 log() { echo "$(date '+%F %T') $*" >> $L }
 log "week $W start"
 if pgrep -f "run_resume.sh|run_backfill_2026.sh|dl_worker.py|weekly_2026" >/dev/null; then log "another run is going; stopped"; exit 1; fi

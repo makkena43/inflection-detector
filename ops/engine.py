@@ -71,7 +71,7 @@ def routine_exception(p) -> bool:
 # Rules 3.6 (2026-10-28): the related-party disqualifier is read from the sized event only; an order-intake or
 # order-book acceleration makes a routine-looking order not routine; a size above 100% of revenue that matches a
 # company-stated intake or book figure is a period total, never an order size.
-V36 = RULES not in ("3.3", "3.4", "3.5")
+V36 = RULES not in ("3.3", "3.4", "3.5", "3.5.2")   # 3.5.2 / 3.6.1 = 3.5 / 3.6 plus theme context
 _NOT_QA = re.compile(r"\b(?:9\s*M|nine months|H[12]\b|half[- ]year|first half|second half)", re.I)
 _QUARTER = re.compile(r"\b(?:quarter|QE|Q[1-4]\b|qtr|three months)", re.I)
 _FULL_YEAR = re.compile(r"\b(?:FY\s*'?\d|FY\d|year ended|financial year|full year|for the year|annual)", re.I)
@@ -344,7 +344,7 @@ def triage(p, conn=None, issuer_id=None, use_llm=False):
     elif firm and size is not None and size >= 10 and routine and routine_exception(p):
         action = DEEP                       # rules 3.4: routine order at a thin-margin or cheaply valued company
         g = (p.get("valuation") or {}).get("revenue_growth_ttm_pct")
-        if RULES == "3.5" and g is not None and num(g) is not None and num(g) <= 0:
+        if RULES in ("3.5", "3.5.2") and g is not None and num(g) is not None and num(g) <= 0:
             action = WATCH                  # rules 3.5.1: under the exception, deep research only if TTM revenue is growing
     elif firm and size is not None and size >= 10 and routine:
         action = REJECT
