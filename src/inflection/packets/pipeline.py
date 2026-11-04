@@ -466,7 +466,7 @@ def _ownership(conn, it: dict) -> dict:
 
 def themes_enabled() -> bool:
     import os
-    return os.environ.get('INFLECTION_PACKET_THEMES', '').strip().lower() in ('1', 'true', 'yes', 'on')
+    return C.R.WITH_THEMES or os.environ.get('INFLECTION_PACKET_THEMES', '').strip().lower() in ('1', 'true', 'yes', 'on')
 
 
 def _dedupe_signals(rows) -> list[dict]:

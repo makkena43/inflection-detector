@@ -160,12 +160,36 @@ _AUDIT_36 = """
 """
 RULES_3_6 = RULES_3_5 + _AUDIT_36
 
+# Themes (2026-11-04): packets carry "Supply-gap themes" and "Emerging themes" sections (inflection.themes) with
+# the company's role in each theme. Context only until a backtest shows an edge: a theme can tip a borderline case,
+# never replace firmness or size. theme_signal is recorded so the backtest can measure it.
+_THEMES = """
+
+### Themes (context only)
+
+The "Supply-gap themes" and "Emerging themes" sections say whether this company's products sit in a sector that
+many companies are winning orders for or adding capacity in, and the company's role in it (maker, supplier, EPC
+contractor, buyer/user, or mention only). A theme never makes an event firm, large or new, and never replaces the
+size and firmness tests above. Use it only to judge whether the change is part of a sector upcycle that can repeat:
+- Strengthens: the company is a maker or supplier (or an EPC contractor for project work) in a theme at stage 1
+  emerging or 2 accelerating, or in a supply-gap theme with its role evidenced, AND the event you rely on is in that
+  same theme (same product or project type). In a borderline case — routine flag uncertain, or size just short of
+  10% with a clear path — this may tip WATCH_MILESTONE to DEEP_RESEARCH; say so in the rationale.
+- Weakens: the company is a buyer/user in the theme (a shortage raises its costs), or the theme is at stage 4
+  saturating or 5 declining (crowded; no tailwind left).
+- Neutral: "mention only", "role not stated", a theme unrelated to the event, or no theme at all.
+Add two fields: theme_signal (STRENGTHENS, NEUTRAL or WEAKENS) and theme_used (the theme name, or null)."""
+RULES_3_5_2 = RULES_3_5 + _THEMES
+RULES_3_6_1 = RULES_3_6 + _THEMES
+
 VERSIONS = {"3.3": ("triage-rules-3.3", RULES_3_3), "3.4": ("triage-rules-3.4", RULES_3_4),
             "3.5.0": ("triage-rules-3.5", RULES_3_5_0), "3.5": ("triage-rules-3.5.1", RULES_3_5),
-            "3.6": ("triage-rules-3.6", RULES_3_6)}
+            "3.6": ("triage-rules-3.6", RULES_3_6), "3.5.2": ("triage-rules-3.5.2", RULES_3_5_2),
+            "3.6.1": ("triage-rules-3.6.1", RULES_3_6_1)}
 ACTIVE = os.environ.get("INFLECTION_TRIAGE_RULES", "3.4")
 if ACTIVE not in VERSIONS:
     raise ValueError(f"INFLECTION_TRIAGE_RULES must be one of {sorted(VERSIONS)}, not {ACTIVE!r}")
 TRIAGE_RULES_VERSION, RULES = VERSIONS[ACTIVE]
 WITH_VALUATION = ACTIVE != "3.3"          # 3.4 packets carry the computed valuation-and-margin section
 WITH_SOURCES = ACTIVE not in ("3.3", "3.4")   # 3.5 packets also carry the ownership-and-other-signals section
+WITH_THEMES = ACTIVE in ("3.5.2", "3.6.1")    # theme rules need the theme sections in the packet
