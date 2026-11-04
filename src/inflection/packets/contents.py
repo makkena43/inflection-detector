@@ -867,4 +867,5 @@ def result_template(content: dict, packet_hash: str) -> dict:
                 commercial_stage="UNKNOWN", materiality_status="", next_milestone=None, funding_status="",
                 contradictions=[], missing_information=[], evidence_refs=[], size_pct_of_revenue=None,
                 size_basis="UNKNOWN", firm=None, routine=None, disqualifier=None, pass_through=False,
-                triage_action="", confidence="", rationale="", triage_rules_version=R.TRIAGE_RULES_VERSION)
+                triage_action="", confidence="", rationale="", triage_rules_version=R.TRIAGE_RULES_VERSION,
+                **({"theme_signal": "", "theme_used": None} if R.WITH_THEMES else {}))

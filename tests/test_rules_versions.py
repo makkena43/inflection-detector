@@ -49,3 +49,14 @@ def test_valuation_tolerates_formatted_or_missing_cells():
     assert C.valuation(dict(status="FOUND", quarters=_ends(4), rows=dict(revenue=_q([100] * 4), total_expenses=_q([95]*4), pbt=_q([5] * 4), finance_cost=_q([1] * 4),
                                                        depreciation=_q([2] * 4), other_income=_q([0] * 4))),
                        dict(status="FOUND", market_cap_cr="1,200"))["price_to_sales"] == "3.00"
+
+
+def test_theme_rules_versions_turn_on_theme_sections():
+    out = subprocess.run([sys.executable, "-c", "from inflection.packets import rules as R, contents as C, pipeline as P;"
+                          "t = C.result_template(dict(company=dict(issuer_id='i'), manifest=dict(cutoff='c'), events=[]), 'h');"
+                          "print(R.TRIAGE_RULES_VERSION, R.WITH_THEMES, P.themes_enabled(), 'theme_signal' in t,"
+                          " 'Themes (context only)' in R.RULES, R.RULES.startswith(R.RULES_3_5))"],
+                         env=dict(os.environ, INFLECTION_TRIAGE_RULES="3.5.2", INFLECTION_PACKET_THEMES=""),
+                         capture_output=True, text=True, check=True)
+    assert out.stdout.split() == ["triage-rules-3.5.2", "True", "True", "True", "True", "True"]
+    assert not R.WITH_THEMES and "theme_signal" not in R.RULES_3_6 and "theme_signal" in R.RULES_3_6_1
