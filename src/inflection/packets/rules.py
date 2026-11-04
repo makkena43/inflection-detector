@@ -167,18 +167,25 @@ _THEMES = """
 
 ### Themes (context only)
 
-The "Supply-gap themes" and "Emerging themes" sections say whether this company's products sit in a sector that
-many companies are winning orders for or adding capacity in, and the company's role in it (maker, supplier, EPC
-contractor, buyer/user, or mention only). A theme never makes an event firm, large or new, and never replaces the
-size and firmness tests above. Use it only to judge whether the change is part of a sector upcycle that can repeat:
-- Strengthens: the company is a maker or supplier (or an EPC contractor for project work) in a theme at stage 1
-  emerging or 2 accelerating, or in a supply-gap theme with its role evidenced, AND the event you rely on is in that
-  same theme (same product or project type). In a borderline case — routine flag uncertain, or size just short of
-  10% with a clear path — this may tip WATCH_MILESTONE to DEEP_RESEARCH; say so in the rationale.
-- Weakens: the company is a buyer/user in the theme (a shortage raises its costs), or the theme is at stage 4
-  saturating or 5 declining (crowded; no tailwind left).
-- Neutral: "mention only", "role not stated", a theme unrelated to the event, or no theme at all.
-Add two fields: theme_signal (STRENGTHENS, NEUTRAL or WEAKENS) and theme_used (the theme name, or null)."""
+The "Theme assessment" table says whether this company's products sit in a sector that many companies are winning
+orders for or adding capacity in, computed from all companies' filings before the cutoff: the theme's stage,
+breadth now and a year ago, its 13-week change, the company's role (maker, supplier, EPC contractor, buyer/user),
+its rank and share of the theme's firm order value, whether it was an early entrant, which of THIS packet's events
+are in the theme, and a grade with reasons. The "Supply-gap themes" table adds MakroGraph's shortage areas with an
+evidenced company role. A theme never makes an event firm, large or new, and never replaces the size and firmness
+tests above. Use it only to judge whether the change is part of a sector upcycle that can repeat:
+- Grade A (strong tailwind; the event you rely on is listed as in the theme): in a borderline case — routine flag
+  uncertain, or size just short of 10% of revenue with a clear path to it — you may move WATCH_MILESTONE to
+  DEEP_RESEARCH; say which theme and why in the rationale. Rank 1-3 or an early entrant makes the case stronger.
+- Grade B (tailwind, but this packet's event is not in the theme, or the theme is losing companies): mention it in
+  the rationale; it does not change the action.
+- CROWDED or HEADWIND: a reason for caution. A buyer/user faces higher input costs; a crowded or declining theme
+  has no tailwind left. List it under contradictions when you still choose DEEP_RESEARCH.
+- NONE, "mention only", "role not stated", or a theme unrelated to the event: ignore.
+- A supply-gap theme with an evidenced maker/supplier role that matches the event's product counts like grade B,
+  or as confirmation of an A.
+Add two fields: theme_signal (STRENGTHENS if an A or B theme supported the decision, WEAKENS if a CROWDED or
+HEADWIND theme counted against it, otherwise NEUTRAL) and theme_used (the theme name, or null)."""
 RULES_3_5_2 = RULES_3_5 + _THEMES
 RULES_3_6_1 = RULES_3_6 + _THEMES
 

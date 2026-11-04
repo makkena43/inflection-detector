@@ -798,7 +798,9 @@ def ownership_section(o: Optional[dict]) -> list[str]:
           if pr else ["Government programmes: the company's filings name none of the listed programmes by the cutoff.", ""])
     if "themes" in o:
         L += themes_section(o["themes"])
-    if "emergent_themes" in o:
+    if "theme_assessment" in o:
+        L += theme_assessment_section(o["theme_assessment"])
+    elif "emergent_themes" in o:
         L += emergent_section(o["emergent_themes"])
     sig = o.get("signal_filings") or []
     L += (["Capacity, production, rating, fund-raising and acquisition filings in the 12 months before the cutoff "
@@ -836,6 +838,31 @@ STAGE_LABEL = {0: "forming", 1: "emerging", 2: "accelerating", 3: "consensus", 4
 
 
 ROLE_LABEL = {"MAKER": "maker", "SUPPLIER": "supplier", "EPC": "EPC contractor", "BUYER": "buyer/user"}
+
+
+def theme_assessment_section(t: Optional[dict]) -> list[str]:
+    """Computed theme assessment (inflection.themes.context): one row per theme the company is in, with a grade."""
+    t = t or {}
+    rows = t.get("themes") or []
+    if not t.get("snapshot"):
+        return ["Theme assessment: no theme snapshot on or before the cutoff.", ""]
+    if not rows:
+        return [f"Theme assessment (snapshot {t['snapshot']}): the company's order, capacity and launch passages of "
+                "the last 180 days fall in no theme shared by 3+ companies. Theme grade: NONE.", ""]
+    f = lambda v: "–" if v is None else v
+    L = [f"Theme assessment (snapshot {t['snapshot']}; computed from all companies' order, capacity and launch "
+         f"filings before the cutoff). Overall theme grade: **{t.get('best_grade', 'NONE')}**.", "",
+         "Grades: " + "; ".join(f"{k} = {v}" for k, v in (t.get("grades") or {}).items()) + ".", ""]
+    L += _table(["theme (key phrases)", "grade", "stage", "companies now (yr ago), 13-wk change", "weeks tracked",
+                 "company: role, rank, value share %, entrant", "this packet's events in the theme", "why"],
+                [[f"{x['theme']} ({', '.join(x['phrases'][:3])})", x["grade"],
+                  f"{x['stage']} {STAGE_LABEL.get(x['stage'], '')}",
+                  f"{x['companies']} ({x['companies_year_ago']}), {f(x['momentum_13w'])}", x["weeks_tracked"],
+                  f"{ROLE_LABEL.get(x.get('role'), 'role not stated')}, #{x['company_rank']}, "
+                  f"{f(x['company_value_share_pct'])}, {x['entrant'].lower()}",
+                  ", ".join(e[:8] for e in x["packet_events_in_theme"]) or "none", "; ".join(x["reasons"])]
+                 for x in rows])
+    return L + [""]
 
 
 def emergent_section(t: Optional[dict]) -> list[str]:
