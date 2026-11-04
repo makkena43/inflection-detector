@@ -9,7 +9,7 @@ For each emergent theme the company belongs to in the newest snapshot on or befo
   * the link to this packet: which of the packet's own events have a passage that uses one of the theme's phrases;
   * supply-gap confirmation: a MakroGraph supply-gap product of the company with an evidenced maker/supplier/EPC role
     whose words match the theme's phrases.
-Informational, not yet used by the grade: crowding (the equal-weight 3- and 6-month return of the theme's companies,
+Informational, not yet used by the grade: crowding (the median 3- and 6-month return of the theme's companies,
 split/bonus adjusted, minus the Nifty Smallcap 250 over the same days, priced on or before the snapshot date) and
 the company's firm theme order value as % of its trailing-twelve-month revenue (when the caller passes a current
 revenue). Then a grade with its reasons (see GRADES). The grade is a summary for the reviewer and for backtests; the rules
@@ -18,6 +18,7 @@ decide how much it may count. Everything uses only snapshots and passages public
 from __future__ import annotations
 
 import re
+import statistics
 from datetime import date, datetime, timedelta
 from decimal import Decimal
 from typing import Optional
@@ -90,8 +91,9 @@ def _last_close(rows, anchor: date) -> Optional[float]:
 
 
 def crowding(conn, as_of: date, theme_key: str) -> dict:
-    """Equal-weight 3/6-month return of the theme's companies at as_of minus the Smallcap 250 return, in % points.
-    Members whose adjusted price is unverified (an unreconciled split/bonus) or missing at either end are left out."""
+    """Median 3/6-month return of the theme's companies at as_of minus the Smallcap 250 return, in % points (the
+    median, so one multi-bagger cannot make a small theme look crowded). Members whose adjusted price is unverified
+    (an unreconciled split/bonus) or missing at either end are left out."""
     k = (as_of, theme_key)
     if k in _CROWD_CACHE:
         return _CROWD_CACHE[k]
@@ -106,6 +108,7 @@ def crowding(conn, as_of: date, theme_key: str) -> dict:
     idx = conn.execute("SELECT trade_date, close FROM index_closes WHERE index_name = %s AND trade_date BETWEEN %s AND %s"
                        " ORDER BY trade_date", (CROWD_INDEX, start, as_of)).fetchall()
     by: dict = {}
+    # unverified also reflects split/bonus actions dated after as_of: it can only drop a member, never move a return
     bad = {i for i, _, _, u in px if u}
     for i, d, c, _ in px:
         if i not in bad:
@@ -120,7 +123,7 @@ def crowding(conn, as_of: date, theme_key: str) -> dict:
             if c0 and c1:
                 rets.append(c1 / c0 - 1)
         m = f"{round(days / 30.4)}m"
-        out[f"crowding_return_{m}"] = (round(100 * (sum(rets) / len(rets) - (i1 / i0 - 1)), 1)
+        out[f"crowding_return_{m}"] = (round(100 * (statistics.median(rets) - (i1 / i0 - 1)), 1)
                                        if rets and i0 and i1 else None)
         out[f"crowding_priced_{m}"] = len(rets)
     _CROWD_CACHE[k] = out
