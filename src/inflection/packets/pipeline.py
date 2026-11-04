@@ -415,6 +415,10 @@ def packet_for(conn, it: dict, budget: int = C.TOKEN_BUDGET) -> tuple[dict, str]
                             shares_asof=date.fromisoformat(share_end) if share_end else None)
     ob = orderbook.series(conn, it["issuer_id"], it["cutoff"], mode=it['mode']) if C.R.WITH_VALUATION else None
     own = _ownership(conn, it) if C.R.WITH_SOURCES else None
+    if own is not None and themes_enabled():
+        # computed theme assessment: strength, the company's place in each theme, and which packet events are in it
+        from ..themes.context import assess
+        own['theme_assessment'] = assess(conn, it['issuer_id'], it['cutoff'], passages, own.get('themes'), it['mode'])
     documents=_documents(conn,it,evaluations,passages)
     issues.extend(source_issues(evaluations,passages,documents))
     it['nomination_issues']=sorted(set(issues))

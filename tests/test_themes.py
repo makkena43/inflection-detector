@@ -276,6 +276,17 @@ def test_generic_expansion_phrases_are_not_themes():
     assert [t["phrases"] for t in E.build(rows, as_of)] == [["water treatment plant"]]
 
 
+def test_theme_grade():
+    from inflection.themes.context import grade
+    assert grade(1, 800.0, 2, "MAKER", True)[0] == "A"
+    assert grade(2, 50.0, -3, "SUPPLIER", True)[0] == "B"            # losing companies over 13 weeks
+    assert grade(2, 50.0, 0, "EPC", False)[0] == "B"                  # packet's event not in the theme
+    assert grade(3, 20.0, 1, "MAKER", True)[0] == "B" and grade(3, 60.0, 1, "MAKER", True)[0] == "A"
+    assert grade(4, 0.0, 0, "MAKER", True)[0] == "CROWDED"
+    assert grade(2, 50.0, 1, "BUYER", True)[0] == "HEADWIND" and grade(5, -40.0, -5, "MAKER", True)[0] == "HEADWIND"
+    assert grade(2, 50.0, 1, None, True)[0] == "NONE" and grade(0, None, None, "MAKER", True)[0] == "NONE"
+
+
 def test_stage_thresholds():
     assert [E._stage(n, g) for n, g in ((3, None), (5, 50.0), (12, 10.0), (30, 5.0), (30, 0.0), (8, -40.0))] == \
         [0, 1, 2, 3, 4, 5]
@@ -333,5 +344,17 @@ def test_emergent_index_snapshot_and_exposure(db):
     assert top["company_role"] == "SUPPLIER"
     assert E.exposure(db, cos[0], datetime(2025, 11, 1, tzinfo=IST)) == {"snapshot": None, "themes": []}
     nxt = E.snapshot(db, date(2025, 11, 22), spec_min=8)                 # next week keeps the theme key
+    from inflection.themes.context import assess
+    ev = "00000000-0000-0000-0000-0000000000e1"
+    res = assess(db, cos[0], datetime(2025, 11, 25, 9, 0, tzinfo=IST),
+                 [dict(event_id=ev, quote="LoA for supply of switchgear to a state utility"),
+                  dict(event_id="other", quote="Board meeting outcome")])
+    t = res["themes"][0]
+    assert res["snapshot"] == "2025-11-22" and t["role"] == "SUPPLIER" and t["packet_events_in_theme"] == [ev]
+    assert t["companies"] == 6 and t["company_rank"] == 1 and t["entrant"] == "EARLY" and t["momentum_13w"] is None
+    assert t["grade"] == "A" and res["best_grade"] == "A"
+    assert assess(db, cos[0], datetime(2025, 11, 1, tzinfo=IST), [])["snapshot"] is None
+    out = "\n".join(C.theme_assessment_section(res))
+    assert "Overall theme grade: **A**" in out and "supplier, #1" in out
     keys = db.execute("SELECT as_of, theme_key FROM emergent_theme_snapshots ORDER BY as_of, theme_key").fetchall()
     assert {k for d, k in keys if d == date(2025, 11, 15)} == {k for d, k in keys if d == date(2025, 11, 22)}
