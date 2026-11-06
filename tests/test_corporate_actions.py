@@ -134,3 +134,18 @@ def test_derive_skips_demergers(db):
                   VALUES (%s, 'OTHER', '2024-01-08', '{"symbol": "XYZ", "subject": "Demerger"}', 'x', '1')""", (sec,))
     assert corporate_actions.derive_missing(db, date(2024, 1, 1), date(2024, 1, 31))["counts"] == {
         "demerger_or_rights_nearby": 1, "derived": 1}                        # ABC's bonus is still derived
+
+
+def test_same_day_split_and_bonus_reconcile_together(db):
+    _bhav(db)
+    prices.fill_prices(db)
+    # XYZ's reference price halves on 2024-01-08; two actions stored that day (0.25 and 2) only match together.
+    sec = db.execute("SELECT security_id FROM securities WHERE isin = 'INE222B01022'").fetchone()[0]
+    for kind, subject, mult in (("SPLIT", "split a", "0.25"), ("BONUS", "pair b", "2")):
+        db.execute("""INSERT INTO corporate_actions (security_id, kind, ex_date, details, provider, provider_version)
+                      VALUES (%s, %s, '2024-01-08', %s, %s, '1')""",
+                   (sec, kind, corporate_actions.Jsonb({"symbol": "XYZ", "subject": subject, "price_multiplier": mult}),
+                    corporate_actions.SOURCE))
+    assert corporate_actions.reconcile(db) == {"reconciled:exchange_reference_price": 2}
+    res = db.execute("SELECT details->'reconciliation' FROM corporate_actions WHERE kind = 'SPLIT'").fetchone()[0]
+    assert res["multiplier_checked"] == "0.5000000000" and res["same_day_actions"] is True

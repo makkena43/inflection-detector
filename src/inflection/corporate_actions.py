@@ -2,7 +2,8 @@
 
 * ``record_window`` stores one listing window.  Each action is tied to a security by its ISIN, else
   by the NSE symbol valid on the ex-date; unresolved rows are counted in the run, not guessed;
-* ``reconcile`` checks each split and bonus against the exchange's own adjustment: on the ex-date
+* ``reconcile`` checks each split and bonus (together with any other split/bonus of the same security on
+  the same ex-date) against the exchange's own adjustment: on the ex-date
   NSE publishes a previous close already scaled by the action, so previous close on the ex-date
   divided by the actual close the trading day before should equal the multiplier.  When that
   reference price is missing, the overnight price move is used instead.  Only reconciled actions
@@ -136,18 +137,25 @@ def reconcile(conn, recheck: bool = False) -> dict:
     """Mark splits and bonuses reconciled when NSE's prices show the same ratio."""
     counts: Counter = Counter()
     rows = conn.execute(
-        f"""SELECT action_id, ex_date, details->>'symbol', (details->>'price_multiplier')::numeric
-              FROM corporate_actions
-             WHERE provider = %s AND kind IN ('SPLIT','BONUS') AND details ? 'price_multiplier'
-               {"" if recheck else "AND NOT reconciled"}""", (SOURCE,)).fetchall()
+        f"""SELECT a.action_id, a.ex_date, a.details->>'symbol', (a.details->>'price_multiplier')::numeric,
+                   (SELECT round(exp(sum(ln((b.details->>'price_multiplier')::numeric))), 10)
+                      FROM corporate_actions b
+                     WHERE b.security_id = a.security_id AND b.ex_date = a.ex_date
+                       AND b.kind IN ('SPLIT','BONUS') AND b.details ? 'price_multiplier')
+              FROM corporate_actions a
+             WHERE a.provider = %s AND a.kind IN ('SPLIT','BONUS') AND a.details ? 'price_multiplier'
+               {"" if recheck else "AND NOT a.reconciled"}""", (SOURCE,)).fetchall()
     with conn.transaction():
-        for action_id, ex_date, symbol, mult in rows:
+        for action_id, ex_date, symbol, own, mult in rows:
+            # a split and a bonus on the same ex-date (e.g. Cupid, Apr 2024) move the price together: check the
+            # exchange's scaling against the product of every split/bonus stored for that security and day.
             q = {"symbol": symbol, "day": ex_date, "series": EQUITY_SERIES}
             ex = conn.execute(_EX_ROW, q).fetchone()
             prev = conn.execute(_PREV_ROW, q).fetchone()
             ok, method, implied = check(mult, prev[1] if prev else None, ex[1] if ex else None,
                                         ex[2] or ex[3] if ex else None)
             result = {"method": method, "implied": str(round(implied, 6)) if implied is not None else None,
+                      "multiplier_checked": str(mult), "same_day_actions": mult != own,
                       "previous_day": prev[0].isoformat() if prev else None,
                       "ex_trade_date": ex[0].isoformat() if ex else None, "reconciled": ok}
             conn.execute("""UPDATE corporate_actions SET reconciled = %s,
