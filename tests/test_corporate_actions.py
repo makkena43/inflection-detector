@@ -97,3 +97,55 @@ def test_overnight_move_is_the_fallback_check():
     assert corporate_actions.check(Decimal("0.5"), Decimal(1000), None, Decimal(480))[:2] == (True, "overnight_move")
     assert corporate_actions.check(Decimal("0.5"), Decimal(1000), None, Decimal(950))[0] is False
     assert corporate_actions.check(Decimal("0.5"), None, None, None) == (False, "no_prices", None)
+
+
+@pytest.mark.parametrize("implied,expected", [
+    (Decimal("0.0502"), Decimal("0.05")),         # 1:10 split + 1:1 bonus (Cupid, Apr 2024)
+    (Decimal("0.4990"), Decimal("0.5")),          # bonus 1:1 or split 1:2
+    (Decimal("0.2010"), Decimal("0.2")),          # split 1:5
+    (Decimal("0.7300"), None),                    # demerger-like scaling: no plain ratio within 2%
+])
+def test_snap_to_plain_ratio(implied, expected):
+    fit = corporate_actions.snap(implied)
+    assert (fit[0] if fit else None) == expected
+
+
+def test_derive_stores_the_missing_split_once(db):
+    _bhav(db)
+    prices.fill_prices(db)
+    dry = corporate_actions.derive_missing(db, date(2024, 1, 1), date(2024, 1, 31))
+    # no actions stored at all: ABC's bonus and XYZ's split are both missing, both halve the price
+    assert dry["counts"] == {"derived": 2} and {r["multiplier"] for r in dry["rows"]} == {"0.50000000"}
+    assert db.execute("SELECT count(*) FROM corporate_actions").fetchone()[0] == 0      # dry run writes nothing
+    assert corporate_actions.derive_missing(db, date(2024, 1, 1), date(2024, 1, 31), apply=True)["counts"]["written"] == 2
+    assert corporate_actions.unexplained_adjustments(db, date(2024, 1, 1), date(2024, 1, 31)) == []
+    assert corporate_actions.derive_missing(db, date(2024, 1, 1), date(2024, 1, 31), apply=True)["counts"] == {}
+    adj = db.execute("""SELECT close, multiplier, unverified FROM prices_split_bonus_adjusted a
+                          JOIN securities s USING (security_id)
+                         WHERE isin = 'INE222B01022' AND trade_date = '2024-01-05'""").fetchone()
+    assert adj == (Decimal(50), Decimal("0.5"), False)
+
+
+def test_derive_skips_demergers(db):
+    _bhav(db)
+    prices.fill_prices(db)
+    sec = db.execute("SELECT security_id FROM securities WHERE isin = 'INE222B01022'").fetchone()[0]
+    db.execute("""INSERT INTO corporate_actions (security_id, kind, ex_date, details, provider, provider_version)
+                  VALUES (%s, 'OTHER', '2024-01-08', '{"symbol": "XYZ", "subject": "Demerger"}', 'x', '1')""", (sec,))
+    assert corporate_actions.derive_missing(db, date(2024, 1, 1), date(2024, 1, 31))["counts"] == {
+        "demerger_or_rights_nearby": 1, "derived": 1}                        # ABC's bonus is still derived
+
+
+def test_same_day_split_and_bonus_reconcile_together(db):
+    _bhav(db)
+    prices.fill_prices(db)
+    # XYZ's reference price halves on 2024-01-08; two actions stored that day (0.25 and 2) only match together.
+    sec = db.execute("SELECT security_id FROM securities WHERE isin = 'INE222B01022'").fetchone()[0]
+    for kind, subject, mult in (("SPLIT", "split a", "0.25"), ("BONUS", "pair b", "2")):
+        db.execute("""INSERT INTO corporate_actions (security_id, kind, ex_date, details, provider, provider_version)
+                      VALUES (%s, %s, '2024-01-08', %s, %s, '1')""",
+                   (sec, kind, corporate_actions.Jsonb({"symbol": "XYZ", "subject": subject, "price_multiplier": mult}),
+                    corporate_actions.SOURCE))
+    assert corporate_actions.reconcile(db) == {"reconciled:exchange_reference_price": 2}
+    res = db.execute("SELECT details->'reconciliation' FROM corporate_actions WHERE kind = 'SPLIT'").fetchone()[0]
+    assert res["multiplier_checked"] == "0.5000000000" and res["same_day_actions"] is True
