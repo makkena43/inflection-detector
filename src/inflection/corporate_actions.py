@@ -8,7 +8,11 @@
   reference price is missing, the overnight price move is used instead.  Only reconciled actions
   make adjusted returns verified (``prices_split_bonus_adjusted.unverified``);
 * ``unexplained_adjustments`` lists days where the exchange scaled the previous close by more than
-  15% and no split or bonus with a readable ratio is stored: the actions still missing.
+  15% and no split or bonus with a readable ratio is stored: the actions still missing;
+* ``derive_missing`` stores those missing actions when the exchange's own scaling matches a plain split or
+  bonus ratio within 2% (provider ``DERIVED``, reconciled by construction).  Without them a stock's adjusted
+  history has a fake jump at the ex-date and downstream panels go blind on it for a year.  Owner decision of
+  2026-11-06.  Undo: ``DELETE FROM corporate_actions WHERE provider = 'nse_reference_price_derived'``.
 """
 
 from __future__ import annotations
@@ -181,6 +185,93 @@ def unexplained_adjustments(conn, start: date, end: date, limit: int = 50) -> li
                  ratio=str(f)) for a, b, c, d, e, f in rows]
 
 
+# ---------------------------------------------------------------- missing actions from exchange scaling
+
+DERIVED = "nse_reference_price_derived"
+DERIVED_VERSION = "derive-1"
+_FV_SPLITS = (1, 2, 2.5, 4, 5, 10, 20)        # face value 10 -> 10/n (and 5 -> 2, 2 -> 1, ...)
+
+
+def plain_multipliers() -> list[tuple[Decimal, str]]:
+    """Price multipliers of plain splits, bonuses a:b (a, b <= 5), a split with a 1:1 or 1:2 bonus, and
+    consolidations.  Kept small on purpose so that demerger or rights scalings rarely land on one."""
+    out: dict = {}
+    splits = [(Decimal(1) / Decimal(str(n)), f"split 1:{n:g}") for n in _FV_SPLITS[1:]]
+    bonuses = [(Decimal(b) / Decimal(a + b), f"bonus {a}:{b}")
+               for a in range(1, 6) for b in range(1, 6) if math.gcd(a, b) == 1]
+    for m, label in splits + bonuses:
+        out.setdefault(round(m, 8), label)
+    for sm, sl in splits:
+        for bm, bl in [x for x in bonuses if x[1] in ("bonus 1:1", "bonus 1:2")]:
+            out.setdefault(round(sm * bm, 8), f"{sl} + {bl}")
+    for n in (2, 4, 5, 10):
+        out.setdefault(Decimal(n), f"consolidation {n}:1")
+    return sorted(out.items())
+
+
+_PLAIN = plain_multipliers()
+
+
+def snap(implied: Decimal) -> Optional[tuple[Decimal, str]]:
+    """The plain split/bonus multiplier within 2% of the exchange's scaling, if exactly one fits best."""
+    best = min(_PLAIN, key=lambda kv: abs(math.log(implied / kv[0])))
+    return best if abs(implied / best[0] - 1) <= EXACT else None
+
+
+_NEARBY = """
+SELECT bool_or(a.kind IN ('SPLIT','BONUS') AND NOT a.details ? 'price_multiplier'),
+       bool_or(a.details->>'subject' ~* '(demerg|arrangement|capital reduction|reduction of capital|rights)')
+  FROM corporate_actions a
+ WHERE upper(a.details->>'symbol') = %(symbol)s AND a.ex_date BETWEEN %(day)s - 5 AND %(day)s + 5"""
+
+
+def derive_missing(conn, start: date, end: date, apply: bool = False) -> dict:
+    """Store the missing splits/bonuses that ``unexplained_adjustments`` finds, when they snap to a plain ratio.
+    Guards against demergers and rights (which also scale the reference price): skipped when such an action is
+    stored nearby, and a scaling above 0.5 is only accepted when NSE stored a split/bonus with an unreadable ratio
+    within 5 days.  Dry run unless ``apply``: returns counts and the rows it would write."""
+    counts: Counter = Counter()
+    rows = []
+    for m in unexplained_adjustments(conn, start, end, limit=100000):
+        day = date.fromisoformat(m["day"])
+        fit = snap(Decimal(m["ratio"]))
+        if fit is None:
+            counts["not_a_plain_ratio"] += 1
+            continue
+        sec = conn.execute(_SECURITY, {"isin": None, "symbol": m["symbol"].upper(), "day": day}).fetchone()
+        if sec is None:
+            counts["unresolved"] += 1
+            continue
+        mult, label = fit
+        unreadable, other = conn.execute(_NEARBY, {"symbol": m["symbol"].upper(), "day": day}).fetchone()
+        if other:
+            counts["demerger_or_rights_nearby"] += 1
+            continue
+        if mult > Decimal("0.5") and not unreadable:
+            counts["small_ratio_without_stored_action"] += 1
+            continue
+        rows.append(dict(security_id=sec[0], symbol=m["symbol"], ex_date=day, multiplier=mult, label=label,
+                         reference_ratio=m["ratio"]))
+        counts["derived"] += 1
+    if apply and rows:
+        with conn.transaction():
+            for r in rows:
+                details = {"subject": f"derived: {r['label']}", "symbol": r["symbol"], "ratio": r["label"],
+                           "price_multiplier": str(r["multiplier"]), "derived": True,
+                           "reconciliation": {"method": "exchange_reference_price", "implied": r["reference_ratio"],
+                                              "reconciled": True}}
+                cur = conn.execute(
+                    """INSERT INTO corporate_actions (security_id, kind, ex_date, details, provider, provider_version,
+                                                      reconciled)
+                       VALUES (%s, 'SPLIT', %s, %s, %s, %s, true)
+                       ON CONFLICT (provider, security_id, kind, ex_date, md5(details->>'subject')) DO NOTHING""",
+                    (r["security_id"], r["ex_date"], Jsonb(details), DERIVED, DERIVED_VERSION))
+                counts["written"] += cur.rowcount
+    return {"counts": dict(counts),
+            "rows": [dict(symbol=r["symbol"], ex_date=r["ex_date"].isoformat(), multiplier=str(r["multiplier"]),
+                          label=r["label"], reference_ratio=r["reference_ratio"]) for r in rows]}
+
+
 def report(conn) -> dict:
     kinds = conn.execute(
         """SELECT kind, count(*), count(*) FILTER (WHERE reconciled),
@@ -199,6 +290,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     """python -m inflection.corporate_actions fetch START [--to END]
     python -m inflection.corporate_actions reconcile [--recheck]
     python -m inflection.corporate_actions report [START] [--to END]   (lists unexplained price adjustments)
+    python -m inflection.corporate_actions derive [START] [--to END] [--apply]   (stores the plain-ratio ones)
 
     Connects with INFLECTION_DSN.  Uses the default HttpClient transport."""
     import argparse
@@ -210,10 +302,11 @@ def main(argv: Optional[list[str]] = None) -> int:
     from .sources.http import HttpClient
 
     ap = argparse.ArgumentParser(prog="python -m inflection.corporate_actions")
-    ap.add_argument("command", choices=("fetch", "reconcile", "report"))
+    ap.add_argument("command", choices=("fetch", "reconcile", "report", "derive"))
     ap.add_argument("start", type=date.fromisoformat, nargs="?")
     ap.add_argument("--to", type=date.fromisoformat)
     ap.add_argument("--recheck", action="store_true", help="re-run reconciled actions too")
+    ap.add_argument("--apply", action="store_true", help="derive: write the rows (default is a dry run)")
     ap.add_argument("--interval", type=float, default=1.5, help="seconds between requests")
     a = ap.parse_args(argv)
     if a.command == "fetch" and not a.start:
@@ -227,6 +320,11 @@ def main(argv: Optional[list[str]] = None) -> int:
             print(json.dumps(reconcile(conn), indent=2))
         elif a.command == "reconcile":
             print(json.dumps(reconcile(conn, a.recheck), indent=2))
+        elif a.command == "derive":
+            out = derive_missing(conn, a.start or date(2019, 1, 1), a.to or today, a.apply)
+            print(json.dumps({"counts": out["counts"], "applied": a.apply}, indent=2))
+            for r in out["rows"]:
+                print(json.dumps(r))
         else:
             start = a.start or date(2019, 1, 1)
             print(json.dumps({**report(conn), "unexplained_adjustments":
