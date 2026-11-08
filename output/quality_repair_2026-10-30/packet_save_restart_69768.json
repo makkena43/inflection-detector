@@ -1,7 +1,0 @@
-{
-  "pid": 69768,
-  "at": "2026-10-31T02:05:30.993219+00:00",
-  "reason": "Normalize exact decimal values at packet storage boundary",
-  "validation": "67 passed",
-  "weekly_shortlist_checkpoint_preserved": true
-}

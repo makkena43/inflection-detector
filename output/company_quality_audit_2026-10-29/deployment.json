@@ -1,9 +1,0 @@
-{
-  "installed_engine": "/Users/makkenasrinivas/inflection-jobs/engine/engine.py",
-  "backup": "/Users/makkenasrinivas/inflection-jobs/engine/engine.py.bak-company-audit-20261029",
-  "sha256": "9dcfdc276de83fbc75ef99b1e8a327e712f88e6e97114566b843a48688ad999e",
-  "analysis_pid": 4273,
-  "commercial_rules": "commercial-19",
-  "screen_version": "local-screen-3",
-  "deployed_at": "2026-10-29T06:23:16.795615+00:00"
-}

@@ -160,12 +160,58 @@ _AUDIT_36 = """
 """
 RULES_3_6 = RULES_3_5 + _AUDIT_36
 
+# Themes (2026-11-04): packets carry "Supply-gap themes" and "Emerging themes" sections (inflection.themes) with
+# the company's role in each theme. Context only until a backtest shows an edge: a theme can tip a borderline case,
+# never replace firmness or size. theme_signal is recorded so the backtest can measure it.
+_THEMES = """
+
+### Themes (context only)
+
+The "Theme assessment" table says whether this company's products sit in a sector that many companies are winning
+orders for or adding capacity in, computed from all companies' filings before the cutoff: the theme's stage,
+breadth now and a year ago, its 13-week change, the company's role (maker, supplier, EPC contractor, buyer/user),
+its rank and share of the theme's firm order value, whether it was an early entrant, which of THIS packet's events
+are in the theme, and a grade with reasons. The "Supply-gap themes" table adds MakroGraph's shortage areas with an
+evidenced company role. A theme never makes an event firm, large or new, and never replaces the size and firmness
+tests above. Use it only to judge whether the change is part of a sector upcycle that can repeat:
+- Grade A (strong tailwind; the event you rely on is listed as in the theme): in a borderline case — routine flag
+  uncertain, or size just short of 10% of revenue with a clear path to it — you may move WATCH_MILESTONE to
+  DEEP_RESEARCH; say which theme and why in the rationale. Rank 1-3 or an early entrant makes the case stronger.
+- Grade B (tailwind, but this packet's event is not in the theme, or the theme is losing companies): mention it in
+  the rationale; it does not change the action.
+- CROWDED or HEADWIND: a reason for caution. A buyer/user faces higher input costs; a crowded or declining theme
+  has no tailwind left. List it under contradictions when you still choose DEEP_RESEARCH.
+- NONE, "mention only", "role not stated", or a theme unrelated to the event: ignore.
+- A supply-gap theme with an evidenced maker/supplier role that matches the event's product counts like grade B,
+  or as confirmation of an A.
+Add two fields: theme_signal (STRENGTHENS if an A or B theme supported the decision, WEAKENS if a CROWDED or
+HEADWIND theme counted against it, otherwise NEUTRAL) and theme_used (the theme name, or null)."""
+RULES_3_5_2 = RULES_3_5 + _THEMES
+RULES_3_6_1 = RULES_3_6 + _THEMES
+# 3.6.2 (2026-11-04, owner: "context line only"): a computed order-flow section; it changes no action rule.
+_ORDER_FLOW = """
+
+### Order flow (computed, context only)
+
+The "Order flow" section compares the company's firm orders over the last 12 months with the 12 months before, and
+shows the latest order-book and inflow growth, TTM revenue growth and the credibility checks that could be made. It is
+context only: it never makes an order firm, large or non-routine, and it does not change any action rule above.
+- If its status is ACCELERATING and you still mark an order routine, say in the rationale why the accelerating order
+  flow does not change the earnings path.
+- ACCELERATING_WITH_FLAGS is a caution: order flow is rising but a credibility check failed; say so.
+- STEADY or UNKNOWN: nothing to add.
+Add the field order_flow_noted: true if the order-flow section influenced your rationale, otherwise false."""
+RULES_3_6_2 = RULES_3_6_1 + _ORDER_FLOW
+
 VERSIONS = {"3.3": ("triage-rules-3.3", RULES_3_3), "3.4": ("triage-rules-3.4", RULES_3_4),
             "3.5.0": ("triage-rules-3.5", RULES_3_5_0), "3.5": ("triage-rules-3.5.1", RULES_3_5),
-            "3.6": ("triage-rules-3.6", RULES_3_6)}
+            "3.6": ("triage-rules-3.6", RULES_3_6), "3.5.2": ("triage-rules-3.5.2", RULES_3_5_2),
+            "3.6.1": ("triage-rules-3.6.1", RULES_3_6_1), "3.6.2": ("triage-rules-3.6.2", RULES_3_6_2)}
 ACTIVE = os.environ.get("INFLECTION_TRIAGE_RULES", "3.4")
 if ACTIVE not in VERSIONS:
     raise ValueError(f"INFLECTION_TRIAGE_RULES must be one of {sorted(VERSIONS)}, not {ACTIVE!r}")
 TRIAGE_RULES_VERSION, RULES = VERSIONS[ACTIVE]
 WITH_VALUATION = ACTIVE != "3.3"          # 3.4 packets carry the computed valuation-and-margin section
 WITH_SOURCES = ACTIVE not in ("3.3", "3.4")   # 3.5 packets also carry the ownership-and-other-signals section
+WITH_THEMES = ACTIVE in ("3.5.2", "3.6.1", "3.6.2")    # theme rules need the theme sections in the packet
+WITH_ORDER_FLOW = ACTIVE == "3.6.2"           # 3.6.2 packets carry the computed order-flow section

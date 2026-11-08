@@ -415,11 +415,26 @@ def packet_for(conn, it: dict, budget: int = C.TOKEN_BUDGET) -> tuple[dict, str]
                             shares_asof=date.fromisoformat(share_end) if share_end else None)
     ob = orderbook.series(conn, it["issuer_id"], it["cutoff"], mode=it['mode']) if C.R.WITH_VALUATION else None
     own = _ownership(conn, it) if C.R.WITH_SOURCES else None
+    if own is not None and themes_enabled():
+        # computed theme assessment: strength, the company's place in each theme, and which packet events are in it
+        from ..themes.context import assess
+        from ..freshness import packet_revenue
+        rev = packet_revenue({'financials': fin, 'manifest': {'cutoff': it['cutoff']}})
+        own['theme_assessment'] = assess(conn, it['issuer_id'], it['cutoff'], passages, own.get('themes'), it['mode'],
+                                         ttm_revenue_cr=rev)
+    flow = None
+    if C.R.WITH_ORDER_FLOW:
+        # 3.6.2: computed order flow (context only); other rule versions keep their packets and hashes unchanged
+        from .. import orderflow
+        from ..freshness import packet_revenue
+        flow = orderflow.compute(conn, it['issuer_id'], it['cutoff'],
+                                 packet_revenue({'financials': fin, 'manifest': {'cutoff': it['cutoff']}}),
+                                 C.valuation(fin, {}).get('revenue_growth_ttm_pct'), ob, it['mode'])
     documents=_documents(conn,it,evaluations,passages)
     issues.extend(source_issues(evaluations,passages,documents))
     it['nomination_issues']=sorted(set(issues))
     return C.build(it, _identity(conn, it), evaluations, _prior_triage(conn, it), events, passages,
-                   documents, fin, price, excluded, budget, order_book=ob, ownership=own)
+                   documents, fin, price, excluded, budget, order_book=ob, ownership=own, order_flow=flow)
 
 
 SIGNAL_CATEGORIES = ["capacity addition", "commencement of commercial production/operations", "credit rating",
@@ -466,7 +481,7 @@ def _ownership(conn, it: dict) -> dict:
 
 def themes_enabled() -> bool:
     import os
-    return os.environ.get('INFLECTION_PACKET_THEMES', '').strip().lower() in ('1', 'true', 'yes', 'on')
+    return C.R.WITH_THEMES or os.environ.get('INFLECTION_PACKET_THEMES', '').strip().lower() in ('1', 'true', 'yes', 'on')
 
 
 def _dedupe_signals(rows) -> list[dict]:

@@ -1,12 +1,12 @@
 {
   "version": "process-health-2",
-  "generated_at": "2026-10-30T03:57:34.825300+00:00",
+  "generated_at": "2026-11-08T07:31:53.405221+00:00",
   "window": {
-    "first": "2024-10-29",
-    "last": "2026-10-29"
+    "first": "2026-10-26",
+    "last": "2026-11-08"
   },
   "active_versions": {
-    "commercial": "commercial-25",
+    "commercial": "commercial-26",
     "financial": "financial-10"
   },
   "checks": [
@@ -28,13 +28,13 @@
       "key": "financial_unknown",
       "title": "Financial facts with unknown scope or availability",
       "status": "WARNING",
-      "affected": 17,
+      "affected": 46,
       "blocking": false,
       "description": "These cannot support comparable, dated financial calculations.",
       "details": [
         {
-          "affected": 17,
-          "issuers": 2
+          "affected": 46,
+          "issuers": 5
         }
       ]
     },
@@ -55,12 +55,12 @@
       "key": "identity_handoff",
       "title": "Dated filings still missing an issuer identity",
       "status": "WARNING",
-      "affected": 7861,
+      "affected": 236,
       "blocking": false,
       "description": "Unlinked filings cannot reach issuer-level analysis; identity repair is separate from a negative company assessment.",
       "details": [
         {
-          "affected": 7861
+          "affected": 236
         }
       ]
     },
@@ -68,14 +68,14 @@
       "key": "source_coverage",
       "title": "Unresolved announcement-listing windows",
       "status": "WARNING",
-      "affected": 41,
+      "affected": 5,
       "blocking": true,
       "description": "Successful retries or complete child windows can cover an older failure in the same stream. Unverified empty responses and gaps remain incomplete.",
       "details": [
         {
           "name": "bse_announcements",
           "coverage_status": "PARTIAL",
-          "affected": 39
+          "affected": 3
         },
         {
           "name": "nse_announcements",
@@ -88,21 +88,17 @@
       "key": "results_discovery",
       "title": "Incomplete results discovery in the requested window",
       "status": "WARNING",
-      "affected": 9,
+      "affected": 260,
       "blocking": true,
       "description": "Only proven-complete results listings are cached. Empty or blocked listings remain retryable.",
       "details": [
         {
           "coverage_status": "EMPTY_UNVERIFIED",
-          "affected": 7
-        },
-        {
-          "coverage_status": "FAILED",
-          "affected": 1
+          "affected": 257
         },
         {
           "coverage_status": "PARTIAL",
-          "affected": 1
+          "affected": 3
         }
       ]
     },
@@ -110,12 +106,12 @@
       "key": "results_universe",
       "title": "Current symbol identities without a complete results listing for this window",
       "status": "WARNING",
-      "affected": 3116,
+      "affected": 260,
       "blocking": false,
       "description": "Coverage must not depend on an order announcement. Some instruments may not report corporate results; eligibility needs explicit source classification.",
       "details": [
         {
-          "affected": 3116
+          "affected": 260
         }
       ]
     },
@@ -144,73 +140,22 @@
     {
       "key": "announcement_backlog",
       "title": "Announcement attachments awaiting complete text",
-      "status": "WARNING",
-      "affected": 903553,
+      "status": "ERROR",
+      "affected": null,
       "blocking": true,
-      "description": "Includes undispatched downloads, partial text and OCR. Download-policy exclusions remain visible; analysis of available text alone does not prove full filing coverage.",
-      "details": [
-        {
-          "name": "bse_announcements",
-          "pipeline_state": "DISCOVERED",
-          "affected": 636738
-        },
-        {
-          "name": "bse_announcements",
-          "pipeline_state": "DOWNLOADED",
-          "affected": 237
-        },
-        {
-          "name": "bse_announcements",
-          "pipeline_state": "FAILED",
-          "affected": 53
-        },
-        {
-          "name": "bse_announcements",
-          "pipeline_state": "OCR_REQUIRED",
-          "affected": 62
-        },
-        {
-          "name": "bse_announcements",
-          "pipeline_state": "PARTIAL_TEXT",
-          "affected": 4628
-        },
-        {
-          "name": "nse_announcements",
-          "pipeline_state": "DISCOVERED",
-          "affected": 253494
-        },
-        {
-          "name": "nse_announcements",
-          "pipeline_state": "DOWNLOADED",
-          "affected": 111
-        },
-        {
-          "name": "nse_announcements",
-          "pipeline_state": "FAILED",
-          "affected": 246
-        },
-        {
-          "name": "nse_announcements",
-          "pipeline_state": "OCR_REQUIRED",
-          "affected": 1029
-        },
-        {
-          "name": "nse_announcements",
-          "pipeline_state": "PARTIAL_TEXT",
-          "affected": 6955
-        }
-      ]
+      "description": "QueryCanceled: canceling statement due to statement timeout",
+      "details": []
     },
     {
       "key": "commercial_backlog",
       "title": "Extracted filings not scanned under the active rules",
       "status": "WARNING",
-      "affected": 155,
+      "affected": 6,
       "blocking": true,
       "description": "A rule-version change creates explicit reprocessing work. Older evaluations are retained until their source is reread.",
       "details": [
         {
-          "affected": 155
+          "affected": 6
         }
       ]
     },
@@ -231,13 +176,13 @@
       "key": "results_text_backlog",
       "title": "Results filings awaiting download or parsing",
       "status": "WARNING",
-      "affected": 39,
+      "affected": 6,
       "blocking": true,
       "description": "Discovered results must reach usable facts before this window is marked complete.",
       "details": [
         {
           "pipeline_state": "FAILED",
-          "affected": 39
+          "affected": 6
         }
       ]
     },
@@ -258,13 +203,13 @@
       "key": "financial_comparable",
       "title": "Results without a comparable prior period",
       "status": "WARNING",
-      "affected": 5780,
+      "affected": 382,
       "blocking": false,
       "description": "A missing comparable is a data limitation, not a negative business verdict.",
       "details": [
         {
           "status": "NO_COMPARABLE",
-          "affected": 5780
+          "affected": 382
         }
       ]
     },
@@ -272,28 +217,23 @@
       "key": "nonseasonal_results",
       "title": "Results disclosed outside the old four-month refresh schedule",
       "status": "INFO",
-      "affected": 10657,
+      "affected": 1078,
       "blocking": false,
       "description": "This measures why results discovery must run year-round, independently of commercial mentions. It does not mean all these filings were missed.",
       "details": [
         {
-          "affected": 10657
+          "affected": 1078
         }
       ]
     },
     {
       "key": "corporate_actions",
       "title": "Unverified split and bonus adjustments",
-      "status": "WARNING",
-      "affected": 34,
+      "status": "OK",
+      "affected": 0,
       "blocking": false,
       "description": "Returns crossing these actions must not be labelled verified.",
-      "details": [
-        {
-          "provider": "nse_corporate_actions",
-          "affected": 34
-        }
-      ]
+      "details": []
     },
     {
       "key": "price_versions",
@@ -325,7 +265,7 @@
   "summary": {
     "checks": 19,
     "blocking_checks": 5,
-    "warnings": 10,
+    "warnings": 9,
     "status": "INCOMPLETE",
     "note": "Processing completion is separate from historical-data completeness and predictive performance."
   }

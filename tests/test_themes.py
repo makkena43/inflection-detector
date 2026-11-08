@@ -228,6 +228,65 @@ def test_build_carries_company_role():
     assert {m["issuer_id"]: m["role"] for m in t["members"]} == {"A": "SUPPLIER", "B": "BUYER", "C": None}
 
 
+def test_only_labelled_yes_phrases_form_themes():
+    as_of = date(2025, 12, 31)
+    rows = [(c, as_of - timedelta(days=10), ["bess", "commissioned"], 10) for c in "ABC"]
+    rows += [(c, as_of - timedelta(days=10), ["mtpa"], None) for c in "DEF"]
+    themes = E.build(rows, as_of, allowed=frozenset({"bess"}))
+    assert [(t["name"], t["phrases"]) for t in themes] == [("bess", ["bess"])]
+
+
+def test_label_phrases_cached(db):
+    from inflection.themes import labels as L
+    assert L.parse("Yes.") is True and L.parse("no") is False and L.parse("maybe") is None
+    db.execute("INSERT INTO theme_background_runs VALUES (%s, '2021-01-01', '2022-01-01', 1, 1000)", (E.BACKGROUND_VERSION,))
+    E._BG_CACHE.clear()
+    E._LABEL_CACHE.clear()
+    cos = [_company(db, f"Co {i} Limited", f"CO{i}", f"INE{i:03d}A01011") for i in range(3)]
+    src = db.execute("""INSERT INTO sources (name, kind, access_policy) VALUES ('nse_announcements', 'announcements',
+                        'test') RETURNING source_id""").fetchone()[0]
+    for i, iss in enumerate(cos):
+        pub = _filing(db, iss, src, 300 + i, datetime(2025, 11, 10, 18, 0, tzinfo=IST), "x")
+        ver, art = db.execute("""SELECT p.document_version_id, a.text_artifact_id FROM document_publications p
+                                  JOIN text_artifacts a USING (document_version_id) WHERE p.publication_id = %s""",
+                              (pub,)).fetchone()
+        mid = db.execute("""INSERT INTO commercial_mentions (rules_version, text_artifact_id, document_version_id,
+                              publication_id, issuer_id, published_at, source_url, page_no, span_start, span_end,
+                              quote, family, event_type, commercial_stage, modality, observation_status, amount,
+                              currency, scale, amount_basis, relationship)
+                            VALUES ('r',%s,%s,%s,%s,now(),'u',1,0,1,'q','ORDER','ORDER','BINDING_DEMAND','REALIZED',
+                                    'OBSERVED',1,'INR','CRORE','FIRM','UNKNOWN') RETURNING mention_id""",
+                         (art, ver, pub, iss)).fetchone()[0]
+        db.execute("""INSERT INTO theme_phrase_mentions (mention_id, issuer_id, source_key, quote_md5, published_at,
+                          family, phrases, version) VALUES (%s,%s,%s,'m',now(),'ORDER',%s,%s)""",
+                   (mid, iss, str(pub), ["bess", "commissioned"], E.VERSION))
+    asked = []
+    res = L.label(db, ask=lambda p: asked.append(p) or ("no" if p == "commissioned" else "Yes"))
+    assert res["yes"] == 1 and res["no"] == 1 and sorted(asked) == ["bess", "commissioned"]
+    assert L.label(db, ask=lambda p: 1 / 0)["candidates"] == 0          # cached: never asked again
+    assert E.load_allowed(db) == frozenset({"bess"})
+    E._BG_CACHE.clear()
+    E._LABEL_CACHE.clear()
+
+
+def test_generic_expansion_phrases_are_not_themes():
+    as_of = date(2025, 12, 31)
+    rows = [(c, as_of - timedelta(days=10), ["new manufacturing facility", "greenfield expansion", "water treatment plant"],
+             None) for c in "ABC"]
+    assert [t["phrases"] for t in E.build(rows, as_of)] == [["water treatment plant"]]
+
+
+def test_theme_grade():
+    from inflection.themes.context import grade
+    assert grade(1, 800.0, 2, "MAKER", True)[0] == "A"
+    assert grade(2, 50.0, -3, "SUPPLIER", True)[0] == "B"            # losing companies over 13 weeks
+    assert grade(2, 50.0, 0, "EPC", False)[0] == "B"                  # packet's event not in the theme
+    assert grade(3, 20.0, 1, "MAKER", True)[0] == "B" and grade(3, 60.0, 1, "MAKER", True)[0] == "A"
+    assert grade(4, 0.0, 0, "MAKER", True)[0] == "CROWDED"
+    assert grade(2, 50.0, 1, "BUYER", True)[0] == "HEADWIND" and grade(5, -40.0, -5, "MAKER", True)[0] == "HEADWIND"
+    assert grade(2, 50.0, 1, None, True)[0] == "NONE" and grade(0, None, None, "MAKER", True)[0] == "NONE"
+
+
 def test_stage_thresholds():
     assert [E._stage(n, g) for n, g in ((3, None), (5, 50.0), (12, 10.0), (30, 5.0), (30, 0.0), (8, -40.0))] == \
         [0, 1, 2, 3, 4, 5]
@@ -268,22 +327,43 @@ def test_emergent_index_snapshot_and_exposure(db):
                        (rules, art, ver, pub, iss, when, quote))
     assert E.index(db) == {"indexed": 6}
     assert E.index(db) == {"indexed": 0}
-    assert "error" in E.snapshot(db, date(2025, 11, 15))          # no background yet: nothing written
+    assert "error" in E.snapshot(db, date(2025, 11, 15), spec_min=8)          # no background yet: nothing written
     for i in range(3):                                            # ordinary filings: board meeting language
         _filing(db, cos[i], src, 200 + i, datetime(2025, 3, 1, 18, 0, tzinfo=IST),
                 "The board approved the results. The meeting ended at 5 pm. Power transformers were not discussed.")
     bg = E.background(db, date(2025, 1, 1), date(2025, 6, 1))
     assert bg["documents"] == 3 and bg["sentences"] == 9 and bg["phrases_seen"] >= 1
     assert E.background(db, date(2025, 1, 1), date(2025, 6, 1))["skipped"] == "exists"
-    res = E.snapshot(db, date(2025, 11, 15))
+    res = E.snapshot(db, date(2025, 11, 15), spec_min=8)
     assert res["themes"] >= 1
-    assert E.snapshot(db, date(2025, 11, 15)) == {"as_of": "2025-11-15", "skipped": "exists"}
+    assert E.snapshot(db, date(2025, 11, 15), spec_min=8) == {"as_of": "2025-11-15", "skipped": "exists"}
     ex = E.exposure(db, cos[0], datetime(2025, 11, 20, 9, 0, tzinfo=IST))
     assert ex["snapshot"] == "2025-11-15" and ex["themes"]
     top = ex["themes"][0]
     assert top["companies"] == 6 and top["company_value_cr"] == 100.0 and top["stage"] == 1
     assert top["company_role"] == "SUPPLIER"
     assert E.exposure(db, cos[0], datetime(2025, 11, 1, tzinfo=IST)) == {"snapshot": None, "themes": []}
-    nxt = E.snapshot(db, date(2025, 11, 22))                 # next week keeps the theme key
+    nxt = E.snapshot(db, date(2025, 11, 22), spec_min=8)                 # next week keeps the theme key
+    from inflection.themes.context import assess
+    ev = "00000000-0000-0000-0000-0000000000e1"
+    res = assess(db, cos[0], datetime(2025, 11, 25, 9, 0, tzinfo=IST),
+                 [dict(event_id=ev, quote="LoA for supply of switchgear to a state utility"),
+                  dict(event_id="other", quote="Board meeting outcome")])
+    t = res["themes"][0]
+    assert res["snapshot"] == "2025-11-22" and t["role"] == "SUPPLIER" and t["packet_events_in_theme"] == [ev]
+    assert t["companies"] == 6 and t["company_rank"] == 1 and t["entrant"] == "EARLY" and t["momentum_13w"] is None
+    assert t["grade"] == "A" and res["best_grade"] == "A"
+    assert assess(db, cos[0], datetime(2025, 11, 1, tzinfo=IST), [])["snapshot"] is None
+    out = "\n".join(C.theme_assessment_section(res))
+    assert "Overall theme grade: **A**" in out and "supplier, #1" in out
     keys = db.execute("SELECT as_of, theme_key FROM emergent_theme_snapshots ORDER BY as_of, theme_key").fetchall()
     assert {k for d, k in keys if d == date(2025, 11, 15)} == {k for d, k in keys if d == date(2025, 11, 22)}
+
+
+def test_crowding_last_close_within_gap():
+    from datetime import date
+    from inflection.themes.context import _last_close
+    rows = [(date(2025, 1, 1), 100), (date(2025, 3, 25), 110), (date(2025, 4, 3), 120)]
+    assert _last_close(rows, date(2025, 3, 31)) == 110.0          # last close on or before the anchor
+    assert _last_close(rows, date(2025, 2, 28)) is None           # nothing within 10 days before
+    assert _last_close(rows, date(2025, 4, 3)) == 120.0

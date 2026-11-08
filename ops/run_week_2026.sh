@@ -9,7 +9,7 @@ J=~/inflection-jobs; L=$J/logs/week_2026.log; B=$J/logs/backfill.log; WL=$J/logs
 D=$(date +%Y-%m-%d)
 W=${1:-$(date -j -v-$(( ($(date +%u) + 6) % 7 ))d -f %Y-%m-%d $D +%Y-%m-%d)}
 cd ${INFLECTION_PROJECT_ROOT:-$HOME/PycharmProjects/inflection-detector}; PY=${INFLECTION_PYTHON:-.venv/bin/python}
-export INFLECTION_DSN=postgresql:///inflection INFLECTION_TRIAGE_RULES=3.6
+export INFLECTION_DSN=postgresql:///inflection INFLECTION_TRIAGE_RULES=3.6.2   # owner 2026-11-04: 3.6 + theme context + order-flow context (context only)
 log() { echo "$(date '+%F %T') $*" >> $L }
 log "week $W start"
 if pgrep -f "run_resume.sh|run_backfill_2026.sh|dl_worker.py|weekly_2026" >/dev/null; then log "another run is going; stopped"; exit 1; fi
@@ -62,8 +62,3 @@ G=$($PY $J/review_2026/coverage_guard.py $W 2>&1); log "$G"; echo "$G"
 # Mark done only after screening, recording and coverage verification succeeded.
 grep -q "^$W done" $WL 2>/dev/null || echo "$W done" >> $WL
 nice -n 10 ~/PycharmProjects/inflection-detector/.venv/bin/python ~/inflection-jobs/ui/order_terms.py --since 2025-01-01 >> ~/inflection-jobs/logs/order_terms.log 2>&1 || true
-
-# Read-only source/decision quality audit after each weekly run.
-$PY -m inflection.audit --limit 2000 >> $J/logs/detection_audit.log 2>&1
-
-$PY -m inflection.process_health --from $W --to $D >> $J/logs/process_health.log 2>&1

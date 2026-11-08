@@ -309,7 +309,7 @@ def triage(p, conn=None, issuer_id=None, use_llm=False):
     elif firm and size is not None and size >= 10 and routine and routine_exception(p):
         action = DEEP                       # rules 3.4: routine order at a thin-margin or cheaply valued company
         g = (p.get("valuation") or {}).get("revenue_growth_ttm_pct")
-        if RULES in {"3.5", "3.6"} and g is not None and num(g) is not None and num(g) <= 0:
+        if RULES in {"3.5", "3.5.2", "3.6", "3.6.1", "3.6.2"} and g is not None and num(g) is not None and num(g) <= 0:
             action = WATCH                  # rules 3.5.1: under the exception, deep research only if TTM revenue is growing
     elif firm and size is not None and size >= 10 and routine:
         action = REJECT

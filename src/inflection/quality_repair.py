@@ -25,9 +25,11 @@ from .sources.download import Archive
 ROOT=Path(__file__).resolve().parents[2]
 # quality-repair-2 (2026-11-02): fresh run of every week under commercial-26, the corrected packet recheck and
 # financial timing; quality-repair-1 (output/process_health/jobs/quality_repair) stays as it was, paused.
-JOB=ROOT/'output/process_health/jobs/quality_repair_2'
-VERSION='quality-repair-2'
-RUN_TAG='quality-20261102'
+# quality-repair-3 (2026-11-04, owner): the same plan rebuilt under triage rules 3.6.2 in its own job directory and run
+# tag, selected with INFLECTION_QUALITY_JOB / _VERSION / _RUN_TAG; the defaults keep quality-repair-2 as it was.
+JOB=Path(os.environ.get('INFLECTION_QUALITY_JOB',ROOT/'output/process_health/jobs/quality_repair_2'))
+VERSION=os.environ.get('INFLECTION_QUALITY_VERSION','quality-repair-2')
+RUN_TAG=os.environ.get('INFLECTION_QUALITY_RUN_TAG','quality-20261102')
 MAX_WORKERS=6   # owner 2026-11-02: 6 packet workers with a 2 GB Postgres cache
 SPLIT=date(2024,10,28)
 TERMINAL={'COMPLETE','FINISHED_WITH_GAPS','SOURCE_UNAVAILABLE','ALLOWANCE_REACHED','STORAGE_LIMIT','FAILED','OCR_UNAVAILABLE'}

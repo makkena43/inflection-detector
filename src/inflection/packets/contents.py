@@ -486,7 +486,7 @@ def evaluation_summaries(evaluations):
 def build(head: dict, identity: dict, evaluations: list[dict], prior_triage: Optional[dict], events: list[dict],
           passages: list[dict], documents: list[dict], fin: dict, price: dict, excluded: dict,
           budget: int = TOKEN_BUDGET, order_book: Optional[list[dict]] = None,
-          ownership: Optional[dict] = None) -> tuple[dict, str]:
+          ownership: Optional[dict] = None, order_flow: Optional[dict] = None) -> tuple[dict, str]:
     """(content, markdown).  ``passages`` carry kind TRIGGER, CONTRADICTS or PRIOR, newest first."""
     trig = [_passage(p) for p in passages if p["kind"] == "TRIGGER"]
     contra = [_passage(p) for p in passages if p["kind"] == "CONTRADICTS"]
@@ -523,7 +523,8 @@ def build(head: dict, identity: dict, evaluations: list[dict], prior_triage: Opt
         risk_flags=flags, events=events, trigger_passages=trig, contradicting_passages=contra,
         prior_passages=prior, documents=documents, financials=fin, price=price,
         **({"valuation": valuation(fin, price), "order_book": order_book or []} if R.WITH_VALUATION else {}),
-        **({"ownership": ownership or {}} if R.WITH_SOURCES else {}))
+        **({"ownership": ownership or {}} if R.WITH_SOURCES else {}),
+        **({"order_flow": order_flow or {}} if R.WITH_ORDER_FLOW else {}))
 
 
     def fits() -> bool:
@@ -746,6 +747,7 @@ def render(c: dict) -> str:
                   "('doubtful' = breaks sharply from the neighbouring quarters); use them as context for how normal the "
                   "trigger order is, not as a size. If you are making a DEEP_RESEARCH call, confirm the latest company-total "
                   "order book and quarterly order inflow from the documents and report them in order_book_check.", ""]
+    L += order_flow_section(c["order_flow"]) if "order_flow" in c else []
     L += ownership_section(c.get("ownership")) if "ownership" in c else []
     L += ["## Full documents on demand", "",
           f"Read up to {MAX_PAGES_PER_RETRIEVAL} pages at a time, once, for context this packet lacks:",
@@ -764,6 +766,28 @@ def render(c: dict) -> str:
           f"Return JSON with exactly these fields: {', '.join(RETURN_FIELDS)}. "
           f"Keep issuer_id, as_of, packet_hash, event_ids and triage_rules_version as given."]
     return "\n".join(L) + "\n"
+
+
+def order_flow_section(o: Optional[dict]) -> list[str]:
+    """3.6.2 'Order flow (computed, context only)' section (inflection.orderflow)."""
+    o = o or {}
+    f = lambda v, s="": "–" if v is None else f"{v}{s}"
+    if not o:
+        return ["## Order flow (computed, context only)", "", "Not computed.", ""]
+    ratio = o.get("ratio")
+    return ["## Order flow (computed, context only)", "",
+            f"Status: **{o.get('status', 'UNKNOWN')}**.", "",
+            f"- Firm orders, last 12 months: INR {f(o.get('orders_12m_cr'))} crore ({f(o.get('orders_12m_pct_rev'), '%')} of TTM "
+            f"revenue); prior 12 months: INR {f(o.get('orders_prior_12m_cr'))} crore ({f(o.get('orders_prior_12m_pct_rev'), '%')}); "
+            f"ratio {ratio if isinstance(ratio, str) else f(ratio, 'x')}. Counted as the dashboard counts 12-month orders "
+            "(repeats within 90 days once, stated period totals replace the orders they contain).",
+            f"- Latest non-doubtful order book quarter {f(o.get('order_book_quarter'))}: book YoY {f(o.get('book_yoy_pct'), '%')}, "
+            f"inflow YoY {f(o.get('inflow_yoy_pct'), '%')}. TTM revenue INR {f(o.get('ttm_revenue_cr'))} crore, growth "
+            f"{f(o.get('revenue_growth_ttm_pct'), '%')}.",
+            "- Credibility: " + ("; ".join(o.get("credibility_flags") or []) or "no auditor resignation or modified opinion in "
+            "the prior year" + (f"; promoter pledge {o['pledge_pct']:.0f}%" if o.get("pledge_pct") is not None else ""))
+            + ". Not available: " + ", ".join(o.get("not_available") or []) + ".",
+            f"- {o.get('note', '')}", ""]
 
 
 def ownership_section(o: Optional[dict]) -> list[str]:
@@ -798,7 +822,9 @@ def ownership_section(o: Optional[dict]) -> list[str]:
           if pr else ["Government programmes: the company's filings name none of the listed programmes by the cutoff.", ""])
     if "themes" in o:
         L += themes_section(o["themes"])
-    if "emergent_themes" in o:
+    if "theme_assessment" in o:
+        L += theme_assessment_section(o["theme_assessment"])
+    elif "emergent_themes" in o:
         L += emergent_section(o["emergent_themes"])
     sig = o.get("signal_filings") or []
     L += (["Capacity, production, rating, fund-raising and acquisition filings in the 12 months before the cutoff "
@@ -838,6 +864,31 @@ STAGE_LABEL = {0: "forming", 1: "emerging", 2: "accelerating", 3: "consensus", 4
 ROLE_LABEL = {"MAKER": "maker", "SUPPLIER": "supplier", "EPC": "EPC contractor", "BUYER": "buyer/user"}
 
 
+def theme_assessment_section(t: Optional[dict]) -> list[str]:
+    """Computed theme assessment (inflection.themes.context): one row per theme the company is in, with a grade."""
+    t = t or {}
+    rows = t.get("themes") or []
+    if not t.get("snapshot"):
+        return ["Theme assessment: no theme snapshot on or before the cutoff.", ""]
+    if not rows:
+        return [f"Theme assessment (snapshot {t['snapshot']}): the company's order, capacity and launch passages of "
+                "the last 180 days fall in no theme shared by 3+ companies. Theme grade: NONE.", ""]
+    f = lambda v: "–" if v is None else v
+    L = [f"Theme assessment (snapshot {t['snapshot']}; computed from all companies' order, capacity and launch "
+         f"filings before the cutoff). Overall theme grade: **{t.get('best_grade', 'NONE')}**.", "",
+         "Grades: " + "; ".join(f"{k} = {v}" for k, v in (t.get("grades") or {}).items()) + ".", ""]
+    L += _table(["theme (key phrases)", "grade", "stage", "companies now (yr ago), 13-wk change", "weeks tracked",
+                 "company: role, rank, value share %, entrant", "this packet's events in the theme", "why"],
+                [[f"{x['theme']} ({', '.join(x['phrases'][:3])})", x["grade"],
+                  f"{x['stage']} {STAGE_LABEL.get(x['stage'], '')}",
+                  f"{x['companies']} ({x['companies_year_ago']}), {f(x['momentum_13w'])}", x["weeks_tracked"],
+                  f"{ROLE_LABEL.get(x.get('role'), 'role not stated')}, #{x['company_rank']}, "
+                  f"{f(x['company_value_share_pct'])}, {x['entrant'].lower()}",
+                  ", ".join(e[:8] for e in x["packet_events_in_theme"]) or "none", "; ".join(x["reasons"])]
+                 for x in rows])
+    return L + [""]
+
+
 def emergent_section(t: Optional[dict]) -> list[str]:
     """Emergent themes discovered from order / capacity / launch passages across all companies."""
     t = t or {}
@@ -867,4 +918,6 @@ def result_template(content: dict, packet_hash: str) -> dict:
                 commercial_stage="UNKNOWN", materiality_status="", next_milestone=None, funding_status="",
                 contradictions=[], missing_information=[], evidence_refs=[], size_pct_of_revenue=None,
                 size_basis="UNKNOWN", firm=None, routine=None, disqualifier=None, pass_through=False,
-                triage_action="", confidence="", rationale="", triage_rules_version=R.TRIAGE_RULES_VERSION)
+                triage_action="", confidence="", rationale="", triage_rules_version=R.TRIAGE_RULES_VERSION,
+                **({"theme_signal": "", "theme_used": None} if R.WITH_THEMES else {}),
+                **({"order_flow_noted": None} if R.WITH_ORDER_FLOW else {}))

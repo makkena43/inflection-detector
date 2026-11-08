@@ -49,3 +49,49 @@ def test_valuation_tolerates_formatted_or_missing_cells():
     assert C.valuation(dict(status="FOUND", quarters=_ends(4), rows=dict(revenue=_q([100] * 4), total_expenses=_q([95]*4), pbt=_q([5] * 4), finance_cost=_q([1] * 4),
                                                        depreciation=_q([2] * 4), other_income=_q([0] * 4))),
                        dict(status="FOUND", market_cap_cr="1,200"))["price_to_sales"] == "3.00"
+
+
+def test_theme_rules_versions_turn_on_theme_sections():
+    out = subprocess.run([sys.executable, "-c", "from inflection.packets import rules as R, contents as C, pipeline as P;"
+                          "t = C.result_template(dict(company=dict(issuer_id='i'), manifest=dict(cutoff='c'), events=[]), 'h');"
+                          "print(R.TRIAGE_RULES_VERSION, R.WITH_THEMES, P.themes_enabled(), 'theme_signal' in t,"
+                          " 'Themes (context only)' in R.RULES, R.RULES.startswith(R.RULES_3_5))"],
+                         env=dict(os.environ, INFLECTION_TRIAGE_RULES="3.5.2", INFLECTION_PACKET_THEMES=""),
+                         capture_output=True, text=True, check=True)
+    assert out.stdout.split() == ["triage-rules-3.5.2", "True", "True", "True", "True", "True"]
+    assert not R.WITH_THEMES and "theme_signal" not in R.RULES_3_6 and "theme_signal" in R.RULES_3_6_1
+
+
+def test_362_adds_order_flow_context_only():
+    out = subprocess.run([sys.executable, "-c", "from inflection.packets import rules as R, contents as C, pipeline as P;"
+                          "t = C.result_template(dict(company=dict(issuer_id='i'), manifest=dict(cutoff='c'), events=[]), 'h');"
+                          "print(R.TRIAGE_RULES_VERSION, R.WITH_THEMES, R.WITH_ORDER_FLOW, R.WITH_SOURCES, 'order_flow_noted' in t,"
+                          " 'theme_signal' in t, R.RULES.startswith(R.RULES_3_6_1), 'Order flow (computed, context only)' in R.RULES)"],
+                         env=dict(os.environ, INFLECTION_TRIAGE_RULES="3.6.2", INFLECTION_PACKET_THEMES=""),
+                         capture_output=True, text=True, check=True)
+    assert out.stdout.split() == ["triage-rules-3.6.2", "True", "True", "True", "True", "True", "True", "True"]
+    assert not R.WITH_ORDER_FLOW and "order_flow_noted" not in R.RULES_3_6_1      # other versions unchanged
+    assert "order_flow" not in C.result_template(dict(company=dict(issuer_id='i'), manifest=dict(cutoff='c'), events=[]), 'h')
+
+
+def test_order_flow_status_and_prior_none():
+    from datetime import date
+    from inflection import orderflow as O
+    assert O.status(300, 100, 1000, None, None, 5.0, []) == "ACCELERATING"             # 3x and 30% of revenue
+    assert O.status(300, 100, 1000, None, None, 5.0, ["pledge 40%"]) == "ACCELERATING_WITH_FLAGS"
+    assert O.status(300, 100, 1000, None, None, -2.0, []) == "STEADY"                  # revenue not growing
+    assert O.status(200, 100, 1000, None, None, 5.0, []) == "STEADY"                   # only 20% of revenue
+    assert O.status(300, 250, 1000, None, None, 5.0, []) == "STEADY"                   # 1.2x the prior year
+    assert O.status(None, None, 1000, 35.0, None, 5.0, []) == "ACCELERATING"           # order book up 35%
+    assert O.status(None, None, 1000, None, 60.0, 5.0, []) == "ACCELERATING"           # inflow up 60%
+    assert O.status(300, None, 1000, None, None, 5.0, []) == "ACCELERATING"            # no prior orders found
+    assert O.status(300, 100, None, None, None, 5.0, []) == "UNKNOWN"                   # no TTM revenue
+    assert O.status(None, None, 1000, None, None, 5.0, []) == "UNKNOWN"
+    orders = [dict(d=date(2025, 6, 1), cr=300.0, kind="single", quote="received an order", foreign=False),
+              dict(d=date(2025, 7, 1), cr=300.0, kind="repeat", quote="received an order", foreign=False)]
+    assert O.orders_12m(orders, date(2025, 12, 31), 1000) == 300.0 and O.orders_12m(orders, date(2024, 12, 31), 1000) is None
+    from inflection.packets import contents as C
+    out = "\n".join(C.order_flow_section(dict(status="ACCELERATING", orders_12m_cr=300.0, orders_12m_pct_rev=30.0, ratio="prior none",
+                                              credibility_flags=[], not_available=["receivables days", "operating cash flow"],
+                                              note=O.BACKTEST_NOTE)))
+    assert "ratio prior none" in out and "**ACCELERATING**" in out and "Not available: receivables days" in out

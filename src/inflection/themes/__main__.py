@@ -9,6 +9,8 @@
     emergent-background --from D --to D [--limit N]   # once per method version, after emergent-index: phrase
                                             # counts in ordinary filing sentences (filings with no commercial passage)
     emergent --as-of D [--dry-run] [--spec-min X]   # emergent-theme snapshot for D (append-only); --dry-run only reports
+    label-phrases [--limit N] [--model M] [--stop-file F]   # ask the local model (Ollama) once per candidate phrase
+                                            # whether it names a product/material/technology/sector; cached
     show SYMBOL [--cutoff D]                # what a packet with that cutoff would show
 """
 from __future__ import annotations
@@ -21,12 +23,20 @@ from typing import Optional
 
 import psycopg
 
-from . import discovery, emergent, importer
+from . import discovery, emergent, importer, labels
+
+
+def _try_label(conn, model: str) -> dict:
+    """Label new phrases before the weekly snapshot when the local model answers; otherwise they wait a week."""
+    try:
+        return labels.label(conn, model=model)
+    except Exception as e:                               # model not running, no background yet, ...
+        return {"skipped": f"{type(e).__name__}: {e}"[:200]}
 
 
 def main(argv: Optional[list[str]] = None) -> int:
     ap = argparse.ArgumentParser(prog="python -m inflection.themes")
-    ap.add_argument("command", choices=["import-makrograph", "tag", "discover", "weekly", "show", "emergent-index", "emergent-background", "emergent"])
+    ap.add_argument("command", choices=["import-makrograph", "tag", "discover", "weekly", "show", "emergent-index", "emergent-background", "emergent", "label-phrases"])
     ap.add_argument("symbol", nargs="?")
     ap.add_argument("--mg-dsn", default=os.environ.get("MAKROGRAPH_DSN", "postgresql://postgres@localhost:5432/makrograph"))
     ap.add_argument("--from", dest="start", type=date.fromisoformat)
@@ -37,6 +47,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--cutoff", type=date.fromisoformat)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--spec-min", type=float, default=emergent.SPEC_MIN)
+    ap.add_argument("--no-labels", action="store_true")
+    ap.add_argument("--model", default=labels.DEFAULT_MODEL)
+    ap.add_argument("--stop-file")
     a = ap.parse_args(argv)
     with psycopg.connect(os.environ["INFLECTION_DSN"], autocommit=True) as conn:
         if a.command == "import-makrograph":
@@ -55,6 +68,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             res = {"tag": discovery.tag(conn, a.as_of - timedelta(days=a.lookback + 35), a.as_of),
                    "discover": discovery.discover(conn, a.as_of, a.lookback),
                    "emergent_index": emergent.index(conn),
+                   "labels": _try_label(conn, a.model),
                    "emergent": emergent.snapshot(conn, a.as_of)}
         elif a.command == "emergent-index":
             res = emergent.index(conn, a.start, a.end)
@@ -65,7 +79,10 @@ def main(argv: Optional[list[str]] = None) -> int:
         elif a.command == "emergent":
             if not a.as_of:
                 ap.error("emergent needs --as-of")
-            res = emergent.snapshot(conn, a.as_of, write=not a.dry_run, spec_min=a.spec_min)
+            res = emergent.snapshot(conn, a.as_of, write=not a.dry_run, spec_min=a.spec_min,
+                                   use_labels=not a.no_labels)
+        elif a.command == "label-phrases":
+            res = labels.label(conn, a.limit, a.model, a.spec_min * labels.LABEL_SPEC_FACTOR, stop_file=a.stop_file)
         else:
             if not a.symbol:
                 ap.error("show needs SYMBOL")
