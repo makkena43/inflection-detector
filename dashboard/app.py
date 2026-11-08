@@ -1,9 +1,9 @@
-"""Local dashboard for the inflection backtest: run progress, picks by year, and a company page.
+"""Local Inflection dashboard: run the daily or weekly process, Haiku outputs, long-term and short-term momentum lists, and a company page.
 
     ~/PycharmProjects/inflection-detector/.venv/bin/python ~/inflection-jobs/ui/app.py   ->  http://127.0.0.1:8765
 Reads the local Postgres database (read-only queries) and the job logs; serves on localhost only.
 """
-import json, math, os, re, statistics, subprocess, time
+import json, math, os, re, shutil, signal, statistics, subprocess, time
 from datetime import date, datetime, timedelta
 from decimal import Decimal
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -13,17 +13,12 @@ import psycopg
 import combo_flags
 import sys
 sys.path.insert(0, os.path.expanduser("~/PycharmProjects/inflection-detector/src"))
-from inflection import orderbook, shareholding, audit, process_health, snapshots   # noqa: E402
-from inflection.themes import context as theme_context, emergent   # noqa: E402
+from inflection import orderbook, shareholding, snapshots   # noqa: E402
+from inflection.themes import context as theme_context   # noqa: E402
 
 DSN = os.environ.get("INFLECTION_DSN", "postgresql:///inflection")
 J = os.path.expanduser(os.environ.get("INFLECTION_JOB_ROOT", "~/inflection-jobs")) + "/"
 HERE = os.path.dirname(os.path.abspath(__file__))
-KEEP = ['updates', 'press release', 'investor presentation', 'analysts/institutional investor meet/con. call updates',
-        'company update', 'analyst / investor meet', 'press release / media release', 'award of order / receipt of order',
-        'memorandum of understanding /agreements']
-KEEP_2026 = KEEP + ['result', 'financial result updates', 'financial results',
-        'outcome of board meeting', 'integrated filing- financial', 'board meeting outcome']
 _cache = {}
 OUTLOOK = J + "insights/outlook_2021_2026.csv"
 
@@ -71,76 +66,6 @@ def json_safe(value):
     if isinstance(value, (list, tuple)):
         return [json_safe(item) for item in value]
     return value
-
-
-def log_months(path, pat):
-    out = {}
-    if os.path.exists(path):
-        for line in open(path, errors="ignore"):
-            m = re.search(pat, line)
-            if m: out[m.group(1)] = line[:19]
-    return out
-
-
-JOBS = {"weekly_loop.sh": "Weekly triage (local engine)", "run_downloads.sh": "Downloads",
-        "run_backfill": "Monthly processing", "run_2026.sh": "2026 run", "run_resume.sh": "Resume run",
-        "run_bse_backfill.sh": "BSE-only backfill", "fill_fin_2526.sh": "Financials 2025-26 load",
-        "inflection.ingest": "Listing filings", "inflection.financials": "Financials (XBRL)", "outlook_extract": "Guidance extraction"}
-
-
-def running():
-    try:
-        ps = subprocess.run(["ps", "-axo", "command"], capture_output=True, text=True, timeout=5).stdout
-    except Exception:
-        return []
-    return sorted({label for key, label in JOBS.items() if any(key in line and "caffeinate" not in line for line in ps.splitlines())})
-
-
-def resume():
-    if "Resume run" in running() or "2026 run" in running():
-        return {"started": False, "message": "A run is already going; nothing new was started."}
-    subprocess.Popen(["caffeinate", "-ims", "zsh", J + "run_resume.sh"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                     start_new_session=True)
-    _cache.pop("status", None)
-    return {"started": True, "message": "Started: list new filings, download, then process complete months."}
-
-
-def status():
-    sql = """SELECT to_char(p.published_at AT TIME ZONE 'Asia/Kolkata', 'YYYY-MM') AS month, count(*) AS listed,
-                    count(*) FILTER (WHERE lower(coalesce(p.original_category, p.original_subcategory, '')) = ANY(%(k)s)
-                                       OR lower(coalesce(p.original_subcategory, '')) = ANY(%(k)s)) AS key_files,
-                    count(*) FILTER (WHERE (lower(coalesce(p.original_category, p.original_subcategory, '')) = ANY(%(k)s)
-                                       OR lower(coalesce(p.original_subcategory, '')) = ANY(%(k)s))
-                                       AND p.pipeline_state <> 'DISCOVERED') AS key_downloaded,
-                    max(p.published_at) AS last_filing
-               FROM document_publications p JOIN sources s USING (source_id)
-              WHERE s.name LIKE '%%announce%%' AND p.published_at >= %(lo)s AND p.published_at < %(hi)s
-              GROUP BY 1 ORDER BY 1"""
-    # key files: the fast-mode download list for 2021-2025; 2026 also downloads results and board outcomes
-    rows = q(sql, {"k": KEEP, "lo": "2021-01-01", "hi": "2026-01-01"}) + q(sql, {"k": KEEP_2026, "lo": "2026-01-01", "hi": "2100-01-01"})
-    processed = log_months(J + "logs/backfill.log", r" (\d{4}-\d{2}) done")
-    for m in ("2021-01", "2021-02", "2021-03", "2021-04", "2021-05"):    # run by hand before the month driver existed
-        processed.setdefault(m, "manual run")
-    weeks = log_months(J + "logs/weekly.log", r"^(\d{4}-\d{2}-\d{2}) done")
-    reviewed = {r["m"]: r["n"] for r in q("""SELECT to_char(week_start, 'YYYY-MM') m, count(*) n FROM triage_review_results
-                                              WHERE decided_by NOT LIKE 'local engine%%' GROUP BY 1""")}
-    picks = {r["m"]: r["n"] for r in q("""SELECT to_char(week_start, 'YYYY-MM') m, count(*) n FROM triage_review_results
-                                           WHERE is_pick GROUP BY 1""")}
-    for r in rows:
-        m = r["month"]
-        r["processed"] = processed.get(m)
-        r["weeks_triaged"] = sum(1 for w in weeks if w.startswith(m))
-        r["model_reviewed"] = reviewed.get(m, 0)
-        r["picks"] = picks.get(m, 0)
-    last = lambda d: max(d) if d else None
-    px = q("SELECT max(trade_date) d FROM prices WHERE provider = 'nse_bhavcopy'")[0]["d"]
-    fin = q("SELECT max(period_end) d FROM financial_facts_asof WHERE value IS NOT NULL")[0]["d"]
-    return {"months": rows, "summary": {
-        "last_filing_listed": last([r["last_filing"] for r in rows if r["last_filing"]]),
-        "last_month_processed": last([m for m in processed]),
-        "last_week_triaged": last(list(weeks)),
-        "last_prices": px, "last_financial_quarter": fin,
-        "generated": datetime.now().isoformat(timespec="seconds"), "running": running()}}
 
 
 def runup(sec, d):
@@ -590,33 +515,90 @@ def themes_at(review_id):
                         "reasons": t.get("reasons") or []} for t in a["themes"]]}
 
 
-def themes(as_of=None):
-    """Emergent themes in one snapshot (default the newest): strength, stage and members with their role."""
-    dates = [r["as_of"] for r in q("SELECT DISTINCT as_of FROM emergent_theme_snapshots WHERE version=%s ORDER BY as_of DESC",
-                                   (emergent.VERSION,))]
-    d = date.fromisoformat(as_of) if as_of else (dates[0] if dates else None)
-    rows = q("""SELECT s.theme_key, s.name, s.stage, s.companies, s.companies_prior, s.growth_pct, s.first_detected,
-                       s.order_value_cr, s.phrases,
-                       s.companies - (SELECT b.companies FROM emergent_theme_snapshots b WHERE b.theme_key = s.theme_key
-                          AND b.version = s.version AND b.as_of <= s.as_of - %s ORDER BY b.as_of DESC LIMIT 1) momentum_13w,
-                       (SELECT json_agg(json_build_object('issuer_id', c.issuer_id, 'name', i.legal_name, 'role', c.role,
-                               'value_cr', c.value_cr, 'first_seen', c.first_seen) ORDER BY c.value_cr DESC, i.legal_name)
-                          FROM emergent_theme_companies c JOIN issuers i USING (issuer_id)
-                         WHERE c.as_of = s.as_of AND c.theme_key = s.theme_key) members
-                  FROM emergent_theme_snapshots s WHERE s.version = %s AND s.as_of = %s
-                 ORDER BY s.companies DESC, s.growth_pct DESC NULLS LAST, s.name""", (theme_context.MOMENTUM_DAYS, emergent.VERSION, d))
-    return {"as_of": d, "dates": dates, "grades": theme_context.GRADES, "themes": rows}
+REPO = os.path.expanduser("~/PycharmProjects/inflection-detector")
+LIVE = J + "live/"
+sys.path.insert(0, REPO + "/ops")
+import run_pipeline   # noqa: E402
+PIPELINE_ENV = {k: v for k, v in os.environ.items() if k != "CLAUDECODE" and not k.startswith("CLAUDE_CODE")}
 
 
-def engine_queue(days=90):
-    """Local-engine DEEP_RESEARCH decisions that no model reviewed (no non-engine review for the same company-week)."""
-    return q("""SELECT r.week_start, r.issuer_id, r.label, r.legal_name, r.size_pct_of_revenue, r.size_basis, r.confidence, r.rationale, r.decided_by
-                  FROM triage_review_results r
-                 WHERE r.triage_action='DEEP_RESEARCH' AND r.decided_by LIKE 'local engine%%'
-                   AND (%s = 0 OR r.week_start >= current_date - %s)
-                   AND NOT EXISTS (SELECT 1 FROM triage_review_results o WHERE o.issuer_id=r.issuer_id AND o.week_start=r.week_start
-                                     AND o.decided_by NOT LIKE 'local engine%%')
-                 ORDER BY r.week_start DESC, r.label""", (days, days))
+def read_json(path, default=None):
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return default
+
+
+def running_pid(state):
+    pid = (state or {}).get("pid")
+    if not pid or state.get("status") != "running":
+        return None
+    try:
+        os.kill(pid, 0)
+        return pid
+    except OSError:
+        return None
+
+
+def haiku_signed_in():
+    def check():
+        env = {k: v for k, v in PIPELINE_ENV.items() if k != "ANTHROPIC_API_KEY"}
+        try:
+            out = subprocess.run([shutil.which("claude") or os.path.expanduser("~/.local/bin/claude"), "auth", "status"], env=env, capture_output=True, text=True, timeout=15, stdin=subprocess.DEVNULL)
+            return json.loads(out.stdout).get("loggedIn") is True
+        except (OSError, ValueError, subprocess.TimeoutExpired):
+            return False
+    return cached("haiku_auth", 60, check)
+
+
+def facts():
+    def load():
+        row = q("""SELECT (SELECT max(trade_date) FROM bhavcopy_rows WHERE exchange = 'NSE') AS prices,
+                          (SELECT max(window_end) - interval '1 second' FROM ingestion_runs WHERE coverage_status = 'COMPLETE') AS filings,
+                          (SELECT max(week_start) FROM triage_review_results WHERE is_pick) AS picks""")[0]
+        return row
+    return cached("run_facts", 60, load)
+
+
+def run_status():
+    state = read_json(LIVE + "run_state.json")
+    pid = running_pid(state)
+    if state and state.get("status") == "running" and not pid:
+        state["status"] = "stopped"
+    if state and state.get("status") != "running" and _cache.get("_seen_run") != state.get("finished"):
+        _cache["_seen_run"] = state.get("finished")
+        for k in list(_cache):
+            if k != "_seen_run":
+                _cache.pop(k, None)
+    tail = ""
+    if state and state.get("log") and os.path.exists(state["log"]):
+        with open(state["log"], errors="replace") as f:
+            tail = "".join(f.readlines()[-40:])
+    try:
+        pending = run_pipeline.pending_weeks()
+    except (OSError, ValueError):
+        pending = []
+    return dict(state=state, running=bool(pid), log_tail=tail, history=read_json(LIVE + "run_history.json", []), facts=facts(), pending_weeks=pending,
+                disk_free_gb=round(shutil.disk_usage("/").free / 1e9, 1), weekly_min_gb=run_pipeline.MIN_FREE_GB["weekly"], haiku_signed_in=haiku_signed_in())
+
+
+def start_run(mode):
+    if mode not in run_pipeline.MIN_FREE_GB:
+        return {"started": False, "message": "Unknown run type."}
+    if running_pid(read_json(LIVE + "run_state.json")):
+        return {"started": False, "message": "A run is already going."}
+    subprocess.Popen(["caffeinate", "-ims", run_pipeline.PY, REPO + "/ops/run_pipeline.py", mode], env=PIPELINE_ENV, cwd=REPO, stdin=subprocess.DEVNULL,
+                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
+    return {"started": True, "message": f"{mode.title()} run started."}
+
+
+def stop_run():
+    pid = running_pid(read_json(LIVE + "run_state.json"))
+    if not pid:
+        return {"stopped": False, "message": "Nothing is running."}
+    os.kill(pid, signal.SIGTERM)
+    return {"stopped": True, "message": "Stopping."}
 
 
 def company(iss):
@@ -699,27 +681,17 @@ class H(BaseHTTPRequestHandler):
         try:
             if u.path in ("/", "/index.html"):
                 return self.send(200, open(os.path.join(HERE, "index.html"), "rb").read(), "text/html; charset=utf-8")
-            if u.path == "/api/status":
-                data = cached("status", 300, status)
+            if u.path == "/api/run_status":
+                data = run_status()
+            elif u.path == "/api/strategies":
+                data = read_json(LIVE + "strategies.json", {})
+            elif u.path == "/api/swing":
+                data = read_json(LIVE + "swing.json", {})
             elif u.path == "/api/picks":
                 yv, inc, view = a.get("year", ["all"])[0], a.get("include", [""])[0], a.get("view", ["year"])[0]
                 if view not in VIEWS: return self.send(400, '{"error":"view must be year, events, first or latest"}', "application/json")
                 y = 0 if yv == "all" else int(yv)
                 data = cached(f"picks{y}{inc}{view}", 1800, lambda: picks(y, inc, view))
-            elif u.path == "/api/process_health":
-                data = process_health.load_report()
-            elif u.path == "/api/detection_audit":
-                data = audit.load_report()
-            elif u.path == "/api/engine_queue":
-                days = int(a.get("days", ["90"])[0])
-                data = cached(f"engine{days}", 600, lambda: engine_queue(days))
-            elif u.path == "/api/buy":
-                sys.path.insert(0, os.path.join(J, "autobuy")); import buy_candidates
-                days = int(a.get("days", ["28"])[0])
-                data = cached(f"buy{days}", 1800, lambda: buy_candidates.candidates(days))
-            elif u.path == "/api/themes":
-                d = a.get("as_of", [""])[0] or None
-                data = cached(f"themes{d}", 1800, lambda: themes(d))
             elif u.path == "/api/combos":
                 data = combo_flags.COMBOS
             elif u.path == "/api/company":
@@ -736,8 +708,10 @@ class H(BaseHTTPRequestHandler):
         origin = self.headers.get("Origin") or ""
         if origin and not origin.startswith(("http://127.0.0.1:8765", "http://localhost:8765")):
             return self.send(403, '{"error":"forbidden"}', "application/json")
-        if u.path == "/api/resume":
-            return self.send(200, json.dumps(resume()), "application/json")
+        if u.path == "/api/run":
+            return self.send(200, json.dumps(start_run(parse_qs(u.query).get("mode", [""])[0])), "application/json")
+        if u.path == "/api/run_stop":
+            return self.send(200, json.dumps(stop_run()), "application/json")
         self.send(404, "not found", "text/plain")
 
     def log_message(self, *a):

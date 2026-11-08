@@ -62,8 +62,3 @@ G=$($PY $J/review_2026/coverage_guard.py $W 2>&1); log "$G"; echo "$G"
 # Mark done only after screening, recording and coverage verification succeeded.
 grep -q "^$W done" $WL 2>/dev/null || echo "$W done" >> $WL
 nice -n 10 ~/PycharmProjects/inflection-detector/.venv/bin/python ~/inflection-jobs/ui/order_terms.py --since 2025-01-01 >> ~/inflection-jobs/logs/order_terms.log 2>&1 || true
-
-# Read-only source/decision quality audit after each weekly run.
-$PY -m inflection.audit --limit 2000 >> $J/logs/detection_audit.log 2>&1
-
-$PY -m inflection.process_health --from $W --to $D >> $J/logs/process_health.log 2>&1
