@@ -1,6 +1,6 @@
 """Live lists for the shortlisted long-term momentum strategies (identification only; nothing is ever ordered).
 
-    strategy_lists.py --asof YYYY-MM-DD [--dry]       needs alpha_model/v1_frozen/run_<asof>/ (run_pipeline.py builds it)
+    strategy_lists.py --asof YYYY-MM-DD [--dry] [--reseed]       needs alpha_model/v1_frozen/run_<asof>/ (run_pipeline.py builds it)
 
 Scores come from the frozen v1 model plus the rules in the shortlist (strategies.md, strategy-tweaks/report.md):
   blend   = mean percentile of v1, 12-1 momentum and momentum / 63-day volatility, on the as-of cross-section
@@ -8,10 +8,11 @@ Scores come from the frozen v1 model plus the rules in the shortlist (strategies
   ATH     = a month-end close above all earlier month-ends (24m+ history), old high set more than 12 months before
   P/S     = price-to-sales < 1 and revenue up 20%+ year on year
 Each strategy keeps a book in live/books/<key>.json: the month's decision is made once, by the first run of a new month,
-from the previous month's holdings. Books start from a replay of the research panel, so the first live month has a
-realistic "held" list. Later runs in the same month refresh prices and ranks but do not change the decision.
+from the previous month's holdings. Books start from a replay of the research panel (2021 on), so every past month can be
+shown as it stood and the first live month has a realistic "held" list. Later runs in the same month refresh prices and
+ranks but do not change the decision.
 
-Writes live/strategies.json for the dashboard. Read-only on the database.
+Writes live/strategies.json and live/history/<month>.json for the dashboard. Read-only on the database.
 """
 import argparse, json, os, pickle, sys
 from collections import defaultdict
@@ -26,7 +27,8 @@ LIVE = f"{J}/live"
 BOOKS = f"{LIVE}/books"
 DSN = os.environ.get("INFLECTION_DSN", "postgresql:///inflection")
 N, POS_CR, SECTOR_CAP = 20, 0.10, 5          # 20 names, Rs 2 cr book, position at most 10% of ADV20, 5 per statistical sector
-SEED_FROM = date(2024, 1, 1)
+HISTORY = f"{LIVE}/history"
+SEED_FROM = date(2021, 1, 1)
 
 # Same-engine figures, Jan 2021 - Sep 2026, before tax (strategy-tweaks/report.md, Part 4)
 STRATEGIES = {
@@ -119,38 +121,116 @@ def roll_super(entries, month, new):
     return held + added, sold, added
 
 
+def names_and_symbols():
+    cn = psycopg.connect(DSN, options="-c default_transaction_read_only=on")
+    sym = dict(cn.execute("""select distinct on (s.issuer_id) s.issuer_id::text, h.value from securities s join identifier_history h using(security_id)
+                             where h.kind='SYMBOL' order by s.issuer_id, (h.exchange='NSE') desc, h.valid_to is null desc""").fetchall())
+    return cn, sym, dict(cn.execute("select issuer_id::text, legal_name from issuers").fetchall())
+
+
+def describer(iss, col, cols, adv, sector, entry, pe, blend, mb4, psb, ath12, ath_when, sym, legal, PR, OH):
+    """Returns a function that turns one issuer into a dashboard row, for this month's cross-section."""
+    row_of = {h: i for i, h in enumerate(iss)}
+    mcap = col("mcap_cr")
+    mc = defaultdict(list)
+    for i, h in enumerate(iss):
+        if not np.isnan(mcap[i]):
+            mc[sector[i]].append((float(mcap[i]), sym.get(h) or ""))
+    sector_label = {s: "/".join(n for _, n in sorted(v, reverse=True)[:3]) for s, v in mc.items()}
+
+    def fl(i, v):
+        x = v[i]
+        return None if np.isnan(x) else round(float(x), 4)
+
+    def describe(h, status, rank=None, of=None, **extra):
+        i = row_of.get(h)
+        base = dict(issuer_id=h, symbol=sym.get(h), name=legal.get(h), status=status, rank=rank + 1 if rank is not None else None, of=of)
+        if i is None:
+            return {**base, "note": "no longer in the ranked universe", "flags": [], **extra}
+        p, oh = PR.get(h), OH.get(h)
+        close, close_date, circuit = None, None, False
+        if p is not None and oh is not None:
+            j = min(int(np.searchsorted(p["d"], int(entry[i]))), len(p["d"]) - 1)
+            close, close_date = round(float(oh["raw_c"][j]), 2), date.fromordinal(int(p["d"][j])).isoformat()
+            circuit = bool(j > 0 and ((oh["h"][j] <= oh["l"][j] * 1.0001 and p["c"][j] > p["c"][j - 1])
+                                      or (p["c"][j] >= p["c"][j - 1] * 1.049 and p["c"][j] >= oh["h"][j] * 0.9999)))
+        flags = [t for t, c in (("pledge >20%", "flag_pledge"), ("auditor event", "flag_auditor"), ("dilution", "flag_dilution"), ("finance cost > PAT", "flag_fincost"))
+                 if c in cols and (col(c)[i] or 0) > 0]
+        if circuit:
+            flags.append("last close at upper circuit: buy only if tradable at the open")
+        return {**base, "mcap_cr": fl(i, np.round(mcap)), "close": close, "close_date": close_date, "adv20_cr": fl(i, adv),
+                "sector": sector_label.get(sector[i], ""), "v1_pct": fl(i, pe), "blend": fl(i, blend), "mom_12_1": fl(i, col("mom_12_1")),
+                "mb4": fl(i, mb4), "ath_month": ym_key(ath_when[h]) if h in ath_when and ath12[i] else None, "ps_bonus": bool(psb[i]),
+                "rev_yoy": fl(i, col("rev_yoy")), "pat_q_yoy": fl(i, col("pat_q_yoy")), "sue": fl(i, col("sue")), "flags": flags, **extra}
+    return describe
+
+
+def ranked_view(k, month, port, prev, rank, total, describe, decided_on):
+    cfg = STRATEGIES[k]
+    held = set(port)
+    rows = sorted((describe(h, "HOLD" if h in prev else "BUY", rank.get(h), total) for h in port), key=lambda r: r["rank"] or 10 ** 6)
+    sells = [describe(h, "SELL", rank.get(h), total) for h in prev if h not in held]
+    return dict({x: cfg[x] for x in ("name", "rule", "cagr", "since24", "dd")}, month=month, rows=rows, sells=sells, keep=cfg["keep"], universe=total, decided_on=decided_on)
+
+
+def super_view(month, entries, prev_entries, describe, decided_on, qualifiers=None):
+    cfg = STRATEGIES["super_opps"]
+    held_ids = {e["issuer"] for e in entries}
+    added = {e["issuer"] for e in entries if e["month"] == month}
+    rows = [describe(e["issuer"], "BUY" if e["issuer"] in added else "HOLD", entry_month=e["month"], sell_after=add_months(e["month"], 13)) for e in entries]
+    rows.sort(key=lambda r: (r["status"] != "BUY", r["entry_month"]))
+    sells = [describe(e["issuer"], "SELL", entry_month=e["month"]) for e in prev_entries if e["issuer"] not in held_ids]
+    return dict({x: cfg[x] for x in ("name", "rule", "cagr", "since24", "dd")}, month=month, rows=rows, sells=sells, qualifiers_now=qualifiers or [], decided_on=decided_on)
+
+
 def seed_books():
-    """First run only: replay the research panel so each book has a realistic state for the last research month."""
+    """Replay the research panel from 2021 so each book, and each past month's view, shows what the rules held then."""
     Z = np.load(f"{J}/alpha_model/panel.npz")
     meta = pickle.load(open(f"{J}/alpha_model/meta.pkl", "rb"))
     ens = np.load(f"{J}/alpha_model/preds.npz")["ens"]
     F = pickle.load(open(f"{J}/strategy_tweaks/code/feats.pkl", "rb"))
+    PR = pickle.load(open(f"{J}/ranking_model/prices.pkl", "rb"))
+    OH = pickle.load(open(f"{J}/alpha_model/audit/ohlc.pkl", "rb"))
+    cn, sym, legal = names_and_symbols()
     iss, cols, X, months = meta["issuer"], meta["cols"], Z["X"], Z["month"]
     if len(F["DM"]) != len(iss):
         raise SystemExit("feats.pkl does not line up with the research panel")
-    YM = F["YM"]
-    ath_rows = lambda back: np.fromiter(((any(YM[i] - k in F["ev"].get(iss[i], ()) for k in range(1, back + 1))) for i in range(len(iss))), bool, len(iss))
-    F["ev"] = {h: set(v) for h, v in F["ATHev"].items()}
-    a12, a3 = ath_rows(12), ath_rows(3)
-    book, entries = {k: [] for k in STRATEGIES if k != "super_opps"}, []
-    hist = defaultdict(list)
+    YM, ev = F["YM"], {h: sorted(v) for h, v in F["ATHev"].items()}
+    a12, a3 = np.zeros(len(iss), bool), np.zeros(len(iss), bool)
+    for i, h in enumerate(iss):
+        past = [e for e in ev.get(h, ()) if e < YM[i]]
+        if past:
+            a12[i], a3[i] = past[-1] >= YM[i] - 12, past[-1] >= YM[i] - 3
+    book, entries, hist = {k: [] for k in STRATEGIES if k != "super_opps"}, [], defaultdict(list)
+    os.makedirs(BOOKS, exist_ok=True)
+    os.makedirs(HISTORY, exist_ok=True)
     for m in sorted(int(x) for x in np.unique(months)):
-        if date.fromordinal(m) < SEED_FROM:
+        day = date.fromordinal(m)
+        if day < SEED_FROM:
             continue
         r = np.where(months == m)[0]
         col = lambda c: X[r, cols.index(c)]
         names = [iss[i] for i in r]
-        sc = scores(col, ens[r], a12[r], F["DM"][r])[0]
-        mk = month_key(date.fromordinal(m))
+        adv, sec, ent = Z["adv20"][r], Z["sector"][r], Z["entry"][r]
+        sc, blend, mb4, psb = scores(col, ens[r], a12[r], F["DM"][r])
+        mk = month_key(day)
+        ath_when = {h: [e for e in ev.get(h, ()) if e < YM[r[0]]][-1] for i, h in enumerate(names) if a12[r][i]}
+        describe = describer(names, col, cols, adv, sec, ent, percentile(ens[r]), blend, mb4, psb, a12[r], ath_when, sym, legal, PR, OH)
+        out = {}
         for k in book:
-            book[k] = decide(sc[k], Z["adv20"][r], Z["sector"][r], names, book[k], STRATEGIES[k]["keep"])[0]
-            hist[k].append(dict(month=mk, holdings=book[k], decided_on="research replay"))
-        q = qualifies_super(col, Z["adv20"][r], a3[r])
+            prev = book[k]
+            book[k], rank, total = decide(sc[k], adv, sec, names, prev, STRATEGIES[k]["keep"])
+            hist[k].append(dict(month=mk, holdings=book[k], decided_on="backtest replay"))
+            out[k] = ranked_view(k, mk, book[k], prev, rank, total, describe, "backtest replay")
+        q = qualifies_super(col, adv, a3[r])
+        prev_entries = entries
         entries = roll_super(entries, mk, [names[i] for i in np.where(q)[0]])[0]
-        hist["super_opps"].append(dict(month=mk, entries=list(entries), decided_on="research replay"))
-    os.makedirs(BOOKS, exist_ok=True)
+        hist["super_opps"].append(dict(month=mk, entries=list(entries), decided_on="backtest replay"))
+        out["super_opps"] = super_view(mk, entries, prev_entries, describe, "backtest replay")
+        write_json(f"{HISTORY}/{mk}.json", dict(as_of=day.isoformat(), price_date=date.fromordinal(int(np.max(ent))).isoformat(), generated=datetime.now().isoformat(timespec="seconds"),
+                                               default=DEFAULT, order=list(STRATEGIES), strategies=out, replay=True))
     for k, v in hist.items():
-        write_json(f"{BOOKS}/{k}.json", dict(history=v[-6:]))
+        write_json(f"{BOOKS}/{k}.json", dict(history=v))
 
 
 def write_json(path, obj):
@@ -215,7 +295,7 @@ def delivery_scores(cn, issuers, PR, OH, entry):
     return out
 
 
-def run(asof, dry):
+def run(asof, dry, reseed=False):
     run_dir = f"{V1}/run_{asof}"
     M = pickle.load(open(f"{V1}/model_v1.pkl", "rb"))
     Z = np.load(f"{run_dir}/panel.npz")
@@ -250,56 +330,24 @@ def run(asof, dry):
                 ath_when[h] = ev[-1]
                 ath12[i] = ev[-1] >= m_now - 12
                 ath3[i] = ev[-1] >= m_now - 3
-    cn = psycopg.connect(DSN, options="-c default_transaction_read_only=on")
+    cn = names_and_symbols()[0]
     dm = delivery_scores(cn, iss, PR, OH, entry)
     sc, blend, mb4, psb = scores(col, ens, ath12, dm)
     q_super = qualifies_super(col, adv, ath3)
 
-    sym = dict(cn.execute("""select distinct on (s.issuer_id) s.issuer_id::text, h.value from securities s join identifier_history h using(security_id)
-                             where h.kind='SYMBOL' order by s.issuer_id, (h.exchange='NSE') desc, h.valid_to is null desc""").fetchall())
-    legal = dict(cn.execute("select issuer_id::text, legal_name from issuers").fetchall())
-    row_of = {h: i for i, h in enumerate(iss)}
-    pe, mcap = percentile(ens), col("mcap_cr")
-    mc = defaultdict(list)
-    for i, h in enumerate(iss):
-        if not np.isnan(mcap[i]):
-            mc[sector[i]].append((float(mcap[i]), sym.get(h) or ""))
-    sector_label = {s: "/".join(n for _, n in sorted(v, reverse=True)[:3]) for s, v in mc.items()}
-
-    def fl(i, v):
-        x = v[i]
-        return None if np.isnan(x) else round(float(x), 4)
-
-    def describe(h, status, rank=None, of=None, **extra):
-        i = row_of.get(h)
-        base = dict(issuer_id=h, symbol=sym.get(h), name=legal.get(h), status=status, rank=rank + 1 if rank is not None else None, of=of)
-        if i is None:
-            return {**base, "note": "no longer in the ranked universe", **extra}
-        p, oh = PR.get(h), OH.get(h)
-        close, close_date, circuit = None, None, False
-        if p is not None and oh is not None:
-            j = min(int(np.searchsorted(p["d"], int(entry[i]))), len(p["d"]) - 1)
-            close, close_date = round(float(oh["raw_c"][j]), 2), date.fromordinal(int(p["d"][j])).isoformat()
-            circuit = bool(j > 0 and ((oh["h"][j] <= oh["l"][j] * 1.0001 and p["c"][j] > p["c"][j - 1])
-                                      or (p["c"][j] >= p["c"][j - 1] * 1.049 and p["c"][j] >= oh["h"][j] * 0.9999)))
-        flags = [t for t, c in (("pledge >20%", "flag_pledge"), ("auditor event", "flag_auditor"), ("dilution", "flag_dilution"), ("finance cost > PAT", "flag_fincost"))
-                 if c in M["cols"] and (col(c)[i] or 0) > 0]
-        if circuit:
-            flags.append("last close at upper circuit: buy only if tradable at the open")
-        return {**base, "mcap_cr": fl(i, np.round(mcap)), "close": close, "close_date": close_date, "adv20_cr": fl(i, adv),
-                "sector": sector_label.get(sector[i], ""), "v1_pct": fl(i, pe), "blend": fl(i, blend), "mom_12_1": fl(i, col("mom_12_1")),
-                "mb4": fl(i, mb4), "ath_month": ym_key(ath_when[h]) if h in ath_when and ath12[i] else None, "ps_bonus": bool(psb[i]),
-                "rev_yoy": fl(i, col("rev_yoy")), "pat_q_yoy": fl(i, col("pat_q_yoy")), "sue": fl(i, col("sue")), "flags": flags, **extra}
+    sym = names_and_symbols()
+    sym, legal = sym[1], sym[2]
+    describe = describer(iss, col, M["cols"], adv, sector, entry, percentile(ens), blend, mb4, psb, ath12, ath_when, sym, legal, PR, OH)
 
     mk = month_key(asof)
-    if not dry and not os.path.exists(f"{BOOKS}/stack_a.json"):
+    if not dry and (reseed or not os.path.exists(f"{BOOKS}/stack_a.json")):
         seed_books()
     out = {}
     price_date = date.fromordinal(int(np.max(entry))).isoformat()
+    today = date.today().isoformat()
     for k, cfg in STRATEGIES.items():
         book = json.load(open(f"{BOOKS}/{k}.json")) if os.path.exists(f"{BOOKS}/{k}.json") else dict(history=[])
         hist = book["history"]
-        info = {x: cfg[x] for x in ("name", "rule", "cagr", "since24", "dd")}
         if k == "super_opps":
             new = [iss[i] for i in np.where(q_super)[0]]
             if hist and hist[-1]["month"] == mk:
@@ -308,13 +356,8 @@ def run(asof, dry):
                 prev_entries = hist[-1]["entries"] if hist else []
                 entries = roll_super(prev_entries, mk, new)[0]
                 if not dry:
-                    hist.append(dict(month=mk, entries=entries, decided_on=date.today().isoformat()))
-            held_ids = {e["issuer"] for e in entries}
-            added = {e["issuer"] for e in entries if e["month"] == mk}
-            rows = [describe(e["issuer"], "BUY" if e["issuer"] in added else "HOLD", entry_month=e["month"], sell_after=add_months(e["month"], 13)) for e in entries]
-            rows.sort(key=lambda r: (r["status"] != "BUY", r["entry_month"]), reverse=False)
-            sells = [describe(e["issuer"], "SELL", entry_month=e["month"]) for e in prev_entries if e["issuer"] not in held_ids]
-            out[k] = {**info, "month": mk, "rows": rows, "sells": sells, "qualifiers_now": [sym.get(h) or h for h in new]}
+                    hist.append(dict(month=mk, entries=entries, decided_on=today))
+            out[k] = super_view(mk, entries, prev_entries, describe, hist[-1]["decided_on"] if hist else today, [sym.get(h) or h for h in new])
         else:
             if hist and hist[-1]["month"] == mk:
                 port, prev = hist[-1]["holdings"], hist[-2]["holdings"] if len(hist) > 1 else []
@@ -323,22 +366,18 @@ def run(asof, dry):
                 prev = hist[-1]["holdings"] if hist else []
                 port, rank, total = decide(sc[k], adv, sector, iss, prev, cfg["keep"])
                 if not dry:
-                    hist.append(dict(month=mk, holdings=port, decided_on=date.today().isoformat()))
-            held = set(port)
-            rows = [describe(h, "HOLD" if h in prev else "BUY", rank.get(h), total, score=fl(row_of[h], sc[k]) if h in row_of else None) for h in port]
-            rows.sort(key=lambda r: r["rank"] or 10 ** 6)
-            sells = [describe(h, "SELL", rank.get(h), total) for h in prev if h not in held]
-            out[k] = {**info, "month": mk, "rows": rows, "sells": sells, "keep": cfg["keep"], "universe": total}
-        out[k]["decided_on"] = hist[-1]["decided_on"] if hist else None
+                    hist.append(dict(month=mk, holdings=port, decided_on=today))
+            out[k] = ranked_view(k, mk, port, prev, rank, total, describe, hist[-1]["decided_on"] if hist else today)
         if not dry:
-            book["history"] = hist[-6:]
             write_json(f"{BOOKS}/{k}.json", book)
     result = dict(as_of=asof.isoformat(), price_date=price_date, generated=datetime.now().isoformat(timespec="seconds"), default=DEFAULT,
                   order=list(STRATEGIES), strategies=out)
     if dry:
         return result
     os.makedirs(LIVE, exist_ok=True)
+    os.makedirs(HISTORY, exist_ok=True)
     write_json(f"{LIVE}/strategies.json", result)
+    write_json(f"{HISTORY}/{mk}.json", result)
     return result
 
 
@@ -351,8 +390,9 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--asof", required=True)
     ap.add_argument("--dry", action="store_true", help="compute only; do not touch books or live/strategies.json")
+    ap.add_argument("--reseed", action="store_true", help="rebuild every book and past month from the research panel")
     a = ap.parse_args()
-    res = run(date.fromisoformat(a.asof), a.dry)
+    res = run(date.fromisoformat(a.asof), a.dry, a.reseed)
     for k, s in res["strategies"].items():
         print(k, len(s["rows"]), "held,", sum(r["status"] == "BUY" for r in s["rows"]), "new,", len(s["sells"]), "sell")
     if a.dry:

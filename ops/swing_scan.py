@@ -6,10 +6,10 @@ Buy at the next open (skip if it opens more than 8% above the signal close or is
 next open after a close above the 5-day average; 3 x ATR(14) below entry; the close 5 trading days after the buy day.
 10 equal slots; extra signals ranked by 63-day return.
 
-Prices are raw bhavcopy prices; splits and bonuses are removed by the jump filter. Writes live/swing.json. Read-only on the DB.
+Prices are raw bhavcopy prices; splits and bonuses are removed by the jump filter. Writes live/swing.json and live/swing_history.json (--history rebuilds it from 2021). Read-only on the DB.
 """
 import json, os, warnings
-from datetime import datetime
+from datetime import date, datetime
 
 import numpy as np
 from numpy.lib.stride_tricks import sliding_window_view
@@ -18,16 +18,17 @@ import psycopg
 J = os.path.expanduser(os.environ.get("INFLECTION_JOB_ROOT", "~/inflection-jobs"))
 DSN = os.environ.get("INFLECTION_DSN", "postgresql:///inflection")
 SLOTS, MAX_DAYS, LOOKBACK_SIGNALS = 10, 5, 30
+HISTORY_FROM, HISTORY_DAYS = date(2021, 1, 1), 2500
 
 STRATEGY = dict(name="Dip in a leader (5-day max)", cagr="+31.9%", since24="+34.0%", dd="-14%",
                 rule="63-day return in the top 5%, close above the 50-day average, 5-day return worse than -8%, a down day. "
                      "Buy next open. Exit at the next open after a close above the 5-day average, at a 3x ATR stop, or at the close 5 trading days after buying.")
 
 
-def load():
+def load(days):
     with psycopg.connect(DSN, options="-c default_transaction_read_only=on") as cn:
         rows = cn.execute("""select trade_date, code, open::float, high::float, low::float, close::float, volume::float
-                             from bhavcopy_rows where exchange='NSE' and series in ('EQ','BE') and trade_date >= current_date - 520""").fetchall()
+                             from bhavcopy_rows where exchange='NSE' and series in ('EQ','BE') and trade_date >= current_date - %s::int""", (days,)).fetchall()
         ids = dict(cn.execute("""select distinct on (h.value) h.value, s.issuer_id::text from identifier_history h join securities s using(security_id)
                                  where h.kind='SYMBOL' and h.exchange='NSE' order by h.value, h.valid_to is null desc""").fetchall())
         names = dict(cn.execute("select issuer_id::text, legal_name from issuers").fetchall())
@@ -54,18 +55,20 @@ def shift(a, n):
 
 
 def roll(a, n, min_periods, fn):
-    w = sliding_window_view(a, n, axis=0)
+    """Rolling statistic, one date at a time so a five-year history stays small in memory."""
+    out = np.full(a.shape, np.nan)
     with warnings.catch_warnings():
         warnings.simplefilter("ignore", RuntimeWarning)
-        v = fn(w, axis=-1)
-    v[(~np.isnan(w)).sum(-1) < min_periods] = np.nan
-    out = np.full(a.shape, np.nan)
-    out[n - 1:] = v
+        for t in range(n - 1, len(a)):
+            w = a[t - n + 1:t + 1]
+            v = fn(w, axis=0)
+            v[(~np.isnan(w)).sum(0) < min_periods] = np.nan
+            out[t] = v
     return out
 
 
-def scan():
-    dates, codes, (O, H, L, C, V), ids, names = load()
+def scan(history=False):
+    dates, codes, (O, H, L, C, V), ids, names = load(HISTORY_DAYS if history else 520)
     Cf = ffill(C)
     PC = shift(Cf, 1)
     with np.errstate(divide="ignore", invalid="ignore"):
@@ -80,7 +83,8 @@ def scan():
     ATR = roll(TR, 14, 11, np.nanmean)
 
     events = []
-    for t in range(len(dates) - LOOKBACK_SIGNALS, len(dates)):
+    first = int(np.searchsorted(np.array(dates), HISTORY_FROM)) if history else len(dates) - LOOKBACK_SIGNALS
+    for t in range(first, len(dates)):
         elig = ~np.isnan(C[t]) & (np.nan_to_num(C[t]) >= 30) & (np.nan_to_num(adv[t]) >= 2) & ~bad[t] & ~np.isnan(S50[t]) & ~np.isnan(R63[t])
         rs = np.full(len(codes), np.nan)
         idx = np.where(elig)[0]
@@ -125,7 +129,7 @@ def scan():
             close = C[k, col]
             if close > S5[k, col]:
                 if k < last:
-                    exit_i, exit_px, reason = k + 1, O[k + 1, col], "Close above 5-day average"
+                    exit_i, exit_px, reason = k + 1, O[k + 1, col] if not np.isnan(O[k + 1, col]) else Cf[k + 1, col], "Close above 5-day average"
                 else:
                     row.update(status="SELL NEXT OPEN", note="Closed above its 5-day average")
                 break
@@ -143,10 +147,16 @@ def scan():
             row.update(status="CLOSED", exit_date=dates[exit_i].isoformat(), exit=round(float(exit_px), 2), pnl=round(float(exit_px) / entry - 1, 4), reason=reason)
             open_slots[code] = exit_i
         out.append(row)
+    out = [{k: None if isinstance(v, float) and np.isnan(v) else v for k, v in r.items()} for r in out]
     out.sort(key=lambda r: r["signal_date"], reverse=True)
+    os.makedirs(f"{J}/live", exist_ok=True)
+    path = f"{J}/live/swing_history.json"
+    older = [] if history or not os.path.exists(path) else [r for r in json.load(open(path)) if r["signal_date"] < dates[first].isoformat()]
+    tmp = path + ".tmp"
+    json.dump(older + out, open(tmp, "w"), default=str, allow_nan=False)
+    os.replace(tmp, path)
     res = dict(strategy=STRATEGY, price_date=dates[last].isoformat(), generated=datetime.now().isoformat(timespec="seconds"), rows=out,
                held=sum(r["status"] in ("HOLD", "SELL NEXT OPEN", "SELL AT CLOSE") for r in out), signals_today=sum(r["signal_date"] == dates[last].isoformat() for r in out))
-    os.makedirs(f"{J}/live", exist_ok=True)
     tmp = f"{J}/live/swing.json.tmp"
     json.dump(res, open(tmp, "w"), default=str, allow_nan=False)
     os.replace(tmp, f"{J}/live/swing.json")
@@ -154,7 +164,8 @@ def scan():
 
 
 if __name__ == "__main__":
-    res = scan()
+    import sys
+    res = scan("--history" in sys.argv)
     print(res["price_date"], "signals today:", res["signals_today"], "held:", res["held"], "rows:", len(res["rows"]))
     for r in res["rows"][:12]:
         print(r["signal_date"], r["symbol"], r["status"], r.get("pnl"))

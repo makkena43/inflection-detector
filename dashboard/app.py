@@ -601,6 +601,35 @@ def stop_run():
     return {"stopped": True, "message": "Stopping."}
 
 
+MONTH = re.compile(r"^\d{4}-\d{2}$")
+
+
+def history_months():
+    try:
+        return sorted(f[:-5] for f in os.listdir(LIVE + "history") if MONTH.match(f[:-5]))
+    except OSError:
+        return []
+
+
+def strategies_view(month=""):
+    data = read_json(LIVE + ("history/" + month + ".json" if MONTH.match(month) else "strategies.json"), {})
+    return {**data, "months": history_months()}
+
+
+def swing_view(month=""):
+    latest = read_json(LIVE + "swing.json", {})
+    rows = read_json(LIVE + "swing_history.json", [])
+    months = sorted({r["signal_date"][:7] for r in rows})
+    if not MONTH.match(month):
+        return {**latest, "months": months}
+    end = f"{month}-31"
+    sig = sorted((r for r in rows if r["signal_date"][:7] == month), key=lambda r: r["signal_date"], reverse=True)
+    held = [r for r in rows if r.get("buy_date") and r["buy_date"] <= end and (r.get("exit_date") or "9999") > end]
+    done = [r["pnl"] for r in sig if r["status"] == "CLOSED" and r.get("pnl") is not None]
+    return dict(strategy=latest.get("strategy"), months=months, month=month, price_date=latest.get("price_date"), rows=sig, held_at_end=held, signals=len(sig), trades=len(done),
+                win_rate=sum(x > 0 for x in done) / len(done) if done else None, avg_pnl=sum(done) / len(done) if done else None)
+
+
 def company(iss):
     info = q("""SELECT i.issuer_id, i.legal_name, i.issuer_model,
                        (SELECT string_agg(DISTINCT h.exchange || ':' || h.value, ', ') FROM securities s JOIN identifier_history h
@@ -684,9 +713,9 @@ class H(BaseHTTPRequestHandler):
             if u.path == "/api/run_status":
                 data = run_status()
             elif u.path == "/api/strategies":
-                data = read_json(LIVE + "strategies.json", {})
+                data = strategies_view(a.get("month", [""])[0])
             elif u.path == "/api/swing":
-                data = read_json(LIVE + "swing.json", {})
+                data = swing_view(a.get("month", [""])[0])
             elif u.path == "/api/picks":
                 yv, inc, view = a.get("year", ["all"])[0], a.get("include", [""])[0], a.get("view", ["year"])[0]
                 if view not in VIEWS: return self.send(400, '{"error":"view must be year, events, first or latest"}', "application/json")

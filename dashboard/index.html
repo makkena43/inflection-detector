@@ -77,6 +77,7 @@ button.ghost:disabled { opacity:.5; cursor:default } h2 small { font-weight:400;
     <p class="note"><b>C7 (default):</b> Haiku pick with FII % up year on year, MF % up year on year and about ₹2 cr a day traded. Buy about 14 days after the pick, skip a repeat within 12 months, exit at -20% from your buy price or after 36 months. You place trades yourself.</p>
     <div class="controls">
       <label>Year <select id="year"></select></label>
+      <label>Date <select id="pick-date"><option value="">All dates</option></select></label>
       <label>Show <select id="include"><option value="">Picks only</option><option value="watch">Picks + watchlist</option></select></label>
       <label>View <select id="view"><option value="year">One per company-year (pick preferred)</option><option value="events">Every event</option><option value="first">First per company-year</option><option value="latest">Latest per company-year</option></select></label>
       <details id="category-picker"><summary id="category-label">Categories: All</summary><div id="cat"></div><button type="button" id="clear-categories">Clear selections</button></details>
@@ -96,14 +97,14 @@ button.ghost:disabled { opacity:.5; cursor:default } h2 small { font-weight:400;
     <div class="wrap"><table id="picktable"></table></div>
   </section>
   <section id="long" hidden>
-    <div class="controls"><label>Strategy <select id="long-select"></select></label><span class="muted" id="long-asof"></span></div>
+    <div class="controls"><label>Strategy <select id="long-select"></select></label><label>Year <select id="long-year"></select></label><label>Month <select id="long-month"></select></label><span class="muted" id="long-asof"></span></div>
     <div class="cards" id="long-cards"></div>
     <p class="note" id="long-rule"></p>
     <h2 id="long-title"></h2><div class="wrap"><table id="long-table"></table></div>
     <div id="long-sells"></div>
   </section>
   <section id="short" hidden>
-    <div class="controls"><label>Strategy <select id="short-select"></select></label><span class="muted" id="short-asof"></span></div>
+    <div class="controls"><label>Strategy <select id="short-select"></select></label><label>Year <select id="short-year"></select></label><label>Month <select id="short-month"></select></label><label>Date <select id="short-date"><option value="">All dates</option></select></label><span class="muted" id="short-asof"></span></div>
     <div class="cards" id="short-cards"></div>
     <p class="note" id="short-rule"></p>
     <div id="short-body"></div>
@@ -238,7 +239,10 @@ function renderPicks() {
   const categories = selectedCategories(), s = $('#search').value.toLowerCase();
   const mode = $('#category-mode').value;
   const combo = $('#combo').value;
-  let v = rows.filter(r => matchesCategories(r, categories, mode) && matchesCombo(r, combo) && (!s || (r.label + ' ' + r.legal_name).toLowerCase().includes(s)));
+  { const keep = $('#pick-date').value, weeks = [...new Set(rows.filter(r => matchesCombo(r, combo)).map(r => r.week_start))].sort().reverse();
+    $('#pick-date').innerHTML = '<option value="">All dates</option>' + weeks.map(w => `<option>${w}</option>`).join('');
+    $('#pick-date').value = weeks.includes(keep) ? keep : ''; }
+  let v = rows.filter(r => matchesCategories(r, categories, mode) && matchesCombo(r, combo) && (!$('#pick-date').value || r.week_start === $('#pick-date').value) && (!s || (r.label + ' ' + r.legal_name).toLowerCase().includes(s)));
   $('#category-label').textContent = categories.length ? `Categories: ${categories.length} selected` : 'Categories: All';
   $('#combo-summary').hidden = !categories.length;
   $('#combo-summary').innerHTML = categories.length ? sig(`${mode === 'all' ? 'All' : 'Any'} selected categories${s ? ' + search' : ''}`, v) : '';
@@ -274,7 +278,7 @@ function renderPicks() {
   $('#picktable').querySelectorAll('tr.click').forEach(tr => tr.onclick = () => openCompany(tr.dataset.id));
 }
 ['year','include','view'].forEach(id => $('#' + id).onchange = loadPicks);
-$('#impact-horizon').onchange = renderPicks;
+$('#impact-horizon').onchange = renderPicks; $('#pick-date').onchange = renderPicks;
 $('#cat').onchange = renderPicks; $('#category-mode').onchange = renderPicks; $('#combo').onchange = renderPicks;
 $('#clear-categories').onclick = () => { $('#cat').querySelectorAll('input').forEach(x => x.checked = false); renderPicks() }; $('#search').oninput = renderPicks;
 
@@ -390,12 +394,12 @@ function bonusChips(r) {
 }
 function renderLong() {
   const key = $('#long-select').value, s = strategyData.strategies[key];
-  $('#long-asof').textContent = `Month ${s.month} decided on ${s.decided_on}. Prices to ${strategyData.price_date}.`;
+  $('#long-asof').textContent = strategyData.replay ? `Positions as of the start of ${s.month}, from the backtest. Close at ${strategyData.price_date}.` : `Month ${s.month} decided on ${s.decided_on}. Prices to ${strategyData.price_date}.`;
   $('#long-cards').innerHTML = card('Per year, 2021–Sep 2026', s.cagr) + card('Since Jan 2024, per year', s.since24) + card('Worst drop', s.dd)
     + card('Backtest', 'Before tax', 'Not yet run live');
   $('#long-rule').textContent = s.rule + ' Identification only: you place the trades yourself.';
   const superOpps = key === 'super_opps', buys = s.rows.filter(r => r.status === 'BUY').length;
-  $('#long-title').innerHTML = `${s.rows.length} stocks <small>· ${buys} new this month · ${s.sells.length} to sell</small>`;
+  $('#long-title').innerHTML = `${s.rows.length} stocks in ${s.month} <small>· ${buys} new that month · ${s.sells.length} sold</small>`;
   const head = superOpps ? ['Action','Symbol','Company','Bought','Sell after','Close','Mcap ₹ cr','Revenue YoY','Quarter PAT YoY','SUE','Flags']
     : ['Action','Rank','Symbol','Company','Close','Mcap ₹ cr','12-1m','v1 pct','Bonuses','Price cluster','Flags'];
   const num = new Set(['Rank','Close','Mcap ₹ cr','12-1m','v1 pct','Revenue YoY','Quarter PAT YoY','SUE']);
@@ -406,13 +410,28 @@ function renderLong() {
   $('#long-sells').innerHTML = !s.sells.length ? '' : `<h2>Sell this month</h2><div class="wrap"><table><tr><th>Action</th><th>Symbol</th><th>Company</th><th class="num">Rank now</th><th class="num">Close</th></tr>${s.sells.map(r => `<tr class="click" data-id="${r.issuer_id}"><td>${actionChip(r.status)}</td><td><b>${esc(r.symbol)}</b></td><td>${esc(r.name)}</td><td class="num">${r.rank ?? '–'}${r.of ? `<span class="muted"> / ${r.of}</span>` : ''}</td><td class="num">${n(r.close, 2)}</td></tr>`).join('')}</table></div>`;
   document.querySelectorAll('#long tr.click').forEach(tr => tr.onclick = () => openCompany(tr.dataset.id));
 }
-async function loadLong() {
-  try { strategyData = await get('/api/strategies'); } catch (error) { $('#long-title').textContent = 'Unable to load: ' + error.message; return; }
+const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function fillMonths(prefix, months, selected) {
+  const year = selected.slice(0, 4), years = [...new Set(months.map(m => m.slice(0, 4)))].reverse();
+  $(`#${prefix}-year`).innerHTML = years.map(y => `<option>${y}</option>`).join('');
+  $(`#${prefix}-year`).value = year;
+  $(`#${prefix}-month`).innerHTML = months.filter(m => m.startsWith(year)).reverse().map(m => `<option value="${m}">${MONTH_NAMES[+m.slice(5) - 1]}</option>`).join('');
+  $(`#${prefix}-month`).value = selected;
+}
+function bindMonths(prefix, getMonths, load) {
+  $(`#${prefix}-year`).onchange = () => { const y = $(`#${prefix}-year`).value; load(getMonths().filter(m => m.startsWith(y)).pop()); };
+  $(`#${prefix}-month`).onchange = () => load($(`#${prefix}-month`).value);
+}
+async function loadLong(month) {
+  try { strategyData = await get('/api/strategies' + (month ? '?month=' + month : '')); } catch (error) { $('#long-title').textContent = 'Unable to load: ' + error.message; return; }
   if (!strategyData.strategies) { $('#long-title').textContent = 'No lists yet. Press Refresh lists only on the Run tab.'; return; }
   const sel = $('#long-select'), keep = sel.value || strategyData.default;
   sel.innerHTML = strategyData.order.map(k => `<option value="${k}">${esc(strategyData.strategies[k].name)}</option>`).join('');
-  sel.value = keep; renderLong();
+  sel.value = keep;
+  fillMonths('long', strategyData.months, month || strategyData.months[strategyData.months.length - 1]);
+  renderLong();
 }
+bindMonths('long', () => strategyData.months, loadLong);
 $('#long-select').onchange = renderLong;
 loadLong();
 
@@ -420,18 +439,40 @@ function swingTable(title, list, full) {
   if (!list.length) return `<h2>${title}</h2><p class="muted">None.</p>`;
   return `<h2>${title} <small>· ${list.length}</small></h2><div class="wrap"><table><tr><th>Status</th><th>Signal</th><th>Symbol</th><th>Company</th><th class="num">Signal close</th>${full ? '<th>Bought</th><th class="num">Entry</th><th class="num">Stop</th><th class="num">Last close</th><th class="num">P&amp;L</th><th>Days held / exit</th>' : '<th class="num">Stop (estimate)</th><th class="num">63-day</th><th class="num">5-day</th>'}<th>Note</th></tr>${list.map(r => `<tr class="${r.issuer_id ? 'click' : ''}" data-id="${r.issuer_id || ''}"><td>${actionChip(r.status)}</td><td>${r.signal_date}</td><td><b>${esc(r.symbol)}</b></td><td>${esc(r.name)}</td><td class="num">${n(r.signal_close, 2)}</td>${full ? `<td>${r.buy_date || '–'}</td><td class="num">${n(r.entry, 2)}</td><td class="num">${n(r.stop, 2)}</td><td class="num">${n(r.last_close ?? r.exit, 2)}</td><td class="num">${pctx(r.pnl)}</td><td>${r.days_held != null ? r.days_held + ' days' : esc(r.exit_date || '–')}</td>` : `<td class="num">${n(r.stop_est, 2)}</td><td class="num">${pctx(r.ret_63d, 0)}</td><td class="num">${pctx(r.ret_5d, 0)}</td>`}<td class="wide">${esc(r.note || r.reason || '')}</td></tr>`).join('')}</table></div>`;
 }
-async function loadShort() {
-  let d;
-  try { d = await get('/api/swing'); } catch (error) { $('#short-body').textContent = 'Unable to load: ' + error.message; return; }
-  if (!d.rows) { $('#short-body').textContent = 'No scan yet. Press Refresh lists only on the Run tab.'; return; }
-  $('#short-select').innerHTML = `<option>${esc(d.strategy.name)}</option>`;
-  $('#short-asof').textContent = `Prices to ${d.price_date}.`;
-  $('#short-cards').innerHTML = card('Signals on latest day', d.signals_today) + card('Positions held', d.held + ' of 10') + card('Per year, 2021–Sep 2026', d.strategy.cagr) + card('Since Jan 2024, per year', d.strategy.since24) + card('Worst drop', d.strategy.dd);
-  $('#short-rule').textContent = d.strategy.rule + ' Up to 10 equal slots. Identification only: you place the trades yourself.';
-  const act = d.rows.filter(r => /NEXT OPEN|AT CLOSE/.test(r.status)), hold = d.rows.filter(r => r.status === 'HOLD'), rest = d.rows.filter(r => r.status === 'CLOSED');
-  $('#short-body').innerHTML = swingTable('Act on the next session', act.filter(r => r.status === 'BUY NEXT OPEN'), false) + swingTable('Exits due', act.filter(r => r.status !== 'BUY NEXT OPEN'), true) + swingTable('Holding', hold, true) + swingTable('Closed in the last 30 sessions', rest, true);
+let shortData = null, shortMonths = [];
+function renderShort() {
+  const d = shortData, date = $('#short-date').value, on = r => !date || r.signal_date === date;
+  if (d.month) {
+    const held = (d.held_at_end || []).filter(on);
+    $('#short-body').innerHTML = swingTable(`Held at the end of ${d.month}`, held, true) + swingTable(`Signals in ${d.month}`, d.rows.filter(on), true);
+  } else {
+    const list = d.rows.filter(on), act = list.filter(r => /NEXT OPEN|AT CLOSE/.test(r.status));
+    $('#short-body').innerHTML = swingTable('Act on the next session', act.filter(r => r.status === 'BUY NEXT OPEN'), false) + swingTable('Exits due', act.filter(r => r.status !== 'BUY NEXT OPEN'), true) + swingTable('Holding', list.filter(r => r.status === 'HOLD'), true) + swingTable('Closed in the last 30 sessions', list.filter(r => r.status === 'CLOSED'), true);
+  }
   document.querySelectorAll('#short tr.click').forEach(tr => tr.onclick = () => openCompany(tr.dataset.id));
 }
+async function loadShort(month) {
+  let d;
+  try { d = await get('/api/swing' + (month ? '?month=' + month : '')); } catch (error) { $('#short-body').textContent = 'Unable to load: ' + error.message; return; }
+  if (!d.rows) { $('#short-body').textContent = 'No scan yet. Press Refresh lists only on the Run tab.'; return; }
+  const current = d.price_date.slice(0, 7);
+  shortData = d; shortMonths = [...new Set([...d.months, current])].sort();
+  if (month === current) return loadShort();
+  fillMonths('short', shortMonths, month || current);
+  $('#short-select').innerHTML = `<option>${esc(d.strategy.name)}</option>`;
+  const keepDate = $('#short-date').value, days = [...new Set(d.rows.map(r => r.signal_date))].sort().reverse();
+  $('#short-date').innerHTML = '<option value="">All dates</option>' + days.map(x => `<option>${x}</option>`).join('');
+  $('#short-date').value = days.includes(keepDate) ? keepDate : '';
+  $('#short-asof').textContent = d.month ? `Positions and signals for ${d.month}, from the backtest of the rule.` : `Prices to ${d.price_date}.`;
+  $('#short-cards').innerHTML = (d.month
+    ? card('Signals in the month', d.signals) + card('Trades closed', d.trades) + card('Win rate', d.win_rate == null ? '–' : (100 * d.win_rate).toFixed(0) + '%') + card('Average trade', pctx(d.avg_pnl))
+    : card('Signals on latest day', d.signals_today) + card('Positions held', d.held + ' of 10'))
+    + card('Per year, 2021–Sep 2026', d.strategy.cagr) + card('Since Jan 2024, per year', d.strategy.since24) + card('Worst drop', d.strategy.dd);
+  $('#short-rule').textContent = d.strategy.rule + ' Up to 10 equal slots. Identification only: you place the trades yourself.';
+  renderShort();
+}
+bindMonths('short', () => shortMonths, loadShort);
+$('#short-date').onchange = renderShort;
 loadShort();
 
 </script>
