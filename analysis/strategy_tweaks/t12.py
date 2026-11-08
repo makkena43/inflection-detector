@@ -5,7 +5,7 @@ positions, rebalanced daily (approx), idle money 6.5%/yr, 0.4%/side costs. Also 
 import os, sys, pandas as pd
 from sleeves import *
 PICKS=os.path.expanduser(os.environ.get('PICKS','~/inflection-jobs/strategy_tweaks/data/core_combo_picks.csv'))
-pk=pd.read_csv(PICKS); pk['t']=pd.to_datetime(pk.pick_date).map(lambda x:x.toordinal())
+pk=pd.read_csv(PICKS); pk['t']=pd.to_datetime(pk.pick_date).map(lambda x:x.toordinal())+int(os.environ.get('PICK_LAG','13'))   # rulebook enters ~14 days after the pick week
 alld=np.unique(np.concatenate([PR[h]['d'] for h in set(pk.issuer_id) if h in PR]+[np.array([T[m] for m in months])]))
 def trade(h,t):
     if h not in PR: return None
