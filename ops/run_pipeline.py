@@ -100,6 +100,8 @@ def fetch_prices():
     if start > today:
         return "already up to date"
     run_or_fail(f"{PY} -m inflection.prices fetch {start} --to {today}", "price fetch")
+    # new listings and post-split ISINs become securities before their rows are copied into prices
+    run_or_fail(f"{PY} -m inflection.prices companies", "company build")
     run_or_fail(f"{PY} -m inflection.prices fill {start} --to {today}", "price fill")
     return "prices to " + psql("select max(trade_date) from bhavcopy_rows")
 
