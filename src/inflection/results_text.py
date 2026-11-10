@@ -16,7 +16,7 @@ Figures are public from the filing's publication time.  A figure already filed i
 issuer, period, scope and metric is never written again (XBRL wins).
 
     python -m inflection.results_text check [--limit N]     # agreement with XBRL on filings that have both
-    python -m inflection.results_text load [--limit N]      # write figures for filings without XBRL
+    python -m inflection.results_text load [--limit N] [--bse-only]   # write figures for filings without XBRL
 """
 from __future__ import annotations
 
@@ -322,6 +322,11 @@ RESULT_FILINGS = """SELECT p.publication_id, p.issuer_id, p.published_at, ta.tex
        AND ta.status IN ('COMPLETE','PARTIAL')"""
 
 
+BSE_ONLY_ISSUERS = """SELECT DISTINCT s.issuer_id::text FROM securities s JOIN identifier_history h USING (security_id)
+ WHERE h.exchange = 'BSE' AND NOT EXISTS (SELECT 1 FROM securities s2 JOIN identifier_history n ON n.security_id = s2.security_id
+                                          WHERE s2.issuer_id = s.issuer_id AND n.exchange = 'NSE')"""
+
+
 def _pages(conn, tid) -> list[tuple[int, str]]:
     return conn.execute("SELECT page_no, body FROM text_pages WHERE text_artifact_id=%s ORDER BY page_no", (tid,)).fetchall()
 
@@ -398,9 +403,11 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("command", choices=["check", "load"])
     ap.add_argument("--limit", type=int)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--bse-only", action="store_true", help="load: only companies with no NSE listing")
     a = ap.parse_args(argv)
     with psycopg.connect(os.environ["INFLECTION_DSN"], autocommit=True) as conn:
-        res = check(conn, a.limit or 300) if a.command == "check" else load(conn, a.limit, dry_run=a.dry_run)
+        issuers = [r[0] for r in conn.execute(BSE_ONLY_ISSUERS)] if a.bse_only else None
+        res = check(conn, a.limit or 300) if a.command == "check" else load(conn, a.limit, issuers, dry_run=a.dry_run)
     print(json.dumps(res, indent=2, default=str))
     return 0
 
