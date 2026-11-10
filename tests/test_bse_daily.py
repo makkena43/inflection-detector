@@ -15,15 +15,18 @@ def names(steps):
 
 def test_plan_runs_every_bse_step_in_order_from_the_day_after_the_last_price():
     steps = bse_daily.plan(date(2026, 11, 10), date(2026, 11, 6), lookback=7, workers=2, python="py")
-    assert names(steps) == ["prices", "delivery", "filings", "companies", "fill", "actions", "face values",
-                            "filing timing", "downloads 1/2", "downloads 2/2", "results"]
+    assert names(steps) == ["prices", "delivery", "filings", "companies", "fill", "bse results", "actions",
+                            "dividends etc.", "listing dates", "face values", "filing timing", "downloads 1/2",
+                            "downloads 2/2", "results"]
     argv = dict((n, a) for n, a, _ in steps)
     assert argv["prices"] == ["py", "-m", "inflection.prices", "fetch", "2026-11-07", "--to", "2026-11-10", "--exchange", "bse"]
     assert argv["delivery"][3:] == ["fetch-delivery", "2026-11-03", "--to", "2026-11-10"]
     assert argv["fill"][3:6] == ["fill", "2026-11-03", "--to"]
     assert argv["results"][-3:] == ["--bse-only", "--since", "2026-11-03"]
     assert argv["filing timing"][3:] == ["time", "--recent", "7"]
-    env = steps[8][2]
+    assert argv["bse results"][3:] == ["load", "--filed-since", "2026-11-03"]
+    assert argv["dividends etc."][-2:] == ["--since", "2026-06-06"]
+    env = dict((n, e) for n, _, e in steps)["downloads 1/2"]
     assert (env["FAST"], env["BSE_ONLY"], env["DL_FROM"], env["DL_TO"]) == ("3", "1", "2026-11-03", "2026-11-11")
 
 

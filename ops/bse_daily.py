@@ -11,7 +11,11 @@ Steps, in order (each is idempotent: it skips what is already stored):
   3. filings     BSE announcements listed for the lookback window (ingest bse, listing only)
   4. companies   new listings and post-split ISINs become securities; filings are linked (prices companies)
   5. fill        bhavcopy rows of the window copied into prices (prices fill)
-  6. actions     splits/bonuses of BSE-only companies from filings + price moves (bse_actions derive --apply)
+  6. bse results BSE results snapshot for companies that filed results in the window (bse_results load --filed-since)
+     actions     splits/bonuses of BSE-only companies from filings + price moves (bse_actions derive --apply)
+     dividends   dividends, rights, buybacks, schemes from BSE filings of the last 150 + lookback days
+                 (bse_corp_actions derive --apply --since; a record date's filings can start months before it)
+     listings    listing dates from BSE notices / first trades (listing_dates build --apply)
   7. face values face values for new paid-up capital figures (bse_results face-values --apply), then filing timing
                  (bse_results time --recent: only recent figures)
   8. downloads   BSE-only results PDFs (and the other FAST=3 categories) published in the window, --workers workers
@@ -53,7 +57,11 @@ def plan(day: date, last_bse_day: date | None, lookback: int = 7, workers: int =
                          "--download", "0", "--extract", "0"], {}),
         ("companies", m + ["inflection.prices", "companies"], {}),
         ("fill", m + ["inflection.prices", "fill", min(first, lo).isoformat(), "--to", day.isoformat()], {}),
+        ("bse results", m + ["inflection.bse_results", "load", "--filed-since", lo.isoformat()], {}),
         ("actions", m + ["inflection.bse_actions", "derive", "--apply"], {}),
+        ("dividends etc.", m + ["inflection.bse_corp_actions", "derive", "--apply", "--since",
+                                (lo - timedelta(days=150)).isoformat()], {}),
+        ("listing dates", m + ["inflection.listing_dates", "build", "--apply"], {}),
         ("face values", m + ["inflection.bse_results", "face-values", "--apply"], {}),
         ("filing timing", m + ["inflection.bse_results", "time", "--recent", str(lookback)], {}),
     ]
