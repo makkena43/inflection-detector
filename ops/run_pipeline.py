@@ -238,7 +238,7 @@ def finish_text():
     return psql("select count(*) from document_publications where pipeline_state = 'DOWNLOADED'") + " downloaded files still unread"
 
 
-PURGE_READ = os.environ.get("INFLECTION_PURGE_READ") == "1"   # off unless the owner asks for files to be removed after reading
+PURGE_READ = os.environ.get("INFLECTION_PURGE_READ", "1") == "1"   # owner 2026-11-10: remove processed files (fully read only)
 
 
 def purge_read():
