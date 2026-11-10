@@ -107,6 +107,19 @@ def step(name, fn):
     return s["status"] == "done"
 
 
+LAST_OK = f"{LIVE}/daily_last_ok"
+
+
+def missed_days():
+    """Days since the last daily run whose data steps all finished; windowed steps reach back at least this far, so a
+    missed day (or week) is processed from where it stopped."""
+    try:
+        last = date.fromisoformat(open(LAST_OK).read().strip())
+    except (OSError, ValueError):
+        return 7
+    return max(1, (date.today() - last).days)
+
+
 def remember_failure(name, failed, note):
     """Steps that still failed after their retries, kept across runs so the next run reports what it is catching up."""
     path = f"{LIVE}/failed_steps.json"
@@ -210,12 +223,22 @@ def refresh_slow():
 def bse_daily():
     """BSE prices and delivery, BSE filings list, derived splits/bonuses, face values, recent BSE results and BSE-only
     result PDFs (ops/bse_daily.py, 4-8 minutes; every step skips what is stored)."""
-    rc = shell([PY, f"{REPO}/ops/bse_daily.py", "--workers", "2"], extra={"INFLECTION_DSN": "postgresql:///inflection"})
+    look = max(7, missed_days() + 2)
+    rc = shell([PY, f"{REPO}/ops/bse_daily.py", "--workers", "2", "--lookback", str(look)], extra={"INFLECTION_DSN": "postgresql:///inflection"})
     if rc == 2:
         raise Failed("bse_daily stopped: less than 3 GB free")
     if rc:
         raise Failed("a BSE daily step failed; see logs/bse_daily_<date>.log")
-    return "BSE daily steps done"
+    return f"BSE daily steps done (last {look} days)"
+
+
+def purge_read():
+    """Delete downloaded files whose text is fully extracted (the text stays in the database), so documents do not pile up
+    on disk; partly read or OCR-pending files are kept for a later pass. A file can always be fetched again."""
+    rc = shell([PY, "-m", "inflection.purge", "--archive", os.path.expanduser("~/inflection-archive"), "--max-gb", "0", "--target-gb", "0"])
+    if rc:
+        raise Failed("purge failed; see the log")
+    return "read files purged; archive now " + subprocess.check_output(["du", "-sh", os.path.expanduser("~/inflection-archive")], text=True).split()[0]
 
 
 def day_triage():
@@ -230,7 +253,8 @@ def day_triage():
 def corporate_actions():
     """Announced dividends and their ex and record dates, from 10 days back to 90 days ahead, for the dividend leg."""
     today = date.today()
-    run_or_fail(f"{PY} -m inflection.corporate_actions fetch {today - timedelta(days=10)} --to {today + timedelta(days=90)}", "corporate actions")
+    back = max(10, missed_days() + 3)
+    run_or_fail(f"{PY} -m inflection.corporate_actions fetch {today - timedelta(days=back)} --to {today + timedelta(days=90)}", "corporate actions")
     return "dividends known through " + psql("select max(ex_date) from corporate_actions where kind='DIVIDEND'")
 
 
@@ -279,6 +303,12 @@ def data_steps():
     step("List new filings", list_filings)
     step("Download filings", download_filings)
     step("Process filings", process_filings)
+    step("Remove read documents from disk", purge_read)
+    names = ("Prices and delivery", "BSE daily data", "Index closes", "Deals", "Corporate actions and dividends", "Shareholding and BSE results",
+             "List new filings", "Download filings", "Process filings")
+    if all(x["status"] == "done" for x in state["steps"] if x["name"] in names):
+        with open(LAST_OK, "w") as f:
+            f.write(date.today().isoformat())
 
 
 TRIAGE_ENV = {"INFLECTION_TRIAGE_RULES": RULES}

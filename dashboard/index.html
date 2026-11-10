@@ -69,7 +69,7 @@ button.ghost:disabled { opacity:.5; cursor:default } h2 small { font-weight:400;
       <button class="ghost" id="run-stop">Stop</button>
       <span class="muted" id="run-msg"></span>
     </div>
-    <p class="note"><b>Daily</b> pulls all data (prices, deals, announced dividends, filings listed, downloaded and processed), then refreshes the long-term lists and the short-term scan. Daily also builds packets, engine triage and the <b>code triage</b> (fixed rules, no Haiku) for any week that has closed, so a week is reviewed the first day after it ends. <b>Weekly</b> runs the same steps and reuses today's data pull if there was one. The Mac stays awake during a run.</p>
+    <p class="note"><b>Daily</b> pulls all data (prices, deals, announced dividends, filings listed, downloaded and processed), then refreshes the long-term lists and the short-term scan. If a day is missed, the next run starts from where the data stopped (prices, filings, BSE data and corporate actions all reach back to the last complete run). Files whose text is fully read are then removed from disk; the text stays in the database. Every step retries twice on failure, and Sundays (or Weekly) add a 30-day gap sweep. Daily also builds packets, engine triage and the <b>code triage</b> (fixed rules, no Haiku) for any week that has closed, so a week is reviewed the first day after it ends. <b>Weekly</b> runs the same steps and reuses today's data pull if there was one. The Mac stays awake during a run.</p>
     <h2>This run</h2><div id="run-steps"></div>
     <details id="run-log-box"><summary>Log (last 40 lines)</summary><pre class="log" id="run-log"></pre></details>
     <h2>Recent runs</h2><div class="wrap"><table id="run-history"></table></div>
