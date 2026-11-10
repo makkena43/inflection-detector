@@ -630,6 +630,19 @@ def swing_view(month=""):
                 win_rate=sum(x > 0 for x in done) / len(done) if done else None, avg_pnl=sum(done) / len(done) if done else None)
 
 
+def short_book_view(month=""):
+    latest = read_json(LIVE + "short_book.json", {})
+    if not MONTH.match(month):
+        return latest
+    rows = read_json(LIVE + "short_book_history.json", [])
+    end = f"{month}-31"
+    sig = [r for r in rows if r["signal_date"][:7] == month]
+    held = [r for r in rows if r.get("buy_date") and r.get("entry") and r["status"] in ("CLOSED", "HOLD", "SELL NEXT OPEN", "SELL AT CLOSE") and r["buy_date"] <= end and (r.get("exit_date") or "9999") > end]
+    done = [r["pnl"] for r in sig if r["status"] == "CLOSED" and r.get("pnl") is not None]
+    return dict(strategy=latest.get("strategy"), months=latest.get("months", []), month=month, price_date=latest.get("price_date"), breadth=latest.get("breadth"), rows=sig, held_at_end=held, signals=len(sig), trades=len(done),
+                win_rate=sum(x > 0 for x in done) / len(done) if done else None, avg_pnl=sum(done) / len(done) if done else None)
+
+
 def company(iss):
     info = q("""SELECT i.issuer_id, i.legal_name, i.issuer_model,
                        (SELECT string_agg(DISTINCT h.exchange || ':' || h.value, ', ') FROM securities s JOIN identifier_history h
@@ -714,6 +727,8 @@ class H(BaseHTTPRequestHandler):
                 data = run_status()
             elif u.path == "/api/strategies":
                 data = strategies_view(a.get("month", [""])[0])
+            elif u.path == "/api/short_book":
+                data = short_book_view(a.get("month", [""])[0])
             elif u.path == "/api/swing":
                 data = swing_view(a.get("month", [""])[0])
             elif u.path == "/api/picks":
@@ -721,6 +736,8 @@ class H(BaseHTTPRequestHandler):
                 if view not in VIEWS: return self.send(400, '{"error":"view must be year, events, first or latest"}', "application/json")
                 y = 0 if yv == "all" else int(yv)
                 data = cached(f"picks{y}{inc}{view}", 1800, lambda: picks(y, inc, view))
+            elif u.path == "/api/new_check":
+                data = read_json(LIVE + "order_check.json", {"rows": []})
             elif u.path == "/api/combos":
                 data = combo_flags.COMBOS
             elif u.path == "/api/company":

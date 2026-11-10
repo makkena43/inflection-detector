@@ -19,6 +19,8 @@ ACTIONS = {"DEEP_RESEARCH", "WATCH_MILESTONE", "REJECT_WITH_REASON", "DATA_REPAI
 
 
 def who(week, r):
+    if r.get("reviewed_by") == "code":
+        return "code triage v1 (fixed rules, no model)"
     if r.get("reviewed_by"):
         return "claude-haiku-5-5 (second opinion on local engine)"
     if r.get("prefilter"):
