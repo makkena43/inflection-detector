@@ -44,7 +44,9 @@ from psycopg.types.json import Jsonb
 PROVIDER = "bse_filing_price_matched"
 PROVIDER_VERSION = "bse-actions-1"
 EPISODE_GAP = 120            # days between filings of one episode
-WINDOW_AFTER = 90            # days after the episode's last filing in which the ex-date may fall
+WINDOW_AFTER = 150           # days after the episode's last filing in which the ex-date may fall (record-date days rank first)
+# a move within 3 days of a record date the filings name may sit up to STATED_TOL from a stated ratio; unstated
+# ratios are never snapped there (bonus 1:2, 2:5 and 1:3 are 0.667, 0.714 and 0.75: a move cannot tell them apart)
 MAX_GAP = 45                 # calendar days from the previous trading day (suspension around a new ISIN)
 STATED_TOL = 0.15            # overnight move within 15% of the stated ratio (and nearer it than to 1), and within a
                              # third of the ratio's own size (a 1:10 bonus, 0.909, needs 0.88-0.94)
@@ -179,6 +181,11 @@ def match_episode(ep: list[Filing], bars: list[Bar], holes: frozenset = frozense
     bonuses = [s for s in stated if s.kind == "BONUS"]
     stated += [Stated(s.multiplier * b.multiplier, "SPLIT", f"{s.label} + {b.label}") for s in splits for b in bonuses]
     rdates = record_dates(text)
+    from .bse_corp_actions import record_date as _record_date     # record dates and book closures, by filing date
+    for f in ep:
+        rd = _record_date(f.text, f.day)
+        if rd:
+            rdates.append(rd[0])
     start, end = ep[0].day, ep[-1].day + timedelta(days=WINDOW_AFTER)
     mv = moves(bars, start, end, holes)
     if not mv:
@@ -190,7 +197,8 @@ def match_episode(ep: list[Filing], bars: list[Bar], holes: frozenset = frozense
         cand = None
         for s in stated:
             near = abs(math.log(r / s.multiplier)) < abs(math.log(r))
-            tol = min(STATED_TOL, abs(math.log(s.multiplier)) / 3)
+            at_record = any(abs((cur.day - d).days) <= 3 for d in rdates)
+            tol = STATED_TOL if at_record else min(STATED_TOL, abs(math.log(s.multiplier)) / 3)
             if near and abs(r / s.multiplier - 1) <= tol:
                 if cand is None or abs(math.log(r / s.multiplier)) < abs(math.log(r / float(cand[0]))):
                     cand = (Decimal(str(round(s.multiplier, 8))), s.kind, s.label, "stated_ratio")

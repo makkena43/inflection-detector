@@ -125,6 +125,20 @@ def fetch(client: HttpClient, scrip: str) -> tuple[WindowStatus, list[dict]]:
     return status, parse_table(data.get("QtlyinCr", ""), annual=False) + parse_table(data.get("AnninCr", ""), annual=True)
 
 
+_FILED_SINCE = """SELECT DISTINCT h.value FROM document_publications p JOIN sources src USING (source_id)
+  JOIN securities s ON s.issuer_id = p.issuer_id JOIN identifier_history h ON h.security_id = s.security_id
+ WHERE src.name = 'bse_announcements' AND h.exchange = 'BSE' AND h.kind = 'SCRIP_CODE' AND h.valid_to IS NULL
+   AND p.published_at >= (%(since)s::date::timestamp AT TIME ZONE 'Asia/Kolkata')
+   AND (p.original_category ~* '^\\s*results?\\s*$|financial result|integrated filing'
+        OR (p.title ~* %(yes)s AND p.title !~* %(no)s))"""
+
+
+def filed_results_since(conn, since: date) -> list[str]:
+    """Scrip codes whose company filed a results announcement since ``since`` (the incremental weekly/daily pull:
+    BSE's snapshot only changes when a company reports)."""
+    return [r[0] for r in conn.execute(_FILED_SINCE, dict(since=since, yes=RESULTS_TITLE, no=NOT_RESULTS_TITLE))]
+
+
 def bse_only_scrips(conn, scrips: Optional[list[str]] = None) -> list[tuple[str, str]]:
     rows = conn.execute("""SELECT DISTINCT h.value, s.issuer_id::text FROM securities s JOIN identifier_history h USING (security_id)
                             WHERE h.exchange='BSE' AND h.kind='SCRIP_CODE' AND h.valid_to IS NULL
@@ -364,6 +378,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--recent", type=int, help="time: only figures recorded in the last N days or with a period "
                                                "ended in the last 150 days (daily use)")
     ap.add_argument("--scrips", help="comma-separated BSE scrip codes (default: every BSE-only company)")
+    ap.add_argument("--filed-since", type=date.fromisoformat,
+                    help="load: only companies that filed a results announcement since this day (incremental pull)")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--interval", type=float, default=1.5)
     a = ap.parse_args(argv)
@@ -377,7 +393,14 @@ def main(argv: Optional[list[str]] = None) -> int:
         if a.command == "validate-face-values":
             print(json.dumps(validate_face_values(conn), indent=2, default=str))
             return 0
-        res = load(conn, HttpClient(min_interval=a.interval), a.scrips.split(",") if a.scrips else None, a.limit,
+        scrips = a.scrips.split(",") if a.scrips else None
+        if a.filed_since:
+            filed = set(filed_results_since(conn, a.filed_since))
+            scrips = [x for x in (scrips or filed) if x in filed]
+            if not scrips:
+                print(json.dumps({"scrips": 0, "note": f"no results filed since {a.filed_since}"}))
+                return 0
+        res = load(conn, HttpClient(min_interval=a.interval), scrips, a.limit,
                    progress=lambda n, o: print(f"{n}: {json.dumps(o)}", flush=True))
     print(json.dumps(res, indent=2))
     return 0
