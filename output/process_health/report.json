@@ -1,9 +1,9 @@
 {
   "version": "process-health-2",
-  "generated_at": "2026-11-08T07:31:53.405221+00:00",
+  "generated_at": "2026-11-09T05:44:57.851459+00:00",
   "window": {
     "first": "2026-10-26",
-    "last": "2026-11-08"
+    "last": "2026-11-09"
   },
   "active_versions": {
     "commercial": "commercial-26",
@@ -28,12 +28,12 @@
       "key": "financial_unknown",
       "title": "Financial facts with unknown scope or availability",
       "status": "WARNING",
-      "affected": 46,
+      "affected": 53,
       "blocking": false,
       "description": "These cannot support comparable, dated financial calculations.",
       "details": [
         {
-          "affected": 46,
+          "affected": 53,
           "issuers": 5
         }
       ]
@@ -55,12 +55,12 @@
       "key": "identity_handoff",
       "title": "Dated filings still missing an issuer identity",
       "status": "WARNING",
-      "affected": 236,
+      "affected": 253,
       "blocking": false,
       "description": "Unlinked filings cannot reach issuer-level analysis; identity repair is separate from a negative company assessment.",
       "details": [
         {
-          "affected": 236
+          "affected": 253
         }
       ]
     },
@@ -68,19 +68,19 @@
       "key": "source_coverage",
       "title": "Unresolved announcement-listing windows",
       "status": "WARNING",
-      "affected": 5,
+      "affected": 6,
       "blocking": true,
       "description": "Successful retries or complete child windows can cover an older failure in the same stream. Unverified empty responses and gaps remain incomplete.",
       "details": [
         {
           "name": "bse_announcements",
           "coverage_status": "PARTIAL",
-          "affected": 3
+          "affected": 2
         },
         {
           "name": "nse_announcements",
           "coverage_status": "PARTIAL",
-          "affected": 2
+          "affected": 4
         }
       ]
     },
@@ -203,13 +203,13 @@
       "key": "financial_comparable",
       "title": "Results without a comparable prior period",
       "status": "WARNING",
-      "affected": 382,
+      "affected": 383,
       "blocking": false,
       "description": "A missing comparable is a data limitation, not a negative business verdict.",
       "details": [
         {
           "status": "NO_COMPARABLE",
-          "affected": 382
+          "affected": 383
         }
       ]
     },
