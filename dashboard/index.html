@@ -55,7 +55,8 @@ button.ghost:disabled { opacity:.5; cursor:default } h2 small { font-weight:400;
 <body>
 <header>
   <h1>Inflection</h1>
-<nav><button data-tab="run" class="on">Run</button><button data-tab="picks">Haiku outputs</button><button data-tab="long">Long-term momentum</button><button data-tab="short">Short-term momentum</button></nav>
+<nav><button data-tab="run" class="on">Run</button><button data-tab="picks">Triage outputs</button><button data-tab="long">Long-term momentum</button><button data-tab="short">Short-term momentum</button></nav>
+  <span id="breadth-chip" class="muted"></span>
   <span class="muted" id="gen"></span>
 </header>
 <main>
@@ -68,7 +69,7 @@ button.ghost:disabled { opacity:.5; cursor:default } h2 small { font-weight:400;
       <button class="ghost" id="run-stop">Stop</button>
       <span class="muted" id="run-msg"></span>
     </div>
-    <p class="note"><b>Daily</b> takes prices, delivery and deals, then refreshes the long-term lists and the short-term scan. <b>Weekly</b> also takes shareholding, BSE results and every finished week's filings through processing and engine triage, has Haiku review that week's core group, and loads the picks. The Mac stays awake during a run.</p>
+    <p class="note"><b>Daily</b> pulls all data (prices, deals, announced dividends, filings listed, downloaded and processed), then refreshes the long-term lists and the short-term scan. If a day is missed, the next run starts from where the data stopped (prices, filings, BSE data and corporate actions all reach back to the last complete run). Any downloaded filing left unread is read before processing, so no document is skipped; files whose text is fully read are then removed from disk (the text stays in the database). Every step retries twice on failure, and Sundays (or Weekly) add a 30-day gap sweep. Daily also builds packets, engine triage and the <b>code triage</b> (fixed rules, no Haiku) for any week that has closed, so a week is reviewed the first day after it ends. <b>Weekly</b> runs the same steps and reuses today's data pull if there was one. The Mac stays awake during a run.</p>
     <h2>This run</h2><div id="run-steps"></div>
     <details id="run-log-box"><summary>Log (last 40 lines)</summary><pre class="log" id="run-log"></pre></details>
     <h2>Recent runs</h2><div class="wrap"><table id="run-history"></table></div>
@@ -94,6 +95,14 @@ button.ghost:disabled { opacity:.5; cursor:default } h2 small { font-weight:400;
       <p class="muted">Cells: equal-weight stock return · n=eligible/total entries · difference from the category average (pp). Descriptive association, not a causal effect. Based on the selected year/show; the last row follows category selections and search.</p>
       <div class="wrap"><table id="holding-impact-table"></table></div>
     </details>
+    <details id="daycheck" open><summary><b>This week so far (day by day, provisional)</b> <span class="muted" id="day-count"></span></summary>
+      <p class="note">Built every day from companies with a new filing event since yesterday: packets, engine triage, then code triage (fixed rules, no model) and the combo checks. Provisional: the week's final list is made once the week closes. Combos are watch lists, not buy signals.</p>
+      <div class="wrap"><table id="day-table"></table></div>
+    </details>
+    <details id="newcheck" open><summary><b>Repeatable check (new, side by side)</b> <span class="muted" id="nc-count"></span></summary>
+      <p class="note">Haiku only states facts from each filing (two reviews, a third if they disagree); code makes the decision. Facts are saved once per filing, so a re-run always gives the same list. Uses the Year, Date, Combo and Search filters above. 2025 onward.</p>
+      <div class="wrap"><table id="nc-table"></table></div>
+    </details>
     <div class="wrap"><table id="picktable"></table></div>
   </section>
   <section id="long" hidden>
@@ -104,7 +113,7 @@ button.ghost:disabled { opacity:.5; cursor:default } h2 small { font-weight:400;
     <div id="long-sells"></div>
   </section>
   <section id="short" hidden>
-    <div class="controls"><label>Strategy <select id="short-select"></select></label><label>Year <select id="short-year"></select></label><label>Month <select id="short-month"></select></label><label>Date <select id="short-date"><option value="">All dates</option></select></label><span class="muted" id="short-asof"></span></div>
+    <div class="controls"><label>Strategy <select id="short-select"></select></label><label>Year <select id="short-year"></select></label><label>Month <select id="short-month"></select></label><label>Date <select id="short-date"><option value="">All dates</option></select></label><label id="short-account-box">Account ₹ <input id="short-account" type="number" min="0" step="10000" style="width:130px" placeholder="optional"></label><span class="muted" id="short-asof"></span></div>
     <div class="cards" id="short-cards"></div>
     <p class="note" id="short-rule"></p>
     <div id="short-body"></div>
@@ -189,6 +198,31 @@ async function loadPicks() {
     + sig('Promoter / institutions bought ≥₹1 cr', rows.filter(matchesBuyingCategory));
   renderPicks();
 }
+get('/api/day_triage').then(d => {
+  const rows = (d.rows || []).filter(r => r.action === 'DEEP_RESEARCH').sort((a, b) => (b.combos || []).length - (a.combos || []).length);
+  $('#day-count').textContent = `${d.day || '–'} · engine picks ${d.engine_picks ?? 0} · code picks ${rows.length} · with a combo ${rows.filter(r => (r.combos || []).length).length}`;
+  $('#day-table').innerHTML = '<tr><th>Symbol</th><th>Combos</th><th class="num">Order % rev</th><th>Why</th></tr>' + rows.map(r =>
+    `<tr><td>${esc(r.label)}</td><td>${(r.combos || []).map(x => `<span class="chip">${esc(x)}</span>`).join(' ') || '<span class="muted">–</span>'}</td><td class="num">${n(r.size)}</td><td class="wide">${esc(r.why)}</td></tr>`).join('');
+}).catch(e => { $('#day-table').innerHTML = `<tr><td class="muted">No day-by-day triage yet (${esc(e.message)})</td></tr>`; });
+let ncRows = null;
+get('/api/new_check').then(d => { ncRows = d.rows || []; $('#nc-count').dataset.gen = d.generated || ''; renderNewCheck(); }).catch(e => { $('#nc-table').innerHTML = `<tr><td class="muted">New check not built yet (${esc(e.message)})</td></tr>`; });
+const SHORT = {DEEP_RESEARCH:'Pick', WATCH_MILESTONE:'Watch', REJECT_WITH_REASON:'Reject'};
+function renderNewCheck() {
+  if (!ncRows) return;
+  const y = $('#year').value, d = $('#pick-date').value, c = $('#combo').value, s = $('#search').value.toLowerCase();
+  const hit = list => !c || (c === 'any' || c === 'anyR' ? (list || []).some(x => x[0] === (c === 'any' ? 'C' : 'R')) : (list || []).includes(c));
+  const v = ncRows.filter(r => (y === 'all' || !y || r.week.startsWith(y)) && (!d || r.week === d) && (hit(r.old_combos) || hit(r.new_combos))
+    && (!c || r.old === 'DEEP_RESEARCH' || r.new === 'DEEP_RESEARCH') && (!s || r.label.toLowerCase().includes(s)))
+    .sort((a, b) => a.week < b.week ? 1 : a.week > b.week ? -1 : a.label < b.label ? -1 : 1);
+  const both = v.filter(r => hit(r.old_combos) && hit(r.new_combos) && r.old === 'DEEP_RESEARCH' && r.new === 'DEEP_RESEARCH').length;
+  $('#nc-count').textContent = `${v.length} rows · ${both} in both lists · ${v.filter(r => r.new == null).length} waiting for facts · built ${$('#nc-count').dataset.gen || '?'}`;
+  const chips = l => (l || []).map(x => `<span class="chip">${esc(x)}</span>`).join(' ') || '<span class="muted">–</span>';
+  const act = a => a == null ? '<span class="muted">waiting</span>' : `<span class="chip ${a === 'DEEP_RESEARCH' ? 'buy' : a === 'REJECT_WITH_REASON' ? 'sell' : 'hold'}">${SHORT[a] || a}</span>`;
+  $('#nc-table').innerHTML = '<tr><th>Week</th><th>Symbol</th><th>Old Haiku</th><th>New</th><th>New: why</th><th class="num">Old order % rev</th><th class="num">New order % rev</th><th>Old combos</th><th>New combos</th></tr>'
+    + v.slice(0, 400).map(r => `<tr${r.agree ? '' : ' style="font-weight:600"'}><td>${esc(r.week)}</td><td>${esc(r.label)}</td><td>${act(r.old)}</td><td>${act(r.new)}</td><td class="wide">${esc(r.why)}</td>`
+      + `<td class="num">${n(r.old_size)}</td><td class="num">${n(r.new_size)}</td><td>${chips(r.old_combos)}</td><td>${chips(r.new_combos)}</td></tr>`).join('')
+    + (v.length > 400 ? `<tr><td colspan="9" class="muted">First 400 of ${v.length}; pick a year or date to narrow.</td></tr>` : '');
+}
 function selectedCategories() { return [...$('#cat').querySelectorAll('input:checked')].map(x => x.value) }
 function matchesCategories(r, categories, mode) {
   const extra = {'value-smallcap': matchesValueCategory, 'insider-buying': matchesBuyingCategory,
@@ -248,6 +282,7 @@ function renderPicks() {
   $('#combo-summary').innerHTML = categories.length ? sig(`${mode === 'all' ? 'All' : 'Any'} selected categories${s ? ' + search' : ''}`, v) : '';
   v.sort((a, b) => ((a[sortKey] ?? -1e9) > (b[sortKey] ?? -1e9) ? 1 : -1) * sortDir);
   renderHoldingImpact(v);
+  renderNewCheck();
   $('#pickcount').textContent = `${v.length} shown`;
   const plan = {};
   [...rows].filter(r => matchesCombo(r, $('#combo').value)).sort((a, b) => a.week_start < b.week_start ? -1 : 1).forEach(r => {
@@ -364,7 +399,7 @@ async function loadRun() {
   $('#run-cards').innerHTML = card('Latest prices', f.prices) + card('Filings listed to', (f.filings || '').slice(0, 10))
     + card('Latest Haiku picks', f.picks ? 'Week of ' + f.picks : '–') + card('Weeks waiting', weeks.length, weeks.join(', '))
     + card('Disk free', d.disk_free_gb + ' GB', low ? `<span class="bad">Weekly needs ${d.weekly_min_gb} GB</span>` : 'Enough for a weekly run')
-    + card('Haiku sign-in', d.haiku_signed_in ? 'Signed in' : 'Not signed in', d.haiku_signed_in ? '' : 'Run <code>claude auth login</code> in Terminal once');
+    + card('Haiku sign-in', d.haiku_signed_in ? 'Signed in' : 'Not signed in', d.haiku_signed_in ? 'Run weekly does the Haiku step' : 'Ask Claude in the thread, or run <code>claude auth login</code>');
   ['run-daily', 'run-weekly', 'run-lists'].forEach(id => $('#' + id).disabled = d.running);
   $('#run-stop').disabled = !d.running;
   const st = d.state;
@@ -439,7 +474,67 @@ function swingTable(title, list, full) {
   if (!list.length) return `<h2>${title}</h2><p class="muted">None.</p>`;
   return `<h2>${title} <small>· ${list.length}</small></h2><div class="wrap"><table><tr><th>Status</th><th>Signal</th><th>Symbol</th><th>Company</th><th class="num">Signal close</th>${full ? '<th>Bought</th><th class="num">Entry</th><th class="num">Stop</th><th class="num">Last close</th><th class="num">P&amp;L</th><th>Days held / exit</th>' : '<th class="num">Stop (estimate)</th><th class="num">63-day</th><th class="num">5-day</th>'}<th>Note</th></tr>${list.map(r => `<tr class="${r.issuer_id ? 'click' : ''}" data-id="${r.issuer_id || ''}"><td>${actionChip(r.status)}</td><td>${r.signal_date}</td><td><b>${esc(r.symbol)}</b></td><td>${esc(r.name)}</td><td class="num">${n(r.signal_close, 2)}</td>${full ? `<td>${r.buy_date || '–'}</td><td class="num">${n(r.entry, 2)}</td><td class="num">${n(r.stop, 2)}</td><td class="num">${n(r.last_close ?? r.exit, 2)}</td><td class="num">${pctx(r.pnl)}</td><td>${r.days_held != null ? r.days_held + ' days' : esc(r.exit_date || '–')}</td>` : `<td class="num">${n(r.stop_est, 2)}</td><td class="num">${pctx(r.ret_63d, 0)}</td><td class="num">${pctx(r.ret_5d, 0)}</td>`}<td class="wide">${esc(r.note || r.reason || '')}</td></tr>`).join('')}</table></div>`;
 }
-let shortData = null, shortMonths = [];
+let shortData = null, shortMonths = [], shortKind = 'sized_up';
+try { const saved = localStorage.getItem('short-account'); if (saved) $('#short-account').value = saved; } catch (e) {}
+const money = v => v == null ? '–' : '₹' + Number(v).toLocaleString('en-IN', {maximumFractionDigits:0});
+const TYPE_LABEL = {'Dip':'Dip rule', 'Final div':'Dividend (final)', 'Interim div':'Dividend (interim)'};
+function bookTable(title, list, mode) {
+  if (!list.length) return `<h2>${title}</h2><p class="muted">None.</p>`;
+  const account = Number($('#short-account').value) || 0, plan = mode === 'upcoming';
+  const body = list.map(r => {
+    const isDip = r.kind === 'Dip', size = plan ? (shortData.breadth?.size) : r.size, amount = account && size ? account * size : null;
+    const price = r.entry ?? r.signal_close ?? r.last_close, qty = amount && price ? Math.floor(amount / price) : null;
+    const exitNote = plan ? `Sell at the close on ${esc(r.sell_date)}, the last trading day before the ex-date` : isDip ? `Next open after a close above the 5-day average, at the stop, or by the close on ${esc(r.planned_exit)}` : `Sell at the close on ${esc(r.planned_exit)}, the last trading day before the ex-date`;
+    return `<tr class="${r.issuer_id ? 'click' : ''}" data-id="${r.issuer_id || ''}"><td><span class="chip">${esc(TYPE_LABEL[r.kind] || r.kind)}</span></td><td>${actionChip(r.status || 'PLANNED')}</td><td><b>${esc(r.symbol)}</b></td><td>${esc(r.name)}</td>`
+      + `<td>${esc(plan ? r.buy_date : (r.buy_date || r.entry_date))}<span class="muted"> open</span></td><td class="num">${n(r.entry, 2)}</td><td>${esc(plan ? r.sell_date : (r.exit_date || r.planned_exit))}</td><td class="wide">${r.status === 'CLOSED' ? esc(r.reason || '') : exitNote}</td>`
+      + `<td>${esc(plan ? shortData.breadth?.size_label : (r.size_label || '–'))}</td><td class="num">${money(amount)}</td><td class="num">${qty ?? '–'}</td><td class="num">${isDip ? n(r.stop ?? r.stop_est, 2) : '–'}</td>`
+      + `<td>${esc(r.ex_date || '–')}</td><td>${esc(r.record_date || '–')}</td><td class="num">${r.yield_pct != null ? (100 * r.yield_pct).toFixed(1) + '%' : '–'}</td><td class="num">${n(r.last_close ?? r.exit, 2)}</td><td class="num">${pctx(r.pnl)}</td></tr>`;
+  }).join('');
+  return `<h2>${title} <small>· ${list.length}</small></h2><div class="wrap"><table><tr><th>Type</th><th>Action</th><th>Symbol</th><th>Company</th><th>Entry</th><th class="num">Buy price</th><th>Exit date</th><th>Exit rule</th><th>Size</th><th class="num">₹ amount</th><th class="num">Qty</th><th class="num">Stop</th><th>Ex-date</th><th>Record date</th><th class="num">Yield</th><th class="num">Last / exit</th><th class="num">P&amp;L</th></tr>${body}</table></div>`;
+}
+function renderBook() {
+  const d = shortData, date = $('#short-date').value, on = r => !date || r.signal_date === date;
+  if (d.month) {
+    $('#short-body').innerHTML = bookTable(`Held at the end of ${d.month}`, d.held_at_end.filter(on), 'book') + bookTable(`Signals in ${d.month}`, d.rows.filter(on), 'book');
+  } else {
+    $('#short-body').innerHTML = bookTable(`Buy at the open on ${d.breadth.next_open}`, d.buy.filter(on), 'buy') + bookTable('Sell (due at the next open or close)', d.sell.filter(on), 'book') + bookTable('Holding', d.hold.filter(on), 'book') + bookTable('Coming dividends (buy on the entry date, if it still qualifies)', d.upcoming, 'upcoming') + (d.blocked.length ? bookTable('Signals with no free slot', d.blocked.filter(on), 'book') : '');
+  }
+  document.querySelectorAll('#short tr.click').forEach(tr => tr.onclick = () => openCompany(tr.dataset.id));
+}
+async function loadBook(month) {
+  let d;
+  try { d = await get('/api/short_book' + (month ? '?month=' + month : '')); } catch (error) { $('#short-body').textContent = 'Unable to load: ' + error.message; return; }
+  if (!d.strategy) { $('#short-body').textContent = 'No list yet. Press Run daily on the Run tab.'; return; }
+  const current = d.price_date.slice(0, 7);
+  shortData = d; shortMonths = [...new Set([...d.months, current])].sort();
+  if (month === current) return loadBook();
+  fillMonths('short', shortMonths, month || current);
+  const rows = d.month ? d.rows : [...d.buy, ...d.sell, ...d.hold, ...d.blocked], keepDate = $('#short-date').value, days = [...new Set(rows.map(r => r.signal_date))].sort().reverse();
+  $('#short-date').innerHTML = '<option value="">All dates</option>' + days.map(x => `<option>${x}</option>`).join('');
+  $('#short-date').value = days.includes(keepDate) ? keepDate : '';
+  $('#short-asof').textContent = d.month ? `Positions and signals for ${d.month}, from the backtest of the rule.` : `Prices to ${d.price_date}. Dividends known to ${d.dividends_through}.`;
+  const b = d.breadth;
+  $('#short-cards').innerHTML = (d.month
+    ? card('Signals in the month', d.signals) + card('Trades closed', d.trades) + card('Win rate', d.win_rate == null ? '–' : (100 * d.win_rate).toFixed(0) + '%') + card('Average trade', pctx(d.avg_pnl))
+    : card('Market breadth', (100 * b.value).toFixed(0) + '%', `${b.eligible} liquid stocks, ${b.date}`) + card("Today's size", b.size_label, b.full_size ? 'Breadth is 50% or more' : 'Breadth is below 50%') + card('Positions held', d.held + ' of ' + d.slots) + card('Invested', (100 * d.gross).toFixed(0) + '%', d.gross > 1 ? 'Above 100% is broker margin' : ''))
+    + card('Per year, Jul 2020–Oct 2026', d.strategy.cagr) + card('Since Jan 2024, per year', d.strategy.since24) + card('Worst drop', d.strategy.dd);
+  $('#short-rule').textContent = d.strategy.rule + ' Identification only: you place the trades yourself.';
+  renderBook();
+}
+function shortMode() {
+  $('#short-account-box').style.display = shortKind === 'sized_up' ? '' : 'none';
+  return shortKind === 'sized_up';
+}
+$('#short-account').oninput = () => { try { localStorage.setItem('short-account', $('#short-account').value); } catch (e) {} if (shortKind === 'sized_up' && shortData) renderBook(); };
+async function loadBreadth() {
+  try {
+    const d = await get('/api/short_book');
+    if (!d.breadth) return;
+    const b = d.breadth;
+    $('#breadth-chip').innerHTML = `Market breadth <b class="${b.full_size ? 'good' : 'bad'}">${(100 * b.value).toFixed(0)}%</b> · Short-term size <b>${esc(b.size_label)}</b> <span class="muted">(${esc(b.date)})</span>`;
+  } catch (e) {}
+}
+loadBreadth();
 function renderShort() {
   const d = shortData, date = $('#short-date').value, on = r => !date || r.signal_date === date;
   if (d.month) {
@@ -452,6 +547,7 @@ function renderShort() {
   document.querySelectorAll('#short tr.click').forEach(tr => tr.onclick = () => openCompany(tr.dataset.id));
 }
 async function loadShort(month) {
+  if (shortMode()) return loadBook(month);
   let d;
   try { d = await get('/api/swing' + (month ? '?month=' + month : '')); } catch (error) { $('#short-body').textContent = 'Unable to load: ' + error.message; return; }
   if (!d.rows) { $('#short-body').textContent = 'No scan yet. Press Refresh lists only on the Run tab.'; return; }
@@ -459,7 +555,6 @@ async function loadShort(month) {
   shortData = d; shortMonths = [...new Set([...d.months, current])].sort();
   if (month === current) return loadShort();
   fillMonths('short', shortMonths, month || current);
-  $('#short-select').innerHTML = `<option>${esc(d.strategy.name)}</option>`;
   const keepDate = $('#short-date').value, days = [...new Set(d.rows.map(r => r.signal_date))].sort().reverse();
   $('#short-date').innerHTML = '<option value="">All dates</option>' + days.map(x => `<option>${x}</option>`).join('');
   $('#short-date').value = days.includes(keepDate) ? keepDate : '';
@@ -472,7 +567,10 @@ async function loadShort(month) {
   renderShort();
 }
 bindMonths('short', () => shortMonths, loadShort);
-$('#short-date').onchange = renderShort;
+$('#short-date').onchange = () => shortKind === 'sized_up' ? renderBook() : renderShort();
+$('#short-select').innerHTML = '<option value="sized_up">Dip + dividend, sized up (7 positions)</option><option value="dip">Dip in a leader (5-day max)</option>';
+$('#short-select').value = shortKind;
+$('#short-select').onchange = () => { shortKind = $('#short-select').value; $('#short-date').value = ''; loadShort(); };
 loadShort();
 
 </script>

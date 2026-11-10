@@ -1,0 +1,296 @@
+"""BSE-only companies: older bhavcopy files, BSE delivery, SME groups, splits/bonuses from filings and prices,
+and face values for the share count (fake exchange transport; database tests use real PostgreSQL)."""
+
+from datetime import date, timedelta
+from decimal import Decimal
+
+import pytest
+
+from inflection import bse_actions, bse_results, companies, prices
+from inflection.bse_actions import Bar, Filing
+from inflection.identity import BSE_SME_GROUPS
+from inflection.sources import bhavcopy, listings
+from inflection.sources.common import WindowStatus
+from test_prices import BSE_LEGACY, udiff
+from test_sources import client, zip_of
+
+HTML = b"<!DOCTYPE html><html><body>File not found</body></html>"
+OLD_DAY = date(2024, 1, 8)
+DELIVERY = (b"DATE|SCRIP CODE|DELIVERY QTY|DELIVERY VAL|DAY'S VOLUME|DAY'S TURNOVER|DELV. PER.\n"
+            b"08012024|543210|0000000420|0000000004410|0000000700|0000000007350|060.00\n"
+            b"08012024|999999|0000000001|0000000000010|0000000001|0000000000010|100.00\n")
+
+
+# ---------------- older BSE files and delivery ----------------
+
+def test_bse_html_for_a_missing_udiff_file_falls_back_to_the_older_file():
+    c, t = client({"BhavCopy_BSE_CM": [(200, HTML)],
+                   "EQ_ISINCODE_080124": [(200, zip_of({"EQ_ISINCODE_080124.CSV": BSE_LEGACY}))],
+                   "SCBSEALL0801": [(200, zip_of({"SCBSEALL0801.TXT": DELIVERY}))]})
+    day = bhavcopy.fetch_bse(c, OLD_DAY)
+    (row,) = day.rows
+    assert day.status == WindowStatus.COMPLETE and day.notes == []
+    assert (row.code, row.close, row.delivery_qty, row.delivery_pct) == ("543210", Decimal("10.5"), Decimal(420),
+                                                                        Decimal("60.00"))
+    assert row.source_formats == ("BSE_LEGACY", "BSE_DELIVERY")
+    assert any("EQ_ISINCODE" in u for u in t.calls) and any("BSEDATA/gross/2024/SCBSEALL0801.zip" in u for u in t.calls)
+
+
+def test_bse_day_of_html_pages_only_is_failed_not_a_holiday():
+    c, _ = client({"BhavCopy_BSE_CM": [(200, HTML)], "EQ_ISINCODE": [(200, HTML)]})
+    day = bhavcopy.fetch_bse(c, OLD_DAY)
+    assert day.status == WindowStatus.FAILED and day.rows == []
+
+
+def test_bse_holiday_before_udiff_is_empty_unverified():
+    c, _ = client({"BhavCopy_BSE_CM": [(200, HTML)]})          # older file: 404
+    assert bhavcopy.fetch_bse(c, OLD_DAY).status == WindowStatus.EMPTY_UNVERIFIED
+
+
+def test_missing_bse_delivery_file_is_noted_not_a_downgrade():
+    body = udiff([(543210, "INE222B01022", "XYZ", "B", "XYZ LTD", "10.50")], day="2024-01-08", src="BSE")
+    c, _ = client({"BhavCopy_BSE_CM": [(200, body)]})
+    day = bhavcopy.fetch_bse(c, OLD_DAY)
+    assert day.status == WindowStatus.COMPLETE and day.rows[0].delivery_qty is None
+    assert day.notes == ["BSE_DELIVERY: HTTP 404"]
+
+
+def test_bse_delivery_file_parses_zero_padded_fields():
+    rows = bhavcopy.parse_bse_delivery(DELIVERY, OLD_DAY)
+    assert [(r.code, r.trade_date, r.delivery_qty, r.delivery_pct) for r in rows] == [
+        ("543210", OLD_DAY, Decimal(420), Decimal("60.00")), ("999999", OLD_DAY, Decimal(1), Decimal("100.00"))]
+
+
+# ---------------- SME groups ----------------
+
+def test_bse_ms_group_is_sme():
+    assert set(BSE_SME_GROUPS) == {"M", "MT", "MS"}
+    assert prices._board("BSE", "MS") == "SME" and prices._board("BSE", "B") == "MAINBOARD"
+    assert listings.BSE_SME_GROUPS is BSE_SME_GROUPS
+
+
+# ---------------- splits and bonuses ----------------
+
+def test_stated_ratios():
+    r = bse_actions.stated_ratios
+    assert [s.label for s in r("Board has approved and recommended Bonus at the ratio of 1:1")] == ["bonus 1:1"]
+    assert r("Bonus at the ratio of 1:1")[0].multiplier == 0.5
+    assert r("issue of 2 bonus equity shares for every 1 share held")[0].multiplier == pytest.approx(1 / 3)
+    (s,) = r("subdivision of 92616256 equity shares of Rs. 4 each into 185232512 equity shares of Rs. 2 each")
+    assert (s.kind, s.multiplier) == ("SPLIT", 0.5)
+    (s,) = r("sub-division of face value from Rs. 10/- each to Re. 1/- each")
+    assert s.multiplier == 0.1
+    (s,) = r("consolidation of equity shares of Rs. 1 each into Rs. 10 each")
+    assert s.multiplier == 10
+    assert r("Board to consider bonus issue") == []
+
+
+def test_record_dates():
+    t = "Company has fixed Wednesday, 25th September, 2024 as the record date for the Sub-division"
+    assert bse_actions.record_dates(t) == [date(2024, 9, 25)]
+
+
+def _bars(start, closes, jump_day=None, opens=None):
+    out, d = [], start
+    for i, c in enumerate(closes):
+        while d.weekday() >= 5:
+            d += timedelta(days=1)
+        out.append(Bar(d, (opens or {}).get(i, c), c))
+        d += timedelta(days=1)
+    return out
+
+
+def test_unstated_split_matches_a_move_beyond_the_price_band():
+    bars = _bars(date(2024, 9, 2), [1000, 1010, 1100, 1105, 224, 200, 205])     # 0.203 on the 5th day
+    ep = [Filing("p1", date(2024, 7, 20), "Sub-division / Stock Split", "regarding Split of Equity Shares")]
+    m, why = bse_actions.match_episode(ep, bars)
+    assert why == "matched" and (m.kind, m.multiplier, m.ex_date, m.method) == (
+        "SPLIT", Decimal("0.2"), bars[4].day, "plain_ratio_beyond_band")
+
+
+def test_stated_bonus_needs_a_matching_move_and_ordinary_days_do_not_count():
+    ep = [Filing("p1", date(2025, 2, 20), "Bonus", "Board recommends Bonus at the ratio of 1:10")]
+    # a 0.91 bonus scaling on day 3; day 5 is an ordinary -11.8% day that also fits: the closer move wins
+    bars = _bars(date(2025, 3, 3), [100, 101, 92, 93, 82, 83])
+    m, _ = bse_actions.match_episode(ep, bars)
+    assert m.ex_date == bars[2].day and m.multiplier == Decimal("0.90909091") and m.kind == "BONUS"
+    flat = _bars(date(2025, 3, 3), [100, 101, 102, 88, 89])                       # only the -14% day
+    assert bse_actions.match_episode(ep, flat) == (None, "stated_ratio_not_seen_in_prices")
+
+
+def test_a_move_across_missing_exchange_days_is_not_overnight():
+    bars = [Bar(date(2023, 12, 5), 100, 100), Bar(date(2024, 1, 1), 48, 49)]
+    ep = [Filing("p1", date(2023, 11, 20), "Bonus", "Bonus issue in the ratio 1:1")]
+    hole = frozenset({date(2023, 12, 6) + timedelta(days=i) for i in range(20)})
+    assert bse_actions.match_episode(ep, bars, hole)[0] is None
+    assert bse_actions.match_episode(ep, bars)[0] is not None
+
+
+def test_episodes_group_filings_within_gap():
+    f = [Filing(str(i), d, "", "bonus") for i, d in enumerate([date(2024, 1, 1), date(2024, 3, 1), date(2025, 1, 1)])]
+    assert [len(e) for e in bse_actions.episodes(f)] == [2, 1]
+
+
+# ---------------- face value ----------------
+
+def test_face_value_is_carried_back_through_splits_only():
+    acts = [(date(2025, 3, 21), "SPLIT", 0.1, "face value 10 -> 1"), (date(2025, 6, 1), "BONUS", 0.5, "bonus 1:1")]
+    assert bse_results.face_value_at(1.0, date(2024, 12, 31), acts) == 10.0
+    assert bse_results.face_value_at(1.0, date(2025, 3, 31), acts) == 1.0
+    assert bse_results.face_value_at(2.0, date(2024, 12, 31), [(date(2025, 1, 1), "SPLIT", 0.5, "split 1:2 or bonus 1:1")]) is None
+
+
+# ---------------- database ----------------
+
+def _bse_only(db, code="543210", isin="INE222B01022", group="MS", fv=1):
+    iss = db.execute("INSERT INTO issuers (legal_name) VALUES ('XYZ Ltd') RETURNING issuer_id").fetchone()[0]
+    sec = db.execute("INSERT INTO securities (issuer_id, isin) VALUES (%s, %s) RETURNING security_id",
+                     (iss, isin)).fetchone()[0]
+    db.execute("""INSERT INTO identifier_history (security_id, exchange, kind, value, series, board, valid_from, source)
+                  VALUES (%s, 'BSE', 'SCRIP_CODE', %s, %s, 'MAINBOARD', '2023-12-05', 'test')""", (sec, code, group))
+    db.execute("""INSERT INTO listing_master (exchange, list_name, code, snapshot_date, isin, name, status, board,
+                                              series, face_value, raw)
+                  VALUES ('BSE', 'BSE_ACTIVE', %s, '2026-10-29', %s, 'XYZ', 'ACTIVE', 'MAINBOARD', %s, %s, '{}')""",
+               (code, isin, group, fv))
+    return iss, sec
+
+
+def test_repair_boards_marks_ms_scrips_sme_and_fills_unknown_segments(db):
+    iss, sec = _bse_only(db)
+    assert companies.repair_boards(db)["rows"]["listing_master"] == 1
+    assert db.execute("SELECT board FROM listing_master").fetchone()[0] == "MAINBOARD"      # dry run kept nothing
+    out = companies.repair_boards(db, apply=True)["rows"]
+    assert out["listing_master"] == 1 and out["identifier_history"] == 1 and out["securities_sme"] == 1
+    assert db.execute("SELECT exchange_segment FROM securities").fetchone()[0] == "SME"
+
+
+def test_record_bse_delivery_fills_stored_rows(db):
+    db.execute("""INSERT INTO bhavcopy_rows (exchange, trade_date, code, series, close, source_formats)
+                  VALUES ('BSE', %s, '543210', 'B', 10.5, '{BSE_LEGACY}')""", (OLD_DAY,))
+    c, _ = client({"SCBSEALL0801": [(200, zip_of({"SCBSEALL0801.TXT": DELIVERY}))]})
+    out = prices.record_bse_delivery(db, bhavcopy.fetch_bse_delivery(c, OLD_DAY))
+    assert out == {"status": "COMPLETE", "delivery_rows": 2, "price_rows_updated": 1}
+    assert db.execute("SELECT delivery_qty, delivery_pct, source_formats FROM bhavcopy_rows").fetchone() == (
+        Decimal(420), Decimal("60.00"), ["BSE_DELIVERY", "BSE_LEGACY"])
+
+
+def test_face_values_written_with_the_paid_up_capital_fact_time(db):
+    iss, sec = _bse_only(db, group="B", fv=2)
+    db.execute("""INSERT INTO financial_facts (issuer_id, metric, period_start, period_end, scope, value, value_kind,
+                    currency, scale, period_type, available_at, provider, provider_version, content_hash)
+                  VALUES (%s, 'paid_up_capital', '2026-04-01', '2026-06-30', 'STANDALONE', 50000000, 'MONEY', 'INR',
+                          'UNITS', 'QUARTER', '2026-08-10 12:00+05:30', 'bse_results_snapshot', 'bse-results-snapshot-2', 'h1')""",
+               (iss,))
+    assert bse_results.face_values(db, issuers=[str(iss)])["counts"] == {"derived": 1}
+    bse_results.face_values(db, apply=True, issuers=[str(iss)])
+    row = db.execute("""SELECT value, value_kind, available_at = '2026-08-10 12:00+05:30'::timestamptz, provider
+                          FROM financial_facts WHERE metric = 'face_value'""").fetchone()
+    assert row == (Decimal("2"), "PER_SHARE", True, "bse_listing_face_value")
+    assert bse_results.face_values(db, apply=True, issuers=[str(iss)])["counts"] == {}      # idempotent
+
+
+def test_version_2_snapshot_figures_and_their_face_values_are_timed_by_the_filing(db):
+    from datetime import datetime, timezone
+    ist = timezone(timedelta(hours=5, minutes=30))
+    iss, sec = _bse_only(db, group="B", fv=10)
+    src = db.execute("INSERT INTO sources(name, kind, access_policy) VALUES ('bse_t', 'announcements', 'test') RETURNING source_id").fetchone()[0]
+    good = db.execute("""INSERT INTO document_publications(source_id, external_id, external_version, source_url, published_at,
+        issuer_id, title, publication_basis) VALUES (%s,'1','1','u',%s,%s,'XYZ Ltd - Results - Financial Results For Quarter Ended June 30, 2026',
+        'EXCHANGE_TIMESTAMP') RETURNING publication_id""", (src, datetime(2026, 8, 12, 18, tzinfo=ist), iss)).fetchone()[0]
+    obs = datetime(2026, 11, 8, 10, tzinfo=ist)
+    fid = db.execute("""INSERT INTO financial_facts(issuer_id, metric, period_start, period_end, scope, value, value_kind, currency,
+        scale, period_type, available_at, provider, provider_version, content_hash) VALUES (%s,'paid_up_capital','2026-04-01',
+        '2026-06-30','STANDALONE',50000000,'MONEY','INR','UNITS','QUARTER',%s,'bse_results_snapshot','bse-results-snapshot-2','h2')
+        RETURNING fact_id""", (iss, obs)).fetchone()[0]
+    bse_results.face_values(db, apply=True, issuers=[str(iss)])        # copies the observation time
+    out = bse_results.time_from_filings(db)
+    assert (out["timed_now"], out["face_values_timed_now"]) == (1, 1)
+    rows = db.execute("""SELECT metric, available_at, availability_basis FROM financial_facts_asof
+                          WHERE issuer_id = %s ORDER BY metric""", (iss,)).fetchall()
+    assert rows == [("face_value", datetime(2026, 8, 12, 18, tzinfo=ist), "SNAPSHOT_TIMED_BY_FILING"),
+                    ("paid_up_capital", datetime(2026, 8, 12, 18, tzinfo=ist), "SNAPSHOT_TIMED_BY_FILING")]
+    assert db.execute("SELECT publication_id FROM financial_snapshot_timing WHERE fact_id = %s", (fid,)).fetchone()[0] == good
+
+
+def test_post_split_isin_takes_over_its_code_and_joins_the_company(db):
+    # the listing file's span on the old ISIN is still open (snapshot before the split)
+    iss, sec = _bse_only(db, code="544831", isin="INE208H01016", group="B")
+    db.execute("""UPDATE identifier_history SET source = 'listing_master', valid_from = '2026-07-28'""")
+    db.execute("""INSERT INTO bhavcopy_rows (exchange, trade_date, code, series, isin, source_formats) VALUES
+        ('BSE', '2026-10-29', '544831', 'B', 'INE208H01016', '{BSE_UDIFF}'),
+        ('BSE', '2026-10-30', '544831', 'B', 'INE208H01024', '{BSE_UDIFF}'),
+        ('BSE', '2026-11-06', '544831', 'B', 'INE208H01024', '{BSE_UDIFF}')""")
+    out = prices.build_company_list(db)
+    assert out["counts"].get("conflicts", 0) == 0 and out["counts"]["isin_successions"] == 1
+    assert out["counts"]["issuers_merged"] == 1
+    spans = db.execute("""SELECT s.isin, h.source, h.valid_from, h.valid_to, s.issuer_id = %s FROM identifier_history h
+                           JOIN securities s USING (security_id) WHERE h.kind = 'SCRIP_CODE' ORDER BY 1, 2""", (iss,)).fetchall()
+    assert spans == [("INE208H01016", "bhavcopy", date(2026, 10, 29), date(2026, 10, 29), True),
+                     ("INE208H01016", "listing_master", date(2026, 7, 28), date(2026, 10, 29), True),
+                     ("INE208H01024", "bhavcopy", date(2026, 10, 30), None, True)]
+    assert db.execute("SELECT count(*) FROM audit_log WHERE details->>'rule' = 'ISIN_SUCCESSION'").fetchone()[0] == 1
+
+
+def test_an_earlier_isin_inside_the_later_span_joins_the_company_without_a_span(db):
+    iss, sec = _bse_only(db, code="532626", isin="INE063E01061", group="B")      # span open since 2023-12-05
+    db.execute("""INSERT INTO bhavcopy_rows (exchange, trade_date, code, series, isin, source_formats) VALUES
+        ('BSE', '2026-07-06', '532626', 'B', 'INE063E01053', '{BSE_UDIFF}'),
+        ('BSE', '2026-07-21', '532626', 'B', 'INE063E01061', '{BSE_UDIFF}')""")
+    out = prices.build_company_list(db)
+    assert out["counts"]["earlier_isin_inside_later_span"] == 1 and out["counts"].get("conflicts", 0) == 0
+    assert db.execute("SELECT count(DISTINCT issuer_id) FROM securities").fetchone()[0] == 1
+
+
+def test_a_different_company_on_the_code_stays_a_conflict(db):
+    _bse_only(db, code="532626", isin="INE063E01061", group="B")
+    db.execute("""INSERT INTO bhavcopy_rows (exchange, trade_date, code, series, isin, source_formats) VALUES
+        ('BSE', '2026-07-06', '532626', 'B', 'INE999Z01011', '{BSE_UDIFF}')""")
+    assert prices.build_company_list(db)["counts"]["conflicts"] == 1
+
+
+def test_an_older_isin_from_older_files_joins_the_company_holding_its_code(db):
+    iss, sec = _bse_only(db, code="530585", isin="INE691C01022", group="B")      # current ISIN, span from 2023-12-05
+    db.execute("""UPDATE identifier_history SET source = 'bhavcopy'""")
+    db.execute("""INSERT INTO bhavcopy_rows (exchange, trade_date, code, series, isin, source_formats) VALUES
+        ('BSE', '2019-06-27', '530585', 'X', 'INE691C01014', '{BSE_LEGACY}'),
+        ('BSE', '2019-07-05', '530585', 'X', 'INE691C01014', '{BSE_LEGACY}'),
+        ('BSE', '2019-06-27', '500001', 'B', 'INE555Q01011', '{BSE_LEGACY}'),      -- an unrelated, delisted scrip
+        ('BSE', '2026-11-06', '530585', 'X', 'INE691C01022', '{BSE_UDIFF}')""")
+    out = prices.build_company_list(db)["counts"]
+    assert out["issuers_created"] == 2 and out["code_twins_merged"] == 1
+    assert db.execute("SELECT count(*) FROM securities WHERE issuer_id = %s", (iss,)).fetchone()[0] == 2
+    assert db.execute("SELECT count(DISTINCT issuer_id) FROM securities").fetchone()[0] == 2
+
+
+# ---------------- results statements in scanned text layers ----------------
+
+HARISH = """Statement of Audited financial results for the quarter ending 30th June 2022.
+Results (Rupees in Lakhs, except EPS)
+SL.NO PARTICULARS Quarter Ended Year Ended
+30.06.2022 31.03.2022 30.06.2021 31.03.2022
+(Un-audited) (Audited) (Un-audited) (Audited)
+1 Revenue from operations 2,969.21 2,948.12 2,057.55 10,686.14
+Ul Other Income 16.26 1,78 11.88 45.98
+Total Income from operations 2,985.47 2,949.90 2,069.43 10,732.12
+Ml Expenses
+e. Finance Costs 126.86 191.02 94.79 489.69
+f. Depreciation and Amortisation expense 63.58 60.46 55.93 222.02
+Total Expenses 3,027.57 2,892.81 2,059.84 10,666.20
+IV__|Profit before exceptional Items and tax (42.10) 57.10 9.59 65.92
+Vill |Net Profit from Ordinary activities after tax (35.41) 68.77 20.19 48.28
+"""
+
+
+def test_scanned_row_numbers_decimal_commas_and_plain_profit_labels_are_read():
+    from inflection import results_text
+    figs = {f.metric: f.value for f in results_text.read_page(3, HARISH, "STANDALONE")}
+    assert figs == {"revenue": Decimal("296921000.00"), "other_income": Decimal("1626000.00"),
+                    "finance_cost": Decimal("12686000.00"), "depreciation": Decimal("6358000.00"),
+                    "total_expenses": Decimal("302757000.00"), "pat": Decimal("-3541000.00")}
+
+
+def test_whole_number_rows_keep_small_figures_but_not_unverifiable_costs():
+    from inflection import results_text
+    assert results_text._first_number(" 93 139 121 459 472")[0] == 93          # no decimals anywhere: not a note
+    assert results_text._first_number(" 3 1,234.56 999.10")[0] == Decimal("1234.56")   # note 3, then the figure
+    assert results_text.UNIT.search("Rs. ln Lakhs") and results_text.UNIT.search('(Rupees In "Lakhs" except EPS)')

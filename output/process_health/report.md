@@ -1,14 +1,14 @@
 # Process-wide integrity audit
 
-Window: {'first': '2026-10-26', 'last': '2026-11-08'}
+Window: {'first': '2026-10-26', 'last': '2026-11-09'}
 
 | Process check | Status | Affected |
 |---|---|---:|
 | Snapshot dates without original disclosure proof | LIMITATION | 146687 |
-| Financial facts with unknown scope or availability | WARNING | 46 |
+| Financial facts with unknown scope or availability | WARNING | 53 |
 | Filings with no established publication time | OK | 0 |
-| Dated filings still missing an issuer identity | WARNING | 236 |
-| Unresolved announcement-listing windows | WARNING | 5 |
+| Dated filings still missing an issuer identity | WARNING | 253 |
+| Unresolved announcement-listing windows | WARNING | 6 |
 | Incomplete results discovery in the requested window | WARNING | 260 |
 | Current symbol identities without a complete results listing for this window | WARNING | 260 |
 | Announcement stream-days with no listing attempts | OK | 0 |
@@ -18,7 +18,7 @@ Window: {'first': '2026-10-26', 'last': '2026-11-08'}
 | Current commercial passages awaiting resolution | OK | 0 |
 | Results filings awaiting download or parsing | WARNING | 6 |
 | Results filings not evaluated under active rules | OK | 0 |
-| Results without a comparable prior period | WARNING | 382 |
+| Results without a comparable prior period | WARNING | 383 |
 | Results disclosed outside the old four-month refresh schedule | INFO | 1078 |
 | Unverified split and bonus adjustments | OK | 0 |
 | Daily prices with multiple stored versions | OK | 0 |
@@ -34,7 +34,7 @@ Raw legacy dates are retained for audit. As-of readers now use first observation
 
 These cannot support comparable, dated financial calculations.
 
-[{"affected": 46, "issuers": 5}]
+[{"affected": 53, "issuers": 5}]
 
 ## Filings with no established publication time
 
@@ -46,13 +46,13 @@ Unknown timing must remain unknown in historical reconstruction.
 
 Unlinked filings cannot reach issuer-level analysis; identity repair is separate from a negative company assessment.
 
-[{"affected": 236}]
+[{"affected": 253}]
 
 ## Unresolved announcement-listing windows
 
 Successful retries or complete child windows can cover an older failure in the same stream. Unverified empty responses and gaps remain incomplete.
 
-[{"name": "bse_announcements", "coverage_status": "PARTIAL", "affected": 3}, {"name": "nse_announcements", "coverage_status": "PARTIAL", "affected": 2}]
+[{"name": "bse_announcements", "coverage_status": "PARTIAL", "affected": 2}, {"name": "nse_announcements", "coverage_status": "PARTIAL", "affected": 4}]
 
 ## Incomplete results discovery in the requested window
 
@@ -112,7 +112,7 @@ Discovered results must reach usable facts before this window is marked complete
 
 A missing comparable is a data limitation, not a negative business verdict.
 
-[{"status": "NO_COMPARABLE", "affected": 382}]
+[{"status": "NO_COMPARABLE", "affected": 383}]
 
 ## Results disclosed outside the old four-month refresh schedule
 

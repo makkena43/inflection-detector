@@ -317,6 +317,7 @@ def triage(p, conn=None, issuer_id=None, use_llm=False):
         except Exception:
             x = {}
         v, basis = extract.estimate_crore(x)
+        figs = stated_figures(conn, issuer_id, cutoff) if V36 and cutoff else []
         if v and V36 and stated_total(figs, v, e.get("published_at")):
             v, basis, size_flag = None, "UNKNOWN", "PERIOD_TOTAL"
         if v:

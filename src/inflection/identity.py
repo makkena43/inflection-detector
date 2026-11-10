@@ -23,6 +23,9 @@ from .states import RunMode
 
 NSE_MAINBOARD_EQUITY_SERIES = {"EQ", "BE", "BZ"}
 NSE_SME_SERIES = {"SM", "ST", "SZ"}
+# BSE groups of the SME platform: M, MT (trade-for-trade) and MS (the SME platform's start-up segment; e.g.
+# CWD, Naapbooks, Valencia Nutrition).  MS was read as main board until 2026-11-10.
+BSE_SME_GROUPS = ("M", "MT", "MS")
 # Anything else (warrants, partly paid, debt, RR, IV ...) is not the operating equity.
 
 
