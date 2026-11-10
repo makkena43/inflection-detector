@@ -232,6 +232,15 @@ def bse_daily():
     return f"BSE daily steps done (last {look} days)"
 
 
+def finish_text():
+    """Read every downloaded-but-unread filing (any date), so no downloaded document is left without text."""
+    run_or_fail([PY, f"{REPO}/ops/finish_text.py"], "finish text", extra={"PYTHONPATH": f"{REPO}/src", "INFLECTION_DSN": "postgresql:///inflection"})
+    return psql("select count(*) from document_publications where pipeline_state = 'DOWNLOADED'") + " downloaded files still unread"
+
+
+PURGE_READ = os.environ.get("INFLECTION_PURGE_READ") == "1"   # off unless the owner asks for files to be removed after reading
+
+
 def purge_read():
     """Delete downloaded files whose text is fully extracted (the text stays in the database), so documents do not pile up
     on disk; partly read or OCR-pending files are kept for a later pass. A file can always be fetched again."""
@@ -302,8 +311,10 @@ def data_steps():
     step("Shareholding and BSE results", refresh_slow)
     step("List new filings", list_filings)
     step("Download filings", download_filings)
+    step("Read any downloaded-but-unread filings", finish_text)
     step("Process filings", process_filings)
-    step("Remove read documents from disk", purge_read)
+    if PURGE_READ:
+        step("Remove read documents from disk", purge_read)
     names = ("Prices and delivery", "BSE daily data", "Index closes", "Deals", "Corporate actions and dividends", "Shareholding and BSE results",
              "List new filings", "Download filings", "Process filings")
     if all(x["status"] == "done" for x in state["steps"] if x["name"] in names):
