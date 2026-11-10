@@ -20,10 +20,12 @@ from datetime import date, datetime, time, timedelta
 from pathlib import Path
 from typing import Optional
 
+from psycopg import Rollback
 from psycopg.errors import ExclusionViolation
 from psycopg.types.json import Jsonb
 
 from . import prices
+from .identity import BSE_SME_GROUPS
 from .sources import listings
 from .sources.common import IST
 from .sources.download import Archive
@@ -379,6 +381,38 @@ def master_report(conn) -> dict:
             "spans": [dict(source=a, exchange=b, kind=c, status=d, rows=n) for a, b, c, d, n in spans]}
 
 
+# ---------------------------------------------------------------- board repair
+
+_BOARD_REPAIRS = (
+    ("listing_master", """UPDATE listing_master SET board = 'SME'
+                           WHERE exchange = 'BSE' AND series = ANY(%(groups)s) AND board <> 'SME'"""),
+    ("identifier_history", """UPDATE identifier_history SET board = 'SME'
+                               WHERE exchange = 'BSE' AND series = ANY(%(groups)s) AND board <> 'SME'"""),
+    # a security is SME while any of its open listings is on an SME board
+    ("securities_sme", """UPDATE securities s SET exchange_segment = 'SME'
+                           WHERE s.exchange_segment <> 'SME' AND EXISTS (SELECT 1 FROM identifier_history h
+                                 WHERE h.security_id = s.security_id AND h.board = 'SME' AND h.valid_to IS NULL)"""),
+    # a security first seen in a filing stays UNKNOWN although its listings later said which board it is on
+    ("securities_unknown", """UPDATE securities s SET exchange_segment = CASE WHEN EXISTS (SELECT 1 FROM identifier_history h
+                                     WHERE h.security_id = s.security_id AND h.board = 'SME') THEN 'SME' ELSE 'MAINBOARD' END
+                               WHERE s.exchange_segment = 'UNKNOWN' AND EXISTS (SELECT 1 FROM identifier_history h
+                                     WHERE h.security_id = s.security_id AND h.board <> 'UNKNOWN')"""),
+)
+
+
+def repair_boards(conn, apply: bool = False) -> dict:
+    """Bring stored boards in line with ``BSE_SME_GROUPS`` and the listings: BSE group MS was read as main
+    board, and a security created UNKNOWN never took the board its listings later gave.  Dry run unless
+    ``apply`` (counts the rows each step would change)."""
+    out = {}
+    with conn.transaction():
+        for name, sql in _BOARD_REPAIRS:
+            out[name] = conn.execute(sql, {"groups": list(BSE_SME_GROUPS)}).rowcount
+        if not apply:
+            raise Rollback()   # dry run: nothing is kept
+    return {"applied": apply, "rows": out}
+
+
 # ---------------------------------------------------------------- command line
 
 def main(argv: Optional[list[str]] = None) -> int:
@@ -386,6 +420,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     python -m inflection.companies import FILE --exchange nse|bse [--date YYYY-MM-DD]
     python -m inflection.companies build      build spans from the listing files, then link filings
     python -m inflection.companies report
+    python -m inflection.companies repair-boards [--apply]   SME / main board flags from groups and listings
 
     Connects with INFLECTION_DSN.  Uses the default HttpClient transport."""
     import argparse
@@ -398,7 +433,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     from .sources.http import HttpClient
 
     ap = argparse.ArgumentParser(prog="python -m inflection.companies")
-    ap.add_argument("command", choices=("fetch", "import", "build", "report", "merge-isin-twins"))
+    ap.add_argument("command", choices=("fetch", "import", "build", "report", "merge-isin-twins",
+                                                "repair-boards"))
+    ap.add_argument("--apply", action="store_true", help="repair-boards: write the changes (default: dry run)")
     ap.add_argument("file", type=Path, nargs="?")
     ap.add_argument("--exchange", default="both", choices=("nse", "bse", "both"))
     ap.add_argument("--date", type=date.fromisoformat, default=None, help="snapshot date (default: today, IST)")
@@ -410,6 +447,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     snapshot = a.date or datetime.now(IST).date()
 
     with psycopg.connect(os.environ["INFLECTION_DSN"], autocommit=True) as conn:
+        if a.command == "repair-boards":
+            print(json.dumps(repair_boards(conn, a.apply)))
+            return 0
         if a.command == "merge-isin-twins":
             print(json.dumps(merge_isin_twins(conn)))
             return 0

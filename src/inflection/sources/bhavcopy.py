@@ -38,9 +38,11 @@ NSE_FULL_URL = "https://archives.nseindia.com/products/content/sec_bhavdata_full
 NSE_REFERER = "https://www.nseindia.com/"
 BSE_UDIFF_URL = "https://www.bseindia.com/download/BhavCopy/Equity/BhavCopy_BSE_CM_0_0_0_{ymd}_F_0000.CSV"
 BSE_LEGACY_URL = "https://www.bseindia.com/download/BhavCopy/Equity/EQ_ISINCODE_{dmy2}.zip"
+BSE_DELIVERY_URL = "https://www.bseindia.com/BSEDATA/gross/{yyyy}/SCBSEALL{ddmm}.zip"
 BSE_REFERER = "https://www.bseindia.com/"
 ACCEPT = "text/csv, application/zip, application/octet-stream, */*"
 LAKH = Decimal(100000)
+HTML_PAGE = "HTML page instead of CSV"
 
 
 @dataclass(frozen=True)
@@ -124,7 +126,7 @@ def csv_records(body: bytes) -> list[dict]:
             body = z.read(names[0])
     text = body.decode("utf-8-sig", errors="replace")
     if text.lstrip()[:1] == "<":
-        raise ValueError("HTML page instead of CSV")
+        raise ValueError(HTML_PAGE)
     reader = csv.DictReader(io.StringIO(text))
     if not reader.fieldnames:
         raise ValueError("empty file")
@@ -212,6 +214,50 @@ def parse_bse_legacy(body: bytes, trade_date: date) -> list[PriceRow]:
     return out
 
 
+def parse_bse_delivery(body: bytes, trade_date: date) -> list[PriceRow]:
+    """BSE ``SCBSEALLDDMM.TXT`` (delivery position, pipe separated, zero padded).  It has no series: its
+    rows carry only the scrip code, delivery quantity and delivery percent, and ``with_bse_delivery`` puts
+    them on the price rows of the same code."""
+    if body[:4] == b"PK\x03\x04":
+        with zipfile.ZipFile(io.BytesIO(body)) as z:
+            names = [n for n in z.namelist() if n.lower().endswith((".txt", ".csv"))]
+            if not names:
+                raise ValueError("ZIP holds no delivery file")
+            body = z.read(names[0])
+    text = body.decode("utf-8-sig", errors="replace")
+    if text.lstrip()[:1] == "<":
+        raise ValueError(HTML_PAGE)
+    reader = csv.DictReader(io.StringIO(text), delimiter="|")
+    if not reader.fieldnames:
+        raise ValueError("empty file")
+    out = []
+    for r in reader:
+        r = {(k or "").strip().upper(): (v or "").strip() for k, v in r.items() if k is not None}
+        code = (r.get("SCRIP CODE") or "").lstrip("0")
+        if not code.isdigit():
+            continue
+        out.append(PriceRow("BSE", _date(r.get("DATE", ""), ("%d%m%Y",)) or trade_date, code,
+                            delivery_qty=_num(r.get("DELIVERY QTY")), delivery_pct=_num(r.get("DELV. PER.")),
+                            source_formats=("BSE_DELIVERY",)))
+    return out
+
+
+def with_bse_delivery(rows: list[PriceRow], delivery: list[PriceRow]) -> list[PriceRow]:
+    """Price rows with delivery filled from the delivery file (matched on trade date and scrip code;
+    delivery rows with no price row are dropped, values already present are kept)."""
+    by_code = {(d.trade_date, d.code): d for d in delivery}
+    out = []
+    for r in rows:
+        d = by_code.get((r.trade_date, r.code))
+        if d is None or (r.delivery_qty is not None and r.delivery_pct is not None):
+            out.append(r)
+            continue
+        out.append(replace(r, delivery_qty=r.delivery_qty if r.delivery_qty is not None else d.delivery_qty,
+                           delivery_pct=r.delivery_pct if r.delivery_pct is not None else d.delivery_pct,
+                           source_formats=tuple(dict.fromkeys(r.source_formats + d.source_formats))))
+    return out
+
+
 def merge(primary: list[PriceRow], extra: list[PriceRow]) -> list[PriceRow]:
     """Rows keyed on (exchange, date, code, series).  ``primary`` values win; ``extra`` fills gaps."""
     by_key = {r.key: r for r in primary}
@@ -233,6 +279,7 @@ class _Part:
     response: Response
     rows: list[PriceRow] = field(default_factory=list)
     error: str = ""
+    html: bool = False              # an HTML page where a file was expected (BSE answers a missing file this way)
 
     @property
     def missing(self) -> bool:
@@ -249,6 +296,7 @@ def _get(client: HttpClient, label: str, url: str, referer: str, parse: Callable
             part.rows = parse(resp.body)
         except (ValueError, zipfile.BadZipFile, csv.Error) as exc:
             part.error = f"{label}: unreadable ({exc})"
+            part.html = str(exc) == HTML_PAGE
         else:
             if not part.rows:
                 part.error = f"{label}: no rows"
@@ -270,11 +318,15 @@ def _status(parts: list[_Part], rows: list[PriceRow]) -> WindowStatus:
 
 
 def _first_available(client, candidates, referer, result) -> _Part:
-    """Try file formats newest first; a 404 moves on to the older format."""
+    """Try file formats newest first; a 404 or an HTML page moves on to the older format.
+
+    BSE answers a UDiFF name that does not exist (every day before its UDiFF files began) with HTTP 200 and an
+    HTML page, not a 404, so stopping there left every pre-UDiFF BSE day FAILED without trying ``EQ_ISINCODE``.
+    When every format gives HTML the day stays FAILED (it may be a block), never EMPTY_UNVERIFIED."""
     part = None
     for label, url, parse in candidates:
         part = _get(client, label, url, referer, parse, result)
-        if not part.missing:
+        if not (part.missing or part.html):
             return part
     return part
 
@@ -297,14 +349,39 @@ def fetch_nse(client: HttpClient, d: date) -> DayResult:
     return result
 
 
-def fetch_bse(client: HttpClient, d: date) -> DayResult:
+def _bse_delivery_url(d: date) -> str:
+    return BSE_DELIVERY_URL.format(yyyy=d.year, ddmm=d.strftime("%d%m"))
+
+
+def fetch_bse(client: HttpClient, d: date, delivery: bool = True) -> DayResult:
+    """Prices (UDiFF, else ``EQ_ISINCODE``) plus, when ``delivery``, the separate delivery-position file.
+    The day's status is that of its prices: a delivery file that is missing or unreadable is noted, not a
+    downgrade (it can be filled later with ``prices fetch-delivery``)."""
     result = DayResult("BSE", d, WindowStatus.FAILED)
     before = client.requests
     part = _first_available(client, [
         ("BSE_UDIFF", BSE_UDIFF_URL.format(ymd=d.strftime("%Y%m%d")), lambda b: parse_udiff(b, "BSE", d)),
         ("BSE_LEGACY", BSE_LEGACY_URL.format(dmy2=d.strftime("%d%m%y")), lambda b: parse_bse_legacy(b, d)),
     ], BSE_REFERER, result)
-    result.rows = merge(part.rows, [])
+    parts = [part]
+    rows = merge(part.rows, [])
+    if delivery and rows:
+        dl = _get(client, "BSE_DELIVERY", _bse_delivery_url(d), BSE_REFERER, lambda b: parse_bse_delivery(b, d), result)
+        parts.append(dl)
+        rows = with_bse_delivery(rows, dl.rows)
+    result.rows = rows
+    result.status = _status([part], result.rows)
+    result.notes = [p.error for p in parts if p.error]
+    result.requests = client.requests - before
+    return result
+
+
+def fetch_bse_delivery(client: HttpClient, d: date) -> DayResult:
+    """The delivery-position file alone (to fill delivery onto price rows already stored)."""
+    result = DayResult("BSE", d, WindowStatus.FAILED)
+    before = client.requests
+    part = _get(client, "BSE_DELIVERY", _bse_delivery_url(d), BSE_REFERER, lambda b: parse_bse_delivery(b, d), result)
+    result.rows = part.rows
     result.status = _status([part], result.rows)
     result.notes = [part.error] if part.error else []
     result.requests = client.requests - before
