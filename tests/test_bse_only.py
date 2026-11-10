@@ -210,3 +210,53 @@ def test_version_2_snapshot_figures_and_their_face_values_are_timed_by_the_filin
     assert rows == [("face_value", datetime(2026, 8, 12, 18, tzinfo=ist), "SNAPSHOT_TIMED_BY_FILING"),
                     ("paid_up_capital", datetime(2026, 8, 12, 18, tzinfo=ist), "SNAPSHOT_TIMED_BY_FILING")]
     assert db.execute("SELECT publication_id FROM financial_snapshot_timing WHERE fact_id = %s", (fid,)).fetchone()[0] == good
+
+
+def test_post_split_isin_takes_over_its_code_and_joins_the_company(db):
+    # the listing file's span on the old ISIN is still open (snapshot before the split)
+    iss, sec = _bse_only(db, code="544831", isin="INE208H01016", group="B")
+    db.execute("""UPDATE identifier_history SET source = 'listing_master', valid_from = '2026-07-28'""")
+    db.execute("""INSERT INTO bhavcopy_rows (exchange, trade_date, code, series, isin, source_formats) VALUES
+        ('BSE', '2026-10-29', '544831', 'B', 'INE208H01016', '{BSE_UDIFF}'),
+        ('BSE', '2026-10-30', '544831', 'B', 'INE208H01024', '{BSE_UDIFF}'),
+        ('BSE', '2026-11-06', '544831', 'B', 'INE208H01024', '{BSE_UDIFF}')""")
+    out = prices.build_company_list(db)
+    assert out["counts"].get("conflicts", 0) == 0 and out["counts"]["isin_successions"] == 1
+    assert out["counts"]["issuers_merged"] == 1
+    spans = db.execute("""SELECT s.isin, h.source, h.valid_from, h.valid_to, s.issuer_id = %s FROM identifier_history h
+                           JOIN securities s USING (security_id) WHERE h.kind = 'SCRIP_CODE' ORDER BY 1, 2""", (iss,)).fetchall()
+    assert spans == [("INE208H01016", "bhavcopy", date(2026, 10, 29), date(2026, 10, 29), True),
+                     ("INE208H01016", "listing_master", date(2026, 7, 28), date(2026, 10, 29), True),
+                     ("INE208H01024", "bhavcopy", date(2026, 10, 30), None, True)]
+    assert db.execute("SELECT count(*) FROM audit_log WHERE details->>'rule' = 'ISIN_SUCCESSION'").fetchone()[0] == 1
+
+
+def test_an_earlier_isin_inside_the_later_span_joins_the_company_without_a_span(db):
+    iss, sec = _bse_only(db, code="532626", isin="INE063E01061", group="B")      # span open since 2023-12-05
+    db.execute("""INSERT INTO bhavcopy_rows (exchange, trade_date, code, series, isin, source_formats) VALUES
+        ('BSE', '2026-07-06', '532626', 'B', 'INE063E01053', '{BSE_UDIFF}'),
+        ('BSE', '2026-07-21', '532626', 'B', 'INE063E01061', '{BSE_UDIFF}')""")
+    out = prices.build_company_list(db)
+    assert out["counts"]["earlier_isin_inside_later_span"] == 1 and out["counts"].get("conflicts", 0) == 0
+    assert db.execute("SELECT count(DISTINCT issuer_id) FROM securities").fetchone()[0] == 1
+
+
+def test_a_different_company_on_the_code_stays_a_conflict(db):
+    _bse_only(db, code="532626", isin="INE063E01061", group="B")
+    db.execute("""INSERT INTO bhavcopy_rows (exchange, trade_date, code, series, isin, source_formats) VALUES
+        ('BSE', '2026-07-06', '532626', 'B', 'INE999Z01011', '{BSE_UDIFF}')""")
+    assert prices.build_company_list(db)["counts"]["conflicts"] == 1
+
+
+def test_an_older_isin_from_older_files_joins_the_company_holding_its_code(db):
+    iss, sec = _bse_only(db, code="530585", isin="INE691C01022", group="B")      # current ISIN, span from 2023-12-05
+    db.execute("""UPDATE identifier_history SET source = 'bhavcopy'""")
+    db.execute("""INSERT INTO bhavcopy_rows (exchange, trade_date, code, series, isin, source_formats) VALUES
+        ('BSE', '2019-06-27', '530585', 'X', 'INE691C01014', '{BSE_LEGACY}'),
+        ('BSE', '2019-07-05', '530585', 'X', 'INE691C01014', '{BSE_LEGACY}'),
+        ('BSE', '2019-06-27', '500001', 'B', 'INE555Q01011', '{BSE_LEGACY}'),      -- an unrelated, delisted scrip
+        ('BSE', '2026-11-06', '530585', 'X', 'INE691C01022', '{BSE_UDIFF}')""")
+    out = prices.build_company_list(db)["counts"]
+    assert out["issuers_created"] == 2 and out["code_twins_merged"] == 1
+    assert db.execute("SELECT count(*) FROM securities WHERE issuer_id = %s", (iss,)).fetchone()[0] == 2
+    assert db.execute("SELECT count(DISTINCT issuer_id) FROM securities").fetchone()[0] == 2
