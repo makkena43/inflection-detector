@@ -21,7 +21,7 @@ from typing import Optional
 from psycopg.errors import ExclusionViolation
 from psycopg.types.json import Jsonb
 
-from .identity import NSE_MAINBOARD_EQUITY_SERIES, NSE_SME_SERIES
+from .identity import BSE_SME_GROUPS, NSE_MAINBOARD_EQUITY_SERIES, NSE_SME_SERIES
 from .sources import bhavcopy
 from .sources.bhavcopy import DayResult, PriceRow
 from .sources.common import IST
@@ -43,7 +43,6 @@ ACCESS_POLICY = ("Daily bhavcopy files from the exchanges' public archives, fetc
 COLUMNS = ["exchange", "trade_date", "code", "series", *bhavcopy.VALUE_FIELDS, "source_formats"]
 # Equity shares only: INE + 4-character issuer code + security type 01.
 EQUITY_ISIN = r"^INE[A-Z0-9]{4}01"
-BSE_SME_GROUPS = ("M", "MT")
 
 
 def ensure_source(conn, key: str) -> str:
@@ -104,6 +103,36 @@ def record_day(conn, day: DayResult, archive: Optional[Archive] = None) -> DayRe
         with conn.cursor() as cur:
             cur.executemany(_upsert_sql(prefer_new=True), [_row_values(r, run_id) for r in day.rows])
     return DayRecord(str(run_id), status, len(day.rows))
+
+
+_DELIVERY = """UPDATE bhavcopy_rows b
+                  SET delivery_qty = coalesce(b.delivery_qty, d.qty), delivery_pct = coalesce(b.delivery_pct, d.pct),
+                      source_formats = ARRAY(SELECT DISTINCT unnest(b.source_formats || ARRAY['BSE_DELIVERY']) ORDER BY 1)
+                 FROM (SELECT unnest(%(codes)s::text[]) code, unnest(%(qty)s::numeric[]) qty,
+                              unnest(%(pct)s::numeric[]) pct) d
+                WHERE b.exchange = 'BSE' AND b.trade_date = %(day)s AND b.code = d.code
+                  AND (b.delivery_qty IS NULL OR b.delivery_pct IS NULL)"""
+
+
+def record_bse_delivery(conn, day: DayResult) -> dict:
+    """Put one day's BSE delivery file onto the BSE price rows already stored for that day (all series of a
+    code; values already present are kept).  Rows of codes with no price row are counted, not stored."""
+    status = CoverageStatus(day.status.value)
+    with conn.transaction():
+        source_id = ensure_source(conn, "BSE")
+        start = datetime.combine(day.trade_date, time(0), tzinfo=IST)
+        conn.execute(
+            """INSERT INTO ingestion_runs (source_id, window_start, window_end, segment, received_count,
+                                          coverage_status, error_class, reconciliation_result, finished_at)
+               VALUES (%s, %s, %s, 'delivery', %s, %s, %s, %s, now())""",
+            (source_id, start, start + timedelta(days=1), len(day.rows), status.value,
+             status.value if status in (CoverageStatus.BLOCKED, CoverageStatus.FAILED) else None,
+             Jsonb({"notes": day.notes, "requests": day.requests,
+                    "files": [{"url": u, "bytes": len(b)} for u, b in day.files]})))
+        n = conn.execute(_DELIVERY, {"day": day.trade_date, "codes": [r.code for r in day.rows],
+                                     "qty": [r.delivery_qty for r in day.rows],
+                                     "pct": [r.delivery_pct for r in day.rows]}).rowcount if day.rows else 0
+    return {"status": status.value, "delivery_rows": len(day.rows), "price_rows_updated": n}
 
 
 # ---------------------------------------------------------------- MakroGraph history
@@ -214,8 +243,8 @@ def _security(conn, isin: str, name: str, board: str, counts: Counter, source: s
               created_by: str = CREATED_BY):
     row = conn.execute("SELECT security_id, exchange_segment FROM securities WHERE isin = %s", (isin,)).fetchone()
     if row:
-        if board == "SME" and row[1] != "SME":
-            conn.execute("UPDATE securities SET exchange_segment = 'SME' WHERE security_id = %s", (row[0],))
+        if (board == "SME" and row[1] != "SME") or (row[1] == "UNKNOWN" and board != "UNKNOWN"):
+            conn.execute("UPDATE securities SET exchange_segment = %s WHERE security_id = %s", (board, row[0]))
         return row[0]
     issuer_id = conn.execute(
         """INSERT INTO issuers (legal_name, classification_source, identity_status, created_by)
@@ -225,6 +254,75 @@ def _security(conn, isin: str, name: str, board: str, counts: Counter, source: s
     return conn.execute(
         """INSERT INTO securities (issuer_id, isin, exchange_segment, created_by) VALUES (%s, %s, %s, %s)
            RETURNING security_id""", (issuer_id, isin, board, created_by)).fetchone()[0]
+
+
+_OVERLAP = """
+SELECT h.identifier_id, h.security_id, s.isin, s.issuer_id, h.valid_from, h.valid_to,
+       (SELECT max(b.trade_date) FROM bhavcopy_rows b WHERE b.exchange = h.exchange AND b.isin = s.isin
+           AND (CASE WHEN h.exchange = 'BSE' AND h.kind = 'SYMBOL' THEN b.ticker ELSE b.code END) = h.value) AS last_traded
+  FROM identifier_history h JOIN securities s USING (security_id)
+ WHERE h.exchange = %(exchange)s AND h.kind = %(kind)s AND h.value = %(value)s AND h.security_id <> %(security)s
+   AND daterange(h.valid_from, h.valid_to, '[]') && daterange(%(first)s, %(to)s, '[]')"""
+
+
+def _adopt(conn, security_id, issuer_id, counts: Counter) -> None:
+    """Put a security under ``issuer_id``.  Its own issuer, when it is a provisional company holding nothing else,
+    is folded in as ``companies.merge_filing_duplicates`` does (filings move, the merge is audited)."""
+    own, status, later = conn.execute(
+        """SELECT s.issuer_id, i.identity_status, i.created_at > (SELECT created_at FROM issuers WHERE issuer_id = %s)
+             FROM securities s JOIN issuers i USING (issuer_id) WHERE s.security_id = %s""",
+        (issuer_id, security_id)).fetchone()
+    if own == issuer_id or not later:      # only a company created after the one it joins is folded in
+        return
+    if status != "PROVISIONAL" or conn.execute("SELECT count(*) FROM securities WHERE issuer_id = %s", (own,)).fetchone()[0] != 1:
+        return
+    isin = conn.execute("SELECT isin FROM securities WHERE security_id = %s", (security_id,)).fetchone()[0]
+    conn.execute("UPDATE securities SET issuer_id = %s WHERE security_id = %s", (issuer_id, security_id))
+    moved = conn.execute("UPDATE document_publications SET issuer_id = %s, revision = revision + 1 WHERE issuer_id = %s",
+                         (issuer_id, own)).rowcount
+    conn.execute("""INSERT INTO audit_log (actor, actor_kind, action, target_table, target_id, details)
+                    VALUES (%s, 'SYSTEM', 'MERGE_DUPLICATE_ISSUER', 'issuers', %s, %s)""",
+                 (CREATED_BY, str(issuer_id), Jsonb(dict(merged_issuer=str(own), isins=[isin], rule="ISIN_SUCCESSION",
+                                                        filings_moved=moved))))
+    counts["issuers_merged"] += 1
+
+
+def _succession(conn, security_id, isin, exchange, kind, value, first, valid_to, series, board, counts) -> Optional[str]:
+    """Resolve a span that clashes only with the same company's other ISIN on the same code (a split or
+    face-value change reissues the ISIN; its first 7 characters, the issuer code, stay).  Every clashing span must
+    be such a twin, else the clash stays a conflict.
+
+    * the twin is not seen trading on the code from this span's first day (and its spans began before it): its
+      spans are closed the day before and this span is stored (a post-split ISIN taking over its code);
+    * the twin still trades after this span starts: this ISIN is the older one, briefly seen inside the twin's span
+      (its rows already reach it by ISIN); no span is stored.
+    Either way this security joins the twin's issuer."""
+    rows = conn.execute(_OVERLAP, dict(exchange=exchange, kind=kind, value=value, security=security_id, first=first,
+                                       to=valid_to)).fetchall()
+    if not rows or any(r[2][:7] != isin[:7] for r in rows) or len({r[3] for r in rows}) != 1:
+        return None
+    target = rows[0][3]
+    # not seen trading on the code (with its ISIN) on or after this span's first day; ISIN-less older rows don't count
+    if all((r[6] is None or r[6] < first) and r[4] < first for r in rows):
+        with conn.transaction():
+            for r in rows:
+                conn.execute("UPDATE identifier_history SET valid_to = %s WHERE identifier_id = %s",
+                             (first - timedelta(days=1), r[0]))
+            if not conn.execute("""UPDATE identifier_history SET valid_from = least(valid_from, %s), valid_to = %s,
+                                          series = %s, board = %s
+                                    WHERE security_id = %s AND exchange = %s AND kind = %s AND value = %s AND source = %s""",
+                                (first, valid_to, series, board, security_id, exchange, kind, value, IDENTITY_SOURCE)).rowcount:
+                conn.execute("""INSERT INTO identifier_history (security_id, exchange, kind, value, series, board,
+                                                                valid_from, valid_to, source, created_by)
+                                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+                             (security_id, exchange, kind, value, series, board, first, valid_to, IDENTITY_SOURCE, CREATED_BY))
+            _adopt(conn, security_id, target, counts)
+        return "isin_successions"
+    if all(r[6] is not None and r[6] >= first for r in rows):
+        with conn.transaction():
+            _adopt(conn, security_id, target, counts)
+        return "earlier_isin_inside_later_span"
+    return None
 
 
 def build_company_list(conn) -> dict:
@@ -267,11 +365,45 @@ def build_company_list(conn) -> dict:
                              CREATED_BY))
                         counts["identifiers_created"] += 1
             except ExclusionViolation:  # the code already points at another security on some of those days
+                how = _succession(conn, security_id, isin, exchange, kind, value, first, valid_to, series, board, counts)
+                if how:
+                    counts[how] += 1
+                    continue
                 counts["conflicts"] += 1
                 conflicts.append(dict(exchange=exchange, kind=kind, value=value, isin=isin,
                                       first=first.isoformat(), last=last.isoformat()))
     counts.update(extend_bse_history(conn))
+    counts.update(adopt_code_twins(conn))
     return {"counts": dict(counts), "conflicts": conflicts}
+
+
+# A company's other ISIN (older or newer, around a split or face-value change) seen on its own code at other
+# dates: a provisional company holding only that security, whose code is held at other times by exactly one
+# other, earlier-created company with the same ISIN issuer code (first 7 characters).  Loading older bhavcopy
+# files (which carry the ISIN of the day) creates these for every company that has changed ISIN since.
+_CODE_TWINS = """
+SELECT s.security_id, array_agg(DISTINCT os.issuer_id)
+  FROM securities s JOIN issuers i USING (issuer_id)
+  JOIN identifier_history h ON h.security_id = s.security_id
+  JOIN identifier_history o ON o.exchange = h.exchange AND o.kind = h.kind AND o.value = h.value
+                           AND o.security_id <> h.security_id
+  JOIN securities os ON os.security_id = o.security_id AND os.issuer_id <> s.issuer_id
+                    AND substr(os.isin, 1, 7) = substr(s.isin, 1, 7)
+  JOIN issuers oi ON oi.issuer_id = os.issuer_id AND oi.created_at < i.created_at     -- the company already known keeps
+ WHERE i.identity_status = 'PROVISIONAL'
+   AND (SELECT count(*) FROM securities x WHERE x.issuer_id = s.issuer_id) = 1
+ GROUP BY 1"""
+
+
+def adopt_code_twins(conn) -> dict:
+    counts: Counter = Counter()
+    for security_id, targets in conn.execute(_CODE_TWINS).fetchall():
+        if len(targets) != 1:
+            counts["code_twins_ambiguous"] += 1
+            continue
+        with conn.transaction():
+            _adopt(conn, security_id, targets[0], counts)
+    return {k.replace("issuers_merged", "code_twins_merged"): v for k, v in counts.items()}
 
 
 # BSE scrip codes are not reused, so a code's ISIN-less history (MakroGraph rows, the older files)
@@ -446,6 +578,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     python -m inflection.prices companies        build the company list, then link filings
     python -m inflection.prices fill [START] [--to END]   bhavcopy rows -> prices (UNADJUSTED)
     python -m inflection.prices report START [--to END]
+    python -m inflection.prices fetch-delivery START [--to END]   BSE delivery file -> stored BSE rows
 
     Connects with INFLECTION_DSN.  Uses the default HttpClient transport."""
     import argparse
@@ -457,7 +590,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     from .sources.http import HttpClient
 
     ap = argparse.ArgumentParser(prog="python -m inflection.prices")
-    ap.add_argument("command", choices=("fetch", "import-makrograph", "companies", "fill", "report"))
+    ap.add_argument("command", choices=("fetch", "fetch-delivery", "import-makrograph", "companies", "fill",
+                                                "report"))
     ap.add_argument("start", type=date.fromisoformat, nargs="?")
     ap.add_argument("--to", type=date.fromisoformat)
     ap.add_argument("--exchange", default="both", choices=("nse", "bse", "both"))
@@ -465,7 +599,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--interval", type=float, default=1.5, help="seconds between requests")
     ap.add_argument("--from-dsn", default=os.environ.get("MAKROGRAPH_DSN"), help="MakroGraph database")
     a = ap.parse_args(argv)
-    if a.command in ("fetch", "report") and not a.start:
+    if a.command in ("fetch", "fetch-delivery", "report") and not a.start:
         ap.error(f"{a.command} needs START")
     if a.command == "import-makrograph" and not a.from_dsn:
         ap.error("import-makrograph needs --from-dsn or MAKROGRAPH_DSN")
@@ -483,6 +617,11 @@ def main(argv: Optional[list[str]] = None) -> int:
                     print(f"{ex} {d}: {r.coverage_status.value}, {r.rows} rows"
                           + (f" ({'; '.join(day.notes)})" if day.notes else ""))
             print(json.dumps(price_report(conn, a.start, end), indent=2))
+        elif a.command == "fetch-delivery":
+            client = HttpClient(min_interval=a.interval)
+            for d in bhavcopy.weekdays(a.start, end):
+                r = record_bse_delivery(conn, bhavcopy.fetch_bse_delivery(client, d))
+                print(f"BSE delivery {d}: {json.dumps(r)}")
         elif a.command == "import-makrograph":
             with psycopg.connect(a.from_dsn) as src:
                 print(json.dumps(import_makrograph(conn, src), indent=2))

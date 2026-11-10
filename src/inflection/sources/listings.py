@@ -23,6 +23,7 @@ from decimal import Decimal
 from typing import Optional
 from urllib.parse import urlencode
 
+from ..identity import BSE_SME_GROUPS
 from .bhavcopy import _date, _isin, _num, _text, csv_records
 from .common import WindowStatus, decode_json
 from .http import HttpClient
@@ -34,7 +35,6 @@ NSE_REFERER = "https://www.nseindia.com/"
 BSE_SCRIPS_URL = "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w"
 BSE_REFERER = "https://www.bseindia.com/"
 BSE_STATUSES = {"Active": "ACTIVE", "Suspended": "SUSPENDED", "Delisted": "DELISTED"}
-BSE_SME_GROUPS = ("M", "MT")
 CSV_ACCEPT = "text/csv, application/octet-stream, */*"
 _DATES = ("%d-%b-%Y", "%d-%b-%y", "%d-%m-%Y", "%d/%m/%Y", "%Y-%m-%d")
 

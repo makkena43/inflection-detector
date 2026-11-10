@@ -27,8 +27,14 @@ def db():
     test_dsn = psycopg.conninfo.make_conninfo(dsn, dbname=name)
     try:
         with psycopg.connect(test_dsn, autocommit=True) as conn:
+            # 0043 indexes two tables of the MakroGraph reference schema, which lives outside these migrations:
+            # stand-ins for the migrations, dropped afterwards (tests that need the schema create it themselves)
+            conn.execute("CREATE SCHEMA makrograph_ref")
+            for t in ("mg_company_capabilities", "mg_company_product_roles"):
+                conn.execute(f"CREATE TABLE makrograph_ref.{t} (ticker text, as_of_date date)")
             for m in MIGRATIONS:
                 conn.execute(m.read_text())
+            conn.execute("DROP SCHEMA makrograph_ref CASCADE")
             yield conn
     finally:
         with psycopg.connect(dsn, autocommit=True) as admin:
