@@ -362,11 +362,14 @@ def _hash(pid, f: Figure) -> str:
     return hashlib.sha256(key.encode()).hexdigest()
 
 
-def load(conn, limit: Optional[int] = None, issuers: Optional[list[str]] = None, dry_run: bool = False) -> dict:
-    """Write figures from results filings for cells no XBRL figure covers.  Idempotent per filing figure."""
+def load(conn, limit: Optional[int] = None, issuers: Optional[list[str]] = None, dry_run: bool = False,
+         since: Optional[date] = None) -> dict:
+    """Write figures from results filings for cells no XBRL figure covers.  Idempotent per filing figure.
+    ``since``: only filings published on or after that day (IST)."""
     sql = RESULT_FILINGS + (" AND p.issuer_id = ANY(%(iss)s::uuid[])" if issuers else "") + \
+        (" AND p.published_at >= (%(since)s::date::timestamp AT TIME ZONE 'Asia/Kolkata')" if since else "") + \
         " ORDER BY p.published_at" + (" LIMIT %(limit)s" if limit else "")
-    rows = conn.execute(sql, dict(iss=issuers, limit=limit)).fetchall()
+    rows = conn.execute(sql, dict(iss=issuers, limit=limit, since=since)).fetchall()
     c = Counter()
     for pid, iss, at, tid, vid in rows:
         figs = read_document(_pages(conn, tid))
@@ -404,10 +407,12 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--limit", type=int)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--bse-only", action="store_true", help="load: only companies with no NSE listing")
+    ap.add_argument("--since", type=date.fromisoformat, help="load: only filings published on or after this day")
     a = ap.parse_args(argv)
     with psycopg.connect(os.environ["INFLECTION_DSN"], autocommit=True) as conn:
         issuers = [r[0] for r in conn.execute(BSE_ONLY_ISSUERS)] if a.bse_only else None
-        res = check(conn, a.limit or 300) if a.command == "check" else load(conn, a.limit, issuers, dry_run=a.dry_run)
+        res = check(conn, a.limit or 300) if a.command == "check" else load(conn, a.limit, issuers, dry_run=a.dry_run,
+                                                                                   since=a.since)
     print(json.dumps(res, indent=2, default=str))
     return 0
 

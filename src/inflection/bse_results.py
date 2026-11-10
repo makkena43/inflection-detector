@@ -176,10 +176,12 @@ NOT_RESULTS_TITLE = (r"intimation|board meeting|newspaper|trading window|adverti
 MONTHS = r"january|february|march|april|may|june|july|august|september|october|november|december"
 
 
-def time_from_filings(conn) -> dict:
+def time_from_filings(conn, recent_days: Optional[int] = None) -> dict:
     """Owner decision (2026-11-01): a snapshot figure is public from the company's results announcement
     for its period: the earliest results filing of the issuer after the period ended and within 75 days,
-    whose title names that period's month (or no month).  Recorded once per fact in
+    whose title names that period's month (or no month).  ``recent_days`` limits the search to figures recorded
+    in the last N days or whose period ended in the last 150 days (a filing can only time a figure within 75 days
+    of its period end).  Recorded once per fact in
     ``financial_snapshot_timing``; figures without such a filing keep the observation time."""
     n = conn.execute(f"""INSERT INTO financial_snapshot_timing(fact_id, publication_id, available_at, rule)
         SELECT DISTINCT ON (f.fact_id) f.fact_id, p.publication_id, p.published_at, %(rule)s
@@ -189,10 +191,12 @@ def time_from_filings(conn) -> dict:
            AND p.title ~* %(yes)s AND p.title !~* %(no)s
            AND (p.title ~* trim(to_char(f.period_end, 'FMMonth')) OR p.title !~* %(months)s)
          WHERE f.provider = %(provider)s
+           AND (%(recent)s::int IS NULL OR f.recorded_at >= now() - make_interval(days => %(recent)s::int)
+                OR f.period_end >= current_date - 150)
            AND NOT EXISTS (SELECT 1 FROM financial_snapshot_timing t WHERE t.fact_id = f.fact_id)
          ORDER BY f.fact_id, p.published_at, p.publication_id
         ON CONFLICT DO NOTHING""", dict(rule=TIMING_RULE, yes=RESULTS_TITLE, no=NOT_RESULTS_TITLE, months=MONTHS,
-                                        provider=PROVIDER)).rowcount
+                                        provider=PROVIDER, recent=recent_days)).rowcount
     # a derived face value is public with the paid-up capital it was derived for (same results statement)
     fv = conn.execute("""INSERT INTO financial_snapshot_timing(fact_id, publication_id, available_at, rule)
         SELECT DISTINCT ON (v.fact_id) v.fact_id, t.publication_id, t.available_at, %(rule)s
@@ -357,13 +361,15 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap = argparse.ArgumentParser(prog="python -m inflection.bse_results")
     ap.add_argument("command", choices=["load", "time", "face-values", "validate-face-values"])
     ap.add_argument("--apply", action="store_true", help="face-values: write the facts (default: dry run)")
+    ap.add_argument("--recent", type=int, help="time: only figures recorded in the last N days or with a period "
+                                               "ended in the last 150 days (daily use)")
     ap.add_argument("--scrips", help="comma-separated BSE scrip codes (default: every BSE-only company)")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--interval", type=float, default=1.5)
     a = ap.parse_args(argv)
     with psycopg.connect(os.environ["INFLECTION_DSN"], autocommit=True) as conn:
         if a.command == "time":
-            print(json.dumps(time_from_filings(conn), indent=2))
+            print(json.dumps(time_from_filings(conn, a.recent), indent=2))
             return 0
         if a.command == "face-values":
             print(json.dumps(face_values(conn, a.apply), indent=2, default=str))
