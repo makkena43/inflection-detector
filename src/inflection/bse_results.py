@@ -169,6 +169,7 @@ def load(conn, client: HttpClient, scrips: Optional[list[str]] = None, limit: Op
 
 
 TIMING_RULE = "first-results-filing-75d-2"
+FV_TIMING_RULE = "face-value-with-paid-up-1"
 RESULTS_TITLE = r"results?"
 NOT_RESULTS_TITLE = (r"intimation|board meeting|newspaper|trading window|advertis|publication|postponement|clarification|"
                      r"voting|ballot|scrutini|annual general|\bagm\b|election|buy-?back|open offer|tender offer|allotment")
@@ -187,15 +188,24 @@ def time_from_filings(conn) -> dict:
            AND p.published_at < ((f.period_end + 76)::timestamp AT TIME ZONE 'Asia/Kolkata')
            AND p.title ~* %(yes)s AND p.title !~* %(no)s
            AND (p.title ~* trim(to_char(f.period_end, 'FMMonth')) OR p.title !~* %(months)s)
-         WHERE f.provider = %(provider)s AND f.provider_version = 'bse-results-snapshot-1'
+         WHERE f.provider = %(provider)s
            AND NOT EXISTS (SELECT 1 FROM financial_snapshot_timing t WHERE t.fact_id = f.fact_id)
          ORDER BY f.fact_id, p.published_at, p.publication_id
         ON CONFLICT DO NOTHING""", dict(rule=TIMING_RULE, yes=RESULTS_TITLE, no=NOT_RESULTS_TITLE, months=MONTHS,
                                         provider=PROVIDER)).rowcount
-    total = conn.execute("SELECT count(*) FROM financial_facts WHERE provider=%s AND provider_version='bse-results-snapshot-1'",
-                         (PROVIDER,)).fetchone()[0]
-    timed = conn.execute("SELECT count(*) FROM financial_snapshot_timing").fetchone()[0]
-    return dict(timed_now=n, timed_total=timed, snapshot_facts=total, rule=TIMING_RULE)
+    # a derived face value is public with the paid-up capital it was derived for (same results statement)
+    fv = conn.execute("""INSERT INTO financial_snapshot_timing(fact_id, publication_id, available_at, rule)
+        SELECT DISTINCT ON (v.fact_id) v.fact_id, t.publication_id, t.available_at, %(rule)s
+          FROM financial_facts v JOIN financial_facts p ON p.issuer_id = v.issuer_id AND p.metric = 'paid_up_capital'
+           AND p.provider = %(provider)s AND p.period_type = v.period_type AND p.period_end = v.period_end AND p.scope = v.scope
+          JOIN financial_snapshot_timing t ON t.fact_id = p.fact_id
+         WHERE v.provider = %(fv)s AND NOT EXISTS (SELECT 1 FROM financial_snapshot_timing x WHERE x.fact_id = v.fact_id)
+         ORDER BY v.fact_id, t.available_at, t.publication_id
+        ON CONFLICT DO NOTHING""", dict(rule=FV_TIMING_RULE, provider=PROVIDER, fv=FV_PROVIDER)).rowcount
+    total = conn.execute("SELECT count(*) FROM financial_facts WHERE provider=%s", (PROVIDER,)).fetchone()[0]
+    timed = conn.execute("""SELECT count(*) FROM financial_snapshot_timing t JOIN financial_facts f USING (fact_id)
+                             WHERE f.provider=%s""", (PROVIDER,)).fetchone()[0]
+    return dict(timed_now=n, timed_total=timed, snapshot_facts=total, face_values_timed_now=fv, rule=TIMING_RULE)
 
 
 # ---------------------------------------------------------------- face value (share count)

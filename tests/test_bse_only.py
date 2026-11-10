@@ -187,3 +187,26 @@ def test_face_values_written_with_the_paid_up_capital_fact_time(db):
                           FROM financial_facts WHERE metric = 'face_value'""").fetchone()
     assert row == (Decimal("2"), "PER_SHARE", True, "bse_listing_face_value")
     assert bse_results.face_values(db, apply=True, issuers=[str(iss)])["counts"] == {}      # idempotent
+
+
+def test_version_2_snapshot_figures_and_their_face_values_are_timed_by_the_filing(db):
+    from datetime import datetime, timezone
+    ist = timezone(timedelta(hours=5, minutes=30))
+    iss, sec = _bse_only(db, group="B", fv=10)
+    src = db.execute("INSERT INTO sources(name, kind, access_policy) VALUES ('bse_t', 'announcements', 'test') RETURNING source_id").fetchone()[0]
+    good = db.execute("""INSERT INTO document_publications(source_id, external_id, external_version, source_url, published_at,
+        issuer_id, title, publication_basis) VALUES (%s,'1','1','u',%s,%s,'XYZ Ltd - Results - Financial Results For Quarter Ended June 30, 2026',
+        'EXCHANGE_TIMESTAMP') RETURNING publication_id""", (src, datetime(2026, 8, 12, 18, tzinfo=ist), iss)).fetchone()[0]
+    obs = datetime(2026, 11, 8, 10, tzinfo=ist)
+    fid = db.execute("""INSERT INTO financial_facts(issuer_id, metric, period_start, period_end, scope, value, value_kind, currency,
+        scale, period_type, available_at, provider, provider_version, content_hash) VALUES (%s,'paid_up_capital','2026-04-01',
+        '2026-06-30','STANDALONE',50000000,'MONEY','INR','UNITS','QUARTER',%s,'bse_results_snapshot','bse-results-snapshot-2','h2')
+        RETURNING fact_id""", (iss, obs)).fetchone()[0]
+    bse_results.face_values(db, apply=True, issuers=[str(iss)])        # copies the observation time
+    out = bse_results.time_from_filings(db)
+    assert (out["timed_now"], out["face_values_timed_now"]) == (1, 1)
+    rows = db.execute("""SELECT metric, available_at, availability_basis FROM financial_facts_asof
+                          WHERE issuer_id = %s ORDER BY metric""", (iss,)).fetchall()
+    assert rows == [("face_value", datetime(2026, 8, 12, 18, tzinfo=ist), "SNAPSHOT_TIMED_BY_FILING"),
+                    ("paid_up_capital", datetime(2026, 8, 12, 18, tzinfo=ist), "SNAPSHOT_TIMED_BY_FILING")]
+    assert db.execute("SELECT publication_id FROM financial_snapshot_timing WHERE fact_id = %s", (fid,)).fetchone()[0] == good
