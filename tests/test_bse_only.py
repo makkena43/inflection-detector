@@ -260,3 +260,37 @@ def test_an_older_isin_from_older_files_joins_the_company_holding_its_code(db):
     assert out["issuers_created"] == 2 and out["code_twins_merged"] == 1
     assert db.execute("SELECT count(*) FROM securities WHERE issuer_id = %s", (iss,)).fetchone()[0] == 2
     assert db.execute("SELECT count(DISTINCT issuer_id) FROM securities").fetchone()[0] == 2
+
+
+# ---------------- results statements in scanned text layers ----------------
+
+HARISH = """Statement of Audited financial results for the quarter ending 30th June 2022.
+Results (Rupees in Lakhs, except EPS)
+SL.NO PARTICULARS Quarter Ended Year Ended
+30.06.2022 31.03.2022 30.06.2021 31.03.2022
+(Un-audited) (Audited) (Un-audited) (Audited)
+1 Revenue from operations 2,969.21 2,948.12 2,057.55 10,686.14
+Ul Other Income 16.26 1,78 11.88 45.98
+Total Income from operations 2,985.47 2,949.90 2,069.43 10,732.12
+Ml Expenses
+e. Finance Costs 126.86 191.02 94.79 489.69
+f. Depreciation and Amortisation expense 63.58 60.46 55.93 222.02
+Total Expenses 3,027.57 2,892.81 2,059.84 10,666.20
+IV__|Profit before exceptional Items and tax (42.10) 57.10 9.59 65.92
+Vill |Net Profit from Ordinary activities after tax (35.41) 68.77 20.19 48.28
+"""
+
+
+def test_scanned_row_numbers_decimal_commas_and_plain_profit_labels_are_read():
+    from inflection import results_text
+    figs = {f.metric: f.value for f in results_text.read_page(3, HARISH, "STANDALONE")}
+    assert figs == {"revenue": Decimal("296921000.00"), "other_income": Decimal("1626000.00"),
+                    "finance_cost": Decimal("12686000.00"), "depreciation": Decimal("6358000.00"),
+                    "total_expenses": Decimal("302757000.00"), "pat": Decimal("-3541000.00")}
+
+
+def test_whole_number_rows_keep_small_figures_but_not_unverifiable_costs():
+    from inflection import results_text
+    assert results_text._first_number(" 93 139 121 459 472")[0] == 93          # no decimals anywhere: not a note
+    assert results_text._first_number(" 3 1,234.56 999.10")[0] == Decimal("1234.56")   # note 3, then the figure
+    assert results_text.UNIT.search("Rs. ln Lakhs") and results_text.UNIT.search('(Rupees In "Lakhs" except EPS)')

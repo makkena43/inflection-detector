@@ -33,19 +33,21 @@ from decimal import Decimal, InvalidOperation
 from typing import Optional
 
 PROVIDER = "results_text"
-PROVIDER_VERSION = "results-text-1"
+PROVIDER_VERSION = "results-text-2"   # 2: scanned text layers (row numbers, units, decimal commas)
 CREATED_BY = "inflection.results_text"
 I = re.I
 
-UNIT = re.compile(r"(?:rs\.?|₹|inr|rupees|`|amount|amt\.?|figures|\(\s*r|\br)\s*\.?\s*(?:in\s+)?(lakhs?|lacs?|crores?|cr\.?|millions?|mn|"
-                  r"thousands?|'000)\b", I)
+# text layers of scanned statements read "in" as "ln"/"1n" and the rupee sign as "=", "?" or "f"; the unit word may be
+# quoted or bracketed ("Rupees In "Lakhs"", "Rs. In (Lakhs)")
+UNIT = re.compile(r"(?:rs\.?|₹|inr|rupees|`|amount|amt\.?|figures|\(\s*r|\br|\(\s*[=?f]\s)\s*\.?\s*(?:[il1]n\s*)?[\(\"'“”]?\s*"
+                  r"(lakhs?|lacs?|crores?|cr\.?|millions?|mn|thousands?|'000)\b", I)
 UNIT_SCALE = {"lakh": Decimal(10) ** 5, "lac": Decimal(10) ** 5, "crore": Decimal(10) ** 7, "cr": Decimal(10) ** 7,
               "million": Decimal(10) ** 6, "mn": Decimal(10) ** 6, "thousand": Decimal(10) ** 3, "'000": Decimal(10) ** 3}
 MONTH = {m.lower(): i for i, m in enumerate(calendar.month_name) if m} | {
     m.lower(): i for i, m in enumerate(calendar.month_abbr) if m}
 DATE = re.compile(r"\b(\d{1,2})(?:st|nd|rd|th)?[.\-/ ·](\d{1,2}|[A-Za-z]{3,9})[.\-/ ,·]{1,2}(\d{4}|\d{2})\b")
 DATE_MONTH_FIRST = re.compile(r"\b([A-Za-z]{3,9})\.?\s+(\d{1,2})(?:st|nd|rd|th)?\s*,?\s*(\d{4})\b")
-BARE_UNIT = re.compile(r"\bin\s+(lakhs?|lacs?|crores?|millions?|thousands?)\b", I)
+BARE_UNIT = re.compile(r"\b[il1]n\s+[\(\"'“”]?(lakhs?|lacs?|crores?|millions?|thousands?)\b", I)
 PERIOD_LABEL = re.compile(r"\b(quarter|three months|half[- ]?year|six months|nine months|year)\s*(?:ended|ending)\b", I)
 SCOPE = re.compile(r"\b(standalone|consolidated)\b", I)
 NUMBER = re.compile(r"\(\s*-?[\d,]+(?:\.\d+)?\s*\)|-?[\d,]*\d(?:\.\d+)?")
@@ -55,14 +57,16 @@ LINES = (  # metric, line start (after an optional row number), words that disqu
     ("other_income", re.compile(r"o[l1]?ther [il1]ncome\b", I), None),
     ("_total_income", re.compile(r"total [il1]ncome\b|total revenue\b", I), re.compile(r"comprehensive", I)),
     ("total_expenses", re.compile(r"total (?:expenses|expenditure)\b", I), None),
-    ("_pbt_before_exceptional", re.compile(r"(?:net )?profit\s*/?\s*\(?loss\)?\s*before exceptional", I), None),
+    ("_pbt_before_exceptional", re.compile(r"(?:net )?profit\s*(?:/?\s*\(?loss\)?)?\s*(?:from ordinary activities\s*)?before exceptional", I), None),
     ("finance_cost", re.compile(r"finance costs?\b", I), re.compile(r"relating to|nbfc|hfc", I)),
     ("depreciation", re.compile(r"depreciation\b", I), re.compile(r"\band tax\b|\(\d\s*-\s*\d\)", I)),
-    ("pat", re.compile(r"(?:net )?profit\s*/?\s*\(?loss\)?\s*(?:after tax\s*)?for the (?:period|quarter|year)\b|"
-                       r"net profit\s*/?\s*\(?loss\)?\s*after tax\b|profit after tax\b", I),
-     re.compile(r"before tax|other comprehensive|attributable|owners|non[- ]controlling|discontinu", I)),
+    ("pat", re.compile(r"(?:net )?profit\s*(?:/?\s*\(?loss\)?)?\s*(?:after tax\s*)?for the (?:period|quarter|year)\b|"
+                       r"net profit\s*(?:/?\s*\(?loss\)?)?\s*(?:from ordinary activities\s*)?after tax\b|profit after tax\b", I),
+     re.compile(r"before tax|other comprehensive|attributable|owners|non[- ]controlling|discontinu|continuing operations", I)),
 )
-ROW_PREFIX = re.compile(r"^[\W\d]*(?:(?:[ivxl]+|[a-z])[\W]{1,3})?\s*", I)
+# a row number before the label: "1", "(a)", "IV.", and the forms text layers of scanned statements give roman
+# numerals ("Ul Other Income", "Ml Expenses", "IV__|Profit", "Vil {Tax", "\\X__ |Other")
+ROW_PREFIX = re.compile(r"^[\W\d_]*(?:(?:[ivxl]+|[a-z]|[ivxlumjyt1|]{1,4})[\W_]{1,4})?\s*", I)
 
 
 @dataclass(frozen=True)
@@ -115,11 +119,10 @@ def _number(token: str) -> Optional[Decimal]:
 
 def _first_number(rest: str) -> Optional[tuple[Decimal, str]]:
     # skip roman/row references like "(I+II)" or "(IV)"; take the first figure with digits
-    for m in NUMBER.finditer(rest):
-        tok = m.group(0)
-        if not re.search(r"\d", tok):
-            continue
-        if re.fullmatch(r"\d{1,2}", tok.strip("() ")) and not re.search(r"\.", tok):
+    toks = [m.group(0) for m in NUMBER.finditer(rest) if re.search(r"\d", m.group(0))]
+    formatted = any(re.search(r"[.,]", t) for t in toks)     # a whole-number table ("93 139 121") has no note numbers
+    for tok in toks:
+        if formatted and re.fullmatch(r"\d{1,2}", tok.strip("() ")) and not re.search(r"\.", tok):
             continue                                   # a note number ("Note 3"), not a figure
         v = _number(tok)
         if v is not None:
@@ -235,6 +238,9 @@ def read_page(page_no: int, body: str, unlabelled_scope: Optional[str] = None) -
             rest = re.sub(r"[\(\[]\s*[\divxl]{1,4}\s*(?:[+\-–]|to)\s*[\divxl]{1,4}\s*[\)\]]|[\(\[][^\d\)\]]{0,12}[\)\]]", " ",
                           text[m.end():], flags=I)
             rest = re.sub(r"^(\W*)(\d{1,3}) (\d{2,3}\.\d{2})\b", r"\1\2\3", rest)   # OCR "9 74.00" = 974.00
+            # "341,95": a comma before exactly two final digits is a decimal point read as a comma (a thousands
+            # group, Indian or Western, always ends in three digits)
+            rest = re.sub(r"(?<![\d,.])(\d{1,3}),(\d{2})(?![\d,])", r"\1.\2", rest)
             if re.match(r"^[\s|]*[\-–—](?:\s|$)", rest) and re.search(r"\d", rest):
                 seen.add(metric)        # a dash then figures: which column is nil cannot be told
                 continue
@@ -257,6 +263,8 @@ def read_page(page_no: int, body: str, unlabelled_scope: Optional[str] = None) -
                 seen.add(metric)        # "109 19 120 30": decimals read as spaces, the columns cannot be trusted
                 continue
             seen.add(metric)
+            if metric in ("finance_cost", "depreciation") and figures and not any(re.search(r"[.,]", t) for t in figures):
+                continue                # whole numbers: a digit lost by the text layer cannot be caught by any total
             out.append(Figure(metric, ptype_line, _start(ptype_line, end), end, scope, first[0] * scale, line.strip()[:300], page_no))
     if not _coherent(out):
         return []
@@ -363,8 +371,9 @@ def load(conn, limit: Optional[int] = None, issuers: Optional[list[str]] = None,
                 c['skipped_period_not_ended'] += 1; continue
             h = _hash(pid, f)
             exists = conn.execute("""SELECT 1 FROM financial_facts WHERE issuer_id=%s AND metric=%s AND period_type=%s
-                AND period_end=%s AND scope=%s AND (provider='nse_xbrl' OR content_hash=%s) LIMIT 1""",
-                                  (iss, f.metric, f.period_type, f.period_end, f.scope, h)).fetchone()
+                AND period_end=%s AND scope=%s AND (provider='nse_xbrl' OR content_hash=%s
+                     OR (provider=%s AND publication_id=%s)) LIMIT 1""",
+                                  (iss, f.metric, f.period_type, f.period_end, f.scope, h, PROVIDER, pid)).fetchone()
             if exists:
                 c['skipped_already_known'] += 1; continue
             c['issuers'] = c.get('issuers', 0)
