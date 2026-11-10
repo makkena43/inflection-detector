@@ -9,7 +9,7 @@
 Steps and their state go to live/run_state.json; output goes to logs/run_<mode>_<time>.log. One run at a time.
 A failed step is reported and later steps still run where they can; nothing here places an order.
 """
-import fcntl, json, os, re, shutil, signal, subprocess, sys
+import fcntl, json, os, re, shutil, signal, subprocess, sys, time, zlib
 from datetime import date, datetime, timedelta
 
 J = os.path.expanduser(os.environ.get("INFLECTION_JOB_ROOT", "~/inflection-jobs"))
@@ -22,7 +22,6 @@ V1 = f"{J}/alpha_model/v1_frozen"
 MIN_FREE_GB = {"weekly": 10, "daily": 5, "lists": 2}
 SLOW_STAMP = f"{LIVE}/slow_data_last"
 DATA_STAMP = f"{LIVE}/data_last"
-SLOW_EVERY_DAYS = 1                 # every run (owner 2026-11-10: all downloads daily); the pull is incremental
 SLOW_LIMIT_SECONDS = 1800
 RULES = "3.6.2"   # owner 2026-11-04: 3.6 + theme context + order-flow context
 BUSY = re.compile(r"run_resume\.sh|run_backfill_2026\.sh|dl_worker\.py|run_week_2026\.sh|inflection\.quality_repair")
@@ -76,24 +75,73 @@ class NeedsYou(Exception):
     pass
 
 
+RETRY_WAITS = (60, 300)     # a failed step is tried again after 1 minute, then after 5 minutes (owner 2026-11-10)
+
+
 def step(name, fn):
     s = dict(name=name, status="running", started=now())
     state["steps"].append(s)
     save()
     log(f"== {name}")
-    try:
-        s["note"] = fn() or ""
-        s["status"] = "done"
-    except NeedsYou as e:
-        s.update(status="needs_you", note=str(e))
-    except Failed as e:
-        s.update(status="failed", note=str(e))
-    except Exception as e:
-        s.update(status="failed", note=f"{type(e).__name__}: {e}")
+    for attempt in range(len(RETRY_WAITS) + 1):
+        try:
+            s["note"] = fn() or ""
+            s["status"] = "done"
+        except NeedsYou as e:
+            s.update(status="needs_you", note=str(e))
+        except Failed as e:
+            s.update(status="failed", note=str(e))
+        except Exception as e:
+            s.update(status="failed", note=f"{type(e).__name__}: {e}")
+        if s["status"] != "failed" or attempt == len(RETRY_WAITS):
+            break
+        log(f"== {name}: failed ({s['note']}); retrying in {RETRY_WAITS[attempt]} s")
+        s["note"] = f"retry {attempt + 1} after: {s['note']}"; save()
+        time.sleep(RETRY_WAITS[attempt])
+    if attempt and s["status"] == "done":
+        s["note"] = f"{s['note']} (succeeded on retry {attempt})"
+    remember_failure(name, s["status"] == "failed", s.get("note"))
     s["finished"] = now()
     log(f"== {name}: {s['status']} {s.get('note', '')}")
     save()
     return s["status"] == "done"
+
+
+def remember_failure(name, failed, note):
+    """Steps that still failed after their retries, kept across runs so the next run reports what it is catching up."""
+    path = f"{LIVE}/failed_steps.json"
+    try:
+        led = json.load(open(path)) if os.path.exists(path) else {}
+    except ValueError:
+        led = {}
+    if failed:
+        led[name] = dict(last_failed=now(), note=note, since=led.get(name, {}).get("since", now()))
+    elif name in led:
+        led.pop(name)
+    with open(path, "w") as f:
+        json.dump(led, f, indent=1)
+
+
+def gap_fill():
+    """Weekly sweep (Sundays in the daily run, and the Weekly button): re-check the last 30 days for anything a daily run
+    missed. Every command skips work already stored, so this only adds what is missing."""
+    today = date.today(); since = today - timedelta(days=30)
+    index_closes()
+    days = psql(f"""select string_agg(d::text, ' ') from (select distinct trade_date d from index_closes where index_name='Nifty Smallcap 250'
+                    and trade_date >= '{since}' except select distinct trade_date from bhavcopy_rows where exchange='NSE') x""")
+    missing = [d for d in (days or "").split() if d]
+    for d in missing:
+        run_or_fail(f"{PY} -m inflection.prices fetch {d} --to {d}", f"price fetch {d}")
+    run_or_fail(f"{PY} -m inflection.prices fill {since} --to {today}", "price fill (30 days)")
+    run_or_fail(f"{PY} -m inflection.corporate_actions fetch {today - timedelta(days=45)} --to {today + timedelta(days=90)}", "corporate actions (45 days)")
+    for ex, segment in (("nse", "equities"), ("nse", "sme"), ("bse", "equity")):
+        seg = f"--segment {segment}" if ex == "nse" else ""
+        run_or_fail(f"{PY} -m inflection.ingest {ex} {today - timedelta(days=14)} --to {today} {seg} --download 0 --extract 0", f"{ex} {segment} re-listing (14 days)")
+    download_filings()
+    rc = shell(f"zsh {J}/run_range_2026.sh {today - timedelta(days=14)} {today}")
+    rc_bse = shell([PY, f"{REPO}/ops/bse_daily.py", "--workers", "2", "--lookback", "30"], extra={"INFLECTION_DSN": "postgresql:///inflection"})
+    notes = [f"{len(missing)} missing price days fetched"] + (["filing re-processing reported gaps; see the log"] if rc else []) + (["BSE 30-day sweep had a failed step"] if rc_bse else [])
+    return "; ".join(notes)
 
 
 def run_or_fail(cmd, what, **kw):
@@ -116,6 +164,12 @@ def fetch_prices():
     return "prices to " + psql("select max(trade_date) from bhavcopy_rows")
 
 
+def index_closes():
+    """NSE index closes (Smallcap 250 and every other NSE index) for each trading day with prices; skips days stored."""
+    run_or_fail([PY, f"{J}/index_data/fetch.py"], "index closes", cwd=f"{J}/index_data")
+    return "index closes to " + psql("select max(trade_date) from index_closes")
+
+
 def refresh_deals():
     run_or_fail(f"{PY} -m inflection.deals fetch", "deals")
 
@@ -123,20 +177,22 @@ def refresh_deals():
 def refresh_slow():
     """Shareholding and BSE-only results: about 1.5 s per company each, and they only change with quarterly filings."""
     today = date.today()
-    if os.path.exists(SLOW_STAMP):
-        last = date.fromisoformat(open(SLOW_STAMP).read().strip())
-        if (today - last).days < SLOW_EVERY_DAYS:
-            return f"last pulled {last}; next due {last + timedelta(days=SLOW_EVERY_DAYS)}"
+    last = date.fromisoformat(open(SLOW_STAMP).read().strip()) if os.path.exists(SLOW_STAMP) else None
+    full_bse = last is None or (today - last).days >= 7      # the full BSE-only results pull (~1 hour) stays weekly;
+                                                           # bse_daily.py takes the last 7 days of BSE results every day
     last_month = (today.month - 1) // 3 * 3                     # the latest finished quarter's final month; 0 means December last year
     quarter = date(today.year, last_month + 1, 1) - timedelta(days=1)
     symbols = psql(f"""select distinct h.value from identifier_history h where h.exchange='NSE' and h.kind='SYMBOL' and h.valid_to is null
                        and not exists (select 1 from shareholding_patterns p where upper(p.symbol)=upper(h.value) and p.period_end >= '{quarter}') order by 1""").split()
+    # Each company still missing the quarter is asked once a week (a seventh of them per day), so a daily run makes about
+    # 1/7 of the requests instead of ~2,600; a company is checked again within a week of filing.
+    symbols = [x for x in symbols if zlib.crc32(x.encode()) % 7 == today.toordinal() % 7]
     path = f"{LIVE}/shareholding_symbols.txt"
     with open(path, "w") as f:
         f.write("\n".join(symbols) + "\n")
     notes, bad = [f"{len(symbols)} companies still missing the {quarter} quarter"], []
     for cmd, what in ((f"{PY} -m inflection.shareholding fetch --symbols {path}", "shareholding"), (f"{PY} -m inflection.bse_results load", "BSE results")):
-        if what == "shareholding" and not symbols:
+        if (what == "shareholding" and not symbols) or (what == "BSE results" and not full_bse):
             continue
         rc = shell(cmd, limit=SLOW_LIMIT_SECONDS)
         if rc == 124:
@@ -145,9 +201,30 @@ def refresh_slow():
             bad.append(what)
     if bad:
         raise Failed("failed: " + ", ".join(bad) + "; see the log")
-    with open(SLOW_STAMP, "w") as f:
-        f.write(today.isoformat())
-    return "; ".join(notes)
+    if full_bse:
+        with open(SLOW_STAMP, "w") as f:
+            f.write(today.isoformat())
+    return "; ".join(notes + ([] if full_bse else [f"full BSE results pull next due {last + timedelta(days=7)}"]))
+
+
+def bse_daily():
+    """BSE prices and delivery, BSE filings list, derived splits/bonuses, face values, recent BSE results and BSE-only
+    result PDFs (ops/bse_daily.py, 4-8 minutes; every step skips what is stored)."""
+    rc = shell([PY, f"{REPO}/ops/bse_daily.py", "--workers", "2"], extra={"INFLECTION_DSN": "postgresql:///inflection"})
+    if rc == 2:
+        raise Failed("bse_daily stopped: less than 3 GB free")
+    if rc:
+        raise Failed("a BSE daily step failed; see logs/bse_daily_<date>.log")
+    return "BSE daily steps done"
+
+
+def day_triage():
+    """Provisional day-by-day triage of the current week (ops/day_triage.py, own run tag; the week's final list is made
+    when it closes)."""
+    if date.today().weekday() >= 5:
+        return "weekend: the closed week is triaged by the weekly path above"
+    run_or_fail([PY, f"{REPO}/ops/day_triage.py"], "day triage", extra=TRIAGE_ENV)
+    return "today's provisional triage written to live/day_triage.json"
 
 
 def corporate_actions():
@@ -194,6 +271,8 @@ def data_steps():
     with open(DATA_STAMP, "w") as f:
         f.write(date.today().isoformat())
     step("Prices and delivery", fetch_prices)
+    step("BSE daily data", bse_daily)
+    step("Index closes", index_closes)
     step("Deals", refresh_deals)
     step("Corporate actions and dividends", corporate_actions)
     step("Shareholding and BSE results", refresh_slow)
@@ -335,6 +414,8 @@ def main(mode):
         pulled_today = os.path.exists(DATA_STAMP) and open(DATA_STAMP).read().strip() == date.today().isoformat()
         if mode == "daily" or (mode == "weekly" and not pulled_today):   # weekly reuses today's data pull if there was one
             data_steps()
+        if mode == "weekly" or date.today().weekday() == 6:              # weekly gap fill: the Weekly button, and Sundays
+            step("Weekly gap fill (last 30 days)", gap_fill)
         # Packets, engine triage and code triage run every day (owner decision 2026-11-10): a week is processed on the
         # first run after it closes, with no Haiku step. Weekly is kept as a button and runs exactly the same steps.
         weeks = pending_weeks()
@@ -348,6 +429,7 @@ def main(mode):
         waiting = review_waiting()
         if waiting:
             step("Code triage of the core group", code_triage(waiting))
+        step("This week so far (day-by-day triage)", day_triage)
         if step("Refresh ranking data", build_panel):
             step("Long-term strategy lists", lists)
         step("Short-term swing scan", swing)

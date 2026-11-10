@@ -95,6 +95,10 @@ button.ghost:disabled { opacity:.5; cursor:default } h2 small { font-weight:400;
       <p class="muted">Cells: equal-weight stock return · n=eligible/total entries · difference from the category average (pp). Descriptive association, not a causal effect. Based on the selected year/show; the last row follows category selections and search.</p>
       <div class="wrap"><table id="holding-impact-table"></table></div>
     </details>
+    <details id="daycheck" open><summary><b>This week so far (day by day, provisional)</b> <span class="muted" id="day-count"></span></summary>
+      <p class="note">Built every day from companies with a new filing event since yesterday: packets, engine triage, then code triage (fixed rules, no model) and the combo checks. Provisional: the week's final list is made once the week closes. Combos are watch lists, not buy signals.</p>
+      <div class="wrap"><table id="day-table"></table></div>
+    </details>
     <details id="newcheck" open><summary><b>Repeatable check (new, side by side)</b> <span class="muted" id="nc-count"></span></summary>
       <p class="note">Haiku only states facts from each filing (two reviews, a third if they disagree); code makes the decision. Facts are saved once per filing, so a re-run always gives the same list. Uses the Year, Date, Combo and Search filters above. 2025 onward.</p>
       <div class="wrap"><table id="nc-table"></table></div>
@@ -194,6 +198,12 @@ async function loadPicks() {
     + sig('Promoter / institutions bought ≥₹1 cr', rows.filter(matchesBuyingCategory));
   renderPicks();
 }
+get('/api/day_triage').then(d => {
+  const rows = (d.rows || []).filter(r => r.action === 'DEEP_RESEARCH').sort((a, b) => (b.combos || []).length - (a.combos || []).length);
+  $('#day-count').textContent = `${d.day || '–'} · engine picks ${d.engine_picks ?? 0} · code picks ${rows.length} · with a combo ${rows.filter(r => (r.combos || []).length).length}`;
+  $('#day-table').innerHTML = '<tr><th>Symbol</th><th>Combos</th><th class="num">Order % rev</th><th>Why</th></tr>' + rows.map(r =>
+    `<tr><td>${esc(r.label)}</td><td>${(r.combos || []).map(x => `<span class="chip">${esc(x)}</span>`).join(' ') || '<span class="muted">–</span>'}</td><td class="num">${n(r.size)}</td><td class="wide">${esc(r.why)}</td></tr>`).join('');
+}).catch(e => { $('#day-table').innerHTML = `<tr><td class="muted">No day-by-day triage yet (${esc(e.message)})</td></tr>`; });
 let ncRows = null;
 get('/api/new_check').then(d => { ncRows = d.rows || []; $('#nc-count').dataset.gen = d.generated || ''; renderNewCheck(); }).catch(e => { $('#nc-table').innerHTML = `<tr><td class="muted">New check not built yet (${esc(e.message)})</td></tr>`; });
 const SHORT = {DEEP_RESEARCH:'Pick', WATCH_MILESTONE:'Watch', REJECT_WITH_REASON:'Reject'};

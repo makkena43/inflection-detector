@@ -736,6 +736,8 @@ class H(BaseHTTPRequestHandler):
                 if view not in VIEWS: return self.send(400, '{"error":"view must be year, events, first or latest"}', "application/json")
                 y = 0 if yv == "all" else int(yv)
                 data = cached(f"picks{y}{inc}{view}", 1800, lambda: picks(y, inc, view))
+            elif u.path == "/api/day_triage":
+                data = read_json(LIVE + "day_triage.json", {"rows": []})
             elif u.path == "/api/new_check":
                 data = read_json(LIVE + "order_check.json", {"rows": []})
             elif u.path == "/api/combos":

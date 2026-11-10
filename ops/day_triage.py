@@ -17,6 +17,7 @@ import code_review as cr  # noqa: E402
 oc = cr.oc
 J = oc.J
 PY = f"{REPO}/.venv/bin/python"
+MIN_FREE_GB = 6
 
 
 def run(cmd, env):
@@ -52,11 +53,30 @@ def main(day):
     root = f"{J}/triage_day/{day}"
     env = dict(os.environ, INFLECTION_DSN=oc.DSN, INFLECTION_RUN_TAG=f"day-{day}", INFLECTION_VERIFY_MODEL="local-clf-1",
                INFLECTION_PACKET_THEMES="1", TRIAGE_DIR=root, PYTHONPATH=f"{REPO}/src")
+    import shutil, psycopg
+    if shutil.disk_usage("/").free < MIN_FREE_GB * 1e9:
+        print(f"skipped: less than {MIN_FREE_GB} GB free"); return
     os.makedirs(root, exist_ok=True)
     if not os.path.isdir(f"{root}/{week}"):
         run([PY, "-m", "inflection.triage", "build", "--week", str(week), "--mode", "PUBLIC_INFORMATION_RECONSTRUCTION"], env)
-        run([PY, "-m", "inflection.packets", "assemble", "--week", str(week)], env)
-        run([PY, "-m", "inflection.packets", "export", "--week", str(week), "--out", root], env)
+        # Only companies with a commercial event recorded since yesterday get a packet today; the full week is built
+        # once it closes. This keeps a day's build to minutes instead of the whole shortlist (about 2,600 companies).
+        with psycopg.connect(oc.DSN, options="-c default_transaction_read_only=on") as c0:
+            syms = [r[0] for r in c0.execute("""
+                SELECT DISTINCT h.value FROM triage_shortlist_items i JOIN triage_shortlists s USING (shortlist_id)
+                  JOIN event_versions v ON v.event_version_id = ANY(i.trigger_event_version_ids)
+                  JOIN securities sec ON sec.issuer_id = i.issuer_id
+                  JOIN identifier_history h ON h.security_id = sec.security_id AND h.kind = 'SYMBOL' AND h.exchange = 'NSE' AND h.valid_to IS NULL
+                 WHERE s.run_tag = %s AND s.week_start = %s AND i.slot IN ('RANKED', 'UPDATE', 'EXPLORATION')
+                   AND v.recorded_at >= %s::date - 1""", (f"day-{day}", week, day))]
+        print(len(syms), "companies with a new event since yesterday", flush=True)
+        for sym in syms:
+            try:
+                run([PY, "-m", "inflection.packets", "assemble", "--week", str(week), "--symbol", sym], env)
+                run([PY, "-m", "inflection.packets", "export", "--week", str(week), "--symbol", sym, "--out", root], env)
+            except subprocess.CalledProcessError as e:
+                print("packet failed:", sym, e, flush=True)
+        os.makedirs(f"{root}/{week}", exist_ok=True)
     run([PY, f"{J}/engine/week_engine.py", str(week)], env)
     import psycopg
     c = psycopg.connect(oc.DSN)
