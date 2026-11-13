@@ -93,7 +93,7 @@ def walk_dip(O, H, L, C, S5, locked, t, last, limit_px, atr):
 
 
 def build(data=None, index=None, write=True):
-    dates, issuers, M, BR, sym, nse, names, divs, results = data or load()
+    dates, issuers, M, BR, sym, nse, names, divs, results, *_ = data or load()   # newer load() returns extra values
     O, H, L, C, RAW, TV = (M[k].astype(float) for k in "ohlcrv")
     T, last, cal = len(dates), len(dates) - 1, calendar(dates)
     Cf, PC = ffill(C), shift(ffill(C), 1)
