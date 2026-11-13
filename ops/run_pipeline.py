@@ -354,6 +354,7 @@ def lists():
 def swing():
     run_or_fail([PY, f"{REPO}/ops/swing_scan.py"], "swing scan")
     run_or_fail([PY, f"{REPO}/ops/short_book.py"], "short-term book")
+    run_or_fail([PY, f"{REPO}/ops/limit_book.py"], "limit-order book")
 
 
 def pending_weeks(today=None):
