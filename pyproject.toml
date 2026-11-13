@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8"]
+dev = ["pytest>=8", "numpy>=1.26"]   # numpy: ops/ scripts under test
 verify = ["anthropic>=1.0"]           # python -m inflection.commercial verify
 ocr = ["pypdfium2>=5.0", "Pillow>=12.0"]
 
